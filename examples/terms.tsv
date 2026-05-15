@@ -1,0 +1,4 @@
+term_id	name
+T:child	Child process
+T:parent	Parent process
+T:other	Other process

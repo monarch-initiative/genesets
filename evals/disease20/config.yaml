@@ -1,0 +1,12 @@
+mode: matrix
+input:
+  targets: evals/disease20/generated/queries.gmt
+  target_format: gmt
+  queries: evals/disease20/generated/queries.gmt
+  query_format: gmt
+background:
+  file: evals/disease20/generated/background.txt
+min_overlap: 2
+correction: bonferroni
+max_p_adjust: 0.05
+output: evals/disease20/generated/results.tsv

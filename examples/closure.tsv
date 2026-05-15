@@ -1,0 +1,5 @@
+child	ancestor
+T:child	T:child
+T:child	T:parent
+T:parent	T:parent
+T:other	T:other

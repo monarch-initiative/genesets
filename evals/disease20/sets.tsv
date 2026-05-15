@@ -1,0 +1,21 @@
+geneset_id	name	source	taxid	expected_min_symbols	selection_note
+DOID_10652	Alzheimer's disease	do	9606	300	neurodegenerative
+DOID_14330	Parkinson's disease	do	9606	250	neurodegenerative
+DOID_332	amyotrophic lateral sclerosis	do	9606	200	neurodegenerative
+DOID_12858	Huntington's disease	do	9606	100	neurodegenerative
+DOID_5419	schizophrenia	do	9606	1000	psychiatric
+DOID_3312	bipolar disorder	do	9606	300	psychiatric
+DOID_0060041	autism spectrum disorder	do	9606	1200	neurodevelopmental
+DOID_9352	type 2 diabetes mellitus	do	9606	10	metabolic
+DOID_9970	obesity	do	9606	1500	metabolic
+DOID_3393	coronary artery disease	do	9606	1200	cardiovascular
+DOID_5844	myocardial infarction	do	9606	500	cardiovascular
+DOID_2841	asthma	do	9606	900	respiratory
+DOID_7148	rheumatoid arthritis	do	9606	600	autoimmune
+DOID_9074	systemic lupus erythematosus	do	9606	25	autoimmune
+DOID_8778	Crohn's disease	do	9606	600	inflammatory bowel disease
+DOID_8577	ulcerative colitis	do	9606	400	inflammatory bowel disease
+DOID_1612	breast cancer	do	9606	600	cancer
+DOID_9256	colorectal cancer	do	9606	150	cancer
+DOID_10283	prostate cancer	do	9606	1200	cancer
+DOID_1324	lung cancer	do	9606	500	cancer

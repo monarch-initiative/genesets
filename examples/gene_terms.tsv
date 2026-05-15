@@ -1,0 +1,5 @@
+gene_id	term_id
+g1	T:child
+g2	T:child
+g3	T:parent
+g4	T:other

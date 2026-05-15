@@ -1,0 +1,12 @@
+[book]
+title = "genesets-rs"
+authors = ["genesets-rs contributors"]
+description = "A fast, ontology-neutral gene set enrichment CLI and eval framework."
+language = "en"
+src = "docs/src"
+
+[output.html]
+git-repository-url = "https://github.com/your-org/genesets-rs"
+edit-url-template = "https://github.com/your-org/genesets-rs/edit/main/{path}"
+site-url = "/genesets-rs/"
+additional-css = []

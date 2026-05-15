@@ -1,0 +1,6 @@
+/target/
+/book/
+/evals/*/generated/
+__pycache__/
+*.pyc
+*.profraw
