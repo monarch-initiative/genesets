@@ -23,6 +23,22 @@ The initial design is aimed at repeated over-representation analysis:
 
 The MVP statistic is one-sided Fisher exact enrichment with optional Bonferroni correction. The implementation leaves room for ranked-list statistics and ontology-aware model-set methods, but the first requirement is a very fast and auditable baseline.
 
+## Project Layers
+
+The project has two user-facing layers:
+
+- `genesets-rs`: the Rust CLI and library code for loading normalized tables,
+  building bitset indexes, computing enrichment, comparing result tables, and
+  writing TSV or Parquet.
+- `genesets-workflows`: the Python workflow package for repeatable source
+  preparation, configured reports, metadata, DuckDB summaries, notebooks, and
+  future web-facing reports.
+
+The boundary is intentional. GO, GOA, Reactome, MyGeneSet, evidence-code
+filters, release metadata, and report layouts change faster than the enrichment
+kernel. They belong in the workflow layer. The Rust core should continue to
+accept normalized ontology-neutral tables and do one job quickly.
+
 ## Non-Goals For The Core Engine
 
 The core engine does not know about species, evidence codes, ontology release policy, identifier mapping, or remote services. Those concerns belong in prep and wrapper layers. This separation keeps the fast path small and makes it easier to build reproducible evals.

@@ -31,6 +31,11 @@ def parse_args() -> argparse.Namespace:
         help="Gene field to emit from MyGeneset records, for example symbol or ncbigene.",
     )
     parser.add_argument("--sleep", type=float, default=0.0, help="Delay between API calls.")
+    parser.add_argument(
+        "--skip-existing",
+        action="store_true",
+        help="Reuse an existing queries.gmt, background.txt, and metadata.json snapshot.",
+    )
     return parser.parse_args()
 
 
@@ -121,6 +126,9 @@ def write_outputs(
                     "taxid": item.get("taxid"),
                     "gene_count": len(genes),
                     "selection_note": manifest.get("selection_note", ""),
+                    "category": manifest.get("category", ""),
+                    "contrast_type": manifest.get("contrast_type", ""),
+                    "direction": manifest.get("direction", ""),
                     "source_url": item["_source_url"],
                 }
             )
@@ -137,6 +145,15 @@ def write_outputs(
 
 def main() -> int:
     args = parse_args()
+    expected_outputs = [
+        args.out_dir / "queries.gmt",
+        args.out_dir / "background.txt",
+        args.out_dir / "metadata.json",
+    ]
+    if args.skip_existing and all(path.exists() for path in expected_outputs):
+        print(f"Using existing MyGeneset snapshot at {args.out_dir}")
+        return 0
+
     rows = read_manifest(args.manifest)
     fetched: list[dict] = []
     failures: list[str] = []

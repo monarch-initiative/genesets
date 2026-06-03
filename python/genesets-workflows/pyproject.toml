@@ -1,0 +1,49 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "genesets-workflows"
+version = "0.1.0"
+description = "Convenience workflows, source preparation, and reports for genesets-rs."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "genesets-rs contributors" },
+]
+dependencies = [
+  "PyYAML>=6.0",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Science/Research",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+
+[project.optional-dependencies]
+reports = [
+  "duckdb>=1.0",
+  "pandas>=2.0",
+]
+notebooks = [
+  "duckdb>=1.0",
+  "ipython>=8.0",
+  "jupyter>=1.0",
+  "nbconvert>=7.0",
+  "pandas>=2.0",
+]
+
+[project.scripts]
+genesets-workflows = "genesets_workflows.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/genesets_workflows"]
+
+[tool.uv]
+package = true

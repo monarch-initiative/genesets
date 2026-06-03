@@ -28,6 +28,14 @@ genesets-rs ... --output-format parquet --output results.parquet
 duckdb -c "SELECT * FROM 'results.parquet' WHERE p_adjust_bonferroni <= 0.05"
 ```
 
+Diff outputs use the same approach:
+
+```text
+genesets-rs compare --left old.parquet --right new.parquet \
+  --output-format parquet --output old-vs-new.diff.parquet
+duckdb -c "SELECT class, count(*) FROM 'old-vs-new.diff.parquet' GROUP BY class"
+```
+
 ## Comparative Notes
 
 | Criterion | Parquet primary | DuckDB primary |

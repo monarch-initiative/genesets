@@ -1,0 +1,13 @@
+mode: matrix
+input:
+  queries: ../expression_like/generated/msigdb_gse_500/queries.gmt
+  query_format: gmt
+  targets: generated/current/targets.gmt
+  target_format: gmt
+background:
+  file: generated/current/background.txt
+min_overlap: 2
+max_p_adjust: 0.05
+correction: bonferroni
+output_format: parquet
+output: generated/current/expression500_vs_reactome_flat.parquet

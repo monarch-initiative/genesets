@@ -10,6 +10,25 @@ The implementation does not hardcode GO. GO is represented as ordinary term IDs,
 cargo build --release
 ```
 
+## Local Install
+
+For day-to-day use on one machine, install the CLI from this checkout:
+
+```bash
+cargo install --path /path/to/genesets-rs --force
+```
+
+Cargo installs the binary as `~/.cargo/bin/genesets-rs`. Once that directory is
+on your `PATH`, the command works from any directory:
+
+```bash
+genesets-rs --help
+genesets-rs run /path/to/genesets-rs/examples/enrich.yaml
+```
+
+After changing the Rust code, rerun the same `cargo install --path ... --force`
+command to refresh the installed binary.
+
 ## Documentation
 
 The repository includes an mdBook scaffold for GitHub Pages-style documentation:
@@ -19,7 +38,46 @@ cargo install mdbook
 mdbook serve
 ```
 
-The book source lives in `docs/src`. It covers the CLI, input model, statistics, performance model, eval strategy, ontology prep, and competitive landscape.
+The book source lives in `docs/src`. It covers the CLI, workflow layer, input
+model, statistics, performance model, eval strategy, ontology prep, and
+competitive landscape.
+
+## Workflow Layer
+
+The Rust CLI is the fast enrichment kernel. Repeatable source prep and reports
+live in a Python package under `python/genesets-workflows`.
+
+Run the workflow CLI from this checkout:
+
+```bash
+uv run --project python/genesets-workflows genesets-workflows doctor
+```
+
+Or install it editable:
+
+```bash
+python3 -m pip install -e python/genesets-workflows
+genesets-workflows doctor
+```
+
+The package currently exposes:
+
+```bash
+genesets-workflows go-impact evals/go_impact_5y_expression500.yaml
+genesets-workflows reactome-flat
+genesets-workflows prepare-reactome-flat --out-dir evals/reactome_flat/generated/current
+genesets-workflows fetch-mygeneset --query 'GSE*' --source-filter msigdb --limit 500 --out-dir evals/expression_like/generated/msigdb_gse_500
+```
+
+The older script commands for these workflows remain as compatibility wrappers
+around the package; older eval helpers will be migrated incrementally.
+
+The intended boundary is:
+
+```text
+Python workflow prep -> normalized tables/YAML plan -> Rust batch command
+-> Parquet outputs -> DuckDB/report summaries
+```
 
 ## Input Tables
 
@@ -45,7 +103,7 @@ Gene set inputs can be:
 Single sample against ontology targets:
 
 ```bash
-cargo run -- enrich \
+genesets-rs enrich \
   --annotations examples/gene_terms.tsv \
   --terms examples/terms.tsv \
   --closure examples/closure.tsv \
@@ -57,7 +115,7 @@ cargo run -- enrich \
 All ontology terms against themselves:
 
 ```bash
-cargo run -- matrix \
+genesets-rs matrix \
   --annotations examples/gene_terms.tsv \
   --terms examples/terms.tsv \
   --closure examples/closure.tsv \
@@ -68,7 +126,7 @@ cargo run -- matrix \
 Flat library enrichment, such as MSigDB-style GMT:
 
 ```bash
-cargo run -- matrix \
+genesets-rs matrix \
   --target-sets path/to/library.gmt \
   --target-format gmt \
   --queries path/to/samples.gmx \
@@ -80,8 +138,12 @@ cargo run -- matrix \
 YAML configuration:
 
 ```bash
-cargo run -- run examples/enrich.yaml
+genesets-rs run examples/enrich.yaml
 ```
+
+Relative paths inside YAML configs are resolved from the config file's
+directory. Relative paths passed directly on the command line are resolved from
+the current working directory.
 
 ## Output
 
@@ -108,20 +170,49 @@ With `--overlap-genes`, the CLI also emits `overlap_genes` and `overlap_gene_nam
 
 ## Evals
 
-The first real-data eval seed is `evals/disease20`, a manifest of 20 human Disease Ontology gene sets from MyGeneset.info. Fetch a local GMT snapshot with:
+The preferred real-data smoke panel is `evals/expression20`, a manifest of 20
+human expression-derived MyGeneset.info/MSigDB signatures. Fetch a local GMT
+snapshot with:
 
 ```bash
 python3 scripts/fetch_mygeneset_eval.py \
-  --manifest evals/disease20/sets.tsv \
-  --out-dir evals/disease20/generated
+  --manifest evals/expression20/sets.tsv \
+  --out-dir evals/expression20/generated
 ```
 
 Generated eval files are intentionally separate from `cargo test` so ordinary CI stays deterministic.
 
+Run the local overlap smoke:
+
+```bash
+genesets-rs run evals/expression20/config.yaml
+```
+
+Run the 5-year GO impact report over 500 expression-derived signatures:
+
+```bash
+genesets-workflows go-impact evals/go_impact_5y_expression500.yaml
+```
+
+That report config runs the core `matrix` and `compare` commands, writes
+Parquet outputs plus YAML/JSON metadata, and leaves notebook code to inspect
+the generated artifacts rather than rebuild the workflow.
+
+Run the same 500 expression-derived signatures against official Reactome
+pathways as a flat GMT target library:
+
+```bash
+genesets-workflows reactome-flat
+```
+
 The GO eval runner writes significance-focused TSVs by default:
 
 ```bash
-python3 scripts/run_disease20_go_eval.py --max-p-adjust 0.05
+python3 scripts/run_disease20_go_eval.py \
+  --manifest evals/expression20/sets.tsv \
+  --out-dir evals/expression20_vs_go/generated \
+  --eval-name expression20_vs_go \
+  --max-p-adjust 0.05
 ```
 
 Companion YAML metadata records the cutoff, source file digests, prep settings, row counts, and run timing.

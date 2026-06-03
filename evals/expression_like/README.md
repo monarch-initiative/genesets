@@ -2,20 +2,24 @@
 
 Disease Ontology sets are useful smoke tests, but they are not realistic query sets for expression-analysis workflows.
 
-This directory is for larger MyGeneset/MSigDB query snapshots that look more like differential-expression signatures.
+For the small curated panel, use `evals/expression20`. This directory is for
+larger MyGeneset/MSigDB query snapshots that look more like
+differential-expression signatures.
 
 Examples:
 
 ```bash
-python3 scripts/fetch_mygeneset_query.py \
-  --query 'source:msigdb AND gse' \
+genesets-workflows fetch-mygeneset \
+  --query 'GSE*' \
+  --source-filter msigdb \
   --limit 2000 \
   --out-dir evals/expression_like/generated/msigdb_gse_2k
 ```
 
 ```bash
-python3 scripts/fetch_mygeneset_query.py \
-  --query 'source:msigdb AND name:vs' \
+genesets-workflows fetch-mygeneset \
+  --query 'vs' \
+  --source-filter msigdb \
   --limit 5000 \
   --out-dir evals/expression_like/generated/msigdb_vs_5k
 ```

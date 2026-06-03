@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run Disease20 MyGeneset queries against official GOA human GO targets."""
+"""Run a MyGeneset manifest against official GOA human GO targets."""
 
 from __future__ import annotations
 
@@ -23,6 +23,14 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--binary", default=Path("target/release/genesets-rs"), type=Path)
     parser.add_argument("--variants", default="all,no_contributes_to,iba,iba_iea")
+    parser.add_argument("--eval-name", default="disease20_vs_go")
+    parser.add_argument(
+        "--description",
+        default=(
+            "Twenty MyGeneset.info Disease Ontology human gene sets enriched "
+            "against official GOA human GO annotations."
+        ),
+    )
     parser.add_argument(
         "--max-p-adjust",
         type=float,
@@ -161,8 +169,8 @@ def main() -> int:
 
     metadata = {
         "generated_at_utc": utc_now(),
-        "eval": "disease20_vs_go",
-        "description": "Twenty MyGeneset.info Disease Ontology human gene sets enriched against official GOA human GO annotations.",
+        "eval": args.eval_name,
+        "description": args.description,
         "result_filter": {
             "max_p_adjust": args.max_p_adjust,
             "correction": "bonferroni",

@@ -1,12 +1,12 @@
 mode: enrich
 ontology:
-  terms: examples/terms.tsv
-  closure: examples/closure.tsv
-  annotations: examples/gene_terms.tsv
+  terms: terms.tsv
+  closure: closure.tsv
+  annotations: gene_terms.tsv
 input:
-  sample: examples/sample.txt
+  sample: sample.txt
   sample_format: list
   sample_name: sample
 background:
-  file: examples/background.txt
+  file: background.txt
 overlap_genes: true

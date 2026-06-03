@@ -8,6 +8,16 @@ Significance cutoff is the first reduction step. PANTHER-style APIs expose a cut
 
 GO slims are a curated reduction strategy. Instead of pruning enriched terms after scoring, project annotations or results onto a smaller subset of broad terms. This is useful for overviews, less useful when the user wants precise mechanistic terms.
 
+Slim-descendant filters are a related report-ranking strategy. Instead of
+projecting results onto slim terms, keep candidate terms that are themselves in
+a slim or descend from a slim term, often with a target-size guard. This is
+useful for "largest changed term" summaries where root-like terms such as broad
+molecular function categories would otherwise dominate.
+
+Antislim filters invert that idea: exclude a slim region and its descendants
+from a report. This is useful when a known broad ontology branch is technically
+correct but distracts from the biological question being reviewed.
+
 Ancestor-descendant pruning uses the closure graph. A simple policy is: for each query, if a term has a significant descendant with equal or better adjusted p-value, hide the ancestor. This is easy to explain, but it can over-prune when a broad parent captures a coherent process and many children are sparse.
 
 Gene-overlap pruning compares term gene sets. If two enriched terms share nearly the same query-overlap genes, keep one representative. Representative selection can rank by adjusted p-value, specificity, overlap size, or information content.
@@ -36,6 +46,8 @@ Candidate reducer modes:
 | `overlap-jaccard` | best ranked representative | terms whose overlap gene Jaccard exceeds threshold |
 | `semantic-cluster` | cluster representative | terms in same semantic-similarity cluster |
 | `go-slim-project` | slim term | non-slim terms after projection |
+| `slim-descendant-include` | terms in or below selected slim terms | terms outside the selected slim scope |
+| `slim-descendant-exclude` | terms outside selected slim terms and descendants | terms in or below selected slim terms |
 
 The tolerance is important. Sometimes a general parent has a slightly better p-value because it adds many relevant genes. A practical rule is not binary dominance, but dominance with a margin:
 

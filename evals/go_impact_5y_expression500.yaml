@@ -1,0 +1,47 @@
+analysis: go_impact_5y_expression500
+question: "Across 500 expression-derived MSigDB/GSE gene sets, which enrichment calls cross a Bonferroni-adjusted p-value threshold between the 2021 and 2026 GO/GOA snapshots?"
+binary: genesets-rs
+
+query_sets:
+  source_dir: expression_like/generated/msigdb_gse_500
+  limit: 500
+  selection: first N emitted sets from the source query snapshot
+  fetch:
+    query: "GSE*"
+    source_filter: msigdb
+    limit: 500
+    min_genes: 20
+    max_genes: 1000
+
+snapshots:
+  left:
+    label: "2021-05-01"
+    dir: go_timepoints/generated/five_years_ago_2021_05_01
+    annotation_variant: all
+    output_prefix: go_2021_05_01
+  right:
+    label: "2026-03-25"
+    dir: go_timepoints/generated/now_2026_03_25
+    annotation_variant: all
+    output_prefix: go_2026_03_25
+
+statistics:
+  min_overlap: 2
+  max_p_adjust: 0.05
+  correction: bonferroni
+
+compare:
+  p_adjust_cutoff: 0.05
+  crossings_only: false
+
+post_processing:
+  ranked_term_scope:
+    mode: include
+    subset: goslim_generic
+    snapshot: right
+    include_descendants: true
+    max_target_size: 1000
+
+output:
+  dir: ../notebooks/generated/go_impact_5y_expression500
+  result_stem: expression500

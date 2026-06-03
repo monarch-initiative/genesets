@@ -15,9 +15,48 @@ Eval datasets validate end-to-end workflows. These should be explicit, versioned
 
 Benchmarks validate speed on synthetic and real workloads.
 
-## Disease20 Starter Eval
+## Expression20 Starter Eval
 
-The first real-data eval seed is `evals/disease20`. It names 20 human Disease Ontology gene sets from MyGeneset.info. The manifest is intentionally small and hand-reviewed so changes are easy to reason about.
+The preferred real-data smoke panel is `evals/expression20`. It names 20 human
+MSigDB/MyGeneset.info expression-derived signatures selected across:
+
+- in vivo or primary immune cell-type contrasts;
+- patient or clinical disease-state contrasts;
+- vaccination and infection-response contrasts;
+- cytokine-stimulated primary cells;
+- drug response and resistance signatures;
+- cell-line stimulation/differentiation signatures.
+
+Fetch the current GMT snapshot:
+
+```bash
+python3 scripts/fetch_mygeneset_eval.py \
+  --manifest evals/expression20/sets.tsv \
+  --out-dir evals/expression20/generated
+```
+
+Run expression-vs-expression overlap enrichment:
+
+```bash
+genesets-rs run evals/expression20/config.yaml
+```
+
+Run Expression20 against official GO:
+
+```bash
+python3 scripts/run_disease20_go_eval.py \
+  --manifest evals/expression20/sets.tsv \
+  --out-dir evals/expression20_vs_go/generated \
+  --eval-name expression20_vs_go \
+  --description "Twenty expression-derived human MSigDB/MyGeneset.info signatures enriched against official GOA human GO annotations."
+```
+
+## Disease20 Legacy Eval
+
+Disease20 is retained as a legacy/artificial knowledge-curation contrast. It
+names 20 human Disease Ontology gene sets from MyGeneset.info. The manifest is
+intentionally small and hand-reviewed, but it is not representative of
+differential-expression query workflows.
 
 Fetch the current GMT snapshot:
 
@@ -78,13 +117,48 @@ The summary metadata contains per-timepoint ontology sizes, GAF metadata, per-va
 Disease Ontology gene sets are convenient but artificial. For scale and realism, use MyGeneset/MSigDB signatures:
 
 ```bash
-python3 scripts/fetch_mygeneset_query.py \
-  --query 'source:msigdb AND gse' \
+genesets-workflows fetch-mygeneset \
+  --query 'GSE*' \
+  --source-filter msigdb \
   --limit 2000 \
   --out-dir evals/expression_like/generated/msigdb_gse_2k
 ```
 
 MSigDB GSE, `*_UP`, `*_DN`, and `vs` signatures are closer to differential-expression outputs than disease ontology gene sets. These should become the main large-query workloads for timing and GO-version diffing.
+
+## Expression500 vs Reactome Flat
+
+Reactome can be tested without any new Rust code because the core engine
+already supports flat GMT target libraries. The current flat Reactome eval uses
+the same 500 expression-derived query sets as the GO impact report and enriches
+them against the official Reactome pathway GMT.
+
+Run it:
+
+```bash
+genesets-workflows reactome-flat
+```
+
+This performs two steps:
+
+1. `genesets-workflows prepare-reactome-flat` downloads
+   `ReactomePathways.gmt.zip` from the
+   official Reactome download directory and normalizes it from `name, id,
+   genes...` to `id, name, genes...`.
+2. `genesets-rs run evals/reactome_flat/config.yaml` enriches the expression
+   query sets against that flat pathway library.
+
+The local May 2026 run prepared 2,557 Reactome pathways over 11,963 gene
+symbols and produced 509 Bonferroni-significant rows across 85 query sets. The
+enrichment step took about 0.22 seconds on this laptop.
+
+This is intentionally the flat baseline. A hierarchy-aware Reactome workflow
+should prepare the standard ontology-style trio:
+
+- `terms.tsv` from `ReactomePathways.txt`;
+- `closure.tsv` from `ReactomePathwaysRelation.txt`;
+- `gene_terms.tsv` from a lowest-level mapping such as `NCBI2Reactome.txt`,
+  with a gene ID strategy matched to the query sets.
 
 ## Planned Comparison Evals
 

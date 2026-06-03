@@ -1,6 +1,13 @@
 /target/
 /book/
 /evals/*/generated/
+/notebooks/generated/
 __pycache__/
 *.pyc
 *.profraw
+.venv/
+python/*/.venv/
+python/*/dist/
+python/*/*.egg-info/
+.pytest_cache/
+.ruff_cache/

@@ -1,9 +1,9 @@
 mode: matrix
 ontology:
-  terms: examples/terms.tsv
-  closure: examples/closure.tsv
-  annotations: examples/gene_terms.tsv
+  terms: terms.tsv
+  closure: closure.tsv
+  annotations: gene_terms.tsv
 input:
   queries_from_targets: true
 background:
-  file: examples/background.txt
+  file: background.txt

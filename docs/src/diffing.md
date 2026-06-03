@@ -70,6 +70,39 @@ Recommended pipeline:
 
 This ordering keeps version comparisons honest. A term that disappears due to redundancy pruning should not be confused with a term that disappeared because the ontology or annotations changed.
 
+## CLI Workflow
+
+`genesets-rs compare` implements the coarse threshold-crossing diff. It reads
+TSV or Parquet result tables, joins on `(query_id, target_id)`, and emits rows
+where either side is significant:
+
+```bash
+genesets-rs compare \
+  --left go-2021.parquet \
+  --right go-2026.parquet \
+  --p-adjust-cutoff 0.05 \
+  --output-format parquet \
+  --output go-2021-vs-2026.diff.parquet \
+  --metadata-output go-2021-vs-2026.diff.yaml
+```
+
+Missing rows are treated as not significant. This makes the command usable with
+both full matrices and result tables that were already filtered by
+`--max-p-adjust`. If the inputs are filtered, `left_present=false` or
+`right_present=false` means "not present in this result table"; it does not by
+itself prove that the term disappeared from the ontology.
+
+For a strict crossing-only report:
+
+```bash
+genesets-rs compare \
+  --left go-2021.parquet \
+  --right go-2026.parquet \
+  --crossings-only \
+  --output-format parquet \
+  --output crossings.parquet
+```
+
 ## Metadata
 
 Every diff output should include companion metadata:
@@ -80,3 +113,7 @@ Every diff output should include companion metadata:
 - whether missing rows were looked up in a full table;
 - diff metrics and ranking policy;
 - post-processing status.
+
+The current `--metadata-output` YAML includes input paths, inferred formats,
+cutoff policy, input row counts, output row count, and class counts. It does not
+yet include file digests or ontology metadata joins.

@@ -21,7 +21,7 @@ python3 scripts/fetch_mygeneset_eval.py \
 Run disease-vs-disease overlap enrichment:
 
 ```bash
-cargo run -- run evals/disease20/config.yaml
+genesets-rs run evals/disease20/config.yaml
 ```
 
 The generated files are ignored by git. Commit a generated snapshot only when we intentionally want a fully frozen benchmark fixture.

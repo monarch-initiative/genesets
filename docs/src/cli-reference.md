@@ -1,10 +1,11 @@
 # CLI Reference
 
-The CLI has three subcommands:
+The CLI has four subcommands:
 
 - `enrich`: one query set against many target sets;
 - `matrix`: many query sets against many target sets;
 - `run`: YAML-configured `enrich` or `matrix`.
+- `compare`: threshold-crossing diff between two result tables.
 
 ## `enrich`
 
@@ -66,15 +67,15 @@ genesets-rs matrix \
 ```yaml
 mode: enrich
 ontology:
-  terms: examples/terms.tsv
-  closure: examples/closure.tsv
-  annotations: examples/gene_terms.tsv
+  terms: terms.tsv
+  closure: closure.tsv
+  annotations: gene_terms.tsv
 input:
-  sample: examples/sample.txt
+  sample: sample.txt
   sample_format: list
   sample_name: sample
 background:
-  file: examples/background.txt
+  file: background.txt
 overlap_genes: true
 max_p_adjust: 0.05
 output_format: tsv
@@ -86,9 +87,56 @@ Run it:
 genesets-rs run examples/enrich.yaml
 ```
 
+Relative paths in YAML are resolved from the config file's directory. Relative
+paths passed directly as CLI arguments are resolved from the current working
+directory.
+
 For mass evals, write Parquet and inspect it with DuckDB:
 
 ```bash
 genesets-rs matrix ... --output-format parquet --output results.parquet
 duckdb -c "SELECT * FROM 'results.parquet' WHERE p_adjust_bonferroni <= 0.05"
 ```
+
+## `compare`
+
+Compare two enrichment result tables by `(query_id, target_id)` and classify
+adjusted p-value threshold crossings:
+
+```bash
+genesets-rs compare \
+  --left go-2021.parquet \
+  --right go-2026.parquet \
+  --p-adjust-cutoff 0.05 \
+  --output-format parquet \
+  --output go-2021-vs-2026.diff.parquet \
+  --metadata-output go-2021-vs-2026.diff.yaml
+```
+
+Input formats are inferred from `.tsv`, `.txt`, `.parquet`, or `.pq`, or can be
+set explicitly with `--left-format` and `--right-format`. TSV output goes to
+stdout by default. Parquet output requires `--output`.
+
+The default output includes:
+
+- `lost_significant`: significant on the left, not significant on the right;
+- `gained_significant`: not significant on the left, significant on the right;
+- `shared_significant`: significant on both sides.
+
+Use `--crossings-only` to emit only gained/lost rows.
+
+## Workflow CLI
+
+The separate `genesets-workflows` command is the convenience layer for
+configured source prep and reports. It calls the Rust CLI for batch compute and
+then writes Parquet plus metadata:
+
+```bash
+uv run --project python/genesets-workflows genesets-workflows doctor
+genesets-workflows go-impact evals/go_impact_5y_expression500.yaml
+genesets-workflows reactome-flat
+```
+
+Use `genesets-rs` for normalized single jobs. Use `genesets-workflows` when the
+task needs downloads, evidence filters, release metadata, multiple Rust runs,
+DuckDB summaries, or notebook/report artifacts.

@@ -9,13 +9,20 @@ use anyhow::{Context, Result, bail};
 use clap::{Args, Parser, Subcommand};
 use genesets_rs::{
     Correction, EnrichmentOptions, GeneUniverse, NamedSet, RawSet, SetFormat,
+    compare::{
+        DiffOptions, DiffSummaryContext, ResultFormat, compare_records, load_result_records,
+        resolve_format, summarize_diff,
+    },
     enrichment::{enrich_matrix, enrich_one},
     index::{build_flat_sets, build_gene_list_bitset, build_ontology_sets, union_sets},
     io::{
         default_set_name, read_annotation_pairs, read_closure_pairs, read_gene_list, read_name_map,
         read_name_pairs, read_sets,
     },
-    output::{OutputFormat, OutputOptions, write_parquet_rows, write_rows},
+    output::{
+        OutputFormat, OutputOptions, write_diff_rows, write_parquet_diff_rows, write_parquet_rows,
+        write_rows,
+    },
 };
 use serde::Deserialize;
 
@@ -38,6 +45,8 @@ enum Commands {
     Matrix(MatrixArgs),
     /// Run an enrich or matrix job from YAML.
     Run(RunArgs),
+    /// Compare two result tables by significance crossing.
+    Compare(CompareArgs),
 }
 
 #[derive(Args, Clone, Debug)]
@@ -189,8 +198,47 @@ struct MatrixArgs {
 
 #[derive(Args, Clone, Debug)]
 struct RunArgs {
-    /// YAML configuration file.
+    /// YAML configuration file. Relative paths inside it resolve from its directory.
     config: PathBuf,
+}
+
+#[derive(Args, Clone, Debug)]
+struct CompareArgs {
+    /// Left result table, usually the older ontology or annotation version.
+    #[arg(long)]
+    left: PathBuf,
+
+    /// Right result table, usually the newer ontology or annotation version.
+    #[arg(long)]
+    right: PathBuf,
+
+    /// Format for --left.
+    #[arg(long, value_enum, default_value_t = ResultFormat::Auto)]
+    left_format: ResultFormat,
+
+    /// Format for --right.
+    #[arg(long, value_enum, default_value_t = ResultFormat::Auto)]
+    right_format: ResultFormat,
+
+    /// Adjusted p-value threshold used for significance crossing.
+    #[arg(long, default_value_t = 0.05, value_parser = parse_probability)]
+    p_adjust_cutoff: f64,
+
+    /// Emit only gained/lost threshold crossings, excluding shared significant pairs.
+    #[arg(long)]
+    crossings_only: bool,
+
+    /// Write diff output here instead of stdout. Required for parquet output.
+    #[arg(short, long)]
+    output: Option<PathBuf>,
+
+    /// Output serialization format.
+    #[arg(long, value_enum, default_value_t = OutputFormat::Tsv)]
+    output_format: OutputFormat,
+
+    /// Optional YAML metadata summary output.
+    #[arg(long)]
+    metadata_output: Option<PathBuf>,
 }
 
 #[derive(Clone, Debug)]
@@ -298,12 +346,35 @@ struct RunConfig {
     threads: Option<usize>,
 }
 
+impl RunConfig {
+    fn resolve_paths(&mut self, base: &Path) {
+        if let Some(ontology) = &mut self.ontology {
+            ontology.resolve_paths(base);
+        }
+        self.input.resolve_paths(base);
+        if let Some(background) = &mut self.background {
+            background.resolve_paths(base);
+        }
+        resolve_optional_config_path(base, &mut self.gene_names);
+        resolve_optional_config_path(base, &mut self.output);
+    }
+}
+
 #[derive(Clone, Debug, Default, Deserialize)]
 struct OntologyConfig {
     terms: Option<PathBuf>,
     closure: Option<PathBuf>,
     annotations: Option<PathBuf>,
     gene_names: Option<PathBuf>,
+}
+
+impl OntologyConfig {
+    fn resolve_paths(&mut self, base: &Path) {
+        resolve_optional_config_path(base, &mut self.terms);
+        resolve_optional_config_path(base, &mut self.closure);
+        resolve_optional_config_path(base, &mut self.annotations);
+        resolve_optional_config_path(base, &mut self.gene_names);
+    }
 }
 
 #[derive(Clone, Debug, Default, Deserialize)]
@@ -318,6 +389,14 @@ struct InputConfig {
     queries_from_targets: Option<bool>,
     targets: Option<PathBuf>,
     target_format: Option<SetFormat>,
+}
+
+impl InputConfig {
+    fn resolve_paths(&mut self, base: &Path) {
+        resolve_optional_config_path(base, &mut self.sample);
+        resolve_optional_config_path(base, &mut self.queries);
+        resolve_optional_config_path(base, &mut self.targets);
+    }
 }
 
 #[derive(Clone, Debug, Deserialize)]
@@ -336,20 +415,32 @@ impl BackgroundConfig {
     }
 }
 
+impl BackgroundConfig {
+    fn resolve_paths(&mut self, base: &Path) {
+        match self {
+            Self::Path(path) => resolve_config_path(base, path),
+            Self::Object { file } => resolve_config_path(base, file),
+        }
+    }
+}
+
 fn main() -> Result<()> {
     let cli = Cli::parse();
     match cli.command {
         Commands::Enrich(args) => run_with_thread_pool(args.threads, || execute_enrich(args)),
         Commands::Matrix(args) => run_with_thread_pool(args.threads, || execute_matrix(args)),
         Commands::Run(args) => execute_run(args),
+        Commands::Compare(args) => execute_compare(args),
     }
 }
 
 fn execute_run(args: RunArgs) -> Result<()> {
     let config_file = File::open(&args.config)
         .with_context(|| format!("failed to open config {}", args.config.display()))?;
-    let config: RunConfig = serde_yaml::from_reader(config_file)
+    let mut config: RunConfig = serde_yaml::from_reader(config_file)
         .with_context(|| format!("failed to parse config {}", args.config.display()))?;
+    let config_base = args.config.parent().unwrap_or_else(|| Path::new("."));
+    config.resolve_paths(config_base);
     let threads = config.threads;
 
     run_with_thread_pool(threads, || {
@@ -366,6 +457,18 @@ fn execute_run(args: RunArgs) -> Result<()> {
             ConfigMode::Matrix => execute_matrix(config_to_matrix_args(config)?),
         }
     })
+}
+
+fn resolve_config_path(base: &Path, path: &mut PathBuf) {
+    if path.is_relative() {
+        *path = base.join(&path);
+    }
+}
+
+fn resolve_optional_config_path(base: &Path, path: &mut Option<PathBuf>) {
+    if let Some(path) = path {
+        resolve_config_path(base, path);
+    }
 }
 
 fn config_to_target_args(config: &RunConfig) -> TargetArgs {
@@ -553,6 +656,39 @@ fn execute_matrix(args: MatrixArgs) -> Result<()> {
     )
 }
 
+fn execute_compare(args: CompareArgs) -> Result<()> {
+    let left_format = resolve_format(&args.left, args.left_format)?;
+    let right_format = resolve_format(&args.right, args.right_format)?;
+    let left_records = load_result_records(&args.left, left_format)
+        .with_context(|| format!("failed to load left results from {}", args.left.display()))?;
+    let right_records = load_result_records(&args.right, right_format)
+        .with_context(|| format!("failed to load right results from {}", args.right.display()))?;
+    let options = DiffOptions {
+        p_adjust_cutoff: args.p_adjust_cutoff,
+        crossings_only: args.crossings_only,
+    };
+    let rows = compare_records(&left_records, &right_records, &options);
+    let summary = summarize_diff(
+        DiffSummaryContext {
+            left_path: args.left.clone(),
+            right_path: args.right.clone(),
+            left_format,
+            right_format,
+            left_rows: left_records.len(),
+            right_rows: right_records.len(),
+        },
+        &options,
+        &rows,
+    );
+    if let Some(path) = &args.metadata_output {
+        let file = File::create(path)
+            .with_context(|| format!("failed to create metadata {}", path.display()))?;
+        serde_yaml::to_writer(file, &summary)
+            .with_context(|| format!("failed to write metadata {}", path.display()))?;
+    }
+    write_diff_result_rows(args.output.as_deref(), &rows, args.output_format)
+}
+
 fn read_optional_name_pairs(path: Option<&Path>) -> Result<Vec<(String, String)>> {
     path.map(read_name_pairs)
         .transpose()
@@ -663,6 +799,23 @@ fn write_result_rows(
         OutputFormat::Tsv | OutputFormat::Null => write_output(path, |writer| {
             write_rows(writer, rows, queries, targets, universe, options)
         }),
+    }
+}
+
+fn write_diff_result_rows(
+    path: Option<&Path>,
+    rows: &[genesets_rs::compare::DiffRow],
+    format: OutputFormat,
+) -> Result<()> {
+    match format {
+        OutputFormat::Parquet => {
+            let path = path.context("parquet output requires --output")?;
+            let file = File::create(path)
+                .with_context(|| format!("failed to create output {}", path.display()))?;
+            write_parquet_diff_rows(file, rows)
+        }
+        OutputFormat::Tsv => write_output(path, |writer| write_diff_rows(writer, rows)),
+        OutputFormat::Null => Ok(()),
     }
 }
 

@@ -14,6 +14,7 @@ import datetime as dt
 import gzip
 import hashlib
 import json
+import os
 import sys
 import time
 import urllib.request
@@ -416,21 +417,26 @@ def write_run_configs(
     max_p_adjust: float | None = 0.05,
 ) -> None:
     for variant_name in selected_variants:
+        config_dir = out_dir / variant_name
+
+        def rel(path: Path) -> str:
+            return os.path.relpath(path, start=config_dir)
+
         config = {
             "mode": "matrix",
             "ontology": {
-                "terms": str(out_dir / "terms.tsv"),
-                "closure": str(out_dir / "closure.tsv"),
-                "annotations": str(out_dir / variant_name / "gene_terms.tsv"),
+                "terms": rel(out_dir / "terms.tsv"),
+                "closure": rel(out_dir / "closure.tsv"),
+                "annotations": rel(config_dir / "gene_terms.tsv"),
             },
             "input": {
-                "queries": str(queries_path),
+                "queries": rel(queries_path),
                 "query_format": "gmt",
             },
-            "background": {"file": str(out_dir / "background_all_goa_symbols.txt")},
+            "background": {"file": rel(out_dir / "background_all_goa_symbols.txt")},
             "min_overlap": min_overlap,
             "correction": "bonferroni",
-            "output": str(out_dir / variant_name / "results.tsv"),
+            "output": rel(config_dir / "results.tsv"),
         }
         if max_p_adjust is not None:
             config["max_p_adjust"] = max_p_adjust

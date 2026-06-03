@@ -1,0 +1,21 @@
+geneset_id	name	source	taxid	expected_min_symbols	category	contrast_type	direction	selection_note
+GSE11057_PBMC_VS_MEM_CD4_TCELL_UP	gse11057 pbmc vs mem cd4 tcell up	msigdb	9606	100	cell_type_in_vivo	PBMC vs memory CD4 T cell	UP	blood immune cell-type contrast
+GSE11386_NAIVE_VS_MEMORY_BCELL_UP	gse11386 naive vs memory bcell up	msigdb	9606	100	cell_type_in_vivo	naive vs memory B cell	UP	B cell maturation contrast
+GSE12366_NAIVE_VS_MEMORY_BCELL_UP	gse12366 naive vs memory bcell up	msigdb	9606	100	cell_type_in_vivo	naive vs memory B cell	UP	independent B cell maturation contrast
+GSE22886_NAIVE_VS_IGG_IGA_MEMORY_BCELL_DN	gse22886 naive vs igg iga memory bcell dn	msigdb	9606	100	cell_type_in_vivo	naive vs class-switched memory B cell	DN	class-switched memory B cell contrast
+GSE10500_ARTHRITIC_SYNOVIAL_FLUID_VS_HEALTHY_MACROPHAGE_UP	gse10500 arthritic synovial fluid vs healthy macrophage up	msigdb	9606	100	patient_disease	arthritic synovial fluid vs healthy macrophage	UP	inflammatory arthritis patient-derived macrophage signature
+GSE10325_LUPUS_BCELL_VS_LUPUS_MYELOID_UP	gse10325 lupus bcell vs lupus myeloid up	msigdb	9606	100	patient_disease	lupus B cell vs lupus myeloid	UP	autoimmune disease cell-state contrast
+GSE9960_HEALTHY_VS_SEPSIS_PBMC_UP	gse9960 healthy vs sepsis pbmc up	msigdb	9606	100	patient_disease	healthy vs sepsis PBMC	UP	acute clinical infection/inflammation contrast
+WU_ALZHEIMER_DISEASE_UP	wu alzheimer disease up	msigdb	9606	10	patient_disease	Alzheimer disease brain	UP	neurodegenerative disease expression signature
+ARMIGNACCO_SEVERE_COVID19_RISK_EN_NEG	armignacco severe covid19 risk en neg	msigdb	9606	10	patient_disease	severe COVID-19 risk	NEG	clinical COVID-19 risk expression signature
+GSE29614_CTRL_VS_DAY3_TIV_FLU_VACCINE_PBMC_UP	gse29614 ctrl vs day3 tiv flu vaccine pbmc up	msigdb	9606	100	infection_vaccine_response	control vs day 3 flu vaccine PBMC	UP	in vivo vaccination response
+GSE7831_UNSTIM_VS_INFLUENZA_STIM_PDC_1H_UP	gse7831 unstim vs influenza stim pdc 1h up	msigdb	9606	100	infection_vaccine_response	unstimulated vs influenza-stimulated pDC 1h	UP	viral stimulation response in primary immune cells
+GSE11367_CTRL_VS_IL17_TREATED_SMOOTH_MUSCLE_CELL_UP	gse11367 ctrl vs il17 treated smooth muscle cell up	msigdb	9606	100	cytokine_primary_cell_response	control vs IL17-treated smooth muscle cell	UP	cytokine stimulation in primary structural cell type
+GSE10240_CTRL_VS_IL17_AND_IL22_STIM_PRIMARY_BRONCHIAL_EPITHELIAL_CELLS_UP	gse10240 ctrl vs il17 and il22 stim primary bronchial epithelial cells up	msigdb	9606	100	cytokine_primary_cell_response	control vs IL17+IL22-stimulated primary bronchial epithelial cells	UP	airway epithelial cytokine response
+GSE18893_CTRL_VS_TNF_TREATED_TCONV_24H_UP	gse18893 ctrl vs tnf treated tconv 24h up	msigdb	9606	100	cytokine_primary_cell_response	control vs TNF-treated conventional T cell 24h	UP	TNF response in T cells
+GSE11864_UNTREATED_VS_CSF1_IFNG_IN_MAC_UP	gse11864 untreated vs csf1 ifng in mac up	msigdb	9606	100	cytokine_primary_cell_response	untreated vs CSF1+IFNG macrophage	UP	macrophage activation response
+RAPA_EARLY_UP.V1_UP	rapa early up.v1 up	msigdb	9606	100	drug_response	early rapamycin response	UP	mTOR inhibitor perturbation signature
+GYORFFY_DOXORUBICIN_RESISTANCE	gyorffy doxorubicin resistance	msigdb	9606	20	drug_response	doxorubicin resistance	NA	cancer drug-resistance signature
+BECKER_TAMOXIFEN_RESISTANCE_UP	becker tamoxifen resistance up	msigdb	9606	20	drug_response	tamoxifen resistance	UP	endocrine therapy resistance signature
+NUNODA_RESPONSE_TO_DASATINIB_IMATINIB_UP	nunoda response to dasatinib imatinib up	msigdb	9606	20	drug_response	dasatinib/imatinib response	UP	kinase-inhibitor response signature
+GSE16450_CTRL_VS_IFNA_12H_STIM_MATURE_NEURON_CELL_LINE_UP	gse16450 ctrl vs ifna 12h stim mature neuron cell line up	msigdb	9606	100	cell_line_perturbation	control vs IFNA-stimulated mature neuron cell line 12h	UP	neuronal cell-line interferon response

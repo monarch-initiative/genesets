@@ -9,4 +9,4 @@ src = "docs/src"
 git-repository-url = "https://github.com/your-org/genesets-rs"
 edit-url-template = "https://github.com/your-org/genesets-rs/edit/main/{path}"
 site-url = "/genesets-rs/"
-additional-css = []
+additional-css = ["docs/src/notebook.css"]

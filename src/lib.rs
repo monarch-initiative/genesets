@@ -13,6 +13,7 @@
 //! small so benchmark and eval code can exercise the same core engine.
 
 pub mod bitset;
+pub mod compare;
 pub mod enrichment;
 pub mod fisher;
 pub mod index;

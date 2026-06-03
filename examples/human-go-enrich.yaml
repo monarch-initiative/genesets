@@ -1,0 +1,14 @@
+mode: enrich
+ontology:
+  terms: ../evals/go_timepoints/generated/now_2026_03_25/terms.tsv
+  closure: ../evals/go_timepoints/generated/now_2026_03_25/closure.tsv
+  annotations: ../evals/go_timepoints/generated/now_2026_03_25/all/gene_terms.tsv
+input:
+  sample: human_interferon_up_genes.txt
+  sample_format: list
+  sample_name: interferon_up_genes
+background:
+  file: ../evals/go_timepoints/generated/now_2026_03_25/background_all_goa_symbols.txt
+min_overlap: 3
+max_p_adjust: 0.05
+output_format: tsv
