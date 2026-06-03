@@ -1,0 +1,3780 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>genesets-rs</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="A fast, ontology-neutral gene set enrichment CLI and eval framework.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="docs/src/notebook-63fdfe36.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-628a2369.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-dce20fbc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">genesets-rs</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://github.com/your-org/genesets-rs" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p><code>genesets-rs</code> is a fast, CLI-first enrichment engine for ontology-aware and flat gene set analysis.</p>
+<p>The project is deliberately ontology-neutral. Gene Ontology is the main near-term use case, but the core data model only requires:</p>
+<ul>
+<li>a table of term CURIEs and human-readable names,</li>
+<li>a precomputed child-to-ancestor closure table,</li>
+<li>gene-to-term annotations,</li>
+<li>optional gene names or symbols,</li>
+<li>query sets and background sets.</li>
+</ul>
+<p>Flat libraries, such as MSigDB-style collections, are represented as terms with no closure. User samples are also just flat terms. This keeps the statistical engine the same for sample-vs-ontology, sample-vs-library, and arbitrary term-vs-term matrix jobs.</p>
+<h2 id="what-this-is-optimized-for"><a class="header" href="#what-this-is-optimized-for">What This Is Optimized For</a></h2>
+<p>The initial design is aimed at repeated over-representation analysis:</p>
+<ul>
+<li>compare thousands of disease, pathway, or experiment-derived gene sets against one ontology;</li>
+<li>compare two ontology releases by running the same query set against both;</li>
+<li>run ontology terms against themselves to inspect term overlap structure;</li>
+<li>cache or reuse prepared annotation tables from external ontology tooling.</li>
+</ul>
+<p>The MVP statistic is one-sided Fisher exact enrichment with optional Bonferroni correction. The implementation leaves room for ranked-list statistics and ontology-aware model-set methods, but the first requirement is a very fast and auditable baseline.</p>
+<h2 id="project-layers"><a class="header" href="#project-layers">Project Layers</a></h2>
+<p>The project has two user-facing layers:</p>
+<ul>
+<li><code>genesets-rs</code>: the Rust CLI and library code for loading normalized tables,
+building bitset indexes, computing enrichment, comparing result tables, and
+writing TSV or Parquet.</li>
+<li><code>genesets-workflows</code>: the Python workflow package for repeatable source
+preparation, configured reports, metadata, DuckDB summaries, notebooks, and
+future web-facing reports.</li>
+</ul>
+<p>The boundary is intentional. GO, GOA, Reactome, MyGeneSet, evidence-code
+filters, release metadata, and report layouts change faster than the enrichment
+kernel. They belong in the workflow layer. The Rust core should continue to
+accept normalized ontology-neutral tables and do one job quickly.</p>
+<h2 id="non-goals-for-the-core-engine"><a class="header" href="#non-goals-for-the-core-engine">Non-Goals For The Core Engine</a></h2>
+<p>The core engine does not know about species, evidence codes, ontology release policy, identifier mapping, or remote services. Those concerns belong in prep and wrapper layers. This separation keeps the fast path small and makes it easier to build reproducible evals.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h1>
+<p>Build the CLI:</p>
+<pre><code class="language-bash">cargo build --release
+</code></pre>
+<p>Install this checkout so <code>genesets-rs</code> can be run from any directory:</p>
+<pre><code class="language-bash">cargo install --path /path/to/genesets-rs --force
+</code></pre>
+<p>Cargo writes the binary to <code>~/.cargo/bin/genesets-rs</code>. If your shell cannot
+find it, add Cargo’s bin directory to your <code>PATH</code>:</p>
+<pre><code class="language-bash">echo 'export PATH="$HOME/.cargo/bin:$PATH"' &gt;&gt; ~/.zshrc
+source ~/.zshrc
+</code></pre>
+<p>Run the bundled ontology-style example:</p>
+<pre><code class="language-bash">genesets-rs enrich \
+  --annotations examples/gene_terms.tsv \
+  --terms examples/terms.tsv \
+  --closure examples/closure.tsv \
+  --sample examples/sample.txt \
+  --background examples/background.txt \
+  --overlap-genes
+</code></pre>
+<p>Run all ontology terms against all ontology terms:</p>
+<pre><code class="language-bash">genesets-rs matrix \
+  --annotations examples/gene_terms.tsv \
+  --terms examples/terms.tsv \
+  --closure examples/closure.tsv \
+  --queries-from-targets \
+  --background examples/background.txt
+</code></pre>
+<p>Run from YAML:</p>
+<pre><code class="language-bash">genesets-rs run examples/enrich.yaml
+</code></pre>
+<p>Relative paths inside a YAML config are resolved from the config file’s
+directory, so this also works from outside the repository:</p>
+<pre><code class="language-bash">genesets-rs run /path/to/genesets-rs/examples/enrich.yaml
+</code></pre>
+<p>For development without installing, use <code>cargo run --</code> before the same CLI
+arguments:</p>
+<pre><code class="language-bash">cargo run -- run examples/enrich.yaml
+</code></pre>
+<p>Install or run the optional workflow layer when you want repeatable source
+prep, GO/Reactome evals, Parquet summaries, and report metadata:</p>
+<pre><code class="language-bash">uv run --project python/genesets-workflows genesets-workflows doctor
+</code></pre>
+<p>The workflow layer calls the Rust CLI for batch compute; it is not required for
+simple one-off enrichment.</p>
+<p>Build the documentation site locally:</p>
+<pre><code class="language-bash">cargo install mdbook
+mdbook serve
+</code></pre>
+<p>Run the test suite:</p>
+<pre><code class="language-bash">cargo test
+</code></pre>
+<p>Run the benchmark harness:</p>
+<pre><code class="language-bash">cargo bench
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="input-model"><a class="header" href="#input-model">Input Model</a></h1>
+<p>The engine has one central abstraction: a named set of genes. Ontology terms, flat database entries, user samples, and backgrounds can all be represented this way.</p>
+<h2 id="ontology-targets"><a class="header" href="#ontology-targets">Ontology Targets</a></h2>
+<p>Ontology enrichment targets are built from three tables:</p>
+<p>Terms:</p>
+<pre><code class="language-text">term_id    name
+GO:0006915 apoptosis
+</code></pre>
+<p>Closure:</p>
+<pre><code class="language-text">child      ancestor
+GO:0006915 GO:0006915
+GO:0006915 GO:0012501
+</code></pre>
+<p>Annotations:</p>
+<pre><code class="language-text">gene_id    term_id
+TP53       GO:0006915
+</code></pre>
+<p>The closure table is expected to be reflexive, but the loader defensively adds each term as its own ancestor. If a gene is annotated to a child, the prepared bitset for every ancestor receives that gene.</p>
+<h2 id="flat-targets"><a class="header" href="#flat-targets">Flat Targets</a></h2>
+<p>Flat targets skip closure. They can be read from:</p>
+<ul>
+<li><code>list</code>: one gene per line, one set total;</li>
+<li><code>pairwise</code>: <code>set_id</code>, <code>gene_id</code>;</li>
+<li><code>gene-term</code>: <code>gene_id</code>, <code>set_id</code>;</li>
+<li><code>gmt</code>: <code>set_id</code>, <code>description</code>, genes;</li>
+<li><code>gmx</code>: first row set IDs, remaining rows genes;</li>
+<li><code>gmx-desc</code>: first row set IDs, second row descriptions, remaining rows genes.</li>
+</ul>
+<h2 id="background"><a class="header" href="#background">Background</a></h2>
+<p>If no background file is supplied, the background is the union of all target genes. A supplied background file overrides that behavior and is read as one gene per row.</p>
+<p>This matters for experimental data. For RNA-seq differential-expression lists, the background should usually be all genes that were measured and eligible to become significant, not every protein-coding gene.</p>
+<h2 id="gene-names"><a class="header" href="#gene-names">Gene Names</a></h2>
+<p>Gene names are optional. The statistical engine uses gene IDs only. A gene-name table is only used for human-readable overlap output.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="cli-reference"><a class="header" href="#cli-reference">CLI Reference</a></h1>
+<p>The CLI has four subcommands:</p>
+<ul>
+<li><code>enrich</code>: one query set against many target sets;</li>
+<li><code>matrix</code>: many query sets against many target sets;</li>
+<li><code>run</code>: YAML-configured <code>enrich</code> or <code>matrix</code>.</li>
+<li><code>compare</code>: threshold-crossing diff between two result tables.</li>
+</ul>
+<h2 id="enrich"><a class="header" href="#enrich"><code>enrich</code></a></h2>
+<pre><code class="language-bash">genesets-rs enrich \
+  --annotations gene_terms.tsv \
+  --terms terms.tsv \
+  --closure closure.tsv \
+  --sample sample.txt \
+  --background background.txt \
+  --output results.tsv
+</code></pre>
+<p>Use <code>--target-sets</code> instead of <code>--annotations</code> for flat libraries:</p>
+<pre><code class="language-bash">genesets-rs enrich \
+  --target-sets library.gmt \
+  --target-format gmt \
+  --sample sample.txt
+</code></pre>
+<p>Useful options:</p>
+<ul>
+<li><code>--sample-format</code>: <code>auto</code>, <code>list</code>, <code>pairwise</code>, <code>gene-term</code>, <code>gmt</code>, <code>gmx</code>, <code>gmx-desc</code>;</li>
+<li><code>--sample-set</code>: select one set from a multi-set sample file;</li>
+<li><code>--min-overlap</code>: suppress rows below an overlap count;</li>
+<li><code>--max-p-value</code>: suppress rows above a raw p-value cutoff;</li>
+<li><code>--max-p-adjust</code>: suppress rows above an adjusted p-value cutoff;</li>
+<li><code>--correction</code>: <code>bonferroni</code> or <code>none</code>;</li>
+<li><code>--output-format</code>: <code>tsv</code>, <code>parquet</code>, or <code>null</code>; <code>parquet</code> requires <code>--output</code>,
+and <code>null</code> is useful for compute-only profiling;</li>
+<li><code>--overlap-genes</code>: include overlapping gene IDs and names;</li>
+<li><code>--threads</code>: set Rayon worker count.</li>
+</ul>
+<h2 id="matrix"><a class="header" href="#matrix"><code>matrix</code></a></h2>
+<pre><code class="language-bash">genesets-rs matrix \
+  --annotations gene_terms.tsv \
+  --terms terms.tsv \
+  --closure closure.tsv \
+  --queries queries.gmx \
+  --query-format gmx \
+  --background background.txt
+</code></pre>
+<p>Use targets as queries for term-vs-term runs:</p>
+<pre><code class="language-bash">genesets-rs matrix \
+  --annotations gene_terms.tsv \
+  --closure closure.tsv \
+  --queries-from-targets
+</code></pre>
+<h2 id="run"><a class="header" href="#run"><code>run</code></a></h2>
+<pre><code class="language-yaml">mode: enrich
+ontology:
+  terms: terms.tsv
+  closure: closure.tsv
+  annotations: gene_terms.tsv
+input:
+  sample: sample.txt
+  sample_format: list
+  sample_name: sample
+background:
+  file: background.txt
+overlap_genes: true
+max_p_adjust: 0.05
+output_format: tsv
+</code></pre>
+<p>Run it:</p>
+<pre><code class="language-bash">genesets-rs run examples/enrich.yaml
+</code></pre>
+<p>Relative paths in YAML are resolved from the config file’s directory. Relative
+paths passed directly as CLI arguments are resolved from the current working
+directory.</p>
+<p>For mass evals, write Parquet and inspect it with DuckDB:</p>
+<pre><code class="language-bash">genesets-rs matrix ... --output-format parquet --output results.parquet
+duckdb -c "SELECT * FROM 'results.parquet' WHERE p_adjust_bonferroni &lt;= 0.05"
+</code></pre>
+<h2 id="compare"><a class="header" href="#compare"><code>compare</code></a></h2>
+<p>Compare two enrichment result tables by <code>(query_id, target_id)</code> and classify
+adjusted p-value threshold crossings:</p>
+<pre><code class="language-bash">genesets-rs compare \
+  --left go-2021.parquet \
+  --right go-2026.parquet \
+  --p-adjust-cutoff 0.05 \
+  --output-format parquet \
+  --output go-2021-vs-2026.diff.parquet \
+  --metadata-output go-2021-vs-2026.diff.yaml
+</code></pre>
+<p>Input formats are inferred from <code>.tsv</code>, <code>.txt</code>, <code>.parquet</code>, or <code>.pq</code>, or can be
+set explicitly with <code>--left-format</code> and <code>--right-format</code>. TSV output goes to
+stdout by default. Parquet output requires <code>--output</code>.</p>
+<p>The default output includes:</p>
+<ul>
+<li><code>lost_significant</code>: significant on the left, not significant on the right;</li>
+<li><code>gained_significant</code>: not significant on the left, significant on the right;</li>
+<li><code>shared_significant</code>: significant on both sides.</li>
+</ul>
+<p>Use <code>--crossings-only</code> to emit only gained/lost rows.</p>
+<h2 id="workflow-cli"><a class="header" href="#workflow-cli">Workflow CLI</a></h2>
+<p>The separate <code>genesets-workflows</code> command is the convenience layer for
+configured source prep and reports. It calls the Rust CLI for batch compute and
+then writes Parquet plus metadata:</p>
+<pre><code class="language-bash">uv run --project python/genesets-workflows genesets-workflows doctor
+genesets-workflows go-impact evals/go_impact_5y_expression500.yaml
+genesets-workflows reactome-flat
+</code></pre>
+<p>Use <code>genesets-rs</code> for normalized single jobs. Use <code>genesets-workflows</code> when the
+task needs downloads, evidence filters, release metadata, multiple Rust runs,
+DuckDB summaries, or notebook/report artifacts.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="workflow-layer"><a class="header" href="#workflow-layer">Workflow Layer</a></h1>
+<p><code>genesets-rs</code> is the compute kernel. It should stay small, ontology-neutral,
+and fast. The outer convenience layer lives in the Python package under
+<code>python/genesets-workflows</code>.</p>
+<p>The workflow layer owns the parts that are useful but not core enrichment
+logic:</p>
+<ul>
+<li>fetching public sources such as GO, GOA, Reactome, and MyGeneSet;</li>
+<li>preparing normalized tables, closures, evidence-code variants, and
+backgrounds;</li>
+<li>running batch analyses through the Rust CLI;</li>
+<li>writing Parquet result artifacts and YAML metadata;</li>
+<li>querying result Parquet with DuckDB;</li>
+<li>generating report summaries for docs, notebooks, and future web views.</li>
+</ul>
+<h2 id="local-use"><a class="header" href="#local-use">Local Use</a></h2>
+<p>Run the packaged workflow CLI from this checkout:</p>
+<pre><code class="language-bash">uv run --project python/genesets-workflows genesets-workflows doctor
+</code></pre>
+<p>For repeated local use, install it editable:</p>
+<pre><code class="language-bash">python3 -m pip install -e python/genesets-workflows
+genesets-workflows doctor
+</code></pre>
+<p>The Rust binary still needs to be installed or on <code>PATH</code>:</p>
+<pre><code class="language-bash">cargo install --path . --force
+</code></pre>
+<p>From outside the repository, use an absolute project path or install the
+workflow package into the active environment:</p>
+<pre><code class="language-bash">uv run --project /path/to/genesets-rs/python/genesets-workflows \
+  genesets-workflows doctor
+</code></pre>
+<pre><code class="language-bash">python3 -m pip install -e /path/to/genesets-rs/python/genesets-workflows
+</code></pre>
+<h2 id="when-to-use-which-layer"><a class="header" href="#when-to-use-which-layer">When To Use Which Layer</a></h2>
+<p>Use <code>genesets-rs</code> directly when inputs are already normalized and the task is a
+single enrichment, matrix enrichment, or result comparison:</p>
+<pre><code class="language-bash">genesets-rs matrix \
+  --target-sets reactome.gmt \
+  --target-format gmt \
+  --queries expression_sets.gmt \
+  --query-format gmt \
+  --output-format parquet \
+  --output results.parquet
+</code></pre>
+<p>Use <code>genesets-workflows</code> when the task has source-specific prep, multiple Rust
+runs, metadata, or report summaries:</p>
+<pre><code class="language-bash">genesets-workflows go-impact evals/go_impact_5y_expression500.yaml
+</code></pre>
+<p>The workflow command should usually call Rust once per large batch, not once
+per gene set. If a workflow needs thousands of enrichments, it should express
+that as a batch plan for the Rust CLI.</p>
+<h2 id="current-commands"><a class="header" href="#current-commands">Current Commands</a></h2>
+<p>GO impact report over two prepared GO snapshots:</p>
+<pre><code class="language-bash">genesets-workflows go-impact evals/go_impact_5y_expression500.yaml
+</code></pre>
+<p>Expression signatures against official Reactome as a flat pathway library:</p>
+<pre><code class="language-bash">genesets-workflows reactome-flat
+</code></pre>
+<p>Prepare the official Reactome GMT target library:</p>
+<pre><code class="language-bash">genesets-workflows prepare-reactome-flat \
+  --out-dir evals/reactome_flat/generated/current
+</code></pre>
+<p>Fetch a MyGeneSet query snapshot:</p>
+<pre><code class="language-bash">genesets-workflows fetch-mygeneset \
+  --query 'GSE*' \
+  --source-filter msigdb \
+  --limit 500 \
+  --out-dir evals/expression_like/generated/msigdb_gse_500
+</code></pre>
+<p>The old script entry points for these packaged commands remain as
+compatibility wrappers around the package modules. Some older eval helpers are
+still script-native and should be migrated as the workflow layer expands.</p>
+<h2 id="interface-boundary"><a class="header" href="#interface-boundary">Interface Boundary</a></h2>
+<p>Python should call Rust through batch-oriented commands, not tight subprocess
+loops. The desired pattern is:</p>
+<pre><code class="language-text">Python source prep -&gt; normalized tables/YAML plan -&gt; one Rust batch command
+-&gt; Parquet outputs -&gt; DuckDB summaries/reports
+</code></pre>
+<p>This keeps the subprocess boundary coarse. If a future notebook, web service,
+or Python API needs in-process enrichment, a <code>maturin</code> binding can wrap the
+same Rust core crate without replacing the CLI.</p>
+<p>The current choice is CLI-first rather than <code>maturin</code>-first because the most
+variable code is not the Fisher test. It is fetching, filtering, release
+metadata, identifier normalization, report generation, and SQL over Parquet.
+Those pieces are faster to evolve in Python. The Rust interface should grow
+batch abstractions before Python grows tight bindings.</p>
+<h2 id="artifact-layout"><a class="header" href="#artifact-layout">Artifact Layout</a></h2>
+<p>Workflow outputs should be predictable so notebooks, docs, CI jobs, and a
+future web viewer can consume the same products:</p>
+<pre><code class="language-text">run-dir/
+  summary.yaml
+  summary.json
+  queries.gmt
+  queries.metadata.json
+  left-results.parquet
+  right-results.parquet
+  left-vs-right.diff.parquet
+  left-vs-right.diff.yaml
+</code></pre>
+<p>Use Parquet for durable result tables. Use small YAML/JSON files for metadata,
+parameters, source URLs, file hashes, version labels, row counts, and timing.
+Use TSV only for small human-inspectable runs.</p>
+<p>DuckDB is the default introspection layer over Parquet:</p>
+<pre><code class="language-bash">duckdb -c "SELECT class, count(*) FROM 'left-vs-right.diff.parquet' GROUP BY class"
+</code></pre>
+<p>That keeps artifacts immutable and easy to share while preserving SQL
+inspection.</p>
+<h2 id="distribution-plan"><a class="header" href="#distribution-plan">Distribution Plan</a></h2>
+<p>The repository should remain a monorepo:</p>
+<ul>
+<li>Rust crate and CLI: crates.io release surface.</li>
+<li><code>genesets-workflows</code>: PyPI release surface.</li>
+<li>Docs, eval configs, and notebooks: same git history and version tags.</li>
+</ul>
+<p>The Python package should record the expected <code>genesets-rs</code> CLI version and
+check it at runtime as the workflow layer matures. Release tags can drive both
+crates.io and PyPI publishing.</p>
+<p>Short-term distribution:</p>
+<pre><code class="language-bash">cargo install --path .
+uv run --project python/genesets-workflows genesets-workflows doctor
+</code></pre>
+<p>Longer-term distribution:</p>
+<pre><code class="language-bash">cargo install genesets-rs
+python3 -m pip install genesets-workflows
+</code></pre>
+<p>If in-process Python calls become necessary, add <code>maturin</code> bindings around the
+same Rust core crate. The CLI should remain supported because it is the most
+transparent interface for batch runs, notebooks, workflow engines, and remote
+execution.</p>
+<h2 id="notebooks-and-web-reports"><a class="header" href="#notebooks-and-web-reports">Notebooks And Web Reports</a></h2>
+<p>Notebooks should demonstrate the CLI and analyze generated artifacts. They
+should not be the primary workflow engine. A notebook should run a configured
+workflow command, then display Parquet-derived tables and plots.</p>
+<p>A future web interface can follow the same model: select a run directory, read
+<code>summary.yaml</code>, query Parquet with DuckDB or an Arrow stack, and render
+threshold crossings, timing, and top changed terms. No web-specific behavior
+needs to enter the Rust enrichment kernel.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="tutorials"><a class="header" href="#tutorials">Tutorials</a></h1>
+<p>These tutorials are CLI-first workflows. Each one has a matching Jupyter
+notebook under the repository’s <code>notebooks/</code> directory, but the commands shown
+here can also be run directly in a shell.</p>
+<h2 id="notebook-setup"><a class="header" href="#notebook-setup">Notebook Setup</a></h2>
+<p>Install the CLI from the checkout:</p>
+<pre><code class="language-bash">cargo install --path /path/to/genesets-rs --force
+</code></pre>
+<p>Install the workflow/notebook environment from the Python package:</p>
+<pre><code class="language-bash">uv run --project python/genesets-workflows --extra notebooks genesets-workflows doctor
+</code></pre>
+<p>Generated notebook outputs should be written under <code>notebooks/generated/</code>,
+which is ignored by git.</p>
+<h2 id="available-tutorials"><a class="header" href="#available-tutorials">Available Tutorials</a></h2>
+<ul>
+<li><a href="#cli-quickstart">CLI Quickstart</a>: run the bundled example and
+inspect the enrichment TSV.</li>
+<li><a href="#expression20-vs-go">Expression20 vs GO</a>: enrich the small
+expression-derived panel against official GOA human/GO targets.</li>
+<li><a href="#five-year-go-impact-report">GO Impact Report</a>: compare 2021 vs 2026
+GO/GOA over 500 expression-derived gene sets using a parameterized report
+config, then inspect threshold crossings and timings.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><!-- Generated by scripts/render_notebooks_for_mdbook.py; edit the notebook source instead. -->
+<h1 id="cli-quickstart"><a class="header" href="#cli-quickstart">CLI Quickstart</a></h1>
+<p>Source notebook: <a href="../notebooks/01_cli_quickstart.ipynb"><code>../../notebooks/01_cli_quickstart.ipynb</code></a></p>
+<p>Start with the common bioinformatics case: a one-column list of human genes from an over-expression result, and return a table of enriched GO terms. This example uses 50 interferon/inflammatory genes and a prepared official GOA human/GO snapshot.</p>
+<p>Output:</p>
+<div class="notebook-output">
+<div class="notebook-metrics">
+<div class="notebook-metric"><span class="notebook-metric-value">50</span><span class="notebook-metric-label">input genes</span></div>
+</div>
+
+</div>
+
+<p>Output:</p>
+<div class="notebook-output">
+<figure><figcaption>Input gene list</figcaption>
+<table class="dataframe notebook-table">
+  
+<thead>
+    
+<tr style="text-align: left;">
+      <th>gene_id</th>
+    </tr>
+
+  </thead>
+
+  
+<tbody>
+    
+<tr>
+      <td>IFIT1</td>
+    </tr>
+
+    
+<tr>
+      <td>IFIT2</td>
+    </tr>
+
+    
+<tr>
+      <td>IFIT3</td>
+    </tr>
+
+    
+<tr>
+      <td>ISG15</td>
+    </tr>
+
+    
+<tr>
+      <td>MX1</td>
+    </tr>
+
+    
+<tr>
+      <td>OAS1</td>
+    </tr>
+
+    
+<tr>
+      <td>STAT1</td>
+    </tr>
+
+    
+<tr>
+      <td>IRF7</td>
+    </tr>
+
+    
+<tr>
+      <td>CXCL10</td>
+    </tr>
+
+    
+<tr>
+      <td>RSAD2</td>
+    </tr>
+
+    
+<tr>
+      <td>IFIH1</td>
+    </tr>
+
+    
+<tr>
+      <td>IFI6</td>
+    </tr>
+
+    
+<tr>
+      <td>IFI27</td>
+    </tr>
+
+    
+<tr>
+      <td>IFI35</td>
+    </tr>
+
+    
+<tr>
+      <td>IFI44</td>
+    </tr>
+
+  </tbody>
+
+</table>
+</figure>
+</div>
+
+<pre><code class="language-bash">mkdir -p notebooks/generated
+genesets-rs run examples/human-go-enrich.yaml &gt; notebooks/generated/quickstart_go.tsv
+echo "Wrote notebooks/generated/quickstart_go.tsv"
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-text">Wrote notebooks/generated/quickstart_go.tsv
+</code></pre>
+<p>Output:</p>
+<div class="notebook-output">
+<div class="notebook-metrics">
+<div class="notebook-metric"><span class="notebook-metric-value">217</span><span class="notebook-metric-label">enriched GO terms</span></div>
+<div class="notebook-metric"><span class="notebook-metric-value">50</span><span class="notebook-metric-label">query genes</span></div>
+<div class="notebook-metric"><span class="notebook-metric-value">1.5e-48</span><span class="notebook-metric-label">best adjusted p</span></div>
+</div>
+
+</div>
+
+<p>Output:</p>
+<div class="notebook-output">
+<figure><figcaption>Top enriched GO terms</figcaption>
+<table class="dataframe notebook-table">
+  
+<thead>
+    
+<tr style="text-align: left;">
+      <th>target_id</th>
+      <th>target_name</th>
+      <th>overlap</th>
+      <th>query_size</th>
+      <th>target_size</th>
+      <th>p_adjust_bonferroni</th>
+    </tr>
+
+  </thead>
+
+  
+<tbody>
+    
+<tr>
+      <td>GO:0009615</td>
+      <td>response to virus</td>
+      <td>32</td>
+      <td>50</td>
+      <td>368</td>
+      <td>1.499e-48</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0051607</td>
+      <td>defense response to virus</td>
+      <td>29</td>
+      <td>50</td>
+      <td>226</td>
+      <td>3.048e-48</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0051707</td>
+      <td>response to other organism</td>
+      <td>39</td>
+      <td>50</td>
+      <td>1237</td>
+      <td>1.338e-44</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0043207</td>
+      <td>response to external biotic stimulus</td>
+      <td>39</td>
+      <td>50</td>
+      <td>1240</td>
+      <td>1.471e-44</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0009607</td>
+      <td>response to biotic stimulus</td>
+      <td>39</td>
+      <td>50</td>
+      <td>1278</td>
+      <td>4.809e-44</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0044419</td>
+      <td>biological process involved in interspecies interaction between organisms</td>
+      <td>39</td>
+      <td>50</td>
+      <td>1389</td>
+      <td>1.257e-42</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0006952</td>
+      <td>defense response</td>
+      <td>38</td>
+      <td>50</td>
+      <td>1289</td>
+      <td>6.566e-42</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0009605</td>
+      <td>response to external stimulus</td>
+      <td>39</td>
+      <td>50</td>
+      <td>1693</td>
+      <td>2.858e-39</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0140546</td>
+      <td>defense response to symbiont</td>
+      <td>32</td>
+      <td>50</td>
+      <td>736</td>
+      <td>1.101e-38</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0098542</td>
+      <td>defense response to other organism</td>
+      <td>32</td>
+      <td>50</td>
+      <td>744</td>
+      <td>1.562e-38</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0045087</td>
+      <td>innate immune response</td>
+      <td>30</td>
+      <td>50</td>
+      <td>626</td>
+      <td>6.192e-37</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0006955</td>
+      <td>immune response</td>
+      <td>36</td>
+      <td>50</td>
+      <td>1528</td>
+      <td>2.063e-35</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0002376</td>
+      <td>immune system process</td>
+      <td>38</td>
+      <td>50</td>
+      <td>2113</td>
+      <td>9.019e-34</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0034097</td>
+      <td>response to cytokine</td>
+      <td>29</td>
+      <td>50</td>
+      <td>844</td>
+      <td>3.471e-31</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:1901652</td>
+      <td>response to peptide</td>
+      <td>29</td>
+      <td>50</td>
+      <td>857</td>
+      <td>5.410e-31</td>
+    </tr>
+
+  </tbody>
+
+</table>
+</figure>
+</div>
+
+<p>Broad GO terms are often expected at the very top. A useful first pass is to also inspect terms below a target-size threshold.</p>
+<p>Output:</p>
+<div class="notebook-output">
+<figure><figcaption>More specific enriched GO terms</figcaption>
+<table class="dataframe notebook-table">
+  
+<thead>
+    
+<tr style="text-align: left;">
+      <th>target_id</th>
+      <th>target_name</th>
+      <th>overlap</th>
+      <th>query_size</th>
+      <th>target_size</th>
+      <th>p_adjust_bonferroni</th>
+    </tr>
+
+  </thead>
+
+  
+<tbody>
+    
+<tr>
+      <td>GO:0009615</td>
+      <td>response to virus</td>
+      <td>32</td>
+      <td>50</td>
+      <td>368</td>
+      <td>1.499e-48</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0051607</td>
+      <td>defense response to virus</td>
+      <td>29</td>
+      <td>50</td>
+      <td>226</td>
+      <td>3.048e-48</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0045071</td>
+      <td>negative regulation of viral genome replication</td>
+      <td>15</td>
+      <td>50</td>
+      <td>49</td>
+      <td>1.391e-28</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0048525</td>
+      <td>negative regulation of viral process</td>
+      <td>16</td>
+      <td>50</td>
+      <td>75</td>
+      <td>6.673e-28</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0045069</td>
+      <td>regulation of viral genome replication</td>
+      <td>16</td>
+      <td>50</td>
+      <td>78</td>
+      <td>1.339e-27</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0050792</td>
+      <td>regulation of viral process</td>
+      <td>17</td>
+      <td>50</td>
+      <td>140</td>
+      <td>2.027e-25</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:1903900</td>
+      <td>regulation of viral life cycle</td>
+      <td>16</td>
+      <td>50</td>
+      <td>112</td>
+      <td>7.204e-25</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0140374</td>
+      <td>antiviral innate immune response</td>
+      <td>12</td>
+      <td>50</td>
+      <td>76</td>
+      <td>3.070e-18</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0034341</td>
+      <td>response to type II interferon</td>
+      <td>12</td>
+      <td>50</td>
+      <td>101</td>
+      <td>1.153e-16</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0034340</td>
+      <td>response to type I interferon</td>
+      <td>12</td>
+      <td>50</td>
+      <td>114</td>
+      <td>5.280e-16</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0140888</td>
+      <td>interferon-mediated signaling pathway</td>
+      <td>11</td>
+      <td>50</td>
+      <td>88</td>
+      <td>3.110e-15</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0031349</td>
+      <td>positive regulation of defense response</td>
+      <td>16</td>
+      <td>50</td>
+      <td>485</td>
+      <td>1.937e-14</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0071346</td>
+      <td>cellular response to type II interferon</td>
+      <td>9</td>
+      <td>50</td>
+      <td>60</td>
+      <td>1.349e-12</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0035456</td>
+      <td>response to interferon-beta</td>
+      <td>8</td>
+      <td>50</td>
+      <td>35</td>
+      <td>2.030e-12</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0071357</td>
+      <td>cellular response to type I interferon</td>
+      <td>10</td>
+      <td>50</td>
+      <td>106</td>
+      <td>2.946e-12</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0060337</td>
+      <td>type I interferon-mediated signaling pathway</td>
+      <td>9</td>
+      <td>50</td>
+      <td>67</td>
+      <td>3.876e-12</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0045089</td>
+      <td>positive regulation of innate immune response</td>
+      <td>13</td>
+      <td>50</td>
+      <td>327</td>
+      <td>4.789e-12</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0002833</td>
+      <td>positive regulation of response to biotic stimulus</td>
+      <td>13</td>
+      <td>50</td>
+      <td>357</td>
+      <td>1.490e-11</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0032728</td>
+      <td>positive regulation of interferon-beta production</td>
+      <td>7</td>
+      <td>50</td>
+      <td>42</td>
+      <td>2.083e-09</td>
+    </tr>
+
+    
+<tr>
+      <td>GO:0032481</td>
+      <td>positive regulation of type I interferon production</td>
+      <td>8</td>
+      <td>50</td>
+      <td>80</td>
+      <td>2.394e-09</td>
+    </tr>
+
+  </tbody>
+
+</table>
+</figure>
+</div>
+
+<div style="break-before: page; page-break-before: always;"></div><!-- Generated by scripts/render_notebooks_for_mdbook.py; edit the notebook source instead. -->
+<h1 id="expression20-vs-go"><a class="header" href="#expression20-vs-go">Expression20 vs GO</a></h1>
+<p>Source notebook: <a href="../notebooks/02_expression20_eval.ipynb"><code>../../notebooks/02_expression20_eval.ipynb</code></a></p>
+<p>This notebook runs 20 expression-derived MyGeneset/MSigDB signatures against an official GOA human/GO snapshot. The CLI does the enrichment; Python only summarizes the Parquet results.</p>
+<pre><code class="language-bash">python3 scripts/fetch_mygeneset_eval.py \
+  --manifest evals/expression20/sets.tsv \
+  --out-dir evals/expression20/generated \
+  --skip-existing
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-text">Using existing MyGeneset snapshot at evals/expression20/generated
+</code></pre>
+<pre><code class="language-bash">python3 scripts/run_expression20_go_demo.py --skip-existing
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-text">reused_existing: notebooks/generated/expression20_go_now.parquet
+metadata: notebooks/generated/expression20_go_now.yaml
+</code></pre>
+<p>Output:</p>
+<div class="notebook-output">
+<div class="notebook-metrics">
+<div class="notebook-metric"><span class="notebook-metric-value">1,150</span><span class="notebook-metric-label">significant rows</span></div>
+<div class="notebook-metric"><span class="notebook-metric-value">18</span><span class="notebook-metric-label">queries with hits</span></div>
+<div class="notebook-metric"><span class="notebook-metric-value">504</span><span class="notebook-metric-label">GO terms</span></div>
+</div>
+
+</div>
+
+<p>Output:</p>
+<div class="notebook-output">
+<figure><figcaption>GO enrichment counts per Expression20 query</figcaption>
+<table class="dataframe notebook-table">
+  
+<thead>
+    
+<tr style="text-align: left;">
+      <th>query_id</th>
+      <th>query_name</th>
+      <th>significant_go_terms</th>
+      <th>unique_go_terms</th>
+      <th>best_adjusted_p</th>
+      <th>max_overlap</th>
+    </tr>
+
+  </thead>
+
+  
+<tbody>
+    
+<tr>
+      <td>GSE11386_NAIVE_VS_MEMORY_BCELL_UP</td>
+      <td>gse11386 naive vs memory bcell up</td>
+      <td>194</td>
+      <td>194</td>
+      <td>2.352e-50</td>
+      <td>191</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE11057_PBMC_VS_MEM_CD4_TCELL_UP</td>
+      <td>gse11057 pbmc vs mem cd4 tcell up</td>
+      <td>176</td>
+      <td>176</td>
+      <td>2.705e-34</td>
+      <td>201</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE22886_NAIVE_VS_IGG_IGA_MEMORY_BCELL_DN</td>
+      <td>gse22886 naive vs igg iga memory bcell dn</td>
+      <td>129</td>
+      <td>129</td>
+      <td>3.398e-48</td>
+      <td>200</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE10240_CTRL_VS_IL17_AND_IL22_STIM_PRIMARY_BRONCHIAL_EPITHELIAL_CELLS_UP</td>
+      <td>gse10240 ctrl vs il17 and il22 stim primary bronchial epithelial cells up</td>
+      <td>85</td>
+      <td>85</td>
+      <td>2.016e-35</td>
+      <td>193</td>
+    </tr>
+
+    
+<tr>
+      <td>NUNODA_RESPONSE_TO_DASATINIB_IMATINIB_UP</td>
+      <td>nunoda response to dasatinib imatinib up</td>
+      <td>80</td>
+      <td>80</td>
+      <td>1.925e-19</td>
+      <td>29</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE10325_LUPUS_BCELL_VS_LUPUS_MYELOID_UP</td>
+      <td>gse10325 lupus bcell vs lupus myeloid up</td>
+      <td>78</td>
+      <td>78</td>
+      <td>3.842e-29</td>
+      <td>193</td>
+    </tr>
+
+    
+<tr>
+      <td>RAPA_EARLY_UP.V1_UP</td>
+      <td>rapa early up.v1 up</td>
+      <td>73</td>
+      <td>73</td>
+      <td>1.440e-27</td>
+      <td>168</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE7831_UNSTIM_VS_INFLUENZA_STIM_PDC_1H_UP</td>
+      <td>gse7831 unstim vs influenza stim pdc 1h up</td>
+      <td>71</td>
+      <td>71</td>
+      <td>3.511e-42</td>
+      <td>204</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE9960_HEALTHY_VS_SEPSIS_PBMC_UP</td>
+      <td>gse9960 healthy vs sepsis pbmc up</td>
+      <td>44</td>
+      <td>44</td>
+      <td>5.401e-36</td>
+      <td>190</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE18893_CTRL_VS_TNF_TREATED_TCONV_24H_UP</td>
+      <td>gse18893 ctrl vs tnf treated tconv 24h up</td>
+      <td>36</td>
+      <td>36</td>
+      <td>4.000e-39</td>
+      <td>202</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE11864_UNTREATED_VS_CSF1_IFNG_IN_MAC_UP</td>
+      <td>gse11864 untreated vs csf1 ifng in mac up</td>
+      <td>36</td>
+      <td>36</td>
+      <td>2.684e-33</td>
+      <td>199</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE10500_ARTHRITIC_SYNOVIAL_FLUID_VS_HEALTHY_MACROPHAGE_UP</td>
+      <td>gse10500 arthritic synovial fluid vs healthy macrophage up</td>
+      <td>33</td>
+      <td>33</td>
+      <td>1.467e-30</td>
+      <td>152</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE16450_CTRL_VS_IFNA_12H_STIM_MATURE_NEURON_CELL_LINE_UP</td>
+      <td>gse16450 ctrl vs ifna 12h stim mature neuron cell line up</td>
+      <td>29</td>
+      <td>29</td>
+      <td>2.391e-29</td>
+      <td>192</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE12366_NAIVE_VS_MEMORY_BCELL_UP</td>
+      <td>gse12366 naive vs memory bcell up</td>
+      <td>28</td>
+      <td>28</td>
+      <td>2.856e-28</td>
+      <td>178</td>
+    </tr>
+
+    
+<tr>
+      <td>BECKER_TAMOXIFEN_RESISTANCE_UP</td>
+      <td>becker tamoxifen resistance up</td>
+      <td>25</td>
+      <td>25</td>
+      <td>1.330e-09</td>
+      <td>48</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE29614_CTRL_VS_DAY3_TIV_FLU_VACCINE_PBMC_UP</td>
+      <td>gse29614 ctrl vs day3 tiv flu vaccine pbmc up</td>
+      <td>19</td>
+      <td>19</td>
+      <td>2.166e-20</td>
+      <td>164</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE11367_CTRL_VS_IL17_TREATED_SMOOTH_MUSCLE_CELL_UP</td>
+      <td>gse11367 ctrl vs il17 treated smooth muscle cell up</td>
+      <td>11</td>
+      <td>11</td>
+      <td>5.400e-16</td>
+      <td>134</td>
+    </tr>
+
+    
+<tr>
+      <td>GYORFFY_DOXORUBICIN_RESISTANCE</td>
+      <td>gyorffy doxorubicin resistance</td>
+      <td>3</td>
+      <td>3</td>
+      <td>1.879e-04</td>
+      <td>35</td>
+    </tr>
+
+  </tbody>
+
+</table>
+</figure>
+</div>
+
+<p>Output:</p>
+<p><img src="assets/notebook-output/02_expression20_eval-cell6-output1.png" alt="Notebook output plot"></p>
+<p>The strongest unfiltered GO hits are often broad terms. For a more useful first look, the next table keeps terms with target size at most 500 genes.</p>
+<p>Output:</p>
+<div class="notebook-output">
+<figure><figcaption>Top enriched GO terms with target size at most 500 genes</figcaption>
+<table class="dataframe notebook-table">
+  
+<thead>
+    
+<tr style="text-align: left;">
+      <th>query_id</th>
+      <th>target_id</th>
+      <th>target_name</th>
+      <th>overlap</th>
+      <th>query_size</th>
+      <th>target_size</th>
+      <th>p_adjust_bonferroni</th>
+    </tr>
+
+  </thead>
+
+  
+<tbody>
+    
+<tr>
+      <td>GSE11386_NAIVE_VS_MEMORY_BCELL_UP</td>
+      <td>GO:0051276</td>
+      <td>chromosome organization</td>
+      <td>28</td>
+      <td>191</td>
+      <td>424</td>
+      <td>1.218e-17</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE11386_NAIVE_VS_MEMORY_BCELL_UP</td>
+      <td>GO:0098687</td>
+      <td>chromosomal region</td>
+      <td>26</td>
+      <td>191</td>
+      <td>399</td>
+      <td>6.877e-16</td>
+    </tr>
+
+    
+<tr>
+      <td>NUNODA_RESPONSE_TO_DASATINIB_IMATINIB_UP</td>
+      <td>GO:0044772</td>
+      <td>mitotic cell cycle phase transition</td>
+      <td>11</td>
+      <td>29</td>
+      <td>130</td>
+      <td>5.338e-15</td>
+    </tr>
+
+    
+<tr>
+      <td>NUNODA_RESPONSE_TO_DASATINIB_IMATINIB_UP</td>
+      <td>GO:0044770</td>
+      <td>cell cycle phase transition</td>
+      <td>11</td>
+      <td>29</td>
+      <td>142</td>
+      <td>1.457e-14</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE11386_NAIVE_VS_MEMORY_BCELL_UP</td>
+      <td>GO:0098813</td>
+      <td>nuclear chromosome segregation</td>
+      <td>20</td>
+      <td>191</td>
+      <td>223</td>
+      <td>7.027e-14</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE11386_NAIVE_VS_MEMORY_BCELL_UP</td>
+      <td>GO:0000280</td>
+      <td>nuclear division</td>
+      <td>22</td>
+      <td>191</td>
+      <td>305</td>
+      <td>1.143e-13</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE11386_NAIVE_VS_MEMORY_BCELL_UP</td>
+      <td>GO:0007059</td>
+      <td>chromosome segregation</td>
+      <td>22</td>
+      <td>191</td>
+      <td>312</td>
+      <td>1.861e-13</td>
+    </tr>
+
+    
+<tr>
+      <td>NUNODA_RESPONSE_TO_DASATINIB_IMATINIB_UP</td>
+      <td>GO:0000307</td>
+      <td>cyclin-dependent protein kinase holoenzyme complex</td>
+      <td>9</td>
+      <td>29</td>
+      <td>66</td>
+      <td>2.760e-13</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE11386_NAIVE_VS_MEMORY_BCELL_UP</td>
+      <td>GO:0000793</td>
+      <td>condensed chromosome</td>
+      <td>21</td>
+      <td>191</td>
+      <td>278</td>
+      <td>2.986e-13</td>
+    </tr>
+
+    
+<tr>
+      <td>NUNODA_RESPONSE_TO_DASATINIB_IMATINIB_UP</td>
+      <td>GO:1902554</td>
+      <td>serine/threonine protein kinase complex</td>
+      <td>10</td>
+      <td>29</td>
+      <td>120</td>
+      <td>4.362e-13</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE11386_NAIVE_VS_MEMORY_BCELL_UP</td>
+      <td>GO:0048285</td>
+      <td>organelle fission</td>
+      <td>22</td>
+      <td>191</td>
+      <td>330</td>
+      <td>6.183e-13</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE10240_CTRL_VS_IL17_AND_IL22_STIM_PRIMARY_BRONCHIAL_EPITHELIAL_CELLS_UP</td>
+      <td>GO:0000775</td>
+      <td>chromosome, centromeric region</td>
+      <td>20</td>
+      <td>199</td>
+      <td>245</td>
+      <td>1.034e-12</td>
+    </tr>
+
+    
+<tr>
+      <td>NUNODA_RESPONSE_TO_DASATINIB_IMATINIB_UP</td>
+      <td>GO:1902911</td>
+      <td>protein kinase complex</td>
+      <td>10</td>
+      <td>29</td>
+      <td>134</td>
+      <td>1.362e-12</td>
+    </tr>
+
+    
+<tr>
+      <td>NUNODA_RESPONSE_TO_DASATINIB_IMATINIB_UP</td>
+      <td>GO:0000082</td>
+      <td>G1/S transition of mitotic cell cycle</td>
+      <td>9</td>
+      <td>29</td>
+      <td>79</td>
+      <td>1.526e-12</td>
+    </tr>
+
+    
+<tr>
+      <td>NUNODA_RESPONSE_TO_DASATINIB_IMATINIB_UP</td>
+      <td>GO:0044843</td>
+      <td>cell cycle G1/S phase transition</td>
+      <td>9</td>
+      <td>29</td>
+      <td>81</td>
+      <td>1.932e-12</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE10240_CTRL_VS_IL17_AND_IL22_STIM_PRIMARY_BRONCHIAL_EPITHELIAL_CELLS_UP</td>
+      <td>GO:0051983</td>
+      <td>regulation of chromosome segregation</td>
+      <td>18</td>
+      <td>199</td>
+      <td>185</td>
+      <td>2.341e-12</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE11057_PBMC_VS_MEM_CD4_TCELL_UP</td>
+      <td>GO:0002764</td>
+      <td>immune response-regulating signaling pathway</td>
+      <td>25</td>
+      <td>204</td>
+      <td>468</td>
+      <td>2.516e-12</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE11386_NAIVE_VS_MEMORY_BCELL_UP</td>
+      <td>GO:1901990</td>
+      <td>regulation of mitotic cell cycle phase transition</td>
+      <td>23</td>
+      <td>191</td>
+      <td>402</td>
+      <td>2.910e-12</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE11057_PBMC_VS_MEM_CD4_TCELL_UP</td>
+      <td>GO:0009897</td>
+      <td>external side of plasma membrane</td>
+      <td>23</td>
+      <td>204</td>
+      <td>392</td>
+      <td>7.395e-12</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE11386_NAIVE_VS_MEMORY_BCELL_UP</td>
+      <td>GO:0000775</td>
+      <td>chromosome, centromeric region</td>
+      <td>19</td>
+      <td>191</td>
+      <td>245</td>
+      <td>9.035e-12</td>
+    </tr>
+
+  </tbody>
+
+</table>
+</figure>
+</div>
+
+<div style="break-before: page; page-break-before: always;"></div><!-- Generated by scripts/render_notebooks_for_mdbook.py; edit the notebook source instead. -->
+<h1 id="five-year-go-impact-report"><a class="header" href="#five-year-go-impact-report">Five-Year GO Impact Report</a></h1>
+<p>Source notebook: <a href="../notebooks/03_go_diff_with_duckdb.ipynb"><code>../../notebooks/03_go_diff_with_duckdb.ipynb</code></a></p>
+<p>This tutorial treats GO temporal change analysis as a configured convenience report. The report command runs the two enrichments, performs the threshold-crossing comparison, writes Parquet plus YAML/JSON metadata, and records the timing and parameters used. The notebook then inspects those report artifacts with DuckDB instead of rebuilding the workflow step by step.</p>
+<pre><code class="language-bash">uv run --project python/genesets-workflows genesets-workflows go-impact evals/go_impact_5y_expression500.yaml
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-text">Wrote notebooks/generated/go_impact_5y_expression500/summary.yaml
+Diff rows: gained_significant=23378, lost_significant=954, shared_significant=2760
+Timings: old=3.925s, new=5.114s, compare=0.174s, total=9.744s
+</code></pre>
+<p>Output:</p>
+<div class="notebook-output">
+<div class="notebook-metrics">
+<div class="notebook-metric"><span class="notebook-metric-value">500</span><span class="notebook-metric-label">expression gene sets</span></div>
+<div class="notebook-metric"><span class="notebook-metric-value">26,138</span><span class="notebook-metric-label">new significant rows</span></div>
+<div class="notebook-metric"><span class="notebook-metric-value">23,378</span><span class="notebook-metric-label">gained calls</span></div>
+<div class="notebook-metric"><span class="notebook-metric-value">954</span><span class="notebook-metric-label">lost calls</span></div>
+<div class="notebook-metric"><span class="notebook-metric-value">21,995</span><span class="notebook-metric-label">rankable GO terms</span></div>
+<div class="notebook-metric"><span class="notebook-metric-value">9.74s</span><span class="notebook-metric-label">total runtime</span></div>
+</div>
+
+</div>
+
+<p>Output:</p>
+<div class="notebook-output">
+<figure><figcaption>Report parameters</figcaption>
+<table class="dataframe notebook-table">
+  
+<thead>
+    
+<tr style="text-align: left;">
+      <th>parameter</th>
+      <th>value</th>
+    </tr>
+
+  </thead>
+
+  
+<tbody>
+    
+<tr>
+      <td>config</td>
+      <td>evals/go_impact_5y_expression500.yaml</td>
+    </tr>
+
+    
+<tr>
+      <td>query source</td>
+      <td>evals/expression_like/generated/msigdb_gse_500</td>
+    </tr>
+
+    
+<tr>
+      <td>query limit</td>
+      <td>500</td>
+    </tr>
+
+    
+<tr>
+      <td>left snapshot</td>
+      <td>2021-05-01 (all)</td>
+    </tr>
+
+    
+<tr>
+      <td>right snapshot</td>
+      <td>2026-03-25 (all)</td>
+    </tr>
+
+    
+<tr>
+      <td>min overlap</td>
+      <td>2</td>
+    </tr>
+
+    
+<tr>
+      <td>adjusted p cutoff</td>
+      <td>0.05</td>
+    </tr>
+
+    
+<tr>
+      <td>ranked term scope</td>
+      <td>goslim_generic descendants from right snapshot</td>
+    </tr>
+
+    
+<tr>
+      <td>max ranked term size</td>
+      <td>1,000</td>
+    </tr>
+
+  </tbody>
+
+</table>
+</figure>
+</div>
+
+<p>Output:</p>
+<div class="notebook-output">
+<figure><figcaption>Generated artifacts</figcaption>
+<table class="dataframe notebook-table">
+  
+<thead>
+    
+<tr style="text-align: left;">
+      <th>artifact</th>
+      <th>path</th>
+    </tr>
+
+  </thead>
+
+  
+<tbody>
+    
+<tr>
+      <td>diff_metadata</td>
+      <td>notebooks/generated/go_impact_5y_expression500/go_2021_05_01_vs_go_2026_03_25_expression500.diff.yaml</td>
+    </tr>
+
+    
+<tr>
+      <td>diff_results</td>
+      <td>notebooks/generated/go_impact_5y_expression500/go_2021_05_01_vs_go_2026_03_25_expression500.diff.parquet</td>
+    </tr>
+
+    
+<tr>
+      <td>new_results</td>
+      <td>notebooks/generated/go_impact_5y_expression500/go_2026_03_25_expression500.parquet</td>
+    </tr>
+
+    
+<tr>
+      <td>old_results</td>
+      <td>notebooks/generated/go_impact_5y_expression500/go_2021_05_01_expression500.parquet</td>
+    </tr>
+
+    
+<tr>
+      <td>summary_json</td>
+      <td>notebooks/generated/go_impact_5y_expression500/summary.json</td>
+    </tr>
+
+    
+<tr>
+      <td>summary_yaml</td>
+      <td>notebooks/generated/go_impact_5y_expression500/summary.yaml</td>
+    </tr>
+
+  </tbody>
+
+</table>
+</figure>
+</div>
+
+<p>Output:</p>
+<div class="notebook-output">
+<figure><figcaption>Report timings on this laptop</figcaption>
+<table class="dataframe notebook-table">
+  
+<thead>
+    
+<tr style="text-align: left;">
+      <th>stage</th>
+      <th>seconds</th>
+    </tr>
+
+  </thead>
+
+  
+<tbody>
+    
+<tr>
+      <td>select 500 expression sets</td>
+      <td>0.006</td>
+    </tr>
+
+    
+<tr>
+      <td>2021-05-01 GO enrichment</td>
+      <td>3.925</td>
+    </tr>
+
+    
+<tr>
+      <td>2026-03-25 GO enrichment</td>
+      <td>5.114</td>
+    </tr>
+
+    
+<tr>
+      <td>threshold-crossing compare</td>
+      <td>0.174</td>
+    </tr>
+
+    
+<tr>
+      <td>total report</td>
+      <td>9.744</td>
+    </tr>
+
+  </tbody>
+
+</table>
+</figure>
+</div>
+
+<p>Output:</p>
+<div class="notebook-output">
+<figure><figcaption>Significance status from 2021 to 2026</figcaption>
+<table class="dataframe notebook-table">
+  
+<thead>
+    
+<tr style="text-align: left;">
+      <th>class</th>
+      <th>row_count</th>
+      <th>affected_query_sets</th>
+      <th>affected_go_terms</th>
+    </tr>
+
+  </thead>
+
+  
+<tbody>
+    
+<tr>
+      <td>gained_significant</td>
+      <td>23378</td>
+      <td>500</td>
+      <td>1067</td>
+    </tr>
+
+    
+<tr>
+      <td>shared_significant</td>
+      <td>2760</td>
+      <td>204</td>
+      <td>494</td>
+    </tr>
+
+    
+<tr>
+      <td>lost_significant</td>
+      <td>954</td>
+      <td>128</td>
+      <td>235</td>
+    </tr>
+
+  </tbody>
+
+</table>
+</figure>
+</div>
+
+<p>For each high-impact expression signature, the term columns identify the GO term with the largest signed change in <code>-log10(Bonferroni adjusted p)</code> after applying the configured ranked-term scope. In this report, candidates are current GO terms in <code>goslim_generic</code> or descendants of a <code>goslim_generic</code> term, with at most 1,000 annotated genes in the relevant snapshot. Positive values mean stronger enrichment in 2026; negative values mean weaker enrichment. For gained/lost calls, the non-significant side is anchored at the report cutoff (<code>0.05</code>) because this report stores significant-only result tables.</p>
+<p>This is an inclusion slim plus a size guard. The complementary antislim is the same idea with the <code>go_term_filter</code> join inverted, which is useful when the goal is to explicitly remove a known broad region of the ontology from a report.</p>
+<p>Output:</p>
+<div class="notebook-output">
+<figure><figcaption>Expression signatures with the most threshold crossings; largest terms use the configured ranked-term scope</figcaption>
+<table class="dataframe notebook-table">
+  
+<thead>
+    
+<tr style="text-align: left;">
+      <th>query_id</th>
+      <th>gained_calls</th>
+      <th>lost_calls</th>
+      <th>total_crossing_calls</th>
+      <th>largest_crossing_term</th>
+      <th>crossing_status</th>
+      <th>largest_crossing_delta</th>
+      <th>largest_overall_term</th>
+      <th>overall_status</th>
+      <th>largest_overall_delta</th>
+    </tr>
+
+  </thead>
+
+  
+<tbody>
+    
+<tr>
+      <td>GSE29618_BCELL_VS_MDC_DAY7_FLU_VACCINE_DN</td>
+      <td>177</td>
+      <td>31</td>
+      <td>208</td>
+      <td>GO:0002366 leukocyte activation involved in immune response</td>
+      <td>lost</td>
+      <td>-7.35</td>
+      <td>GO:0030141 secretory granule</td>
+      <td>shared</td>
+      <td>+8.37</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE29618_PDC_VS_MDC_DAY7_FLU_VACCINE_DN</td>
+      <td>178</td>
+      <td>27</td>
+      <td>205</td>
+      <td>GO:0002366 leukocyte activation involved in immune response</td>
+      <td>lost</td>
+      <td>-9.80</td>
+      <td>GO:0002252 immune effector process</td>
+      <td>shared</td>
+      <td>-11.55</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE29618_PDC_VS_MDC_DN</td>
+      <td>167</td>
+      <td>32</td>
+      <td>199</td>
+      <td>GO:0002366 leukocyte activation involved in immune response</td>
+      <td>lost</td>
+      <td>-17.21</td>
+      <td>GO:0002366 leukocyte activation involved in immune response</td>
+      <td>lost</td>
+      <td>-17.21</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE29618_MONOCYTE_VS_PDC_UP</td>
+      <td>158</td>
+      <td>26</td>
+      <td>184</td>
+      <td>GO:0042119 neutrophil activation</td>
+      <td>lost</td>
+      <td>-22.09</td>
+      <td>GO:0002274 myeloid leukocyte activation</td>
+      <td>shared</td>
+      <td>-22.42</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE29618_BCELL_VS_MONOCYTE_DN</td>
+      <td>143</td>
+      <td>26</td>
+      <td>169</td>
+      <td>GO:0002283 neutrophil activation involved in immune response</td>
+      <td>lost</td>
+      <td>-26.45</td>
+      <td>GO:0002274 myeloid leukocyte activation</td>
+      <td>shared</td>
+      <td>-26.64</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE28726_NAIVE_VS_ACTIVATED_CD4_TCELL_DN</td>
+      <td>133</td>
+      <td>36</td>
+      <td>169</td>
+      <td>GO:0060205 cytoplasmic vesicle lumen</td>
+      <td>gained</td>
+      <td>+4.92</td>
+      <td>GO:0000278 mitotic cell cycle</td>
+      <td>shared</td>
+      <td>+8.56</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE29164_UNTREATED_VS_CD8_TCELL_TREATED_MELANOMA_DAY7_UP</td>
+      <td>138</td>
+      <td>21</td>
+      <td>159</td>
+      <td>GO:0006954 inflammatory response</td>
+      <td>gained</td>
+      <td>+4.89</td>
+      <td>GO:0006954 inflammatory response</td>
+      <td>gained</td>
+      <td>+4.89</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE29618_MONOCYTE_VS_MDC_UP</td>
+      <td>127</td>
+      <td>27</td>
+      <td>154</td>
+      <td>GO:0042119 neutrophil activation</td>
+      <td>lost</td>
+      <td>-32.05</td>
+      <td>GO:0042119 neutrophil activation</td>
+      <td>lost</td>
+      <td>-32.05</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE29618_BCELL_VS_MDC_DN</td>
+      <td>117</td>
+      <td>35</td>
+      <td>152</td>
+      <td>GO:0002252 immune effector process</td>
+      <td>lost</td>
+      <td>-13.79</td>
+      <td>GO:0002252 immune effector process</td>
+      <td>lost</td>
+      <td>-13.79</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE28726_NAIVE_CD4_TCELL_VS_NAIVE_VA24NEG_NKTCELL_UP</td>
+      <td>123</td>
+      <td>22</td>
+      <td>145</td>
+      <td>GO:0006281 DNA repair</td>
+      <td>gained</td>
+      <td>+5.33</td>
+      <td>GO:0000278 mitotic cell cycle</td>
+      <td>shared</td>
+      <td>+13.66</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE29618_MONOCYTE_VS_PDC_DAY7_FLU_VACCINE_UP</td>
+      <td>115</td>
+      <td>26</td>
+      <td>141</td>
+      <td>GO:0002274 myeloid leukocyte activation</td>
+      <td>lost</td>
+      <td>-16.20</td>
+      <td>GO:0002274 myeloid leukocyte activation</td>
+      <td>lost</td>
+      <td>-16.20</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE29618_BCELL_VS_MONOCYTE_DAY7_FLU_VACCINE_DN</td>
+      <td>110</td>
+      <td>29</td>
+      <td>139</td>
+      <td>GO:0002283 neutrophil activation involved in immune response</td>
+      <td>lost</td>
+      <td>-16.97</td>
+      <td>GO:0002283 neutrophil activation involved in immune response</td>
+      <td>lost</td>
+      <td>-16.97</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE27859_MACROPHAGE_VS_CD11C_INT_F480_HI_MACROPHAGE_UP</td>
+      <td>128</td>
+      <td>7</td>
+      <td>135</td>
+      <td>GO:0002218 activation of innate immune response</td>
+      <td>gained</td>
+      <td>+4.13</td>
+      <td>GO:0002218 activation of innate immune response</td>
+      <td>gained</td>
+      <td>+4.13</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE32034_LY6C_HIGH_VS_LOW_ROSIGLIZATONE_TREATED_MONOCYTE_DN</td>
+      <td>126</td>
+      <td>2</td>
+      <td>128</td>
+      <td>GO:0030595 leukocyte chemotaxis</td>
+      <td>gained</td>
+      <td>+4.12</td>
+      <td>GO:0006954 inflammatory response</td>
+      <td>shared</td>
+      <td>+5.98</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE11057_PBMC_VS_MEM_CD4_TCELL_UP</td>
+      <td>111</td>
+      <td>17</td>
+      <td>128</td>
+      <td>GO:0002366 leukocyte activation involved in immune response</td>
+      <td>lost</td>
+      <td>-11.30</td>
+      <td>GO:0002366 leukocyte activation involved in immune response</td>
+      <td>lost</td>
+      <td>-11.30</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE29618_MONOCYTE_VS_MDC_DAY7_FLU_VACCINE_UP</td>
+      <td>100</td>
+      <td>28</td>
+      <td>128</td>
+      <td>GO:0042119 neutrophil activation</td>
+      <td>lost</td>
+      <td>-32.99</td>
+      <td>GO:0042119 neutrophil activation</td>
+      <td>lost</td>
+      <td>-32.99</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE12845_NAIVE_VS_PRE_GC_TONSIL_BCELL_DN</td>
+      <td>97</td>
+      <td>27</td>
+      <td>124</td>
+      <td>GO:1903047 mitotic cell cycle process</td>
+      <td>gained</td>
+      <td>+9.84</td>
+      <td>GO:1903047 mitotic cell cycle process</td>
+      <td>gained</td>
+      <td>+9.84</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE2826_WT_VS_BTK_KO_BCELL_DN</td>
+      <td>119</td>
+      <td>4</td>
+      <td>123</td>
+      <td>GO:0030097 hemopoiesis</td>
+      <td>gained</td>
+      <td>+6.38</td>
+      <td>GO:0030097 hemopoiesis</td>
+      <td>gained</td>
+      <td>+6.38</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE29618_BCELL_VS_PDC_UP</td>
+      <td>117</td>
+      <td>5</td>
+      <td>122</td>
+      <td>GO:0045321 leukocyte activation</td>
+      <td>gained</td>
+      <td>+9.80</td>
+      <td>GO:0045321 leukocyte activation</td>
+      <td>gained</td>
+      <td>+9.80</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE30971_WBP7_HET_VS_KO_MACROPHAGE_DN</td>
+      <td>111</td>
+      <td>10</td>
+      <td>121</td>
+      <td>GO:0046649 lymphocyte activation</td>
+      <td>gained</td>
+      <td>+2.72</td>
+      <td>GO:1903131 mononuclear cell differentiation</td>
+      <td>shared</td>
+      <td>+2.92</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE29618_BCELL_VS_PDC_DAY7_FLU_VACCINE_DN</td>
+      <td>116</td>
+      <td>2</td>
+      <td>118</td>
+      <td>GO:0000323 lytic vacuole</td>
+      <td>gained</td>
+      <td>+3.72</td>
+      <td>GO:0000323 lytic vacuole</td>
+      <td>gained</td>
+      <td>+3.72</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE2935_UV_INACTIVATED_VS_LIVE_SENDAI_VIRUS_INF_MACROPHAGE_DN</td>
+      <td>114</td>
+      <td>4</td>
+      <td>118</td>
+      <td>GO:0006954 inflammatory response</td>
+      <td>gained</td>
+      <td>+4.94</td>
+      <td>GO:0030097 hemopoiesis</td>
+      <td>shared</td>
+      <td>+6.15</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE30971_WBP7_HET_VS_KO_MACROPHAGE_2H_LPS_STIM_DN</td>
+      <td>107</td>
+      <td>11</td>
+      <td>118</td>
+      <td>GO:0007259 cell surface receptor signaling pathway via JAK-STAT</td>
+      <td>gained</td>
+      <td>+5.49</td>
+      <td>GO:0007259 cell surface receptor signaling pathway via JAK-STAT</td>
+      <td>gained</td>
+      <td>+5.49</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE12845_PRE_GC_VS_DARKZONE_GC_TONSIL_BCELL_UP</td>
+      <td>114</td>
+      <td>2</td>
+      <td>116</td>
+      <td>GO:0140546 defense response to symbiont</td>
+      <td>gained</td>
+      <td>+5.14</td>
+      <td>GO:0140546 defense response to symbiont</td>
+      <td>gained</td>
+      <td>+5.14</td>
+    </tr>
+
+    
+<tr>
+      <td>GSE3039_NKT_CELL_VS_B2_BCELL_DN</td>
+      <td>111</td>
+      <td>4</td>
+      <td>115</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+
+  </tbody>
+
+</table>
+</figure>
+</div>
+
+<p>The next table asks which GO terms changed status across the largest number of expression signatures. It reuses the configured <code>goslim_generic</code> descendant scope and adds a stricter display guard of at most 500 genes so the table stays biologically interpretable.</p>
+<p>Output:</p>
+<div class="notebook-output">
+<figure><figcaption>Most repeatedly affected specific GO terms within the configured ranked-term scope</figcaption>
+<table class="dataframe notebook-table">
+  
+<thead>
+    
+<tr style="text-align: left;">
+      <th>class</th>
+      <th>target_id</th>
+      <th>target_name</th>
+      <th>target_size</th>
+      <th>affected_query_sets</th>
+    </tr>
+
+  </thead>
+
+  
+<tbody>
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:0009897</td>
+      <td>external side of plasma membrane</td>
+      <td>392</td>
+      <td>25</td>
+    </tr>
+
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:0046649</td>
+      <td>lymphocyte activation</td>
+      <td>414</td>
+      <td>21</td>
+    </tr>
+
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:0002764</td>
+      <td>immune response-regulating signaling pathway</td>
+      <td>468</td>
+      <td>20</td>
+    </tr>
+
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:0002521</td>
+      <td>leukocyte differentiation</td>
+      <td>339</td>
+      <td>18</td>
+    </tr>
+
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:1903131</td>
+      <td>mononuclear cell differentiation</td>
+      <td>294</td>
+      <td>16</td>
+    </tr>
+
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:0006954</td>
+      <td>inflammatory response</td>
+      <td>447</td>
+      <td>16</td>
+    </tr>
+
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:0002768</td>
+      <td>immune response-regulating cell surface receptor signaling pathway</td>
+      <td>380</td>
+      <td>15</td>
+    </tr>
+
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:0030098</td>
+      <td>lymphocyte differentiation</td>
+      <td>223</td>
+      <td>14</td>
+    </tr>
+
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:0002757</td>
+      <td>immune response-activating signaling pathway</td>
+      <td>398</td>
+      <td>14</td>
+    </tr>
+
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:0006897</td>
+      <td>endocytosis</td>
+      <td>429</td>
+      <td>14</td>
+    </tr>
+
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:0002253</td>
+      <td>activation of immune response</td>
+      <td>466</td>
+      <td>14</td>
+    </tr>
+
+    
+<tr>
+      <td>lost_significant</td>
+      <td>GO:0043312</td>
+      <td>neutrophil degranulation</td>
+      <td>482</td>
+      <td>14</td>
+    </tr>
+
+    
+<tr>
+      <td>lost_significant</td>
+      <td>GO:0002283</td>
+      <td>neutrophil activation involved in immune response</td>
+      <td>488</td>
+      <td>14</td>
+    </tr>
+
+    
+<tr>
+      <td>lost_significant</td>
+      <td>GO:0002446</td>
+      <td>neutrophil mediated immunity</td>
+      <td>496</td>
+      <td>14</td>
+    </tr>
+
+    
+<tr>
+      <td>lost_significant</td>
+      <td>GO:0042119</td>
+      <td>neutrophil activation</td>
+      <td>498</td>
+      <td>14</td>
+    </tr>
+
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:0006281</td>
+      <td>DNA repair</td>
+      <td>475</td>
+      <td>13</td>
+    </tr>
+
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:0042254</td>
+      <td>ribosome biogenesis</td>
+      <td>311</td>
+      <td>11</td>
+    </tr>
+
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:0098687</td>
+      <td>chromosomal region</td>
+      <td>399</td>
+      <td>11</td>
+    </tr>
+
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:0006261</td>
+      <td>DNA-templated DNA replication</td>
+      <td>162</td>
+      <td>10</td>
+    </tr>
+
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:0060205</td>
+      <td>cytoplasmic vesicle lumen</td>
+      <td>331</td>
+      <td>10</td>
+    </tr>
+
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:0031983</td>
+      <td>vesicle lumen</td>
+      <td>332</td>
+      <td>10</td>
+    </tr>
+
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:0005819</td>
+      <td>spindle</td>
+      <td>441</td>
+      <td>10</td>
+    </tr>
+
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:0005765</td>
+      <td>lysosomal membrane</td>
+      <td>500</td>
+      <td>10</td>
+    </tr>
+
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:0098852</td>
+      <td>lytic vacuole membrane</td>
+      <td>500</td>
+      <td>10</td>
+    </tr>
+
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:0042110</td>
+      <td>T cell activation</td>
+      <td>278</td>
+      <td>9</td>
+    </tr>
+
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:1904813</td>
+      <td>ficolin-1-rich granule lumen</td>
+      <td>125</td>
+      <td>8</td>
+    </tr>
+
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:0006310</td>
+      <td>DNA recombination</td>
+      <td>241</td>
+      <td>8</td>
+    </tr>
+
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:0000228</td>
+      <td>nuclear chromosome</td>
+      <td>242</td>
+      <td>8</td>
+    </tr>
+
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:0034774</td>
+      <td>secretory granule lumen</td>
+      <td>326</td>
+      <td>8</td>
+    </tr>
+
+    
+<tr>
+      <td>gained_significant</td>
+      <td>GO:0030183</td>
+      <td>B cell differentiation</td>
+      <td>96</td>
+      <td>7</td>
+    </tr>
+
+  </tbody>
+
+</table>
+</figure>
+</div>
+
+<p>Output:</p>
+<div class="notebook-output">
+<figure><figcaption>Largest individual threshold-crossing changes within the configured ranked-term scope</figcaption>
+<table class="dataframe notebook-table">
+  
+<thead>
+    
+<tr style="text-align: left;">
+      <th>class</th>
+      <th>query_id</th>
+      <th>target_id</th>
+      <th>target_name</th>
+      <th>signed_delta_score</th>
+      <th>abs_delta_score</th>
+      <th>left_p_adjust</th>
+      <th>right_p_adjust</th>
+      <th>left_overlap</th>
+      <th>right_overlap</th>
+      <th>left_target_size</th>
+      <th>right_target_size</th>
+    </tr>
+
+  </thead>
+
+  
+<tbody>
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_MONOCYTE_VS_MDC_DAY7_FLU_VACCINE_UP</td>
+      <td>GO:0042119</td>
+      <td>neutrophil activation</td>
+      <td>-32.99</td>
+      <td>32.99</td>
+      <td>5.068e-35</td>
+      <td></td>
+      <td>57</td>
+      <td></td>
+      <td>498</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_MONOCYTE_VS_MDC_DAY7_FLU_VACCINE_UP</td>
+      <td>GO:0036230</td>
+      <td>granulocyte activation</td>
+      <td>-32.75</td>
+      <td>32.75</td>
+      <td>8.905e-35</td>
+      <td></td>
+      <td>57</td>
+      <td></td>
+      <td>503</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_MONOCYTE_VS_MDC_DAY7_FLU_VACCINE_UP</td>
+      <td>GO:0043312</td>
+      <td>neutrophil degranulation</td>
+      <td>-32.59</td>
+      <td>32.59</td>
+      <td>1.292e-34</td>
+      <td></td>
+      <td>56</td>
+      <td></td>
+      <td>482</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_MONOCYTE_VS_MDC_DAY7_FLU_VACCINE_UP</td>
+      <td>GO:0002274</td>
+      <td>myeloid leukocyte activation</td>
+      <td>-32.32</td>
+      <td>32.32</td>
+      <td>2.383e-34</td>
+      <td></td>
+      <td>60</td>
+      <td></td>
+      <td>589</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_MONOCYTE_VS_MDC_DAY7_FLU_VACCINE_UP</td>
+      <td>GO:0002283</td>
+      <td>neutrophil activation involved in immune response</td>
+      <td>-32.29</td>
+      <td>32.29</td>
+      <td>2.568e-34</td>
+      <td></td>
+      <td>56</td>
+      <td></td>
+      <td>488</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_MONOCYTE_VS_MDC_UP</td>
+      <td>GO:0042119</td>
+      <td>neutrophil activation</td>
+      <td>-32.05</td>
+      <td>32.05</td>
+      <td>4.497e-34</td>
+      <td></td>
+      <td>56</td>
+      <td></td>
+      <td>498</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_MONOCYTE_VS_MDC_DAY7_FLU_VACCINE_UP</td>
+      <td>GO:0002446</td>
+      <td>neutrophil mediated immunity</td>
+      <td>-31.90</td>
+      <td>31.90</td>
+      <td>6.323e-34</td>
+      <td></td>
+      <td>56</td>
+      <td></td>
+      <td>496</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_MONOCYTE_VS_MDC_UP</td>
+      <td>GO:0036230</td>
+      <td>granulocyte activation</td>
+      <td>-31.81</td>
+      <td>31.81</td>
+      <td>7.815e-34</td>
+      <td></td>
+      <td>56</td>
+      <td></td>
+      <td>503</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_MONOCYTE_VS_MDC_DAY7_FLU_VACCINE_UP</td>
+      <td>GO:0002275</td>
+      <td>myeloid cell activation involved in immune response</td>
+      <td>-31.57</td>
+      <td>31.57</td>
+      <td>1.360e-33</td>
+      <td></td>
+      <td>57</td>
+      <td></td>
+      <td>528</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_MONOCYTE_VS_MDC_DAY7_FLU_VACCINE_UP</td>
+      <td>GO:0043299</td>
+      <td>leukocyte degranulation</td>
+      <td>-31.37</td>
+      <td>31.37</td>
+      <td>2.125e-33</td>
+      <td></td>
+      <td>56</td>
+      <td></td>
+      <td>507</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_MONOCYTE_VS_MDC_DAY7_FLU_VACCINE_UP</td>
+      <td>GO:0002444</td>
+      <td>myeloid leukocyte mediated immunity</td>
+      <td>-30.72</td>
+      <td>30.72</td>
+      <td>9.523e-33</td>
+      <td></td>
+      <td>56</td>
+      <td></td>
+      <td>521</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_MONOCYTE_VS_MDC_UP</td>
+      <td>GO:0002283</td>
+      <td>neutrophil activation involved in immune response</td>
+      <td>-30.15</td>
+      <td>30.15</td>
+      <td>3.524e-32</td>
+      <td></td>
+      <td>54</td>
+      <td></td>
+      <td>488</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_MONOCYTE_VS_MDC_DAY7_FLU_VACCINE_UP</td>
+      <td>GO:0002366</td>
+      <td>leukocyte activation involved in immune response</td>
+      <td>-29.31</td>
+      <td>29.31</td>
+      <td>2.424e-31</td>
+      <td></td>
+      <td>59</td>
+      <td></td>
+      <td>635</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_MONOCYTE_VS_MDC_UP</td>
+      <td>GO:0043312</td>
+      <td>neutrophil degranulation</td>
+      <td>-29.26</td>
+      <td>29.26</td>
+      <td>2.759e-31</td>
+      <td></td>
+      <td>53</td>
+      <td></td>
+      <td>482</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_MONOCYTE_VS_MDC_DAY7_FLU_VACCINE_UP</td>
+      <td>GO:0045055</td>
+      <td>regulated exocytosis</td>
+      <td>-29.16</td>
+      <td>29.16</td>
+      <td>3.437e-31</td>
+      <td></td>
+      <td>61</td>
+      <td></td>
+      <td>697</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_MONOCYTE_VS_MDC_DAY7_FLU_VACCINE_UP</td>
+      <td>GO:0002263</td>
+      <td>cell activation involved in immune response</td>
+      <td>-29.16</td>
+      <td>29.16</td>
+      <td>3.461e-31</td>
+      <td></td>
+      <td>59</td>
+      <td></td>
+      <td>639</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_MONOCYTE_VS_MDC_UP</td>
+      <td>GO:0002446</td>
+      <td>neutrophil mediated immunity</td>
+      <td>-28.61</td>
+      <td>28.61</td>
+      <td>1.225e-30</td>
+      <td></td>
+      <td>53</td>
+      <td></td>
+      <td>496</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_MONOCYTE_VS_MDC_UP</td>
+      <td>GO:0002275</td>
+      <td>myeloid cell activation involved in immune response</td>
+      <td>-28.34</td>
+      <td>28.34</td>
+      <td>2.279e-30</td>
+      <td></td>
+      <td>54</td>
+      <td></td>
+      <td>528</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_MONOCYTE_VS_MDC_UP</td>
+      <td>GO:0002263</td>
+      <td>cell activation involved in immune response</td>
+      <td>-28.32</td>
+      <td>28.32</td>
+      <td>2.406e-30</td>
+      <td></td>
+      <td>58</td>
+      <td></td>
+      <td>639</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_MONOCYTE_VS_MDC_UP</td>
+      <td>GO:0043299</td>
+      <td>leukocyte degranulation</td>
+      <td>-28.12</td>
+      <td>28.12</td>
+      <td>3.822e-30</td>
+      <td></td>
+      <td>53</td>
+      <td></td>
+      <td>507</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_MONOCYTE_VS_MDC_DAY7_FLU_VACCINE_UP</td>
+      <td>GO:0045321</td>
+      <td>leukocyte activation</td>
+      <td>-27.82</td>
+      <td>27.82</td>
+      <td>7.515e-30</td>
+      <td></td>
+      <td>67</td>
+      <td></td>
+      <td>930</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_MONOCYTE_VS_MDC_UP</td>
+      <td>GO:0002444</td>
+      <td>myeloid leukocyte mediated immunity</td>
+      <td>-27.51</td>
+      <td>27.51</td>
+      <td>1.562e-29</td>
+      <td></td>
+      <td>53</td>
+      <td></td>
+      <td>521</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_MONOCYTE_VS_MDC_UP</td>
+      <td>GO:0002366</td>
+      <td>leukocyte activation involved in immune response</td>
+      <td>-27.38</td>
+      <td>27.38</td>
+      <td>2.083e-29</td>
+      <td></td>
+      <td>57</td>
+      <td></td>
+      <td>635</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_MONOCYTE_VS_MDC_DAY7_FLU_VACCINE_UP</td>
+      <td>GO:0006887</td>
+      <td>exocytosis</td>
+      <td>-27.17</td>
+      <td>27.17</td>
+      <td>3.366e-29</td>
+      <td></td>
+      <td>62</td>
+      <td></td>
+      <td>786</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_BCELL_VS_MONOCYTE_DN</td>
+      <td>GO:0002283</td>
+      <td>neutrophil activation involved in immune response</td>
+      <td>-26.45</td>
+      <td>26.45</td>
+      <td>1.780e-28</td>
+      <td></td>
+      <td>51</td>
+      <td></td>
+      <td>488</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_BCELL_VS_MONOCYTE_DN</td>
+      <td>GO:0042119</td>
+      <td>neutrophil activation</td>
+      <td>-26.01</td>
+      <td>26.01</td>
+      <td>4.876e-28</td>
+      <td></td>
+      <td>51</td>
+      <td></td>
+      <td>498</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_BCELL_VS_MONOCYTE_DN</td>
+      <td>GO:0036230</td>
+      <td>granulocyte activation</td>
+      <td>-25.80</td>
+      <td>25.80</td>
+      <td>8.000e-28</td>
+      <td></td>
+      <td>51</td>
+      <td></td>
+      <td>503</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_BCELL_VS_MONOCYTE_DN</td>
+      <td>GO:0002446</td>
+      <td>neutrophil mediated immunity</td>
+      <td>-24.97</td>
+      <td>24.97</td>
+      <td>5.319e-27</td>
+      <td></td>
+      <td>50</td>
+      <td></td>
+      <td>496</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_MONOCYTE_VS_MDC_DAY7_FLU_VACCINE_UP</td>
+      <td>GO:0002443</td>
+      <td>leukocyte mediated immunity</td>
+      <td>-24.91</td>
+      <td>24.91</td>
+      <td>6.146e-27</td>
+      <td></td>
+      <td>59</td>
+      <td></td>
+      <td>761</td>
+      <td></td>
+    </tr>
+
+    
+<tr>
+      <td>lost</td>
+      <td>GSE29618_BCELL_VS_MONOCYTE_DN</td>
+      <td>GO:0002275</td>
+      <td>myeloid cell activation involved in immune response</td>
+      <td>-24.76</td>
+      <td>24.76</td>
+      <td>8.763e-27</td>
+      <td></td>
+      <td>51</td>
+      <td></td>
+      <td>528</td>
+      <td></td>
+    </tr>
+
+  </tbody>
+
+</table>
+</figure>
+</div>
+
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="statistics"><a class="header" href="#statistics">Statistics</a></h1>
+<p>The MVP performs standard one-sided over-representation analysis.</p>
+<p>For each query and target term, the engine computes:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Symbol</th><th>Meaning</th></tr>
+</thead>
+<tbody>
+<tr><td><code>N</code></td><td>background size</td></tr>
+<tr><td><code>K</code></td><td>target size in background</td></tr>
+<tr><td><code>n</code></td><td>query size in background</td></tr>
+<tr><td><code>k</code></td><td>query-target overlap in background</td></tr>
+</tbody>
+</table>
+</div>
+<p>The p-value is the right-tail hypergeometric probability:</p>
+<pre><code class="language-text">P(X &gt;= k), X ~ Hypergeometric(N, K, n)
+</code></pre>
+<p>This is equivalent to one-sided Fisher exact enrichment on the 2 x 2 table:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th></th><th style="text-align: right">In target</th><th style="text-align: right">Not in target</th></tr>
+</thead>
+<tbody>
+<tr><td>In query</td><td style="text-align: right"><code>k</code></td><td style="text-align: right"><code>n - k</code></td></tr>
+<tr><td>Not in query</td><td style="text-align: right"><code>K - k</code></td><td style="text-align: right"><code>N - K - n + k</code></td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="multiple-testing"><a class="header" href="#multiple-testing">Multiple Testing</a></h2>
+<p>The current correction choices are:</p>
+<ul>
+<li><code>bonferroni</code>: <code>min(p * number_of_tests, 1)</code>;</li>
+<li><code>none</code>: report raw p-values as adjusted p-values.</li>
+</ul>
+<p>For matrix runs, the Bonferroni denominator is the number of non-empty query by non-empty target tests.</p>
+<h2 id="future-statistics"><a class="header" href="#future-statistics">Future Statistics</a></h2>
+<p>The code is structured so additional test families can be added without changing the data model:</p>
+<ul>
+<li>Benjamini-Hochberg FDR;</li>
+<li>ranked-list methods;</li>
+<li>topology-aware parent-child methods;</li>
+<li>elim and weight-style algorithms;</li>
+<li>model-set approaches inspired by Ontologizer.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="performance-model"><a class="header" href="#performance-model">Performance Model</a></h1>
+<p><code>genesets-rs</code> trades initialization work and memory for fast repeated calculations.</p>
+<h2 id="bitset-representation"><a class="header" href="#bitset-representation">Bitset Representation</a></h2>
+<p>Each query and target is represented as a dense <code>Vec&lt;u64&gt;</code> over a shared gene universe. After loading:</p>
+<ul>
+<li>set size is a popcount;</li>
+<li>overlap is a word-wise AND plus popcount;</li>
+<li>ontology propagation is already baked into target bitsets;</li>
+<li>matrix mode parallelizes over query sets.</li>
+</ul>
+<p>This is a good fit when the universe is moderate, memory is available, and the same target library is reused across many query sets.</p>
+<h2 id="expected-bottlenecks"><a class="header" href="#expected-bottlenecks">Expected Bottlenecks</a></h2>
+<p>There are three separate costs to keep apart:</p>
+<ul>
+<li>preparing inputs: parsing term, closure, annotation, background, and query files, then building dense bitsets;</li>
+<li>scoring: intersecting query and target bitsets, running Fisher exact tests, and applying cutoffs;</li>
+<li>writing results: resolving string labels and serializing rows.</li>
+</ul>
+<p>The CLI has <code>--output-format null</code> for compute-only timing. Use it to separate scoring from serialization:</p>
+<pre><code class="language-bash">genesets-rs matrix ... --output-format null
+</code></pre>
+<p>On the current 200 MSigDB GSE-style query fixture against GOA human and the current GO closure:</p>
+<ul>
+<li>one query, significant-only, no output serialization: about 1.4s with one Rayon thread;</li>
+<li>200 queries, significant-only, no output serialization: about 5.9s with one Rayon thread, or about 2.2s on a 10-core laptop;</li>
+<li>200 queries, no p-value cutoff, no output serialization: about 2.25s wall time and about 540 MB peak RSS;</li>
+<li>200 queries, no p-value cutoff, TSV output: about 3.6s wall time for about 778k result rows and a 140 MB TSV.</li>
+</ul>
+<p>For significant-only evals, TSV is not the main bottleneck. Rebuilding the ontology target index on every CLI process dominates wall time. For unfiltered or weakly filtered mass comparisons, row materialization and TSV serialization become large enough to matter.</p>
+<p>TSV remains useful for individual analyses, but multi-timepoint and many-query evals should move to a columnar or embedded analytical format. The output module is intentionally isolated from the scoring layer so Parquet and DuckDB sinks can be added without changing enrichment statistics.</p>
+<h2 id="current-diagnosis"><a class="header" href="#current-diagnosis">Current Diagnosis</a></h2>
+<p>The most important bottlenecks are:</p>
+<ul>
+<li>repeated text parsing and ontology target bitset construction for every run;</li>
+<li>duplicated string-heavy closure and annotation tables during setup;</li>
+<li>materializing every retained result row in memory before writing;</li>
+<li>sorting all retained rows before output;</li>
+<li>dense bitset scans over every query-target pair, even for very sparse terms;</li>
+<li>TSV formatting when result sets are large or unfiltered.</li>
+</ul>
+<p>The next performance milestones are:</p>
+<ul>
+<li>serialized prepared indexes for term bitsets, term metadata, and gene metadata;</li>
+<li>streaming or batched result sinks so large runs do not materialize every row;</li>
+<li>Parquet output for columnar scans and archival eval artifacts;</li>
+<li>DuckDB output for direct diff queries over many timepoints;</li>
+<li>top-k and p-value-threshold output modes;</li>
+<li>mmap-friendly bitset storage;</li>
+<li>sparse or Roaring-style bitsets benchmarked against dense bitsets on real GO fixtures;</li>
+<li>criterion benchmarks on synthetic and real ontology fixtures;</li>
+<li>comparison runs against GOATOOLS, g:Profiler, topGO, and clusterProfiler on the same frozen inputs.</li>
+</ul>
+<h2 id="result-storage"><a class="header" href="#result-storage">Result Storage</a></h2>
+<p>For the mass-diff use case, the preferred storage shape is numeric and columnar:</p>
+<ul>
+<li>dimension tables for runs, queries, targets, terms, genes, ontology releases, and annotation variants;</li>
+<li>fact rows keyed by <code>(run_id, query_index, target_index)</code>;</li>
+<li>numeric columns for overlap, sizes, p-value, adjusted p-value, and significance flags;</li>
+<li>optional overlap-gene payloads in a separate table or sidecar file.</li>
+</ul>
+<p>Parquet is a good artifact format for immutable eval output and batch scans. DuckDB is a good working format for interactive diff queries, threshold-crossing queries, joins against ontology metadata, and summaries across many releases. Both should sit behind the output boundary rather than leak into the enrichment model.</p>
+<h2 id="benchmark-harness"><a class="header" href="#benchmark-harness">Benchmark Harness</a></h2>
+<p>The repository includes a Criterion benchmark:</p>
+<pre><code class="language-bash">cargo bench
+</code></pre>
+<p>The benchmark is synthetic by design. It measures the core scoring path without network access, identifier mapping, or ontology parsing.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="storage-backends"><a class="header" href="#storage-backends">Storage Backends</a></h1>
+<p>The result backend should optimize for fast writes, compact artifacts, and easy
+diff queries over many runs. TSV should remain available for small, inspectable
+single analyses, but it should not be the mass-eval format.</p>
+<h2 id="recommendation"><a class="header" href="#recommendation">Recommendation</a></h2>
+<p>Use Parquet as the first durable mass-eval output format. Use DuckDB as the
+default analysis layer over Parquet files rather than making <code>.duckdb</code> the first
+primary output format.</p>
+<p>This gives us:</p>
+<ul>
+<li>one fast, compact artifact format for CI, eval archives, and sharing;</li>
+<li>direct SQL introspection through DuckDB with no import step;</li>
+<li>simpler Rust output code using Arrow record batches and the native Parquet
+writer;</li>
+<li>a clean path to add a DuckDB sink later if repeated interactive sessions need
+a materialized database.</li>
+</ul>
+<p>Supporting both as eventual output options is reasonable, but implementing both
+as first-class write paths immediately is likely overkill. The first target
+should be:</p>
+<pre><code class="language-text">genesets-rs ... --output-format parquet --output results.parquet
+duckdb -c "SELECT * FROM 'results.parquet' WHERE p_adjust_bonferroni &lt;= 0.05"
+</code></pre>
+<p>Diff outputs use the same approach:</p>
+<pre><code class="language-text">genesets-rs compare --left old.parquet --right new.parquet \
+  --output-format parquet --output old-vs-new.diff.parquet
+duckdb -c "SELECT class, count(*) FROM 'old-vs-new.diff.parquet' GROUP BY class"
+</code></pre>
+<h2 id="comparative-notes"><a class="header" href="#comparative-notes">Comparative Notes</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Criterion</th><th>Parquet primary</th><th>DuckDB primary</th></tr>
+</thead>
+<tbody>
+<tr><td>Rust write path</td><td>Direct Arrow <code>RecordBatch</code> to Parquet writer</td><td><code>duckdb-rs</code> connection/appender or Arrow append</td></tr>
+<tr><td>Artifact shape</td><td>Immutable columnar file or partitioned dataset</td><td>Embedded analytical database file</td></tr>
+<tr><td>Queryability</td><td>Query directly with DuckDB, Polars, Arrow, Spark, Python</td><td>Query directly with DuckDB</td></tr>
+<tr><td>File size</td><td>Usually smallest, especially with zstd</td><td>Slightly larger because it stores database/catalog structure</td></tr>
+<tr><td>Append workflow</td><td>Prefer partitioned files, not in-place append</td><td>Natural append into tables</td></tr>
+<tr><td>Reproducibility</td><td>Strong fit for immutable eval artifacts</td><td>Good, but easier to mutate accidentally</td></tr>
+<tr><td>Distribution</td><td>Simple files/directories</td><td>One DB file, but DuckDB-version coupling matters more</td></tr>
+<tr><td>Best use</td><td>Batch eval outputs and archived comparisons</td><td>Interactive workspaces and repeatedly queried derived tables</td></tr>
+</tbody>
+</table>
+</div>
+<p>DuckDB can read Parquet directly and can push projections and filters into the
+Parquet scan. That means we do not need to choose between Parquet artifacts and
+DuckDB introspection.</p>
+<h2 id="local-smoke-test"><a class="header" href="#local-smoke-test">Local Smoke Test</a></h2>
+<p>Using the 200 MSigDB GSE-style query fixture against current GOA human, the
+unfiltered TSV had 778,450 result rows.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Artifact</th><th style="text-align: right">Size</th></tr>
+</thead>
+<tbody>
+<tr><td>TSV</td><td style="text-align: right">132 MB</td></tr>
+<tr><td>DuckDB table database</td><td style="text-align: right">21 MB</td></tr>
+<tr><td>Parquet, DuckDB snappy export</td><td style="text-align: right">18 MB</td></tr>
+<tr><td>Parquet, DuckDB zstd level 1 export</td><td style="text-align: right">11 MB</td></tr>
+<tr><td>Parquet, <code>genesets-rs</code> snappy output</td><td style="text-align: right">11 MB</td></tr>
+</tbody>
+</table>
+</div>
+<p>DuckDB query timings, including process startup, were effectively tied on this
+fixture:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Query</th><th style="text-align: right">DuckDB table</th><th style="text-align: right">zstd Parquet read by DuckDB</th></tr>
+</thead>
+<tbody>
+<tr><td>count significant rows</td><td style="text-align: right">0.03s</td><td style="text-align: right">0.03s</td></tr>
+<tr><td>group significant rows by query</td><td style="text-align: right">0.04s</td><td style="text-align: right">0.03s</td></tr>
+</tbody>
+</table>
+</div>
+<p>These numbers are too small to settle large-scale behavior, but they are enough
+to reject the idea that Parquet would cost us DuckDB-style introspection.</p>
+<p>The first Rust Parquet backend is optimized for compatibility and write speed
+with Snappy compression. On the same fixture, end-to-end unfiltered output was
+about 3.7s for Parquet versus about 3.5s for TSV, while reducing output size
+from 132 MB to 11 MB. The synthetic writer benchmark is more favorable to
+Parquet: about 1.45 ms for Parquet versus about 3.7 ms for TSV on the current
+150 x 750 fixture.</p>
+<h2 id="implementation-direction"><a class="header" href="#implementation-direction">Implementation Direction</a></h2>
+<p>The output boundary should produce numeric, batched result records:</p>
+<ul>
+<li><code>run_id</code>, <code>query_index</code>, <code>target_index</code>;</li>
+<li><code>overlap</code>, <code>query_size</code>, <code>target_size</code>, <code>background_size</code>;</li>
+<li><code>p_value</code>, <code>p_adjust</code>, and boolean significance flags;</li>
+<li>optional string dictionaries or dimension tables for query and target labels;</li>
+<li>optional overlap genes in a separate sidecar table/file.</li>
+</ul>
+<p>The Parquet backend writes Snappy-compressed row groups from these batches. A
+later DuckDB backend can consume the same batches through an appender or
+materialize a DuckDB database from the Parquet outputs.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="evals"><a class="header" href="#evals">Evals</a></h1>
+<p>The eval framework should answer two questions:</p>
+<ol>
+<li>Are results statistically consistent with trusted implementations on frozen inputs?</li>
+<li>Is the engine faster on workloads we care about?</li>
+</ol>
+<h2 id="layers"><a class="header" href="#layers">Layers</a></h2>
+<p>Unit tests validate local pieces: bitsets, Fisher exact p-values, loaders, and annotation propagation.</p>
+<p>CLI integration tests validate the executable surface and TSV output shape.</p>
+<p>Eval datasets validate end-to-end workflows. These should be explicit, versioned, and reproducible.</p>
+<p>Benchmarks validate speed on synthetic and real workloads.</p>
+<h2 id="expression20-starter-eval"><a class="header" href="#expression20-starter-eval">Expression20 Starter Eval</a></h2>
+<p>The preferred real-data smoke panel is <code>evals/expression20</code>. It names 20 human
+MSigDB/MyGeneset.info expression-derived signatures selected across:</p>
+<ul>
+<li>in vivo or primary immune cell-type contrasts;</li>
+<li>patient or clinical disease-state contrasts;</li>
+<li>vaccination and infection-response contrasts;</li>
+<li>cytokine-stimulated primary cells;</li>
+<li>drug response and resistance signatures;</li>
+<li>cell-line stimulation/differentiation signatures.</li>
+</ul>
+<p>Fetch the current GMT snapshot:</p>
+<pre><code class="language-bash">python3 scripts/fetch_mygeneset_eval.py \
+  --manifest evals/expression20/sets.tsv \
+  --out-dir evals/expression20/generated
+</code></pre>
+<p>Run expression-vs-expression overlap enrichment:</p>
+<pre><code class="language-bash">genesets-rs run evals/expression20/config.yaml
+</code></pre>
+<p>Run Expression20 against official GO:</p>
+<pre><code class="language-bash">python3 scripts/run_disease20_go_eval.py \
+  --manifest evals/expression20/sets.tsv \
+  --out-dir evals/expression20_vs_go/generated \
+  --eval-name expression20_vs_go \
+  --description "Twenty expression-derived human MSigDB/MyGeneset.info signatures enriched against official GOA human GO annotations."
+</code></pre>
+<h2 id="disease20-legacy-eval"><a class="header" href="#disease20-legacy-eval">Disease20 Legacy Eval</a></h2>
+<p>Disease20 is retained as a legacy/artificial knowledge-curation contrast. It
+names 20 human Disease Ontology gene sets from MyGeneset.info. The manifest is
+intentionally small and hand-reviewed, but it is not representative of
+differential-expression query workflows.</p>
+<p>Fetch the current GMT snapshot:</p>
+<pre><code class="language-bash">python3 scripts/fetch_mygeneset_eval.py \
+  --manifest evals/disease20/sets.tsv \
+  --out-dir evals/disease20/generated
+</code></pre>
+<p>This writes:</p>
+<ul>
+<li><code>queries.gmt</code>: disease gene sets in GMT format;</li>
+<li><code>metadata.json</code>: source URL, fetch time, gene counts, and skipped IDs.</li>
+</ul>
+<p>Generated files are not required for <code>cargo test</code>. The goal is to keep normal CI deterministic while making real-data evals one command away.</p>
+<h2 id="disease20-vs-go"><a class="header" href="#disease20-vs-go">Disease20 vs GO</a></h2>
+<p>The second eval uses the same 20 MyGeneset.info disease query sets against official GOA human GO annotations.</p>
+<p>Run it:</p>
+<pre><code class="language-bash">python3 scripts/run_disease20_go_eval.py
+</code></pre>
+<p>This downloads official GO inputs, prepares ontology-neutral tables, runs four annotation-filter variants, and writes companion metadata:</p>
+<ul>
+<li><code>all</code>: all evidence codes, <code>NOT</code> filtered, <code>contributes_to</code> retained;</li>
+<li><code>no_contributes_to</code>: all evidence codes, <code>NOT</code> and <code>contributes_to</code> filtered;</li>
+<li><code>iba</code>: IBA only, <code>NOT</code> filtered;</li>
+<li><code>iba_iea</code>: IBA or IEA only, <code>NOT</code> filtered.</li>
+</ul>
+<p>The prep stage writes <code>metadata.yaml</code> with source URLs, file digests, GAF header details, closure relation policy, and annotation filter counts. The run stage writes <code>run_metadata.yaml</code> with command timings and result summaries.</p>
+<p>These filters are intentionally outside the Rust core engine. The core consumes prepared <code>gene_id, term_id</code> tables; eval helpers decide how to derive those tables from GAF.</p>
+<p>By default, generated eval configs include <code>max_p_adjust: 0.05</code>, so result TSVs contain Bonferroni-significant rows. The companion metadata records this cutoff and the per-variant CLI runtime.</p>
+<h2 id="go-timepoints"><a class="header" href="#go-timepoints">GO Timepoints</a></h2>
+<p>The <code>go_timepoints</code> eval runs Disease20 against official GO archive releases:</p>
+<ul>
+<li><code>2026-03-25</code>;</li>
+<li><code>2021-05-01</code>;</li>
+<li><code>2016-05-01</code>.</li>
+</ul>
+<p>Run it:</p>
+<pre><code class="language-bash">python3 scripts/run_go_timepoints_eval.py
+</code></pre>
+<p>The summary metadata contains per-timepoint ontology sizes, GAF metadata, per-variant row counts, run timing, and pairwise diffs over <code>(query_id, target_id)</code> result keys.</p>
+<h2 id="expression-like-query-sets"><a class="header" href="#expression-like-query-sets">Expression-Like Query Sets</a></h2>
+<p>Disease Ontology gene sets are convenient but artificial. For scale and realism, use MyGeneset/MSigDB signatures:</p>
+<pre><code class="language-bash">genesets-workflows fetch-mygeneset \
+  --query 'GSE*' \
+  --source-filter msigdb \
+  --limit 2000 \
+  --out-dir evals/expression_like/generated/msigdb_gse_2k
+</code></pre>
+<p>MSigDB GSE, <code>*_UP</code>, <code>*_DN</code>, and <code>vs</code> signatures are closer to differential-expression outputs than disease ontology gene sets. These should become the main large-query workloads for timing and GO-version diffing.</p>
+<h2 id="expression500-vs-reactome-flat"><a class="header" href="#expression500-vs-reactome-flat">Expression500 vs Reactome Flat</a></h2>
+<p>Reactome can be tested without any new Rust code because the core engine
+already supports flat GMT target libraries. The current flat Reactome eval uses
+the same 500 expression-derived query sets as the GO impact report and enriches
+them against the official Reactome pathway GMT.</p>
+<p>Run it:</p>
+<pre><code class="language-bash">genesets-workflows reactome-flat
+</code></pre>
+<p>This performs two steps:</p>
+<ol>
+<li><code>genesets-workflows prepare-reactome-flat</code> downloads
+<code>ReactomePathways.gmt.zip</code> from the
+official Reactome download directory and normalizes it from <code>name, id, genes...</code> to <code>id, name, genes...</code>.</li>
+<li><code>genesets-rs run evals/reactome_flat/config.yaml</code> enriches the expression
+query sets against that flat pathway library.</li>
+</ol>
+<p>The local May 2026 run prepared 2,557 Reactome pathways over 11,963 gene
+symbols and produced 509 Bonferroni-significant rows across 85 query sets. The
+enrichment step took about 0.22 seconds on this laptop.</p>
+<p>This is intentionally the flat baseline. A hierarchy-aware Reactome workflow
+should prepare the standard ontology-style trio:</p>
+<ul>
+<li><code>terms.tsv</code> from <code>ReactomePathways.txt</code>;</li>
+<li><code>closure.tsv</code> from <code>ReactomePathwaysRelation.txt</code>;</li>
+<li><code>gene_terms.tsv</code> from a lowest-level mapping such as <code>NCBI2Reactome.txt</code>,
+with a gene ID strategy matched to the query sets.</li>
+</ul>
+<h2 id="planned-comparison-evals"><a class="header" href="#planned-comparison-evals">Planned Comparison Evals</a></h2>
+<p>The most useful comparison suite will freeze:</p>
+<ul>
+<li>ontology release;</li>
+<li>association release;</li>
+<li>closure relation policy;</li>
+<li>gene universe;</li>
+<li>query gene sets;</li>
+<li>exact correction method;</li>
+<li>expected significant terms from each comparator.</li>
+</ul>
+<p>Comparator adapters should run each external tool in containers where possible and emit normalized TSV for comparison.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="post-processing"><a class="header" href="#post-processing">Post-Processing</a></h1>
+<p>GO enrichment routinely returns many related terms. The scoring engine should stay simple and complete; reduction should be a composable post-processing layer that consumes enrichment TSV plus closure/annotation metadata.</p>
+<h2 id="standard-families"><a class="header" href="#standard-families">Standard Families</a></h2>
+<p>Significance cutoff is the first reduction step. PANTHER-style APIs expose a cutoff parameter; when FDR correction is used, the cutoff is applied to FDR, otherwise to p-value. Our eval configs mirror this with <code>max_p_adjust: 0.05</code>.</p>
+<p>GO slims are a curated reduction strategy. Instead of pruning enriched terms after scoring, project annotations or results onto a smaller subset of broad terms. This is useful for overviews, less useful when the user wants precise mechanistic terms.</p>
+<p>Slim-descendant filters are a related report-ranking strategy. Instead of
+projecting results onto slim terms, keep candidate terms that are themselves in
+a slim or descend from a slim term, often with a target-size guard. This is
+useful for “largest changed term” summaries where root-like terms such as broad
+molecular function categories would otherwise dominate.</p>
+<p>Antislim filters invert that idea: exclude a slim region and its descendants
+from a report. This is useful when a known broad ontology branch is technically
+correct but distracts from the biological question being reviewed.</p>
+<p>Ancestor-descendant pruning uses the closure graph. A simple policy is: for each query, if a term has a significant descendant with equal or better adjusted p-value, hide the ancestor. This is easy to explain, but it can over-prune when a broad parent captures a coherent process and many children are sparse.</p>
+<p>Gene-overlap pruning compares term gene sets. If two enriched terms share nearly the same query-overlap genes, keep one representative. Representative selection can rank by adjusted p-value, specificity, overlap size, or information content.</p>
+<p>GO Trimming-style approaches remove redundant parent terms based on graph paths and result statistics after enrichment has already been run.</p>
+<p>REVIGO-style approaches cluster terms by semantic similarity and keep representatives. This is more flexible than strict ancestor-descendant pruning because related terms need not sit on the same direct path.</p>
+<p>Topology-aware scoring methods such as topGO <code>elim</code>, <code>weight</code>, <code>weight01</code>, and <code>parentchild</code>, or Ontologizer-style parent-child/model-set methods, are not just post-processing. They change the p-values by accounting for the GO graph during scoring. We should support them later as alternate statistical models, not as TSV filters.</p>
+<h2 id="proposed-composable-reducers"><a class="header" href="#proposed-composable-reducers">Proposed Composable Reducers</a></h2>
+<p>Reducers should take a full result table and emit:</p>
+<ul>
+<li>a reduced table;</li>
+<li>a mapping from hidden term to representative term;</li>
+<li>a reason code;</li>
+<li>parameters and input file digests in metadata.</li>
+</ul>
+<p>Candidate reducer modes:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Mode</th><th>Keep</th><th>Hide</th></tr>
+</thead>
+<tbody>
+<tr><td><code>ancestor-dominated</code></td><td>more specific descendant</td><td>ancestor when descendant has p-adjust &lt;= ancestor p-adjust times tolerance</td></tr>
+<tr><td><code>ancestor-dominated-strict</code></td><td>more significant term</td><td>ancestor only when descendant has equal or better p-adjust</td></tr>
+<tr><td><code>overlap-jaccard</code></td><td>best ranked representative</td><td>terms whose overlap gene Jaccard exceeds threshold</td></tr>
+<tr><td><code>semantic-cluster</code></td><td>cluster representative</td><td>terms in same semantic-similarity cluster</td></tr>
+<tr><td><code>go-slim-project</code></td><td>slim term</td><td>non-slim terms after projection</td></tr>
+<tr><td><code>slim-descendant-include</code></td><td>terms in or below selected slim terms</td><td>terms outside the selected slim scope</td></tr>
+<tr><td><code>slim-descendant-exclude</code></td><td>terms outside selected slim terms and descendants</td><td>terms in or below selected slim terms</td></tr>
+</tbody>
+</table>
+</div>
+<p>The tolerance is important. Sometimes a general parent has a slightly better p-value because it adds many relevant genes. A practical rule is not binary dominance, but dominance with a margin:</p>
+<pre><code class="language-text">hide ancestor A if descendant D is significant and
+  p_adjust(D) &lt;= p_adjust(A) * tolerance
+</code></pre>
+<p>With <code>tolerance = 1.0</code>, the descendant must be at least as significant. With <code>tolerance = 2.0</code>, a slightly worse but much more specific descendant can still represent the signal.</p>
+<h2 id="panther-behavior"><a class="header" href="#panther-behavior">PANTHER Behavior</a></h2>
+<p>PANTHER’s public service exposes Fisher or binomial tests, FDR/Bonferroni/none correction, and a cutoff parameter. Public documentation emphasizes cutoff-filtered result tables and GO-slim datasets. I did not find evidence that PANTHER applies a dynamic ancestor-descendant redundancy-pruning pass to complete GO over-representation outputs. For our purposes, treat PANTHER as a reference for cutoff filtering and GO-slim-style summaries, not as a specific redundancy-pruning algorithm.</p>
+<h2 id="recommended-default"><a class="header" href="#recommended-default">Recommended Default</a></h2>
+<p>For eval tables, keep the unpruned significant TSV as the canonical result:</p>
+<pre><code class="language-yaml">max_p_adjust: 0.05
+post_processing: none
+</code></pre>
+<p>Then create optional reduced views:</p>
+<pre><code class="language-yaml">post_processing:
+  method: ancestor-dominated
+  p_adjust_tolerance: 2.0
+  prefer: specificity
+</code></pre>
+<p>This avoids losing terms before diffing or debugging.</p>
+<h2 id="sources"><a class="header" href="#sources">Sources</a></h2>
+<ul>
+<li>PANTHER API parameters via rbioapi docs: <a href="https://rbioapi.moosa-r.com/reference/rba_panther_enrich.html">https://rbioapi.moosa-r.com/reference/rba_panther_enrich.html</a></li>
+<li>GO subset guide: <a href="https://geneontology.org/docs/go-subset-guide/">https://geneontology.org/docs/go-subset-guide/</a></li>
+<li>GO Trimming paper: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3160396/">https://pmc.ncbi.nlm.nih.gov/articles/PMC3160396/</a></li>
+<li>REVIGO paper: <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0021800">https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0021800</a></li>
+<li>topGO manual: <a href="https://bioconductor.org/packages/devel/bioc/vignettes/topGO/inst/doc/topGO_manual.html">https://bioconductor.org/packages/devel/bioc/vignettes/topGO/inst/doc/topGO_manual.html</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="diffing"><a class="header" href="#diffing">Diffing</a></h1>
+<p>Diffing should operate on canonical, unpostprocessed or minimally filtered result tables. Post-processing can make a term disappear for reasons unrelated to enrichment change, which is useful for presentation but bad for version comparison.</p>
+<h2 id="use-cases"><a class="header" href="#use-cases">Use Cases</a></h2>
+<p>Common comparisons:</p>
+<ul>
+<li>GO release A vs GO release B;</li>
+<li><code>contributes_to</code> retained vs filtered;</li>
+<li>IBA-only vs all evidence;</li>
+<li>IBA plus IEA vs all evidence;</li>
+<li>alternative backgrounds;</li>
+<li>alternative correction methods.</li>
+</ul>
+<h2 id="stable-join-keys"><a class="header" href="#stable-join-keys">Stable Join Keys</a></h2>
+<p>The default diff key should be:</p>
+<pre><code class="language-text">query_id, target_id
+</code></pre>
+<p>For ontology version comparisons, classify missing terms explicitly:</p>
+<ul>
+<li><code>present_both</code>;</li>
+<li><code>missing_left</code>;</li>
+<li><code>missing_right</code>;</li>
+<li><code>obsolete_or_removed</code>;</li>
+<li><code>merged_or_replaced</code>, when ontology metadata can prove it;</li>
+<li><code>filtered_by_p_cutoff</code>, when a term exists in the full run but not in the cutoff TSV.</li>
+</ul>
+<p>This means serious diffs need either full result tables or at least a top-k/threshold run that is generous enough not to hide important deltas.</p>
+<h2 id="delta-metrics"><a class="header" href="#delta-metrics">Delta Metrics</a></h2>
+<p>Useful columns:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Column</th><th>Meaning</th></tr>
+</thead>
+<tbody>
+<tr><td><code>delta_log10_p_adjust</code></td><td><code>-log10(p_adjust_right) - -log10(p_adjust_left)</code></td></tr>
+<tr><td><code>delta_log10_p_value</code></td><td>raw p-value version of the above</td></tr>
+<tr><td><code>delta_overlap</code></td><td>overlap count difference</td></tr>
+<tr><td><code>delta_target_size</code></td><td>target annotation size difference</td></tr>
+<tr><td><code>delta_query_size</code></td><td>query size difference, usually should be zero</td></tr>
+<tr><td><code>left_rank</code>, <code>right_rank</code></td><td>within-query rank by adjusted p-value</td></tr>
+<tr><td><code>delta_rank</code></td><td>rank movement</td></tr>
+</tbody>
+</table>
+</div>
+<p>Rank deltas are often more interpretable than tiny p-value deltas at extreme significance.</p>
+<p>For thresholded result TSVs, the primary endpoint should be significance crossing:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Class</th><th>Meaning</th></tr>
+</thead>
+<tbody>
+<tr><td><code>shared_significant</code></td><td>pair is significant in both versions</td></tr>
+<tr><td><code>lost_significant</code></td><td>pair is significant on the left but not on the right</td></tr>
+<tr><td><code>gained_significant</code></td><td>pair is significant on the right but not on the left</td></tr>
+</tbody>
+</table>
+</div>
+<p>A term moving from <code>1e-10</code> to <code>1e-20</code> is usually less important than a term crossing the cutoff. Large log-p deltas are still useful as a secondary diagnostic, especially when target size or background size changed dramatically.</p>
+<h2 id="ordering"><a class="header" href="#ordering">Ordering</a></h2>
+<p>Recommended pipeline:</p>
+<ol>
+<li>Prepare each ontology/annotation variant.</li>
+<li>Run enrichment.</li>
+<li>Diff canonical results.</li>
+<li>Optionally post-process each side for display.</li>
+<li>Optionally diff reduced display tables, but label that as a presentation diff.</li>
+</ol>
+<p>This ordering keeps version comparisons honest. A term that disappears due to redundancy pruning should not be confused with a term that disappeared because the ontology or annotations changed.</p>
+<h2 id="cli-workflow"><a class="header" href="#cli-workflow">CLI Workflow</a></h2>
+<p><code>genesets-rs compare</code> implements the coarse threshold-crossing diff. It reads
+TSV or Parquet result tables, joins on <code>(query_id, target_id)</code>, and emits rows
+where either side is significant:</p>
+<pre><code class="language-bash">genesets-rs compare \
+  --left go-2021.parquet \
+  --right go-2026.parquet \
+  --p-adjust-cutoff 0.05 \
+  --output-format parquet \
+  --output go-2021-vs-2026.diff.parquet \
+  --metadata-output go-2021-vs-2026.diff.yaml
+</code></pre>
+<p>Missing rows are treated as not significant. This makes the command usable with
+both full matrices and result tables that were already filtered by
+<code>--max-p-adjust</code>. If the inputs are filtered, <code>left_present=false</code> or
+<code>right_present=false</code> means “not present in this result table”; it does not by
+itself prove that the term disappeared from the ontology.</p>
+<p>For a strict crossing-only report:</p>
+<pre><code class="language-bash">genesets-rs compare \
+  --left go-2021.parquet \
+  --right go-2026.parquet \
+  --crossings-only \
+  --output-format parquet \
+  --output crossings.parquet
+</code></pre>
+<h2 id="metadata"><a class="header" href="#metadata">Metadata</a></h2>
+<p>Every diff output should include companion metadata:</p>
+<ul>
+<li>left/right result file paths and digests;</li>
+<li>left/right ontology and annotation metadata paths;</li>
+<li>cutoff policy;</li>
+<li>whether missing rows were looked up in a full table;</li>
+<li>diff metrics and ranking policy;</li>
+<li>post-processing status.</li>
+</ul>
+<p>The current <code>--metadata-output</code> YAML includes input paths, inferred formats,
+cutoff policy, input row counts, output row count, and class counts. It does not
+yet include file digests or ontology metadata joins.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="ontology-prep"><a class="header" href="#ontology-prep">Ontology Prep</a></h1>
+<p>The core engine assumes ontology prep has already happened. That keeps enrichment fast and makes the closure policy explicit.</p>
+<h2 id="recommended-first-path-oak"><a class="header" href="#recommended-first-path-oak">Recommended First Path: OAK</a></h2>
+<p>OAK, the Ontology Access Kit, is a strong first prep layer because it already handles many biomedical ontology concerns:</p>
+<ul>
+<li>local files and ontology selectors;</li>
+<li>CURIEs, labels, aliases, mappings, and obsolete terms;</li>
+<li>command-line and Python access;</li>
+<li>graph traversal over configured predicates;</li>
+<li>cached downloads for common ontology backends.</li>
+</ul>
+<p>OAK’s CLI follows the pattern:</p>
+<pre><code class="language-bash">runoak --input HANDLE COMMAND [ARGS]
+</code></pre>
+<p>For biological ontologies, OAK supports predicate shortcuts for <code>is_a</code> and <code>part_of</code>:</p>
+<pre><code class="language-bash">runoak -i sqlite:obo:go ancestors GO:0006915 -p i,p
+</code></pre>
+<p>For labels, <code>fill-table</code> can populate a table of IDs with labels:</p>
+<pre><code class="language-bash">runoak -i sqlite:obo:go fill-table terms.tsv
+</code></pre>
+<p>For this project, the prep target is two TSV files:</p>
+<pre><code class="language-text">terms.tsv:   term_id, name
+closure.tsv: child, ancestor
+</code></pre>
+<p>The closure should be reflexive and should document which predicates were included.</p>
+<h2 id="when-horned-owl-makes-sense"><a class="header" href="#when-horned-owl-makes-sense">When Horned-OWL Makes Sense</a></h2>
+<p>Horned-OWL is a Rust OWL library focused on performance and large ontologies. It can parse and manipulate OWL ontologies directly in Rust, and its published docs describe 20x to 40x speedups versus OWL API-based workflows for some large-ontology validation tasks.</p>
+<p>It is attractive if we want a fully native prep path, especially for:</p>
+<ul>
+<li>parsing OWL/XML, RDF/XML, Functional Syntax, or Manchester Syntax;</li>
+<li>extracting <code>SubClassOf</code> and selected object-property restrictions;</li>
+<li>building relation closure without Python;</li>
+<li>shipping a single Rust binary for prep plus enrichment.</li>
+</ul>
+<p>The tradeoff is scope. Correct OWL reasoning is more than graph walking. For MVP prep, OAK or precomputed relation-graph exports are lower risk. A future <code>genesets-prepare</code> crate can use Horned-OWL for the fast graph-walk case and clearly label it as such.</p>
+<h2 id="closure-policy"><a class="header" href="#closure-policy">Closure Policy</a></h2>
+<p>Every prepared closure should record:</p>
+<ul>
+<li>ontology source and version;</li>
+<li>relation policy, such as <code>is_a</code> only or <code>is_a + part_of</code>;</li>
+<li>whether inferred axioms were included;</li>
+<li>whether obsolete terms were dropped, migrated, or retained;</li>
+<li>whether the closure is reflexive.</li>
+</ul>
+<p>Those details affect enrichment results and must be part of eval metadata.</p>
+<h2 id="gaf-filtering-helpers"><a class="header" href="#gaf-filtering-helpers">GAF Filtering Helpers</a></h2>
+<p>GAF filtering belongs in prep, not in the enrichment core. For GO evals, the helper script <code>scripts/prepare_go_eval.py</code> implements useful comparison variants:</p>
+<ul>
+<li>always remove <code>NOT</code> annotations;</li>
+<li>optionally remove <code>contributes_to</code>;</li>
+<li>restrict to IBA;</li>
+<li>restrict to IBA plus IEA.</li>
+</ul>
+<p>The script reads GAF qualifier and evidence-code columns directly, writes ordinary <code>gene_id, term_id</code> annotation tables, and records the exact filter policy in YAML metadata.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="competitive-landscape"><a class="header" href="#competitive-landscape">Competitive Landscape</a></h1>
+<p>The goal is not to be the broadest enrichment product. It is to be a very fast, reproducible core engine with an eval framework.</p>
+<h2 id="existing-tools-and-what-they-optimize"><a class="header" href="#existing-tools-and-what-they-optimize">Existing Tools And What They Optimize</a></h2>
+<p>GOATOOLS is a Python library and CLI for GO analysis. It parses OBO, GAF, GPAD, NCBI gene2go, and related formats; it propagates counts to parent terms by default; and it uses Fisher exact tests with many correction options.</p>
+<p>g:Profiler and <code>gprofiler2</code> provide a maintained web/API/R workflow across GO, pathways, disease annotations, and identifier namespaces. They use hypergeometric enrichment and offer g:SCS, Bonferroni, and FDR correction choices.</p>
+<p>clusterProfiler is the dominant R/Bioconductor ecosystem tool for ORA and ranked-list workflows. It has GO-specific helpers and a universal <code>enricher</code> interface using user-provided <code>TERM2GENE</code> mappings.</p>
+<p>topGO is important because it exposes topology-aware GO methods such as <code>classic</code>, <code>elim</code>, <code>weight</code>, <code>weight01</code>, <code>lea</code>, and <code>parentchild</code> with multiple statistics.</p>
+<p>Ontologizer is important for parent-child and model-set ideas. Its papers frame the issue that GO terms are dependent through inheritance, so standard term-for-term Fisher tests can be biologically redundant.</p>
+<p>Enrichr is a popular web/API ecosystem with many gene set libraries, fast interactive workflows, and p-value, z-score, combined-score, and adjusted p-value outputs.</p>
+<p>PANTHER powers the GO Consortium enrichment service and is a strong reference point for user expectations around GO term enrichment and background selection.</p>
+<p>MyGeneset.info is not a direct competitor. It is a useful public gene-set source and API for eval inputs because it exposes GO, MSigDB, Disease Ontology/OMIM, WikiPathways, Reactome, KEGG, and species filters.</p>
+<h2 id="our-wedge"><a class="header" href="#our-wedge">Our Wedge</a></h2>
+<p>The core differentiators should be:</p>
+<ul>
+<li>ontology-neutral input tables rather than GO-specific parsing in the hot path;</li>
+<li>fast dense bitset scoring for repeated jobs;</li>
+<li>first-class N x N term/set matrix mode;</li>
+<li>explicit background semantics;</li>
+<li>reproducible prep metadata;</li>
+<li>benchmark and correctness evals as part of the repo.</li>
+</ul>
+<h2 id="what-not-to-compete-on-yet"><a class="header" href="#what-not-to-compete-on-yet">What Not To Compete On Yet</a></h2>
+<p>We should not try to match all visualization, identifier conversion, web UI, or database coverage of mature ecosystems in the core crate. Those are wrapper-layer concerns.</p>
+<p>The MVP should instead make it easy to prove:</p>
+<ul>
+<li>this input produced this table;</li>
+<li>this table used this closure policy;</li>
+<li>these p-values match the reference implementation;</li>
+<li>this workload scored faster than comparable tools.</li>
+</ul>
+<h2 id="research-sources"><a class="header" href="#research-sources">Research Sources</a></h2>
+<ul>
+<li>GOATOOLS project page: <a href="https://pypi.org/project/goatools/">https://pypi.org/project/goatools/</a></li>
+<li>gprofiler2 vignette: <a href="https://rdrr.io/cran/gprofiler2/f/inst/doc/gprofiler2.Rmd">https://rdrr.io/cran/gprofiler2/f/inst/doc/gprofiler2.Rmd</a></li>
+<li>topGO manual: <a href="https://bioconductor.org/packages/devel/bioc/vignettes/topGO/inst/doc/topGO_manual.html">https://bioconductor.org/packages/devel/bioc/vignettes/topGO/inst/doc/topGO_manual.html</a></li>
+<li>Ontologizer paper: <a href="https://academic.oup.com/bioinformatics/article/24/14/1650/182451">https://academic.oup.com/bioinformatics/article/24/14/1650/182451</a></li>
+<li>Enrichr paper: <a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-14-128">https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-14-128</a></li>
+<li>GO Consortium enrichment page: <a href="https://geneontology.org/docs/go-enrichment-analysis/">https://geneontology.org/docs/go-enrichment-analysis/</a></li>
+<li>MyGeneset.info docs: <a href="https://docs.mygeneset.info/">https://docs.mygeneset.info/</a></li>
+<li>OAK CLI docs: <a href="https://incatools.github.io/ontology-access-kit/cli.html">https://incatools.github.io/ontology-access-kit/cli.html</a></li>
+<li>Horned-OWL docs: <a href="https://docs.rs/horned-owl/latest/horned_owl/">https://docs.rs/horned-owl/latest/horned_owl/</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="notebook-workflows"><a class="header" href="#notebook-workflows">Notebook Workflows</a></h1>
+<p>The CLI should remain the primary interface, but notebooks are useful for eval review and result exploration.</p>
+<h2 id="recommended-shape"><a class="header" href="#recommended-shape">Recommended Shape</a></h2>
+<p>Use notebooks as consumers of CLI output and report artifacts, not as the
+primary source of truth. Scripts and Rust code remain responsible for
+reproducible eval generation.</p>
+<p>A typical workflow:</p>
+<pre><code class="language-bash">genesets-rs run evals/expression20/config.yaml
+</code></pre>
+<p>Then inspect <code>evals/expression20/generated/results.tsv</code> in a notebook with
+pandas, Polars, DuckDB, or plotting libraries.</p>
+<p>For larger temporal reports, prefer a parameterized report config:</p>
+<pre><code class="language-bash">genesets-workflows go-impact evals/go_impact_5y_expression500.yaml
+</code></pre>
+<p>The notebook should show the report parameters and generated artifacts, then
+query the Parquet outputs.</p>
+<p>The committed demonstrator notebooks live in <code>notebooks/</code> and are linked from
+the <a href="#tutorials">Tutorials</a> chapter:</p>
+<ul>
+<li><code>01_cli_quickstart.ipynb</code>;</li>
+<li><code>02_expression20_eval.ipynb</code>;</li>
+<li><code>03_go_diff_with_duckdb.ipynb</code>.</li>
+</ul>
+<h2 id="python-notebook"><a class="header" href="#python-notebook">Python Notebook</a></h2>
+<p>Python notebooks are the most portable option for collaborators:</p>
+<ul>
+<li>read TSV outputs with pandas or Polars;</li>
+<li>plot p-value distributions;</li>
+<li>compare ranks across ontology releases;</li>
+<li>join results to source metadata.</li>
+</ul>
+<p>The demonstrator notebooks should use <code>%%bash</code> for CLI commands and Python for
+analysis only. They should not expose Rust APIs.</p>
+<h2 id="repository-policy"><a class="header" href="#repository-policy">Repository Policy</a></h2>
+<p>Commit small, deterministic notebooks only when they add durable explanation.
+Keep outputs cleared or tiny, and write generated data under
+<code>notebooks/generated/</code>, ignored eval <code>generated/</code> directories, or external
+artifacts.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="roadmap"><a class="header" href="#roadmap">Roadmap</a></h1>
+<h2 id="short-term"><a class="header" href="#short-term">Short Term</a></h2>
+<ul>
+<li>Add Benjamini-Hochberg FDR.</li>
+<li>Add top-k and p-value-threshold output modes.</li>
+<li>Add serialized prepared indexes.</li>
+<li>Add eval adapters for GOATOOLS and clusterProfiler.</li>
+<li>Add file digests and ontology metadata joins to <code>compare</code> metadata.</li>
+<li>Keep eval runners on Parquet by default.</li>
+<li>Move remaining ad hoc eval/source scripts into <code>genesets-workflows</code>.</li>
+<li>Add workflow config schema validation and <code>genesets-rs</code> version checks.</li>
+</ul>
+<h2 id="medium-term"><a class="header" href="#medium-term">Medium Term</a></h2>
+<ul>
+<li>Add OAK-based ontology prep examples.</li>
+<li>Add native Horned-OWL graph-walk prep as an optional crate or feature.</li>
+<li>Add ranked-list input schema.</li>
+<li>Add ranked-list enrichment statistics.</li>
+<li>Add richer benchmark reports for GitHub Pages.</li>
+<li>Add DuckDB notebooks over Parquet result and diff tables.</li>
+<li>Add hierarchy-aware Reactome prep and compare it with the flat baseline.</li>
+</ul>
+<h2 id="longer-term"><a class="header" href="#longer-term">Longer Term</a></h2>
+<ul>
+<li>Add topology-aware model families.</li>
+<li>Add richer version-diff reports for ontology release comparisons.</li>
+<li>Add wrapper layers for species, release metadata, and identifier mapping.</li>
+<li>Add visualization notebooks that consume normalized result TSVs.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+
+    </div>
+    </body>
+</html>
