@@ -31,6 +31,11 @@ reports = [
   "duckdb>=1.0",
   "pandas>=2.0",
 ]
+explorer = [
+  "duckdb>=1.0",
+  "fastapi>=0.115",
+  "uvicorn>=0.30",
+]
 notebooks = [
   "duckdb>=1.0",
   "ipython>=8.0",
@@ -44,6 +49,9 @@ genesets-workflows = "genesets_workflows.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/genesets_workflows"]
+include = [
+  "src/genesets_workflows/explorer/static/**",
+]
 
 [tool.uv]
 package = true

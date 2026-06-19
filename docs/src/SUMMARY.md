@@ -5,6 +5,7 @@
 - [Input Model](input-model.md)
 - [CLI Reference](cli-reference.md)
 - [Workflow Layer](workflow-layer.md)
+- [Web Explorer](explorer.md)
 - [Tutorials](tutorials.md)
   - [CLI Quickstart](tutorials/cli-quickstart.md)
   - [Expression20 vs GO](tutorials/expression20-eval.md)

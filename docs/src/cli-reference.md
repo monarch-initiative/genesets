@@ -137,6 +137,14 @@ genesets-workflows go-impact evals/go_impact_5y_expression500.yaml
 genesets-workflows reactome-flat
 ```
 
+For interactive review of an existing report bundle, use the optional web
+explorer dependencies:
+
+```bash
+uv run --project python/genesets-workflows --extra explorer \
+  genesets-workflows explore notebooks/generated/go_iba_impact_expression5000_diverse
+```
+
 Use `genesets-rs` for normalized single jobs. Use `genesets-workflows` when the
 task needs downloads, evidence filters, release metadata, multiple Rust runs,
-DuckDB summaries, or notebook/report artifacts.
+DuckDB summaries, notebook/report artifacts, or browser-based result triage.
