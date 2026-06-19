@@ -13,6 +13,8 @@ logic:
 - running batch analyses through the Rust CLI;
 - writing Parquet result artifacts and YAML metadata;
 - querying result Parquet with DuckDB;
+- computing global report diagnostics such as GO term coverage and terms that
+  are scorable but never appear as significant enrichment hits;
 - generating report summaries for docs, notebooks, and future web views.
 
 ## Local Use
@@ -74,6 +76,22 @@ The workflow command should usually call Rust once per large batch, not once
 per gene set. If a workflow needs thousands of enrichments, it should express
 that as a batch plan for the Rust CLI.
 
+## Global Diagnostics
+
+The `go-impact` report also writes term-coverage Parquet files. These join the
+prepared GO term table, propagated annotation target sizes, and retained
+enrichment results. Each term is classified as:
+
+- `significant`: appears in at least one retained enrichment row;
+- `scorable_never_significant`: has propagated annotations in the analysis
+  background but never crosses the report threshold for the query collection;
+- `unscorable`: has no propagated annotations in the analysis background.
+
+This answers a different question from threshold-crossing diffs: which parts of
+the ontology are effectively invisible for this query collection and annotation
+variant? The paired coverage file compares those statuses across the two
+snapshots or annotation variants.
+
 ## Current Commands
 
 GO impact report over two prepared GO snapshots:
@@ -104,6 +122,19 @@ genesets-workflows fetch-mygeneset \
   --limit 500 \
   --out-dir evals/expression_like/generated/msigdb_gse_500
 ```
+
+For report-quality eval fixtures, prefer a stratified source plan over the
+first `GSE*` hits:
+
+```bash
+genesets-workflows fetch-mygeneset-stratified \
+  evals/expression_like/msigdb_diverse_5k.yaml
+```
+
+The stratified fetcher still emits ordinary `queries.gmt`, `background.txt`,
+and `metadata.json` files. The difference is that `metadata.json` records the
+quota stratum and search query for each set, which makes later report examples
+auditable.
 
 The old script entry points for these packaged commands remain as
 compatibility wrappers around the package modules. Some older eval helpers are

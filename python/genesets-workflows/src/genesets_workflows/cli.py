@@ -8,6 +8,7 @@ from genesets_workflows import __version__
 from genesets_workflows.reports import go_impact, reactome_flat
 from genesets_workflows.runtime import version_output, which
 from genesets_workflows.sources import mygeneset
+from genesets_workflows.sources import mygeneset_stratified
 from genesets_workflows.sources import reactome_flat as reactome_source
 
 
@@ -41,6 +42,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     subparsers.add_parser(
         "fetch-mygeneset",
         help="Fetch MyGeneSet query results into GMT.",
+        add_help=False,
+    )
+    subparsers.add_parser(
+        "fetch-mygeneset-stratified",
+        help="Fetch a stratified MyGeneSet query collection into GMT.",
         add_help=False,
     )
     parsed, remainder = parser.parse_known_args(argv)
@@ -86,6 +92,7 @@ def dispatch(command: str) -> Command:
         "reactome-flat": reactome_flat.main,
         "prepare-reactome-flat": reactome_source.main,
         "fetch-mygeneset": mygeneset.main,
+        "fetch-mygeneset-stratified": mygeneset_stratified.main,
     }
     return commands[command]
 

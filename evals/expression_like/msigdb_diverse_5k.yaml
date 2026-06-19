@@ -1,0 +1,169 @@
+description: >
+  Stratified MyGeneSet/MSigDB query snapshot for large GO impact evals. The
+  quotas intentionally reserve space for newer MSigDB content such as C8
+  single-cell cluster marker signatures, C9 DepMap/CCLE perturbation
+  signatures, and C4/3CA cancer metaprograms before filling the remainder with
+  broader expression-like, pathway, phenotype, and perturbation examples.
+
+species: human
+gene_field: symbol
+source_filter: msigdb
+min_genes: 20
+max_genes: 1000
+size: 1000
+fetch_limit_per_query: 2500
+sleep: 0.0
+
+output:
+  dir: generated/msigdb_diverse_5k
+  limit: 5000
+
+strata:
+  - label: msigdb_c8_single_cell_markers
+    quota: 494
+    queries:
+      - Descartes
+      - Travaglini
+      - Aizarani
+      - "cluster marker genes"
+      - "single-cell cluster markers"
+      - "He Lim Sun"
+      - "Zheng cord blood"
+      - "Zhong PFC"
+      - "Hu fetal retina"
+      - "Su Ho"
+    include_regex:
+      - "^(DESCARTES|TRAVAGLINI|AIZARANI|ZHENG_|ZHONG_|HE_LIM_SUN|SU_HO|HU_FETAL_RETINA)"
+      - "Marker genes curated from the annotated cluster"
+
+  - label: msigdb_c9_depmap_perturbation
+    quota: 62
+    queries:
+      - "DepMap CRISPR"
+      - "CRISPR dependency"
+      - "genes correlated with deletion"
+      - CCLE
+    include_regex:
+      - "^GENES_CORRELATED_WITH_.*_DELETION"
+      - "CRISPR knockdown"
+      - "DepMap"
+
+  - label: msigdb_c4_3ca_metaprograms
+    quota: 148
+    queries:
+      - "Gavish 3CA metaprogram"
+      - "3CA metaprogram"
+      - "Gavish metaprogram"
+    include_regex:
+      - "^GAVISH_3CA"
+
+  - label: immune_blood
+    quota: 500
+    queries:
+      - T cell
+      - B cell
+      - monocyte
+      - macrophage
+      - dendritic
+      - neutrophil
+      - PBMC
+      - blood
+
+  - label: cancer_tumor
+    quota: 550
+    queries:
+      - cancer
+      - tumor
+      - carcinoma
+      - melanoma
+      - leukemia
+      - lymphoma
+      - breast cancer
+      - colon cancer
+      - lung cancer
+      - prostate cancer
+      - glioma
+
+  - label: cell_line_drug_perturbation
+    quota: 600
+    queries:
+      - drug
+      - inhibitor
+      - treated
+      - knockdown
+      - knockout
+      - siRNA
+      - shRNA
+      - HDAC
+      - DICER
+      - response to
+
+  - label: stromal_epithelial_muscle_endothelial
+    quota: 500
+    queries:
+      - epithelial
+      - endothelial
+      - fibroblast
+      - stromal
+      - smooth muscle
+      - myoblast
+      - adipocyte
+      - keratinocyte
+
+  - label: nervous_brain_glia
+    quota: 500
+    queries:
+      - neuron
+      - neural
+      - brain
+      - astrocyte
+      - microglia
+      - oligodendrocyte
+      - glioblastoma
+      - cortex
+      - hippocampus
+      - synaptic
+      - neuro
+      - CNS
+
+  - label: development_stem_progenitor
+    quota: 500
+    queries:
+      - stem cell
+      - progenitor
+      - differentiation
+      - development
+      - embryonic
+      - ESC
+      - iPSC
+
+  - label: metabolism_mitochondria_stress
+    quota: 550
+    queries:
+      - metabolism
+      - mitochondrial
+      - oxidative
+      - hypoxia
+      - starvation
+      - unfolded protein
+      - heat shock
+      - ER stress
+      - glycolysis
+      - lipid
+      - cholesterol
+      - glucose
+      - fatty acid
+      - autophagy
+
+  - label: organ_tissue_patient
+    quota: 596
+    queries:
+      - liver
+      - kidney
+      - heart
+      - lung
+      - pancreas
+      - intestine
+      - adipose
+      - patient
+      - disease

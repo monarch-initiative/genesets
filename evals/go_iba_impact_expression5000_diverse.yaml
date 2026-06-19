@@ -1,0 +1,44 @@
+analysis: go_iba_impact_expression5000_diverse
+question: "Across a stratified 5,000-set expression-like query collection, which enrichment calls are retained, lost, or gained when current GOA human annotations are restricted from all NOT-filtered evidence to IBA-only evidence?"
+binary: genesets-rs
+
+query_sets:
+  source_dir: expression_like/generated/msigdb_diverse_5k
+  limit: 5000
+  selection: first N emitted sets from the stratified source query snapshot
+  fetch:
+    mode: stratified
+    config: expression_like/msigdb_diverse_5k.yaml
+
+snapshots:
+  left:
+    label: "2026-03-25 all evidence"
+    dir: go_timepoints/generated/now_2026_03_25
+    annotation_variant: all
+    output_prefix: go_2026_03_25_all
+  right:
+    label: "2026-03-25 IBA only"
+    dir: go_timepoints/generated/now_2026_03_25
+    annotation_variant: iba
+    output_prefix: go_2026_03_25_iba
+
+statistics:
+  min_overlap: 2
+  max_p_adjust: 0.05
+  correction: bonferroni
+
+compare:
+  p_adjust_cutoff: 0.05
+  crossings_only: false
+
+post_processing:
+  ranked_term_scope:
+    mode: include
+    subset: goslim_generic
+    snapshot: left
+    include_descendants: true
+    max_target_size: 1000
+
+output:
+  dir: ../notebooks/generated/go_iba_impact_expression5000_diverse
+  result_stem: expression5000_diverse

@@ -4,6 +4,7 @@ import argparse
 import csv
 import datetime as dt
 import json
+import re
 import sys
 import time
 import urllib.parse
@@ -69,9 +70,43 @@ def normalize_gene_values(raw_genes: object, gene_field: str) -> list[str]:
     return sorted(values)
 
 
+def classify_msigdb_set(geneset_id: str, name: str | None, description: str | None) -> str:
+    text = f"{geneset_id} {name or ''} {description or ''}".lower()
+    upper_id = geneset_id.upper()
+    if upper_id.startswith("GAVISH_3CA") or ("3ca" in text and "metaprogram" in text):
+        return "msigdb_c4_3ca"
+    if (
+        upper_id.startswith("GENES_CORRELATED_WITH_")
+        and upper_id.endswith("_DELETION")
+    ) or ("depmap" in text and "crispr" in text):
+        return "msigdb_c9_depmap_perturbation"
+    if re.search(
+        r"^(DESCARTES|TRAVAGLINI|AIZARANI|ZHENG_|ZHONG_|HE_LIM_SUN|SU_HO|HU_FETAL_RETINA)",
+        upper_id,
+    ) or "marker genes curated from the annotated cluster" in text:
+        return "msigdb_c8_cell_type_signature"
+    if upper_id.startswith(("GOBP_", "GOCC_", "GOMF_")):
+        return "msigdb_c5_go"
+    if upper_id.startswith("HP_"):
+        return "msigdb_c5_hpo"
+    if upper_id.startswith("HALLMARK_"):
+        return "msigdb_hallmark"
+    if upper_id.startswith("REACTOME_"):
+        return "msigdb_c2_reactome"
+    if upper_id.startswith("KEGG_"):
+        return "msigdb_c2_kegg"
+    if upper_id.startswith("WP_"):
+        return "msigdb_c2_wikipathways"
+    if upper_id.startswith(("BIOCARTA_", "PID_")):
+        return "msigdb_c2_other_pathway"
+    if upper_id.startswith("GSE"):
+        return "msigdb_expression_geo"
+    return "msigdb_other"
+
+
 def fetch_query(args: argparse.Namespace) -> dict[str, Any]:
     args.out_dir.mkdir(parents=True, exist_ok=True)
-    fields = f"_id,name,source,taxid,genes.{args.gene_field}"
+    fields = f"_id,name,source,taxid,description,genes.{args.gene_field}"
     fetched = 0
     emitted = 0
     skipped_small = 0
@@ -118,12 +153,17 @@ def fetch_query(args: argparse.Namespace) -> dict[str, Any]:
                 background.update(genes)
                 geneset_id = hit["_id"]
                 name = hit.get("name") or geneset_id
+                description = hit.get("description")
                 writer.writerow([geneset_id, name, *genes])
                 sets.append(
                     {
                         "id": geneset_id,
                         "name": name,
+                        "description": description,
                         "source": hit.get("source"),
+                        "source_class": classify_msigdb_set(geneset_id, name, description)
+                        if hit.get("source") == "msigdb"
+                        else hit.get("source"),
                         "taxid": hit.get("taxid"),
                         "gene_count": len(genes),
                     }

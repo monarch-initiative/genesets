@@ -1,0 +1,262 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{siunitx}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!50!black,
+  citecolor=blue!50!black,
+  urlcolor=blue!50!black
+}
+
+\newcommand{\tool}{\texttt{genesets-rs}}
+\newcommand{\workflow}{\texttt{genesets-workflows}}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\title{Interpreting ontology and annotation change through high-throughput gene set enrichment}
+\author{
+  \todo{Authors}
+}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Gene set enrichment is usually presented as a static interpretation task: given a query list, return enriched terms. Many practical questions are instead questions about change. Has an ontology release altered the interpretation of a disease signature? Does an evidence-code filter remove noisy hits or erase useful biology? Are gains and losses meaningful for expression signatures in the same way they are for pathway, single-cell marker, perturbation, or ontology-derived gene sets? We present \tool, a command-line-first Rust engine and workflow framework for analyzing such changes at scale. The core accepts ontology-neutral term, closure, annotation, query, and background tables, then evaluates query-by-target enrichment using dense bitsets and Fisher exact tests. The workflow layer records source metadata and writes Parquet results for downstream diff analysis. In a 5,000-set human benchmark with explicit representation of modern MSigDB source families, a five-year GO/GOA temporal comparison completed in 47.3 seconds on a laptop, and an all-evidence versus IBA-only GOA comparison completed in 52.6 seconds. The IBA comparison is the main case study: IBA-only annotations reduced significant result rows from 473,603 to 163,866, but the losses were not uniformly desirable. Some losses were broad or redundant; others removed specific terms that matched the semantics of non-GO-derived query sets, including mitochondrial ATP synthesis in oxidative-phosphorylation signatures, visual perception in pigmentary retinopathy, postsynapse in BDNF signaling, secretory granule in dendritic-cell signatures, and phagocytosis in fetal retina microglia. We argue that enrichment diffs should be treated as versioned semantic assertions whose interpretation depends on query provenance, ontology neighborhood, and compensatory terms, not as simple ranked lists of p-value deltas.
+\end{abstract}
+
+\section{Introduction}
+
+Gene set enrichment analysis is a standard strategy for assigning biological interpretation to lists of genes from expression studies, genetic screens, and curated pathway resources \citep{subramanian2005}. Over-representation analysis with Fisher's exact test \citep{fisher1922} remains useful because it is simple, auditable, and applicable to arbitrary query and target sets. However, the most interesting operational questions are often not ``what is enriched today?'' They are questions about change: what did a new Gene Ontology (GO) release change \citep{ashburner2000,go2023}; what did a Gene Ontology Annotation (GOA) evidence-code filter remove \citep{goa2015}; and which changes matter for real expression, pathway, or phenotype-derived query sets?
+
+This framing changes what an enrichment tool must provide. A p-value delta is rarely the right endpoint by itself: a term moving from $10^{-20}$ to $10^{-10}$ is less consequential than a plausible mechanism crossing a report threshold. The same crossing also has different semantics depending on the query. A GO-derived query set enriched for its own ancestors is a useful positive control but not a biological discovery. A Reactome pathway enriched for a nearby GO process is a cross-resource alignment. A patient expression signature enriched for a GO term is a hypothesis about altered biology, but one with weaker causal semantics than a curated pathway. Change analysis has to carry these distinctions forward.
+
+We developed \tool{} to make these comparisons fast enough that they can become routine. The Rust core is intentionally narrow: it loads normalized tables, builds propagated target sets, computes enrichment, compares result tables, and writes outputs. The workflow package, \workflow{}, handles fetches from public resources, GO/GOA preparation, configured reports, Parquet summaries, and notebooks. This paper focuses on enrichment as change analysis. The implementation is the enabling substrate, while the main benchmark asks how a curated annotation subset, IBA-only GOA, changes the interpretation of thousands of heterogeneous gene sets.
+
+\section{Change-analysis model}
+
+\subsection{Enrichment calls as versioned assertions}
+
+For a query gene set $Q$ and a target term or gene set $T$, an enrichment result is a conditional assertion: under a particular ontology version, annotation release, evidence filter, background, statistical test, and multiple-testing rule, $Q$ is enriched for $T$ at threshold $\alpha$. A release-scale diff compares these assertions across two prepared resources. We use three primary classes:
+
+\begin{itemize}
+\item \emph{lost significant}: significant in the left resource but not in the right resource;
+\item \emph{gained significant}: not significant in the left resource but significant in the right resource;
+\item \emph{shared significant}: significant in both resources.
+\end{itemize}
+
+This threshold-crossing endpoint is deliberately coarse. It is more useful for audit and triage than ranking every p-value movement. Magnitude changes still matter, especially when selecting examples or diagnosing systematic shifts, but they should be secondary to the question of whether an interpretation appears, disappears, or survives.
+
+\subsection{Semantics of query sets}
+
+The benchmark collection contains gene sets with different origins. Treating them as interchangeable makes the output hard to interpret. We therefore annotate query sets by broad semantic class and use the class when summarizing changes.
+
+\begin{table}[t]
+\centering
+\caption{Semantic roles of query sets in the 5,000-set benchmark collection. Counts are based on simple source-prefix and keyword rules and are used for interpretation, not as biological ontologies.}
+\label{tab:semantic-classes}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{l r Y Y}
+\toprule
+Query class & Sets & Role in change analysis & Main interpretation risk \\
+\midrule
+C8 cell-type markers & 496 & Single-cell cluster marker signatures for human tissues. & Marker sets are cell-state summaries, not perturbation contrasts. \\
+C9 DepMap perturbation & 62 & Computational perturbation signatures from DepMap/CCLE. & Correlation with dependency can reflect cell-line context as well as target biology. \\
+3CA metaprograms & 148 & Cancer metaprograms from single-cell tumor atlases. & Signals mix malignant and microenvironmental programs. \\
+GSE expression & 1,212 & Empirical signatures from cell state, infection, genotype, or treatment contrasts. & Labels are contextual; enrichment suggests altered biology but not direct causality. \\
+Pathway & 362 & Cross-resource alignment between curated pathways and GO terms. & Strong overlap may reflect shared curation rather than independent evidence. \\
+HPO phenotype & 313 & Phenotype-derived MSigDB sets. & Mechanistic interpretation can mix causation, consequence, and ascertainment. \\
+GO-derived & 687 & Positive controls and ontology self-consistency checks. & Enrichment is often tautological; exclude from biological example mining. \\
+Hallmark & 12 & Compact curated axes of major biological programs. & Broad signatures are useful sanity checks but can hide specific mechanisms. \\
+Other curated & 1,708 & Modules, literature-derived sets, tissue signatures, and mixed curated collections. & Provenance is heterogeneous; examples need manual reading. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+This distinction is central to the paper. A lost GO term in a GO-derived query set usually says that a self-referential target moved across the threshold. A lost term in an empirical expression signature may instead remove a plausible mechanistic annotation. Conversely, a gained root term such as \emph{biological process} is usually less useful than a gained, specific term in the ontology neighborhood of the query biology.
+
+\subsection{Ontology-neutral inputs}
+
+\tool{} treats ontologies and flat gene set libraries through the same input model. A hierarchical ontology is represented by three tables: a term-name table, a reflexive child-to-ancestor closure table, and gene-to-term annotations. A flat library omits the closure table or uses only reflexive closure. Query sets are supplied independently as lists, pairwise tables, GMT, or related matrix formats. This model makes GO the primary use case without making GO a special case in the implementation.
+
+The core does not know about species, evidence codes, GO relation policy, remote APIs, or source-specific identifiers. These are handled before enrichment by the workflow layer. For GOA, for example, the workflow can prepare different annotation variants such as all NOT-filtered annotations, IBA-only annotations, or IBA plus IEA annotations. The Rust core sees each as an ordinary gene-to-term table.
+
+\subsection{Dense-bitset enrichment kernel}
+
+After loading terms, closure, annotations, query sets, and background, \tool{} constructs a shared gene universe and represents each query and target set as a dense vector of machine words. Ontology propagation is applied before scoring: a gene annotated to a child term is included in ancestor target bitsets according to the closure table. Enrichment matrix mode then computes each query-target overlap as a bitwise AND followed by popcount. The remaining contingency-table values are determined from query size, target size, and background size, and one-sided Fisher exact p-values are computed for retained pairs. The current multiple-testing correction is Bonferroni, with room in the API for additional corrections and ranked-list methods.
+
+\subsection{Output boundary}
+
+The framework treats output as a boundary rather than as part of the statistical model. TSV remains convenient for individual analyses, but large evaluation runs are written as Parquet artifacts \citep{parquet}. DuckDB \citep{duckdb} is used in the workflow layer for summaries, joins against metadata, threshold-crossing reports, and exploratory analysis. This keeps the core enrichment code independent of report layout while enabling large batch comparisons.
+
+\section{Workflow layer and benchmark collection}
+
+\workflow{} provides repeatable reports around the Rust kernel. A report configuration specifies the query source, ontology snapshots, annotation variants, statistical thresholds, compare settings, and output directory. The workflow then selects or fetches query sets, invokes \tool{} matrix mode for each snapshot or variant, invokes \tool{} compare mode over the resulting Parquet files, and writes JSON/YAML metadata.
+
+For the benchmarks below, we used a stratified MyGeneSet/MSigDB-derived query collection. The source contained 5,000 human gene sets with a median of 117 genes per set and 742,649 listed gene memberships across 24,849 unique background genes. The strata intentionally reserve space for modern MSigDB families: C8 single-cell marker signatures, C9 DepMap/CCLE perturbation signatures, and C4/3CA cancer metaprograms \citep{msigdb_collections}. The remaining strata cover immune and blood; cancer and tumor; cell-line or drug perturbation; stromal, epithelial, muscle, and endothelial; nervous system, brain, and glia; development, stem, and progenitor; metabolism, mitochondria, and stress; and organ, tissue, and patient signatures. GO-derived MSigDB sets were retained for stress testing but excluded from biological interpretation of the IBA loss examples.
+
+\section{Benchmarks}
+
+All benchmarks in this draft were run locally using the release build of \tool{} and Parquet output. The benchmark intent was not to compare against every enrichment package, but to test whether the framework can support coarse ontology and annotation diffs over thousands of query sets on a laptop. The answer is yes for the current scale: both the temporal GO comparison and the evidence-filter comparison completed in under one minute.
+
+\begin{table}[t]
+\centering
+\caption{Release-scale enrichment benchmarks over the stratified 5,000-set query collection. Rows are Bonferroni-significant enrichment rows retained at adjusted $p \le 0.05$.}
+\label{tab:benchmarks}
+\begin{tabular}{llrrr}
+\toprule
+Benchmark & Step & Runtime (s) & Rows & Terms \\
+\midrule
+GO temporal & 2021-05-01 matrix & 17.7 & 289,007 & 8,790 \\
+GO temporal & 2026-03-25 matrix & 24.7 & 473,603 & 9,085 \\
+GO temporal & compare & 3.7 & 546,972 & -- \\
+\midrule
+GO all vs IBA & all-evidence matrix & 23.9 & 473,603 & 9,085 \\
+GO all vs IBA & IBA-only matrix & 24.3 & 163,866 & 4,472 \\
+GO all vs IBA & compare & 3.2 & 501,223 & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The five-year temporal GO/GOA comparison completed in 47.3 seconds. The comparison identified 73,369 lost significant pairs, 215,638 shared significant pairs, and 257,965 gained significant pairs between the 2021-05-01 and 2026-03-25 prepared snapshots. The all-evidence versus IBA-only comparison completed in 52.6 seconds. In that run, IBA-only annotations reduced significant rows from 473,603 to 163,866, while preserving hits for 4,594 of the 4,685 query sets that had all-evidence hits.
+
+\section{Case study: what IBA-only changes}
+
+IBA annotations are attractive as a curated, phylogenetically inferred subset of GOA annotations, but the benchmark shows that using IBA-only annotations is not equivalent to producing a uniformly cleaner enrichment result. IBA target sets were substantially smaller than all-evidence target sets. Among GO terms present in both variants, the median IBA target size was approximately 37\% of the all-evidence size. For result rows that were significant under all evidence but lost under IBA, the median IBA-to-all target-size ratio was approximately 20\%.
+
+The threshold-crossing counts reflected this contraction. Of 473,603 all-evidence significant rows, 136,246 remained significant under IBA and 337,357 were lost. The IBA-only run also produced 27,620 gained significant rows. The most frequent non-GO-derived gains were broad terms such as \emph{biological process}, \emph{cellular component}, \emph{intracellular anatomical structure}, and \emph{cellular process}. More specific gains were enriched for conserved core machinery, including ribonucleoprotein complex, RNA metabolic process, ribosome, nucleolus, RNA processing, and translation.
+
+The same framework can also ask which ontology terms never appear in enrichment output. For each annotation variant, we reconstructed propagated target sizes from GOA annotations, the GO closure, and the analysis background, then joined those scorable targets to the retained enrichment rows. In the 5,000-set all-evidence run, 21,050 GO terms were scorable and 9,085 appeared in at least one significant enrichment row, leaving 11,965 scorable terms that never became significant. In the IBA-only run, 11,479 terms were scorable and 4,472 appeared, leaving 7,007 scorable terms that never became significant. Across the paired comparison, 4,293 terms were scorable but never significant in both variants, 7,585 were scorable but never significant on one side, and 9,172 were significant in at least one side. This ``term coverage'' view is complementary to threshold crossings: it identifies ontology regions that are annotated but effectively invisible for a given query collection.
+
+\begin{table}[t]
+\centering
+\caption{All-evidence versus IBA-only threshold crossings by query-set class. GO-derived sets dominate some raw counts but are treated separately from biological examples.}
+\label{tab:diff-by-class}
+\footnotesize
+\begin{tabular}{lrrrr}
+\toprule
+Query class & Sets & Lost & Shared & Gained \\
+\midrule
+C8 cell-type markers & 496 & 26,027 & 12,659 & 2,360 \\
+C9 DepMap perturbation & 62 & 1,250 & 461 & 193 \\
+3CA metaprograms & 148 & 3,717 & 1,373 & 808 \\
+GSE expression & 1,212 & 37,157 & 18,976 & 7,217 \\
+Pathway & 362 & 36,895 & 18,169 & 2,544 \\
+HPO phenotype & 313 & 25,561 & 9,883 & 1,926 \\
+GO-derived & 687 & 125,288 & 38,132 & 3,586 \\
+Hallmark & 12 & 1,178 & 687 & 71 \\
+Other curated & 1,708 & 80,284 & 35,906 & 8,915 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The class breakdown in Table~\ref{tab:diff-by-class} is important. GO-derived losses are abundant, but they mostly report how GO terms relate to other GO-derived gene sets. They are useful for stress testing the pipeline and detecting ontology-propagation behavior. They are poor examples for explaining biological impact. The non-GO-derived classes expose a more useful question: when a specific GO term disappears, does an equally interpretable term remain nearby?
+
+\subsection{Gains: often broad, sometimes informative}
+
+The most common IBA-only gains are high-level GO terms. Among non-GO-derived query sets, \emph{biological process} was newly significant for 2,639 queries, \emph{cellular component} for 1,602, and \emph{intracellular anatomical structure} for 1,147. These gains should usually be filtered out of headline reports. They reflect the changed effective target sizes under IBA rather than an interpretable new mechanism.
+
+Not all gains are uninformative. More specific gained terms include ribonucleoprotein complex, RNA metabolic process, ribosome, nucleolus, RNA processing, translation, and related conserved core processes. These are plausible IBA strengths: phylogenetic inference can preserve ancient cellular machinery well. The point is not that gains are bad, but that a report must distinguish root-level gains from specific gains before drawing conclusions.
+
+\subsection{Losses: pruning, compensation, and erased specificity}
+
+To assess whether losses were merely desirable pruning, we examined non-GO-derived query sets and specific lost terms with all-evidence target size at most 1,000 genes. This produced 101,111 lost rows across 2,850 query sets and 5,497 GO terms. Many recurrent losses were not obviously noise: regulation of cell adhesion, secretory granule, anchoring junction, regulation of cytokine production, circulatory system development, cell migration, epithelium development, response to hormone, and response to peptide all appeared across hundreds of non-GO-derived query sets.
+
+Manual inspection suggests at least four semantic outcomes. First, some losses are acceptable pruning: a marginal or very broad all-evidence term disappears and no important interpretation is lost. Second, some losses are compensated: the exact term disappears, but an IBA-significant ancestor or descendant preserves most of the biological reading. Third, some losses are specificity reductions: a broad theme remains, but the report would no longer show the term a domain scientist would likely use. Fourth, some losses are bad losses: a specific, plausible mechanism disappears with little useful compensation. Tables~\ref{tab:lost-concrete-examples} and~\ref{tab:iba-compensation-examples} show concrete examples from the Parquet diff rather than abstract categories.
+
+\begin{table}[t]
+\centering
+\caption{Concrete non-GO-derived all-evidence enrichment calls that fall below the reporting threshold under IBA-only annotations. ``All overlap/target'' gives the all-evidence overlap and all-evidence GO target size.}
+\label{tab:lost-concrete-examples}
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabularx}{\textwidth}{Y Y c c l}
+\toprule
+Query set & Lost all-evidence GO term & All overlap/target & All adjusted $p$ & IBA status \\
+\midrule
+Hallmark oxidative phosphorylation & GO:1902600 proton transmembrane transport & 71/200 & \num{1.5e-104} & lost \\
+Reactome mitochondrial translation & GO:0005743 mitochondrial inner membrane & 100/537 & \num{1.1e-163} & lost \\
+Mootha VOXPHOS & GO:0015453 oxidoreduction-driven active transmembrane transporter activity & 42/69 & \num{1.4e-89} & lost \\
+HP pigmentary retinopathy & GO:0007601 visual perception & 48/146 & \num{3.4e-63} & lost \\
+GSE34205 healthy vs flu-infected infant PBMC up & GO:0002181 cytoplasmic translation & 33/179 & \num{5.0e-34} & lost \\
+GSE41978 ID2/BIM knockout effector CD8 T cell down & GO:1901740 negative regulation of myoblast fusion & 26/48 & \num{1.0e-38} & lost \\
+WP nonalcoholic fatty liver disease & GO:0042776 proton motive force-driven mitochondrial ATP synthesis & 41/67 & \num{8.9e-75} & lost \\
+Travaglini lung TREM2 dendritic cell & GO:0030141 secretory granule & 135/927 & \num{9.0e-83} & lost \\
+Hu fetal retina microglia & GO:0006909 phagocytosis & 27/132 & \num{2.0e-19} & lost \\
+WP BDNF signaling & GO:0098794 postsynapse & 41/798 & \num{2.1e-25} & lost \\
+Reactome metabolism of lipids & GO:0046949 fatty-acyl-CoA biosynthetic process & 27/29 & \num{7.0e-36} & lost \\
+Reactome phospholipid metabolism & GO:0006661 phosphatidylinositol biosynthetic process & 48/51 & \num{1.6e-98} & lost \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Same gene sets as Table~\ref{tab:lost-concrete-examples}, showing representative IBA-only terms that remain significant. These rows distinguish compensated losses from losses where IBA falls back to broad or weakly related terms.}
+\label{tab:iba-compensation-examples}
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabularx}{\textwidth}{Y Y c c Y}
+\toprule
+Query set & Representative IBA-significant term & IBA overlap/target & IBA adjusted $p$ & Reading \\
+\midrule
+Hallmark oxidative phosphorylation & GO:0006119 oxidative phosphorylation & 28/45 & \num{2.6e-45} & Core theme is preserved; lost proton-transport term is a specificity change. \\
+Reactome mitochondrial translation & GO:0032543 mitochondrial translation & 16/28 & \num{2.3e-26} & Strong compensation by mitochondrial-ribosome and translation terms. \\
+Mootha VOXPHOS & GO:0098803 respiratory chain complex & 56/86 & \num{1.5e-127} & Respiratory-chain biology is preserved despite loss of a specific transporter activity term. \\
+HP pigmentary retinopathy & GO:0005929 cilium & 47/323 & \num{1.7e-43} & Ciliary biology remains, but the visual-perception process label disappears. \\
+GSE34205 healthy vs flu-infected infant PBMC up & GO:0006412 translation & 25/194 & \num{3.8e-20} & Translation survives as a broader term; cytoplasmic translation is not retained. \\
+GSE41978 ID2/BIM knockout effector CD8 T cell down & GO:0006412 translation & 31/194 & \num{2.2e-28} & IBA reports ribosomal/translation biology; the lost myoblast-fusion term is likely a questionable all-evidence hit. \\
+WP nonalcoholic fatty liver disease & GO:0042775 mitochondrial ATP synthesis coupled electron transport & 29/34 & \num{4.9e-58} & ATP-synthesis biology remains, so the lost sibling term is mostly compensated. \\
+Travaglini lung TREM2 dendritic cell & GO:0031982 vesicle & 52/768 & \num{3.8e-11} & Only broad vesicle biology remains; secretory-granule specificity is lost. \\
+Hu fetal retina microglia & GO:0030155 regulation of cell adhesion & 14/109 & \num{3.5e-4} & No obvious phagocytosis-neighborhood compensation in the retained IBA rows. \\
+WP BDNF signaling & GO:0045202 synapse & 21/518 & \num{1.7e-7} & Synaptic biology remains, but postsynaptic specificity is lost. \\
+Reactome metabolism of lipids & GO:0006629 lipid metabolic process & 367/581 & \num{0} & Lipid theme remains at a broad level; fatty-acyl-CoA biosynthesis is lost. \\
+Reactome phospholipid metabolism & GO:0046488 phosphatidylinositol metabolic process & 21/33 & \num{5.3e-32} & A nearby metabolic term remains; exact biosynthesis term is not retained. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+These examples are not meant to prove that all-evidence annotations are always better. Instead, they show what a change-analysis report should expose. Some losses are probably desirable: the GSE41978 T-cell contrast loses a myoblast-fusion term while IBA reports ribosomal and translation terms, suggesting that the all-evidence call may have been a misleading cross-context annotation. Some losses are substantially compensated: nonalcoholic fatty liver disease still retains mitochondrial ATP synthesis coupled electron transport, and Reactome phospholipid metabolism still retains phosphatidylinositol metabolic process. Other losses are more consequential: fetal retina microglia loses phagocytosis with no obvious nearby IBA replacement, and TREM2 dendritic cells fall back from secretory granule to broad vesicle terms. The evaluation framework needs to preserve these distinctions long enough for users to audit them.
+
+\section{Post-processing and report filters}
+
+The core engine should emit statistically defined results without embedding ontology-specific display policy. However, release-scale reports need composable filters to prevent root or near-root terms from dominating summaries. We currently distinguish three concepts. First, raw diffs should be computed before filtering, because threshold crossings are part of the audit trail. Second, headline tables can apply anti-slim filters such as maximum target size, term ubiquity across query sets, and explicit stoplists for root or near-root GO terms. Third, compensatory-term analysis should be performed on the raw result graph so that a lost specific term can be interpreted in the context of retained or gained ancestors and descendants.
+
+A practical default for GO reports is to exclude result terms above a configurable target-size threshold, for example 1,000 annotated genes, and to suppress terms significant in a large fraction of query sets unless they are explicitly whitelisted. GO-derived query sets should also be excluded from biological interpretation when the aim is to evaluate expression or pathway signatures, although they remain useful for stress testing and ontology self-consistency checks.
+
+The examples also argue for report-layer semantics rather than hardcoded core behavior. A pathway query and a patient-expression query can both lose the same GO term, but the meaning differs. A pathway loss may reveal disagreement between curated resources. An expression loss may change a hypothesis generated from empirical data. A phenotype-like loss may reflect disease-gene curation rather than altered expression. These are not different statistical tests; they are different interpretive contracts around the same result table.
+
+\section{Discussion}
+
+\tool{} is intentionally a baseline system: ontology-neutral input tables, Fisher exact statistics, Bonferroni correction, and fast matrix execution. This simplicity is a strength for evaluation. By making ontology release, annotation variant, query source, output format, and post-processing explicit, the framework can answer questions that are difficult to inspect in single-query enrichment tools: which terms cross a significance threshold after an ontology update, which annotation filters remove plausible biology, and how much of a lost signal is compensated by a nearby ontology term.
+
+The IBA case study illustrates why speed matters scientifically. Running 5,000 heterogeneous query sets against two annotation variants quickly produced enough examples to reveal a pattern: IBA-only annotations emphasize broad and conserved biology, but they can suppress specific, plausible mechanisms in expression, pathway, phenotype-like, and curated module query sets. This is not a verdict against IBA. It is an argument for treating evidence-code filters as semantic transformations that require evaluation against realistic query collections.
+
+The current implementation has limitations. It rebuilds target bitsets for each process, materializes retained result rows before writing, and uses dense bitsets even when sparse representations may be better for very large universes. The workflow layer is also young: stratified query selection currently relies on keyword quotas and heuristic source-family labels inferred from MyGeneSet/MSigDB metadata, rather than a formal benchmark registry with curated provenance. Future work includes serialized prepared indexes, streaming Parquet sinks, sparse or Roaring-style bitset benchmarks, additional multiple-testing corrections, ranked-list statistics, model-set methods for ontology-aware enrichment, and richer semantic metadata for query-set provenance.
+
+\section{Data and code availability}
+
+The draft manuscript corresponds to repository-local benchmark summaries from the 5-year GO-impact report and the GOA all-evidence versus IBA-impact report. The generated Parquet and GMT artifacts are intentionally not tracked because they are large; the report configuration files and workflow commands are tracked in the repository. \todo{Add repository URL and archived release DOI before submission.}
+
+\section{Conclusion}
+
+\tool{} provides a fast, ontology-neutral enrichment kernel and a reproducible workflow layer for large-scale gene set enrichment evaluation. The initial benchmarks show that thousands of query sets can be compared across ontology releases and annotation variants in under a minute on a laptop. The IBA-only case study demonstrates why such evaluation matters: curated annotation subsets can improve interpretability in some contexts while also removing biologically plausible specific signals. Treating enrichment as a release-scale, metadata-rich evaluation problem makes these tradeoffs visible.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

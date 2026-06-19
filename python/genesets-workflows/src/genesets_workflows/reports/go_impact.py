@@ -11,6 +11,7 @@ import yaml
 
 from genesets_workflows.runtime import display_path, duckdb_json, resolve_path, run_command, utc_now
 from genesets_workflows.sources import mygeneset
+from genesets_workflows.sources import mygeneset_stratified
 from genesets_workflows.yaml_io import write_yaml_value
 
 
@@ -89,6 +90,10 @@ def default_config() -> dict[str, Any]:
             "p_adjust_cutoff": 0.05,
             "crossings_only": False,
         },
+        "term_coverage": {
+            "enabled": True,
+            "example_limit": 10,
+        },
         "post_processing": {
             "ranked_term_scope": {
                 "subset": "goslim_generic",
@@ -154,9 +159,17 @@ def normalize_config(config: dict[str, Any], base: Path) -> dict[str, Any]:
     query_sets = merged["query_sets"]
     query_sets["source_dir"] = resolve_path(base, query_sets["source_dir"])
     query_sets["limit"] = int(query_sets["limit"])
-    query_sets["fetch"]["limit"] = int(query_sets["fetch"].get("limit", query_sets["limit"]))
-    query_sets["fetch"]["min_genes"] = int(query_sets["fetch"].get("min_genes", 20))
-    query_sets["fetch"]["max_genes"] = int(query_sets["fetch"].get("max_genes", 1000))
+    fetch = query_sets["fetch"]
+    fetch.setdefault("mode", "query")
+    fetch["limit"] = int(fetch.get("limit", query_sets["limit"]))
+    fetch["min_genes"] = int(fetch.get("min_genes", 20))
+    fetch["max_genes"] = int(fetch.get("max_genes", 1000))
+    if fetch["mode"] == "stratified":
+        if "config" not in fetch:
+            raise SystemExit("query_sets.fetch.config is required when fetch.mode is stratified")
+        fetch["config"] = resolve_path(base, fetch["config"])
+    elif fetch["mode"] != "query":
+        raise SystemExit(f"unsupported query_sets.fetch.mode: {fetch['mode']}")
 
     for side in ("left", "right"):
         snapshot = merged["snapshots"][side]
@@ -174,6 +187,10 @@ def normalize_config(config: dict[str, Any], base: Path) -> dict[str, Any]:
     compare["p_adjust_cutoff"] = float(compare.get("p_adjust_cutoff", statistics["max_p_adjust"]))
     compare["crossings_only"] = bool(compare.get("crossings_only", False))
 
+    term_coverage = merged.setdefault("term_coverage", {})
+    term_coverage["enabled"] = bool(term_coverage.get("enabled", True))
+    term_coverage["example_limit"] = int(term_coverage.get("example_limit", 10))
+
     output = merged["output"]
     output["dir"] = resolve_path(base, output["dir"])
     output.setdefault("result_stem", f"expression{query_sets['limit']}")
@@ -184,6 +201,8 @@ def normalize_config(config: dict[str, Any], base: Path) -> dict[str, Any]:
         raise SystemExit("compare.p_adjust_cutoff must be between 0 and 1")
     if query_sets["limit"] <= 0:
         raise SystemExit("query_sets.limit must be positive")
+    if term_coverage["example_limit"] < 0:
+        raise SystemExit("term_coverage.example_limit must be non-negative")
     return merged
 
 
@@ -205,6 +224,16 @@ def slugify(value: str) -> str:
     return re.sub(r"[^A-Za-z0-9]+", "_", value).strip("_").lower()
 
 
+def metadata_value(value: Any) -> Any:
+    if isinstance(value, Path):
+        return display_path(value)
+    if isinstance(value, dict):
+        return {key: metadata_value(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [metadata_value(item) for item in value]
+    return value
+
+
 def ensure_source_queries(config: dict[str, Any]) -> tuple[dict[str, Any], Path, Path]:
     query_sets = config["query_sets"]
     fetch = query_sets["fetch"]
@@ -219,6 +248,32 @@ def ensure_source_queries(config: dict[str, Any]) -> tuple[dict[str, Any], Path,
                 "metadata": display_path(metadata),
                 "command": None,
                 "runtime_seconds": 0,
+            },
+            queries,
+            metadata,
+        )
+
+    if fetch.get("mode") == "stratified":
+        fetch_command = [
+            str(fetch["config"]),
+            "--out-dir",
+            str(source_dir),
+            "--limit",
+            str(query_sets["limit"]),
+        ]
+        args = mygeneset_stratified.parse_args(fetch_command)
+        raw_plan = mygeneset_stratified.load_plan(args.config)
+        plan = mygeneset_stratified.normalize_plan(raw_plan, args.config.parent, args)
+        started = time.perf_counter()
+        fetched_metadata = mygeneset_stratified.fetch_stratified(plan)
+        return (
+            {
+                "status": "fetched",
+                "queries": display_path(queries),
+                "metadata": display_path(metadata),
+                "command": ["genesets-workflows", "fetch-mygeneset-stratified", *fetch_command],
+                "runtime_seconds": round(time.perf_counter() - started, 3),
+                "emitted": fetched_metadata["emitted"],
             },
             queries,
             metadata,
@@ -407,6 +462,210 @@ def diff_counts_with_duckdb(path: Path) -> dict[str, int]:
     return {class_name: int(count) for class_name, count in rows}
 
 
+def sql_literal(value: Path | str) -> str:
+    return "'" + str(value).replace("'", "''") + "'"
+
+
+def write_term_coverage(
+    snapshot: dict[str, Any],
+    results: Path,
+    output: Path,
+    example_limit: int,
+) -> tuple[dict[str, Any], float]:
+    started = time.perf_counter()
+    go_dir = snapshot["dir"]
+    annotation_variant = snapshot["annotation_variant"]
+    terms = go_dir / "terms.tsv"
+    closure = go_dir / "closure.tsv"
+    annotations = go_dir / annotation_variant / "gene_terms.tsv"
+    background = go_dir / "background_all_goa_symbols.txt"
+    output.parent.mkdir(parents=True, exist_ok=True)
+
+    coverage_query = f"""
+    WITH
+    terms AS (
+      SELECT term_id, name
+      FROM read_csv_auto({sql_literal(terms)}, delim='\\t')
+    ),
+    background AS (
+      SELECT gene_id
+      FROM read_csv_auto({sql_literal(background)}, delim='\\t')
+    ),
+    direct_annotations AS (
+      SELECT DISTINCT annotations.gene_id, annotations.term_id AS child
+      FROM read_csv_auto({sql_literal(annotations)}, delim='\\t') AS annotations
+      JOIN background USING (gene_id)
+    ),
+    propagated_targets AS (
+      SELECT closure.ancestor AS term_id, count(DISTINCT direct_annotations.gene_id) AS target_size
+      FROM direct_annotations
+      JOIN read_csv_auto({sql_literal(closure)}, delim='\\t') AS closure
+        ON direct_annotations.child = closure.child
+      GROUP BY closure.ancestor
+    ),
+    significant_hits AS (
+      SELECT
+        target_id AS term_id,
+        count(*) AS significant_rows,
+        count(DISTINCT query_id) AS significant_queries,
+        min(p_adjust_bonferroni) AS best_p_adjust,
+        max(overlap) AS max_overlap
+      FROM read_parquet({sql_literal(results)})
+      GROUP BY target_id
+    )
+    SELECT
+      terms.term_id,
+      terms.name,
+      coalesce(propagated_targets.target_size, 0)::UBIGINT AS target_size,
+      coalesce(significant_hits.significant_rows, 0)::UBIGINT AS significant_rows,
+      coalesce(significant_hits.significant_queries, 0)::UBIGINT AS significant_queries,
+      significant_hits.best_p_adjust,
+      coalesce(significant_hits.max_overlap, 0)::UBIGINT AS max_overlap,
+      CASE
+        WHEN coalesce(propagated_targets.target_size, 0) = 0 THEN 'unscorable'
+        WHEN coalesce(significant_hits.significant_rows, 0) = 0 THEN 'scorable_never_significant'
+        ELSE 'significant'
+      END AS coverage_status
+    FROM terms
+    LEFT JOIN propagated_targets USING (term_id)
+    LEFT JOIN significant_hits USING (term_id)
+    """
+    copy_sql = f"COPY ({coverage_query}) TO {sql_literal(output)} (FORMAT PARQUET)"
+
+    try:
+        import duckdb  # type: ignore
+    except ImportError:
+        run_command(["duckdb", "-c", copy_sql])
+        summary_rows = duckdb_json(term_coverage_summary_sql(output))
+        example_rows = duckdb_json(term_coverage_examples_sql(output, example_limit))
+        if summary_rows is None or example_rows is None:
+            raise SystemExit("go-impact term coverage requires Python duckdb or the duckdb CLI")
+        summary = summary_rows[0]
+        examples = example_rows
+    else:
+        con = duckdb.connect()
+        con.execute(copy_sql)
+        summary = con.execute(term_coverage_summary_sql(output)).fetchone()
+        summary = {
+            "total_terms": int(summary[0]),
+            "scorable_terms": int(summary[1]),
+            "significant_terms": int(summary[2]),
+            "scorable_never_significant_terms": int(summary[3]),
+            "unscorable_terms": int(summary[4]),
+        }
+        examples = [
+            {
+                "term_id": row[0],
+                "name": row[1],
+                "target_size": int(row[2]),
+            }
+            for row in con.execute(term_coverage_examples_sql(output, example_limit)).fetchall()
+        ]
+
+    if "total_terms" not in summary:
+        summary = {
+            "total_terms": int(summary["total_terms"]),
+            "scorable_terms": int(summary["scorable_terms"]),
+            "significant_terms": int(summary["significant_terms"]),
+            "scorable_never_significant_terms": int(summary["scorable_never_significant_terms"]),
+            "unscorable_terms": int(summary["unscorable_terms"]),
+        }
+    return (
+        {
+            **summary,
+            "examples_largest_scorable_never_significant": examples,
+            "path": display_path(output),
+        },
+        round(time.perf_counter() - started, 3),
+    )
+
+
+def term_coverage_summary_sql(path: Path) -> str:
+    return f"""
+    SELECT
+      count(*) AS total_terms,
+      count(*) FILTER (WHERE coverage_status != 'unscorable') AS scorable_terms,
+      count(*) FILTER (WHERE coverage_status = 'significant') AS significant_terms,
+      count(*) FILTER (WHERE coverage_status = 'scorable_never_significant') AS scorable_never_significant_terms,
+      count(*) FILTER (WHERE coverage_status = 'unscorable') AS unscorable_terms
+    FROM read_parquet({sql_literal(path)})
+    """
+
+
+def term_coverage_examples_sql(path: Path, limit: int) -> str:
+    return f"""
+    SELECT term_id, name, target_size
+    FROM read_parquet({sql_literal(path)})
+    WHERE coverage_status = 'scorable_never_significant'
+    ORDER BY target_size DESC, term_id
+    LIMIT {limit}
+    """
+
+
+def write_term_coverage_comparison(
+    left_coverage: Path,
+    right_coverage: Path,
+    output: Path,
+) -> tuple[dict[str, int], float]:
+    started = time.perf_counter()
+    output.parent.mkdir(parents=True, exist_ok=True)
+    comparison_query = f"""
+    SELECT
+      coalesce(left_cov.term_id, right_cov.term_id) AS term_id,
+      coalesce(left_cov.name, right_cov.name) AS name,
+      left_cov.coverage_status AS left_status,
+      right_cov.coverage_status AS right_status,
+      left_cov.target_size AS left_target_size,
+      right_cov.target_size AS right_target_size,
+      left_cov.significant_rows AS left_significant_rows,
+      right_cov.significant_rows AS right_significant_rows,
+      CASE
+        WHEN left_cov.coverage_status = 'significant' OR right_cov.coverage_status = 'significant'
+          THEN 'significant_either'
+        WHEN left_cov.coverage_status = 'scorable_never_significant'
+          AND right_cov.coverage_status = 'scorable_never_significant'
+          THEN 'scorable_never_significant_both'
+        WHEN left_cov.coverage_status = 'scorable_never_significant'
+          OR right_cov.coverage_status = 'scorable_never_significant'
+          THEN 'scorable_never_significant_one_side'
+        ELSE 'unscorable_both_or_absent'
+      END AS comparison_status
+    FROM read_parquet({sql_literal(left_coverage)}) AS left_cov
+    FULL OUTER JOIN read_parquet({sql_literal(right_coverage)}) AS right_cov
+      USING (term_id)
+    """
+    copy_sql = f"COPY ({comparison_query}) TO {sql_literal(output)} (FORMAT PARQUET)"
+
+    try:
+        import duckdb  # type: ignore
+    except ImportError:
+        run_command(["duckdb", "-c", copy_sql])
+        rows = duckdb_json(term_coverage_comparison_summary_sql(output))
+        if rows is None:
+            raise SystemExit("go-impact term coverage comparison requires Python duckdb or the duckdb CLI")
+        summary = {str(row["comparison_status"]): int(row["terms"]) for row in rows}
+    else:
+        con = duckdb.connect()
+        con.execute(copy_sql)
+        rows = con.execute(term_coverage_comparison_summary_sql(output)).fetchall()
+        summary = {str(status): int(count) for status, count in rows}
+    return (
+        {
+            **summary,
+            "path": display_path(output),
+        },
+        round(time.perf_counter() - started, 3),
+    )
+
+
+def term_coverage_comparison_summary_sql(path: Path) -> str:
+    return f"""
+    SELECT comparison_status, count(*) AS terms
+    FROM read_parquet({sql_literal(path)})
+    GROUP BY comparison_status
+    """
+
+
 def run_report(args: argparse.Namespace) -> dict[str, Any]:
     config, config_path = load_config(args)
 
@@ -434,6 +693,11 @@ def run_report(args: argparse.Namespace) -> dict[str, Any]:
     new_results = out_dir / f"{right_prefix}_{result_stem}.parquet"
     diff_results = out_dir / f"{left_prefix}_vs_{right_prefix}_{result_stem}.diff.parquet"
     diff_metadata = out_dir / f"{left_prefix}_vs_{right_prefix}_{result_stem}.diff.yaml"
+    left_term_coverage = out_dir / f"{left_prefix}_{result_stem}.term_coverage.parquet"
+    right_term_coverage = out_dir / f"{right_prefix}_{result_stem}.term_coverage.parquet"
+    term_coverage_comparison = out_dir / (
+        f"{left_prefix}_vs_{right_prefix}_{result_stem}.term_coverage.parquet"
+    )
 
     old_run = run_command(matrix_command(config, left_snapshot, queries, old_results))
     new_run = run_command(matrix_command(config, right_snapshot, queries, new_results))
@@ -460,6 +724,36 @@ def run_report(args: argparse.Namespace) -> dict[str, Any]:
     old_rows, old_queries, old_terms = summarize_with_duckdb(old_results)
     new_rows, new_queries, new_terms = summarize_with_duckdb(new_results)
     diff_counts = diff_counts_with_duckdb(diff_results)
+    term_coverage_summary: dict[str, Any] | None = None
+    term_coverage_timings: dict[str, float] = {}
+    if config["term_coverage"]["enabled"]:
+        old_term_coverage, old_term_coverage_seconds = write_term_coverage(
+            left_snapshot,
+            old_results,
+            left_term_coverage,
+            config["term_coverage"]["example_limit"],
+        )
+        new_term_coverage, new_term_coverage_seconds = write_term_coverage(
+            right_snapshot,
+            new_results,
+            right_term_coverage,
+            config["term_coverage"]["example_limit"],
+        )
+        coverage_comparison, coverage_comparison_seconds = write_term_coverage_comparison(
+            left_term_coverage,
+            right_term_coverage,
+            term_coverage_comparison,
+        )
+        term_coverage_summary = {
+            "old": old_term_coverage,
+            "new": new_term_coverage,
+            "comparison": coverage_comparison,
+        }
+        term_coverage_timings = {
+            "old_term_coverage_seconds": old_term_coverage_seconds,
+            "new_term_coverage_seconds": new_term_coverage_seconds,
+            "term_coverage_comparison_seconds": coverage_comparison_seconds,
+        }
 
     report = {
         "generated_at_utc": utc_now(),
@@ -471,7 +765,7 @@ def run_report(args: argparse.Namespace) -> dict[str, Any]:
                 "source_dir": display_path(config["query_sets"]["source_dir"]),
                 "limit": config["query_sets"]["limit"],
                 "selection": config["query_sets"].get("selection"),
-                "fetch": config["query_sets"]["fetch"],
+                "fetch": metadata_value(config["query_sets"]["fetch"]),
             },
             "snapshots": {
                 "left": {
@@ -485,6 +779,7 @@ def run_report(args: argparse.Namespace) -> dict[str, Any]:
             },
             "statistics": config["statistics"],
             "compare": config["compare"],
+            "term_coverage": config["term_coverage"],
             "post_processing": config.get("post_processing", {}),
         },
         "query_sets": {
@@ -513,6 +808,11 @@ def run_report(args: argparse.Namespace) -> dict[str, Any]:
             "new_results": display_path(new_results),
             "diff_results": display_path(diff_results),
             "diff_metadata": display_path(diff_metadata),
+            "old_term_coverage": display_path(left_term_coverage) if term_coverage_summary else None,
+            "new_term_coverage": display_path(right_term_coverage) if term_coverage_summary else None,
+            "term_coverage_comparison": (
+                display_path(term_coverage_comparison) if term_coverage_summary else None
+            ),
             "summary_json": display_path(out_dir / "summary.json"),
             "summary_yaml": display_path(out_dir / "summary.yaml"),
         },
@@ -529,11 +829,13 @@ def run_report(args: argparse.Namespace) -> dict[str, Any]:
             },
             "diff": diff_counts,
         },
+        "term_coverage": term_coverage_summary,
         "timings": {
             "select_queries_seconds": selected["runtime_seconds"],
             "old_matrix_seconds": old_run["runtime_seconds"],
             "new_matrix_seconds": new_run["runtime_seconds"],
             "compare_seconds": compare_run["runtime_seconds"],
+            **term_coverage_timings,
             "total_seconds": round(time.perf_counter() - started, 3),
         },
         "commands": {
@@ -563,6 +865,15 @@ def main(argv: list[str] | None = None) -> int:
         f"compare={report['timings']['compare_seconds']}s, "
         f"total={report['timings']['total_seconds']}s"
     )
+    if report.get("term_coverage"):
+        coverage = report["term_coverage"]
+        comparison = coverage["comparison"]
+        print(
+            "Term coverage: "
+            f"old_never={coverage['old']['scorable_never_significant_terms']}, "
+            f"new_never={coverage['new']['scorable_never_significant_terms']}, "
+            f"never_both={comparison.get('scorable_never_significant_both', 0)}"
+        )
     return 0
 
 
