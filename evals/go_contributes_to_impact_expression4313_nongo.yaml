@@ -1,0 +1,46 @@
+analysis: go_contributes_to_impact_expression4313_nongo
+question: "Across 4,313 non-GO-derived expression-like query sets from a stratified MSigDB snapshot, which enrichment calls are retained, lost, or gained when current GOA human contributes_to annotations are filtered out?"
+binary: genesets-rs
+
+query_sets:
+  source_dir: expression_like/generated/msigdb_diverse_5k
+  limit: 4313
+  selection: first N non-GO-derived emitted sets from the stratified source query snapshot
+  exclude_regex:
+    - "^(GOBP|GOCC|GOMF)_"
+  fetch:
+    mode: stratified
+    config: expression_like/msigdb_diverse_5k.yaml
+
+snapshots:
+  left:
+    label: "2026-03-25 all evidence"
+    dir: go_timepoints/generated/now_2026_03_25
+    annotation_variant: all
+    output_prefix: go_2026_03_25_all
+  right:
+    label: "2026-03-25 no contributes_to"
+    dir: go_timepoints/generated/now_2026_03_25
+    annotation_variant: no_contributes_to
+    output_prefix: go_2026_03_25_no_contributes_to
+
+statistics:
+  min_overlap: 2
+  max_p_adjust: 0.05
+  correction: bonferroni
+
+compare:
+  p_adjust_cutoff: 0.05
+  crossings_only: false
+
+post_processing:
+  ranked_term_scope:
+    mode: include
+    subset: goslim_generic
+    snapshot: left
+    include_descendants: true
+    max_target_size: 1000
+
+output:
+  dir: ../notebooks/generated/go_contributes_to_impact_expression4313_nongo
+  result_stem: expression4313_nongo

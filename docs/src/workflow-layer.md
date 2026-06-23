@@ -83,9 +83,10 @@ interactive triage rather than batch computation:
 just browser
 ```
 
-The default browser recipe loads both the current GOA all-vs-IBA report and the
-2021-vs-2026 GO/GOA temporal report. Use `just browser-iba` or `just
-browser-go5y` to open one analysis directly.
+The default browser recipe loads the current GOA all-vs-IBA report, the
+2021-vs-2026 GO/GOA temporal report, and the current GOA
+all-vs-no-`contributes_to` report. Use `just browser-iba`, `just browser-go5y`,
+or `just browser-contributes` to open one analysis directly.
 
 ```bash
 uv run --project python/genesets-workflows --extra explorer \
@@ -151,6 +152,20 @@ The stratified fetcher still emits ordinary `queries.gmt`, `background.txt`,
 and `metadata.json` files. The difference is that `metadata.json` records the
 quota stratum and search query for each set, which makes later report examples
 auditable.
+
+`go-impact` configs can also filter the selected query snapshot with regexes
+before running Rust. This is useful for benchmark hygiene, for example excluding
+GO-derived MSigDB query sets when the target ontology is GO:
+
+```yaml
+query_sets:
+  source_dir: expression_like/generated/msigdb_diverse_5k
+  limit: 4313
+  exclude_regex:
+    - "^(GOBP|GOCC|GOMF)_"
+```
+
+The report metadata records the selected, considered, and skipped query counts.
 
 Browse one or more generated report bundles in a local web UI:
 

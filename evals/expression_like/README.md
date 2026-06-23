@@ -102,3 +102,18 @@ in 47.3s:
 | 2021-05-01 matrix | 17.7s | 289,007 |
 | 2026-03-25 matrix | 24.7s | 473,603 |
 | compare | 3.7s | 546,972 diff rows |
+
+For GO qualifier sensitivity, do not use GO-derived query sets as biological
+examples. The current all-vs-no-`contributes_to` report uses the same stratified
+source snapshot but excludes `GOBP_*`, `GOCC_*`, and `GOMF_*` query ids before
+selection:
+
+| Step | Runtime | Significant rows |
+| --- | ---: | ---: |
+| selected non-GO-derived query sets | 0.055s | 4,313 sets |
+| current all-evidence matrix | 39.6s | 313,726 |
+| current no-`contributes_to` matrix | 63.3s | 312,915 |
+| compare | 21.0s | 313,985 diff rows |
+
+The report excluded 687 GO-derived query sets and produced 1,070 lost and 259
+gained threshold crossings at Bonferroni-adjusted p-value <= 0.05.

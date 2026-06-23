@@ -137,6 +137,20 @@ genesets-workflows go-impact evals/go_impact_5y_expression500.yaml
 genesets-workflows reactome-flat
 ```
 
+`go-impact` YAML can apply `query_sets.include_regex` and
+`query_sets.exclude_regex` before selecting query sets from a cached snapshot.
+The regexes match query id, name, description, source class, stratum, and search
+query metadata. For example, exclude GO-derived MSigDB query sets from a GO
+target analysis:
+
+```yaml
+query_sets:
+  source_dir: expression_like/generated/msigdb_diverse_5k
+  limit: 4313
+  exclude_regex:
+    - "^(GOBP|GOCC|GOMF)_"
+```
+
 For interactive review of an existing report bundle, use the optional web
 explorer dependencies:
 

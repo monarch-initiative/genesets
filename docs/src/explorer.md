@@ -10,13 +10,19 @@ Install or run with the optional explorer dependencies:
 just browser
 ```
 
-This opens the default set of report bundles, currently the 5,000-set
-all-vs-IBA comparison and the 5,000-set 2021-vs-2026 GO/GOA comparison. To open
-one directly:
+This opens the default set of report bundles, currently:
+
+- the 5,000-set current GOA all-vs-IBA comparison;
+- the 5,000-set 2021-vs-2026 GO/GOA comparison;
+- the 4,313-set current GOA all-vs-no-`contributes_to` comparison, excluding
+  GO-derived query sets.
+
+To open one directly:
 
 ```bash
 just browser-iba
 just browser-go5y
+just browser-contributes
 ```
 
 The equivalent explicit command for the IBA bundle is:
