@@ -1,0 +1,3 @@
+query_id	query_name	target_id	target_name	overlap	query_size	target_size	background_size	p_value	p_adjust	overlap_genes	overlap_gene_names
+dc_up	dc_up	GO:0019882	antigen processing and presentation	12	100	340	20000	1.2e-09	3.4e-07	HLA-DRA;CD74	HLA-DRA;CD74
+dc_up	dc_up	GO:0006412	translation	8	100	1500	20000	2.0e-02	8.0e-01	RPL3;RPS6	RPL3;RPS6
