@@ -43,6 +43,13 @@ notebooks = [
   "nbconvert>=7.0",
   "pandas>=2.0",
 ]
+curation = [
+  "typer>=0.12",
+  "linkml>=1.8",
+  "linkml-term-validator>=0.4.0",
+  "linkml-reference-validator>=0.2",
+  "oaklib>=0.6",
+]
 
 [project.scripts]
 genesets-workflows = "genesets_workflows.cli:main"
