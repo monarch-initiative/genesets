@@ -1,0 +1,124 @@
+gene_set_id: MSIGDB:DESCARTES_FETAL_CEREBRUM_EXCITATORY_NEURONS
+gene_set_name: DESCARTES_FETAL_CEREBRUM_EXCITATORY_NEURONS
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of excitatory (glutamatergic) neurons from human
+  fetal cerebrum (Descartes atlas). These cells are of neural lineage, not
+  hematopoietic, and produce and release glutamate as their primary
+  neurotransmitter. Excitatory neurons are the most abundant neuron class in the
+  cerebral cortex and are characterized by glutamate-mediated chemical synaptic
+  transmission, formation of axons and dendrites, and action-potential-driven
+  neurotransmitter secretion at synaptic terminals.
+contexts:
+  - term:
+      id: CL:0000679
+      label: glutamatergic neuron
+    context_type: cell_type
+  - term:
+      id: UBERON:0000955
+      label: brain
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0007268
+      label: chemical synaptic transmission
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    evidence:
+      - reference: PMID:17229973
+        reference_title: NMDA Receptors in glia.
+        supports: SUPPORT
+        snippet: "The amino acid L-Glutamate acts as the most ubiquitous mediator of excitatory synaptic transmission in the central nervous system."
+        explanation: >-
+          Excitatory neurons are defined by their use of glutamate to mediate
+          chemical synaptic transmission. This is the cardinal functional process
+          of the cell type and is expected to dominate enrichment results from
+          any excitatory neuron marker signature.
+  - term:
+      id: GO:0045202
+      label: synapse
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    curator_note: >-
+      The synapse is the defining subcellular structure of neurons. Marker genes
+      for excitatory neurons include abundant synaptic proteins (e.g. SYN1,
+      SYP, NRXN families), making synapse the expected top cellular component
+      in enrichment.
+  - term:
+      id: GO:0043005
+      label: neuron projection
+    aspect: cellular_component
+    category: core_component
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Neuron projections (axons and dendrites) are the elongated processes
+      through which excitatory neurons form synaptic connections. Marker genes
+      for this signature include cytoskeletal and projection-associated
+      transcripts enriched in neurons broadly.
+  - term:
+      id: GO:0007269
+      label: neurotransmitter secretion
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Excitatory neurons secrete glutamate as their primary neurotransmitter via
+      regulated exocytosis of synaptic vesicles. Genes encoding SNARE proteins,
+      synaptotagmins, and vesicular glutamate transporters (SLC17A6/7) are
+      expected markers of this process.
+  - term:
+      id: GO:0042391
+      label: regulation of membrane potential
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Excitatory neurons generate and propagate action potentials by regulating
+      membrane potential through voltage-gated ion channels. This process is
+      shared across neuron subtypes (excitatory and inhibitory) and is therefore
+      lineage_shared rather than excitatory-neuron-specific.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment of excitatory neuron markers reflects highly expressed
+      ribosomal protein genes in active neurons, not a neuron-specific function.
+      Illustrates a non-informative housekeeping enrichment hit.
+  - term:
+      id: GO:0030424
+      label: axon
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    curator_note: >-
+      Excitatory projection neurons in the fetal cerebrum form long axons that
+      establish cortico-cortical and corticofugal connections. Axon-specific
+      genes (e.g. NEFM, NEFH, MAPT) are prominent markers of excitatory
+      neuron identity. Added by curator as enrichment-based approaches may
+      recover the broader neuron projection term while missing the axon
+      substructure specifically.

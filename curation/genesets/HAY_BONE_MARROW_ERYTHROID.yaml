@@ -1,0 +1,123 @@
+gene_set_id: MSIGDB:HAY_BONE_MARROW_ERYTHROID
+gene_set_name: HAY_BONE_MARROW_ERYTHROID
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of erythroid-lineage cells (red blood cell
+  precursors and erythrocytes) from human bone marrow (Hay et al.). Erythroid
+  cells are a non-immune myeloid lineage whose defining function is the
+  synthesis of hemoglobin and transport of oxygen to tissues.
+contexts:
+  - term:
+      id: CL:0000764
+      label: erythroid lineage cell
+    context_type: cell_type
+  - term:
+      id: UBERON:0002371
+      label: bone marrow
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0015671
+      label: oxygen transport
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    evidence:
+      - reference: PMID:17449336
+        reference_title: The role of hemoglobin oxygen affinity in oxygen transport at high altitude.
+        supports: SUPPORT
+        snippet: "Hemoglobin is involved in the regulation of O(2) transport in two ways: a long-term adjustment in red cell mass is mediated by erythropoietin (EPO), a response to renal oxgyenation."
+        explanation: >-
+          Erythrocytes are the principal oxygen-transporting cells of the blood,
+          carrying O2 bound to hemoglobin from the lungs to peripheral tissues.
+          Oxygen transport is the defining core process of the erythroid lineage.
+  - term:
+      id: GO:0005833
+      label: hemoglobin complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Hemoglobin is the dominant cytoplasmic protein of mature erythrocytes,
+      constituting ~96% of dry weight. The hemoglobin complex (alpha and beta
+      globin chains with heme prosthetic groups) is the hallmark structural
+      component of the erythroid lineage and is expected to be strongly
+      enriched in erythroid marker sets.
+  - term:
+      id: GO:0006783
+      label: heme biosynthetic process
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Erythroid cells are the major site of heme biosynthesis in the body,
+      producing heme required for the hemoglobin prosthetic groups. Genes
+      encoding enzymes of the heme biosynthesis pathway (e.g. ALAS2, ALAD,
+      HMBS, UROS, UROD, CPOX, PPOX, FECH) are hallmark erythroid markers.
+  - term:
+      id: GO:0030218
+      label: erythrocyte differentiation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    curator_note: >-
+      The gene set captures bone marrow erythroid precursors undergoing
+      terminal differentiation. Erythrocyte differentiation encompasses the
+      commitment of myeloid progenitors to the erythroid fate and their
+      progressive maturation into enucleate erythrocytes.
+  - term:
+      id: GO:0015669
+      label: gas transport
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Parent term of oxygen transport; also covers carbon dioxide transport
+      (CO2 carried by erythrocytes as bicarbonate and carbamino-hemoglobin).
+      Expected to be recovered by enrichment alongside the more specific
+      oxygen transport child term. Shared at the lineage level with
+      erythrocyte precursors and reticulocytes.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment results reflects highly expressed ribosomal protein genes in
+      erythroid precursors (which are actively synthesizing globin proteins),
+      not an erythroid-specific function. Illustrates a non-informative
+      enrichment hit.
+  - term:
+      id: GO:0048821
+      label: erythrocyte development
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    curator_note: >-
+      Broader developmental term encompassing the full progression of an
+      erythrocyte from formation to mature structure, including both the
+      differentiation and maturation phases. Marker-based enrichment may
+      preferentially recover erythrocyte differentiation (GO:0030218) while
+      missing this broader developmental term; added as a curator_added
+      core process to represent the complete erythroid developmental program.

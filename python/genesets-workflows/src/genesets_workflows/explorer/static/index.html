@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>genesets-rs Explorer</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <div class="eyebrow">genesets-rs</div>
+          <h1>Gene Set Explorer</h1>
+        </div>
+        <div class="topbar-controls">
+          <label>
+            <span>Analysis</span>
+            <select id="bundleSelect"></select>
+          </label>
+          <button id="refreshButton" type="button">Refresh</button>
+        </div>
+      </header>
+
+      <section id="bundleSummary" class="summary-band"></section>
+
+      <main class="workspace">
+        <aside class="query-pane">
+          <div class="filter-grid">
+            <label class="wide">
+              <span>Search gene sets</span>
+              <input id="searchInput" type="search" placeholder="DESCARTES, oxidative, microglia">
+            </label>
+            <label>
+              <span>Source family</span>
+              <select id="sourceFilter"></select>
+            </label>
+            <label>
+              <span>Stratum</span>
+              <select id="stratumFilter"></select>
+            </label>
+            <label>
+              <span>Sort by</span>
+              <select id="sortSelect">
+                <option value="lost_specific_count">Specific IBA losses</option>
+                <option value="lost_count">All IBA losses</option>
+                <option value="gained_specific_count">Specific IBA gains</option>
+                <option value="largest_abs_delta">Largest target delta</option>
+                <option value="old_result_count">A target hits</option>
+                <option value="new_result_count">B target hits</option>
+                <option value="gene_count">Gene count</option>
+                <option value="name">Name</option>
+              </select>
+            </label>
+          </div>
+          <div class="table-meta">
+            <span id="queryCount">0 gene sets</span>
+            <span id="statusText"></span>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table query-table" id="queryTable">
+              <thead>
+                <tr>
+                  <th>Gene set</th>
+                  <th>Source</th>
+                  <th class="num">Lost</th>
+                  <th class="num">Gained</th>
+                  <th>Top target</th>
+                </tr>
+              </thead>
+              <tbody id="queryTableBody"></tbody>
+            </table>
+          </div>
+        </aside>
+
+        <section class="detail-pane">
+          <div id="emptyState" class="empty-state">
+            <h2>Select a gene set</h2>
+            <p>Rank gene sets by IBA losses, temporal changes, source family, or search text, then inspect genes, enrichment results, and threshold-crossing diffs.</p>
+          </div>
+
+          <div id="detailContent" class="detail-content hidden">
+            <div class="detail-header">
+              <div>
+                <div id="detailSource" class="eyebrow"></div>
+                <h2 id="detailTitle"></h2>
+                <p id="detailDescription"></p>
+              </div>
+              <div id="detailMetrics" class="metric-strip"></div>
+            </div>
+
+            <nav class="tabs" aria-label="Gene set detail tabs">
+              <button class="tab active" data-tab="diffs" type="button">Diffs</button>
+              <button class="tab" data-tab="oldResults" type="button">A targets</button>
+              <button class="tab" data-tab="newResults" type="button">B targets</button>
+              <button class="tab" data-tab="genes" type="button">Genes</button>
+            </nav>
+
+            <section id="diffsPanel" class="tab-panel active">
+              <div class="panel-toolbar">
+                <label>
+                  <span>Diff class</span>
+                  <select id="diffClassFilter">
+                    <option value="">All classes</option>
+                    <option value="lost_significant">Lost significant</option>
+                    <option value="gained_significant">Gained significant</option>
+                    <option value="shared_significant">Shared significant</option>
+                  </select>
+                </label>
+                <span id="diffCount" class="muted"></span>
+              </div>
+              <div class="table-wrap compact">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Class</th>
+                      <th>Target</th>
+                      <th class="num">A adj p</th>
+                      <th class="num">B adj p</th>
+                      <th class="num">Delta</th>
+                      <th class="num">Target size</th>
+                    </tr>
+                  </thead>
+                  <tbody id="diffTableBody"></tbody>
+                </table>
+              </div>
+            </section>
+
+            <section id="oldResultsPanel" class="tab-panel">
+              <div class="table-wrap compact">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Target</th>
+                      <th class="num">Overlap</th>
+                      <th class="num">Target size</th>
+                      <th class="num">Adjusted p</th>
+                    </tr>
+                  </thead>
+                  <tbody id="oldResultsBody"></tbody>
+                </table>
+              </div>
+            </section>
+
+            <section id="newResultsPanel" class="tab-panel">
+              <div class="table-wrap compact">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Target</th>
+                      <th class="num">Overlap</th>
+                      <th class="num">Target size</th>
+                      <th class="num">Adjusted p</th>
+                    </tr>
+                  </thead>
+                  <tbody id="newResultsBody"></tbody>
+                </table>
+              </div>
+            </section>
+
+            <section id="genesPanel" class="tab-panel">
+              <div id="geneList" class="gene-list"></div>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="/assets/app.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,139 @@
+gene_set_id: MSIGDB:KEGG_CITRATE_CYCLE_TCA_CYCLE
+gene_set_name: KEGG_CITRATE_CYCLE_TCA_CYCLE
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  MSigDB C2 KEGG legacy gene set representing the enzymes of the tricarboxylic
+  acid (TCA) cycle, also known as the citric acid cycle or Krebs cycle. This is
+  a pure metabolic-pathway signature, not a cell-type or disease signature.
+  Member genes encode the eight enzymatic complexes that catalyse the sequential
+  oxidation of acetyl-CoA in the mitochondrial matrix: citrate synthase (CS),
+  aconitase (ACO2), isocitrate dehydrogenase (IDH2/IDH3A/IDH3B/IDH3G),
+  2-oxoglutarate dehydrogenase complex (OGDH/DLST/DLD), succinyl-CoA synthetase
+  (SUCLG1/SUCLG2/SUCLA2), succinate dehydrogenase (SDHA/SDHB/SDHC/SDHD),
+  fumarase (FH), and malate dehydrogenase (MDH2). The cycle oxidises
+  acetyl-CoA to CO2, reduces NAD+ and FAD to NADH and FADH2, and generates
+  GTP, providing reducing equivalents for the electron transport chain and
+  biosynthetic precursors for amino acids, nucleotides, and porphyrins.
+contexts:
+  - term:
+      id: GO:0006099
+      label: tricarboxylic acid cycle
+    context_type: experimental_condition
+associations:
+  - term:
+      id: GO:0006099
+      label: tricarboxylic acid cycle
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    evidence:
+      - reference: PMID:34777681
+        reference_title: "Interplay between Mitochondrial Metabolism and Cellular Redox State Dictates Cancer Cell Survival."
+        supports: SUPPORT
+        snippet: "generating ATP through the tricarboxylic acid cycle (TCA) and oxidative phosphorylation (OXPHOS), which drives myriad cellular processes"
+        explanation: >-
+          The gene set encodes the eight enzymatic steps of the TCA cycle
+          in the mitochondrial matrix. This review explicitly names the
+          tricarboxylic acid cycle as a core ATP-generating pathway of the
+          mitochondrion, directly supporting the core-process classification
+          of GO:0006099 for this gene set.
+  - term:
+      id: GO:0005739
+      label: mitochondrion
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      All TCA-cycle enzymes encoded by this gene set are localised to the
+      mitochondrion. In eukaryotes the entire cycle is confined to the
+      mitochondrial compartment, making the mitochondrion the defining
+      cellular location for this gene set.
+  - term:
+      id: GO:0005759
+      label: mitochondrial matrix
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      The TCA-cycle enzymes (citrate synthase, aconitase, isocitrate
+      dehydrogenase, 2-oxoglutarate dehydrogenase complex, succinyl-CoA
+      synthetase, fumarase, malate dehydrogenase) reside in the
+      mitochondrial matrix; the GO definition of GO:0005759 explicitly
+      states it "contains the enzymes of the tricarboxylic acid cycle".
+      This is the most precise cellular-compartment annotation for the
+      core members of this gene set.
+  - term:
+      id: GO:0006091
+      label: generation of precursor metabolites and energy
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      The TCA cycle is the central pathway for generation of NADH and
+      FADH2 (energy precursors for oxidative phosphorylation) and of
+      biosynthetic precursor metabolites (2-oxoglutarate for amino-acid
+      synthesis, succinyl-CoA for porphyrin synthesis, oxaloacetate for
+      gluconeogenesis). GO:0006091 captures this dual role as an energy-
+      and precursor-generating pathway. It is broader than GO:0006099 and
+      shared with glycolysis and oxidative phosphorylation, hence
+      supporting_process.
+  - term:
+      id: GO:0009060
+      label: aerobic respiration
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      The TCA cycle is an integral phase of aerobic respiration: it
+      accepts acetyl-CoA derived from pyruvate oxidation and generates
+      the reducing equivalents consumed by the electron transport chain.
+      Aerobic respiration encompasses the TCA cycle and oxidative
+      phosphorylation together, making GO:0009060 a parsimonious
+      supporting annotation that contextualises the gene set within the
+      broader oxygen-dependent metabolic programme.
+  - term:
+      id: GO:0016491
+      label: oxidoreductase activity
+    aspect: molecular_function
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Four of the eight enzymatic steps of the TCA cycle involve
+      oxidoreductases: isocitrate dehydrogenase (IDH2/IDH3 complex),
+      2-oxoglutarate dehydrogenase (OGDH), succinate dehydrogenase
+      (SDHA/SDHB/SDHC/SDHD, ETC complex II), and malate dehydrogenase
+      (MDH2). These enzymes catalyse NAD+/FAD reduction central to the
+      cycle's bioenergetic output. GO:0016491 is a molecular-function
+      term shared with many other metabolic pathways, hence
+      supporting_process rather than core_process.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process whose appearance
+      in enrichment results for this gene set reflects mitochondrial
+      ribosomal protein genes that may co-enrich with mitochondrial
+      metabolic signatures. It does not reflect a specific function of
+      the TCA-cycle pathway.

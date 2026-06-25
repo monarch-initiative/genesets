@@ -1,0 +1,114 @@
+gene_set_id: MSIGDB:HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION
+gene_set_name: HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION
+collection: H
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  MSigDB Hallmark gene set defining epithelial-to-mesenchymal transition (EMT).
+  This is a process/phenotype signature, not a cell-type signature. Member genes
+  are enriched for extracellular matrix components (collagens, fibronectin,
+  laminins), ECM remodelling enzymes (MMPs, LOX), cell adhesion molecules
+  (integrins, cadherins), and TGF-beta pathway components, collectively
+  capturing the transcriptional reprogramming that drives epithelial cells to
+  lose apical-basolateral polarity, dissolve intercellular junctions, degrade
+  basement membrane, and acquire migratory mesenchymal properties.
+contexts:
+  - term:
+      id: GO:0001837
+      label: epithelial to mesenchymal transition
+    context_type: phenotype
+associations:
+  - term:
+      id: GO:0001837
+      label: epithelial to mesenchymal transition
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    evidence:
+      - reference: PMID:30459476
+        reference_title: "New insights into the mechanisms of epithelial-mesenchymal transition and implications for cancer."
+        supports: SUPPORT
+        snippet: "EMT, cell-cell and cell-extracellular matrix interactions are remodelled, which leads to the detachment of epithelial cells from each other and the underlying basement membrane"
+        explanation: >-
+          The Hallmark EMT gene set was constructed to capture the transcriptional
+          programme of epithelial-to-mesenchymal transition. This canonical Nat Rev
+          Mol Cell Biol review (Dongre & Weinberg 2019) defines the core EMT process
+          as the remodelling of cell-cell and cell-ECM interactions, basement membrane
+          dissolution, and acquisition of the mesenchymal fate — precisely the biology
+          represented by the gene set members.
+  - term:
+      id: GO:0030198
+      label: extracellular matrix organization
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      The largest functional cluster within the Hallmark EMT gene set is ECM
+      remodelling: collagens (COL1A1, COL3A1, COL5A1, COL5A2), fibronectin (FN1),
+      laminins (LAMC1, LAMC2), matrix metalloproteinases (MMP2, MMP3, MMP14),
+      and lysyl oxidase (LOXL2) all participate directly in ECM assembly or
+      remodelling. ECM reorganisation is required for mesenchymal cell invasion
+      and is a defining feature of EMT.
+  - term:
+      id: GO:0031012
+      label: extracellular matrix
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      A large proportion of Hallmark EMT gene products (collagens, fibronectin,
+      laminins, periostin, tenascin-C) are secreted and localise to the
+      extracellular matrix. The ECM compartment is therefore the dominant
+      cellular component represented in this gene set. (Note: GO:0062023
+      "collagen-containing extracellular matrix" is obsolete in GO; GO:0031012
+      "extracellular matrix" is the appropriate current term.)
+  - term:
+      id: GO:0016477
+      label: cell migration
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Acquisition of migratory capacity is a hallmark outcome of EMT. Genes
+      such as VIM, FN1, SNAI1, TWIST1, and integrins (ITGB1, ITGB3, ITGAV)
+      in this set promote mesenchymal motility. Cell migration is shared
+      across many biological contexts and is not EMT-specific per se, but
+      is a direct functional consequence of the transition.
+  - term:
+      id: GO:0007155
+      label: cell adhesion
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      EMT involves dissolution of epithelial adherens junctions (E-cadherin
+      downregulation) and gain of mesenchymal adhesion programmes (N-cadherin,
+      integrins). Cell adhesion molecules including cadherins, integrins, and
+      MCAM feature in the gene set. The term is broadly expressed and marks
+      the adhesion-switching component of the EMT programme.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Translation appears as a non-specific enrichment hit driven by ribosomal
+      protein subunit genes present in the gene set. It is a ubiquitous
+      housekeeping process and does not reflect a specific function of the
+      EMT programme.

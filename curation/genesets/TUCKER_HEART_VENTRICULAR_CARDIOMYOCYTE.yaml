@@ -1,0 +1,124 @@
+gene_set_id: MSIGDB:TUCKER_HEART_VENTRICULAR_CARDIOMYOCYTE
+gene_set_name: TUCKER_HEART_VENTRICULAR_CARDIOMYOCYTE
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of ventricular cardiomyocytes from human heart
+  (Tucker et al.). Ventricular cardiomyocytes are striated, non-blood muscle
+  cells that drive systolic contraction of the cardiac ventricles via organized
+  sarcomere arrays. They have extremely high mitochondrial content and ATP
+  demand to sustain continuous rhythmic contractile activity throughout life.
+contexts:
+  - term:
+      id: CL:0000746
+      label: cardiac muscle cell
+    context_type: cell_type
+  - term:
+      id: UBERON:0000948
+      label: heart
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0060048
+      label: cardiac muscle contraction
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    evidence:
+      - reference: PMID:29419405
+        reference_title: "Muscle Contraction."
+        supports: SUPPORT
+        snippet: "the filaments of actin and myosin that power their contraction are organized into repeating arrays, called sarcomeres, that have a striated microscopic appearance"
+        explanation: >-
+          Cardiac muscle contraction is the defining functional process of
+          ventricular cardiomyocytes. The review establishes that cardiac and
+          skeletal striated muscles contract via actin/myosin sarcomere arrays,
+          directly supporting this as the core process of the cell type.
+  - term:
+      id: GO:0030017
+      label: sarcomere
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    curator_note: >-
+      The sarcomere is the repeating contractile unit of the myofibril and is
+      the defining ultrastructural hallmark of striated muscle cells including
+      ventricular cardiomyocytes. Marker genes encoding sarcomeric proteins
+      (MYH7, MYH6, TNNT2, ACTC1) are prominent in this signature.
+  - term:
+      id: GO:0030016
+      label: myofibril
+    aspect: cellular_component
+    category: core_component
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Myofibrils are the highly organized bundles of sarcomeres that fill the
+      cytoplasm of cardiomyocytes and constitute the contractile apparatus.
+      Enrichment of myofibril-associated genes is expected and characteristic
+      of striated muscle marker sets.
+  - term:
+      id: GO:0006936
+      label: muscle contraction
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Parent term of cardiac muscle contraction; shared with skeletal muscle
+      cells and smooth muscle cells. Expected to appear in enrichment results
+      alongside the more specific cardiac muscle contraction child term.
+      Lineage-shared rather than cardiomyocyte-specific.
+  - term:
+      id: GO:0046034
+      label: ATP metabolic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Ventricular cardiomyocytes have the highest ATP demand of any cell type,
+      consuming ATP continuously to power actomyosin cross-bridge cycling.
+      Mitochondrial and metabolic genes driving ATP production are a major
+      feature of cardiomyocyte transcriptomes and are expected to dominate
+      enrichment results for this signature.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment results reflects highly expressed ribosomal protein genes
+      common to active, high-protein-turnover cells such as cardiomyocytes,
+      not a cardiomyocyte-specific function. Illustrates a non-informative
+      housekeeping enrichment hit.
+  - term:
+      id: GO:0060047
+      label: heart contraction
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    curator_note: >-
+      Heart contraction is the organ-level process to which ventricular
+      cardiomyocyte activity directly contributes. Marker-based enrichment may
+      preferentially recover the cellular-level cardiac muscle contraction term
+      (GO:0060048) over this organ-level parent; added by the curator to capture
+      the multicellular contractile output that defines the physiological role
+      of this cell type in the ventricle.

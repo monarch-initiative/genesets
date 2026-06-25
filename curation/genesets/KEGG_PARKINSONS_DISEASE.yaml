@@ -1,0 +1,175 @@
+gene_set_id: MSIGDB:KEGG_PARKINSONS_DISEASE
+gene_set_name: KEGG_PARKINSONS_DISEASE
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy Parkinson's disease pathway gene set (MSigDB C2 curated gene set).
+  This is a disease pathway gene set, not a cell-type signature. The member genes
+  are heavily enriched for mitochondrial electron-transport-chain subunits
+  (oxidative phosphorylation), ubiquitin-proteasome system components (parkin/PINK1
+  pathway), dopaminergic neuron biology, and apoptosis regulators, reflecting the
+  major mechanistic arms of the KEGG Parkinson's disease pathway representation.
+  As a legacy/core pathway it captures established mechanism and omits more
+  recently characterised arms such as ferroptosis (recorded below as a
+  membership_gap rather than a false association).
+contexts:
+  - term:
+      id: MONDO:0005180
+      label: Parkinson disease
+    context_type: disease
+  - term:
+      id: UBERON:0000955
+      label: brain
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0006119
+      label: oxidative phosphorylation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:31013638
+        reference_title: "Oxidative Stress: A Key Modulator in Neurodegenerative Diseases."
+        supports: SUPPORT
+        snippet: "Mitochondria play a key role in ATP supply to cells via oxidative phosphorylation, as well as synthesis of essential biological molecules. Various redox reactions catalyzed by enzymes take place in the oxidative phosphorylation process. An inefficient oxidative phosphorylation may generate reactive oxygen species (ROS), leading to mitochondrial dysfunction."
+        explanation: >-
+          The KEGG Parkinson's disease pathway gene set is dominated by ETC
+          complex I–V and ATP-synthase subunits. Impaired oxidative
+          phosphorylation and the resulting mitochondrial dysfunction are core
+          mechanistic features of Parkinson's disease pathophysiology, as
+          described in this review of oxidative stress in neurodegenerative
+          diseases.
+  - term:
+      id: GO:0005739
+      label: mitochondrion
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      A large fraction of KEGG PD pathway members (NADH dehydrogenase subunits,
+      cytochrome bc1 subunits, COX subunits, ATP synthase subunits) are
+      localised to the mitochondrion. Mitochondrial dysfunction is a primary
+      hallmark of Parkinson's disease pathology, making the mitochondrion the
+      dominant cellular compartment represented in this gene set.
+  - term:
+      id: GO:0006511
+      label: ubiquitin-dependent protein catabolic process
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Parkin (PARK2) is an E3 ubiquitin ligase and key PD gene; loss-of-function
+      mutations cause autosomal-recessive PD. Together with PINK1, parkin
+      mediates ubiquitination of damaged mitochondria for proteasomal and
+      autophagic degradation. The proteasome subunit genes in the KEGG PD
+      pathway directly support this annotation. The term is broadly expressed
+      but reflects a disease-defining mechanism in PD.
+  - term:
+      id: GO:0042416
+      label: dopamine biosynthetic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Loss of dopaminergic neurons in the substantia nigra pars compacta is the
+      pathological hallmark of Parkinson's disease, resulting in dopamine
+      deficiency in the nigrostriatal pathway. Genes such as TH (tyrosine
+      hydroxylase), DDC, and MAOB in the KEGG PD pathway participate directly
+      in dopamine biosynthesis and catabolism. This term is cell-type-specific
+      to dopaminergic neurons and is a defining mechanistic feature of this
+      disease pathway gene set.
+  - term:
+      id: GO:0006915
+      label: apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      CASP3, CASP9, CYCS, and BCL2-family members in the KEGG PD pathway
+      encode canonical intrinsic apoptosis components. Apoptosis is shared
+      across many disease contexts and is not PD-specific, but is a significant
+      mechanistic component of dopaminergic neuron death in this pathway
+      representation.
+  - term:
+      id: GO:0051402
+      label: neuron apoptotic process
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      Dopaminergic neuron death by apoptosis is the central downstream outcome
+      of the KEGG Parkinson's disease pathway, so this term is biologically
+      core and is NOT weakened on annotation grounds. It is an annotation_gap:
+      relevant genes ARE in the set (e.g. HTRA2/PARK13 and CDK5 are annotated to
+      neuron apoptotic process in GOA-human; CASP3/CASP9/CYCS/BAX are present
+      but annotated only to the generic parent apoptotic process), yet most of
+      the set's death machinery is not annotated to this neuron-specific child.
+      The shallow annotation is GO/GOA's incompleteness, not evidence against
+      the association — this is a GO annotation curation target.
+  - term:
+      id: GO:0097707
+      label: ferroptosis
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: membership_gap
+    evidence:
+      - reference: PMID:36497089
+        reference_title: "Iron Brain Menace: The Involvement of Ferroptosis in Parkinson Disease."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "progressive dopaminergic neuronal loss in people with PD is associated with iron accumulation and is suggested to be driven in part by the novel cell death pathway, ferroptosis"
+        explanation: >-
+          Iron accumulation in the substantia nigra and iron-dependent lipid
+          peroxidation make ferroptosis an increasingly accepted mechanism of
+          dopaminergic neuron death in PD. It therefore SHOULD be part of a
+          complete Parkinson's disease gene set.
+    curator_note: >-
+      membership_gap, not false_association. Ferroptosis is genuine PD biology
+      and belongs in a complete representation, but the canonical ferroptosis
+      genes (GPX4, SLC7A11, ACSL4, NCOA4, FTH1, …) are NOT members of this
+      legacy KEGG PD pathway (they form KEGG's separate ferroptosis pathway,
+      hsa04216), and none of the KEGG PD genes carry a ferroptosis annotation in
+      GOA-human. The gap is the gene set's (core/legacy, pre-ferroptosis), so
+      enrichment cannot and should not recover this term from these genes — but
+      we record it as expected biology so the eval's recall denominator is
+      honest and the gene-set incompleteness is visible.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation appears as a non-specific enrichment hit driven by ribosomal
+      protein subunit genes present in the gene set. It is a ubiquitous
+      housekeeping process and does not reflect a disease-specific function of
+      the Parkinson's disease pathway.

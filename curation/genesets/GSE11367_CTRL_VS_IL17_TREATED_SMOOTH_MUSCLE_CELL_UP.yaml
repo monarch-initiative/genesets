@@ -1,0 +1,108 @@
+gene_set_id: MSIGDB:GSE11367_CTRL_VS_IL17_TREATED_SMOOTH_MUSCLE_CELL_UP
+gene_set_name: GSE11367_CTRL_VS_IL17_TREATED_SMOOTH_MUSCLE_CELL_UP
+collection: C7
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+description: >-
+  Genes upregulated in human smooth muscle cells treated with interleukin-17
+  (IL-17) versus untreated control (GSE11367, MSigDB C7 immunologic-signature
+  contrast). Reflects the transcriptional response of smooth muscle cells to
+  IL-17-driven inflammatory signaling, including chemokine production, NF-kappaB
+  activation, and neutrophil-recruiting responses.
+contexts:
+  - term:
+      id: CL:0000192
+      label: smooth muscle cell
+    context_type: cell_type
+  - term:
+      id: PR:000001138
+      label: interleukin-17A
+    context_type: chemical_perturbagen
+    role_note: treatment
+associations:
+  - term:
+      id: GO:0097398
+      label: cellular response to interleukin-17
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    evidence:
+      - reference: PMID:15982617
+        reference_title: "Interleukin-17--induced interleukin-8 release in human airway smooth muscle cells: role for mitogen-activated kinases and nuclear factor-kappaB."
+        supports: SUPPORT
+        snippet: "We have shown that IL-17--stimulated human airway smooth muscle cells (HASMC) are able to produce IL-8."
+        explanation: >-
+          Directly demonstrates that smooth muscle cells mount a cellular
+          response to IL-17 stimulation, producing downstream inflammatory
+          mediators (IL-8/CXCL8), supporting cellular response to interleukin-17
+          as the defining core process of this contrast set.
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    curator_note: >-
+      IL-17 is a proinflammatory cytokine whose primary function is to
+      orchestrate inflammatory responses; upregulated genes in IL-17-treated
+      smooth muscle cells collectively constitute an inflammatory programme.
+      Lineage-shared because inflammatory response is not unique to smooth
+      muscle cells but is the main functional consequence of IL-17 treatment.
+  - term:
+      id: GO:0032602
+      label: chemokine production
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    curator_note: >-
+      IL-17 strongly induces chemokine production (especially CXCL1, CXCL5,
+      CXCL8) in smooth muscle cells, which mediates downstream neutrophil
+      recruitment. A key supporting output of IL-17 signaling in stromal cells.
+  - term:
+      id: GO:0030593
+      label: neutrophil chemotaxis
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    curator_note: >-
+      A hallmark functional outcome of IL-17-induced chemokine production in
+      smooth muscle and other stromal cells is the recruitment of neutrophils.
+      Genes encoding neutrophil-attracting chemokines are expected to be highly
+      upregulated in this contrast set.
+  - term:
+      id: GO:0007249
+      label: canonical NF-kappaB signal transduction
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      The canonical NF-kappaB (IKK-dependent) cascade is a central intracellular
+      signaling pathway activated by IL-17 in smooth muscle cells; NF-kappaB
+      inhibition substantially reduces IL-17-induced IL-8 production. Broadly
+      expressed — not restricted to smooth muscle cells.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Ribosomal protein genes
+      frequently appear in transcriptomic contrast sets due to general
+      transcriptional activation rather than a cytokine-specific response.
+      Illustrates a non-informative enrichment hit.

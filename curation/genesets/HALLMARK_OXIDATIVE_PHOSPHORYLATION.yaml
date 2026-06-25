@@ -1,0 +1,123 @@
+gene_set_id: MSIGDB:HALLMARK_OXIDATIVE_PHOSPHORYLATION
+gene_set_name: HALLMARK_OXIDATIVE_PHOSPHORYLATION
+collection: H
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  MSigDB Hallmark gene set of genes encoding proteins of the mitochondrial
+  oxidative phosphorylation and electron transport chain (ETC) machinery.
+  This is a metabolic-process signature, not a cell-type signature; the
+  member genes are predominantly nuclear-encoded subunits of ETC complexes
+  I–V (NADH dehydrogenase, succinate dehydrogenase, ubiquinol–cytochrome c
+  reductase, cytochrome c oxidase, and ATP synthase), together with
+  components of the TCA cycle and mitochondrial ribosomal proteins. The
+  hallmark represents the core mitochondrial bioenergetic programme that is
+  active in virtually all aerobically respiring human cell types.
+contexts:
+  - term:
+      id: GO:0006119
+      label: oxidative phosphorylation
+    context_type: experimental_condition
+  - term:
+      id: GO:0005739
+      label: mitochondrion
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0006119
+      label: oxidative phosphorylation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    evidence:
+      - reference: PMID:34777681
+        reference_title: "Interplay between Mitochondrial Metabolism and Cellular Redox State Dictates Cancer Cell Survival."
+        supports: SUPPORT
+        snippet: "Mitochondria are the main powerhouse of the cell, generating ATP through the tricarboxylic acid cycle (TCA) and oxidative phosphorylation (OXPHOS), which drives myriad cellular processes."
+        explanation: >-
+          The Hallmark OXPHOS gene set is built from nuclear- and
+          mitochondrially-encoded subunits of ETC complexes and ATP synthase,
+          whose collective biochemical function is oxidative phosphorylation.
+          This review explicitly describes OXPHOS as the central ATP-generating
+          process of the mitochondrion and notes that a "switch to mitochondrial
+          OXPHOS" is a hallmark of metabolically active cancers, underscoring
+          the core-process status of this GO term for the gene set.
+  - term:
+      id: GO:0022904
+      label: respiratory electron transport chain
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      The Hallmark OXPHOS set is dominated by subunits of ETC complexes I–IV
+      (NDUF*, SDHA/B/C/D, UQCR*, COX*), which are the direct molecular
+      machinery of the respiratory electron transport chain. This GO term
+      captures the electron-carrier cascade that establishes the proton
+      gradient consumed by ATP synthase and is co-equal in importance to
+      GO:0006119 for this gene set.
+  - term:
+      id: GO:0005739
+      label: mitochondrion
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      The vast majority of gene products in the Hallmark OXPHOS set are
+      localised to the mitochondrion (ETC complex subunits, ATP synthase
+      subunits, TCA-cycle enzymes, mitochondrial ribosomal proteins). The
+      mitochondrion is therefore the defining cellular compartment for this
+      gene set.
+  - term:
+      id: GO:0005743
+      label: mitochondrial inner membrane
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      ETC complexes I–IV and ATP synthase (complex V) are integral proteins
+      of the mitochondrial inner membrane. This membrane is the structural
+      substrate across which the proton gradient is established during
+      oxidative phosphorylation, making it the most functionally specific
+      cellular compartment for the core members of this gene set.
+  - term:
+      id: GO:0006099
+      label: tricarboxylic acid cycle
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Several TCA-cycle enzymes (e.g. succinate dehydrogenase subunits, which
+      also constitute ETC complex II) are members of the Hallmark OXPHOS set.
+      The TCA cycle feeds NADH and FADH2 into the ETC and is therefore
+      functionally coupled to oxidative phosphorylation, but is a distinct
+      process that is secondary to the primary OXPHOS signature.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Translation appears as a non-specific enrichment signal driven by the
+      large number of mitochondrial ribosomal protein (MRPS/MRPL) genes
+      present in the Hallmark OXPHOS set. These genes encode the
+      mitochondrial ribosome, which translates the 13 mitochondrially-encoded
+      ETC subunits. Translation itself is a ubiquitous housekeeping process
+      and does not reflect a specific function of the OXPHOS machinery; its
+      presence here is a secondary consequence of including the mitoribosomes
+      needed to assemble the ETC.

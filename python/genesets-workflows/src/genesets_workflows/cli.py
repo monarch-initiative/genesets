@@ -49,6 +49,16 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="Fetch a stratified MyGeneSet query collection into GMT.",
         add_help=False,
     )
+    subparsers.add_parser(
+        "explore",
+        help="Launch a local browser over workflow report bundles.",
+        add_help=False,
+    )
+    subparsers.add_parser(
+        "curate",
+        help="Curate and validate GO interpretations of gene sets.",
+        add_help=False,
+    )
     parsed, remainder = parser.parse_known_args(argv)
     parsed.remainder = remainder
     return parsed
@@ -72,6 +82,13 @@ def doctor(_argv: list[str] | None = None) -> int:
         duckdb_python_status = "ok"
     except ImportError:
         duckdb_python_status = "missing; CLI fallback is supported"
+    try:
+        import fastapi  # noqa: F401
+        import uvicorn  # noqa: F401
+
+        explorer_status = "ok"
+    except ImportError:
+        explorer_status = "missing; install the explorer extra for web browsing"
 
     print(f"genesets-workflows {__version__}")
     for name, path, version in checks:
@@ -82,10 +99,21 @@ def doctor(_argv: list[str] | None = None) -> int:
             print(f"missing {name}")
     print(f"ok      PyYAML: {yaml_status}" if yaml_status == "ok" else f"missing PyYAML: {yaml_status}")
     print(f"ok      Python duckdb: {duckdb_python_status}" if duckdb_python_status == "ok" else f"warn    Python duckdb: {duckdb_python_status}")
+    print(f"ok      Explorer web deps: {explorer_status}" if explorer_status == "ok" else f"warn    Explorer web deps: {explorer_status}")
     return 0
 
 
 def dispatch(command: str) -> Command:
+    def explore(argv: list[str] | None = None) -> int:
+        from genesets_workflows.explorer import server
+
+        return server.main(argv)
+
+    def curate(argv: list[str] | None = None) -> int:
+        from genesets_workflows.curation import cli as curation_cli
+
+        return curation_cli.main(argv)
+
     commands: dict[str, Command] = {
         "doctor": doctor,
         "go-impact": go_impact.main,
@@ -93,6 +121,8 @@ def dispatch(command: str) -> Command:
         "prepare-reactome-flat": reactome_source.main,
         "fetch-mygeneset": mygeneset.main,
         "fetch-mygeneset-stratified": mygeneset_stratified.main,
+        "explore": explore,
+        "curate": curate,
     }
     return commands[command]
 

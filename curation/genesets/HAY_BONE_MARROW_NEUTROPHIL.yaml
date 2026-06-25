@@ -1,0 +1,128 @@
+gene_set_id: MSIGDB:HAY_BONE_MARROW_NEUTROPHIL
+gene_set_name: HAY_BONE_MARROW_NEUTROPHIL
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of neutrophils (granulocytes) from human bone marrow
+  (Hay et al.). Neutrophils are the most abundant circulating leukocytes and the
+  first-responder cells of innate immunity, specialised for phagocytosis of
+  microorganisms, degranulation of preformed cytotoxic granules (azurophil,
+  specific, and gelatinase granules), and generation of a respiratory burst via
+  NADPH oxidase.
+contexts:
+  - term:
+      id: CL:0000775
+      label: neutrophil
+    context_type: cell_type
+  - term:
+      id: UBERON:0002371
+      label: bone marrow
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0043312
+      label: neutrophil degranulation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    evidence:
+      - reference: PMID:32053993
+        reference_title: The Impact of Hypoxia on Neutrophil Degranulation and Consequences for the Host.
+        supports: SUPPORT
+        snippet: "Neutrophils may kill pathogens intracellularly, following phagocytosis, or extracellularly, by degranulation and the release of neutrophil extracellular traps; all of these microbicidal strategies require the deployment of cytotoxic proteins and proteases, packaged during neutrophil development within cytoplasmic granules."
+        explanation: >-
+          Neutrophil degranulation is the defining effector mechanism of this
+          cell type, deploying preformed microbicidal proteins from azurophil,
+          specific, and gelatinase granules. It is the most neutrophil-specific
+          GO term expected to dominate enrichment of a neutrophil marker
+          signature.
+  - term:
+      id: GO:0030593
+      label: neutrophil chemotaxis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Neutrophil chemotaxis is a defining functional property of this cell type;
+      neutrophils are rapidly recruited to sites of infection and inflammation
+      via chemokine gradients. This term is expected to be strongly enriched in
+      any neutrophil marker gene set.
+  - term:
+      id: GO:0030141
+      label: secretory granule
+    aspect: cellular_component
+    category: core_component
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Neutrophils are characterised by prominent cytoplasmic granule
+      populations—azurophil (primary), specific (secondary), and gelatinase
+      (tertiary) granules—all of which fall under the secretory granule
+      compartment. Their presence as a cellular component is a hallmark of
+      neutrophil identity and is expected to be enriched in marker-gene-based
+      GO analyses.
+  - term:
+      id: GO:0042742
+      label: defense response to bacterium
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Neutrophils are primary responders to bacterial infection, deploying
+      phagocytosis, degranulation, and oxidative killing against bacteria.
+      Defense response to bacterium is shared with other innate immune cells
+      (macrophages, monocytes) and is therefore lineage_shared rather than
+      strictly neutrophil-specific.
+  - term:
+      id: GO:0045730
+      label: respiratory burst
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    curator_note: >-
+      The oxidative respiratory burst—generation of superoxide and H2O2 via
+      NADPH oxidase—is a critical neutrophil antimicrobial mechanism. It is
+      shared with monocytes and macrophages and therefore classified as
+      lineage_shared. Marker genes encoding NADPH oxidase subunits and
+      myeloperoxidase drive enrichment of this term.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its enrichment in
+      neutrophil marker sets reflects the high expression of ribosomal protein
+      genes in bone marrow neutrophil precursors and mature cells, not a
+      neutrophil-specific function. Illustrates a common non-informative
+      enrichment hit.
+  - term:
+      id: GO:0006909
+      label: phagocytosis
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    curator_note: >-
+      Phagocytosis is a canonical neutrophil function for internalisation and
+      destruction of microorganisms, but is shared broadly with macrophages,
+      monocytes, and dendritic cells. Added by curator as a key neutrophil
+      effector process that may be under-represented in marker-only enrichment
+      relative to its biological importance.

@@ -1,0 +1,125 @@
+gene_set_id: MSIGDB:HALLMARK_HYPOXIA
+gene_set_name: HALLMARK_HYPOXIA
+collection: H
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  MSigDB Hallmark gene set of genes up-regulated in response to hypoxia (low
+  oxygen tension). This is a condition/process signature, not a cell-type
+  signature. Member genes are activated by the HIF-1 (hypoxia-inducible
+  factor 1) transcriptional programme and reflect the canonical cellular
+  adaptations to oxygen deficiency: a glycolytic metabolic shift (Warburg-like
+  aerobic glycolysis), induction of angiogenesis via VEGF, and
+  broader stress-response remodelling. The set is compiled from the Hallmark
+  (H) collection of coherent, well-defined biological states.
+contexts:
+  - term:
+      id: GO:0001666
+      label: response to hypoxia
+    context_type: experimental_condition
+associations:
+  - term:
+      id: GO:0071456
+      label: cellular response to hypoxia
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    evidence:
+      - reference: PMID:20158574
+        reference_title: "Inter-connection between mitochondria and HIFs."
+        supports: SUPPORT
+        snippet: "HIF-1 was discovered as a nuclear factor bound to a cis-acting hypoxia response element (HRE) in the 3′ flanking region of the EPO gene during hypoxia."
+        explanation: >-
+          The Hallmark Hypoxia gene set is defined by genes activated in
+          response to low oxygen. This review by Tormos and Chandel
+          establishes HIF-1 as the master transcriptional regulator of
+          cellular responses to hypoxia, encompassing angiogenesis,
+          glycolysis, and mitochondrial remodelling — the core biology
+          captured by the Hallmark gene set.
+    curator_note: >-
+      Cellular response to hypoxia (GO:0071456) is the single most
+      direct annotation for the HALLMARK_HYPOXIA gene set: it captures
+      any change in cell state specifically triggered by low O2. It is
+      broadly expressed because virtually all human cell types activate
+      HIF-1α under hypoxia.
+  - term:
+      id: GO:0097411
+      label: hypoxia-inducible factor-1alpha signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    curator_note: >-
+      The HIF-1α signalling pathway is the mechanistic engine driving
+      the Hallmark Hypoxia gene set. The set was constructed around
+      HIF-1 target genes, so this term captures the upstream molecular
+      mechanism rather than the upstream stimulus. Added as
+      curator_added because enrichment tools recover downstream
+      biological processes (glycolysis, angiogenesis) more readily
+      than the signalling pathway itself.
+  - term:
+      id: GO:0006096
+      label: glycolytic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      HIF-1 directly transactivates genes encoding glycolytic enzymes
+      (LDHA, PFKL, ALDOA, ENO1, PKM, etc.) to shift energy metabolism
+      from oxidative phosphorylation to glycolysis under low oxygen.
+      This glycolytic shift is one of the canonical, well-characterised
+      HIF-1 transcriptional outputs and is represented by multiple
+      members of the Hallmark Hypoxia gene set.
+  - term:
+      id: GO:0001525
+      label: angiogenesis
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    curator_note: >-
+      HIF-1 drives transcription of VEGFA and related angiogenic
+      factors to promote new blood vessel formation in hypoxic tissues.
+      Angiogenesis is a supporting process in this gene set context:
+      important mechanistically but shared across many hypoxia-related
+      and tumour biology contexts, and not all member genes are
+      angiogenesis-specific.
+  - term:
+      id: GO:0006979
+      label: response to oxidative stress
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Hypoxia and oxidative stress are intimately coupled: mitochondrial
+      reactive oxygen species (ROS) generated during oxygen limitation
+      are both sensors and amplifiers of HIF-1α stabilisation. Several
+      Hallmark Hypoxia members (HMOX1, TXNIP, BNIP3) are involved in
+      oxidative stress responses. Supporting rather than core because
+      oxidative stress response is broader than hypoxia and is shared
+      with many other stimuli.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance
+      in enrichment results from the Hallmark Hypoxia set reflects
+      highly expressed ribosomal protein and translation-factor genes
+      in the member list, not a hypoxia-specific function. A
+      non-informative enrichment hit included to flag this confound.

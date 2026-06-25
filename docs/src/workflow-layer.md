@@ -15,7 +15,7 @@ logic:
 - querying result Parquet with DuckDB;
 - computing global report diagnostics such as GO term coverage and terms that
   are scorable but never appear as significant enrichment hits;
-- generating report summaries for docs, notebooks, and future web views.
+- generating report summaries for docs, notebooks, and web views.
 
 ## Local Use
 
@@ -76,6 +76,23 @@ The workflow command should usually call Rust once per large batch, not once
 per gene set. If a workflow needs thousands of enrichments, it should express
 that as a batch plan for the Rust CLI.
 
+Launch the local web explorer over an existing report bundle when the task is
+interactive triage rather than batch computation:
+
+```bash
+just browser
+```
+
+The default browser recipe loads the current GOA all-vs-IBA report, the
+2021-vs-2026 GO/GOA temporal report, and the current GOA
+all-vs-no-`contributes_to` report. Use `just browser-iba`, `just browser-go5y`,
+or `just browser-contributes` to open one analysis directly.
+
+```bash
+uv run --project python/genesets-workflows --extra explorer \
+  genesets-workflows explore notebooks/generated/go_iba_impact_expression5000_diverse
+```
+
 ## Global Diagnostics
 
 The `go-impact` report also writes term-coverage Parquet files. These join the
@@ -135,6 +152,26 @@ The stratified fetcher still emits ordinary `queries.gmt`, `background.txt`,
 and `metadata.json` files. The difference is that `metadata.json` records the
 quota stratum and search query for each set, which makes later report examples
 auditable.
+
+`go-impact` configs can also filter the selected query snapshot with regexes
+before running Rust. This is useful for benchmark hygiene, for example excluding
+GO-derived MSigDB query sets when the target ontology is GO:
+
+```yaml
+query_sets:
+  source_dir: expression_like/generated/msigdb_diverse_5k
+  limit: 4313
+  exclude_regex:
+    - "^(GOBP|GOCC|GOMF)_"
+```
+
+The report metadata records the selected, considered, and skipped query counts.
+
+Browse one or more generated report bundles in a local web UI:
+
+```bash
+genesets-workflows explore notebooks/generated/go_iba_impact_expression5000_diverse
+```
 
 The old script entry points for these packaged commands remain as
 compatibility wrappers around the package modules. Some older eval helpers are
@@ -221,13 +258,13 @@ same Rust core crate. The CLI should remain supported because it is the most
 transparent interface for batch runs, notebooks, workflow engines, and remote
 execution.
 
-## Notebooks And Web Reports
+## Notebooks And Web Explorer
 
 Notebooks should demonstrate the CLI and analyze generated artifacts. They
 should not be the primary workflow engine. A notebook should run a configured
 workflow command, then display Parquet-derived tables and plots.
 
-A future web interface can follow the same model: select a run directory, read
-`summary.yaml`, query Parquet with DuckDB or an Arrow stack, and render
-threshold crossings, timing, and top changed terms. No web-specific behavior
-needs to enter the Rust enrichment kernel.
+The web explorer follows the same model: select a run directory, read
+`summary.yaml`, query Parquet with DuckDB, and render threshold crossings,
+timing, top changed targets, enrichment rows, and query genes. No web-specific
+behavior enters the Rust enrichment kernel.

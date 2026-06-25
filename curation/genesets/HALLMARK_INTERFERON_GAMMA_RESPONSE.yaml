@@ -1,0 +1,113 @@
+gene_set_id: MSIGDB:HALLMARK_INTERFERON_GAMMA_RESPONSE
+gene_set_name: HALLMARK_INTERFERON_GAMMA_RESPONSE
+collection: H
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  MSigDB Hallmark gene set of genes up-regulated in response to interferon-gamma
+  (IFN-γ). This is a stimulus-response signature, not a cell-type signature:
+  member genes are induced in diverse cell types by IFN-γ signalling through the
+  JAK1/JAK2–STAT1 axis and include MHC class I and II presentation machinery,
+  interferon-stimulated genes (ISGs), antiviral effectors, and immune
+  co-stimulatory molecules. The set defines the canonical IFN-γ transcriptional
+  response and is widely used to infer IFN-γ pathway activity in bulk and
+  single-cell RNA-seq data.
+contexts:
+  - term:
+      id: PR:000000017
+      label: interferon gamma
+    context_type: chemical_perturbagen
+    role_note: stimulus
+associations:
+  - term:
+      id: GO:0071346
+      label: cellular response to type II interferon
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    evidence:
+      - reference: PMID:14525967
+        reference_title: "Interferon-gamma: an overview of signals, mechanisms and functions."
+        supports: SUPPORT
+        snippet: "Cellular effects of IFN-gamma are described, including up-regulation of pathogen recognition, antigen processing and presentation, the antiviral state, inhibition of cellular proliferation and effects on apoptosis, activation of microbicidal effector functions, immunomodulation, and leukocyte trafficking."
+        explanation: >-
+          This landmark review describes the full scope of IFN-γ cellular
+          effects, which together constitute the cellular response to type II
+          interferon captured by the Hallmark gene set. The gene set is
+          specifically defined as genes whose expression is elevated upon
+          IFN-γ stimulation, making this GO term the most direct descriptor
+          of the signature.
+  - term:
+      id: GO:0019882
+      label: antigen processing and presentation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    curator_note: >-
+      IFN-γ is the primary inducer of MHC class I and class II expression via
+      CIITA transactivation, and numerous genes in the Hallmark set encode
+      components of antigen processing (TAP1, TAP2, TAPBP/tapasin, PSMB8/9/10,
+      B2M, HLA-A/B/C, HLA-DRA/DRB). Antigen processing and presentation is
+      therefore a defining molecular outcome of IFN-γ signalling represented
+      in this gene set.
+  - term:
+      id: GO:0051607
+      label: defense response to virus
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      IFN-γ induces a broad antiviral state through ISGs including MX1, OAS
+      family members, IFIT1/2/3, and IRF1. Defense response to virus is a
+      major functional output of IFN-γ signalling but is shared with other
+      antiviral cytokines (type I IFNs) and is therefore supporting rather
+      than uniquely defining for IFN-γ.
+  - term:
+      id: GO:0042612
+      label: MHC class I protein complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      IFN-γ strongly up-regulates the MHC class I heavy chain (HLA-A, HLA-B,
+      HLA-C) and beta-2-microglobulin (B2M), the two obligate subunits of the
+      MHC class I protein complex. This surface complex is the downstream
+      cellular structure most prominently induced by IFN-γ and is well
+      represented among Hallmark member genes.
+  - term:
+      id: GO:0050778
+      label: positive regulation of immune response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      IFN-γ broadly potentiates immune responses via induction of co-stimulatory
+      molecules, cytokines, and transcription factors such as IRF1. Positive
+      regulation of immune response is expected in enrichment analyses of any
+      IFN-γ-response gene set but is too broad to be informative on its own.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment results reflects highly expressed ribosomal protein genes
+      present in the Hallmark set and does not reflect an IFN-γ-specific
+      function. Illustrates a non-informative enrichment hit.

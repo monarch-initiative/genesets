@@ -1,0 +1,12 @@
+# OAK configuration for gene set interpretation term validation.
+# Maps ontology prefixes to OAK adapter strings used by linkml-term-validator.
+# Add prefixes here as new biological contexts require them.
+ontology_adapters:
+  GO: sqlite:obo:go
+  CL: sqlite:obo:cl
+  UBERON: sqlite:obo:uberon
+  MONDO: sqlite:obo:mondo
+  CHEBI: sqlite:obo:chebi
+  PR: sqlite:obo:pr
+  HP: sqlite:obo:hp
+  NCBITaxon: sqlite:obo:ncbitaxon

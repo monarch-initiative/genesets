@@ -1,0 +1,5 @@
+# Configuration for linkml-reference-validator.
+# Snippets are matched against cited references by deterministic substring match.
+validation:
+  cache_dir: references_cache
+  unknown_prefix_severity: INFO

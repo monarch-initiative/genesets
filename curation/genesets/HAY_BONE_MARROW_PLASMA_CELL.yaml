@@ -1,0 +1,124 @@
+gene_set_id: MSIGDB:HAY_BONE_MARROW_PLASMA_CELL
+gene_set_name: HAY_BONE_MARROW_PLASMA_CELL
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of plasma cells (antibody-secreting B-lineage
+  cells) from human bone marrow (Hay et al.). Plasma cells are terminally
+  differentiated, post-mitotic effectors of humoral immunity, characterized by
+  massive expansion of rough endoplasmic reticulum and devoted to producing
+  large amounts of immunoglobulin for secretion into the blood.
+contexts:
+  - term:
+      id: CL:0000786
+      label: plasma cell
+    context_type: cell_type
+  - term:
+      id: UBERON:0002371
+      label: bone marrow
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0002377
+      label: immunoglobulin production
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    evidence:
+      - reference: PMID:12846805
+        reference_title: The X-box binding protein-1 transcription factor is required for plasma cell differentiation and the unfolded protein response.
+        supports: SUPPORT
+        snippet: "Lymphoid chimeras deficient in XBP-1 have a profound defect in plasma cell differentiation, with few plasma cells in their periphery and severely reduced serum immunoglobulin levels."
+        explanation: >-
+          Plasma cells are the principal effectors of immunoglobulin production.
+          The cited study demonstrates that disruption of XBP-1, a transcription
+          factor required for plasma cell differentiation, causes severely reduced
+          serum immunoglobulin levels, confirming that immunoglobulin production
+          is the defining functional output of plasma cells.
+  - term:
+      id: GO:0005783
+      label: endoplasmic reticulum
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Plasma cells undergo massive expansion of rough endoplasmic reticulum to
+      support high-level immunoglobulin synthesis and secretion. The ER is a
+      hallmark cellular component of plasma cell biology and is expected to be
+      enriched in any plasma cell marker gene set.
+  - term:
+      id: GO:0006959
+      label: humoral immune response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Plasma cells are the terminal effectors of the humoral immune response,
+      which is shared across B-lineage cells. This term is broader than
+      immunoglobulin production and is lineage-shared rather than plasma-cell-specific.
+  - term:
+      id: GO:0009306
+      label: protein secretion
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Protein secretion is the general process by which plasma cells export
+      immunoglobulins. While the term is broadly applicable to many secretory
+      cell types, it is mechanistically central to plasma cell function. Its
+      presence in enrichment results is expected but not cell-type-specific.
+  - term:
+      id: GO:0034976
+      label: response to endoplasmic reticulum stress
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    curator_note: >-
+      The unfolded protein response (UPR) / ER stress response is activated
+      during plasma cell differentiation to accommodate the massive increase in
+      immunoglobulin synthesis. XBP-1, a key UPR transcription factor, is
+      required for plasma cell differentiation, making this term biologically
+      relevant to the signature even if it is shared with other highly secretory
+      cell types.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment results reflects the very high abundance of ribosomal protein
+      and translation factor transcripts in plasma cells, driven by the extreme
+      demand for immunoglobulin protein synthesis. Non-informative for cell-type
+      specificity.
+  - term:
+      id: GO:0030183
+      label: B cell differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    curator_note: >-
+      Plasma cells represent the terminally differentiated endpoint of B cell
+      differentiation. Marker genes that distinguish plasma cells from earlier
+      B-lineage stages reflect this differentiation trajectory. Added as a
+      curator_added core process because enrichment-based methods may not
+      directly recover this developmental term from a static marker signature.

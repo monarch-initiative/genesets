@@ -1,0 +1,310 @@
+id: https://w3id.org/genesets-rs/genesets-interpretation
+name: genesets_interpretation
+title: Gene Set GO Interpretation Schema
+description: >-
+  Curated, validated GO-term interpretations of non-GO gene sets (e.g. MSigDB
+  C8 cell-type signatures). Each interpretation records, per GO term, a curator
+  judgment (role category, confidence, specificity), and optional literature
+  evidence.
+license: MIT
+prefixes:
+  linkml: https://w3id.org/linkml/
+  genesets: https://w3id.org/genesets-rs/genesets-interpretation/
+  GO: http://purl.obolibrary.org/obo/GO_
+  CL: http://purl.obolibrary.org/obo/CL_
+  UBERON: http://purl.obolibrary.org/obo/UBERON_
+  MONDO: http://purl.obolibrary.org/obo/MONDO_
+  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
+  PR: http://purl.obolibrary.org/obo/PR_
+  HP: http://purl.obolibrary.org/obo/HP_
+  NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
+  EFO: http://www.ebi.ac.uk/efo/EFO_
+  MSIGDB: https://www.gsea-msigdb.org/gsea/msigdb/cards/
+  PMID: http://identifiers.org/pubmed/
+  DOI: https://doi.org/
+default_prefix: genesets
+default_range: string
+imports:
+  - linkml:types
+
+classes:
+
+  GeneSetInterpretation:
+    tree_root: true
+    description: A curated GO interpretation of a single non-GO gene set.
+    attributes:
+      gene_set_id:
+        identifier: true
+        range: uriorcurie
+        required: true
+        description: Stable identifier for the gene set (e.g. MSIGDB:HAY_BONE_MARROW_DENDRITIC_CELL).
+      gene_set_name:
+        required: true
+        description: Human-readable name of the gene set.
+      collection:
+        description: Source collection, e.g. C8, C2:CP:KEGG_LEGACY, C7.
+      msigdb_release:
+        description: MSigDB release the gene set came from, e.g. v2025.1.Hs.
+      taxon:
+        range: Term
+        inlined: true
+        description: Species the gene set is defined in (an NCBITaxon term).
+      direction:
+        range: DirectionEnum
+        description: Whether the signature is the up, down, or undirected component.
+      n_genes:
+        range: integer
+        description: Number of genes in the source set.
+      description:
+        description: Free-text summary of what the signature represents.
+      contexts:
+        range: BiologicalContext
+        multivalued: true
+        inlined_as_list: true
+        description: What the signature is about (cell type, disease, chemical, etc.).
+      associations:
+        range: TermAssociation
+        multivalued: true
+        inlined_as_list: true
+        recommended: true
+        description: Per-GO-term curator judgments.
+
+  BiologicalContext:
+    description: An ontology term describing what the gene set is about.
+    attributes:
+      term:
+        range: Term
+        inlined: true
+        required: true
+      context_type:
+        range: ContextTypeEnum
+        required: true
+      role_note:
+        description: Optional note on the term's role, e.g. "treatment", "vs comparator".
+
+  TermAssociation:
+    description: A curated association between the gene set and a single GO term.
+    attributes:
+      term:
+        range: Term
+        inlined: true
+        required: true
+        description: The GO term.
+      aspect:
+        range: GOAspectEnum
+        description: The GO aspect (BP/CC/MF) of the term.
+      category:
+        range: AssociationCategoryEnum
+        recommended: true
+        description: >-
+          The curator's role judgment. Unset on freshly drafted (un-adjudicated)
+          associations.
+      confidence:
+        range: ConfidenceLevelEnum
+      confidence_score:
+        range: float
+        minimum_value: 0.0
+        maximum_value: 1.0
+      specificity:
+        range: SpecificityEnum
+        description: How specific the term is to this biological context.
+      specificity_score:
+        range: float
+        minimum_value: 0.0
+        maximum_value: 1.0
+      seed_source:
+        range: SeedSourceEnum
+        required: true
+        description: Whether the term was recovered by enrichment or added by a curator.
+      recovery_status:
+        range: RecoveryStatusEnum
+        recommended: true
+        description: >-
+          Orthogonal to category: whether this (biologically asserted) term is
+          actually supported by the gene set's current GO annotations, or
+          represents a gap. This does NOT modulate the biological category or
+          confidence — a term that is biologically core stays core even when no
+          annotation supports it; the gap is recorded here so it is visible and
+          scoreable. annotation_gap marks a GO curation target; membership_gap
+          marks gene-set incompleteness.
+      enrichment_stats:
+        range: EnrichmentStats
+        inlined: true
+      evidence:
+        range: EvidenceItem
+        multivalued: true
+        inlined_as_list: true
+        recommended: true
+      curator_note:
+
+  Term:
+    description: An ontology term reference (validated by linkml-term-validator).
+    attributes:
+      id:
+        identifier: true
+        range: uriorcurie
+        required: true
+      label:
+        required: true
+        comments:
+          - This is automatically validated by the linkml-term-validator tool.
+
+  EnrichmentStats:
+    description: Enrichment numbers that seeded an association.
+    attributes:
+      p_value:
+        range: float
+      p_adjust:
+        range: float
+      overlap:
+        range: integer
+      query_size:
+        range: integer
+      target_size:
+        range: integer
+      overlap_genes:
+        multivalued: true
+
+  EvidenceItem:
+    description: A literature evidence item supporting or refuting an association.
+    attributes:
+      reference:
+        range: uriorcurie
+        description: Authoritative reference (PMID/DOI).
+        implements:
+          - linkml:authoritative_reference
+      reference_title:
+        recommended: true
+      supports:
+        range: EvidenceSupportEnum
+      evidence_source:
+        range: EvidenceSourceEnum
+        recommended: true
+        description: >-
+          Origin/type of the underlying evidence (human clinical, model
+          organism, in vitro, computational, or other). Mirrors the dismech
+          EvidenceItem.evidence_source field for downstream interoperability.
+      snippet:
+        description: Exact excerpt from the reference supporting/refuting the claim.
+        comments:
+          - This is automatically validated by the linkml-reference-validator tool.
+        implements:
+          - linkml:excerpt
+      explanation:
+    rules:
+      - description: >-
+          A verbatim snippet must cite a reference, otherwise it cannot be
+          validated by linkml-reference-validator (it would pass vacuously).
+        preconditions:
+          slot_conditions:
+            snippet:
+              value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            reference:
+              value_presence: PRESENT
+
+enums:
+
+  DirectionEnum:
+    permissible_values:
+      UP:
+      DN:
+      NA:
+
+  GOAspectEnum:
+    permissible_values:
+      biological_process:
+        meaning: GO:0008150
+      cellular_component:
+        meaning: GO:0005575
+      molecular_function:
+        meaning: GO:0003674
+
+  ContextTypeEnum:
+    permissible_values:
+      cell_type:
+      anatomical_structure:
+      disease:
+      phenotype:
+      chemical_perturbagen:
+      genetic_perturbation:
+      infection:
+      developmental_stage:
+      cell_line:
+      experimental_condition:
+
+  AssociationCategoryEnum:
+    permissible_values:
+      core_process:
+        description: Central biological process this context actually executes.
+      core_component:
+        description: Characteristic cellular component or structure.
+      supporting_process:
+        description: Real enabling/supporting process, not defining.
+      marker_driven_plausible:
+        description: Plausible given the marker genes but peripheral or generic.
+      nonspecific:
+        description: Housekeeping or broadly expressed; not informative here.
+      false_association:
+        description: Artifactual or biologically wrong for this set.
+
+  ConfidenceLevelEnum:
+    permissible_values:
+      high:
+      medium:
+      low:
+
+  SpecificityEnum:
+    permissible_values:
+      cell_type_specific:
+      lineage_shared:
+      broadly_expressed:
+      ubiquitous:
+
+  SeedSourceEnum:
+    permissible_values:
+      enrichment_recovered:
+      curator_added:
+
+  RecoveryStatusEnum:
+    permissible_values:
+      annotation_supported:
+        description: >-
+          Genes in the set are annotated to this term; enrichment recovers it.
+      annotation_gap:
+        description: >-
+          Relevant genes ARE in the gene set, but their GO annotations are not
+          deep/specific enough to capture this term. The association is real;
+          the gap is GO's (a GO annotation curation target). Do not weaken the
+          biological category for this reason.
+      membership_gap:
+        description: >-
+          The genes that would carry this term are NOT in the gene set (the set
+          is core/legacy/incomplete). The association is real for the underlying
+          biology and SHOULD be in a complete set; the gap is the gene set's.
+      false_association:
+        description: >-
+          Not a gap: the term is biologically wrong for the set (mirrors the
+          false_association category; use when the annotation support is absent
+          because the association itself is spurious).
+
+  EvidenceSupportEnum:
+    permissible_values:
+      SUPPORT:
+      REFUTE:
+      NEUTRAL:
+
+  EvidenceSourceEnum:
+    permissible_values:
+      HUMAN_CLINICAL:
+        description: Evidence from human clinical/observational studies or patient material.
+      MODEL_ORGANISM:
+        description: Evidence from animal or other model-organism studies.
+      IN_VITRO:
+        description: Evidence from cell-culture or other in-vitro experiments.
+      COMPUTATIONAL:
+        description: Evidence from computational/in-silico analysis.
+      OTHER:
+        description: Evidence that does not fit the other source types.
+

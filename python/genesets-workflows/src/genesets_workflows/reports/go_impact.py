@@ -159,6 +159,14 @@ def normalize_config(config: dict[str, Any], base: Path) -> dict[str, Any]:
     query_sets = merged["query_sets"]
     query_sets["source_dir"] = resolve_path(base, query_sets["source_dir"])
     query_sets["limit"] = int(query_sets["limit"])
+    query_sets["include_regex"] = normalize_regex_list(
+        query_sets.get("include_regex"),
+        "query_sets.include_regex",
+    )
+    query_sets["exclude_regex"] = normalize_regex_list(
+        query_sets.get("exclude_regex"),
+        "query_sets.exclude_regex",
+    )
     fetch = query_sets["fetch"]
     fetch.setdefault("mode", "query")
     fetch["limit"] = int(fetch.get("limit", query_sets["limit"]))
@@ -204,6 +212,16 @@ def normalize_config(config: dict[str, Any], base: Path) -> dict[str, Any]:
     if term_coverage["example_limit"] < 0:
         raise SystemExit("term_coverage.example_limit must be non-negative")
     return merged
+
+
+def normalize_regex_list(value: Any, field: str) -> list[str]:
+    if value is None:
+        return []
+    if isinstance(value, str):
+        return [value]
+    if isinstance(value, list) and all(isinstance(item, str) for item in value):
+        return value
+    raise SystemExit(f"{field} must be a string or list of strings")
 
 
 def merge_defaults(config: dict[str, Any], defaults: dict[str, Any]) -> dict[str, Any]:
@@ -310,28 +328,79 @@ def ensure_source_queries(config: dict[str, Any]) -> tuple[dict[str, Any], Path,
     )
 
 
-def select_queries(source_gmt: Path, source_metadata: Path, out_dir: Path, limit: int) -> dict[str, Any]:
+def compile_patterns(patterns: list[str], field: str) -> list[re.Pattern[str]]:
+    compiled: list[re.Pattern[str]] = []
+    for pattern in patterns:
+        try:
+            compiled.append(re.compile(pattern))
+        except re.error as err:
+            raise SystemExit(f"invalid regex in {field}: {pattern!r}: {err}") from err
+    return compiled
+
+
+def query_match_text(query_id: str, metadata: dict[str, Any]) -> str:
+    fields = [
+        query_id,
+        metadata.get("name", ""),
+        metadata.get("description", ""),
+        metadata.get("source", ""),
+        metadata.get("source_class", ""),
+        metadata.get("stratum", ""),
+        metadata.get("search_query", ""),
+    ]
+    return "\n".join(str(value) for value in fields if value is not None)
+
+
+def select_queries(
+    source_gmt: Path,
+    source_metadata: Path,
+    out_dir: Path,
+    limit: int,
+    include_regex: list[str] | None = None,
+    exclude_regex: list[str] | None = None,
+    selection: str | None = None,
+) -> dict[str, Any]:
     started = time.perf_counter()
     out_dir.mkdir(parents=True, exist_ok=True)
     selected_gmt = out_dir / "queries.gmt"
     selected_metadata = out_dir / "queries.metadata.json"
 
+    include_regex = include_regex or []
+    exclude_regex = exclude_regex or []
+    include_patterns = compile_patterns(include_regex, "query_sets.include_regex")
+    exclude_patterns = compile_patterns(exclude_regex, "query_sets.exclude_regex")
+    metadata = json.loads(source_metadata.read_text())
+    source_sets = {item["id"]: item for item in metadata.get("sets", [])}
+
     rows: list[str] = []
     ids: list[str] = []
+    considered = 0
+    skipped_include = 0
+    skipped_exclude = 0
     with source_gmt.open() as handle:
         for line in handle:
             if not line.strip():
                 continue
+            considered += 1
+            set_id = line.split("\t", 1)[0]
+            match_text = query_match_text(set_id, source_sets.get(set_id, {"id": set_id}))
+            if include_patterns and not any(pattern.search(match_text) for pattern in include_patterns):
+                skipped_include += 1
+                continue
+            if exclude_patterns and any(pattern.search(match_text) for pattern in exclude_patterns):
+                skipped_exclude += 1
+                continue
             rows.append(line)
-            ids.append(line.split("\t", 1)[0])
+            ids.append(set_id)
             if len(rows) >= limit:
                 break
     if len(rows) < limit:
-        raise SystemExit(f"{source_gmt} has only {len(rows)} non-empty sets; requested {limit}")
+        raise SystemExit(
+            f"{source_gmt} has only {len(rows)} selectable non-empty sets after filters; "
+            f"requested {limit}"
+        )
     selected_gmt.write_text("".join(rows))
 
-    metadata = json.loads(source_metadata.read_text())
-    source_sets = {item["id"]: item for item in metadata.get("sets", [])}
     selected_sets = [source_sets.get(set_id, {"id": set_id}) for set_id in ids]
     selected_metadata.write_text(
         json.dumps(
@@ -340,7 +409,12 @@ def select_queries(source_gmt: Path, source_metadata: Path, out_dir: Path, limit
                 "source_gmt": display_path(source_gmt),
                 "source_metadata": display_path(source_metadata),
                 "selected_count": len(ids),
-                "selection": "first N emitted sets from the source query snapshot",
+                "selection": selection or "first N emitted sets from the source query snapshot",
+                "include_regex": include_regex,
+                "exclude_regex": exclude_regex,
+                "considered_count": considered,
+                "skipped_include": skipped_include,
+                "skipped_exclude": skipped_exclude,
                 "sets": selected_sets,
             },
             indent=2,
@@ -353,6 +427,12 @@ def select_queries(source_gmt: Path, source_metadata: Path, out_dir: Path, limit
         "queries": display_path(selected_gmt),
         "metadata": display_path(selected_metadata),
         "selected_count": len(ids),
+        "selection": selection or "first N emitted sets from the source query snapshot",
+        "include_regex": include_regex,
+        "exclude_regex": exclude_regex,
+        "considered_count": considered,
+        "skipped_include": skipped_include,
+        "skipped_exclude": skipped_exclude,
     }
 
 
@@ -683,6 +763,9 @@ def run_report(args: argparse.Namespace) -> dict[str, Any]:
         source_metadata,
         out_dir,
         config["query_sets"]["limit"],
+        config["query_sets"]["include_regex"],
+        config["query_sets"]["exclude_regex"],
+        config["query_sets"].get("selection"),
     )
     queries = out_dir / "queries.gmt"
 
@@ -765,6 +848,8 @@ def run_report(args: argparse.Namespace) -> dict[str, Any]:
                 "source_dir": display_path(config["query_sets"]["source_dir"]),
                 "limit": config["query_sets"]["limit"],
                 "selection": config["query_sets"].get("selection"),
+                "include_regex": config["query_sets"]["include_regex"],
+                "exclude_regex": config["query_sets"]["exclude_regex"],
                 "fetch": metadata_value(config["query_sets"]["fetch"]),
             },
             "snapshots": {
