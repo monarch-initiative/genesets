@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import pytest
+
 from genesets_workflows.curation import report
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -14,9 +16,12 @@ def test_report_rows_for_example():
     # 5 recovered+adjudicated; 4 of them good (translation is nonspecific)
     assert row["recovered_adjudicated"] == 5
     assert row["precision"] == 0.8
-    # core_total = antigen presentation (recovered) + adaptive immune (curator_added)
-    assert row["core_total"] == 2
-    assert row["recall"] == 0.5
+    # core_total = antigen presentation (core_process, recovered) +
+    # MHC class II protein complex (core_component, recovered) +
+    # adaptive immune response (core_process, curator_added/missed)
+    assert row["core_total"] == 3
+    # 2 of the 3 core terms were recovered by enrichment
+    assert row["recall"] == pytest.approx(2 / 3)
 
 
 def test_write_report_tsv(tmp_path):
