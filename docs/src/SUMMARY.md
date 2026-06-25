@@ -14,6 +14,7 @@
 - [Performance Model](performance.md)
 - [Storage Backends](storage-backends.md)
 - [Evals](evals.md)
+- [Curated GO Interpretations](./curation.md)
 - [Post-Processing](post-processing.md)
 - [Diffing](diffing.md)
 - [Ontology Prep](ontology-prep.md)

@@ -216,3 +216,12 @@ python3 scripts/run_disease20_go_eval.py \
 ```
 
 Companion YAML metadata records the cutoff, source file digests, prep settings, row counts, and run timing.
+
+## Curated GO Interpretations
+
+`curation/` holds expert GO-term interpretations of non-GO gene sets (MSigDB C8
+cell-type signatures first), validated with LinkML term/reference validators and
+used as a precision/recall gold standard. See `curation/README.md`.
+
+    just curate-validate
+    just curate-report

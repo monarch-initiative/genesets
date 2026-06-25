@@ -1,0 +1,6 @@
+gene_set_id	context_term	context_type	context_label
+MSIGDB:HAY_BONE_MARROW_DENDRITIC_CELL	CL:0000451	cell_type	dendritic cell
+MSIGDB:HAY_BONE_MARROW_NK_CELLS	CL:0000623	cell_type	natural killer cell
+MSIGDB:TRAVAGLINI_LUNG_ALVEOLAR_EPITHELIAL_TYPE_2_CELL	CL:0002063	cell_type	type II pneumocyte
+MSIGDB:DESCARTES_FETAL_LIVER_HEPATOBLASTS	CL:0000182	cell_type	hepatocyte
+MSIGDB:AIZARANI_LIVER_C9_KUPFFER_CELLS	CL:0000091	cell_type	Kupffer cell

@@ -44,3 +44,30 @@ browser-contributes: browser-stop
 browser-bundle bundle: browser-stop
     uv run --project python/genesets-workflows --extra explorer \
       genesets-workflows explore {{bundle}} --open --port {{browser_port}}
+
+# --- Curation ---------------------------------------------------------------
+
+curation_schema := "curation/schema/genesets_interpretation.yaml"
+curation_oak := "curation/conf/oak_config.yaml"
+gw := "uv run --project python/genesets-workflows --extra curation"
+
+# Run the curation test suite (pytest + doctests).
+curate-test:
+    {{gw}} --with pytest pytest python/genesets-workflows/tests -v
+    {{gw}} --with pytest python -m pytest --doctest-modules \
+      python/genesets-workflows/src/genesets_workflows/curation -v
+
+# Validate every interpretation YAML under curation/c8.
+curate-validate:
+    for f in curation/c8/*.yaml; do \
+      echo "== $f =="; \
+      {{gw}} genesets-workflows curate validate "$f" || exit 1; \
+    done
+
+# Validate the schema's own ontology-term meanings.
+curate-validate-schema:
+    {{gw}} linkml-term-validator validate-schema {{curation_schema}} -c {{curation_oak}}
+
+# Build the precision/recall report over all curated C8 interpretations.
+curate-report out="curation/report.tsv":
+    {{gw}} genesets-workflows curate report --dir curation/c8 -o {{out}}
