@@ -142,6 +142,7 @@ associations:
       - reference: PMID:36497089
         reference_title: "Iron Brain Menace: The Involvement of Ferroptosis in Parkinson Disease."
         supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
         snippet: "progressive dopaminergic neuronal loss in people with PD is associated with iron accumulation and is suggested to be driven in part by the novel cell death pathway, ferroptosis"
         explanation: >-
           Iron accumulation in the substantia nigra and iron-dependent lipid

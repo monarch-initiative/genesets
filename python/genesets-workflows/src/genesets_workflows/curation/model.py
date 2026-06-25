@@ -31,6 +31,7 @@ class EvidenceItem:
     reference: str | None = None
     reference_title: str | None = None
     supports: str | None = None
+    evidence_source: str | None = None
     snippet: str | None = None
     explanation: str | None = None
 

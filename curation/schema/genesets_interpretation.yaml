@@ -177,6 +177,13 @@ classes:
         recommended: true
       supports:
         range: EvidenceSupportEnum
+      evidence_source:
+        range: EvidenceSourceEnum
+        recommended: true
+        description: >-
+          Origin/type of the underlying evidence (human clinical, model
+          organism, in vitro, computational, or other). Mirrors the dismech
+          EvidenceItem.evidence_source field for downstream interoperability.
       snippet:
         description: Exact excerpt from the reference supporting/refuting the claim.
         comments:
@@ -184,6 +191,18 @@ classes:
         implements:
           - linkml:excerpt
       explanation:
+    rules:
+      - description: >-
+          A verbatim snippet must cite a reference, otherwise it cannot be
+          validated by linkml-reference-validator (it would pass vacuously).
+        preconditions:
+          slot_conditions:
+            snippet:
+              value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            reference:
+              value_presence: PRESENT
 
 enums:
 
@@ -275,4 +294,17 @@ enums:
       SUPPORT:
       REFUTE:
       NEUTRAL:
+
+  EvidenceSourceEnum:
+    permissible_values:
+      HUMAN_CLINICAL:
+        description: Evidence from human clinical/observational studies or patient material.
+      MODEL_ORGANISM:
+        description: Evidence from animal or other model-organism studies.
+      IN_VITRO:
+        description: Evidence from cell-culture or other in-vitro experiments.
+      COMPUTATIONAL:
+        description: Evidence from computational/in-silico analysis.
+      OTHER:
+        description: Evidence that does not fit the other source types.
 

@@ -57,3 +57,12 @@ apoptotic process` is an `annotation_gap` (HTRA2/CDK5 present but the death
 machinery is annotated only to the generic parent), and `ferroptosis`
 (GO:0097707) is a `membership_gap` (real PD biology, but GPX4/ACSL4/SLC7A11 are
 not in this legacy KEGG set) — not a `false_association`.
+
+## Evidence
+Each `evidence` item carries a `reference` (PMID/DOI), a verbatim `snippet`
+(substring-checked against the cited paper by linkml-reference-validator), a
+`supports` value (SUPPORT/REFUTE/NEUTRAL), an `explanation`, and an optional
+`evidence_source` (HUMAN_CLINICAL / MODEL_ORGANISM / IN_VITRO / COMPUTATIONAL /
+OTHER — mirrors dismech for interoperability). A schema rule enforces that any
+item with a `snippet` also has a `reference`, so a quote can never bypass
+reference validation.
