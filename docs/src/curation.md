@@ -3,7 +3,7 @@
 `genesets-rs` curates "correct/reasonable" GO interpretations for non-GO gene
 sets (MSigDB C8 cell-type signatures first) as a precision/recall gold standard.
 
-Interpretations live in `curation/c8/*.yaml`, conform to the LinkML schema at
+Interpretations live in `curation/genesets/*.yaml`, conform to the LinkML schema at
 `curation/schema/genesets_interpretation.yaml`, and are validated by
 `linkml-validate`, `linkml-term-validator` (GO/CL/UBERON IDs + labels), and
 `linkml-reference-validator` (literature snippets).

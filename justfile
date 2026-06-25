@@ -57,9 +57,9 @@ curate-test:
     {{gw}} --with pytest python -m pytest --doctest-modules \
       python/genesets-workflows/src/genesets_workflows/curation -v
 
-# Validate every interpretation YAML under curation/c8.
+# Validate every interpretation YAML under curation/genesets.
 curate-validate:
-    for f in curation/c8/*.yaml; do \
+    for f in curation/genesets/*.yaml; do \
       echo "== $f =="; \
       {{gw}} genesets-workflows curate validate "$f" || exit 1; \
     done
@@ -70,4 +70,4 @@ curate-validate-schema:
 
 # Build the precision/recall report over all curated C8 interpretations.
 curate-report out="curation/report.tsv":
-    {{gw}} genesets-workflows curate report --dir curation/c8 -o {{out}}
+    {{gw}} genesets-workflows curate report --dir curation/genesets -o {{out}}

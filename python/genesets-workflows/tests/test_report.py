@@ -5,11 +5,11 @@ import pytest
 from genesets_workflows.curation import report
 
 ROOT = Path(__file__).resolve().parents[3]
-C8_DIR = ROOT / "curation" / "c8"
+GENESETS_DIR = ROOT / "curation" / "genesets"
 
 
 def test_report_rows_for_example():
-    rows = report.report_rows([C8_DIR / "HAY_BONE_MARROW_DENDRITIC_CELL.yaml"])
+    rows = report.report_rows([GENESETS_DIR / "HAY_BONE_MARROW_DENDRITIC_CELL.yaml"])
     assert len(rows) == 1
     row = rows[0]
     assert row["gene_set_id"] == "MSIGDB:HAY_BONE_MARROW_DENDRITIC_CELL"
@@ -26,7 +26,7 @@ def test_report_rows_for_example():
 
 def test_write_report_tsv(tmp_path):
     out = tmp_path / "report.tsv"
-    report.write_report([C8_DIR / "HAY_BONE_MARROW_DENDRITIC_CELL.yaml"], out)
+    report.write_report([GENESETS_DIR / "HAY_BONE_MARROW_DENDRITIC_CELL.yaml"], out)
     header = out.read_text().splitlines()[0]
     assert header.split("\t")[0] == "gene_set_id"
     assert "precision" in header

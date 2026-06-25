@@ -6,7 +6,7 @@ from genesets_workflows.curation import cli as curation_cli
 from genesets_workflows.cli import dispatch
 
 ROOT = Path(__file__).resolve().parents[3]
-EXAMPLE = ROOT / "curation" / "c8" / "HAY_BONE_MARROW_DENDRITIC_CELL.yaml"
+EXAMPLE = ROOT / "curation" / "genesets" / "HAY_BONE_MARROW_DENDRITIC_CELL.yaml"
 
 runner = CliRunner()
 

@@ -1,0 +1,132 @@
+gene_set_id: MSIGDB:AIZARANI_LIVER_C9_KUPFFER_CELLS
+gene_set_name: AIZARANI_LIVER_C9_KUPFFER_CELLS
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of Kupffer cells (resident liver macrophages)
+  from human liver (Aizarani et al.). Kupffer cells are the primary hepatic
+  tissue-resident macrophages that patrol the liver sinusoids, phagocytose
+  pathogens and cellular debris, and regulate hepatic immune homeostasis via
+  innate immune sensing, complement-mediated clearance, and cytokine secretion.
+contexts:
+  - term:
+      id: CL:0000091
+      label: Kupffer cell
+    context_type: cell_type
+  - term:
+      id: UBERON:0002107
+      label: liver
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0006909
+      label: phagocytosis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    evidence:
+      - reference: PMID:42043262
+        reference_title: "The Key Role of Complement Receptor CRIg in Kupffer Cell-Mediated Liver Disease Progression."
+        supports: SUPPORT
+        snippet: "Kupffer cells (KCs), the primary resident macrophages in the liver, constitute the first line of defense in liver innate immunity and play complex and important roles in pathogen recognition, phagocytosis, and the regulation of liver inflammation and immune responses."
+        explanation: >-
+          Phagocytosis is the defining functional activity of Kupffer cells; they
+          continuously scavenge bacteria, cellular debris, and particulate matter
+          arriving from the portal circulation. This review explicitly lists
+          phagocytosis as a core role of Kupffer cells in hepatic innate immunity.
+  - term:
+      id: GO:0005764
+      label: lysosome
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Kupffer cells are professional phagocytes that deliver engulfed material
+      to lysosomes for degradation. Lysosomal activity is central to their
+      function and lysosomal marker genes are expected to be enriched in Kupffer
+      cell signatures.
+  - term:
+      id: GO:0006956
+      label: complement activation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Kupffer cells express complement receptors (notably CRIg) and mediate
+      clearance of complement-opsonized particles. Complement activation is
+      shared with other macrophage populations and is therefore lineage_shared.
+  - term:
+      id: GO:0045087
+      label: innate immune response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Kupffer cells are innate sentinels that respond to pathogen-associated
+      molecular patterns via pattern-recognition receptors. Innate immune
+      response is shared with other tissue-resident macrophages and is therefore
+      lineage_shared rather than Kupffer-cell-specific.
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Upon activation Kupffer cells secrete pro-inflammatory cytokines (TNF,
+      IL-6, IL-1β) that drive hepatic inflammation. Inflammatory response is
+      shared broadly across macrophage lineages.
+  - term:
+      id: GO:0019882
+      label: antigen processing and presentation
+    aspect: biological_process
+    category: marker_driven_plausible
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Kupffer cells can present antigens to T cells and perform antigen
+      cross-presentation (a role highlighted for CRIg), but this is not their
+      primary defining activity as it is for dendritic cells. Classified as
+      marker_driven_plausible because enrichment recovery is expected from
+      shared MHC/processing machinery.
+  - term:
+      id: GO:0071222
+      label: cellular response to lipopolysaccharide
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    curator_note: >-
+      Kupffer cells are the primary hepatic sensors of gut-derived LPS arriving
+      via the portal vein. Their TLR4-mediated LPS response is a hallmark of
+      Kupffer cell biology and a key driver of hepatic inflammation. Added as a
+      curator_added core process not always recovered by enrichment but
+      well-established in the literature.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its presence in Kupffer
+      cell enrichment results reflects highly expressed ribosomal protein genes
+      and does not represent a Kupffer-cell-specific function.

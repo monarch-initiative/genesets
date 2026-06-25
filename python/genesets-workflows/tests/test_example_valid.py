@@ -3,7 +3,7 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parents[3]
-EXAMPLE = ROOT / "curation" / "c8" / "HAY_BONE_MARROW_DENDRITIC_CELL.yaml"
+EXAMPLE = ROOT / "curation" / "genesets" / "HAY_BONE_MARROW_DENDRITIC_CELL.yaml"
 
 
 def test_example_loads_and_has_required_fields():

@@ -3,7 +3,7 @@ from pathlib import Path
 from genesets_workflows.curation import model
 
 ROOT = Path(__file__).resolve().parents[3]
-EXAMPLE = ROOT / "curation" / "c8" / "HAY_BONE_MARROW_DENDRITIC_CELL.yaml"
+EXAMPLE = ROOT / "curation" / "genesets" / "HAY_BONE_MARROW_DENDRITIC_CELL.yaml"
 
 
 def test_load_example():
