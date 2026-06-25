@@ -26,5 +26,11 @@ def test_help_lists_subcommands():
         assert name in result.output
 
 
-def test_dispatcher_routes_curate():
-    assert dispatch("curate") is curation_cli.main
+def test_dispatcher_routes_curate(tmp_path):
+    # curate is dispatched lazily (mirrors the `explore` extra pattern), so the
+    # routed handler runs the curate CLI end-to-end rather than being identical
+    # to curation_cli.main.
+    out = tmp_path / "r.tsv"
+    rc = dispatch("curate")(["report", "-i", str(EXAMPLE), "-o", str(out)])
+    assert rc == 0
+    assert out.exists()

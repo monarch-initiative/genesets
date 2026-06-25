@@ -10,7 +10,6 @@ from genesets_workflows.runtime import version_output, which
 from genesets_workflows.sources import mygeneset
 from genesets_workflows.sources import mygeneset_stratified
 from genesets_workflows.sources import reactome_flat as reactome_source
-from genesets_workflows.curation import cli as curation_cli
 
 
 Command = Callable[[list[str] | None], int]
@@ -110,6 +109,11 @@ def dispatch(command: str) -> Command:
 
         return server.main(argv)
 
+    def curate(argv: list[str] | None = None) -> int:
+        from genesets_workflows.curation import cli as curation_cli
+
+        return curation_cli.main(argv)
+
     commands: dict[str, Command] = {
         "doctor": doctor,
         "go-impact": go_impact.main,
@@ -118,7 +122,7 @@ def dispatch(command: str) -> Command:
         "fetch-mygeneset": mygeneset.main,
         "fetch-mygeneset-stratified": mygeneset_stratified.main,
         "explore": explore,
-        "curate": curation_cli.main,
+        "curate": curate,
     }
     return commands[command]
 
