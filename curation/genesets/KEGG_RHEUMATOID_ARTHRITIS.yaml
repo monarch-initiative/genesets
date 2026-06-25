@@ -1,0 +1,177 @@
+gene_set_id: MSIGDB:KEGG_RHEUMATOID_ARTHRITIS
+gene_set_name: KEGG_RHEUMATOID_ARTHRITIS
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy rheumatoid arthritis pathway gene set (MSigDB C2 curated gene set).
+  This is a disease pathway gene set representing the autoimmune inflammatory joint
+  disease rheumatoid arthritis. Member genes are heavily enriched for pro-inflammatory
+  cytokines and their receptors (TNF, IL1A/B, IL6, IL17), MHC class II antigen
+  presentation machinery (HLA-DRA, HLA-DRB1, HLA-DQA1, HLA-DQB1), osteoclast
+  differentiation and bone-erosion regulators (TNFSF11/RANKL, TNFRSF11A/RANK,
+  TNFRSF11B/OPG), chemokines driving synovial leukocyte recruitment (CXCL1, CCL2),
+  and angiogenesis factors (VEGF/PGF) in the inflamed synovium. The gene set reflects
+  the major mechanistic arms of the KEGG RA pathway: synovial inflammation, adaptive
+  immune activation, pannus-mediated cartilage invasion, and osteoclast-driven bone
+  erosion.
+contexts:
+  - term:
+      id: MONDO:0008383
+      label: rheumatoid arthritis
+    context_type: disease
+  - term:
+      id: UBERON:0002018
+      label: synovial membrane of synovial joint
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:18473901
+        reference_title: "Molecular targets of rheumatoid arthritis."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "RA pathology is mediated by a number of cytokines (TNF-alpha, IL-1, IL-6, IL-17, IFN gamma, etc.), chemokines (MCP-1, MCP-4, CCL18, etc.), cell adhesion molecules (ICAM-1, VCAM-1, etc.) and matrix metalloproteinases."
+        explanation: >-
+          The KEGG RA pathway is anchored by pro-inflammatory mediators that drive
+          the synovial inflammatory response. This review directly supports
+          inflammatory response as the defining functional signature of the gene set
+          by enumerating the cytokines, chemokines, and adhesion molecules encoded
+          by pathway members.
+    curator_note: >-
+      TNF, IL1A, IL1B, IL6, IL17A, and their receptors (TNFR1/TNFR2, IL1R, IL6R)
+      are core members of the KEGG RA pathway. These encode the dominant
+      pro-inflammatory cytokine signals that perpetuate synovial inflammation and
+      drive joint destruction in RA. Inflammatory response is the defining
+      functional characteristic of this disease pathway gene set. The term is
+      broadly expressed and not RA-specific, but is unambiguously core to the
+      pathway.
+  - term:
+      id: GO:0001816
+      label: cytokine production
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:19804846
+        reference_title: "Interleukin-6 subfamily cytokines and rheumatoid arthritis: role of antagonists."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "The rationale for the use of anti-cytokine therapy in inflammatory joint diseases is based on evidence from studies in vitro and in vivo, which implicate major cytokines such as interleukin-1 (IL-1), tumour necrosis factor (TNF)-alpha and IL-6 in RA pathogenesis."
+        explanation: >-
+          The KEGG RA pathway encodes multiple cytokine genes (TNF, IL1A, IL1B, IL6,
+          IL17A) whose production by synovial macrophages, T cells, and fibroblasts
+          is the central pathogenic driver of RA. This review explicitly identifies
+          IL-1, TNF-alpha, and IL-6 as the key cytokines implicated in RA
+          pathogenesis, confirming cytokine production as a core process of the gene
+          set.
+    curator_note: >-
+      The KEGG RA pathway is dominated by cytokine-encoding genes. TNF, IL1A,
+      IL1B, IL6, IL17A, IL18, and related factors are directly encoded and their
+      excessive production by activated immune and stromal cells in the synovium
+      is the primary pathogenic mechanism. Note: GO:0001816 is in the subset of
+      terms not recommended for direct gene product annotation (a grouping term);
+      it is used here at the gene-set level to capture the dominant functional
+      theme of the cytokine-encoding members.
+  - term:
+      id: GO:0019882
+      label: antigen processing and presentation
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      MHC class II molecules (HLA-DRA, HLA-DRB1, HLA-DQA1, HLA-DQB1, HLA-DPA1,
+      HLA-DPB1) are among the most strongly associated genetic risk factors for RA
+      and are core members of the KEGG RA pathway. Antigen processing and
+      presentation to CD4+ T helper cells initiates and sustains the autoimmune
+      cascade in the synovium. This process is lineage-shared across antigen-
+      presenting cells (dendritic cells, macrophages, B cells) and is a supporting
+      rather than primary disease driver — it sets the stage for the cytokine storm
+      and effector cell activation that cause tissue destruction.
+  - term:
+      id: GO:0030316
+      label: osteoclast differentiation
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      TNFSF11 (RANKL) and its receptor TNFRSF11A (RANK), together with the decoy
+      receptor TNFRSF11B (OPG), are canonical members of the KEGG RA pathway and
+      are the master regulators of osteoclast differentiation. In RA, pro-
+      inflammatory cytokines (TNF, IL-1, IL-6, IL-17) upregulate RANKL on
+      fibroblast-like synoviocytes and activated T cells, driving osteoclast
+      formation from monocyte precursors and causing the periarticular bone erosion
+      that is the hallmark radiographic feature of RA. Osteoclast differentiation
+      is lineage-specific to the myeloid compartment and mechanistically central
+      to joint destruction, placing it as a supporting disease-mechanism process
+      rather than the initiating inflammatory core.
+  - term:
+      id: GO:0030595
+      label: leukocyte chemotaxis
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Chemokines including CXCL1, CCL2 (MCP-1), CCL3, and CCL5 encoded in the
+      KEGG RA pathway mediate recruitment of neutrophils, monocytes, and
+      lymphocytes into the inflamed synovial tissue. Leukocyte chemotaxis is
+      required for the establishment and maintenance of the synovial inflammatory
+      infiltrate that drives RA pathology. Medium confidence because chemotaxis
+      is a broad immune process not specific to RA, and enrichment recovery
+      depends on the particular chemokine members present in this legacy gene set.
+  - term:
+      id: GO:0042613
+      label: MHC class II protein complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      HLA class II alpha and beta chain gene products (HLA-DRA, HLA-DRB1,
+      HLA-DQA1, HLA-DQB1, HLA-DPA1, HLA-DPB1) in the KEGG RA pathway
+      assemble into MHC class II protein complexes on antigen-presenting cells.
+      These complexes present arthritogenic autoantigens to CD4+ T helper cells,
+      initiating and perpetuating the autoimmune cascade in the synovium. The
+      HLA-DR locus is the dominant genetic risk factor for RA, making the MHC
+      class II protein complex the most disease-relevant cellular component in
+      this gene set.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment results reflects ribosomal protein subunit genes present in
+      the gene set. It does not reflect any disease-specific function of the
+      KEGG rheumatoid arthritis pathway and is a non-informative enrichment
+      hit.
