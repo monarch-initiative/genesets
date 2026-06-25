@@ -23,7 +23,7 @@ def precision(associations: Iterable) -> float | None:
     >>> precision([a, b])
     0.5
     """
-    recovered = [a for a in associations if a.seed_source == RECOVERED and a.category]
+    recovered = [a for a in associations if a.seed_source == RECOVERED and a.category is not None]
     if not recovered:
         return None
     good = [a for a in recovered if a.category in GOOD_CATEGORIES]
@@ -56,7 +56,7 @@ def score(associations: Iterable) -> dict:
     associations = list(associations)
     p = precision(associations)
     r = recall(associations)
-    recovered_adjudicated = sum(1 for a in associations if a.seed_source == RECOVERED and a.category)
+    recovered_adjudicated = sum(1 for a in associations if a.seed_source == RECOVERED and a.category is not None)
     core_total = sum(1 for a in associations if a.category in CORE_CATEGORIES)
     return {
         "precision": p,
