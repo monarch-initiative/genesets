@@ -10,6 +10,7 @@ from genesets_workflows.runtime import version_output, which
 from genesets_workflows.sources import mygeneset
 from genesets_workflows.sources import mygeneset_stratified
 from genesets_workflows.sources import reactome_flat as reactome_source
+from genesets_workflows.curation import cli as curation_cli
 
 
 Command = Callable[[list[str] | None], int]
@@ -52,6 +53,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     subparsers.add_parser(
         "explore",
         help="Launch a local browser over workflow report bundles.",
+        add_help=False,
+    )
+    subparsers.add_parser(
+        "curate",
+        help="Curate and validate GO interpretations of gene sets.",
         add_help=False,
     )
     parsed, remainder = parser.parse_known_args(argv)
@@ -112,6 +118,7 @@ def dispatch(command: str) -> Command:
         "fetch-mygeneset": mygeneset.main,
         "fetch-mygeneset-stratified": mygeneset_stratified.main,
         "explore": explore,
+        "curate": curation_cli.main,
     }
     return commands[command]
 
