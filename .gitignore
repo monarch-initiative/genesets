@@ -11,3 +11,6 @@ python/*/dist/
 python/*/*.egg-info/
 .pytest_cache/
 .ruff_cache/
+
+# Reference-validator paper cache (rebuilt on demand)
+curation/references_cache/
