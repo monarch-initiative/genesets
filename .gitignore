@@ -12,5 +12,7 @@ python/*/*.egg-info/
 .pytest_cache/
 .ruff_cache/
 
-# Reference-validator paper cache (rebuilt on demand)
+# Reference-validator paper cache (rebuilt on demand). The validator's `lookup`
+# command defaults to ./references_cache, so ignore it at any level.
 curation/references_cache/
+references_cache/
