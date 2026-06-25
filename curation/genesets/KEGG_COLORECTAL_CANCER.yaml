@@ -1,0 +1,116 @@
+gene_set_id: MSIGDB:KEGG_COLORECTAL_CANCER
+gene_set_name: KEGG_COLORECTAL_CANCER
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy colorectal cancer pathway gene set (MSigDB C2 curated gene set).
+  This is a cancer disease pathway gene set, not a cell-type signature. The member
+  genes are heavily enriched for Wnt/beta-catenin signaling components (APC, CTNNB1,
+  FZD family, TCF/LEF), RAS/MAPK pathway members (KRAS, BRAF, MAP2K1, MAPK1/3),
+  PI3K/AKT effectors (PIK3CA, PTEN, AKT1), cyclin-dependent kinase regulators driving
+  proliferation, and apoptosis modulators (TP53, CASP3, BCL2-family), reflecting the
+  major mechanistic arms of the KEGG colorectal cancer pathway: Wnt-driven initiation,
+  MAPK-mediated proliferation, PI3K survival signaling, cell migration, and apoptosis
+  dysregulation.
+contexts:
+  - term:
+      id: MONDO:0005575
+      label: colorectal cancer
+    context_type: disease
+  - term:
+      id: UBERON:0001155
+      label: colon
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0016055
+      label: Wnt signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    evidence:
+      - reference: PMID:11978510
+        reference_title: "The APC gene in colorectal cancer."
+        supports: SUPPORT
+        snippet: "constitutional activation of the Wnt signal transduction pathway"
+        explanation: >-
+          APC is the most frequently mutated gene in sporadic colorectal cancer.
+          Loss of APC function leads to constitutive Wnt/beta-catenin signaling,
+          the initiating molecular event in the adenoma-carcinoma sequence. This
+          Eur J Cancer review (Fodde 2002) directly supports Wnt signaling pathway
+          as the central core process represented in the KEGG colorectal cancer gene set.
+  - term:
+      id: GO:0042127
+      label: regulation of cell population proliferation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Cyclin D1 (CCND1), CDK4, CDK6, and the RB1/E2F axis are among the KEGG CRC
+      pathway members that directly regulate cell cycle entry and proliferative
+      expansion. Uncontrolled proliferation is a hallmark of colorectal cancer
+      and is downstream of both Wnt and MAPK signaling arms represented in this
+      gene set.
+  - term:
+      id: GO:0006915
+      label: apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      TP53, BAX, BCL2, CASP3, and FAS/FASL in the KEGG CRC pathway encode canonical
+      apoptosis components. Evasion of apoptosis is a key step in colorectal tumor
+      progression, but apoptosis is a broadly expressed process not specific to
+      colorectal cancer and is shared across many disease pathway gene sets.
+  - term:
+      id: GO:0000165
+      label: MAPK cascade
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      KRAS, BRAF, MAP2K1, MAPK1, and MAPK3 (ERK1/2) in the KEGG CRC pathway
+      constitute the core RAS-RAF-MEK-ERK cascade. KRAS and BRAF mutations are
+      among the most frequent somatic alterations in colorectal cancer, driving
+      proliferative signaling downstream of growth factor receptors. The MAPK
+      cascade is shared across many cancer types and is not colorectal-specific,
+      but is a mechanistically significant component of this pathway representation.
+  - term:
+      id: GO:0016477
+      label: cell migration
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      The KEGG CRC pathway includes components associated with invasive migration,
+      such as matrix metalloproteinases (MMP family) and SMAD-pathway effectors
+      from TGF-beta signaling. Cell migration is a prerequisite for local invasion
+      and metastasis in colorectal cancer, making it a meaningful supporting process
+      in this gene set, though it is not specific to colorectal cancer.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in enrichment
+      results for this gene set reflects ribosomal protein subunit genes present in
+      the KEGG CRC pathway representation. It does not reflect a colorectal
+      cancer-specific function and is a non-informative enrichment hit.

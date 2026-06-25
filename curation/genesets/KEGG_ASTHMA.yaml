@@ -1,0 +1,126 @@
+gene_set_id: MSIGDB:KEGG_ASTHMA
+gene_set_name: KEGG_ASTHMA
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy asthma pathway gene set (MSigDB C2 curated gene set).
+  This is a disease pathway gene set representing the allergic inflammatory
+  cascade in asthma. Member genes are dominated by Th2/type-2 immune effectors:
+  immunoglobulin E (IgE) pathway components, MHC class II antigen-presenting
+  molecules (HLA-DRA, HLA-DRB1, HLA-DQA1, HLA-DQB1), Th2-polarising cytokines
+  and their receptors (IL4, IL5, IL13, IL4R), mast cell and eosinophil
+  effectors (FCER1A, FCER1G, MS4A2), and airway smooth muscle regulators.
+  Antigen processing and presentation, IgE-mediated mast cell degranulation,
+  eosinophil recruitment, and airway remodelling are the major mechanistic arms
+  of the KEGG asthma pathway representation.
+contexts:
+  - term:
+      id: MONDO:0004979
+      label: asthma
+    context_type: disease
+  - term:
+      id: UBERON:0002048
+      label: lung
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    evidence:
+      - reference: PMID:35923421
+        reference_title: "Type 2 inflammation in asthma and other airway diseases."
+        supports: SUPPORT
+        snippet: "Both ILC2 and Th2 cells produce the type-2 cytokines (interleukin (IL)-4, IL-5 and IL-13), each with several roles in the inflammation cascade. IL-4 and IL-13 cause B-cell class switching and IgE production"
+        explanation: >-
+          The KEGG asthma pathway is dominated by Th2-driven inflammatory
+          effectors. This ERJ Open Res review confirms that type-2 cytokines
+          (IL-4, IL-5, IL-13) produced by ILC2 and Th2 cells, together with
+          IgE production, are the central drivers of the allergic inflammatory
+          response in asthma, directly supporting inflammatory response as the
+          core biological process of this gene set.
+  - term:
+      id: GO:0045064
+      label: T-helper 2 cell differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    curator_note: >-
+      The KEGG asthma pathway is mechanistically centred on Th2 cell
+      polarisation: GATA3, IL4, IL4R, and downstream cytokine genes encoding
+      the Th2 effector programme (IL5, IL13) are core pathway members.
+      T-helper 2 cell differentiation is the lineage-defining process that
+      distinguishes the asthma pathway from generic inflammatory disease
+      pathways. Specificity is lineage_shared because this process occurs in
+      secondary lymphoid tissues as well as at mucosal sites.
+  - term:
+      id: GO:0019882
+      label: antigen processing and presentation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    curator_note: >-
+      MHC class II molecules (HLA-DRA, HLA-DRB1, HLA-DQA1, HLA-DQB1) are
+      prominent members of the KEGG asthma pathway, reflecting the role of
+      dendritic cells and other antigen-presenting cells in presenting allergen-
+      derived peptides to naïve CD4+ T cells to initiate Th2 polarisation.
+      Antigen processing and presentation is supporting rather than core because
+      it is shared with all adaptive immune disease pathways, not specific to
+      allergic asthma.
+  - term:
+      id: GO:0042613
+      label: MHC class II protein complex
+    aspect: cellular_component
+    category: core_component
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Multiple HLA class II alpha and beta chain gene products encoded in the
+      KEGG asthma pathway (HLA-DRA, HLA-DRB1, HLA-DQA1, HLA-DQB1, HLA-DPA1,
+      HLA-DPB1) assemble into MHC class II protein complexes on antigen-
+      presenting cells. These complexes are required for allergen peptide
+      presentation to CD4+ Th2 cells. Medium confidence because enrichment
+      results may also recover MHC class I complexes from non-classical HLA
+      members present in the gene set.
+  - term:
+      id: GO:0006955
+      label: immune response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Generic immune response term recovered because the KEGG asthma pathway is
+      dominated by immune effector genes spanning both innate and adaptive arms
+      (IgE receptors, cytokine receptors, MHC molecules, complement). Provides
+      contextual support for the allergic disease mechanism but is not specific
+      to asthma or type-2 inflammation. Broadly expressed because immune
+      response genes are active across many lineages and tissues.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment results reflects ribosomal protein subunit genes present in
+      the KEGG asthma gene set as background members. It does not reflect any
+      disease-specific function of the allergic inflammatory pathway and is a
+      non-informative enrichment hit.
