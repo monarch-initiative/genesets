@@ -15,8 +15,11 @@ COLUMNS = [
     "n_associations",
     "recovered_adjudicated",
     "core_total",
+    "core_annotation_gap",
+    "core_membership_gap",
     "precision",
     "recall",
+    "recall_supportable",
     "f1",
 ]
 

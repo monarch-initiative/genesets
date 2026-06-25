@@ -116,6 +116,17 @@ classes:
         range: SeedSourceEnum
         required: true
         description: Whether the term was recovered by enrichment or added by a curator.
+      recovery_status:
+        range: RecoveryStatusEnum
+        recommended: true
+        description: >-
+          Orthogonal to category: whether this (biologically asserted) term is
+          actually supported by the gene set's current GO annotations, or
+          represents a gap. This does NOT modulate the biological category or
+          confidence — a term that is biologically core stays core even when no
+          annotation supports it; the gap is recorded here so it is visible and
+          scoreable. annotation_gap marks a GO curation target; membership_gap
+          marks gene-set incompleteness.
       enrichment_stats:
         range: EnrichmentStats
         inlined: true
@@ -236,6 +247,28 @@ enums:
     permissible_values:
       enrichment_recovered:
       curator_added:
+
+  RecoveryStatusEnum:
+    permissible_values:
+      annotation_supported:
+        description: >-
+          Genes in the set are annotated to this term; enrichment recovers it.
+      annotation_gap:
+        description: >-
+          Relevant genes ARE in the gene set, but their GO annotations are not
+          deep/specific enough to capture this term. The association is real;
+          the gap is GO's (a GO annotation curation target). Do not weaken the
+          biological category for this reason.
+      membership_gap:
+        description: >-
+          The genes that would carry this term are NOT in the gene set (the set
+          is core/legacy/incomplete). The association is real for the underlying
+          biology and SHOULD be in a complete set; the gap is the gene set's.
+      false_association:
+        description: >-
+          Not a gap: the term is biologically wrong for the set (mirrors the
+          false_association category; use when the annotation support is absent
+          because the association itself is spurious).
 
   EvidenceSupportEnum:
     permissible_values:

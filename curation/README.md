@@ -26,6 +26,34 @@ gold standard for `genesets-rs`.
 4. `just curate-validate` - structural + term + reference validation.
 5. `just curate-report` - precision/recall/F1.
 
-## Categories
+## Categories (biology)
 `core_process`, `core_component`, `supporting_process`,
 `marker_driven_plausible`, `nonspecific`, `false_association`.
+
+The `category` is an assertion about the **biology** and is *not* driven by the
+current state of GO annotations. A term that is biologically core stays core
+even when no annotation supports it — we never downgrade truth to match
+incomplete data.
+
+## Recovery status (gap analysis)
+`recovery_status` is **orthogonal** to `category`. It records whether a
+biologically-asserted term is actually supported by the gene set's current GO
+annotations, so gaps are visible and scoreable without contaminating the
+biological judgment:
+
+- `annotation_supported` — genes in the set are annotated to the term; enrichment recovers it.
+- `annotation_gap` — relevant genes **are** in the set but GO annotation is too shallow to capture the term. The gap is **GO's** → a GO annotation curation target.
+- `membership_gap` — the genes for the term are **not** in the set (the set is core/legacy/incomplete). The gap is the **gene set's**; the term still belongs in a complete set.
+
+This powers two directions: a well-curated set with `core` + `annotation_gap`
+finds GO annotation gaps; `core` + `membership_gap` flags gene-set
+incompleteness and keeps the eval's recall denominator honest. The report emits
+both a biology-complete `recall` and a tool-fair `recall_supportable` (which
+excludes membership gaps the set could never recover), plus `core_annotation_gap`
+and `core_membership_gap` counts.
+
+See `genesets/KEGG_PARKINSONS_DISEASE.yaml` for the worked example: `neuron
+apoptotic process` is an `annotation_gap` (HTRA2/CDK5 present but the death
+machinery is annotated only to the generic parent), and `ferroptosis`
+(GO:0097707) is a `membership_gap` (real PD biology, but GPX4/ACSL4/SLC7A11 are
+not in this legacy KEGG set) — not a `false_association`.

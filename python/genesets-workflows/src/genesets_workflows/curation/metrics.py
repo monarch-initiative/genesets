@@ -3,6 +3,13 @@
 Precision: of the recovered terms that a curator adjudicated, how many are
 biologically good (core/supporting)?
 Recall: of the curator-marked core terms, how many did enrichment recover?
+
+``recovery_status`` decomposes the non-recovered core terms into the two kinds
+of gap so they can be scored without weakening the biological category:
+``annotation_gap`` (genes present but GO annotation too shallow -- a GO curation
+target) and ``membership_gap`` (genes absent -- the gene set is incomplete).
+``recall_supportable`` is the tool-fair recall that excludes membership gaps the
+set could never support, alongside the biology-complete ``recall``.
 """
 
 from __future__ import annotations
@@ -12,6 +19,26 @@ from typing import Iterable
 GOOD_CATEGORIES = {"core_process", "core_component", "supporting_process"}
 CORE_CATEGORIES = {"core_process", "core_component"}
 RECOVERED = "enrichment_recovered"
+MEMBERSHIP_GAP = "membership_gap"
+ANNOTATION_GAP = "annotation_gap"
+
+
+def effective_recovery_status(assoc) -> str | None:
+    """The association's recovery_status, defaulting an enrichment-recovered
+    term to ``annotation_supported`` when the field is unset (back-compat).
+
+    >>> from types import SimpleNamespace as S
+    >>> effective_recovery_status(S(seed_source="enrichment_recovered", recovery_status=None))
+    'annotation_supported'
+    >>> effective_recovery_status(S(seed_source="curator_added", recovery_status="membership_gap"))
+    'membership_gap'
+    """
+    status = getattr(assoc, "recovery_status", None)
+    if status:
+        return status
+    if assoc.seed_source == RECOVERED:
+        return "annotation_supported"
+    return None
 
 
 def precision(associations: Iterable) -> float | None:
@@ -57,11 +84,21 @@ def score(associations: Iterable) -> dict:
     p = precision(associations)
     r = recall(associations)
     recovered_adjudicated = sum(1 for a in associations if a.seed_source == RECOVERED and a.category is not None)
-    core_total = sum(1 for a in associations if a.category in CORE_CATEGORIES)
+    core = [a for a in associations if a.category in CORE_CATEGORIES]
+    core_total = len(core)
+    core_annotation_gap = sum(1 for a in core if effective_recovery_status(a) == ANNOTATION_GAP)
+    core_membership_gap = sum(1 for a in core if effective_recovery_status(a) == MEMBERSHIP_GAP)
+    recovered_core = sum(1 for a in core if a.seed_source == RECOVERED)
+    # Tool-fair recall: exclude core terms the set can never support (genes absent).
+    supportable = core_total - core_membership_gap
+    recall_supportable = (recovered_core / supportable) if supportable > 0 else None
     return {
         "precision": p,
         "recall": r,
         "f1": f1(p, r),
         "recovered_adjudicated": recovered_adjudicated,
         "core_total": core_total,
+        "core_annotation_gap": core_annotation_gap,
+        "core_membership_gap": core_membership_gap,
+        "recall_supportable": recall_supportable,
     }

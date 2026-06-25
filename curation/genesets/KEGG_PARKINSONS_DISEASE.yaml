@@ -13,6 +13,9 @@ description: >-
   (oxidative phosphorylation), ubiquitin-proteasome system components (parkin/PINK1
   pathway), dopaminergic neuron biology, and apoptosis regulators, reflecting the
   major mechanistic arms of the KEGG Parkinson's disease pathway representation.
+  As a legacy/core pathway it captures established mechanism and omits more
+  recently characterised arms such as ferroptosis (recorded below as a
+  membership_gap rather than a false association).
 contexts:
   - term:
       id: MONDO:0005180
@@ -31,6 +34,7 @@ associations:
     confidence: high
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    recovery_status: annotation_supported
     evidence:
       - reference: PMID:31013638
         reference_title: "Oxidative Stress: A Key Modulator in Neurodegenerative Diseases."
@@ -51,6 +55,7 @@ associations:
     confidence: high
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    recovery_status: annotation_supported
     curator_note: >-
       A large fraction of KEGG PD pathway members (NADH dehydrogenase subunits,
       cytochrome bc1 subunits, COX subunits, ATP synthase subunits) are
@@ -65,6 +70,7 @@ associations:
     confidence: medium
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    recovery_status: annotation_supported
     curator_note: >-
       Parkin (PARK2) is an E3 ubiquitin ligase and key PD gene; loss-of-function
       mutations cause autosomal-recessive PD. Together with PINK1, parkin
@@ -80,6 +86,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    recovery_status: annotation_supported
     curator_note: >-
       Loss of dopaminergic neurons in the substantia nigra pars compacta is the
       pathological hallmark of Parkinson's disease, resulting in dopamine
@@ -96,6 +103,7 @@ associations:
     confidence: medium
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    recovery_status: annotation_supported
     curator_note: >-
       CASP3, CASP9, CYCS, and BCL2-family members in the KEGG PD pathway
       encode canonical intrinsic apoptosis components. Apoptosis is shared
@@ -110,11 +118,46 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: curator_added
+    recovery_status: annotation_gap
     curator_note: >-
       Dopaminergic neuron death by apoptosis is the central downstream outcome
-      of the KEGG Parkinson's disease pathway. Added as curator_added because
-      enrichment tools may recover the parent term (apoptotic process) in
-      preference to this more specific neuron-restricted child term.
+      of the KEGG Parkinson's disease pathway, so this term is biologically
+      core and is NOT weakened on annotation grounds. It is an annotation_gap:
+      relevant genes ARE in the set (e.g. HTRA2/PARK13 and CDK5 are annotated to
+      neuron apoptotic process in GOA-human; CASP3/CASP9/CYCS/BAX are present
+      but annotated only to the generic parent apoptotic process), yet most of
+      the set's death machinery is not annotated to this neuron-specific child.
+      The shallow annotation is GO/GOA's incompleteness, not evidence against
+      the association — this is a GO annotation curation target.
+  - term:
+      id: GO:0097707
+      label: ferroptosis
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: membership_gap
+    evidence:
+      - reference: PMID:36497089
+        reference_title: "Iron Brain Menace: The Involvement of Ferroptosis in Parkinson Disease."
+        supports: SUPPORT
+        snippet: "progressive dopaminergic neuronal loss in people with PD is associated with iron accumulation and is suggested to be driven in part by the novel cell death pathway, ferroptosis"
+        explanation: >-
+          Iron accumulation in the substantia nigra and iron-dependent lipid
+          peroxidation make ferroptosis an increasingly accepted mechanism of
+          dopaminergic neuron death in PD. It therefore SHOULD be part of a
+          complete Parkinson's disease gene set.
+    curator_note: >-
+      membership_gap, not false_association. Ferroptosis is genuine PD biology
+      and belongs in a complete representation, but the canonical ferroptosis
+      genes (GPX4, SLC7A11, ACSL4, NCOA4, FTH1, …) are NOT members of this
+      legacy KEGG PD pathway (they form KEGG's separate ferroptosis pathway,
+      hsa04216), and none of the KEGG PD genes carry a ferroptosis annotation in
+      GOA-human. The gap is the gene set's (core/legacy, pre-ferroptosis), so
+      enrichment cannot and should not recover this term from these genes — but
+      we record it as expected biology so the eval's recall denominator is
+      honest and the gene-set incompleteness is visible.
   - term:
       id: GO:0006412
       label: translation
@@ -123,6 +166,7 @@ associations:
     confidence: high
     specificity: ubiquitous
     seed_source: enrichment_recovered
+    recovery_status: annotation_supported
     curator_note: >-
       Translation appears as a non-specific enrichment hit driven by ribosomal
       protein subunit genes present in the gene set. It is a ubiquitous

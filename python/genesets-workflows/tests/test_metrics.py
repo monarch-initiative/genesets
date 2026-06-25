@@ -1,11 +1,14 @@
+import pytest
+
 from genesets_workflows.curation import metrics, model
 
 
-def _assoc(go_id, category, seed):
+def _assoc(go_id, category, seed, recovery=None):
     return model.TermAssociation(
         term=model.Term(id=go_id, label=go_id),
         seed_source=seed,
         category=category,
+        recovery_status=recovery,
     )
 
 
@@ -31,3 +34,21 @@ def test_score_empty_is_none():
     assert m["precision"] is None
     assert m["recall"] is None
     assert m["f1"] is None
+    assert m["recall_supportable"] is None
+
+
+def test_recovery_status_decomposition():
+    # category encodes biology; recovery_status records the gap, orthogonally.
+    assocs = [
+        _assoc("GO:1", "core_process", "enrichment_recovered", "annotation_supported"),
+        _assoc("GO:2", "core_process", "curator_added", "annotation_gap"),   # genes present, GO shallow
+        _assoc("GO:3", "core_process", "curator_added", "membership_gap"),   # genes absent from set
+    ]
+    m = metrics.score(assocs)
+    assert m["core_total"] == 3
+    assert m["core_annotation_gap"] == 1
+    assert m["core_membership_gap"] == 1
+    # biology-complete recall: 1 of 3 core recovered
+    assert m["recall"] == pytest.approx(1 / 3)
+    # tool-fair recall excludes the membership_gap term the set can never support: 1 of 2
+    assert m["recall_supportable"] == 0.5
