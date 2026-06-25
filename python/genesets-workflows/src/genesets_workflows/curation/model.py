@@ -58,16 +58,6 @@ class BiologicalContext:
 
 
 @dataclass
-class EnrichmentProvenance:
-    tool: str | None = None
-    config_ref: str | None = None
-    go_version: str | None = None
-    evidence_codes: str | None = None
-    background: str | None = None
-    run_date: str | None = None
-
-
-@dataclass
 class GeneSetInterpretation:
     gene_set_id: str
     gene_set_name: str
@@ -78,10 +68,6 @@ class GeneSetInterpretation:
     n_genes: int | None = None
     description: str | None = None
     contexts: list[BiologicalContext] = field(default_factory=list)
-    provenance: EnrichmentProvenance | None = None
-    curation_status: str | None = None
-    curator: str | None = None
-    curation_date: str | None = None
     associations: list[TermAssociation] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
@@ -128,8 +114,6 @@ def _context(value: dict[str, Any]) -> BiologicalContext:
 def from_dict(data: dict[str, Any]) -> GeneSetInterpretation:
     data = dict(data)
     data["taxon"] = _term(data.get("taxon"))
-    if data.get("provenance") is not None:
-        data["provenance"] = EnrichmentProvenance(**data["provenance"])
     data["contexts"] = [_context(c) for c in data.get("contexts", [])]
     data["associations"] = [_association(a) for a in data.get("associations", [])]
     return GeneSetInterpretation(**data)

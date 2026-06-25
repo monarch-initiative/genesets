@@ -12,7 +12,6 @@ COLUMNS = [
     "gene_set_id",
     "gene_set_name",
     "collection",
-    "curation_status",
     "n_associations",
     "recovered_adjudicated",
     "core_total",
@@ -32,7 +31,6 @@ def report_rows(paths: Iterable[Path]) -> list[dict]:
                 "gene_set_id": interp.gene_set_id,
                 "gene_set_name": interp.gene_set_name,
                 "collection": interp.collection or "",
-                "curation_status": interp.curation_status or "",
                 "n_associations": len(interp.associations),
                 **scored,
             }

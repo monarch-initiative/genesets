@@ -18,15 +18,6 @@ contexts:
       id: UBERON:0002371
       label: bone marrow
     context_type: anatomical_structure
-provenance:
-  tool: genesets-rs
-  config_ref: curation example (hand-authored)
-  go_version: pinned-snapshot-TBD
-  evidence_codes: all
-  background: goa-human-symbols
-curation_status: reviewed
-curator: example
-curation_date: "2026-06-24"
 associations:
   - term:
       id: GO:0019882

@@ -4,8 +4,8 @@ title: Gene Set GO Interpretation Schema
 description: >-
   Curated, validated GO-term interpretations of non-GO gene sets (e.g. MSigDB
   C8 cell-type signatures). Each interpretation records, per GO term, a curator
-  judgment (role category, confidence, specificity), optional literature
-  evidence, and the enrichment provenance that seeded it.
+  judgment (role category, confidence, specificity), and optional literature
+  evidence.
 license: MIT
 prefixes:
   linkml: https://w3id.org/linkml/
@@ -62,15 +62,6 @@ classes:
         multivalued: true
         inlined_as_list: true
         description: What the signature is about (cell type, disease, chemical, etc.).
-      provenance:
-        range: EnrichmentProvenance
-        inlined: true
-        description: How the draft interpretation was generated.
-      curation_status:
-        range: CurationStatusEnum
-      curator:
-      curation_date:
-        range: date
       associations:
         range: TermAssociation
         multivalued: true
@@ -163,22 +154,6 @@ classes:
       overlap_genes:
         multivalued: true
 
-  EnrichmentProvenance:
-    description: How a draft interpretation was generated.
-    attributes:
-      tool:
-        description: Tool used to seed the draft, e.g. genesets-rs.
-      config_ref:
-        description: Reference to the eval/run config (path or commit) used.
-      go_version:
-        description: GO snapshot/version identifier used for enrichment.
-      evidence_codes:
-        description: Which GO evidence set was used (e.g. all, no-IBA).
-      background:
-        description: Background gene universe identifier.
-      run_date:
-        range: date
-
   EvidenceItem:
     description: A literature evidence item supporting or refuting an association.
     attributes:
@@ -268,9 +243,3 @@ enums:
       REFUTE:
       NEUTRAL:
 
-  CurationStatusEnum:
-    permissible_values:
-      draft:
-      in_review:
-      reviewed:
-      final:

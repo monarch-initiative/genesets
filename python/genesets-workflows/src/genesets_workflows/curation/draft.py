@@ -14,7 +14,6 @@ def assemble_draft(
     gene_set_name: str,
     collection: str,
     rows: Iterable[EnrichmentRow],
-    provenance: model.EnrichmentProvenance,
     contexts: list[model.BiologicalContext] | None = None,
     aspect_lookup: Callable[[str], str | None] | None = None,
     msigdb_release: str | None = None,
@@ -47,7 +46,5 @@ def assemble_draft(
         msigdb_release=msigdb_release,
         n_genes=n_genes,
         contexts=contexts or [],
-        provenance=provenance,
-        curation_status="draft",
         associations=associations,
     )

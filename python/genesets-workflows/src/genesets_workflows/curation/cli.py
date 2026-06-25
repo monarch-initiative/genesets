@@ -55,7 +55,6 @@ def draft(
     enrichment_tsv: Path = typer.Option(..., "--enrichment-tsv", help="genesets-rs enrich TSV for this set."),
     output: Path = typer.Option(..., "--output", "-o"),
     collection: str = typer.Option("C8", "--collection"),
-    go_version: str = typer.Option("unspecified", "--go-version"),
 ) -> None:
     """Build a draft interpretation from a precomputed enrichment TSV."""
     from genesets_workflows.curation import draft as draft_mod
@@ -69,7 +68,6 @@ def draft(
         gene_set_name=name,
         collection=collection,
         rows=rows,
-        provenance=model.EnrichmentProvenance(tool="genesets-rs", go_version=go_version),
     )
     model.dump_interpretation(interp, output)
     typer.echo(f"wrote {output} ({len(interp.associations)} associations)")

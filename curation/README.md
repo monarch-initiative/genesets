@@ -2,8 +2,8 @@
 
 Curated, validated GO-term interpretations of non-GO MSigDB gene sets
 (C8 cell-type signatures first). Each `c8/<SET>.yaml` records, per GO term, a
-curator judgment (role category, confidence, specificity), optional literature
-evidence, and the enrichment provenance that seeded it. The data doubles as a
+curator judgment (role category, confidence, specificity), and optional literature
+evidence. The data doubles as a
 precision/recall gold standard for `genesets-rs`.
 
 ## Layout

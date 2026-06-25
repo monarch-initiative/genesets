@@ -1,4 +1,4 @@
-from genesets_workflows.curation import draft, model
+from genesets_workflows.curation import draft
 from genesets_workflows.curation.enrichment import EnrichmentRow
 
 
@@ -15,10 +15,8 @@ def test_assemble_draft_basic():
         gene_set_name="HAY_BONE_MARROW_DENDRITIC_CELL",
         collection="C8",
         rows=_rows(),
-        provenance=model.EnrichmentProvenance(tool="genesets-rs", go_version="snap-X"),
     )
     assert interp.gene_set_id == "MSIGDB:HAY_BONE_MARROW_DENDRITIC_CELL"
-    assert interp.curation_status == "draft"
     assert len(interp.associations) == 2
     a0 = interp.associations[0]
     assert a0.term.id == "GO:0019882"
@@ -34,7 +32,6 @@ def test_assemble_draft_applies_aspect_lookup():
         gene_set_name="X",
         collection="C8",
         rows=_rows()[:1],
-        provenance=model.EnrichmentProvenance(),
         aspect_lookup=lambda go_id: "biological_process",
     )
     assert interp.associations[0].aspect == "biological_process"
