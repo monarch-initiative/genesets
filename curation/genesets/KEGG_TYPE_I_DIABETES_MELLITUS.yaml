@@ -1,0 +1,133 @@
+gene_set_id: MSIGDB:KEGG_TYPE_I_DIABETES_MELLITUS
+gene_set_name: KEGG_TYPE_I_DIABETES_MELLITUS
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy type 1 diabetes mellitus pathway gene set (MSigDB C2 curated gene set).
+  This is a disease pathway gene set representing autoimmune destruction of pancreatic
+  beta cells. Member genes are heavily enriched for antigen presentation machinery
+  (MHC class I and II), cytotoxic T-cell effectors (granzymes, perforin), apoptosis
+  regulators (CASP3, CASP8, BAD, BCL2-family), and cytokine signaling components,
+  reflecting the major mechanistic arms of the KEGG type 1 diabetes pathway: immune
+  recognition, T-cell-mediated beta-cell killing, and beta-cell apoptosis. Insulin and
+  related beta-cell function genes are also represented as the targeted tissue.
+contexts:
+  - term:
+      id: MONDO:0005147
+      label: type 1 diabetes mellitus
+    context_type: disease
+  - term:
+      id: UBERON:0000006
+      label: islet of Langerhans
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0019882
+      label: antigen processing and presentation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    curator_note: >-
+      MHC class I and II molecules (HLA-A, HLA-B, HLA-DRA, HLA-DRB1, HLA-DQA1,
+      HLA-DQB1) are central members of the KEGG T1D pathway. Antigen processing
+      and presentation to autoreactive T cells is the initiating step of
+      autoimmune beta-cell destruction and is the defining feature that
+      distinguishes this disease pathway from other forms of diabetes.
+  - term:
+      id: GO:0001913
+      label: T cell mediated cytotoxicity
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    evidence:
+      - reference: PMID:28358037
+        reference_title: "Type 1 diabetes mellitus."
+        supports: SUPPORT
+        snippet: "the pathogenesis of the disease is thought to involve T cell-mediated destruction of β-cells"
+        explanation: >-
+          Cytotoxic CD8+ T cells are the primary effectors of beta-cell killing
+          in the KEGG T1D pathway. This Nat Rev Dis Primers review confirms that
+          T cell-mediated destruction of beta-cells is the central pathogenic
+          mechanism of type 1 diabetes mellitus, directly supporting this
+          association as a core process.
+  - term:
+      id: GO:0042613
+      label: MHC class II protein complex
+    aspect: cellular_component
+    category: core_component
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    curator_note: >-
+      HLA class II alpha and beta chain gene products (HLA-DRA, HLA-DRB1,
+      HLA-DQA1, HLA-DQB1, HLA-DPA1, HLA-DPB1) in the KEGG T1D pathway
+      assemble into MHC class II protein complexes on antigen-presenting cells.
+      These complexes present beta-cell autoantigens to CD4+ T helper cells,
+      initiating the autoimmune cascade. Medium confidence because enrichment
+      results may also recover the MHC class I complex.
+  - term:
+      id: GO:0006915
+      label: apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      CASP3, CASP8, CASP9, BAD, BCL2, and FAS/FASL in the KEGG T1D pathway
+      encode canonical apoptosis components. Apoptotic death of pancreatic
+      beta cells is the final effector step of T-cell-mediated destruction in
+      this pathway, but apoptosis is a broadly expressed process not specific
+      to T1D. Recovered by enrichment as a significant mechanistic component
+      downstream of cytotoxic killing.
+  - term:
+      id: GO:0006955
+      label: immune response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Generic immune response term recovered because the KEGG T1D pathway
+      is dominated by immune effector genes (HLA molecules, cytokines, T-cell
+      receptors). Provides contextual support for the autoimmune disease
+      mechanism but is not specific to type 1 diabetes or beta-cell destruction.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment results reflects ribosomal protein subunit genes present in
+      the gene set. It does not reflect any disease-specific function of the
+      KEGG type 1 diabetes mellitus pathway and is a non-informative
+      enrichment hit.
+  - term:
+      id: GO:0030073
+      label: insulin secretion
+    aspect: biological_process
+    category: marker_driven_plausible
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    curator_note: >-
+      Insulin (INS) and related beta-cell function genes are included in the
+      KEGG T1D pathway as representatives of the target tissue being destroyed.
+      Insulin secretion is not the pathogenic mechanism driving this disease
+      pathway but is the beta-cell-specific function lost as a result of
+      autoimmune destruction. Added as curator_added because enrichment tools
+      may not recover this term given the small number of beta-cell-function
+      genes relative to the dominant immune effector component.
