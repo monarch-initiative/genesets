@@ -1,0 +1,134 @@
+gene_set_id: MSIGDB:MURARO_PANCREAS_ALPHA_CELL
+gene_set_name: MURARO_PANCREAS_ALPHA_CELL
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of pancreatic alpha (A) cells from human pancreas
+  (Muraro et al.). Pancreatic alpha cells are glucagon-secreting endocrine cells
+  located at the periphery of the islets of Langerhans that play an essential role
+  in glucose homeostasis by releasing glucagon in response to hypoglycaemia.
+contexts:
+  - term:
+      id: CL:0000171
+      label: pancreatic A cell
+    context_type: cell_type
+  - term:
+      id: UBERON:0000006
+      label: islet of Langerhans
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0070091
+      label: glucagon secretion
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:37367959
+        reference_title: "100 years of glucagon and 100 more."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "The peptide hormone glucagon, discovered in late 1922, is secreted from pancreatic alpha cells and is an essential regulator of metabolic homeostasis."
+        explanation: >-
+          Glucagon secretion is the defining function of pancreatic alpha cells.
+          This comprehensive review confirms that alpha cells are the primary cellular
+          source of glucagon, making GO:0070091 the single most cell-type-specific
+          process represented in this marker gene set.
+  - term:
+      id: GO:0030072
+      label: peptide hormone secretion
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Peptide hormone secretion is the immediate parent term of glucagon secretion
+      and is shared with pancreatic beta cells (insulin), delta cells (somatostatin),
+      and other enteroendocrine cell types. Its presence in enrichment results
+      reflects the alpha cell's fundamental identity as a peptide hormone-secreting
+      endocrine cell, but is not uniquely alpha-cell-specific.
+  - term:
+      id: GO:0030141
+      label: secretory granule
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:34659118
+        reference_title: "Pathways of Glucagon Secretion and Trafficking in the Pancreatic Alpha Cell: Novel Pathways, Proteins, and Targets for Hyperglucagonemia."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "aspects of alpha cell biology for possible mechanisms for alpha cell dysfunction in diabetes: proglucagon processing, intrinsic and paracrine control of glucagon secretion, secretory granule dynamics, and alterations in intracellular trafficking"
+        explanation: >-
+          Glucagon is packaged and stored in secretory granules (alpha granules) of
+          pancreatic alpha cells prior to regulated exocytosis. Secretory granule
+          dynamics are a defining cellular feature of alpha cell biology; the
+          alpha-granule complement of these cells underpins their entire hormone
+          secretory function.
+  - term:
+      id: GO:0071333
+      label: cellular response to glucose stimulus
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:24367972
+        reference_title: "Glucose regulation of glucagon secretion."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "it is clear that glucose controls glucagon secretion also by mechanisms involving direct effects on α-cells or indirect effects via paracrine factors released from non-α-cells within the pancreatic islets"
+        explanation: >-
+          Pancreatic alpha cells respond directly to glucose to modulate glucagon
+          secretion; low glucose stimulates release while high glucose (via paracrine
+          signals from beta and delta cells) suppresses it. This glucose-sensing
+          capacity is shared across islet endocrine cell types, making the term
+          lineage_shared rather than alpha-cell-specific.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in enrichment
+      results from the alpha cell marker set likely reflects high ribosomal gene
+      expression supporting glucagon peptide biosynthesis, but the process itself
+      is not alpha-cell-specific. This is a non-informative housekeeping enrichment
+      hit common across secretory cell type signatures.
+  - term:
+      id: GO:0031018
+      label: endocrine pancreas development
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      Alpha cells arise from the endocrine pancreas lineage and express key
+      transcription factors (ARX, PCSK2, GCG) that drive endocrine pancreas
+      development and alpha cell fate specification. Enrichment-based approaches on
+      adult alpha cell marker genes preferentially recover secretory-function terms
+      over developmental terms; this association is added by the curator to capture
+      the developmental lineage commitment that defines alpha cell identity. It is
+      an annotation_gap because the relevant developmental regulators in this set
+      may carry only generic developmental annotations rather than the
+      endocrine-pancreas-specific child term in current GO annotations.

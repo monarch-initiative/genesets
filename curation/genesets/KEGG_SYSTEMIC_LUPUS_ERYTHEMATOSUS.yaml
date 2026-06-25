@@ -1,0 +1,171 @@
+gene_set_id: MSIGDB:KEGG_SYSTEMIC_LUPUS_ERYTHEMATOSUS
+gene_set_name: KEGG_SYSTEMIC_LUPUS_ERYTHEMATOSUS
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy systemic lupus erythematosus pathway gene set (MSigDB C2 curated gene set).
+  This is a disease pathway gene set representing the immunopathological mechanisms of
+  systemic lupus erythematosus, a systemic autoimmune disease. Member genes are heavily
+  enriched for nucleosome and histone components (autoantigens targeted by SLE-defining
+  anti-dsDNA and anti-histone autoantibodies), complement pathway components (classical
+  pathway activation by immune complexes), Fc-gamma receptors (immune complex clearance
+  and effector signaling), MHC class II molecules (autoantigen presentation), and B/T
+  cell signaling components, reflecting the major mechanistic arms of the KEGG SLE
+  pathway: autoantigen exposure, immune complex formation, complement-mediated
+  inflammation, and adaptive immune dysregulation.
+contexts:
+  - term:
+      id: MONDO:0007915
+      label: systemic lupus erythematosus
+    context_type: disease
+associations:
+  - term:
+      id: GO:0006956
+      label: complement activation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:41283475
+        reference_title: >-
+          Immunopathogenesis of Systemic Lupus Erythematosus: Interplay of Innate and
+          Adaptive Immunity, Microbiome Dysbiosis, and Emerging Therapeutic Targets.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: >-
+          the complement system, which collectively amplify autoimmunity through defective
+          clearance of apoptotic cells, overproduction of pro-inflammatory cytokines, and
+          abnormal type I interferon signaling
+        explanation: >-
+          The KEGG SLE pathway gene set includes multiple complement components (C1Q
+          subunits, C2, C4, C3, C5, C8, C9) and complement receptors (CR2/CD21).
+          Classical pathway complement activation by IgG/IgM immune complexes is a
+          central effector mechanism causing tissue injury in SLE. This 2025 review
+          confirms the complement system as a core amplifier of autoimmunity in SLE,
+          directly supporting complement activation as the primary mechanistic label
+          for this gene set.
+    curator_note: >-
+      Complement genes are among the most prominent members of the KEGG SLE pathway.
+      Paradoxically, early complement deficiency (C1q, C2, C4) predisposes to SLE
+      by impairing apoptotic cell clearance, while downstream complement activation
+      following immune complex deposition causes end-organ damage. Both aspects are
+      represented by members of this gene set, making complement activation the
+      most characteristically SLE-associated process captured here.
+  - term:
+      id: GO:0019882
+      label: antigen processing and presentation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      MHC class II molecules (HLA-DR, HLA-DQ, HLA-DP alpha and beta subunits) and
+      MHC class I molecules are prominent members of the KEGG SLE pathway. Presentation
+      of nucleosomal and other self-antigens to autoreactive CD4+ T helper cells via
+      MHC class II is a critical initiating and perpetuating step of SLE pathogenesis.
+      HLA-DR3 and HLA-DR2 haplotypes are established SLE genetic risk factors,
+      reflecting the central role of antigen presentation in shaping the self-reactive
+      adaptive immune response. This term is recovered with high confidence because
+      HLA class II genes are both abundant and highly expressed in the gene set.
+  - term:
+      id: GO:0000786
+      label: nucleosome
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The KEGG SLE pathway includes all four canonical core histone types (H2A, H2B,
+      H3, H4) and linker histone H1 variants, which together with DNA form the
+      nucleosome. Nucleosomes and their constituents are the defining autoantigens of
+      SLE: anti-dsDNA and anti-histone antibodies are serological hallmarks of the
+      disease and are incorporated into ACR/EULAR classification criteria. The
+      presence of multiple histone-encoding genes makes the nucleosome the dominant
+      cellular component represented in this pathway gene set. Specificity is
+      broadly_expressed because histones are universal constituents of all nucleated
+      cells, but their role as the primary SLE autoantigen target justifies
+      core_component classification.
+  - term:
+      id: GO:0038094
+      label: Fc-gamma receptor signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Fc-gamma receptor genes (FCGR1A, FCGR2A, FCGR2B, FCGR3A, FCGR3B) are explicit
+      members of the KEGG SLE pathway, reflecting the central role of immune
+      complex-mediated Fc receptor signaling in SLE pathophysiology. Activating
+      FcγRs on macrophages, neutrophils, and dendritic cells drive phagocytosis of
+      immune complexes and release of inflammatory mediators; the inhibitory FcγRIIB
+      modulates B cell activation thresholds. Polymorphisms in FCGR2A and FCGR3B are
+      established SLE susceptibility variants. Classified as supporting_process
+      rather than core_process because FcγR signaling is downstream of the
+      primary immune complex pathology.
+  - term:
+      id: GO:0006955
+      label: immune response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The generic immune response term is recovered because the KEGG SLE pathway is
+      dominated by immune effector genes spanning complement, Fc receptors, MHC
+      molecules, and lymphocyte signaling components. This term provides contextual
+      support for the autoimmune disease mechanism but is not specific to SLE and
+      would be recovered by any gene set enriched for immune effector genes. Medium
+      confidence reflects that while recovery is expected and appropriate, the term
+      is insufficiently specific to be informative about SLE biology in isolation.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in enrichment
+      results reflects ribosomal protein subunit genes present in the gene set. It
+      does not reflect any disease-specific function of the KEGG systemic lupus
+      erythematosus pathway and is a non-informative enrichment hit.
+  - term:
+      id: GO:0042113
+      label: B cell activation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      B cell hyperactivation and loss of B cell tolerance are central to SLE
+      pathogenesis, driving production of pathogenic autoantibodies including
+      anti-dsDNA, anti-Sm, and anti-histone antibodies. Genes in the KEGG SLE
+      pathway such as CR2 (CD21, the B cell complement receptor that lowers the
+      activation threshold), FCGR2B (the inhibitory B cell Fc receptor), and
+      CD40LG participate in B cell activation processes. However, enrichment tools
+      are unlikely to recover this term because these genes are annotated
+      predominantly to more specific downstream terms (complement receptor
+      signaling, Fc receptor signaling) in GOA-human, and direct annotation of
+      pathway members to GO:0042113 is sparse. This is an annotation_gap: the
+      biology is well-supported by the gene membership, but GO annotations do not
+      connect these members to B cell activation at sufficient depth for enrichment
+      recovery. This represents a curation gap in GO annotation coverage.

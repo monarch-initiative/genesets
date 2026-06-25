@@ -1,0 +1,173 @@
+gene_set_id: MSIGDB:KEGG_AMYOTROPHIC_LATERAL_SCLEROSIS_ALS
+gene_set_name: KEGG_AMYOTROPHIC_LATERAL_SCLEROSIS_ALS
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy amyotrophic lateral sclerosis (ALS) pathway gene set (MSigDB C2
+  curated gene set). This is a disease pathway gene set, not a cell-type
+  signature. ALS is a fatal motor neuron disease characterised by progressive
+  degeneration of upper and lower motor neurons. The member genes reflect the
+  major mechanistic arms represented in the KEGG ALS pathway: SOD1-mediated
+  superoxide detoxification and oxidative stress, glutamate excitotoxicity
+  through ionotropic (AMPA/NMDA) receptors, neurofilament accumulation and
+  cytoskeletal disruption, mitochondrial dysfunction, and the downstream
+  apoptotic execution of motor neurons. As a legacy/core pathway it captures
+  the dominant established mechanisms as of the time of KEGG pathway assembly.
+contexts:
+  - term:
+      id: MONDO:0004976
+      label: amyotrophic lateral sclerosis
+    context_type: disease
+  - term:
+      id: UBERON:0002240
+      label: spinal cord
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0019430
+      label: removal of superoxide radicals
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:17538774
+        reference_title: "Role of zinc in ALS."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "Studies of these animals, as well as of human post mortem tissue, reveal the presence of multiple pathological processes, including oxidative stress, glutamate excitotoxicity, neuroinflammation, mitochondrial degeneration, alterations in neurofilaments and neurotubules, mitochondrial damage, aggregation of proteins, abnormalities in growth factors, and apoptosis."
+        explanation: >-
+          SOD1 (superoxide dismutase 1) is the causal gene for approximately
+          20% of familial ALS cases and the central defining gene in the KEGG
+          ALS pathway. SOD1 catalyses the dismutation of superoxide radicals
+          (GO:0019430); ALS-associated mutations impair this activity and
+          permit superoxide accumulation and downstream oxidative damage.
+          This review of mutant SOD1 model organisms and human ALS post-mortem
+          tissue confirms oxidative stress as one of the primary established
+          pathological processes in ALS, directly supporting the annotation of
+          the gene set to this term.
+    curator_note: >-
+      SOD1 is annotated to GO:0019430 (removal of superoxide radicals) in
+      GOA-human, making this the most directly annotation-supported core
+      process in the gene set. The specificity is recorded as cell_type_specific
+      because in the ALS disease context the critical biology occurs in motor
+      neurons, although SOD1 is broadly expressed. This term is distinct from
+      the broader GO:0006979 (response to oxidative stress) and captures the
+      direct enzymatic function underlying ALS pathogenesis.
+  - term:
+      id: GO:0097049
+      label: motor neuron apoptotic process
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      Progressive apoptotic death of motor neurons is the defining downstream
+      outcome of the KEGG ALS pathway. GO:0097049 (motor neuron apoptotic
+      process, a direct child of GO:0051402 neuron apoptotic process) is used
+      because ALS is characterised by the selective loss of upper and lower
+      motor neurons. CASP3, CASP9, CYCS, and BCL2-family members present in
+      the gene set are annotated to the generic apoptotic process (GO:0006915)
+      in GOA-human rather than to this motor-neuron-specific child term. The
+      gap reflects incomplete GO/GOA curation of cell-type specificity — the
+      ALS-relevant genes ARE in the set but carry only the parent annotation.
+      This is an annotation curation target; the association itself is
+      well-supported by the ALS literature.
+  - term:
+      id: GO:0007215
+      label: glutamate receptor signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Glutamate excitotoxicity via ionotropic (AMPA and NMDA) receptors is a
+      central mechanistic arm of ALS motor neuron death, directly represented
+      in the KEGG ALS pathway. Excessive receptor activation leads to calcium
+      overload, mitochondrial depolarisation, and activation of the intrinsic
+      apoptosis cascade. Riluzole, the first approved ALS therapy, acts in
+      part through modulation of glutamatergic signalling. GRIA2 and GRIN
+      family subunits present in the pathway carry GO:0007215 annotations in
+      GOA-human. The term is lineage_shared because glutamate receptor
+      signalling is not exclusive to motor neurons but is the disease-relevant
+      excitotoxicity mechanism in the ALS context.
+  - term:
+      id: GO:0005883
+      label: neurofilament
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Abnormal accumulation and disorganisation of neurofilaments in motor
+      neuron cell bodies and proximal axons is a neuropathological hallmark of
+      ALS. NEFL (NF-L), NEFM (NF-M), and NEFH (NF-H) — the three
+      neurofilament triplet subunit genes — are members of the KEGG ALS pathway
+      and are all annotated to GO:0005883 (neurofilament) in GOA-human.
+      Neurofilament disorganisation disrupts axonal transport and is thought to
+      contribute directly to motor neuron vulnerability and degeneration. This
+      is the most cell-type-specific and directly annotation-supported cellular
+      component in the gene set, distinguishing the ALS pathway from generic
+      neurodegeneration gene sets.
+  - term:
+      id: GO:0005739
+      label: mitochondrion
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Mitochondrial dysfunction is a well-established mechanistic feature of
+      ALS pathology. The KEGG ALS pathway includes mitochondrially localised
+      proteins including cytochrome c (CYCS) and electron-transport-chain
+      subunits, making the mitochondrion a primary cellular compartment
+      represented in the gene set. Impaired mitochondrial function contributes
+      to ATP deficit, reactive oxygen species overproduction, and activation of
+      the intrinsic (cytochrome c / caspase) apoptosis pathway in motor
+      neurons.
+  - term:
+      id: GO:0006915
+      label: apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      CASP3, CASP9, CYCS, BAX, and BCL2-family members in the KEGG ALS pathway
+      encode canonical intrinsic apoptosis components. Apoptosis is a
+      broadly-expressed process shared across many disease contexts and is not
+      ALS-specific; the disease-specific outcome is captured by the more
+      precise GO:0097049 (motor neuron apoptotic process), recorded as a
+      curator-added core process. GO:0006915 is included here because the
+      enrichment signal from these genes is expected and the annotation is
+      directly supported in GOA-human.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation appears as a non-specific enrichment hit driven by ribosomal
+      protein subunit genes present in the gene set. It is a ubiquitous
+      housekeeping process and does not reflect a disease-specific function of
+      the ALS pathway.
