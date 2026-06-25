@@ -34,11 +34,17 @@ def validate(
     schema: Path = typer.Option(Path("curation/schema/genesets_interpretation.yaml"), "--schema"),
     oak_config: Path = typer.Option(Path("curation/conf/oak_config.yaml"), "--oak-config"),
     cache_dir: Path = typer.Option(Path("curation/references_cache"), "--cache-dir"),
+    ref_config: Path = typer.Option(Path("curation/conf/reference_validator_config.yaml"), "--ref-config"),
     skip_references: bool = typer.Option(False, "--skip-references", help="Skip the reference-validator step."),
 ) -> None:
     """Run structural, term, and reference validation on an interpretation file."""
     code = validate_mod.validate_file(
-        path, schema=schema, oak_config=oak_config, cache_dir=cache_dir, skip_references=skip_references
+        path,
+        schema=schema,
+        oak_config=oak_config,
+        cache_dir=cache_dir,
+        skip_references=skip_references,
+        ref_config=ref_config,
     )
     raise typer.Exit(code)
 

@@ -105,10 +105,6 @@ def _to_dict(obj: Any) -> Any:
     return obj
 
 
-# Mapping of dataclass type -> nested dataclass fields needing reconstruction.
-_TERM_FIELDS = {"term", "taxon"}
-
-
 def _term(value: dict[str, Any] | None) -> Term | None:
     return None if value is None else Term(**value)
 
