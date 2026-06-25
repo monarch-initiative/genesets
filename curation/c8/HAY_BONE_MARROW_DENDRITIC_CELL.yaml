@@ -36,6 +36,14 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    evidence:
+      - reference: PMID:9521319
+        reference_title: Dendritic cells and the control of immunity.
+        supports: SUPPORT
+        snippet: "Dendritic cells in the periphery capture and process antigens, express lymphocyte co-stimulatory molecules, migrate to lymphoid organs and secrete cytokines to initiate immune responses."
+        explanation: >-
+          Dendritic cells are professional antigen-presenting cells, so antigen
+          processing and presentation is a core process for this signature.
   - term:
       id: GO:0042613
       label: MHC class II protein complex
