@@ -1,0 +1,180 @@
+gene_set_id: MSIGDB:KEGG_ARRHYTHMOGENIC_RIGHT_VENTRICULAR_CARDIOMYOPATHY_ARVC
+gene_set_name: KEGG_ARRHYTHMOGENIC_RIGHT_VENTRICULAR_CARDIOMYOPATHY_ARVC
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy arrhythmogenic right ventricular cardiomyopathy (ARVC) pathway
+  gene set (MSigDB C2 curated gene set). This is a disease pathway gene set,
+  not a cell-type signature. The member genes are dominated by desmosomal
+  proteins (PKP2, DSP, DSG2, DSC2, JUP) that form the intercalated disc
+  adhesion complex, supplemented by cell-junction and cadherin-catenin
+  components (CDH2, CTNNA3), gap-junction proteins (GJA1, GJA5), and calcium-
+  handling/adrenergic regulators (RYR2, CACNA1C, CACNB2, ADRB1, ADRB2).
+  Unlike dilated cardiomyopathy (dominated by sarcomere and dystrophin-
+  glycoprotein-complex genes) or hypertrophic cardiomyopathy (dominated by
+  thick-filament components), the defining ARVC lesion is desmosome
+  dysfunction: loss of desmosomal integrity in right-ventricular cardiomyocytes
+  leads to myocyte detachment, fibro-fatty replacement, and life-threatening
+  ventricular arrhythmias. As a KEGG legacy pathway it captures the established
+  mechanistic arms and reflects the major gene families whose mutations underlie
+  familial ARVC.
+contexts:
+  - term:
+      id: MONDO:0016587
+      label: arrhythmogenic right ventricular cardiomyopathy
+    context_type: disease
+  - term:
+      id: UBERON:0000948
+      label: heart
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0030057
+      label: desmosome
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:28912183
+        reference_title: "Arrhythmogenic Cardiomyopathy."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "It is a cell-to-cell junction cardiomyopathy, typically caused by genetically determined abnormalities of cardiac desmosomes, which leads to detachment of myocytes and alteration of intracellular signal transduction."
+        explanation: >-
+          The desmosome is defined by this review as the primary organelle
+          whose dysfunction causes ARVC. Key KEGG ARVC pathway members PKP2
+          (plakophilin-2), DSP (desmoplakin), DSG2 (desmoglein-2), DSC2
+          (desmocollin-2), and JUP (junction plakoglobin) are all canonical
+          desmosomal proteins, making the desmosome the dominant cellular
+          compartment represented in this gene set.
+    curator_note: >-
+      The desmosome is THE defining cellular structure of ARVC: more than 50%
+      of familial ARVC cases carry pathogenic variants in desmosomal genes
+      (PKP2 alone accounts for ~25-45% of cases). The KEGG ARVC pathway gene
+      set is structurally organised around this organelle in a way that sharply
+      distinguishes it from the sarcomere-centric DCM pathway and the
+      thick-filament-centric HCM pathway. Annotation of desmosomal proteins
+      to GO:0030057 is well supported in GOA-human for PKP2, DSP, DSG2, DSC2,
+      and JUP, making this a high-confidence enrichment recovery.
+  - term:
+      id: GO:0098609
+      label: cell-cell adhesion
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Cell-cell adhesion is the functional process executed by the desmosomal
+      and adherens-junction proteins that dominate the KEGG ARVC gene set.
+      The desmosomal cadherins DSG2 and DSC2 mediate Ca2+-dependent
+      extracellular adhesion between cardiomyocytes at the intercalated disc.
+      Loss of this adhesion — through PKP2, DSP, JUP, DSG2, or DSC2 mutations
+      — is the proximate molecular event that triggers myocyte detachment and
+      fibro-fatty replacement in ARVC. Cell-cell adhesion is therefore both
+      mechanistically core and cell-type-specific in the context of an
+      intercalated-disc cardiomyopathy.
+  - term:
+      id: GO:0005912
+      label: adherens junction
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      In cardiomyocytes the intercalated disc contains both desmosomes and
+      adherens junctions; the two structures are mechanically and molecularly
+      coupled. The KEGG ARVC pathway includes CDH2 (N-cadherin) and CTNNA3
+      (alpha-T-catenin), core adherens-junction components at the cardiac
+      intercalated disc, alongside desmosomal members. JUP (plakoglobin) is
+      shared between desmosomes and adherens junctions and is annotated to
+      both compartments in GO. The adherens junction is therefore a genuine
+      secondary component of the ARVC gene set, distinct from (and
+      complementary to) the dominant desmosomal compartment.
+  - term:
+      id: GO:0060048
+      label: cardiac muscle contraction
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Cardiac muscle contraction is a supporting process in the KEGG ARVC
+      pathway gene set rather than the core process (as it is in DCM/HCM
+      gene sets). The ARVC pathway includes a subset of calcium-handling and
+      contractile regulators — notably RYR2 (ryanodine receptor 2), CACNA1C,
+      CACNB2, and adrenergic receptor genes — whose dysfunction contributes to
+      the ventricular arrhythmia phenotype. These genes are annotated to
+      cardiac muscle contraction or its regulation, and their presence in the
+      gene set reflects the electromechanical coupling arm of the KEGG ARVC
+      pathway representation. Impaired contraction is a secondary consequence
+      of structural disintegration, not the primary lesion.
+  - term:
+      id: GO:0055117
+      label: regulation of cardiac muscle contraction
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The calcium-handling and adrenergic components of the KEGG ARVC pathway
+      — RYR2, CACNA1C, CACNB2, ADRB1, ADRB2 — are annotated to the
+      regulation of cardiac muscle contraction in GO. These genes modulate the
+      frequency and extent of cardiomyocyte contraction and are particularly
+      relevant to the arrhythmic phenotype that defines ARVC clinically.
+      Dysregulation of intracellular calcium is both a direct consequence of
+      desmosomal dysfunction (via Wnt/beta-catenin and PKP2-RyR2 interactions)
+      and an independent driver of triggered arrhythmia in ARVC.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance as an
+      enrichment hit from the KEGG ARVC gene set reflects ribosomal protein
+      genes that are co-expressed in cardiomyocytes or present as background
+      members of the KEGG pathway representation. It does not reflect an
+      ARVC-specific function and is recorded here to flag a non-informative
+      enrichment result that should not be interpreted as evidence of
+      translational dysfunction in ARVC.
+  - term:
+      id: GO:0002159
+      label: desmosome assembly
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      Desmosome assembly is biologically core to ARVC because the primary
+      molecular defect — loss-of-function mutations in PKP2, DSP, DSG2, DSC2,
+      or JUP — disrupts the structural integrity of the cardiac desmosome
+      through impaired assembly and trafficking of desmosomal components to
+      the intercalated disc. However, most desmosomal proteins in the KEGG
+      ARVC gene set are annotated in GOA-human to the desmosome component
+      term (GO:0030057) or to cell-cell adhesion (GO:0098609) rather than to
+      the specific assembly process (GO:0002159). This is an annotation gap:
+      the biology is genuine — PKP2 and JUP have published roles in desmosome
+      assembly — but the gene-level GO annotations to this term are
+      incomplete, so enrichment is unlikely to recover it from this gene set.
+      This is a GO/GOA curation target.

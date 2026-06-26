@@ -1,0 +1,187 @@
+gene_set_id: MSIGDB:KEGG_PRION_DISEASES
+gene_set_name: KEGG_PRION_DISEASES
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy Prion Diseases pathway gene set (MSigDB C2 curated gene set).
+  This is a disease pathway gene set, not a cell-type signature. The member
+  genes reflect the major mechanistic arms of the KEGG prion diseases pathway
+  (hsa05020): conversion of the cellular prion protein (PrPC) to its
+  pathogenic misfolded isoform (PrPSc) with amyloid fibril formation;
+  complement-mediated early prion propagation; neuroinflammatory activation
+  of astrocytes and microglia; caspase-dependent neuronal apoptosis; and
+  endoplasmic-reticulum stress and unfolded protein response signalling.
+  Ribosomal protein subunits present in the gene set drive non-specific
+  translation enrichment signals.
+contexts:
+  - term:
+      id: MONDO:0005429
+      label: prion disease
+    context_type: disease
+  - term:
+      id: UBERON:0000955
+      label: brain
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:1990000
+      label: amyloid fibril formation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:30304819
+        reference_title: "Attempt to Untangle the Prion-Like Misfolding Mechanism for Neurodegenerative Diseases."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "The misfolding and aggregation of proteins is the neuropathological hallmark for numerous diseases including Alzheimer's disease, Parkinson's disease, and prion diseases."
+        explanation: >-
+          PRNP (cellular prion protein, PrPC) is the disease-defining gene in the KEGG
+          prion diseases pathway. Its irreversible conversion to the misfolded, beta-sheet-rich
+          isoform (PrPSc) constitutes amyloid fibril formation as defined by GO:1990000.
+          PRNP carries a direct GO:1990000 annotation in GOA-human, so this term is
+          expected to be enrichment-recovered from the KEGG gene set. This review
+          confirms that protein misfolding and aggregation is the defining neuropathological
+          hallmark of prion diseases.
+    curator_note: >-
+      PRNP is directly annotated to GO:1990000 (amyloid fibril formation) in GOA-human.
+      PrPSc is the prototypical pathological amyloid, and its formation is the initiating
+      molecular event of the entire KEGG prion diseases pathway. This term is core to
+      this gene set, distinguishing it from other neurodegenerative disease pathways, and
+      should be robustly recovered by enrichment.
+  - term:
+      id: GO:0006956
+      label: complement activation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:11283678
+        reference_title: "Complement facilitates early prion pathogenesis."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "activation of specific complement components is involved in the initial trapping of prions in lymphoreticular organs early after infection"
+        explanation: >-
+          The KEGG prion diseases pathway explicitly includes complement component genes
+          (C1QA, C1QB, C1QC, C3) as part of the peripheral prion propagation arm. This
+          landmark Nature Medicine study by Aguzzi et al. established that complement
+          activation is mechanistically required for early prion pathogenesis: C3- and
+          C1q-deficient mice were partially or fully protected against spongiform
+          encephalopathy. The complement genes in the KEGG pathway carry GO:0006956
+          annotations in GOA-human, supporting enrichment recovery.
+  - term:
+      id: GO:0006915
+      label: apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      CASP3, CASP9, CYCS, BAX, and BCL2-family members in the KEGG prion diseases pathway
+      encode canonical intrinsic apoptosis components. Apoptotic process is shared across
+      many disease contexts and is not prion-specific, but is a significant mechanistic
+      component of neuronal death in this pathway. These effector genes carry GO:0006915
+      annotations in GOA-human, making this term enrichment-recoverable.
+  - term:
+      id: GO:0051402
+      label: neuron apoptotic process
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      Neuronal cell death by apoptosis is the central downstream outcome of the KEGG prion
+      diseases pathway: accumulation of PrPSc activates the intrinsic apoptotic cascade
+      in neurons, leading to the neuronal loss and spongiform change that define disease.
+      The term is biologically core and is NOT weakened on annotation grounds. It is an
+      annotation_gap: the apoptosis effectors in the gene set (CASP3, CASP9, CYCS, BAX)
+      are annotated to the generic parent GO:0006915 (apoptotic process) but not to this
+      neuron-restricted child term in GOA-human. The shallow annotation reflects GO/GOA
+      incompleteness, not absence of the biology — this is a GO annotation curation target.
+  - term:
+      id: GO:0005886
+      label: plasma membrane
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:39011540
+        reference_title: "Post-translational modifications in prion diseases."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        explanation: >-
+          PRNP (PrPC) is a GPI-anchored protein constitutively resident at the outer
+          leaflet of the plasma membrane; this localisation is central to its normal
+          signalling role and to the pathogenic PrPC-to-PrPSc conversion, which occurs
+          in lipid-raft microdomains at the plasma membrane. This 2024 review explicitly
+          describes PrP as a GPI-anchored signalling molecule at the plasma membrane whose
+          conformational conversion to pathogenic prions provokes neurodegeneration.
+          Complement receptor proteins and signalling molecules also in the KEGG pathway
+          are likewise plasma membrane-localised. PRNP and complement genes carry
+          GO:0005886 annotations in GOA-human, making this term enrichment-recoverable.
+    curator_note: >-
+      PRNP's GPI anchor restricts the protein to the outer leaflet of the plasma membrane.
+      This localisation is mechanistically important for the PrPC-to-PrPSc conversion event
+      and for downstream neurotoxic signalling; the plasma membrane is therefore not a
+      generic compartment annotation but reflects the disease-defining biology of this
+      pathway. It is the dominant cellular compartment represented in the KEGG prion
+      diseases gene set.
+  - term:
+      id: GO:0048143
+      label: astrocyte activation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    evidence:
+      - reference: PMID:28714865
+        reference_title: "Microglia in prion diseases."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "This deposition is accompanied by neuronal loss, spongiform change, astrogliosis, and conspicuous microglial activation."
+        explanation: >-
+          Astrogliosis (reactive astrocyte activation) is a histopathological hallmark of
+          prion diseases, uniformly present in affected brain regions alongside PrPSc
+          deposition and neuronal loss. This JCI review by Aguzzi and Zhu confirms that
+          astrogliosis accompanies PrPSc deposition. Astrocyte activation belongs in a
+          complete prion disease representation, but the KEGG pathway genes are not
+          annotated to GO:0048143 in GOA-human, creating an annotation gap.
+    curator_note: >-
+      Reactive astrocytes are a cardinal neuropathological feature of prion diseases and
+      contribute to neuroinflammatory signalling. The association is biologically well-
+      established but curator_added because astrocyte-activation annotations are sparse
+      in GOA-human for the KEGG prion pathway gene complement. This is a GO annotation
+      curation target, not evidence against the biology.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation appears as a non-specific enrichment hit driven by ribosomal protein
+      subunit genes present in the KEGG prion diseases gene set. It is a ubiquitous
+      housekeeping process and does not reflect a disease-specific function of the
+      prion diseases pathway.

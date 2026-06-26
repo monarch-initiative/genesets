@@ -1,0 +1,199 @@
+gene_set_id: MSIGDB:KEGG_SMALL_CELL_LUNG_CANCER
+gene_set_name: KEGG_SMALL_CELL_LUNG_CANCER
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy small cell lung cancer pathway gene set (MSigDB C2 curated gene set).
+  This is a cancer disease pathway gene set, not a cell-type signature. The member
+  genes represent the major mechanistic arms of SCLC pathogenesis: universal biallelic
+  loss of RB1 and TP53 driving cell-cycle deregulation and checkpoint abrogation,
+  BCL2-family overexpression conferring anti-apoptotic survival, integrin and ECM
+  components (ITGA/ITGB subunits, collagen IV chains, laminin subunits, fibronectin)
+  mediating cell-adhesion-based drug resistance (CAM-DR), and MYC amplification
+  with PI3K/AKT signaling driving proliferative expansion. SCLC is a high-grade
+  neuroendocrine carcinoma with near-universal initial chemosensitivity but rapid
+  acquired resistance, reflected in the pathway's emphasis on ECM-mediated survival
+  signaling alongside the canonical cell-cycle and apoptosis machinery.
+contexts:
+  - term:
+      id: MONDO:0008433
+      label: small cell lung carcinoma
+    context_type: disease
+  - term:
+      id: UBERON:0002048
+      label: lung
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0007049
+      label: cell cycle
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:38965396
+        reference_title: "Emerging advances in defining the molecular and therapeutic landscape of small-cell lung cancer."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "most of these tumours harbour deletions of the tumour-suppressor genes TP53 and RB1"
+        explanation: >-
+          Universal biallelic inactivation of RB1 and TP53 is the defining molecular
+          lesion in SCLC. RB1 loss releases E2F transcription factors and drives
+          unrestrained G1/S cell-cycle progression, while TP53 loss abrogates G1/S
+          and G2/M DNA-damage checkpoints. The KEGG SCLC pathway encodes RB1, E2F
+          family members, CCND1, CDK4, CDK6, and TP53, all of which carry GOA-human
+          annotations to the cell cycle, making this term directly recoverable by
+          enrichment and the highest-priority core process in this gene set.
+    curator_note: >-
+      RB1 loss is functionally the primary driver of SCLC cell-cycle deregulation;
+      more than 90% of SCLC tumours show biallelic RB1 inactivation. The cell
+      cycle is therefore the unambiguous central core_process for this gene set.
+
+  - term:
+      id: GO:0042127
+      label: regulation of cell population proliferation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Uncontrolled proliferation is a defining characteristic of SCLC, which is
+      a high-grade neuroendocrine carcinoma with extremely rapid doubling times.
+      MYC amplification, CDK4/6 activation downstream of CCND1/CCND3, E2F-driven
+      transcription, and AKT-mediated suppression of anti-proliferative signals
+      all converge on proliferative expansion. Multiple KEGG SCLC pathway members
+      (MYC, CCND1, CDK4, CDK6, AKT1, PIK3CA, RB1, E2F1) carry GOA-human
+      annotations to regulation of cell population proliferation.
+
+  - term:
+      id: GO:0043066
+      label: negative regulation of apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:10371505
+        reference_title: "Extracellular matrix proteins protect small cell lung cancer cells against apoptosis: a mechanism for small cell lung cancer growth and drug resistance in vivo."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Adhesion of SCLC cells to ECM enhances tumorigenicity and confers resistance to chemotherapeutic agents as a result of beta1 integrin-stimulated tyrosine kinase activation suppressing chemotherapy-induced apoptosis"
+        explanation: >-
+          BCL2 is overexpressed in the majority of SCLC tumours and is a canonical
+          anti-apoptotic effector. ECM adhesion via beta1 integrins additionally
+          suppresses chemotherapy-induced apoptosis through tyrosine kinase signaling.
+          The KEGG SCLC pathway includes BCL2, BCL2L1 (BCL-XL), CASP3, CASP8,
+          CASP9, and CYCS; BCL2 and BCL2L1 carry GOA-human annotations to negative
+          regulation of apoptotic process, supporting recovery of this term by
+          enrichment. Anti-apoptotic signaling is mechanistically important in SCLC
+          but is broadly shared across cancer types, placing this as supporting_process
+          rather than core_process.
+    curator_note: >-
+      BCL2 overexpression is a near-universal feature of SCLC and a major
+      contributor to intrinsic chemoresistance. Negative regulation of apoptosis
+      is therefore high-confidence but categorised as supporting_process because
+      it is not SCLC-specific.
+
+  - term:
+      id: GO:0007155
+      label: cell adhesion
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:10371505
+        reference_title: "Extracellular matrix proteins protect small cell lung cancer cells against apoptosis: a mechanism for small cell lung cancer growth and drug resistance in vivo."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Adhesion of SCLC cells to ECM enhances tumorigenicity and confers resistance to chemotherapeutic agents as a result of beta1 integrin-stimulated tyrosine kinase activation suppressing chemotherapy-induced apoptosis"
+        explanation: >-
+          Cell-adhesion-mediated drug resistance (CAM-DR) is a well-established
+          hallmark of SCLC. Beta1 integrin engagement with ECM components (laminin,
+          fibronectin, collagen IV) at primary and metastatic tumour sites protects
+          SCLC cells from chemotherapy. The KEGG SCLC pathway encodes multiple
+          integrin alpha/beta subunits (ITGA2, ITGA3, ITGA5, ITGAV, ITGB1) and
+          ECM glycoproteins, the majority of which are annotated to cell adhesion
+          in GOA-human.
+    curator_note: >-
+      CAM-DR is especially prominent in SCLC because of its neuroendocrine origin
+      and high integrin expression. Cell adhesion is categorised as supporting_process
+      because it is mechanistically downstream of the ECM-integrin axis rather than
+      a primary disease driver, and is broadly shared across cancer types.
+
+  - term:
+      id: GO:0031012
+      label: extracellular matrix
+    aspect: cellular_component
+    category: core_component
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:15109562
+        reference_title: "Small cell lung cancer: the importance of the extracellular matrix."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "these features may be due to important links between the cancer cells and proteins in their local extracellular matrix (ECM). This article reviews the evidence for a chemoprotective effect of extracellular matrix in small cell lung cancer and discusses the importance of integrin-mediated signalling pathways in this setting."
+        explanation: >-
+          The KEGG SCLC pathway is enriched for structural ECM proteins: collagen IV
+          chains (COL4A1-6), laminin alpha/beta/gamma subunits (LAMA, LAMB, LAMC
+          families), and fibronectin (FN1). These proteins constitute the basement
+          membrane ECM microenvironment to which SCLC cells adhere via integrins,
+          conferring chemoprotection. The extracellular matrix is the dominant
+          cellular compartment annotated among structural genes in this gene set.
+    curator_note: >-
+      NOTE: GO:0062023 (collagen-containing extracellular matrix) is obsolete and
+      must not be used; GO:0031012 (extracellular matrix) is the correct current
+      term. ECM is core_component because a substantial fraction of KEGG SCLC
+      pathway members encode structural ECM proteins rather than signaling mediators.
+
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance as an
+      enrichment hit for this gene set reflects ribosomal protein subunit genes
+      that are present in the KEGG SCLC pathway representation. It does not
+      reflect a SCLC-specific function and is a non-informative enrichment hit.
+
+  - term:
+      id: GO:0007229
+      label: integrin-mediated signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      Integrin-mediated signaling is a mechanistically central feature of SCLC
+      biology, transducing ECM-contact survival signals downstream of beta1 integrin
+      engagement with laminin, fibronectin, and collagen IV. The KEGG SCLC pathway
+      encodes the integrin heterodimers and ECM ligands that initiate this pathway.
+      However, most pathway members are annotated in GOA-human to cell adhesion
+      (GO:0007155) rather than to the specific child term integrin-mediated signaling
+      pathway (GO:0007229), creating an annotation gap that prevents enrichment from
+      recovering this biologically important mechanistic process. This is a GO
+      annotation curation target for ITGB1, ITGA5, and ITGAV in the context of
+      SCLC CAM-DR.
