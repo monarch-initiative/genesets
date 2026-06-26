@@ -1,0 +1,162 @@
+gene_set_id: MSIGDB:KEGG_BASAL_CELL_CARCINOMA
+gene_set_name: KEGG_BASAL_CELL_CARCINOMA
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy basal cell carcinoma pathway gene set (MSigDB C2 curated gene set).
+  This is a skin cancer disease pathway gene set, not a cell-type signature. The
+  member genes are heavily enriched for components of the Hedgehog signaling axis
+  (PTCH1, SMO, SHH, GLI1, GLI2, SUFU), which is the defining oncogenic driver
+  of basal cell carcinoma. Additional pathway arms include Wnt/beta-catenin
+  signaling components (CTNNB1, WNT family members, FZD receptors), TP53-mediated
+  tumour suppression, CDKN2A/RB1 cell-cycle regulators driving proliferative
+  expansion, and apoptosis modulators (CASP3, BCL2-family), reflecting the
+  major mechanistic arms of the KEGG basal cell carcinoma pathway: Hedgehog-driven
+  initiation and expansion, Wnt co-activation, and TP53 loss enabling tumour
+  progression.
+contexts:
+  - term:
+      id: MONDO:0005341
+      label: skin basal cell carcinoma
+    context_type: disease
+  - term:
+      id: UBERON:0002097
+      label: skin of body
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0007224
+      label: smoothened signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:29274272
+        reference_title: "The role of the Hedgehog signaling pathway in cancer: A comprehensive review."
+        supports: SUPPORT
+        snippet: "Deregulation of the Hh signaling pathway is associated with developmental anomalies and cancer, including Gorlin syndrome, and sporadic cancers, such as basal cell carcinoma, medulloblastoma, pancreatic, breast, colon, ovarian, and small-cell lung carcinomas."
+        explanation: >-
+          PTCH1, SMO, SHH, GLI1, and GLI2 are canonical members of the Hedgehog
+          signaling axis and are the core KEGG basal cell carcinoma pathway genes.
+          Loss-of-function mutations in PTCH1 (or activating mutations in SMO)
+          release SMO repression, constitutively activating downstream GLI
+          transcription factors. This is the singular, most-established oncogenic
+          mechanism in sporadic BCC. Skoda et al. (2018) directly confirm that
+          deregulation of Hh signaling underlies sporadic basal cell carcinoma,
+          supporting smoothened signaling pathway as the defining core process of
+          this gene set.
+    curator_note: >-
+      The smoothened signaling pathway (SHH→PTCH1 inhibition→SMO activation→GLI1/
+      GLI2 transcription) is THE defining oncogenic driver of basal cell carcinoma.
+      PTCH1 is the most frequently mutated gene in sporadic BCC; SMO activating
+      mutations occur in ~10–20% of BCCs and are the therapeutic target of approved
+      drugs vismodegib and sonidegib. This is a skin-basal-cell-specific core
+      process and is not shared broadly across cancer types.
+  - term:
+      id: GO:0042127
+      label: regulation of cell population proliferation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Constitutive GLI1/GLI2 transcriptional output drives expression of cyclin D1
+      (CCND1) and other cell-cycle genes, promoting uncontrolled proliferative
+      expansion of basal keratinocytes. CDKN2A, RB1, CDK4, and CDK6 in the KEGG
+      BCC pathway directly regulate cell cycle entry. Dysregulated proliferation
+      is a hallmark of BCC and is mechanistically downstream of Hedgehog signaling.
+      The term is broadly expressed across cancer types but reflects a genuine core
+      output of the defining pathway in this gene set.
+  - term:
+      id: GO:0016055
+      label: Wnt signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Wnt/beta-catenin signaling components (CTNNB1, WNT ligands, FZD receptors,
+      LRP co-receptors) are included in the KEGG BCC pathway as a co-activating
+      arm that reinforces Hedgehog-driven proliferation and stem-cell maintenance
+      in the epidermis. Wnt signaling is not the primary BCC driver but contributes
+      to tumour progression and is a mechanistically significant supporting process.
+      It is broadly expressed and shared across many epithelial cancer pathway gene
+      sets, including KEGG_COLORECTAL_CANCER, reducing its specificity here.
+  - term:
+      id: GO:0030154
+      label: cell differentiation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      BCC arises from aberrant differentiation of epidermal basal keratinocytes or
+      hair follicle stem cells. Constitutive Hedgehog signaling blocks normal
+      keratinocyte terminal differentiation programmes, locking cells in a
+      proliferative undifferentiated state. Genes associated with epidermal
+      differentiation (TP63, KRT-family, NOTCH pathway members) are present in
+      the KEGG BCC pathway. Cell differentiation is a broadly expressed process
+      but is relevant as a supporting mechanistic arm in BCC pathogenesis.
+  - term:
+      id: GO:0006915
+      label: apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      TP53, BCL2, CASP3, and BAX are KEGG BCC pathway members encoding canonical
+      apoptosis components. TP53 mutations occur in a subset of BCCs, particularly
+      UV-induced cases, enabling evasion of apoptosis in Hedgehog-activated cells.
+      Apoptosis is a broadly expressed process shared across many cancer types and
+      is not specific to basal cell carcinoma, but constitutes a significant
+      supporting mechanistic arm of this pathway representation.
+  - term:
+      id: GO:0045880
+      label: positive regulation of smoothened signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      annotation_gap: The constitutively active state of Smoothened — produced by
+      loss-of-function PTCH1 mutations or gain-of-function SMO mutations — is the
+      defining oncogenic molecular event in BCC, and is precisely captured by this
+      child term rather than the parent GO:0007224. Genes such as SHH and SMO
+      (activated form) are annotated to this term in GOA-human, but the majority
+      of KEGG BCC pathway members carrying Hedgehog pathway annotations are
+      currently annotated only to the parent smoothened signaling pathway term.
+      The annotation incompleteness is in GO/GOA, not in the biology; this is a
+      genuine curation target that should be recoverable once annotation depth
+      improves.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment results for this gene set reflects ribosomal protein subunit genes
+      present in the KEGG BCC pathway representation. It does not reflect a
+      basal-cell-carcinoma-specific function and is a non-informative enrichment hit.

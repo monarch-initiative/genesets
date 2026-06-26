@@ -1,0 +1,172 @@
+gene_set_id: MSIGDB:WANG_RESPONSE_TO_GSK3_INHIBITOR_SB216763_UP
+gene_set_name: WANG_RESPONSE_TO_GSK3_INHIBITOR_SB216763_UP
+collection: C2:CGP
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+description: >-
+  MSigDB C2:CGP chemical-perturbation (UP) signature of genes upregulated in
+  RS4;11 cells (MLL-rearranged B-precursor acute leukemia) following treatment
+  with SB216763, a selective small-molecule inhibitor of GSK3B (glycogen
+  synthase kinase 3 beta). Source: Wang et al. 2010 (PMID:20541704), Cancer
+  Cell 17:597-608. GSK-3 maintains the MLL leukemia stem cell transcriptional
+  program via CREB/TORC/CBP-MEIS1-HOX; its inhibition disrupts this oncogenic
+  axis and concomitantly stabilises beta-catenin, engaging canonical Wnt
+  signalling. The 392-gene UP signature therefore reflects both de-repression
+  of differentiation programmes and induction of Wnt/beta-catenin
+  transcriptional targets in MLL-transformed cells.
+contexts:
+  - term:
+      id: CHEBI:76812
+      label: EC 2.7.11.* (protein-serine/threonine kinase) inhibitor
+    context_type: chemical_perturbagen
+    role_note: >-
+      GSK3 inhibitor treatment (SB216763). No dedicated CHEBI entry for
+      SB216763 was found; CHEBI:76812 is the validated role-class for
+      serine/threonine kinase inhibitors and covers GSK-3 (EC 2.7.11.*)
+      mechanistically. SB216763 is a maleimide-bisindolyl compound with
+      high selectivity for GSK-3alpha/beta.
+associations:
+  - term:
+      id: GO:0060070
+      label: canonical Wnt signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:20541704
+        reference_title: >-
+          GSK-3 promotes conditional association of CREB and its coactivators
+          with MEIS1 to facilitate HOX-mediated transcription and oncogenesis.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: >-
+          Acute leukemias induced by MLL chimeric oncoproteins are among the
+          subset of cancers distinguished by a paradoxical dependence on GSK-3
+          kinase activity for sustained proliferation.
+        explanation: >-
+          GSK-3 (glycogen synthase kinase 3) is the canonical negative
+          regulator of beta-catenin in the Wnt pathway: it phosphorylates
+          beta-catenin, marking it for proteasomal degradation. Inhibition by
+          SB216763 therefore constitutively stabilises beta-catenin and
+          activates canonical Wnt signalling. Genes upregulated in RS4;11
+          cells upon SB216763 treatment will include Wnt/beta-catenin
+          transcriptional targets, making canonical Wnt signaling pathway the
+          primary core process captured by this UP signature.
+    curator_note: >-
+      The canonical Wnt pathway is mechanistically central to this signature:
+      SB216763 inhibits GSK-3B, the beta-catenin destruction complex kinase,
+      thereby stabilising beta-catenin and activating TCF/LEF-dependent
+      transcription. This is the best-characterised pharmacological effect of
+      GSK-3 inhibition and directly explains a large fraction of the UP genes.
+  - term:
+      id: GO:0090263
+      label: positive regulation of canonical Wnt signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      The molecular mechanism of SB216763 is direct positive regulation of
+      the canonical Wnt pathway: GSK-3B inhibition prevents beta-catenin
+      phosphorylation, allowing beta-catenin to accumulate and translocate
+      to the nucleus. This is the most precise GO description of the
+      perturbagen's primary action. annotation_gap because most upstream
+      Wnt-signalling genes in this set are annotated to GO:0060070 (the
+      pathway itself) rather than to this regulation child, so enrichment
+      tools are unlikely to recover it from current GOA-human annotations.
+  - term:
+      id: GO:0030099
+      label: myeloid cell differentiation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Wang et al. 2010 demonstrate that GSK-3 maintains the MLL leukemia
+      stem cell programme, blocking differentiation. SB216763 treatment
+      disrupts this block, allowing RS4;11 cells (MLL B-precursor lineage)
+      to re-enter myeloid differentiation programmes. Upregulated genes are
+      therefore expected to include differentiation markers for the
+      myeloid/B-cell compartment. The term is lineage-shared (not unique to
+      this perturbation) but reflects genuine differentiation biology
+      activated upon GSK-3 inhibition in MLL leukemia.
+  - term:
+      id: GO:0009410
+      label: response to xenobiotic stimulus
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      SB216763 is a synthetic small molecule (xenobiotic) applied
+      pharmacologically to RS4;11 cells. The UP signature, derived from a
+      direct drug-treatment experiment, inherently reflects the transcriptional
+      response to a xenobiotic stimulus. This term broadly captures the
+      experimental design (chemical perturbation) and is expected to be
+      recovered in enrichment analyses of drug-treatment signatures. It is
+      supporting rather than core because it describes the experimental
+      modality rather than a specific biological pathway.
+  - term:
+      id: GO:0042127
+      label: regulation of cell population proliferation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:20541704
+        reference_title: >-
+          GSK-3 promotes conditional association of CREB and its coactivators
+          with MEIS1 to facilitate HOX-mediated transcription and oncogenesis.
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: >-
+          GSK-3 maintains the MLL leukemia stem cell transcriptional program
+          by promoting the conditional association of CREB and its coactivators
+          TORC and CBP with homedomain protein MEIS1, a critical component of
+          the MLL-subordinate program, which in turn facilitates HOX-mediated
+          transcription and transformation.
+        explanation: >-
+          GSK-3 sustains the MLL leukemia stem cell programme that drives
+          unlimited proliferation. Its inhibition by SB216763 disrupts
+          HOX-mediated transformation, altering the proliferative state of
+          RS4;11 cells. Genes regulating cell proliferation are therefore
+          expected to be differentially expressed in this perturbation
+          experiment, making regulation of cell population proliferation a
+          relevant supporting process.
+    curator_note: >-
+      GSK-3 inhibition in MLL leukemia paradoxically suppresses proliferation
+      (per Wang et al. 2010), so genes regulating cell proliferation — both
+      pro- and anti-proliferative — will be modulated. The broadly expressed
+      nature of this term makes it supporting rather than core, as it is not
+      specific to Wnt or MLL leukemia biology.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment analyses of this 392-gene UP signature reflects highly
+      expressed ribosomal protein and translation-factor genes present in most
+      large transcriptomic sets and does not indicate a GSK-3-inhibitor-
+      specific or Wnt-specific function. Illustrates a non-informative
+      enrichment hit common to many drug-treatment UP signatures.

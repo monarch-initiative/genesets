@@ -1,0 +1,171 @@
+gene_set_id: MSIGDB:TUCKER_HEART_FIBROBLAST
+gene_set_name: TUCKER_HEART_FIBROBLAST
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of cardiac fibroblasts from the human heart
+  (Tucker et al. heart cell atlas, MSigDB C8). Cardiac fibroblasts
+  (CL:0002548, fibroblast of cardiac tissue) are stromal cells embedded in the
+  myocardial interstitium that maintain cardiac structural integrity by
+  synthesising and remodelling extracellular matrix components, principally
+  fibrillar collagens, fibronectin, and proteoglycans. Unlike fibroblasts in
+  other organs, cardiac fibroblasts are continuously exposed to the cyclic
+  mechanical loading of the beating heart, making mechanosensory signalling a
+  defining feature of their biology and distinguishing them from lung or skin
+  fibroblasts. Upon myocardial injury, cardiac fibroblasts activate and can
+  transdifferentiate into myofibroblasts, producing a reparative collagen-rich
+  scar. The signature is dominated by ECM structural and biosynthetic genes,
+  consistent with the primary secretory and organisational function of this
+  cell type in the cardiac stroma.
+contexts:
+  - term:
+      id: CL:0002548
+      label: fibroblast of cardiac tissue
+    context_type: cell_type
+  - term:
+      id: UBERON:0000948
+      label: heart
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0030198
+      label: extracellular matrix organization
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:31434209
+        reference_title: "Cardiac Fibroblasts and the Extracellular Matrix in Regenerative and Nonregenerative Hearts."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "the postnatal cardiac fibroblast which is responsible for producing the majority of the ECM"
+        explanation: >-
+          Cardiac fibroblasts are the principal source of extracellular matrix
+          in the myocardium. This review of cardiac ECM biology directly
+          establishes ECM organization as the defining functional output of
+          cardiac fibroblasts, supporting the association as a core process of
+          this cell-type marker signature.
+    curator_note: >-
+      Extracellular matrix organization is the canonical effector process of
+      fibroblasts across connective tissues, and the most direct molecular
+      descriptor of cardiac fibroblast activity. Although the term is
+      broadly_expressed across stromal cell types in many organs, it is highly
+      specific relative to the non-stromal cell types (cardiomyocytes,
+      endothelial cells, immune cells) that co-inhabit the heart. Marker genes
+      encoding structural ECM proteins (COL1A1, COL1A2, COL3A1, FBN1, ELN,
+      DCN, LUM) are expected to dominate this signature.
+  - term:
+      id: GO:0031012
+      label: extracellular matrix
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The extracellular matrix is the primary cellular compartment to which
+      cardiac fibroblast marker genes contribute. Signature genes encoding
+      structural ECM proteins (collagens, fibronectin, elastin, proteoglycans)
+      are secreted and incorporated into the myocardial interstitial and
+      perivascular matrix. Note: GO:0062023 (collagen-containing extracellular
+      matrix) is obsolete; GO:0031012 extracellular matrix is the correct
+      current term.
+  - term:
+      id: GO:0009612
+      label: response to mechanical stimulus
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:33017619
+        reference_title: "Fibroblast mechanosensing, SKI and Hippo signaling and the cardiac fibroblast phenotype: Looking beyond TGF-β."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "mechanical stimulus of fibroblastic cells has been revealed as a major point of activation; this includes cardiac fibroblasts"
+        explanation: >-
+          Cardiac fibroblasts reside in a mechanically active environment and
+          are continuously subjected to the cyclic deformation of the beating
+          myocardium. This review establishes that mechanical stimulation is a
+          primary activation signal for cardiac fibroblasts, making response to
+          mechanical stimulus a well-supported supporting process for this
+          signature. The cardiac context — continuous rhythmic stretch — makes
+          this particularly prominent compared to fibroblasts in less
+          mechanically dynamic organs.
+    curator_note: >-
+      The heart is the most mechanically dynamic organ in the body, and cardiac
+      fibroblasts integrate physical cues from the cyclic contraction and
+      relaxation of the myocardium to regulate ECM homeostasis. Mechanosensory
+      signalling through integrins, focal adhesions, and the YAP/TAZ–Hippo
+      pathway drives both normal fibroblast quiescence and pathological
+      myofibroblast activation. The term is lineage_shared because other
+      connective tissue fibroblasts also respond to mechanical stimuli, but the
+      cardiac context amplifies the biological importance of this association.
+  - term:
+      id: GO:0030199
+      label: collagen fibril organization
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Collagen fibril formation and organisation is a key downstream activity of
+      cardiac fibroblasts in both homeostasis and pathological remodelling.
+      Fibrillar collagens (COL1A1, COL1A2, COL3A1) and accessory small
+      leucine-rich proteoglycans (DCN, LUM, FMOD) that regulate fibril diameter
+      and spacing are characteristic marker genes of this signature. The term is
+      lineage_shared because connective tissue fibroblasts across organs share
+      this activity, but it is expected to be recovered consistently from cardiac
+      fibroblast gene sets given the high collagen content of the myocardial
+      interstitium.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment results reflects the high secretory load of cardiac fibroblasts,
+      which require substantial ribosomal machinery to sustain continuous
+      synthesis of collagen and other ECM proteins. This is a non-specific
+      enrichment hit driven by ribosomal protein genes and does not reflect a
+      cardiac-fibroblast-specific function.
+  - term:
+      id: GO:0036446
+      label: myofibroblast differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      The capacity to transdifferentiate into contractile myofibroblasts is a
+      defining biological feature of cardiac fibroblasts and central to cardiac
+      injury repair and fibrosis. Following myocardial infarction or chronic
+      pressure overload, cardiac fibroblasts activate and acquire alpha-smooth
+      muscle actin (ACTA2) expression, becoming myofibroblasts that deposit the
+      reparative scar. This is an annotation_gap: the ECM structural genes that
+      dominate the fibroblast marker signature (COL1A1, COL3A1, FN1, DCN) are
+      annotated predominantly to extracellular matrix organisation and biosynthetic
+      terms in GOA-human, not to myofibroblast differentiation itself. Standard
+      enrichment therefore does not recover this term from the existing annotations,
+      even though the biology is unambiguous and this process is a GO curation
+      target for cardiac fibroblast biology. The term is curator_added to make the
+      expected differentiation potential visible in the evaluation denominator.

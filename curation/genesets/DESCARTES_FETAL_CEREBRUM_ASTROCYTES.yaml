@@ -1,0 +1,156 @@
+gene_set_id: MSIGDB:DESCARTES_FETAL_CEREBRUM_ASTROCYTES
+gene_set_name: DESCARTES_FETAL_CEREBRUM_ASTROCYTES
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of astrocytes from human fetal cerebrum (Descartes
+  atlas). Astrocytes are the most abundant class of macroglial cells in the central
+  nervous system and are defined by expression of glial fibrillary acidic protein
+  (GFAP), a type III intermediate filament. In the developing cerebrum, astrocytes
+  provide structural and metabolic support to neurons, clear synaptic glutamate via
+  high-affinity excitatory amino acid transporters (EAAT1/SLC1A3, EAAT2/SLC1A2),
+  modulate synaptic transmission, and regulate the extracellular ionic environment.
+  Their differentiation from radial glia is a defining event of mid-to-late fetal
+  brain development.
+contexts:
+  - term:
+      id: CL:0000127
+      label: astrocyte
+    context_type: cell_type
+  - term:
+      id: UBERON:0000955
+      label: brain
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0048708
+      label: astrocyte differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Astrocyte differentiation is the defining developmental event generating this
+      cell type. Canonical astrocyte marker genes (GFAP, S100B, ALDH1L1, AQP4) are
+      annotated to this term in GOA-human, so enrichment from the Descartes astrocyte
+      signature robustly recovers it. This is the most cell-type-specific process in
+      the set.
+  - term:
+      id: GO:0001504
+      label: neurotransmitter uptake
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:31068830
+        reference_title: "Glutamate Transport and Preterm Brain Injury"
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Glutamatergic transmission is terminated when glutamate transporters, expressed predominantly by astrocytes, slowly take up glutamate from the synaptic space"
+        explanation: >-
+          Astrocytes express the high-affinity excitatory amino acid transporters
+          EAAT1 (SLC1A3) and EAAT2 (SLC1A2), which are the primary mechanisms for
+          clearing released glutamate from the synaptic cleft. These transporters are
+          quantitatively dominant in astrocytes relative to all other CNS cell types,
+          making neurotransmitter uptake functionally core and cell-type-specific for
+          this signature. SLC1A2 and SLC1A3 are strongly annotated to GO:0001504 in
+          GOA-human, supporting enrichment recovery.
+    curator_note: >-
+      Glutamate clearance by astrocytic EAAT transporters (SLC1A2, SLC1A3) is the
+      cardinal functional role of astrocytes at the tripartite synapse. These two
+      genes are among the highest-specificity markers in Descartes astrocyte
+      signatures.
+  - term:
+      id: GO:0097386
+      label: glial cell projection
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Astrocytes extend numerous fine processes (perisynaptic astrocytic processes,
+      endfeet) that contact synapses and blood vessels. Glial cell projection (CC
+      GO:0097386) captures this structural specialisation. Genes encoding cytoskeletal
+      and process-associated proteins that are markers of astrocytes (GFAP, VIM, AQP4)
+      are expected to be annotated to or retrievable via this component. This term is
+      cell-type-specific because it is restricted to glial lineage cells.
+  - term:
+      id: GO:0005882
+      label: intermediate filament
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      GFAP (glial fibrillary acidic protein) is the canonical astrocyte identity
+      marker and is a type III intermediate filament. Its expression is the standard
+      immunohistochemical criterion for identifying astrocytes. GFAP is strongly
+      annotated to GO:0005882 in GOA-human, ensuring this component is reliably
+      recovered from any astrocyte marker gene set. Vimentin (VIM), co-expressed in
+      fetal astrocytes, is a second type III intermediate filament that reinforces
+      this annotation.
+  - term:
+      id: GO:0050804
+      label: modulation of chemical synaptic transmission
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Astrocytes are integral partners in the tripartite synapse and modulate
+      synaptic efficacy through glutamate clearance, gliotransmitter release (ATP,
+      D-serine), and potassium buffering. This process is therefore real and
+      biologically important for astrocytes, but the modulation role is shared with
+      other glia and is indirect rather than cell-autonomously defining. It is
+      classified as supporting_process and lineage_shared rather than core_process
+      and cell_type_specific.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in enrichment
+      of the astrocyte marker signature reflects highly expressed ribosomal protein
+      genes rather than any astrocyte-specific function. This is a non-informative
+      enrichment hit and illustrates housekeeping contamination in cell-type marker
+      signatures.
+  - term:
+      id: GO:0014002
+      label: astrocyte development
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      Astrocyte development (GO:0014002) captures the full progression from glial
+      progenitor commitment through maturation to a fully functional astrocyte,
+      encompassing stages beyond the differentiation step described by GO:0048708.
+      This broader process is biologically core for the Descartes fetal astrocyte
+      signature: these cells are actively in mid-developmental progression in the
+      fetal cerebrum. However, most marker genes are annotated in GOA-human to the
+      child term GO:0048708 (astrocyte differentiation) rather than to GO:0014002
+      directly, causing enrichment methods to miss this parent term. This is a GO
+      annotation curation target: deeper annotations to GO:0014002 would improve
+      recall. Added by curator to flag this gap.

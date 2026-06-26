@@ -1,0 +1,181 @@
+gene_set_id: MSIGDB:WP_AFFECTED_PATHWAYS_IN_DUCHENNE_MUSCULAR_DYSTROPHY
+gene_set_name: WP_AFFECTED_PATHWAYS_IN_DUCHENNE_MUSCULAR_DYSTROPHY
+collection: C2:CP:WIKIPATHWAYS
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 75
+description: >-
+  WikiPathways WP5356 gene set (MSigDB C2:CP:WIKIPATHWAYS) representing the
+  affected pathways in Duchenne muscular dystrophy (DMD). DMD is caused by
+  loss-of-function mutations in the DMD gene encoding dystrophin, a large
+  cytoskeletal protein that forms the core scaffold of the dystrophin-associated
+  glycoprotein complex (DGC). Loss of DGC integrity renders the sarcolemma
+  mechanically fragile, leading to contraction-induced micro-tears, unregulated
+  calcium influx, activation of calcium-dependent proteases, chronic
+  inflammatory infiltration, progressive muscle necrosis, and fibrosis. The
+  member genes span the DGC structural components (DMD, DAG1, sarcoglycans,
+  syntrophins, dystrobrevins), calcium-handling regulators, inflammatory
+  mediators, and the compensatory regenerative response, collectively capturing
+  the major pathomechanistic arms of DMD in skeletal muscle.
+contexts:
+  - term:
+      id: MONDO:0010679
+      label: Duchenne muscular dystrophy
+    context_type: disease
+  - term:
+      id: UBERON:0001134
+      label: skeletal muscle tissue
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0016010
+      label: dystrophin-associated glycoprotein complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:29067652
+        reference_title: "An Overview of Recent Therapeutics Advances for Duchenne Muscular Dystrophy."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Mutations of the DMD gene destabilize the dystrophin associated glycoprotein complex in the sarcolemma."
+        explanation: >-
+          The dystrophin-associated glycoprotein complex (DGC) is the defining
+          structural lesion in DMD. This review directly states that loss of
+          dystrophin function destabilises the DGC, establishing it as the
+          primary cellular component disrupted in this disease and making GO:0016010
+          the canonical core_component association for any DMD pathway gene set.
+    curator_note: >-
+      The DGC provides the mechanical link between the intracellular actin
+      cytoskeleton and the extracellular laminin matrix in skeletal muscle fibres.
+      Its disruption is the proximate cause of sarcolemmal fragility in DMD.
+      The WikiPathways WP5356 set explicitly includes DGC structural components:
+      DMD (dystrophin), DAG1 (dystroglycan), SGCA/SGCB/SGCG/SGCD (sarcoglycans),
+      DTNA/DTNB (dystrobrevins), SNTA1/SNTB1/SNTB2 (syntrophins), and SSPN
+      (sarcospan). This is unambiguously the single most characteristic cellular
+      component of this disease gene set.
+  - term:
+      id: GO:0042383
+      label: sarcolemma
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The sarcolemma is the plasma membrane of the muscle fibre and the immediate
+      site of mechanical failure in DMD. Loss of dystrophin and DGC integrity causes
+      sarcolemmal micro-tears during eccentric contractions, allowing calcium influx
+      and initiating the necrotic cascade. Many DMD pathway genes (dystrophin,
+      sarcoglycans, dystroglycan) are annotated to this compartment in GOA-human,
+      making it reliably recoverable by enrichment and biologically central to this
+      gene set.
+  - term:
+      id: GO:0006936
+      label: muscle contraction
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Muscle contraction is the physiological process whose mechanical stress
+      continuously stresses the dystrophin-deficient sarcolemma in DMD, driving
+      cumulative fibre damage. The gene set includes contractile apparatus genes
+      (actin, myosin, tropomyosin isoforms) in addition to the DGC structural
+      components, and many member genes are annotated to muscle contraction or its
+      children in GOA-human. The term is lineage_shared (not DMD-specific) but is
+      the defining mechanistic context in which DGC loss causes pathology.
+  - term:
+      id: GO:0055074
+      label: calcium ion homeostasis
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:29067652
+        reference_title: "An Overview of Recent Therapeutics Advances for Duchenne Muscular Dystrophy."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Ongoing mechanical stress leads to unregulated influx of calcium ions into the sarcoplasm, with activation of proteases, release of proinflammatory cytokines, and mitochondrial dysfunction."
+        explanation: >-
+          Disrupted calcium homeostasis is the key intracellular consequence of
+          sarcolemmal fragility in DMD. This verbatim sentence from the review
+          describes the direct mechanistic chain from mechanical stress through
+          calcium dysregulation to downstream pathology (proteolysis, inflammation,
+          mitochondrial dysfunction), supporting GO:0055074 as a genuine
+          supporting-process association for this pathway gene set.
+    curator_note: >-
+      Unregulated calcium influx following sarcolemmal tears is a central
+      secondary mechanism of DMD pathology. The gene set includes calcium-handling
+      genes (RYR1, ATP2A1/SERCA1, CASQ1) whose disrupted activity amplifies
+      calcium overload. Calcium ion homeostasis is broadly expressed but is here
+      a mechanistically specific downstream consequence of DGC loss. GO:0055074
+      (calcium ion homeostasis) is preferred over GO:0006874 (intracellular
+      calcium ion homeostasis) as it is the more widely annotated parent term
+      in GOA-human for these genes.
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Chronic inflammatory infiltration of dystrophin-deficient skeletal muscle
+      by macrophages, neutrophils and T-cells is a prominent secondary
+      pathomechanism in DMD, contributing to fibre loss and fibrosis. The
+      WikiPathways WP5356 gene set includes inflammatory mediators (TNF, IL-6,
+      NF-κB pathway components) reflecting this arm of DMD pathology. Inflammatory
+      response is not DMD-specific but is a biologically substantive component of
+      this pathway gene set, distinct from a generic housekeeping hit.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance as an
+      enrichment result from this gene set reflects ribosomal protein genes that
+      are broadly co-expressed in skeletal muscle or present as pathway background
+      members in WP5356. It does not reflect a DMD-specific function and is
+      recorded to flag a non-informative enrichment result.
+  - term:
+      id: GO:0043403
+      label: skeletal muscle tissue regeneration
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      Skeletal muscle regeneration is a defining feature of DMD pathophysiology:
+      repeated cycles of muscle necrosis trigger satellite-cell-mediated
+      regeneration that gradually fails as the satellite cell pool is exhausted
+      and replaced by fibrotic tissue. The WikiPathways WP5356 set reflects this
+      biology through genes involved in fibrosis and repair signalling (TGF-β,
+      IGF-1 pathway genes). However, the core structural genes in this set (DMD,
+      sarcoglycans, dystroglycan) are predominantly annotated to contraction and
+      structural GO terms rather than muscle regeneration terms in GOA-human,
+      so enrichment is unlikely to recover GO:0043403 despite its biological
+      relevance. This is an annotation_gap and a GO curation target: the
+      regenerative role of DMD pathway genes is real but under-captured in
+      current gene-level annotations.

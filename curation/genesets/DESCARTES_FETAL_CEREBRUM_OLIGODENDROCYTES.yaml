@@ -1,0 +1,144 @@
+gene_set_id: MSIGDB:DESCARTES_FETAL_CEREBRUM_OLIGODENDROCYTES
+gene_set_name: DESCARTES_FETAL_CEREBRUM_OLIGODENDROCYTES
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of oligodendrocytes from human fetal cerebrum
+  (Descartes atlas, MSigDB C8). Oligodendrocytes are the myelinating glia of
+  the central nervous system, responsible for wrapping axons in compact myelin
+  sheaths that enable fast saltatory impulse conduction. In the fetal cerebrum,
+  oligodendrocyte lineage cells range from proliferating progenitors to
+  committed precursors (OPCs) and nascent myelinating oligodendrocytes. Their
+  marker genes include the major myelin structural proteins (MBP, PLP1, MOG,
+  MOBP), transcription factors governing lineage specification (OLIG1, OLIG2,
+  SOX10), and ribosomal/translational components reflecting the high biosynthetic
+  demand of myelin membrane production.
+contexts:
+  - term:
+      id: CL:0000128
+      label: oligodendrocyte
+    context_type: cell_type
+  - term:
+      id: UBERON:0000955
+      label: brain
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0042552
+      label: myelination
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:31066630
+        reference_title: "Myelin in the Central Nervous System: Structure, Function, and Pathology."
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: "Oligodendrocytes generate multiple layers of myelin membrane around axons of the central nervous system to enable fast and efficient nerve conduction."
+        explanation: >-
+          Myelination is the cardinal biological process of oligodendrocytes.
+          The Descartes fetal cerebrum oligodendrocyte marker set is dominated
+          by major myelin structural proteins (MBP, PLP1, MOG, MOBP) whose
+          primary annotated function is participation in myelination. This
+          comprehensive review of CNS myelin biology confirms that
+          oligodendrocyte-driven myelination is the defining cellular function
+          of this lineage.
+  - term:
+      id: GO:0043209
+      label: myelin sheath
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The myelin sheath is the defining subcellular structure produced by
+      oligodendrocytes. Major marker genes of this signature — including MBP
+      (myelin basic protein), PLP1 (proteolipid protein 1), MOG (myelin
+      oligodendrocyte glycoprotein), and MOBP (myelin-associated
+      oligodendrocyte basic protein) — are localized to the myelin sheath,
+      making this the expected top cellular component in any enrichment
+      analysis of oligodendrocyte markers.
+  - term:
+      id: GO:0008366
+      label: axon ensheathment
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Axon ensheathment is the process by which glial cell membranes close
+      around neuronal axons to provide electrical insulation. In the CNS,
+      oligodendrocytes carry out this function as an integral component of
+      their myelinating program. This term is closely related to myelination
+      but emphasizes the physical ensheathing interaction rather than myelin
+      biogenesis per se; marker genes such as PLP1 and MOBP carry this
+      annotation. Classified as supporting_process because myelination
+      (GO:0042552) is the more precise core term.
+  - term:
+      id: GO:0048709
+      label: oligodendrocyte differentiation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The Descartes fetal cerebrum sample captures oligodendrocyte lineage
+      cells at various stages of differentiation, including OPCs and nascent
+      myelinating cells. Transcription factors and lineage markers (OLIG1,
+      OLIG2, SOX10, NKX2-2) that govern oligodendrocyte specification and
+      maturation are expected marker genes in this fetal signature and carry
+      oligodendrocyte differentiation annotations. Classified as
+      supporting_process because the gene set captures the committed
+      myelinating state as its primary identity, with differentiation genes
+      present as developmental context.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its enrichment in
+      oligodendrocyte marker signatures reflects the exceptionally high
+      biosynthetic demand of myelinating cells — oligodendrocytes must produce
+      vast quantities of myelin membrane proteins — leading to abundant
+      ribosomal protein gene transcripts in the marker set. The enrichment
+      signal is real but is not informative for cell-type identity per se and
+      appears in the marker sets of most metabolically active cell types.
+  - term:
+      id: GO:0022010
+      label: central nervous system myelination
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      Central nervous system myelination (GO:0022010) is the CNS-specific
+      child of myelination (GO:0042552) and precisely describes the
+      biological function of oligodendrocytes, which exclusively supply myelin
+      to the CNS (Schwann cells handle the PNS). It is expected core biology
+      but is classified as annotation_gap: the dominant marker genes (MBP,
+      PLP1, MOG, MOBP) are annotated primarily to the parent GO:0042552
+      myelination in current GOA-human rather than to this more-specific child
+      term, making the term unlikely to be independently recovered by
+      enrichment even though it is biologically more accurate for this cell
+      type. This is a GO annotation curation target; propagation from the
+      parent term would not capture the CNS specificity distinction.

@@ -1,0 +1,147 @@
+gene_set_id: MSIGDB:HAY_BONE_MARROW_MONOCYTE
+gene_set_name: HAY_BONE_MARROW_MONOCYTE
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of monocytes from human bone marrow (Hay et al.,
+  MSigDB C8 cell-type marker collection). Monocytes are innate mononuclear
+  phagocytes that develop in the bone marrow, circulate in blood, and patrol
+  peripheral tissues as a first line of defence against pathogens and cellular
+  debris. They phagocytose microorganisms and foreign material, produce
+  pro-inflammatory cytokines (TNF-alpha, IL-1beta, IL-6, IL-12), and can
+  differentiate into macrophages or dendritic cells upon tissue entry. The bone
+  marrow monocyte signature captures both mature monocyte identity genes and
+  residual differentiation-stage markers reflecting the developmental context of
+  the source tissue.
+contexts:
+  - term:
+      id: CL:0000576
+      label: monocyte
+    context_type: cell_type
+  - term:
+      id: UBERON:0002371
+      label: bone marrow
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0006909
+      label: phagocytosis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:33275661
+        reference_title: "Thyroid Hormone and Deiodination in Innate Immune Cells."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Highly specialized cells of the innate immune system, including neutrophils, monocytes/macrophages, and dendritic cells, are capable of identifying pathogens and initiating an inflammatory response. They can either phagocytose and kill microbes, or recruit other innate or adaptive immune cells to the site of inflammation."
+        explanation: >-
+          Phagocytosis is a defining functional activity of monocytes; they
+          engulf and destroy pathogens, opsonised particles, and cellular debris.
+          This review explicitly identifies monocytes/macrophages as innate immune
+          cells that phagocytose and kill microbes, establishing phagocytosis as a
+          core process expected to dominate enrichment of any monocyte marker gene
+          set.
+  - term:
+      id: GO:0045087
+      label: innate immune response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Monocytes are key innate sentinels that detect pathogen-associated
+      molecular patterns via TLRs, NLRs, and CLRs and mount rapid innate immune
+      responses. Innate immune response is shared broadly across the myeloid
+      lineage (neutrophils, macrophages, dendritic cells, NK cells) and is
+      therefore lineage_shared rather than monocyte-specific.
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Activated monocytes are major producers of pro-inflammatory cytokines
+      (TNF-alpha, IL-1beta, IL-6) and chemokines that drive acute inflammation.
+      Inflammatory response is shared broadly across innate immune lineages and is
+      therefore classified as lineage_shared.
+  - term:
+      id: GO:0001816
+      label: cytokine production
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Monocytes are among the most prolific cytokine-producing cells of the
+      innate immune system, secreting TNF-alpha, IL-1beta, IL-6, IL-10, and
+      IL-12 upon activation. Cytokine production is shared with other innate
+      immune lineages but is quantitatively central to monocyte effector function
+      and is strongly expected to be enriched in monocyte marker gene sets.
+  - term:
+      id: GO:0045335
+      label: phagocytic vesicle
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Phagocytic vesicles are the membrane-bounded intracellular compartments
+      that arise during ingestion of particulate material. As professional
+      phagocytes, monocytes form phagocytic vesicles to internalise and degrade
+      pathogens, opsonised particles, and cellular debris; the vesicles then
+      mature through the endo-lysosomal pathway. This compartment is a structural
+      hallmark of monocyte/macrophage biology and is expected to be enriched in
+      monocyte marker gene sets via phagocytic receptor and vesicle-trafficking
+      genes.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its presence in monocyte
+      enrichment results reflects high expression of ribosomal protein genes and
+      does not represent a monocyte-specific function. A common non-informative
+      enrichment hit across cell-type marker gene sets.
+  - term:
+      id: GO:0030224
+      label: monocyte differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      Monocyte differentiation is the developmental process by which bone marrow
+      precursors (monoblasts and promonocytes) mature into circulating monocytes.
+      Given that this is a bone marrow monocyte signature, differentiation-stage
+      transcripts are likely present in the gene set. However, many mature
+      monocyte marker genes are annotated in GOA-human to broad myeloid or immune
+      process terms rather than to this specific differentiation GO term,
+      reflecting annotation shallowness rather than biological absence. Added as a
+      curator_added core process because the bone marrow developmental context is
+      central to the gene set's biology and monocyte differentiation is a GO
+      annotation curation target.

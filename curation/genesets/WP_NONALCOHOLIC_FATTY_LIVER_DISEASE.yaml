@@ -1,0 +1,184 @@
+gene_set_id: MSIGDB:WP_NONALCOHOLIC_FATTY_LIVER_DISEASE
+gene_set_name: WP_NONALCOHOLIC_FATTY_LIVER_DISEASE
+collection: C2:CP:WIKIPATHWAYS
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 155
+description: >-
+  WikiPathways Nonalcoholic Fatty Liver Disease (NAFLD/MASLD) pathway gene set
+  (MSigDB C2:CP:WIKIPATHWAYS, 155 genes). The set represents the major
+  mechanistic arms of the disease: hepatic lipid accumulation via de novo
+  lipogenesis, impaired fatty-acid beta-oxidation, and triglyceride storage in
+  lipid droplets; insulin resistance and dysregulated insulin signalling;
+  mitochondrial dysfunction and reactive-oxygen-species generation; progression
+  from simple steatosis to steatohepatitis (NASH) driven by cytokine-mediated
+  inflammation; and hepatocyte apoptosis. The WikiPathways representation
+  captures established pathway biology and reflects the mechanistic consensus
+  for NAFLD/MASLD at the time of curation.
+contexts:
+  - term:
+      id: MONDO:0013209
+      label: metabolic dysfunction-associated steatotic liver disease
+    context_type: disease
+  - term:
+      id: UBERON:0002107
+      label: liver
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0006629
+      label: lipid metabolic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:36148775
+        reference_title: "Molecular mechanisms of metabolic associated fatty liver disease (MAFLD): functional analysis of lipid metabolism pathways."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Hepatic lipid metabolism is regulated by a combination of the uptake and export of fatty acids, de novo lipogenesis, and fat utilization by β-oxidation. When the balance between these pathways is altered, hepatic lipid accumulation commences, and long-term activation of inflammatory and fibrotic pathways can progress to worsen the liver disease."
+        explanation: >-
+          The WikiPathways NAFLD gene set is built around disrupted hepatic lipid
+          metabolism. This review explicitly names all four of the major hepatic
+          lipid-handling arms — fatty acid uptake, export, de novo lipogenesis,
+          and beta-oxidation — as the processes that, when unbalanced, initiate
+          NAFLD/MASLD. Lipid metabolic process (GO:0006629) is thus the broadest
+          GO term that correctly characterises the core biology of this pathway
+          gene set.
+    curator_note: >-
+      Lipid metabolic process is the umbrella GO term for lipid anabolism,
+      catabolism, and remodelling. In NAFLD the dominant driver is hepatic
+      steatosis arising from excess fatty acid and triglyceride accumulation;
+      this gene set encodes enzymes and regulators from de novo lipogenesis
+      (FASN, ACACA), fatty acid transport (CD36), and triglyceride synthesis
+      pathways. The term is broadly expressed because many metabolically active
+      cell types share lipid metabolic annotations, but it is unambiguously
+      biologically core to this disease pathway.
+  - term:
+      id: GO:0006631
+      label: fatty acid metabolic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Fatty acid metabolic process is a direct child of lipid metabolic process
+      and captures the more specific arm of NAFLD biology: fatty acid uptake
+      (CD36, SLC27A family), de novo lipogenesis (FASN, ACACA, ELOVL enzymes),
+      and fatty acid oxidation (HADHA, HADHB, ACSL family). Increased de novo
+      fatty acid synthesis and impaired mitochondrial beta-oxidation are both
+      mechanistically established defects in NAFLD/NASH. The term is broadly
+      expressed but core to the specific metabolic defects encoded in this gene
+      set.
+  - term:
+      id: GO:0006641
+      label: triglyceride metabolic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:29357123
+        reference_title: "Triglyceride Metabolism in the Liver."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "In the setting of overnutrition and obesity, hepatic fatty acid metabolism is altered, commonly leading to the accumulation of triglycerides within hepatocytes, and to a clinical condition known as nonalcoholic fatty liver disease (NAFLD)."
+        explanation: >-
+          Triglyceride accumulation in hepatocytes is the defining lesion of NAFLD
+          steatosis. This review directly links altered hepatic fatty acid
+          metabolism and triglyceride accumulation to the NAFLD clinical
+          diagnosis. The WikiPathways NAFLD set includes DGAT1, DGAT2, and
+          LIPC, which encode enzymes that synthesise and mobilise triglycerides.
+          The term is supporting_process rather than core_process because the
+          gene set covers a broader mechanistic range (insulin signalling,
+          apoptosis, inflammation) beyond triglyceride handling alone.
+    curator_note: >-
+      Triglyceride accumulation in hepatocyte cytosol is the morphological
+      hallmark of simple steatosis, the first stage of NAFLD. Genes encoding
+      DGAT1 and DGAT2 (diacylglycerol acyltransferases), LIPC (hepatic lipase),
+      and LIPE (hormone-sensitive lipase) participate directly in triglyceride
+      synthesis and mobilisation. The term is classified as supporting_process
+      because it represents one mechanistic arm of the full pathway gene set.
+  - term:
+      id: GO:0032869
+      label: cellular response to insulin stimulus
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Insulin resistance is a central metabolic feature of NAFLD: impaired
+      insulin signalling in hepatocytes fails to suppress gluconeogenesis and
+      promotes de novo lipogenesis via SREBP-1c activation. The WikiPathways
+      NAFLD representation includes canonical insulin-signalling components
+      (IRS1, IRS2, PIK3 subunits, AKT1/AKT2, INSR) whose GO annotations
+      include cellular response to insulin stimulus. The term is classified as
+      supporting_process because insulin signalling is an enabling context
+      (dysregulation drives lipid accumulation) rather than the defining
+      hepatic output of the disease.
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Progression from steatosis to non-alcoholic steatohepatitis (NASH)
+      requires hepatic inflammation mediated by pro-inflammatory cytokines
+      (TNF, IL-6, IL-1B) and activation of NF-κB and JNK pathways. The
+      WikiPathways NAFLD set encodes inflammatory mediators (TNF, IKBKB,
+      MAPK8) that are annotated to inflammatory response in GO. The term is
+      supporting_process: inflammation drives NASH progression but is not the
+      primary lipid-metabolic defect initiating NAFLD steatosis.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Ribosomal protein
+      genes (RPS and RPL family members) present in broad pathway gene sets
+      drive non-specific enrichment of this term. Any enrichment recovery of
+      translation reflects the high translational activity of hepatocytes
+      rather than a NAFLD-specific function.
+  - term:
+      id: GO:0005811
+      label: lipid droplet
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      Lipid droplets are the organelles where triglycerides and cholesterol
+      esters accumulate in steatotic hepatocytes; their enlargement and
+      proliferation is the pathological substrate of NAFLD steatosis. Key
+      genes in the WikiPathways NAFLD set — including PLIN2 (perilipin-2, a
+      lipid-droplet coat protein) and CIDEB (a lipid-droplet fusion factor
+      expressed in hepatocytes) — are directly associated with lipid droplet
+      biology. This term is curator-added and classified as annotation_gap
+      because the majority of lipid metabolic enzymes in the set (FASN, ACACA,
+      DGAT1, DGAT2, HADHA) are not currently annotated to the lipid droplet
+      GO CC term in GOA-human, even though their products contribute to lipid
+      droplet biogenesis and content. Lipid droplet is a GO annotation
+      curation target for NAFLD/MASLD pathway gene sets.

@@ -1,0 +1,170 @@
+gene_set_id: MSIGDB:KEGG_ENDOMETRIAL_CANCER
+gene_set_name: KEGG_ENDOMETRIAL_CANCER
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy endometrial cancer pathway gene set (MSigDB C2 curated gene set).
+  This is a cancer disease pathway gene set, not a cell-type signature. The member
+  genes are enriched for PI3K/AKT signaling components (PTEN, PIK3CA, AKT1), reflecting
+  the predominant driver in Type I endometrioid endometrial carcinoma, as well as Wnt/
+  beta-catenin pathway members (CTNNB1, APC, GSK3B, AXIN), RAS/MAPK effectors
+  (KRAS, BRAF, MAP2K1, MAPK1), cell adhesion regulators including E-cadherin (CDH1),
+  and apoptosis modulators (TP53, CASP3, BCL2-family). PTEN loss is the most frequent
+  somatic event in endometrial cancer (~60-80% of Type I tumours), constitutively
+  activating PI3K-AKT survival signalling. The pathway also captures Wnt/beta-catenin
+  dysregulation driving endometrioid carcinogenesis, MAPK proliferative signalling,
+  E-cadherin loss enabling myometrial invasion, and TP53 alteration characteristic
+  of the more aggressive Type II (serous) subtype.
+contexts:
+  - term:
+      id: MONDO:0011962
+      label: endometrial cancer
+    context_type: disease
+  - term:
+      id: UBERON:0001295
+      label: endometrium
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0043491
+      label: phosphatidylinositol 3-kinase/protein kinase B signal transduction
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:23082003
+        reference_title: "The PI3K/AKT/mTOR pathway as a therapeutic target in endometrial cancer."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Overactivation of the PI3K/AKT/mTOR pathway, a signaling pathway that plays an important role in cellular growth and survival, has recently been implicated in endometrial cancer pathogenesis"
+        explanation: >-
+          PTEN loss is the most frequent somatic event in endometrial cancer,
+          directly activating PI3K/AKT signalling. The KEGG endometrial cancer
+          pathway gene set is dominated by PI3K/AKT axis members: PTEN, PIK3CA,
+          PIK3R1, AKT1, and downstream effectors. This review (Slomovitz and
+          Coleman, Clin Cancer Res 2012) directly supports phosphatidylinositol
+          3-kinase/protein kinase B signal transduction as the central core
+          process represented in the KEGG endometrial cancer gene set.
+    curator_note: >-
+      PTEN is the most frequently mutated gene in sporadic endometrial cancer,
+      occurring in ~60-80% of Type I (endometrioid) tumours. Loss of PTEN
+      lipid phosphatase activity leads to constitutive accumulation of PIP3,
+      PDK1 activation, and AKT phosphorylation. PIK3CA activating mutations
+      provide an additional route to the same pathway. This makes PI3K/AKT
+      signalling the defining mechanistic arm of this gene set, not merely
+      a shared cancer process.
+  - term:
+      id: GO:0042127
+      label: regulation of cell population proliferation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Uncontrolled cell proliferation is a hallmark downstream consequence of
+      PI3K/AKT activation and Wnt/beta-catenin dysregulation in endometrial
+      cancer. KEGG pathway members including CCND1, CDK4, RB1, and E2F-target
+      genes directly regulate G1/S cell cycle progression and proliferative
+      expansion of endometrial epithelial cells. This term is broadly expressed
+      but reflects a disease-defining functional output of the pathway.
+  - term:
+      id: GO:0016055
+      label: Wnt signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      CTNNB1 (beta-catenin) mutations are found in approximately 25-40% of
+      endometrioid endometrial carcinomas. KEGG pathway members APC, GSK3B,
+      AXIN1, CTNNB1, FZD family receptors, and TCF/LEF transcription factors
+      constitute a canonical Wnt signalling module. Beta-catenin nuclear
+      accumulation drives transcription of proliferative targets including
+      cyclin D1 and c-Myc. Wnt/beta-catenin is a mechanistically distinct
+      arm from PI3K/AKT in this pathway and is not merely a background process,
+      but it is shared across many cancer contexts and is therefore scored as
+      supporting rather than core.
+  - term:
+      id: GO:0000165
+      label: MAPK cascade
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      KRAS, BRAF, MAP2K1, and MAPK1/MAPK3 (ERK1/2) in the KEGG endometrial
+      cancer pathway constitute the RAS-RAF-MEK-ERK cascade. KRAS mutations
+      occur in approximately 10-20% of endometrial carcinomas, particularly
+      the endometrioid subtype, and cooperate with PI3K/AKT activation to
+      drive proliferative signalling. The MAPK cascade is a broadly shared
+      oncogenic mechanism and is not endometrial-cancer-specific, but is a
+      meaningful mechanistic component of this pathway representation.
+  - term:
+      id: GO:0098609
+      label: cell-cell adhesion
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Loss of E-cadherin (CDH1), which mediates calcium-dependent homophilic
+      cell-cell adhesion, is a critical step in the transition from localised
+      to invasive endometrial carcinoma. CTNNB1 (beta-catenin) bridges CDH1
+      cytoplasmic tails to the actin cytoskeleton; when freed from the
+      adherens junction complex by CDH1 loss or Wnt activation, it translocates
+      to the nucleus to drive transcription. CDH1 and CTNNB1 are both KEGG
+      endometrial cancer pathway members annotated to cell-cell adhesion.
+      Cell-cell adhesion is a broadly expressed process but represents
+      genuine biology at the invasion step of this disease pathway.
+  - term:
+      id: GO:0043066
+      label: negative regulation of apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      AKT-mediated phosphorylation of BAD (at Ser136) sequesters it on 14-3-3
+      proteins, preventing its pro-apoptotic interaction with BCL-2 and BCL-XL,
+      thus promoting cell survival downstream of PTEN loss. AKT also
+      phosphorylates and inactivates FOXO transcription factors that
+      transcriptionally activate pro-apoptotic BIM and PUMA. This is a
+      mechanistically direct consequence of the PTEN/PI3K/AKT axis that
+      dominates this gene set. It is annotation_gap: the relevant genes
+      (AKT1, BCL2, BCL2L1, BAD) are present in the gene set but GOA-human
+      annotations to negative regulation of apoptotic process are sparse
+      for AKT1 and absent for BAD under this precise term, so enrichment
+      tools are unlikely to recover it from these members despite its
+      biological centrality.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment results for this gene set reflects ribosomal protein subunit
+      genes included in the KEGG endometrial cancer pathway representation.
+      It does not reflect an endometrial cancer-specific function and is a
+      non-informative enrichment hit.

@@ -1,0 +1,185 @@
+gene_set_id: MSIGDB:KEGG_VIBRIO_CHOLERAE_INFECTION
+gene_set_name: KEGG_VIBRIO_CHOLERAE_INFECTION
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy Vibrio cholerae infection pathway gene set (MSigDB C2 curated gene
+  set). This is a disease/infection pathway gene set, not a cell-type signature.
+  The member genes encode the host molecular machinery subverted or engaged during
+  cholera: cholera toxin ADP-ribosylates the Gsα subunit (GNAS), locking it in
+  the active GTP-bound state and constitutively stimulating adenylate cyclases
+  (ADCY) to overproduce cyclic AMP. Elevated cAMP activates protein kinase A
+  (PKA; PRKAR* and PRKAC* subunits), which phosphorylates the cystic fibrosis
+  transmembrane conductance regulator (CFTR), driving massive luminal chloride
+  secretion in intestinal epithelial cells. Osmotic water follows, producing the
+  profuse secretory diarrhea of cholera. Additional gene set members include
+  vacuolar-type H+-ATPase (V-ATPase; ATP6V* subunits) involved in endosomal and
+  lysosomal processing of the toxin and cell maintenance, cytoskeletal components
+  (actin), and secondary ion transporters (SLC26A3/DRA, KCNQ1). As a legacy KEGG
+  pathway it captures the established Gs/cAMP/PKA/CFTR axis and omits more
+  recently characterised host innate-immune and tight-junction responses.
+contexts:
+  - term:
+      id: MONDO:0015766
+      label: cholera
+    context_type: disease
+  - term:
+      id: UBERON:0002108
+      label: small intestine
+    context_type: anatomical_structure
+  - term:
+      id: NCBITaxon:666
+      label: Vibrio cholerae
+    context_type: infection
+associations:
+  - term:
+      id: GO:1902476
+      label: chloride transmembrane transport
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:22850599
+        reference_title: "CFTR inhibitors for treating diarrheal disease."
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: "The cystic fibrosis transmembrane conductance regulator (CFTR) protein is the major cyclic adenosine monophosphate (cAMP)-regulated Cl- channel activated in cholera as well as in diarrheas caused by other bacterial enterotoxins."
+        explanation: >-
+          Chloride transmembrane transport (GO:1902476) is the defining downstream
+          effector mechanism of cholera in the human intestine. PKA-phosphorylated
+          CFTR functions as an apical chloride channel in enterocytes; its
+          constitutive activation by elevated cAMP is the proximate cause of the
+          massive chloride and osmotic water efflux that produces secretory
+          diarrhoea. CFTR and secondary chloride transporters such as SLC26A3
+          (DRA) are canonical members of the KEGG cholera gene set, and both carry
+          chloride transmembrane transport annotations in GOA-human. The snippet
+          establishes CFTR as the principal cAMP-regulated Cl- channel in cholera.
+    curator_note: >-
+      Chloride transmembrane transport (GO:1902476) is the cardinal functional
+      output of the KEGG Vibrio cholerae infection pathway in the human host.
+      The gene set is centred on CFTR, the principal apical Cl- channel in
+      intestinal epithelial cells, whose cAMP/PKA-dependent phosphorylation by
+      cholera toxin-activated signalling drives the secretory chloride flux that
+      causes dehydrating diarrhoea. This term is cell-type-specific to intestinal
+      epithelial cells and is the most diagnostically informative GO association
+      for this gene set.
+  - term:
+      id: GO:0007189
+      label: adenylate cyclase-activating G protein-coupled receptor signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:14644010
+        reference_title: "CFTR pharmacology and its role in intestinal fluid secretion."
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: "The cystic fibrosis transmembrane conductance regulator (CFTR) is a cAMP-activated Cl(-) channel expressed in epithelial cells in the airways, pancreas, intestine and other fluid-transporting tissues."
+        explanation: >-
+          Cholera toxin B-subunit binds intestinal GM1 gangliosides and delivers
+          the A-subunit into the cytosol, where it ADP-ribosylates Gsα (GNAS),
+          preventing GTP hydrolysis and constitutively activating adenylate
+          cyclase. The resulting cAMP overproduction activates PKA and drives CFTR
+          phosphorylation. GNAS and adenylate cyclase genes (ADCY1-9) present in
+          the KEGG cholera gene set carry annotations to adenylate cyclase-
+          activating GPCR signalling in GOA-human. The snippet confirms the central
+          role of cAMP in the CFTR-mediated secretory mechanism, with adenylate
+          cyclase activation as the upstream cause of cAMP elevation.
+    curator_note: >-
+      The cholera toxin Gsα/adenylate cyclase/cAMP axis is the upstream
+      signalling cascade hijacked by the toxin; GO:0007189 captures this
+      pathway. Note that the previously suggested GO:0019933 (cAMP-mediated
+      signaling) is obsolete in the current GO release; GO:0007189 is the
+      current term representing adenylate cyclase-activating GPCR signalling,
+      which is the precise pathway engaged by cholera toxin through Gsα. The
+      KEGG gene set contains GNAS, multiple ADCY paralogues, and PKA regulatory
+      and catalytic subunits, all of which participate in this signalling axis.
+  - term:
+      id: GO:0009636
+      label: response to toxic substance
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Cholera toxin is a secreted bacterial toxin and the primary pathogenic
+      effector in this infection pathway; the KEGG Vibrio cholerae infection
+      gene set explicitly models the host-cell response to this toxic molecule.
+      Several gene set members involved in cellular stress responses and
+      cytoskeletal remodelling carry response to toxic substance (GO:0009636)
+      annotations in GOA-human. This term is supporting rather than core because
+      it covers a broad stimulus category and the primary downstream mechanism
+      (Cl- secretion) is captured more specifically by GO:1902476.
+  - term:
+      id: GO:0033176
+      label: proton-transporting V-type ATPase complex
+    aspect: cellular_component
+    category: core_component
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The KEGG Vibrio cholerae infection pathway contains numerous vacuolar
+      H+-ATPase (V-ATPase) subunit genes (ATP6V0A1, ATP6V0A2, ATP6V0B, ATP6V0C,
+      ATP6V0D1, ATP6V1A, ATP6V1B1, ATP6V1B2, ATP6V1C1, ATP6V1D, ATP6V1E1,
+      ATP6V1F, ATP6V1G1, ATP6V1H). The proton-transporting V-type ATPase complex
+      (GO:0033176) acidifies endosomes and lysosomes, a process required for the
+      intracellular retrograde trafficking and membrane translocation of the
+      cholera toxin A-subunit into the cytosol. It is therefore mechanistically
+      coupled to the toxin intoxication cascade. Multiple ATP6V* subunits are
+      annotated to this complex in GOA-human, making it recoverable by enrichment
+      analysis.
+  - term:
+      id: GO:0009617
+      label: response to bacterium
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      The biological context of the KEGG Vibrio cholerae infection gene set is
+      explicitly a bacterial infection: the pathway models host-cell events
+      triggered by the Gram-negative pathogen Vibrio cholerae. Response to
+      bacterium (GO:0009617) is therefore biologically appropriate as a
+      supporting process. However, the dominant gene set members (CFTR, PKA
+      subunits, adenylate cyclases, V-ATPase subunits, ion cotransporters) are
+      annotated in GOA-human according to their molecular functions rather than
+      their infectious context, so enrichment analysis does not recover this
+      term. This is an annotation_gap: the bacterial infectious context is real
+      but absent from most member gene annotations. Added by curator to document
+      the infection context of this gene set and to flag a GO annotation curation
+      target.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation (GO:0006412) is a ubiquitous housekeeping process. Its
+      appearance as an enrichment hit in the KEGG Vibrio cholerae infection gene
+      set reflects the presence of broadly-expressed cytoskeletal and regulatory
+      genes (such as actin isoforms) whose GO annotations are shared with many
+      other gene sets, and the tendency of KEGG disease pathways to include
+      housekeeping members that co-annotate to translation-related terms.
+      This non-specific enrichment signal does not reflect a disease-specific
+      function of the cholera infection pathway and is a canonical non-specific
+      enrichment artefact.

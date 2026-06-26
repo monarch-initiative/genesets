@@ -1,0 +1,188 @@
+gene_set_id: MSIGDB:KEGG_GRAFT_VERSUS_HOST_DISEASE
+gene_set_name: KEGG_GRAFT_VERSUS_HOST_DISEASE
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy graft versus host disease pathway gene set (MSigDB C2 curated gene set).
+  This is a disease pathway gene set representing alloimmune-mediated tissue damage
+  following allogeneic hematopoietic cell transplantation. Donor T cells recognise
+  host MHC and minor histocompatibility alloantigens, then expand and differentiate
+  into effector cells that destroy host tissues through direct cytotoxicity
+  (perforin-granzyme and Fas-FasL pathways) and pro-inflammatory cytokine release
+  (TNF, IL-1alpha/beta, IFN-gamma). NK cells contribute additional cytotoxic killing
+  using the shared perforin-granzyme machinery. Member genes are enriched for MHC class
+  I (HLA-A, HLA-B, HLA-C, B2M) and class II (HLA-DRA, HLA-DRB1, HLA-DQA1, HLA-DQB1,
+  HLA-DPA1, HLA-DPB1) molecules, cytotoxic effectors (PRF1, GZMB, FASLG), cytokine
+  and cytokine-receptor signalling components (IL1A, IL1B, TNF, IFNG, IL6, IL10),
+  and co-stimulatory molecules (CD80, CD86, CD28). As a legacy KEGG pathway
+  representation, the set captures the established alloimmune effector phase and
+  omits some regulatory and upstream priming events.
+contexts:
+  - term:
+      id: MONDO:0013730
+      label: graft versus host disease
+    context_type: disease
+associations:
+  - term:
+      id: GO:0019882
+      label: antigen processing and presentation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:36505438
+        reference_title: "Role of endothelial cells in graft-versus-host disease."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "The pathogenesis of acute GVHD involves recognition of minor and/or major HLA mismatched host antigens by donor T cells"
+        explanation: >-
+          Antigen processing and presentation of host alloantigens by MHC molecules
+          is the initiating step of GVHD. HLA class I and class II genes in the
+          KEGG GVHD set (HLA-A, HLA-B, HLA-C, HLA-DRA, HLA-DRB1, HLA-DQA1,
+          HLA-DQB1) encode the complexes through which host peptides are presented
+          to alloreactive donor T cells. This review confirms that alloantigen
+          recognition via HLA mismatches is the central trigger of acute GVHD
+          pathogenesis.
+    curator_note: >-
+      MHC class I (HLA-A, HLA-B, HLA-C) and class II (HLA-DRA, HLA-DRB1,
+      HLA-DQA1, HLA-DQB1, HLA-DPA1, HLA-DPB1) molecules are core members of the
+      KEGG GVHD pathway. Antigen processing and presentation of host alloantigens
+      to donor T cells is the initiating and defining event of GVHD pathogenesis
+      and is the process that distinguishes this alloimmune disease from other
+      immune-mediated conditions.
+  - term:
+      id: GO:0001913
+      label: T cell mediated cytotoxicity
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:36505438
+        reference_title: "Role of endothelial cells in graft-versus-host disease."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "end-organ damage due to combination of inflammatory cytokine secretion and direct cytotoxic effects"
+        explanation: >-
+          Cytotoxic donor CD8+ T cells are the primary effectors of GVHD tissue
+          destruction. In the KEGG GVHD pathway, PRF1 (perforin) and GZMB (granzyme
+          B) encode the degranulation cytotoxic machinery, and FASLG encodes the
+          Fas-ligand death receptor pathway. This review confirms that direct
+          cytotoxic effects by donor T cells are a major arm of end-organ damage
+          in acute GVHD.
+    curator_note: >-
+      PRF1 (perforin), GZMB (granzyme B), and FASLG (FasL) in the KEGG GVHD
+      pathway encode the canonical CD8+ T cell cytotoxic effector machinery.
+      Donor T cell-mediated killing of host epithelial cells in skin, gut, and
+      liver is the principal effector mechanism of tissue destruction in acute GVHD.
+  - term:
+      id: GO:0042267
+      label: natural killer cell mediated cytotoxicity
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      NK cells share the perforin-granzyme cytotoxic effector machinery (PRF1,
+      GZMB) with cytotoxic T cells and are represented in the KEGG GVHD pathway
+      via these shared effector genes. Donor NK cells contribute to GVHD-associated
+      tissue damage, particularly in early post-transplant phases and in certain
+      target organs (liver, lung). This is a supporting rather than core process
+      because alloreactive CD8+ T cells are the primary effectors in this pathway
+      representation; NK cytotoxicity is a secondary but biologically genuine arm.
+  - term:
+      id: GO:0042612
+      label: MHC class I protein complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      HLA class I alpha chains (HLA-A, HLA-B, HLA-C) and beta-2 microglobulin
+      (B2M) in the KEGG GVHD pathway assemble into MHC class I protein complexes
+      on all nucleated host cells. These complexes present host alloantigenic
+      peptides to donor CD8+ T cells, triggering cytotoxic killing. The MHC class I
+      complex is the principal structural entity mediating alloantigen recognition
+      in this pathway. Specificity is broadly_expressed because MHC class I is
+      expressed on virtually all nucleated cells, not restricted to the immune
+      lineage.
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:31466596
+        reference_title: "Review of Graft-Versus-Host Disease."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Acute and chronic GVHD result from an initial insult triggering an exaggerated inflammatory cascade"
+        explanation: >-
+          Pro-inflammatory cytokines encoded by KEGG GVHD pathway members (TNF,
+          IL1A, IL1B, IFNG, IL6) are the principal mediators of systemic
+          inflammation and multi-organ tissue damage in GVHD. This review confirms
+          that an exaggerated inflammatory cascade drives both acute and chronic GVHD
+          pathogenesis, supporting inflammatory response as a mechanistically
+          important process in this gene set.
+    curator_note: >-
+      TNF, IL1A, IL1B, IFNG, IL6, and IL10 in the KEGG GVHD pathway encode
+      pro-inflammatory and regulatory cytokines that amplify the immune response
+      and mediate systemic inflammatory tissue damage in skin, gut, and liver.
+      Inflammatory response is broadly expressed across many disease contexts but
+      is a mechanistically central arm of GVHD pathology alongside direct
+      cytotoxic killing.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment results reflects ribosomal protein subunit genes present in the
+      gene set as incidental pathway members. It does not reflect any
+      disease-specific function of the KEGG graft versus host disease pathway and
+      is a non-informative enrichment hit.
+  - term:
+      id: GO:0002250
+      label: adaptive immune response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      Adaptive immune response is the overarching biological context of GVHD:
+      donor T cells — adaptive immune effectors expressing antigen-specific TCRs —
+      recognise host alloantigens, clonally expand, and mount a targeted
+      cytotoxic response against host tissues. While the KEGG GVHD pathway genes
+      are well-annotated to specific child processes (T cell mediated cytotoxicity,
+      antigen processing and presentation), direct annotations to this broad parent
+      term are sparse in GOA-human, and standard GO enrichment tools recover the
+      more informative specific children rather than this parent. Added by curator
+      to make the adaptive immune context explicit; recovery_status is annotation_gap
+      because the gene set members carry direct annotations predominantly to specific
+      effector child terms rather than to adaptive immune response itself, reflecting
+      incomplete propagation of annotations in GOA-human rather than absence of
+      the biology.

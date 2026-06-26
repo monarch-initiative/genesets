@@ -1,0 +1,161 @@
+gene_set_id: MSIGDB:KEGG_MELANOMA
+gene_set_name: KEGG_MELANOMA
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy melanoma pathway gene set (MSigDB C2 curated gene set).
+  This is a cancer disease pathway gene set, not a cell-type signature. The member
+  genes are heavily enriched for RAS/RAF/MAPK pathway components (BRAF, NRAS, RAF1,
+  MAP2K1/2, MAPK1/3), PI3K/AKT survival signaling effectors (PIK3CA, PTEN, AKT1),
+  cell-cycle regulators controlling the G1/S transition (CDKN2A, CDK4, RB1, E2F
+  family), apoptosis modulators (TP53, MDM2, BCL2-family, CASP3), and growth-factor
+  receptor inputs (EGFR, MET, FGFR1), reflecting the major mechanistic arms of the
+  KEGG melanoma pathway: BRAF-driven MAPK proliferative signaling, PI3K/AKT
+  cell-survival signaling, CDKN2A/RB-mediated cell-cycle control, and TP53-dependent
+  apoptosis evasion, all operating in the melanocyte cell-of-origin context.
+contexts:
+  - term:
+      id: MONDO:0005105
+      label: melanoma
+    context_type: disease
+  - term:
+      id: UBERON:0002097
+      label: skin of body
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0000165
+      label: MAPK cascade
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:29540830
+        reference_title: "Classifying BRAF alterations in cancer: new rational therapeutic strategies for actionable mutations."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Approximately 50% of melanoma patients possess a druggable hotspot V600E/K mutation in the BRAF protein kinase."
+        explanation: >-
+          BRAF V600E is the most common somatic mutation in melanoma, constitutively
+          activating the RAS-RAF-MEK-ERK (MAPK) cascade. This Oncogene review directly
+          supports the MAPK cascade as the dominant core process in the KEGG melanoma
+          gene set, with BRAF, NRAS, RAF1, MAP2K1/2, and MAPK1/3 all present as set
+          members and druggable targets of approved combination BRAF/MEK inhibitor
+          therapies.
+    curator_note: >-
+      BRAF, NRAS, RAF1, MAP2K1, MAPK1, and MAPK3 (ERK1/2) in the KEGG melanoma
+      pathway constitute the canonical RAS-RAF-MEK-ERK cascade. BRAF V600E mutation
+      is present in approximately 50% of melanomas and constitutively activates
+      this cascade to drive proliferation. The MAPK cascade is the most
+      mechanistically central process in the KEGG melanoma pathway representation
+      and the primary target of approved BRAF/MEK inhibitor combination therapies.
+  - term:
+      id: GO:0042127
+      label: regulation of cell population proliferation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The KEGG melanoma pathway includes CDKN2A (p16INK4a and p14ARF), CDK4,
+      RB1, and E2F family members that directly regulate the G1/S cell-cycle
+      transition and proliferative expansion. Constitutive BRAF/MAPK signaling
+      promotes cyclin D1 upregulation and CDK4 activation, driving uncontrolled
+      proliferation as a hallmark of melanoma. Regulation of cell population
+      proliferation is the core downstream output of the major oncogenic signaling
+      axes in this pathway.
+  - term:
+      id: GO:0043491
+      label: phosphatidylinositol 3-kinase/protein kinase B signal transduction
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      PIK3CA, PTEN, and AKT1 in the KEGG melanoma pathway encode key components
+      of the PI3K/AKT cell-survival axis. PTEN loss and PIK3CA activation are
+      frequent secondary alterations in melanoma that reinforce pro-survival AKT
+      signaling downstream of growth factor receptors (EGFR, MET, FGFR1). This
+      pathway cooperates with MAPK signaling to suppress apoptosis and sustain
+      melanocyte transformation, making it a significant supporting process that
+      is not specific to melanoma.
+  - term:
+      id: GO:0000082
+      label: G1/S transition of mitotic cell cycle
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      CDKN2A is among the most frequently deleted or silenced loci in melanoma;
+      loss of p16INK4a relieves CDK4/6-mediated inhibition of RB1, enabling
+      unrestricted E2F-driven S-phase entry. CDK4, CDK6, CCND1, RB1, and E2F
+      family members in the KEGG melanoma pathway directly execute the G1/S
+      transition. This is a mechanistically important supporting process
+      downstream of both BRAF/MAPK and CDKN2A alterations in melanoma.
+  - term:
+      id: GO:0006915
+      label: apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      TP53, MDM2, BAD, BCL2L1, and CASP3 in the KEGG melanoma pathway encode
+      canonical apoptosis components. TP53 mutation or MDM2 amplification is a
+      mechanism of apoptosis evasion in melanoma, and PI3K/AKT-mediated
+      phosphorylation of BAD suppresses the intrinsic death pathway. Apoptotic
+      process is broadly expressed and shared across cancer types, not
+      melanoma-specific, but constitutes a significant mechanistic arm of this
+      pathway representation.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment results for this gene set reflects ribosomal protein subunit
+      genes present in the KEGG melanoma pathway representation. It does not
+      reflect a melanoma-specific function and is a non-informative enrichment
+      hit.
+  - term:
+      id: GO:0030318
+      label: melanocyte differentiation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: membership_gap
+    curator_note: >-
+      Melanocyte differentiation is the lineage-defining process of the cell of
+      origin in melanoma. The BRAF/MAPK pathway in this gene set normally
+      cooperates with MITF (melanocyte inducing transcription factor) to drive
+      melanocyte differentiation, and oncogenic BRAF V600E corrupts this program
+      to drive transformation instead. However, the canonical melanocyte
+      differentiation effectors (MITF, SOX10, PAX3, DCT, TYRP1) are not members
+      of the KEGG melanoma legacy gene set, which focuses on the oncogenic
+      signaling machinery rather than the differentiation program. This is a
+      membership_gap: genuine cell-of-origin biology expected in a complete
+      melanoma pathway, but absent from the legacy KEGG representation whose
+      scope is restricted to the oncogenic signaling machinery.
