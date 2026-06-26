@@ -1,0 +1,193 @@
+gene_set_id: MSIGDB:WP_FAMILIAL_HYPERLIPIDEMIA_TYPE_2
+gene_set_name: WP_FAMILIAL_HYPERLIPIDEMIA_TYPE_2
+collection: C2:CP:WIKIPATHWAYS
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 16
+description: >-
+  WikiPathways Familial Hyperlipidemia Type 2 gene set (MSigDB C2:CP:WIKIPATHWAYS,
+  16 genes). Familial hyperlipidemia type 2 is familial hypercholesterolemia (FH),
+  a common autosomal dominant inherited disorder defined by pathologically elevated
+  plasma LDL-cholesterol from birth. The molecular defect lies in the hepatic LDL
+  receptor (LDLR) pathway: loss-of-function variants in LDLR eliminate or reduce
+  the receptor itself; APOB defects impair LDL binding to LDLR; PCSK9 gain-of-function
+  mutations accelerate lysosomal degradation of LDLR; LDLRAP1 mutations disrupt
+  clathrin-mediated internalization of the LDLR-LDL complex. Any of these defects
+  impairs hepatic clearance of circulating LDL particles, causing LDL accumulation
+  that drives premature atherosclerosis and coronary artery disease. This set is
+  mechanistically distinct from WP_FAMILIAL_HYPERLIPIDEMIA_TYPE_1 (which represents
+  the LPL/chylomicron/triglyceride axis); type 2 is defined by cholesterol and
+  LDL-receptor biology.
+contexts:
+  - term:
+      id: MONDO:0005439
+      label: familial hypercholesterolemia
+    context_type: disease
+  - term:
+      id: UBERON:0002107
+      label: liver
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0008203
+      label: cholesterol metabolic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:29219151
+        reference_title: "Familial hypercholesterolaemia."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Most cases are caused by autosomal dominant mutations in LDLR, which encodes the LDL receptor, although mutations in other genes coding for proteins involved in cholesterol metabolism or LDLR function and processing, such as APOB and PCSK9, can also be causative, although less frequently."
+        explanation: >-
+          Familial hypercholesterolemia is fundamentally a disorder of
+          cholesterol metabolism arising from defects in genes encoding
+          proteins that govern LDL-cholesterol uptake and processing.
+          Cholesterol metabolic process (GO:0008203) is the broadest and
+          most consistently enriched GO:BP term for the 16-gene FH type 2
+          set. LDLR, APOB, PCSK9, and LDLRAP1 — the four principal causal
+          genes — and multiple apolipoprotein set members are annotated to
+          this term or its children in GOA-human. The PCSK9-LDLR axis
+          also feeds back to cholesterol biosynthetic regulation, placing
+          this term at the mechanistic core of the disease pathway.
+  - term:
+      id: GO:0042632
+      label: cholesterol homeostasis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Cholesterol homeostasis (GO:0042632) captures the steady-state
+      regulatory axis that is disrupted in familial hypercholesterolemia.
+      Hepatic LDLR-mediated uptake of LDL particles is the primary
+      systemic mechanism for maintaining plasma cholesterol within
+      physiological limits; loss of LDLR function removes this homeostatic
+      brake, producing persistent hypercholesterolemia. PCSK9 acts as a
+      negative regulator of cholesterol homeostasis by promoting LDLR
+      lysosomal degradation, while APOB enables LDL binding to LDLR and
+      LDLRAP1 enables receptor internalization. Multiple set members are
+      annotated to GO:0042632 or its parent sterol homeostasis (GO:0055092)
+      in GOA-human, making this term reliably enrichment-recovered and the
+      most disease-defining homeostasis term for this set.
+  - term:
+      id: GO:0034383
+      label: low-density lipoprotein particle clearance
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:38125244
+        reference_title: "Familial Hypercholesterolemia: A Literature Review of the Pathophysiology and Current and Novel Treatments."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Characteristic features of FH are elevated levels of LDL in the blood because of sudden changes in LDLR, which causes a decrease in the clearance of LDL from the blood."
+        explanation: >-
+          Low-density lipoprotein particle clearance (GO:0034383) is
+          defined as the removal of LDL from blood via receptor-mediated
+          endocytosis. This is the molecular process directly abrogated in
+          all four genetic forms of FH represented in this gene set: LDLR
+          loss-of-function eliminates the receptor; APOB defects impair
+          LDL binding to LDLR; PCSK9 gain-of-function reduces LDLR surface
+          density by promoting its lysosomal degradation; LDLRAP1 defects
+          block clathrin-coated pit internalization of the LDLR-LDL
+          complex. LDLR and APOB are directly annotated to GO:0034383 in
+          GOA-human, making this the most disease-specific GO:BP term for
+          the set and distinguishing it clearly from the
+          chylomicron/triglyceride biology of WP_FAMILIAL_HYPERLIPIDEMIA_TYPE_1.
+  - term:
+      id: GO:0034362
+      label: low-density lipoprotein particle
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The LDL particle (GO:0034362) is the cholesterol ester-rich
+      lipoprotein particle that accumulates in plasma in familial
+      hypercholesterolemia and constitutes the proximate cardiovascular
+      risk entity of the disease. It is primarily composed of APOB100
+      (encoded by APOB, the obligate structural protein) and also carries
+      APOE. APOB is annotated to GO:0034362 in GOA-human; APOE is
+      annotated to the parent plasma lipoprotein particle (GO:0034358).
+      Sustained elevation of circulating LDL particles drives
+      subendothelial deposition and atherosclerotic plaque formation in
+      FH. Classified as lineage_shared because APOB and related
+      apolipoproteins associate with VLDL and IDL in addition to LDL.
+  - term:
+      id: GO:0006869
+      label: lipid transport
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Lipid transport (GO:0006869) is enriched in this gene set because
+      multiple members encode apolipoproteins and other proteins involved
+      in plasma lipid movement. However, this term is broadly shared across
+      diverse lipoprotein pathway gene sets and lacks specificity for
+      LDL-receptor biology. The more specific terms GO:0034383 (LDL
+      particle clearance) and GO:0008203 (cholesterol metabolic process)
+      better discriminate the familial hypercholesterolemia mechanism.
+      Lipid transport is retained as a supporting_process annotation
+      because it correctly reflects a contribution of multiple set members
+      but should not be interpreted as a discriminating feature of this
+      disease-specific gene set.
+  - term:
+      id: GO:0045541
+      label: negative regulation of cholesterol biosynthetic process
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      Negative regulation of cholesterol biosynthetic process (GO:0045541)
+      captures a mechanistic arm central to the Brown-Goldstein model of
+      familial hypercholesterolemia: LDLR-mediated delivery of LDL
+      cholesterol to hepatocytes normally suppresses SREBP2 processing and
+      down-regulates HMGCR transcription, constituting a feedback brake on
+      endogenous cholesterol synthesis. In FH type 2, loss of LDLR
+      function or PCSK9-driven LDLR degradation decouples this feedback,
+      resulting in sustained endogenous cholesterol biosynthesis alongside
+      impaired LDL clearance. This term is curator_added and classified
+      as annotation_gap: the primary set members (LDLR, PCSK9, APOB,
+      LDLRAP1) are not currently annotated to GO:0045541 in GOA-human —
+      the annotation resides on genes such as HMGCR, INSIG1, and INSIG2,
+      which are not members of this 16-gene WikiPathways set. This
+      represents both GO annotation incompleteness on LDLR and PCSK9 and
+      a gene-set membership gap for the biosynthetic arm; it is a priority
+      curation and gene-set expansion target.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Ribosomal protein
+      genes present in WikiPathways pathway gene sets drive non-specific
+      enrichment of this term. Any enrichment recovery of translation from
+      this set reflects general cellular translational activity rather than
+      a familial-hypercholesterolemia-specific function and is not
+      informative about the disease biology.
