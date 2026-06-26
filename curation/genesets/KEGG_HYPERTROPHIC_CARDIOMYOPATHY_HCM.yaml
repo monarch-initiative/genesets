@@ -1,0 +1,169 @@
+gene_set_id: MSIGDB:KEGG_HYPERTROPHIC_CARDIOMYOPATHY_HCM
+gene_set_name: KEGG_HYPERTROPHIC_CARDIOMYOPATHY_HCM
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy hypertrophic cardiomyopathy pathway gene set (MSigDB C2 curated gene set).
+  This is a disease pathway gene set, not a cell-type signature. The member genes
+  are dominated by sarcomere and contractile apparatus proteins (beta-myosin heavy
+  chain MYH7, myosin-binding protein C MYBPC3, actin ACTC1, troponins TNNT2/TNNI3/
+  TNNC1, tropomyosin TPM1, titin TTN, myosin light chains MYL2/MYL3), the
+  dystrophin-glycoprotein complex (DMD, sarcoglycans, DAG1), and calcium-handling
+  proteins (ATP2A2/SERCA2a, RYR2, PLN) whose mutation or dysregulation causes
+  pathological left ventricular wall thickening and diastolic dysfunction. The set
+  substantially overlaps the KEGG dilated cardiomyopathy gene set but emphasises
+  the hypertrophic rather than dilated structural outcome. As a KEGG legacy pathway
+  it reflects the established mechanistic arms and major disease genes known at the
+  time of pathway curation.
+contexts:
+  - term:
+      id: MONDO:0005045
+      label: hypertrophic cardiomyopathy
+    context_type: disease
+  - term:
+      id: UBERON:0000948
+      label: heart
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0060048
+      label: cardiac muscle contraction
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:42307069
+        reference_title: "Adeno-Associated Virus Vector Mediated Gene Therapy: A Promising Approach to Transform Hypertrophic Cardiomyopathy Treatment."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Hypertrophic cardiomyopathy (HCM) is a genetically heterogeneous myocardial disease that usually arises from mutations in key sarcomeric proteins, particularly MYBPC3 and MYH7."
+        explanation: >-
+          Cardiac muscle contraction is executed by the sarcomere; MYBPC3 and MYH7
+          are structural components of the thick filament whose mutations alter
+          cross-bridge cycling and contractile force. The quoted sentence establishes
+          that HCM is primarily a disease of sarcomeric proteins, which are the direct
+          molecular executors of cardiac muscle contraction, making this GO term the
+          central biological process disrupted in this gene set.
+    curator_note: >-
+      The defining feature of hypertrophic cardiomyopathy at the molecular level is
+      aberrant contractile function caused by mutations in sarcomere proteins. The
+      KEGG HCM gene set is dominated by genes encoding the core actomyosin
+      contractile machinery: MYH7 (beta-myosin heavy chain), MYBPC3 (myosin-binding
+      protein C), ACTC1 (cardiac actin), MYL2/MYL3 (myosin light chains),
+      TNNT2/TNNI3/TNNC1 (troponin complex), and TPM1 (tropomyosin). All of these
+      gene products are required for the cross-bridge cycling that constitutes cardiac
+      muscle contraction. This is unambiguously cell-type-specific for cardiomyocytes.
+  - term:
+      id: GO:0030017
+      label: sarcomere
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The sarcomere is the repeating contractile unit of cardiac myofibrils. The
+      overwhelming majority of HCM-causing genes encode sarcomeric proteins: the
+      thick filament (MYH7, MYH6, MYBPC3, MYL2, MYL3), the thin filament
+      (ACTC1, TNNT2, TNNI3, TNNC1, TPM1), and the elastic scaffold (TTN). HCM is
+      sometimes termed a "disease of the sarcomere." The sarcomere is therefore
+      the dominant and most biologically informative cellular component represented
+      in this gene set, and the association is strongly annotation-supported.
+  - term:
+      id: GO:0016010
+      label: dystrophin-associated glycoprotein complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The dystrophin-associated glycoprotein complex (DGC) mechanically links the
+      intracellular cytoskeleton to the extracellular matrix in cardiomyocytes,
+      transmitting contractile force and protecting the sarcolemma. The KEGG HCM
+      pathway gene set includes DGC members DMD (dystrophin), SGCA/SGCB/SGCG/SGCD
+      (sarcoglycans), DAG1 (dystroglycan), and SNTA1 (syntrophin). Although DGC
+      mutations are more classically associated with dilated cardiomyopathy, DGC
+      disruption is represented in the KEGG HCM pathway and contributes to
+      cardiomyocyte membrane fragility under increased wall stress, which is
+      mechanistically relevant to the hypertrophic phenotype.
+  - term:
+      id: GO:0006936
+      label: muscle contraction
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Muscle contraction is the parent term of cardiac muscle contraction
+      (GO:0060048) and is shared with skeletal and smooth muscle lineages. It is
+      expected to appear in enrichment results from this sarcomere-dominated gene
+      set alongside its more specific child term. The association is biologically
+      valid but less informative than GO:0060048 in the HCM context.
+  - term:
+      id: GO:0055117
+      label: regulation of cardiac muscle contraction
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The KEGG HCM gene set includes multiple regulators of cardiac contractile
+      function in addition to structural sarcomere proteins: calcium-handling genes
+      (ATP2A2/SERCA2a, RYR2, PLN), adrenergic receptor components (ADRA1A, ADRB1,
+      ADRB2), and signalling components. These collectively modulate the frequency,
+      rate and extent of cardiac muscle contraction. Dysregulated calcium handling
+      and enhanced myofilament calcium sensitivity are key secondary consequences
+      of sarcomere protein mutations in HCM that amplify the hypertrophic stimulus.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance as an
+      enrichment hit in this gene set reflects ribosomal protein genes that are
+      incidentally co-expressed at high levels in cardiomyocytes or present in the
+      KEGG pathway as background members. It does not reflect an HCM-specific
+      function and is recorded here to flag a non-informative enrichment result.
+  - term:
+      id: GO:0003300
+      label: cardiac muscle hypertrophy
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      Cardiac muscle hypertrophy — the enlargement of cardiac muscle cells without
+      cell division — is the defining pathological phenotype of hypertrophic
+      cardiomyopathy. Mechanistically, sarcomere protein mutations alter cross-bridge
+      mechanics and calcium sensitivity, triggering downstream hypertrophic signalling
+      (calcineurin-NFAT, MEK-ERK, mTOR) that drives cardiomyocyte hypertrophy. This
+      term is therefore biologically core to the HCM disease pathway gene set.
+      However, most sarcomere and DGC genes in this set are annotated in GOA-human to
+      contraction and structural GO terms rather than to GO:0003300, even though their
+      role in driving hypertrophy is well-established. This is an annotation gap:
+      the biology is genuine but GO gene-level annotations to this term are incomplete
+      for the dominant gene members, so enrichment is unlikely to recover it from this
+      gene set. This is a primary curation target for the GO annotation corpus and
+      should be recorded so that the evaluation's recall denominator correctly reflects
+      the expected HCM-specific biology that is absent from current annotations.
