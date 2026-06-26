@@ -1,0 +1,174 @@
+gene_set_id: MSIGDB:WP_HEPATITIS_C_AND_HEPATOCELLULAR_CARCINOMA
+gene_set_name: WP_HEPATITIS_C_AND_HEPATOCELLULAR_CARCINOMA
+collection: C2:CP:WIKIPATHWAYS
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 56
+description: >-
+  WikiPathways WP3646 gene set (MSigDB C2:CP:WIKIPATHWAYS). This pathway gene
+  set spans two interlinked biological programmes: (1) the innate antiviral
+  defence triggered by HCV infection — pattern recognition via RIG-I (DDX58)
+  and MDA5 (IFIH1), MAVS-mediated signalling, IRF3/IRF7 activation, and
+  induction of type I interferon-stimulated genes (IFIT family, MX1/2, OAS
+  family, ISG15), together with HCV immune-evasion mechanisms (NS3/4A-mediated
+  cleavage of MAVS and TRIF); and (2) the oncogenic reprogramming that drives
+  hepatocellular carcinoma — Wnt/beta-catenin pathway activation (CTNNB1, APC,
+  FZD family), MAPK/RAS proliferative signalling (KRAS, BRAF, MAP2K1,
+  MAPK1/3), PI3K/AKT survival signalling, and dysregulation of apoptosis
+  (TP53, BCL2 family, CASP3/9). This dual structure reflects the disease
+  trajectory from chronic HCV infection and immune evasion through cirrhosis to
+  hepatocellular carcinoma.
+contexts:
+  - term:
+      id: MONDO:0005354
+      label: chronic hepatitis C virus infection
+    context_type: disease
+  - term:
+      id: MONDO:0007256
+      label: hepatocellular carcinoma
+    context_type: disease
+  - term:
+      id: UBERON:0002107
+      label: liver
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0051607
+      label: defense response to virus
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:23063572
+        reference_title: "Innate immunity and HCV."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "The HCV NS3/4A protease efficiently cleaves and inactivates two important signaling molecules in the sensory pathways that react to HCV pathogen-associated molecular patterns (PAMPs) to induce interferons (IFNs), i.e., mitochondrial antiviral signaling protein (MAVS) and Toll-IL-1 receptor domain-containing adaptor inducing IFN-β (TRIF)."
+        explanation: >-
+          This review (Heim 2012, J Hepatol) describes the central antiviral
+          defence mechanism engaged during HCV infection: pattern-recognition
+          receptors detect HCV PAMPs and signal through MAVS and TRIF to
+          induce type I IFNs. Multiple RIG-I-pathway genes present in the
+          WikiPathways HCV/HCC gene set — including DDX58 (RIG-I), IFIH1
+          (MDA5), MAVS, TRIM25, IRF3, and IRF7 — are annotated to
+          GO:0051607 (defense response to virus) in GOA-human, making this
+          term the primary core biological process of the innate arm of the
+          gene set. The snippet illustrates both the activation of this
+          pathway (PAMP sensing) and its subversion by HCV, both of which
+          are mechanistically represented in WP3646.
+  - term:
+      id: GO:0060337
+      label: type I interferon-mediated signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:23063572
+        reference_title: "Innate immunity and HCV."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Instead, in about half of the patients, hundreds of type I or III IFN-stimulated genes become again strongly expressed."
+        explanation: >-
+          Chronic HCV infection is characterised by sustained induction of
+          interferon-stimulated genes through JAK-STAT signalling downstream
+          of IFNAR1/2. Genes encoding IFNAR1, IFNAR2, JAK1, TYK2, STAT1,
+          STAT2, IRF9, and multiple ISGs present in the WikiPathways gene set
+          are annotated to GO:0060337 (type I interferon-mediated signaling
+          pathway) in GOA-human. This term is a mechanistically central core
+          process of the antiviral arm of WP3646, representing both the host
+          response and the viral strategy of ISG blockade.
+  - term:
+      id: GO:0042127
+      label: regulation of cell population proliferation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The HCC component of WikiPathways WP3646 includes strong regulators of
+      hepatocyte proliferation: CTNNB1 (beta-catenin) drives transcription of
+      cyclin D1 and c-Myc downstream of Wnt; KRAS, MAP2K1, and MAPK1/3
+      (ERK1/2) relay mitogenic signals via the RAS-MAPK cascade; and
+      PIK3CA/AKT contribute to survival and growth factor signalling.
+      Dysregulated hepatocyte proliferation is a defining feature of HCC.
+      The term is mechanistically important but broadly expressed across many
+      cancer pathway gene sets, hence supporting rather than core for this
+      dual-context set.
+  - term:
+      id: GO:0006915
+      label: apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      TP53, BCL2, BAX, CASP3, CASP9, and CYCS in the WikiPathways HCV/HCC
+      gene set encode canonical intrinsic apoptosis components. Suppression of
+      hepatocyte apoptosis by HCV proteins promotes persistence of infected
+      and pre-malignant cells and is a key step in HCC pathogenesis. Apoptotic
+      process is a broadly shared term across many cancer and infection pathway
+      gene sets and is not specific to HCV or HCC, hence classified as a
+      supporting process.
+  - term:
+      id: GO:0016055
+      label: Wnt signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Beta-catenin/CTNNB1 is activated in a majority of HCV-associated HCCs.
+      CTNNB1, APC, AXIN1/2, FZD family members, and LRP5/6 in the WikiPathways
+      gene set are annotated to the Wnt signalling pathway in GOA-human.
+      Wnt pathway activation drives oncogenic transcription in the HCC
+      component of this dual infection-plus-cancer gene set. The Wnt signalling
+      pathway is implicated broadly across multiple cancer types and is not
+      HCC-specific, hence classified as a supporting rather than core process.
+  - term:
+      id: GO:0000165
+      label: MAPK cascade
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      KRAS, RAF1, MAP2K1, MAPK1, and MAPK3 (ERK1/2) in the WikiPathways
+      HCV/HCC gene set constitute the RAS-RAF-MEK-ERK cascade, which
+      propagates mitogenic signals from growth factor receptors and is
+      hyperactivated in HCV-related HCC. The MAPK cascade is a broadly
+      represented axis across many cancer pathway gene sets and is not
+      specific to HCV/HCC, making it a supporting rather than core process.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance as an
+      enrichment hit in this gene set reflects translational regulatory genes
+      and the fact that HCV employs an IRES-mediated, cap-independent
+      mechanism for polyprotein translation, causing representation of
+      ribosomal or eIF factors in some pathway representations. Translation
+      does not reflect a biologically informative or specific function of the
+      HCV/HCC gene set.

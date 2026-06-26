@@ -1,0 +1,173 @@
+gene_set_id: MSIGDB:WP_AMYOTROPHIC_LATERAL_SCLEROSIS_ALS
+gene_set_name: WP_AMYOTROPHIC_LATERAL_SCLEROSIS_ALS
+collection: C2:CP:WIKIPATHWAYS
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 38
+description: >-
+  WikiPathways amyotrophic lateral sclerosis (ALS) pathway gene set (MSigDB C2
+  curated gene set, collection C2:CP:WIKIPATHWAYS). This is a disease pathway
+  gene set, not a cell-type signature. ALS is a fatal progressive neurodegenerative
+  disease characterised by selective degeneration of upper and lower motor neurons,
+  leading to paralysis and respiratory failure. At 38 member genes this set is
+  more compact than the legacy KEGG ALS pathway; it captures the core mechanistic
+  arms of ALS pathobiology as represented in WikiPathways: SOD1-mediated oxidative
+  stress, glutamate excitotoxicity through ionotropic receptors (AMPA/NMDA),
+  mitochondrial dysfunction, and downstream apoptotic execution of motor neurons.
+  It is a distinct gene set from KEGG_AMYOTROPHIC_LATERAL_SCLEROSIS_ALS (different
+  source, different membership) and is curated independently.
+contexts:
+  - term:
+      id: MONDO:0004976
+      label: amyotrophic lateral sclerosis
+    context_type: disease
+  - term:
+      id: UBERON:0002240
+      label: spinal cord
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0097049
+      label: motor neuron apoptotic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      Progressive apoptotic death of upper and lower motor neurons is the
+      defining downstream outcome of ALS pathology. GO:0097049 (motor neuron
+      apoptotic process), a direct child of GO:0051402 (neuron apoptotic
+      process), is the most precise GO term for this cell-type-specific event.
+      Apoptosis-executing genes in the WikiPathways ALS set (e.g. CASP3,
+      CASP9, CYCS, and BCL2-family members) carry GO:0006915 (apoptotic
+      process) annotations in GOA-human rather than the motor-neuron-specific
+      child term GO:0097049. The annotation gap reflects GO/GOA's incomplete
+      curation of cell-type specificity for apoptosis regulators — the relevant
+      genes ARE in the set, but their annotations do not propagate to this
+      child term. This is a GO annotation curation target; the biological
+      association is unambiguous given the ALS disease context.
+  - term:
+      id: GO:0006979
+      label: response to oxidative stress
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:19715760
+        reference_title: "Mitochondrial dysfunction in amyotrophic lateral sclerosis."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "Many mechanisms have been postulated to be involved in the pathology of ALS, such as oxidative stress, glutamate excitotoxicity, mitochondrial damage, defective axonal transport, glia cell pathology and aberrant RNA metabolism."
+        explanation: >-
+          Oxidative stress, driven primarily by loss-of-function and toxic-gain-
+          of-function mutations in SOD1, is one of the best-established mechanistic
+          pillars of ALS. SOD1 (the causal gene in approximately 20% of familial
+          ALS cases) is annotated to GO:0006979 in GOA-human. This ALS review
+          directly lists oxidative stress as one of the primary pathological
+          mechanisms responsible for motor neuron degeneration, based on evidence
+          from mutant SOD1 transgenic models and human post-mortem material.
+    curator_note: >-
+      GO:0006979 (response to oxidative stress) is preferred over the narrower
+      GO:0019430 (removal of superoxide radicals) because the WikiPathways ALS
+      gene set is broader than SOD1 alone and likely includes additional
+      oxidative-stress-responsive genes beyond the SOD1 enzymatic reaction.
+      The broader term is more representative of the full set's membership
+      while remaining a core and well-supported mechanistic feature of ALS.
+      Specificity is lineage_shared rather than cell_type_specific because
+      the oxidative stress response operates across many cell types even though
+      its ALS-relevant impact is focused in motor neurons.
+  - term:
+      id: GO:0007215
+      label: glutamate receptor signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Glutamate excitotoxicity via overactivation of ionotropic AMPA and NMDA
+      receptors is a central mechanism of motor neuron death in ALS. Loss of
+      the calcium-impermeable GluA2 subunit (GRIA2) renders AMPA receptors
+      calcium-permeable, causing pathological calcium influx, mitochondrial
+      depolarisation, and activation of the intrinsic apoptosis cascade in
+      motor neurons. Glutamate receptor subunit genes in the WikiPathways ALS
+      set carry GO:0007215 annotations in GOA-human. The term is lineage_shared
+      because glutamate receptor signalling is not exclusive to motor neurons,
+      but excitotoxicity through this pathway is the disease-relevant mechanism
+      in the ALS context. Riluzole, the first approved ALS therapy, acts in part
+      by modulating glutamatergic transmission.
+  - term:
+      id: GO:0005739
+      label: mitochondrion
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:19715760
+        reference_title: "Mitochondrial dysfunction in amyotrophic lateral sclerosis."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "Mitochondria, which play crucial roles in excitotoxicity, apoptosis and cell survival, have shown to be an early target in ALS pathogenesis and contribute to the disease progression."
+        explanation: >-
+          Mitochondrial dysfunction is a well-established early event in ALS
+          pathogenesis. Mutant SOD1 preferentially associates with mitochondria,
+          impairing electron-transport-chain function and promoting reactive
+          oxygen species overproduction. This leads to bioenergetic failure and
+          release of cytochrome c (CYCS) initiating the intrinsic (caspase-9 /
+          caspase-3) apoptosis cascade in motor neurons. The WikiPathways ALS set
+          includes mitochondrially-localised proteins (e.g. CYCS), making the
+          mitochondrion a primary cellular compartment represented in the gene set.
+    curator_note: >-
+      Mitochondrial dysfunction is both a convergence point for multiple ALS
+      mechanisms (oxidative stress, excitotoxicity, apoptosis) and a primary
+      cellular compartment represented by set members. Specificity is
+      lineage_shared rather than cell_type_specific because mitochondria are
+      ubiquitous organelles, even though the ALS-relevant dysfunction is most
+      critical in motor neurons.
+  - term:
+      id: GO:0006915
+      label: apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      CASP3, CASP9, CYCS, BAX, and BCL2-family members in the WikiPathways ALS
+      set are canonical intrinsic apoptosis components annotated to GO:0006915
+      (apoptotic process) in GOA-human. Apoptosis is a broadly expressed process
+      shared across many disease contexts and is not ALS-specific; the
+      disease-specific cell-type outcome is captured by the more precise
+      GO:0097049 (motor neuron apoptotic process), recorded above as a
+      curator-added core process. GO:0006915 is included as supporting_process
+      because the enrichment signal from these apoptosis genes is expected and
+      the annotation is directly supported in GOA-human.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation may appear as a non-specific enrichment signal if any
+      ribosomal or general translation-machinery genes are included in the
+      set. It is a ubiquitous housekeeping process and does not reflect a
+      disease-specific function of the WikiPathways ALS pathway. Recorded
+      as nonspecific to inform downstream enrichment evaluation and ensure
+      the eval framework does not score it as a missed true positive.

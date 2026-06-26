@@ -1,0 +1,172 @@
+gene_set_id: MSIGDB:WP_ALZHEIMERS_DISEASE
+gene_set_name: WP_ALZHEIMERS_DISEASE
+collection: C2:CP:WIKIPATHWAYS
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 261
+description: >-
+  WikiPathways Alzheimer's disease pathway gene set (MSigDB C2 curated gene set;
+  WikiPathways WP5124). This is a disease pathway gene set, not a cell-type
+  signature. Spanning 261 genes, it is substantially broader than the KEGG
+  legacy Alzheimer's disease set and represents all major mechanistic arms of
+  AD pathophysiology: amyloid precursor protein processing (APP, BACE1, PSEN1,
+  PSEN2, ADAM10), tau hyperphosphorylation and neurofibrillary tangle formation
+  (MAPT, CDK5, GSK3B), neuroinflammation (IL1B, TNF, TREM2), synaptic
+  dysfunction (GRIN1, GRIN2A, GRIN2B, CHRNA7), apoptosis (CASP3, CASP9, BAX),
+  mitochondrial and oxidative stress, and calcium signaling.
+contexts:
+  - term:
+      id: MONDO:0004975
+      label: Alzheimer disease
+    context_type: disease
+  - term:
+      id: UBERON:0000955
+      label: brain
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0042987
+      label: amyloid precursor protein catabolic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:39392435
+        reference_title: "Alzheimer's Disease: Exploring the Landscape of Cognitive Decline."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "The pathology of AD is marked by the accumulation of amyloid beta plaques and tau protein tangles in the brain, along with neuroinflammation and synaptic dysfunction. Genetic factors, such as mutations in APP, PSEN1, and PSEN2 genes, as well as the APOE ε4 allele, contribute to increased risk of acquiring AD."
+        explanation: >-
+          The WikiPathways WP5124 AD gene set includes APP, BACE1, PSEN1, PSEN2,
+          and ADAM10, the core machinery of amyloid precursor protein catabolism
+          via the amyloidogenic and non-amyloidogenic secretase pathways. This
+          ACS Chemical Neuroscience 2024 review confirms that amyloid beta plaque
+          accumulation — the product of dysregulated APP catabolism — is a
+          defining neuropathological hallmark of Alzheimer's disease.
+    curator_note: >-
+      APP, BACE1, PSEN1, PSEN2, and ADAM10 are direct participants in amyloid
+      precursor protein catabolism and are all present in the WP5124 gene set.
+      This process distinguishes AD pathway sets from generic
+      neurodegeneration sets and is biologically core to the set's identity.
+  - term:
+      id: GO:0045202
+      label: synapse
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The WikiPathways WP5124 set includes a rich complement of synaptic
+      proteins absent from the narrower KEGG set: ionotropic glutamate receptor
+      subunits (GRIN1, GRIN2A, GRIN2B), AMPA receptor subunits (GRIA1, GRIA2),
+      nicotinic acetylcholine receptor subunits (CHRNA7), and postsynaptic
+      density components. Synaptic dysfunction is a cardinal early feature of
+      AD, and the synapse is the dominant cellular compartment represented by
+      this broader WikiPathways gene set.
+  - term:
+      id: GO:0007268
+      label: chemical synaptic transmission
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The WP5124 set is markedly enriched for glutamatergic and cholinergic
+      synaptic transmission components (GRIN1, GRIN2A, GRIN2B, GRIA1, GRIA2,
+      CHRNA7, ACHE). Impaired chemical synaptic transmission — particularly
+      glutamatergic excitotoxicity and cholinergic deficits — is a defining
+      pathophysiological mechanism in AD and a primary drug target. This term
+      reflects a core feature of WP5124 that is absent from the KEGG AD set.
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Neuroinflammation is a major arm of the WP5124 AD pathway, represented by
+      cytokines (IL1B, TNF, IL6), complement components, microglial genes (TREM2,
+      AIF1), and NF-kB pathway members. The inflammatory response term is broadly
+      expressed across disease contexts but is an established mechanistic
+      contributor to AD neurodegeneration. Included as supporting_process because
+      it enables neuronal death rather than being the primary disease-defining
+      process.
+  - term:
+      id: GO:0006915
+      label: apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      CASP3, CASP9, BAD, and BCL2-family members in the WP5124 AD pathway
+      encode canonical intrinsic apoptosis components. Apoptosis is shared
+      across many disease contexts and is not AD-specific, but is a significant
+      mechanistic component of neuronal loss in this pathway representation.
+  - term:
+      id: GO:0006119
+      label: oxidative phosphorylation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Mitochondrial dysfunction and impaired oxidative phosphorylation are
+      represented in WP5124 through ETC subunits and related genes. This arm
+      is less dominant in the WikiPathways set than in the KEGG AD set (which
+      is strongly biased toward OXPHOS subunits), but remains a genuine
+      mechanistic component of AD energetics and is classified as
+      supporting_process accordingly.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation appears as a non-specific enrichment hit driven by ribosomal
+      protein subunit genes present in the gene set. It is a ubiquitous
+      housekeeping process and does not reflect a disease-specific function of
+      the Alzheimer's disease pathway.
+  - term:
+      id: GO:1902988
+      label: neurofibrillary tangle assembly
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      Tau hyperphosphorylation leading to neurofibrillary tangle (NFT) formation
+      is the second molecular hallmark of Alzheimer's disease and is a major
+      mechanistic arm of WP5124, which includes MAPT (tau), CDK5, and GSK3B
+      (the two primary tau kinases). Despite this, standard enrichment is
+      unlikely to recover GO:1902988 because MAPT and the tau kinases carry
+      sparse annotations to this specific assembly term in GOA-human. The
+      annotation gap is GO's incompleteness, not evidence against the
+      association: neurofibrillary tangle assembly is core AD biology and is
+      biologically expected from these gene set members. This is a GO annotation
+      curation target. Curator-added because enrichment will recover more general
+      parent terms (e.g. inclusion body assembly) rather than this
+      AD-specific child.
