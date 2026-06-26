@@ -1,0 +1,207 @@
+gene_set_id: MSIGDB:WP_HEAD_AND_NECK_SQUAMOUS_CELL_CARCINOMA
+gene_set_name: WP_HEAD_AND_NECK_SQUAMOUS_CELL_CARCINOMA
+collection: C2:CP:WIKIPATHWAYS
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 74
+description: >-
+  WikiPathways head and neck squamous cell carcinoma pathway gene set (MSigDB
+  C2:CP:WIKIPATHWAYS, 74 genes). This is a cancer disease pathway gene set
+  representing the principal mechanistic arms of HNSCC oncogenesis: EGFR/RTK
+  overexpression and activation (EGFR is overexpressed in ~90% of HNSCC cases)
+  driving downstream RAS/RAF/MEK/ERK (MAPK cascade) and PI3K/AKT/mTOR cascades
+  that promote tumour cell proliferation and survival. Cell-cycle deregulation
+  through loss or inactivation of TP53 and CDKN2A (p16/INK4A) together with
+  cyclin D1 (CCND1) amplification and CDK4/6 activity allows G1/S checkpoint
+  bypass. Apoptosis evasion via BCL2-family members and AKT-mediated survival
+  signalling enables tumour progression, invasion, and metastasis. The gene set
+  spans both HPV-negative (tobacco/alcohol-associated, high TP53/CDKN2A
+  mutation load) and HPV-positive (oropharyngeal, PI3K-pathway enriched) HNSCC
+  subtypes.
+contexts:
+  - term:
+      id: MONDO:0010150
+      label: head and neck squamous cell carcinoma
+    context_type: disease
+associations:
+  - term:
+      id: GO:0007173
+      label: epidermal growth factor receptor signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:37686523
+        reference_title: >-
+          Advantages of the Combinatorial Molecular Targeted Therapy of Head and
+          Neck Cancer-A Step before Anakoinosis-Based Personalized Treatment.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: >-
+          the well-known overexpression of epidermal growth factor receptors
+          (EGFR) and related downstream signaling pathways, contribute to the
+          development of HNSCC
+        explanation: >-
+          EGFR overexpression is the single most prevalent molecular alteration
+          in HNSCC, affecting the vast majority of tumours. The WikiPathways
+          HNSCC gene set places EGFR and its downstream effectors at the core of
+          the pathway network. This Kleszcz 2023 review of combinatorial
+          targeted therapy in head and neck cancer directly identifies EGFR
+          overexpression and related downstream signalling as the central
+          molecular event contributing to HNSCC, supporting epidermal growth
+          factor receptor signaling pathway as the defining core process of this
+          gene set.
+    curator_note: >-
+      EGFR (ErbB1) is overexpressed and/or amplified in the vast majority of
+      HNSCC cases and is the primary oncogenic driver whose activation feeds the
+      downstream MAPK and PI3K cascades. Genes encoding EGFR itself, EGF ligands,
+      and immediate downstream adaptors (GRB2, SOS1, KRAS) are canonical members
+      of this WikiPathways gene set.
+  - term:
+      id: GO:0042127
+      label: regulation of cell population proliferation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      EGFR-driven RAS/MAPK and PI3K/AKT signalling together with CCND1
+      amplification and CDK4/6 overactivity collectively promote uncontrolled
+      squamous epithelial cell proliferation in HNSCC. Downstream transcription
+      factors activated by these cascades (e.g. MYC, AP-1) further reinforce
+      proliferative gene expression programmes. Uncontrolled cell proliferation
+      is a hallmark outcome of the signalling network encoded in this gene set,
+      making it a central core process despite its broad expression across cancer
+      types.
+  - term:
+      id: GO:0000165
+      label: MAPK cascade
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      MAPK cascade is categorised as supporting_process rather than core_process
+      because it is mechanistically downstream of EGFR signalling (the core
+      driver) and is a broadly shared proliferative signalling mechanism across
+      many cancer types. RAS mutations are infrequent in HNSCC (unlike
+      colorectal cancer), so MAPK activation is predominantly receptor-driven
+      rather than RAS-mutant in this disease context.
+  - term:
+      id: GO:0043491
+      label: phosphatidylinositol 3-kinase/protein kinase B signal transduction
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:34164549
+        reference_title: >-
+          Molecular landscape of head and neck cancer and implications for
+          therapy.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: >-
+          the PI3K pathway which includes the most common genetic alteration in
+          HPV-positive HNSCC
+        explanation: >-
+          PIK3CA (encoding PI3K p110α) is the most frequently mutated gene in
+          HPV-positive HNSCC and is amplified in HPV-negative subtypes. AKT1 and
+          downstream mTOR effectors are also members of this WikiPathways gene
+          set. This Farah 2021 molecular landscape review directly identifies the
+          PI3K pathway as having the most common genetic alteration in HPV-positive
+          HNSCC, supporting phosphatidylinositol 3-kinase/protein kinase B signal
+          transduction as a mechanistically important supporting process.
+    curator_note: >-
+      The PI3K/AKT pathway is the second major effector arm downstream of EGFR
+      in HNSCC and is independently activated by PIK3CA gain-of-function
+      mutations and PTEN loss. AKT promotes cell survival and apoptosis evasion,
+      and activates mTORC1 to support anabolic growth and translation.
+      PIK3CA mutations are the most common somatic alterations in HPV-positive
+      oropharyngeal HNSCC, making this pathway central to both major HNSCC
+      subtypes.
+  - term:
+      id: GO:0007049
+      label: cell cycle
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:34164549
+        reference_title: >-
+          Molecular landscape of head and neck cancer and implications for
+          therapy.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: >-
+          the p53 and RB pathways which are involved in cell cycle control and
+          are frequently lost in HPV-negative tumours
+        explanation: >-
+          CDKN2A (p16/INK4A), TP53, RB1, and CCND1 are among the most
+          frequently altered genes in HPV-negative HNSCC and are canonical
+          members of this WikiPathways gene set. Loss of CDKN2A removes the
+          CDK4/6 brake on cyclin D1-dependent phosphorylation and inactivation
+          of RB1, thereby lifting the G1/S checkpoint. This Farah 2021 molecular
+          landscape review directly identifies the p53 and RB pathways as
+          involved in cell cycle control in HNSCC and frequently lost in
+          HPV-negative tumours, supporting cell cycle as a mechanistically
+          significant process in this gene set.
+    curator_note: >-
+      Cell-cycle deregulation is a defining molecular feature of HPV-negative
+      HNSCC: CDKN2A is deleted or silenced in the majority of cases, TP53 is
+      mutated in ~85% of HPV-negative tumours, and CCND1 is amplified at 11q13
+      in ~30% of cases. The resulting loss of G1 checkpoint integrity enables
+      unconstrained S-phase entry. Cell cycle is classified as supporting_process
+      because it is a broadly expressed process shared across virtually all cancer
+      gene sets; it is not unique to HNSCC biology.
+  - term:
+      id: GO:0006915
+      label: apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      BCL2-family anti-apoptotic members, CASP3, CASP9, CYCS, and TP53-dependent
+      apoptosis effectors are encoded in this WikiPathways gene set. AKT
+      phosphorylates and inactivates pro-apoptotic BAD, and MDM2 (activated
+      downstream of AKT) targets TP53 for degradation, collectively enabling
+      apoptosis evasion in HNSCC tumour cells. Apoptotic process is a broadly
+      expressed pathway shared across many disease contexts and is not specific
+      to HNSCC; it is therefore classified as supporting_process rather than
+      core_process.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment results for this WikiPathways HNSCC gene set reflects ribosomal
+      protein subunit genes and eIF4E/eIF4G translation initiation factors
+      present in the pathway representation (downstream of mTORC1 activation).
+      While mTORC1-driven translational upregulation is a genuine downstream
+      consequence of PI3K/AKT signalling in HNSCC, the GO term translation
+      itself is too general to be informative as a disease-specific association
+      and is classified as nonspecific.

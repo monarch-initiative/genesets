@@ -1,0 +1,161 @@
+gene_set_id: MSIGDB:WP_GASTRIC_CANCER_NETWORK_2
+gene_set_name: WP_GASTRIC_CANCER_NETWORK_2
+collection: C2:CP:WIKIPATHWAYS
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 32
+description: >-
+  WikiPathways gastric cancer network 2 gene set (MSigDB C2:CP:WIKIPATHWAYS,
+  32 genes). This cancer disease pathway gene set captures the receptor tyrosine
+  kinase / RAS-MAPK and PI3K/AKT signalling axes that drive gastric (stomach)
+  carcinoma proliferation and survival, together with cell-cycle deregulation and
+  apoptosis dysregulation. In contrast to the first gastric cancer network
+  (WP_GASTRIC_CANCER_NETWORK_1), this set emphasises RTK-initiated oncogenic
+  cascades: EGFR, HER2/ERBB2, FGFR2, and MET are among the receptor tyrosine
+  kinases frequently amplified or mutated in gastric cancer that initiate
+  downstream RAS-RAF-MEK-ERK (MAPK cascade) and PI3K-AKT survival signalling.
+  Oncogenic KRAS mutations and HER2 amplification are the best-characterised
+  drivers in this gene set. Downstream cell-cycle entry is mediated by
+  cyclin D1 (CCND1) in complex with CDK4/CDK6 driving G1/S transition, while
+  apoptosis evasion involves BCL2-family members and TP53 inactivation. The set
+  thus represents the mitogenic signalling hierarchy from cell-surface RTK
+  through MAPK and PI3K second-messenger cascades to proliferative and
+  anti-apoptotic transcriptional outputs.
+contexts:
+  - term:
+      id: MONDO:0004950
+      label: gastric carcinoma
+    context_type: disease
+  - term:
+      id: UBERON:0000945
+      label: stomach
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0000165
+      label: MAPK cascade
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:41845875
+        reference_title: "Transcriptional Reinforcement of the HER2-RAS Network in HER2-Positive Gastric Cancer: The RUNX-SOS1 Axis in Context."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Established resistance mechanisms include bypass signaling through alternative receptor tyrosine kinases, reactivation of downstream pathways such as PI3K-AKT and MAPK, and dynamic changes in HER2 expression during treatment."
+        explanation: >-
+          This review (Masuda et al. 2026, Cancer Sci) examines transcriptional
+          reinforcement of the HER2-RAS network in HER2-positive gastric cancer
+          and explicitly identifies RAS/MAPK as a central downstream pathway
+          reactivated under therapeutic pressure, confirming its mechanistic
+          centrality in gastric carcinoma. The WikiPathways gastric cancer
+          network 2 gene set contains the canonical RAS-MAPK signalling cascade
+          members (KRAS, BRAF, RAF1, MAP2K1/2, MAPK1/3) that are annotated to
+          GO:0000165 (MAPK cascade) in GOA-human. The cascade is the primary
+          signalling route from RTK activation to proliferative transcriptional
+          outputs in gastric tumours, making it the single most important core
+          process represented in this gene set.
+  - term:
+      id: GO:0042127
+      label: regulation of cell population proliferation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Deregulated proliferation is a hallmark of gastric carcinoma. RTKs
+      (EGFR, HER2/ERBB2, FGFR2, MET) amplified or mutated in gastric cancer
+      activate RAS-MAPK and PI3K-AKT to drive mitogenic transcriptional
+      programmes, including upregulation of CCND1 (cyclin D1) and MYC.
+      CCND1, CDK4, CDK6, and downstream E2F targets in this gene set are
+      directly annotated to regulation of cell population proliferation in
+      GOA-human. Together with RTK-initiated signalling, aberrant proliferation
+      control is a defining mechanistic feature of the WP gastric cancer
+      network 2, differentiated from WP_GASTRIC_CANCER_NETWORK_1 by its focus
+      on RTK-driven rather than Wnt/WNT-driven proliferative programmes.
+  - term:
+      id: GO:0043491
+      label: phosphatidylinositol 3-kinase/protein kinase B signal transduction
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:37310490
+        reference_title: "Comprehensive insight into altered host cell-signaling cascades upon Helicobacter pylori and Epstein-Barr virus infections in cancer."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Several signaling pathways such RTK, RAS/MAPK, PI3K/Akt, NFκB, JAK/STAT, HIF1α, and Wnt/β-catenin are known to be altered in cancer."
+        explanation: >-
+          This review (Kashyap et al. 2023, Arch Microbiol) addresses signalling
+          cascades altered in H. pylori- and EBV-associated cancers with gastric
+          cancer as a primary biological context (MeSH: Stomach Neoplasms).
+          PI3K/Akt is explicitly listed alongside RTK and RAS/MAPK as a key
+          altered pathway. PIK3CA, PIK3CB, AKT1, and PTEN in the WikiPathways
+          gastric cancer network 2 are annotated to GO:0043491 in GOA-human.
+          PI3K-AKT promotes tumour cell survival downstream of RTK activation
+          and is a validated therapeutic target in HER2-amplified gastric cancer,
+          though the pathway is broadly shared across cancer types.
+  - term:
+      id: GO:2000045
+      label: regulation of G1/S transition of mitotic cell cycle
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      RTK-initiated MAPK and PI3K-AKT signalling converges on cell-cycle entry
+      by inducing cyclin D1 (CCND1) and suppressing CDK inhibitors p21/CDKN1A
+      and p27/CDKN1B. CCND1-CDK4/6 complexes phosphorylate and inactivate RB1,
+      releasing E2F transcription factors to drive S-phase gene expression.
+      CCND1, CDK4, CDK6, and RB1 in the gastric cancer network 2 gene set
+      are annotated to the regulation of G1/S transition in GOA-human. Aberrant
+      G1/S transition downstream of RTK signalling is a key mechanistic step in
+      gastric tumour cell proliferation but is not gastric-cancer-specific,
+      hence classified as a supporting rather than core process.
+  - term:
+      id: GO:0006915
+      label: apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Evasion of apoptosis is a key step in gastric cancer progression and is
+      promoted by PI3K-AKT signalling (phosphorylation and inactivation of
+      pro-apoptotic BAD) and by inactivation of TP53. BCL2 family members,
+      CASP3, and TP53 in the WikiPathways gastric cancer network 2 gene set
+      are annotated to GO:0006915 (apoptotic process) in GOA-human. The term
+      is a broadly shared process across many cancer pathway gene sets and is
+      not specific to gastric carcinoma, but represents a genuine mechanistic
+      component of this RTK-centric network.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance as a
+      non-specific enrichment signal for this gene set is driven by ribosomal
+      protein subunit genes that co-occur in WikiPathways cancer pathway
+      representations. It does not reflect a gastric cancer-specific function
+      of the RTK/MAPK/PI3K signalling network and is a non-informative
+      enrichment artefact.

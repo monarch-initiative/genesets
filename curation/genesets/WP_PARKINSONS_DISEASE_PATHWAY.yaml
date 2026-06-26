@@ -1,0 +1,237 @@
+gene_set_id: MSIGDB:WP_PARKINSONS_DISEASE_PATHWAY
+gene_set_name: WP_PARKINSONS_DISEASE_PATHWAY
+collection: C2:CP:WIKIPATHWAYS
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 71
+description: >-
+  WikiPathways Parkinson's disease pathway gene set (MSigDB C2 curated gene set,
+  collection C2:CP:WIKIPATHWAYS). This is a disease pathway gene set, not a
+  cell-type signature. At 71 member genes, this set is substantially smaller
+  than the KEGG legacy Parkinson's disease pathway and represents the mechanistic
+  architecture of PD centred on its established causal genetic determinants:
+  alpha-synuclein (SNCA) misfolding and Lewy body formation, the PINK1/Parkin
+  axis mediating mitophagy of damaged mitochondria, ubiquitin-proteasome system
+  (UPS) dysfunction (PRKN/parkin E3 ligase, UCHL1, proteasome subunits),
+  dopaminergic neuron biology (TH, DDC, MAOB, SLC6A3), mitochondrial complex I
+  dysfunction, and apoptotic dopaminergic neuron death. Unlike the KEGG PD
+  legacy pathway — which is dominated by electron-transport-chain subunits —
+  the WikiPathways PD set emphasises established PD causal gene products (SNCA,
+  PRKN, PINK1, PARK7/DJ-1, LRRK2) and their molecular interactions. The
+  PINK1/Parkin mitophagy pathway and alpha-synuclein aggregation biology are
+  distinctive features relative to the KEGG version and are curated
+  independently.
+contexts:
+  - term:
+      id: MONDO:0005180
+      label: Parkinson disease
+    context_type: disease
+  - term:
+      id: UBERON:0000955
+      label: brain
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0006511
+      label: ubiquitin-dependent protein catabolic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:24252804
+        reference_title: "The role of oxidative stress in Parkinson's disease."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "cellular homeostatic processes including the ubiquitin-proteasome system and mitophagy are impacted by oxidative stress"
+        explanation: >-
+          The WikiPathways PD gene set centres on parkin (PRKN), an E3 ubiquitin
+          ligase encoded by the most commonly mutated gene in familial PD, together
+          with UCHL1 (ubiquitin C-terminal hydrolase) and multiple proteasome
+          subunit genes. This 2013 Journal of Parkinson's Disease review positions
+          ubiquitin-proteasome system dysfunction alongside mitophagy as a primary
+          cellular homeostatic process disrupted in PD, directly supporting the
+          association. The UPS emphasis is more prominent in this WikiPathways set
+          than in the KEGG PD pathway, which is biased toward OXPHOS subunits
+          rather than UPS machinery.
+    curator_note: >-
+      PRKN (parkin) is an E3 ubiquitin ligase and the most commonly mutated gene
+      in early-onset familial PD; UCHL1 is a ubiquitin C-terminal hydrolase
+      essential for maintaining the free ubiquitin pool. Together with proteasome
+      subunit genes in the WikiPathways set, these members make ubiquitin-dependent
+      protein catabolism a defining mechanistic feature. This is a more prominent
+      core arm here than in the KEGG PD pathway, where OXPHOS subunits dominate
+      the membership.
+  - term:
+      id: GO:0000422
+      label: autophagy of mitochondrion
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    evidence:
+      - reference: PMID:36831318
+        reference_title: "Role of Deubiquitinases in Parkinson's Disease-Therapeutic Perspectives."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Mitophagy is a process that maintains cellular health by eliminating dysfunctional mitochondria, and it is triggered by ubiquitination of mitochondrial-associated proteins-e.g., through the PINK1/Parkin pathway-which results in engulfment by the autophagosome and degradation in lysosomes."
+        explanation: >-
+          PINK1 and PRKN/Parkin together constitute the canonical mitophagy pathway
+          in PD: PINK1 accumulates on depolarised mitochondria, phosphorylates
+          ubiquitin and Parkin, which then ubiquitinates outer mitochondrial membrane
+          proteins to trigger autophagic clearance. Both PINK1 and PRKN are members
+          of this WikiPathways gene set and are annotated to GO:0000422 in GOA-human.
+          This 2023 Cells review directly describes the PINK1/Parkin mitophagy
+          mechanism and its relevance to PD pathophysiology.
+    curator_note: >-
+      Mitophagy mediated by the PINK1/Parkin pathway is a defining mechanistic arm
+      of the WikiPathways PD pathway and a KEY DIFFERENTIATOR from the KEGG PD
+      pathway, which predates the detailed characterisation of this axis. PINK1 and
+      PRKN carry GO:0000422 annotations in GOA-human, but other set members involved
+      in the broader mitophagy cascade (SNCA, UCHL1, LRRK2) do not, creating an
+      annotation gap: the process is biologically core yet standard enrichment may not
+      recover GO:0000422 at significance from these 71 genes. This is a GO annotation
+      curation target.
+  - term:
+      id: GO:0005739
+      label: mitochondrion
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:24252804
+        reference_title: "The role of oxidative stress in Parkinson's disease."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "PD causing gene products including DJ-1, PINK1, parkin, alpha-synuclein and LRRK2 also impact in complex ways mitochondrial function leading to exacerbation of ROS generation and susceptibility to oxidative stress"
+        explanation: >-
+          Multiple causal PD gene products in this gene set — PINK1 (a mitochondrial
+          kinase), PRKN/Parkin (recruited to depolarised mitochondria), and PARK7/DJ-1
+          (a redox-sensitive mitochondrial chaperone) — are mitochondrially localised
+          or functionally coupled to the mitochondrion. This review confirms that all
+          five major PD causal gene products converge on mitochondrial dysfunction as
+          a central pathomechanism. Complex I subunit genes in the pathway add further
+          mitochondrial annotation weight.
+    curator_note: >-
+      The mitochondrion is the dominant cellular compartment represented in the
+      WikiPathways PD gene set, primarily through causal PD gene products (PINK1,
+      PRKN, DJ-1) and complex I subunits. In contrast to the KEGG PD set — which is
+      almost entirely composed of OXPHOS subunits — the WP set's mitochondrial
+      relevance derives predominantly from the PINK1/Parkin mitophagy axis and
+      DJ-1-mediated redox sensing, giving this compartment a distinct mechanistic
+      flavour even though the GO term itself is the same.
+  - term:
+      id: GO:0042416
+      label: dopamine biosynthetic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Loss of dopaminergic neurons in the substantia nigra pars compacta is the
+      cardinal neuropathological hallmark of Parkinson's disease, resulting in
+      striatal dopamine deficiency and the classic motor phenotype. Genes encoding
+      dopamine synthesis and catabolism — TH (tyrosine hydroxylase), DDC (aromatic
+      L-amino acid decarboxylase), and MAOB (monoamine oxidase B) — are present in
+      the WikiPathways PD gene set and are annotated to GO:0042416 in GOA-human.
+      This term is cell-type-specific to catecholaminergic neurons and is a defining
+      feature of the disease pathway.
+  - term:
+      id: GO:1990000
+      label: amyloid fibril formation
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    evidence:
+      - reference: PMID:32576618
+        reference_title: "Parkinson's disease: etiopathogenesis and treatment."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "The key molecular pathogenic mechanisms include α-synuclein misfolding and aggregation, mitochondrial dysfunction, impairment of protein clearance (associated with deficient ubiquitin-proteasome and autophagy-lysosomal systems), neuroinflammation and oxidative stress."
+        explanation: >-
+          Alpha-synuclein (SNCA) forms amyloid-like fibrils that aggregate into Lewy
+          bodies, the defining neuropathological hallmark of Parkinson's disease. SNCA
+          is annotated to GO:1990000 (amyloid fibril formation) in GOA-human and is a
+          member of the WikiPathways PD gene set. This 2020 JNNP review (Jankovic &
+          Tan) lists α-synuclein misfolding and aggregation as the first of the key
+          molecular pathogenic mechanisms in PD. The annotation gap arises because most
+          other set members are not annotated to GO:1990000, so standard enrichment is
+          unlikely to recover this term despite its biological centrality to PD.
+    curator_note: >-
+      Alpha-synuclein (SNCA) aggregation into amyloid fibrils is the molecular basis
+      of Lewy body formation and is the defining neuropathological event in Parkinson's
+      disease. SNCA is both a member of this WikiPathways gene set and annotated to
+      GO:1990000 in GOA-human. This is a KEY DIFFERENTIATOR from the KEGG PD legacy
+      pathway, which does not prominently include SNCA and lacks Lewy body biology.
+      The annotation gap reflects the fact that only SNCA (and at most very few other
+      set members) carries the GO:1990000 annotation; standard enrichment is therefore
+      unlikely to recover this term at significance despite its being biologically
+      essential to PD pathology. This is a GO annotation curation target.
+  - term:
+      id: GO:0006915
+      label: apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      CASP3, CASP9, CYCS, and BCL2-family members in the WikiPathways PD pathway
+      encode canonical intrinsic apoptosis components annotated to GO:0006915 in
+      GOA-human. Apoptosis is a broadly expressed process shared across many disease
+      contexts and is not PD-specific; the disease-specific cell-type outcome is
+      captured by the more precise GO:0051402 (neuron apoptotic process), recorded
+      below as a curator-added core process. GO:0006915 is included as
+      supporting_process because the enrichment signal from these apoptosis genes is
+      expected and the annotation is directly supported in GOA-human.
+  - term:
+      id: GO:0051402
+      label: neuron apoptotic process
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      Dopaminergic neuron death by apoptosis is the central downstream outcome of
+      the WikiPathways PD pathway, making GO:0051402 (neuron apoptotic process)
+      the most biologically precise GO term for the cell-type-relevant event.
+      HTRA2/PARK13 and CDK5 are annotated to GO:0051402 in GOA-human; however,
+      CASP3, CASP9, CYCS, and BAX — the primary apoptotic executioners in the set
+      — are annotated only to the generic parent GO:0006915 (apoptotic process),
+      creating an annotation gap. The gap reflects GOA's incomplete curation of
+      cell-type specificity for apoptosis regulators, not evidence against the
+      association. This is a GO annotation curation target.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation may appear as a non-specific enrichment hit if ribosomal protein
+      subunit genes are present in the gene set. It is a ubiquitous housekeeping
+      process and does not reflect a disease-specific function of the WikiPathways
+      Parkinson's disease pathway. Recorded as nonspecific to inform downstream
+      enrichment evaluation and ensure the eval framework does not score it as a
+      missed true positive.
