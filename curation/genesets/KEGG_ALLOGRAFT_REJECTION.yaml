@@ -1,0 +1,218 @@
+gene_set_id: MSIGDB:KEGG_ALLOGRAFT_REJECTION
+gene_set_name: KEGG_ALLOGRAFT_REJECTION
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy allograft rejection pathway gene set (MSigDB C2 curated gene set).
+  This is a disease pathway gene set representing alloimmune-mediated tissue destruction
+  following solid organ or tissue transplantation. Host (recipient) T cells recognise
+  donor MHC alloantigens presented on transplanted tissue, then clonally expand and
+  differentiate into effector cells that destroy graft tissue through direct cytotoxicity
+  (perforin-granzyme and Fas-FasL pathways) and pro-inflammatory cytokine release
+  (TNF, IL-1alpha/beta, IFN-gamma, IL-2). NK cells contribute additional cytotoxic
+  killing via shared perforin-granzyme machinery. Member genes are enriched for MHC
+  class I (HLA-A, HLA-B, HLA-C, B2M) and class II (HLA-DRA, HLA-DRB1, HLA-DQA1,
+  HLA-DQB1, HLA-DPA1, HLA-DPB1) molecules, cytotoxic effectors (PRF1, GZMB, FASLG),
+  cytokine and cytokine-receptor signalling components (IL2, IL1A, IL1B, TNF, IFNG,
+  IL6, IL10), and co-stimulatory molecules (CD80, CD86, CD28). This pathway represents
+  host-versus-graft directionality — recipient immune cells attacking the donor organ —
+  and should be distinguished from graft-versus-host disease (GVHD), where the reverse
+  polarity applies: donor T cells attacking host tissue. As a legacy KEGG pathway
+  representation, the set captures the established alloimmune effector phase and omits
+  some regulatory and upstream priming events.
+contexts:
+  - term:
+      id: MONDO:1010185
+      label: transplant rejection
+    context_type: disease
+associations:
+  - term:
+      id: GO:0019882
+      label: antigen processing and presentation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:32983177
+        reference_title: "The Immunological Basis of Liver Allograft Rejection."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Rejection is caused by the recognition of non-self donor alloantigens by recipient T-cells."
+        explanation: >-
+          Antigen processing and presentation of donor alloantigens by MHC molecules
+          on transplanted tissue is the initiating event of allograft rejection.
+          HLA class I and class II genes in the KEGG ALLOGRAFT_REJECTION set
+          (HLA-A, HLA-B, HLA-C, HLA-DRA, HLA-DRB1, HLA-DQA1, HLA-DQB1) encode
+          the alloantigen-presenting complexes through which donor MHC peptide
+          complexes are recognised by host alloreactive T cells. This review
+          confirms that alloantigen recognition is the central trigger of acute
+          rejection.
+    curator_note: >-
+      MHC class I (HLA-A, HLA-B, HLA-C) and class II (HLA-DRA, HLA-DRB1,
+      HLA-DQA1, HLA-DQB1, HLA-DPA1, HLA-DPB1) molecules are core members of the
+      KEGG ALLOGRAFT_REJECTION pathway. Antigen processing and presentation of donor
+      alloantigens to host T cells is the initiating and defining event of rejection
+      pathogenesis. Critically, the directionality is opposite to GVHD: here it is
+      host recipient T cells recognising donor alloantigens displayed on the
+      transplanted organ, not donor T cells recognising host tissue.
+  - term:
+      id: GO:0001913
+      label: T cell mediated cytotoxicity
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:32983177
+        reference_title: "The Immunological Basis of Liver Allograft Rejection."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Activated T-cells have a variety of effector mechanisms including direct T-cell mediated damage to bile ducts, endothelium and hepatocytes and indirect effects through cytokine production and recruitment of tissue-destructive inflammatory cells."
+        explanation: >-
+          Cytotoxic host CD8+ T cells are the primary effectors of graft tissue
+          destruction in cellular allograft rejection. In the KEGG ALLOGRAFT_REJECTION
+          pathway, PRF1 (perforin) and GZMB (granzyme B) encode the degranulation
+          cytotoxic machinery, and FASLG encodes the Fas-ligand death receptor
+          pathway. This review confirms that direct T cell-mediated damage to
+          graft parenchymal cells is a primary mechanism of acute allograft
+          rejection.
+    curator_note: >-
+      PRF1 (perforin), GZMB (granzyme B), and FASLG (FasL) in the KEGG
+      ALLOGRAFT_REJECTION pathway encode the canonical CD8+ T cell cytotoxic
+      effector machinery. Host recipient CD8+ T cells kill donor graft cells via
+      perforin-granzyme degranulation and Fas-FasL engagement; this is the
+      principal cellular effector mechanism of acute allograft rejection and is
+      shared mechanistically with GVHD (where donor T cells use the same cytotoxic
+      machinery against host tissues).
+  - term:
+      id: GO:0042267
+      label: natural killer cell mediated cytotoxicity
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      NK cells share the perforin-granzyme cytotoxic effector machinery (PRF1,
+      GZMB) with cytotoxic T cells and are represented in the KEGG
+      ALLOGRAFT_REJECTION pathway via these shared effector genes. Recipient NK
+      cells contribute to graft injury, particularly in antibody-mediated rejection
+      via ADCC (FcγRIII-dependent killing). This is a supporting rather than core
+      process because alloreactive CD8+ T cells are the primary cellular effectors
+      in this pathway representation; NK cytotoxicity is a secondary but
+      biologically genuine arm of allograft destruction.
+  - term:
+      id: GO:0042612
+      label: MHC class I protein complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      HLA class I alpha chains (HLA-A, HLA-B, HLA-C) and beta-2 microglobulin
+      (B2M) in the KEGG ALLOGRAFT_REJECTION pathway assemble into MHC class I
+      protein complexes on all donor graft cells. These complexes present donor
+      alloantigenic peptides — including the foreign HLA itself in direct
+      allorecognition — to host CD8+ T cells, triggering cytotoxic killing.
+      The MHC class I complex is the principal structural entity mediating
+      alloantigen recognition in this pathway. Specificity is broadly_expressed
+      because MHC class I is expressed on virtually all nucleated cells of the
+      transplanted organ, not restricted to the immune lineage.
+  - term:
+      id: GO:0006955
+      label: immune response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The KEGG ALLOGRAFT_REJECTION pathway gene set encodes an organised adaptive
+      immune response by the host against transplanted foreign tissue. Immune response
+      is the overarching biological category but is non-specific to allograft rejection;
+      it is included as a supporting process because many gene set members (HLA
+      molecules, T cell effectors, cytokines, co-stimulatory receptors) carry direct
+      immune response annotations in GOA-human. The more mechanistically informative
+      child terms (antigen processing and presentation; T cell mediated cytotoxicity)
+      are annotated separately as core processes.
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:32983177
+        reference_title: "The Immunological Basis of Liver Allograft Rejection."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "cytokine production and recruitment of tissue-destructive inflammatory cells"
+        explanation: >-
+          Pro-inflammatory cytokines encoded by KEGG ALLOGRAFT_REJECTION pathway
+          members (TNF, IL1A, IL1B, IFNG, IL2, IL6) amplify the alloimmune
+          response and mediate graft tissue damage through paracrine inflammatory
+          signalling. This review confirms that cytokine production and
+          tissue-destructive inflammatory cell recruitment are key effector arms
+          of acute allograft rejection.
+    curator_note: >-
+      TNF, IL1A, IL1B, IFNG, IL2, IL6, and IL10 in the KEGG ALLOGRAFT_REJECTION
+      pathway encode pro-inflammatory and regulatory cytokines that amplify the
+      alloimmune response and mediate inflammatory tissue damage within the
+      transplanted organ. Inflammatory response is broadly expressed across many
+      disease contexts but is a mechanistically significant arm of rejection
+      pathology alongside direct T cell cytotoxic killing.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment results reflects ribosomal protein subunit genes present in the
+      gene set as incidental pathway members. It does not reflect any
+      disease-specific function of the KEGG allograft rejection pathway and
+      is a non-informative enrichment hit.
+  - term:
+      id: GO:0002250
+      label: adaptive immune response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      Adaptive immune response is the overarching biological context of allograft
+      rejection: host T cells — adaptive immune effectors expressing antigen-specific
+      TCRs — recognise donor alloantigens on the transplanted organ, clonally expand,
+      and mount a targeted cytotoxic and humoral response against graft tissue.
+      While the KEGG ALLOGRAFT_REJECTION pathway genes are well-annotated to
+      specific child processes (T cell mediated cytotoxicity, antigen processing
+      and presentation), direct annotations to this broad parent term are sparse
+      in GOA-human, and standard GO enrichment tools recover the more informative
+      specific children rather than this parent. Added by curator to make the
+      adaptive immune context explicit; recovery_status is annotation_gap because
+      gene set members carry direct annotations predominantly to specific effector
+      child terms rather than to adaptive immune response itself, reflecting
+      incomplete annotation propagation in GOA-human rather than absence of
+      the biology.

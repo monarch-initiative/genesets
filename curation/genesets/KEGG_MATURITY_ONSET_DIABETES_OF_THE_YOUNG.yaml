@@ -1,0 +1,189 @@
+gene_set_id: MSIGDB:KEGG_MATURITY_ONSET_DIABETES_OF_THE_YOUNG
+gene_set_name: KEGG_MATURITY_ONSET_DIABETES_OF_THE_YOUNG
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy maturity-onset diabetes of the young (MODY) pathway gene set
+  (MSigDB C2 curated gene set). MODY is a rare monogenic, autosomal-dominant
+  form of diabetes caused by heterozygous loss-of-function mutations in genes
+  encoding pancreatic beta-cell transcription factors and glucokinase. The
+  principal MODY subtypes represented in this pathway are driven by mutations
+  in HNF4A (MODY1), GCK (MODY2), HNF1A (MODY3), PDX1 (MODY4), HNF1B (MODY5),
+  NEUROD1 (MODY6), and PAX4 (MODY9). HNF4A, HNF1A, HNF1B, PDX1, NEUROD1, and
+  PAX4 are RNA polymerase II transcription factors essential for endocrine
+  pancreas development and for maintenance of mature beta-cell identity and
+  function; their loss impairs beta-cell differentiation and glucose-stimulated
+  insulin secretion. GCK encodes glucokinase, the pancreatic glucose sensor that
+  couples glycolytic flux to insulin secretion. The gene set captures two
+  principal MODY mechanisms: impaired transcriptional regulation of beta-cell
+  identity and function (TF subtypes), and defective glucose sensing that
+  reduces glucose-stimulated insulin secretion (GCK subtype).
+contexts:
+  - term:
+      id: MONDO:0018911
+      label: maturity-onset diabetes of the young
+    context_type: disease
+  - term:
+      id: UBERON:0000006
+      label: islet of Langerhans
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0006357
+      label: regulation of transcription by RNA polymerase II
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:25581748
+        reference_title: "Maturity-onset diabetes of the young (MODY): an update."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Mutations in the glucokinase (GCK) (MODY 2) and hepatocyte nuclear factor (HNF)1A/4A (MODY 3 and MODY 1) genes are the most common causes of MODY. GCK mutations cause a mild, asymptomatic, and stable fasting hyperglycemia usually requiring no specific treatment. However, mutations in the HNF1A and HNF4A cause a progressive pancreatic beta-cell dysfunction and hyperglycemia that can result in microvascular complications."
+        explanation: >-
+          HNF1A, HNF4A, HNF1B, PDX1, NEUROD1, and PAX4 — the defining causal
+          genes of five MODY subtypes — are sequence-specific RNA polymerase II
+          transcription factors. Their role in MODY is to regulate the
+          transcriptional programmes that specify and maintain pancreatic
+          beta-cell identity and glucose-stimulated insulin secretion. This
+          review confirms that HNF mutations are the most common cause of MODY
+          beyond MODY2/GCK and that they act via progressive beta-cell
+          dysfunction — the downstream consequence of impaired TF-mediated
+          transcription. Regulation of transcription by RNA polymerase II is
+          therefore the defining molecular mechanism of the TF-MODY subtypes
+          and the primary core process of this gene set.
+    curator_note: >-
+      Regulation of transcription by RNA polymerase II (GO:0006357) is the
+      unifying molecular mechanism of the MODY transcription-factor subtypes
+      (MODY1/HNF4A, MODY3/HNF1A, MODY4/PDX1, MODY5/HNF1B, MODY6/NEUROD1,
+      MODY9/PAX4). All six proteins are sequence-specific RNA Pol II
+      transcription factors whose target gene networks govern beta-cell
+      development, identity, and function. Loss-of-function mutations impair the
+      transcriptional regulation of downstream effectors including insulin (INS),
+      GCK, and beta-cell differentiation factors. Specificity is lineage_shared
+      because HNF transcription factors are co-expressed in pancreas and liver,
+      not exclusively in beta cells.
+  - term:
+      id: GO:0031018
+      label: endocrine pancreas development
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Endocrine pancreas development (GO:0031018) captures the developmental
+      programme required to form the islets of Langerhans and all endocrine
+      cell types within them. PDX1, NEUROD1, HNF1A, HNF4A, HNF1B, and PAX4
+      all participate in this process; mutations that disrupt their function
+      cause not only beta-cell dysfunction but also, in the case of HNF1B
+      (MODY5), pancreatic agenesis and broader developmental anomalies. The
+      KEGG MODY pathway gene set therefore directly represents the developmental
+      arm of MODY pathophysiology. Confidence is medium because the dominant
+      enrichment signal in the KEGG gene set comes from the mature beta-cell
+      functional TFs rather than dedicated early developmental genes.
+  - term:
+      id: GO:0030073
+      label: insulin secretion
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Impaired glucose-stimulated insulin secretion is the immediate functional
+      deficit in MODY: TF mutations reduce beta-cell mass and alter gene
+      expression programmes that sustain secretory capacity, while GCK mutations
+      raise the glucose threshold for insulin release. Insulin secretion
+      (GO:0030073) is therefore the primary physiological output disrupted in
+      MODY. It is a supporting_process rather than core_process because the
+      proximal molecular defects in most MODY subtypes are transcriptional
+      regulation (TF mutations) or glucose phosphorylation (GCK mutation), not
+      the secretory machinery itself; insulin secretion is the downstream
+      functional consequence.
+  - term:
+      id: GO:0042593
+      label: glucose homeostasis
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Impaired maintenance of blood glucose homeostasis is the defining clinical
+      phenotype of MODY, but the term itself describes a high-level integrative
+      physiological outcome rather than a specific MODY molecular mechanism.
+      Both the GCK-MODY arm (impaired glucose sensing) and the TF-MODY arm
+      (reduced beta-cell secretory capacity) converge on disrupted glucose
+      homeostasis as a downstream consequence. The term is broadly_expressed
+      because blood glucose homeostasis is co-regulated by liver, muscle,
+      adipose tissue, and pancreas. Supporting_process is appropriate because
+      glucose homeostasis describes the phenotypic result rather than the
+      primary mechanistic defect of this pathway.
+  - term:
+      id: GO:0071333
+      label: cellular response to glucose stimulus
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The beta cell's ability to sense and respond to rising blood glucose is
+      essential for glucose-stimulated insulin secretion. GCK (glucokinase)
+      is the beta-cell glucose sensor that phosphorylates glucose as the
+      rate-limiting step of glycolysis; GCK mutations (MODY2) shift the glucose
+      sensing threshold, causing fasting hyperglycaemia without primary beta-cell
+      dysfunction. Cellular response to glucose stimulus (GO:0071333) captures
+      this upstream sensing step and is cell-type-specific to beta cells and a
+      small number of other glucose-responsive cell types. It is a
+      supporting_process because glucose sensing is proximal to but distinct from
+      the transcriptional defects that define most MODY subtypes.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance as an
+      enrichment hit in this gene set reflects ribosomal protein and translation
+      factor genes present in the KEGG MODY pathway as part of generalised
+      beta-cell biology. It does not reflect a specific mechanistic feature of
+      MODY and carries no diagnostic or functional specificity for this disease
+      pathway.
+  - term:
+      id: GO:0003309
+      label: type B pancreatic cell differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      Type B pancreatic cell differentiation (GO:0003309) captures the
+      specification of insulin-secreting beta-cell identity, controlled
+      principally by PDX1, NEUROD1, PAX4, NKX2-2, and MAFA. PDX1 (MODY4) and
+      NEUROD1 (MODY6) are present in the KEGG MODY gene set and are key drivers
+      of beta-cell differentiation. This term is biologically core to MODY
+      because loss of these TFs impairs beta-cell differentiation and reduces
+      functional beta-cell mass. It is an annotation_gap: PDX1 and NEUROD1 carry
+      GO annotations to broader developmental terms in GOA-human but are not
+      consistently annotated to this specific child term, so enrichment analysis
+      is unlikely to recover GO:0003309 from this gene set. This is a GO
+      annotation curation target.
