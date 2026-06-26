@@ -1,6 +1,9 @@
 gene_set_id	collection	context_term	context_type	context_label
 MSIGDB:AIZARANI_LIVER_C9_KUPFFER_CELLS	C8	CL:0000091	cell_type	Kupffer cell
 MSIGDB:AIZARANI_LIVER_HEPATOCYTES	C8	CL:0000182	cell_type	hepatocyte
+MSIGDB:BENPORATH_PRC2_TARGETS	C2:CGP	PR:000007278	genetic_perturbation	histone-lysine N-methyltransferase EZH2
+MSIGDB:DANG_MYC_TARGETS_DN	C2:CGP	PR:P01106	genetic_perturbation	Myc proto-oncogene protein (human)
+MSIGDB:DANG_MYC_TARGETS_UP	C2:CGP	PR:P01106	genetic_perturbation	Myc proto-oncogene protein (human)
 MSIGDB:DESCARTES_FETAL_CEREBRUM_ASTROCYTES	C8	CL:0000127	cell_type	astrocyte
 MSIGDB:DESCARTES_FETAL_CEREBRUM_EXCITATORY_NEURONS	C8	CL:0000679	cell_type	glutamatergic neuron
 MSIGDB:DESCARTES_FETAL_CEREBRUM_OLIGODENDROCYTES	C8	CL:0000128	cell_type	oligodendrocyte
@@ -8,6 +11,7 @@ MSIGDB:DESCARTES_FETAL_KIDNEY_PODOCYTES	C8	CL:0000653	cell_type	podocyte
 MSIGDB:DESCARTES_FETAL_LIVER_HEPATOBLASTS	C8	CL:0005026	cell_type	hepatoblast
 MSIGDB:DESCARTES_FETAL_MUSCLE_SKELETAL_MUSCLE_CELLS	C8	CL:0000188	cell_type	cell of skeletal muscle
 MSIGDB:DESCARTES_FETAL_SKIN_KERATINOCYTES	C8	CL:0000312	cell_type	keratinocyte
+MSIGDB:FRASOR_RESPONSE_TO_ESTRADIOL_UP	C2:CGP	CHEBI:16469	chemical_perturbagen	17beta-estradiol
 MSIGDB:GSE11367_CTRL_VS_IL17_TREATED_SMOOTH_MUSCLE_CELL_UP	C7	CL:0000192	cell_type	smooth muscle cell
 MSIGDB:HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION	H	GO:0001837	phenotype	epithelial to mesenchymal transition
 MSIGDB:HALLMARK_G2M_CHECKPOINT	H	GO:0000086	experimental_condition	G2/M transition of mitotic cell cycle
@@ -45,6 +49,8 @@ MSIGDB:MURARO_PANCREAS_ACINAR_CELL	C8	CL:0002064	cell_type	pancreatic acinar cel
 MSIGDB:MURARO_PANCREAS_ALPHA_CELL	C8	CL:0000171	cell_type	pancreatic A cell
 MSIGDB:MURARO_PANCREAS_BETA_CELL	C8	CL:0000169	cell_type	type B pancreatic cell
 MSIGDB:REACTOME_COMPLEMENT_CASCADE	C2:CP:REACTOME	GO:0006956	experimental_condition	complement activation
+MSIGDB:SANA_RESPONSE_TO_IFNG_UP	C2:CGP	PR:000000017	chemical_perturbagen	interferon gamma
+MSIGDB:SCHUHMACHER_MYC_TARGETS_UP	C2:CGP	PR:P01106	genetic_perturbation	Myc proto-oncogene protein (human)
 MSIGDB:TRAVAGLINI_LUNG_ALVEOLAR_EPITHELIAL_TYPE_2_CELL	C8	CL:0002063	cell_type	pulmonary alveolar type 2 cell
 MSIGDB:TRAVAGLINI_LUNG_CAPILLARY_CELL	C8	CL:0002144	cell_type	capillary endothelial cell
 MSIGDB:TRAVAGLINI_LUNG_CILIATED_CELL	C8	CL:0000064	cell_type	ciliated cell
@@ -52,3 +58,4 @@ MSIGDB:TRAVAGLINI_LUNG_FIBROBLAST	C8	CL:0000057	cell_type	fibroblast
 MSIGDB:TRAVAGLINI_LUNG_MACROPHAGE	C8	CL:0000583	cell_type	alveolar macrophage
 MSIGDB:TUCKER_HEART_FIBROBLAST	C8	CL:0002548	cell_type	fibroblast of cardiac tissue
 MSIGDB:TUCKER_HEART_VENTRICULAR_CARDIOMYOCYTE	C8	CL:0000746	cell_type	cardiac muscle cell
+MSIGDB:WANG_RESPONSE_TO_GSK3_INHIBITOR_SB216763_UP	C2:CGP	CHEBI:76812	chemical_perturbagen	EC 2.7.11.* (protein-serine/threonine kinase) inhibitor
