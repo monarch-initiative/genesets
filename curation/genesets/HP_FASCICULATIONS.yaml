@@ -1,0 +1,181 @@
+gene_set_id: MSIGDB:HP_FASCICULATIONS
+gene_set_name: HP_FASCICULATIONS
+collection: C5:HPO
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 140
+description: >-
+  MSigDB C5:HPO phenotype gene set: human genes annotated to the Human Phenotype
+  Ontology term "Fasciculations" (HP:0002380). This is a phenotype gene set, not
+  a cell-type signature. Fasciculations are involuntary, spontaneous
+  contractions of a single motor unit (a lower motor neuron and the muscle
+  fibres it innervates), seen as a flicker under the skin, and they arise from
+  ectopic discharge driven by increased excitability of the motor axon / motor
+  neuron. The 140 members are mechanistically heterogeneous, mixing two arms of
+  motor-unit biology: (1) ion-channel / membrane-excitability genes whose
+  dysfunction directly causes peripheral nerve and muscle hyperexcitability
+  (e.g. SCN4A voltage-gated sodium channel, CLCN1 chloride channel, KCNA1
+  potassium channel, and CNTNAP2/CASPR2, whose loss disrupts juxtaparanodal Kv1
+  clustering and causes neuromyotonia), and (2) motor-neuron-disease genes in
+  which fasciculation is an early sign of lower-motor-neuron degeneration
+  (ALS / motor neuron disease). The shared biology is therefore motor-unit
+  hyperexcitability and aberrant action-potential firing, with motor neuron
+  degeneration contributing in the MND subset. Because the set is large and
+  heterogeneous, much of the membership is broadly expressed housekeeping
+  machinery, so term specificity is kept honest below.
+contexts:
+  - term:
+      id: HP:0002380
+      label: Fasciculations
+    context_type: phenotype
+associations:
+  - term:
+      id: GO:0019228
+      label: neuronal action potential
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:28490504
+        reference_title: "Fasciculation in amyotrophic lateral sclerosis: origin and pathophysiological relevance."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "fasciculations derive from ectopic activity generated in the motor system"
+        explanation: >-
+          Fasciculation is, mechanistically, an ectopic motor-unit action
+          potential: a spontaneous discharge generated within the motor system
+          rather than by voluntary command. The ion-channel genes in this set
+          (SCN4A, KCNA1, KCNQ2, CACNA-family, CLCN1) set the threshold and
+          repolarisation properties of the neuronal action potential, and their
+          dysfunction lowers the threshold for these aberrant discharges. This
+          clinical review of fasciculation origin in ALS and benign
+          fasciculation syndromes confirms that fasciculations arise from
+          ectopic, aberrant firing in the motor system, making the neuronal
+          action potential the core process underlying this phenotype gene set.
+    curator_note: >-
+      Specificity is lineage_shared rather than cell_type_specific because the
+      neuronal action potential is generated across the neuronal lineage, not
+      uniquely in motor neurons; the channel genes that carry these annotations
+      (SCN/KCN/CACNA families) act in many excitable cells. The term is
+      enrichment-recoverable and directly annotation-supported via the
+      voltage-gated channel genes in the set.
+  - term:
+      id: GO:0001518
+      label: voltage-gated sodium channel complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:32270509
+        reference_title: "Guidelines on clinical presentation and management of nondystrophic myotonias."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "The nondystrophic myotonias are rare muscle hyperexcitability disorders caused by gain-of-function mutations in the SCN4A gene or loss-of-function mutations in the CLCN1 gene."
+        explanation: >-
+          SCN4A (Nav1.4) is the pore-forming alpha subunit of the
+          skeletal-muscle voltage-gated sodium channel complex and a member of
+          this gene set. Gain-of-function SCN4A mutations produce a persistent /
+          non-inactivating sodium current that depolarises the membrane and
+          generates repetitive after-discharges, the cellular basis of the
+          muscle and motor-unit hyperexcitability that manifests as myotonia and
+          fasciculation. This clinical guideline directly attributes the
+          nondystrophic-myotonia hyperexcitability phenotypes to SCN4A (and
+          CLCN1, also in the set), supporting the voltage-gated sodium channel
+          complex as a defining cellular component of this gene set.
+    curator_note: >-
+      SCN4A is annotated to GO:0001518 (voltage-gated sodium channel complex) in
+      GOA-human; beta subunits (e.g. SCN1B/SCN4B) and neuronal SCN alpha
+      subunits in the set reinforce the enrichment. Specificity is lineage_shared
+      because voltage-gated sodium channels operate across excitable
+      (neuronal/muscle) lineages rather than in a single cell type.
+  - term:
+      id: GO:0005249
+      label: voltage-gated potassium channel activity
+    aspect: molecular_function
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Recorded as core_process per the curation convention that a defining
+      molecular activity is a biological role (the aspect remains
+      molecular_function). Voltage-gated potassium channels provide the
+      repolarising and membrane-stabilising current that terminates the action
+      potential; loss of this current is a direct cause of motor-unit
+      hyperexcitability. KCNA1 (Kv1.1) loss-of-function causes episodic ataxia
+      type 1 with neuromyotonia, and CNTNAP2/CASPR2 (in the set) disrupts
+      juxtaparanodal Kv1 channel clustering, producing peripheral nerve
+      hyperexcitability (acquired neuromyotonia / Isaacs syndrome) with
+      continuous motor-unit discharge and fasciculation. The relevant KCN-family
+      genes carry GO:0005249 annotations in GOA-human, so the term is both
+      enrichment-recoverable and annotation-supported. Confidence is medium
+      because potassium-channel genes are a minority of the heterogeneous set.
+  - term:
+      id: GO:0097049
+      label: motor neuron apoptotic process
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      Fasciculation is a recognised early clinical harbinger of lower-motor-
+      neuron degeneration in amyotrophic lateral sclerosis and other motor
+      neuron diseases, and several ALS/MND genes are members of this set
+      (alongside the channelopathy genes). Progressive apoptotic death of motor
+      neurons is therefore biologically core for the MND subset of the set and
+      is asserted as core_process and NOT downgraded on annotation grounds.
+      It is an annotation_gap (not annotation_supported): the apoptotic
+      machinery present in the set is annotated in GOA-human to the generic
+      parent GO:0006915 (apoptotic process) or GO:0051402 (neuron apoptotic
+      process) rather than to the motor-neuron-specific child GO:0097049, so
+      enrichment cannot recover this specific term from the current annotations.
+      The shallow annotation is GO/GOA's incompleteness (a curation target), not
+      evidence against the association. Specificity is cell_type_specific to
+      motor neurons.
+  - term:
+      id: GO:0007274
+      label: neuromuscular synaptic transmission
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The motor unit whose spontaneous discharge produces a fasciculation is a
+      lower motor neuron together with the muscle fibres it innervates, and the
+      ectopic action potential is read out as muscle twitch only after crossing
+      the neuromuscular junction. Neuromuscular synaptic transmission is thus a
+      genuine enabling/supporting process for the visible phenotype, but it is
+      not where fasciculation originates (the aberrant firing arises upstream in
+      the motor axon or soma), so it is supporting rather than core. Specificity
+      is lineage_shared because synaptic-transmission machinery is shared across
+      cholinergic neurons.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation appears as a non-specific enrichment hit driven by ribosomal
+      and translation-factor genes that fall within this large (140-gene),
+      heterogeneous phenotype set. It is a ubiquitous housekeeping process and
+      carries no information about the motor-unit-hyperexcitability biology that
+      defines the Fasciculations phenotype; it is included for honest
+      bookkeeping of the broadly expressed fraction of the set.

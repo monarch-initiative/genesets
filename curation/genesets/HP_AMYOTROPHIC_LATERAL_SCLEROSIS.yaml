@@ -1,0 +1,157 @@
+gene_set_id: MSIGDB:HP_AMYOTROPHIC_LATERAL_SCLEROSIS
+gene_set_name: HP_AMYOTROPHIC_LATERAL_SCLEROSIS
+collection: C5:HPO
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 49
+description: >-
+  MSigDB C5:HPO gene set: human genes annotated to the HPO phenotype Amyotrophic
+  lateral sclerosis (HP:0007354) — i.e. genes whose variation CAUSES ALS, not a
+  single mechanistic pathway. Members are the established ALS causal/risk genes
+  (SOD1, TARDBP/TDP-43, FUS, C9orf72, TBK1, OPTN, VCP, UBQLN2, SQSTM1, PFN1,
+  MATR3, HNRNPA1, CHCHD10, ANG, SETX, ALS2, VAPB, DCTN1, KIF5A, NEK1, …). The
+  shared biology of these causal genes converges on a handful of themes:
+  motor-neuron degeneration/death (the defining phenotype), dysregulated RNA
+  metabolism/splicing (the RNA-binding proteins TDP-43, FUS, MATR3, hnRNPA1,
+  SETX), impaired proteostasis/autophagy (OPTN, SQSTM1, TBK1, VCP, UBQLN2),
+  oxidative-stress handling (SOD1), and aberrant stress-granule/condensate
+  dynamics of the prion-like RBPs. Because the set is a phenotype-defined causal
+  catalogue rather than an annotated pathway, several core processes are present
+  as annotation_gaps (the genes are in the set but GO annotation is too shallow
+  or too generic to recover the disease-defining child term).
+contexts:
+  - term:
+      id: HP:0007354
+      label: Amyotrophic lateral sclerosis
+    context_type: phenotype
+  - term:
+      id: MONDO:0004976
+      label: amyotrophic lateral sclerosis
+    context_type: disease
+associations:
+  - term:
+      id: GO:0097049
+      label: motor neuron apoptotic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    evidence:
+      - reference: PMID:25959569
+        reference_title: "Current developments in gene therapy for amyotrophic lateral sclerosis."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Amyotrophic lateral sclerosis (ALS) is a devastating adult neurodegenerative disorder characterized by motor neuron degeneration and death around 3 years from onset."
+        explanation: >-
+          Progressive degeneration and programmed death of upper and lower motor
+          neurons is the disease-defining pathological hallmark of ALS, making
+          motor neuron apoptotic process the biologically core term for this
+          causal-gene set. It is an annotation_gap, not a downgrade: the death
+          machinery and ALS genes ARE in the set, but in GOA-human most are
+          annotated only to the generic parent apoptotic process / neuron
+          apoptotic process rather than to this motor-neuron-specific child, so
+          enrichment does not recover it. The shallow annotation is GO/GOA's
+          incompleteness and a GO annotation curation target — it is not evidence
+          against the association, which stays core.
+  - term:
+      id: GO:0008380
+      label: RNA splicing
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:23931993
+        reference_title: "Converging mechanisms in ALS and FTD: disrupted RNA and protein homeostasis."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "They share unexpectedly similar signatures, including dysregulation in common molecular players including TDP-43, FUS/TLS, ubiquilin-2, VCP, and expanded hexanucleotide repeats within the C9ORF72 gene. Dysfunction in RNA processing and protein homeostasis is an emerging theme."
+        explanation: >-
+          A large fraction of ALS causal genes in this set encode RNA-binding
+          proteins (TARDBP/TDP-43, FUS, MATR3, HNRNPA1, SETX) that directly
+          govern pre-mRNA splicing and broader RNA processing. Disrupted RNA
+          metabolism is one of the two converging mechanistic themes of ALS
+          identified in this review, and these RBPs are annotated to RNA
+          splicing in GOA-human, so enrichment recovers the term
+          (annotation_supported). The term is broadly expressed but reflects a
+          disease-defining molecular lesion in ALS.
+  - term:
+      id: GO:0006979
+      label: response to oxidative stress
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      SOD1, the first identified ALS gene, is a superoxide dismutase, and ANG
+      (angiogenin) and other set members participate in the oxidative-stress
+      response; these genes are annotated to response to oxidative stress in
+      GOA-human, so enrichment recovers the term. Oxidative damage to motor
+      neurons is a real, well-supported enabling mechanism of ALS pathogenesis,
+      but it is a downstream/contributory process shared with many
+      neurodegenerative contexts rather than the defining lesion, hence
+      supporting_process.
+  - term:
+      id: GO:0016236
+      label: macroautophagy
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      A cluster of ALS genes in this set encodes the autophagy/proteostasis
+      machinery: OPTN and SQSTM1/p62 are selective-autophagy receptors, TBK1
+      phosphorylates and activates them, and VCP and UBQLN2 route misfolded
+      substrates for degradation. Impaired clearance of ubiquitinated
+      aggregates (including TDP-43 inclusions) is a major ALS mechanism, and
+      these receptors are annotated to autophagy/macroautophagy in GOA-human, so
+      the term is annotation_supported. It is a broadly expressed enabling
+      process supporting motor-neuron proteostasis rather than the defining
+      phenotype, hence supporting_process.
+  - term:
+      id: GO:0034063
+      label: stress granule assembly
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      The prion-like RNA-binding proteins encoded by ALS genes in this set
+      (TARDBP/TDP-43, FUS, HNRNPA1) are core constituents of stress granules,
+      and their aberrant liquid-liquid phase separation and persistence into
+      pathological aggregates is an increasingly central ALS mechanism. The
+      association is biologically real (supporting the splicing/RBP theme) but
+      is recorded as an annotation_gap: the relevant RBPs are in the set, yet
+      relatively few carry an explicit stress granule assembly annotation in
+      GOA-human, so enrichment does not reliably recover this specific term —
+      a GO annotation curation target. Marked curator_added for that reason.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process and appears here as a
+      generic, non-specific enrichment hit rather than a disease-defining
+      function of the ALS causal-gene set. Where translation genuinely touches
+      ALS biology it does so through the specific compartmentalised process of
+      axonal/local translation regulated by TDP-43 and FUS, not through bulk
+      cytoplasmic translation captured by this broad term; the broad term itself
+      carries no ALS-specific information.

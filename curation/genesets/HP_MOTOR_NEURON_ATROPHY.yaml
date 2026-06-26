@@ -1,0 +1,146 @@
+gene_set_id: MSIGDB:HP_MOTOR_NEURON_ATROPHY
+gene_set_name: HP_MOTOR_NEURON_ATROPHY
+collection: C5:HPO
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 66
+description: >-
+  MSigDB C5:HPO gene set comprising the human genes annotated to the Human
+  Phenotype Ontology term "Motor neuron atrophy" (HP:0007373). This is a broad,
+  cross-disease motor-neuron-degeneration phenotype rather than a single pathway:
+  its members span amyotrophic lateral sclerosis (ALS), spinal muscular atrophy
+  (SMA), and distal hereditary motor neuropathy / CMT2 overlap. The shared
+  biology of these genes is the progressive degeneration and death of motor
+  neurons — programmed cell death of motor neurons (the defining outcome),
+  axonal / neurite degeneration ("dying-back" axonopathy), dysregulated RNA
+  processing (TDP-43 / FUS-class RNA-binding proteins), and impaired axonal
+  transport (dynein / kinesin motor genes). It is interpreted here as the
+  convergent biology of motor-neuron-degeneration genes, NOT as one mechanistic
+  pathway. The defining motor-neuron apoptotic process is recorded as an
+  annotation_gap: the causal genes are present but are largely annotated to the
+  generic parent apoptotic process rather than the motor-neuron-specific child.
+contexts:
+  - term:
+      id: HP:0007373
+      label: Motor neuron atrophy
+    context_type: phenotype
+associations:
+  - term:
+      id: GO:0097049
+      label: motor neuron apoptotic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    evidence:
+      - reference: PMID:14720310
+        reference_title: "Programmed cell death in amyotrophic lateral sclerosis: a mechanism of pathogenic and therapeutic importance."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Mounting evidence indicates that molecular components of the programmed cell death (PCD) machinery are implicated in the demise of motor neurons in this illness."
+        explanation: >-
+          The defining feature of the HP:0007373 (Motor neuron atrophy)
+          phenotype is degeneration and death of motor neurons. Programmed cell
+          death / apoptosis of motor neurons is therefore the biologically core
+          downstream outcome of this gene set and is NOT weakened on annotation
+          grounds. It is recorded as an annotation_gap: causal MND genes ARE in
+          the set, but most are annotated only to the generic parent apoptotic
+          process (GO:0006915) or neuron apoptotic process (GO:0051402) rather
+          than to the motor-neuron-specific child GO:0097049. The shallow
+          annotation is GO/GOA's incompleteness, not evidence against the
+          association — this is a GO annotation curation target.
+  - term:
+      id: GO:0007409
+      label: axonogenesis
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Axonal degeneration is central to motor-neuron atrophy: a "dying-back"
+      distal axonopathy precedes or accompanies cell-body loss across ALS, SMA,
+      and distal hereditary motor neuropathy / CMT2. Characteristic genes in this
+      phenotype set (e.g. neurofilament and cytoskeletal / axon-outgrowth genes)
+      are annotated to axonogenesis and related neuron-projection morphogenesis
+      terms, so the term is annotation_supported. Marked supporting rather than
+      core because axon development is shared broadly across neuronal lineages and
+      is enabling, not the defining death process.
+  - term:
+      id: GO:0006397
+      label: mRNA processing
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:25689976
+        reference_title: "Linking RNA Dysfunction and Neurodegeneration in Amyotrophic Lateral Sclerosis."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Mounting genetic and functional evidence suggest that abnormalities in RNA processing and metabolism underlie motor neuron loss in sporadic and familial ALS."
+        explanation: >-
+          A major mechanistic arm of motor-neuron-degeneration genetics is
+          dysregulated RNA processing, driven by the TDP-43 / FUS class of
+          RNA-binding proteins (TARDBP, FUS, HNRNPA1, MATR3, SETX and related
+          genes). These genes are annotated to mRNA processing / RNA splicing, so
+          the term is annotation_supported. It is supporting rather than core
+          because RNA processing is a broadly expressed housekeeping process that
+          is co-opted in disease rather than being the defining motor-neuron
+          death event.
+  - term:
+      id: GO:0098930
+      label: axonal transport
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Impaired axonal transport is a recurrent mechanism in motor-neuron
+      degeneration: the long axons of motor neurons are especially dependent on
+      microtubule-based dynein / kinesin transport, and MND genes such as
+      DYNC1H1, KIF5A and DCTN1 cause disease through transport defects. Such genes
+      are annotated to axonal transport, so the term is annotation_supported.
+      Supporting rather than core: it is an enabling cellular logistics process
+      shared across neurons, not the defining death outcome.
+  - term:
+      id: GO:0007528
+      label: neuromuscular junction development
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Denervation at the neuromuscular junction is an early event in motor-neuron
+      atrophy, and NMJ maintenance / development genes are represented among the
+      phenotype's members. Annotation_supported via genes annotated to NMJ
+      development. Supporting rather than core because it reflects the
+      motor-unit endpoint of the degenerative process rather than the
+      motor-neuron death program itself.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: medium
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation appears as a non-specific signal driven by ribosomal and
+      translation-factor genes incidentally present in the set (and is mechanistically
+      adjacent to the RNA-metabolism arm). It is a ubiquitous housekeeping
+      process and does not reflect a motor-neuron-specific function of this
+      phenotype gene set.

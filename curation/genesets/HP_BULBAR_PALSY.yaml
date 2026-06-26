@@ -1,0 +1,152 @@
+gene_set_id: MSIGDB:HP_BULBAR_PALSY
+gene_set_name: HP_BULBAR_PALSY
+collection: C5:HPO
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 43
+description: >-
+  MSigDB C5:HPO gene set of human genes annotated to the Human Phenotype Ontology
+  term "Bulbar palsy" (HP:0001283): bilateral lower-motor-neuron weakness of the
+  muscles supplied by cranial nerves IX-XII, whose motor nuclei lie in the medulla
+  oblongata (the "bulb"), producing dysarthria, dysphagia and impaired chewing and
+  swallowing. The members are causal/associated genes drawn from motor-neuron-disease
+  (ALS/MND) and bulbar-involvement disorders, and span lower-motor-neuron
+  degeneration, neuromuscular-junction transmission, motor-axon biology and RNA
+  metabolism. The shared biology captured here is therefore degeneration of lower
+  motor neurons and failure of neuromuscular transmission at the bulbar muscles,
+  rather than a single canonical pathway. This interpretation records that shared
+  biology; the most specific recovered process (motor neuron apoptotic process) is
+  flagged as an annotation_gap because the GO annotation of much of the set's death
+  machinery is shallower than the motor-neuron-specific child term.
+contexts:
+  - term:
+      id: HP:0001283
+      label: Bulbar palsy
+    context_type: phenotype
+  - term:
+      id: UBERON:0001896
+      label: medulla oblongata
+    context_type: anatomical_structure
+    role_note: >-
+      The "bulb": brainstem segment housing the motor nuclei of cranial nerves
+      IX-XII (nucleus ambiguus, hypoglossal nucleus) whose lower motor neurons
+      degenerate in bulbar palsy.
+associations:
+  - term:
+      id: GO:0097049
+      label: motor neuron apoptotic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    evidence:
+      - reference: PMID:36836867
+        reference_title: "Involvement of Lipids in the Pathogenesis of Amyotrophic Lateral Sclerosis."
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: "the mechanisms of programmed cell death (apoptosis), which may be responsible for the degeneration of motor neurons observed in the disease, have been intensively studied"
+        explanation: >-
+          The HP "Bulbar palsy" set is built from causal/associated genes of
+          motor-neuron-disease and bulbar-onset disorders (ALS/MND genes).
+          Programmed cell death of lower motor neurons in the brainstem motor
+          nuclei and spinal cord is the defining degenerative event underlying
+          bulbar palsy, making motor neuron apoptotic process the core process
+          for this set. This review of ALS pathogenesis describes apoptosis as a
+          mechanism responsible for the degeneration of motor neurons.
+    curator_note: >-
+      core_process and an annotation_gap (the gap is GO/GOA's, NOT a reason to
+      downgrade the biology). Lower-motor-neuron degeneration is the defining
+      lesion of bulbar palsy, so this motor-neuron-specific term is biologically
+      core. It is an annotation_gap because, as in the KEGG Parkinson worked
+      example, the bulk of the set's death machinery is annotated only to the
+      generic parent (apoptotic process / neuron apoptotic process) rather than
+      to this motor-neuron-specific child, so enrichment under-recovers it. The
+      shallow annotation is a GO annotation curation target, not evidence against
+      the association.
+  - term:
+      id: GO:0007274
+      label: neuromuscular synaptic transmission
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:29295857
+        reference_title: "Defects in synaptic transmission at the neuromuscular junction precede motor deficits in a TDP-43 transgenic mouse model of amyotrophic lateral sclerosis."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "These findings support a growing acceptance that dysregulation of the NMJ function is a key early event in the pathology of ALS"
+        explanation: >-
+          Bulbar palsy manifests as weakness of the muscles supplied by cranial
+          nerves IX-XII, i.e. failure of neuromuscular transmission at the bulbar
+          neuromuscular junctions; several set members are neuromuscular-junction
+          genes. In this TDP-43 ALS mouse model, defects in neuromuscular synaptic
+          transmission precede motor neuron loss and overt motor deficits,
+          supporting neuromuscular synaptic transmission as a core process
+          underlying the bulbar muscle weakness this set represents.
+    curator_note: >-
+      core_process for this set: the functional readout of bulbar palsy is
+      impaired neuromuscular transmission at the cranial-nerve-innervated bulbar
+      muscles, and the set includes neuromuscular-junction genes alongside the
+      motor-neuron-degeneration genes. Marked lineage_shared rather than
+      cell_type_specific because neuromuscular transmission is common to all
+      skeletal muscle, not bulbar-specific.
+  - term:
+      id: GO:0007409
+      label: axonogenesis
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    curator_note: >-
+      supporting_process. Bulbar lower motor neurons project long axons to the
+      bulbar musculature, and distal "dying-back" axonopathy with impaired
+      motor-axon growth and maintenance is a recognised early feature of
+      motor-neuron disease. Several set members are annotated to axonogenesis /
+      neuron projection development, so this is an enabling/supporting process for
+      the set rather than its defining lesion (which is motor neuron degeneration).
+      Broadly_expressed because axonogenesis is a general neuronal process, not
+      specific to bulbar motor neurons.
+  - term:
+      id: GO:0008380
+      label: RNA splicing
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    curator_note: >-
+      supporting_process. A substantial subset of motor-neuron-disease genes in
+      this set are RNA-binding proteins that regulate splicing (e.g. TARDBP/TDP-43,
+      FUS, hnRNPA1, MATR3, SETX), and loss of nuclear TDP-43 causes widespread
+      dysregulation of RNA splicing in ALS lower motor neurones (Highley et al.,
+      Neuropathol Appl Neurobiol 2014, PMID:24750229). RNA splicing is therefore a
+      real enabling mechanism contributing to motor neuron degeneration, but it is
+      not the defining process of the set; marked broadly_expressed because
+      splicing is ubiquitous. No verbatim evidence item is attached here to keep
+      grounded literature evidence on the two strongest (core) associations.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Non-specific, ubiquitous housekeeping process recovered from translation-
+      and ribosome-associated genes present in the set. It is broadly expressed
+      across all cell types and does not reflect a bulbar-palsy-specific function;
+      recorded so the eval has a representative nonspecific call rather than to
+      assert disease-relevant biology.

@@ -1,0 +1,162 @@
+gene_set_id: MSIGDB:HP_UPPER_MOTOR_NEURON_DYSFUNCTION
+gene_set_name: HP_UPPER_MOTOR_NEURON_DYSFUNCTION
+collection: C5:HPO
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 1252
+description: >-
+  Large HPO-derived gene set (MSigDB C5:HPO) of 1252 genes annotated to the
+  phenotype "Upper motor neuron dysfunction" (HP:0002493). Upper motor neurons
+  are the corticospinal/corticobulbar projection neurons of the primary motor
+  cortex; this phenotype is shared across a very heterogeneous set of disorders,
+  including hereditary spastic paraplegia (SPAST/SPG4, ATL1, REEP1, KIF5A, RTN2,
+  ARL6IP1, ...), other corticospinal-tract disorders, leukodystrophies, and the
+  upper-motor-neuron component of amyotrophic lateral sclerosis. Because the set
+  is very large and etiologically heterogeneous, functional enrichment is
+  DOMINATED by broad, nonspecific housekeeping processes (e.g. protein
+  phosphorylation, translation); only a handful of neuron/axon-relevant
+  supporting processes (axonal transport, microtubule and tubular-ER
+  organisation, axon guidance) reflect the unifying corticospinal-axon biology.
+  Tight cell-type specificity is not achievable for a phenotype gene set of this
+  size, and the curation below is deliberately weighted toward
+  supporting/nonspecific calls to reflect that honestly.
+contexts:
+  - term:
+      id: HP:0002493
+      label: Upper motor neuron dysfunction
+    context_type: phenotype
+associations:
+  - term:
+      id: GO:0098930
+      label: axonal transport
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:26094131
+        reference_title: "Hereditary spastic paraplegia SPG4: what is known and not known about the disease."
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: "The observed adverse effects on microtubule dynamics, axonal transport, endoplasmic reticulum, and endosomal trafficking are likely caused not only by diminished severing of microtubules, but also by neurotoxicity of mutant spastin proteins, chiefly M1."
+        explanation: >-
+          Upper motor neurons have the longest axons in the CNS (the
+          corticospinal tract), making them critically dependent on
+          microtubule-based axonal transport. The most common HSP gene, SPAST
+          (SPG4), encodes the microtubule-severing protein spastin, and the
+          kinesin motor KIF5A (SPG10) drives anterograde axonal transport;
+          mutations in both disrupt cargo transport along these long axons. This
+          is a genuine enabling process for the corticospinal axon biology that
+          unifies part of the set, but it is supporting rather than defining for
+          a 1252-gene heterogeneous phenotype set.
+  - term:
+      id: GO:0000226
+      label: microtubule cytoskeleton organization
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Spastin (SPAST/SPG4) and katanin-family severases regulate the microtubule
+      array on which long corticospinal axons depend; microtubule dynamics are a
+      recurrent HSP mechanism. The term is biologically supporting but the
+      underlying process is present in essentially all cell types, so it is
+      broadly expressed rather than specific to upper motor neurons.
+  - term:
+      id: GO:0007029
+      label: endoplasmic reticulum organization
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:35346366
+        reference_title: "Liver X receptor-agonist treatment rescues degeneration in a Drosophila model of hereditary spastic paraplegia."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "many cases arise from mutations in genes encoding proteins which generate and maintain tubular endoplasmic reticulum (ER) membrane organisation. The ER-shaping proteins are essential for the health and survival of long motor neurons"
+        explanation: >-
+          A major mechanistic arm of HSP, and thus of this upper-motor-neuron
+          phenotype set, is disrupted shaping of the tubular endoplasmic
+          reticulum. The ER-shaping/curvature proteins atlastin-1 (ATL1/SPG3A),
+          REEP1 (SPG31), reticulon-2 (RTN2/SPG12), ARL6IP1 (SPG61), and the M1
+          isoform of spastin maintain the tubular ER network that long motor
+          neuron axons require. ER organisation is a supporting process here; as
+          a GO term it is broadly expressed across cell types.
+  - term:
+      id: GO:0007411
+      label: axon guidance
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Correct formation and targeting of the corticospinal tract depends on axon
+      guidance; L1CAM (SPG1) is a classic corticospinal axon-guidance/adhesion
+      molecule, and many guidance-pathway genes are members of this large set.
+      This is a developmental supporting process shared across neuronal lineages
+      rather than a defining, upper-motor-neuron-specific signal, hence medium
+      confidence.
+  - term:
+      id: GO:0097049
+      label: motor neuron apoptotic process
+    aspect: biological_process
+    category: marker_driven_plausible
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      Degeneration/death of motor neurons (including the upper motor neuron) is a
+      defensible downstream outcome for this phenotype, and ALS upper-motor-
+      neuron genes (e.g. SOD1, TARDBP, FUS, KIF5A) are members of the set. It is
+      marked marker_driven_plausible and curator_added because, in a 1252-gene
+      heterogeneous set, the specific motor-neuron-death signal is heavily
+      diluted and enrichment would not recover this narrow term: relevant death
+      machinery is present but is annotated mostly to the generic parent
+      apoptotic process rather than to this motor-neuron-specific child
+      (an annotation_gap, i.e. a GO annotation curation target, not evidence
+      against the association).
+  - term:
+      id: GO:0006468
+      label: protein phosphorylation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Protein phosphorylation appears as a top enrichment hit purely because the
+      set is very large (1252 genes) and contains many kinases; it is a generic,
+      broadly-expressed signalling process and is not informative about upper
+      motor neuron biology. This term illustrates the central caveat for this
+      gene set: its size and etiological heterogeneity mean enrichment is
+      dominated by broad housekeeping terms and high specificity is not
+      attainable.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process recovered because
+      ribosomal-protein, translation-factor, and aminoacyl-tRNA-synthetase genes
+      (some of which do cause neuropathy/HSP, e.g. AARS1) are present in this
+      large set. It carries no upper-motor-neuron-specific information and is
+      recorded as nonspecific.
