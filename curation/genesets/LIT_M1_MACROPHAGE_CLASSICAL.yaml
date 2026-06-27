@@ -1,0 +1,160 @@
+gene_set_id: LIT:M1_MACROPHAGE_CLASSICAL
+gene_set_name: M1_MACROPHAGE_CLASSICALLY_ACTIVATED
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:MACROPHAGE_POLARIZATION
+series_role: classical
+description: >-
+  Literature-defined cell-state ACTIVITY signature of classically activated
+  (M1) macrophages, the pro-inflammatory pole of macrophage polarization
+  profiled by Martinez, Gordon, Locati and Mantovani (J Immunol 2006,
+  PMID:17082649) by transcriptome analysis of human monocyte-derived
+  macrophages driven to the M1 versus M2 phenotype. Unlike MSigDB causal/driver
+  disease pathway sets, the members here are the READOUT of an ACTIVE program,
+  not driver mutations: they are the genes UPregulated in classically activated
+  (M1) macrophages relative to resting macrophages, when monocyte-derived
+  macrophages are polarized by the canonical M1 stimuli lipopolysaccharide (LPS)
+  and interferon-gamma (IFN-gamma). The signature is dominated by a
+  pro-inflammatory and antimicrobial program: the inflammatory cytokines TNF,
+  IL1B, IL6 and the Th1-polarizing IL12B; the IFN-gamma/STAT1-IRF1 axis and its
+  effector chemokines CXCL9, CXCL10 and CXCL11; the tryptophan-catabolizing
+  IDO1; inducible nitric oxide synthase NOS2 (iNOS); the co-stimulatory CD80;
+  the inflammatory cyclo-oxygenase PTGS2 (COX-2); and feedback regulators such
+  as SOCS3. Because the member genes literally carry the GO annotations for the
+  processes the M1 state executes, enrichment recovers those processes
+  (annotation_supported) rather than leaving them as gaps. This set is one POLE
+  of a polarization series (series SERIES:MACROPHAGE_POLARIZATION): it is paired
+  with the reciprocal alternatively activated (M2) macrophage signature, the
+  IL-4/IL-13-driven tissue-remodelling/anti-inflammatory pole, against which the
+  same shared terms resolve to contrasting interpretations. DISEASE RELEVANCE:
+  the M1 program is the classically activated, microbicidal and pro-inflammatory
+  macrophage state that drives host defense against intracellular pathogens but,
+  when chronic or dysregulated, contributes to inflammatory and autoimmune
+  pathology (atherosclerosis, rheumatoid arthritis, inflammatory bowel disease,
+  metabolic inflammation).
+contexts:
+  - term:
+      id: CL:0000863
+      label: M1 macrophage
+    context_type: cell_type
+    role_note: >-
+      Classically activated (LPS + IFN-gamma) macrophage. The signature reads
+      out the M1 / classically activated pro-inflammatory polarization state of
+      the macrophage; CL:0000863 (inflammatory / M1 / classically activated
+      macrophage) is the anchoring cell-state context, the contrast pole to the
+      alternatively activated (M2) macrophage in this polarization series.
+associations:
+  - term:
+      id: GO:0042116
+      label: macrophage activation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:17082649
+        reference_title: "Transcriptional profiling of the human monocyte-to-macrophage differentiation and polarization: new molecules and patterns of gene expression."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Comprehensive analysis of the gene expression profiles associated with human monocyte-to-macrophage differentiation and polarization toward M1 or M2 phenotypes"
+        explanation: >-
+          The gene set is, by definition, the readout of an ACTIVATED macrophage
+          state: the defining paper profiles the transcriptome of human
+          monocyte-derived macrophages polarized toward the M1 (classically
+          activated) phenotype by LPS and IFN-gamma. Macrophage activation is
+          therefore the central, cell-type-specific process the signature
+          represents, and the M1 activation markers (e.g. TNF, IL1B, CD80,
+          NOS2) carry this GO annotation, so enrichment recovers it
+          (annotation_supported).
+    curator_note: >-
+      This is the defining ACTIVE process of the set, not a driver lesion. It is
+      cell_type_specific because macrophage activation is, by construction, the
+      process this classically activated (M1) macrophage signature reads out.
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:17082649
+        reference_title: "Transcriptional profiling of the human monocyte-to-macrophage differentiation and polarization: new molecules and patterns of gene expression."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "with expected up-regulation of cyclo-oxygenase 2 in M1 cells"
+        explanation: >-
+          The M1 pole is the pro-inflammatory macrophage state: the paper
+          reports up-regulation of cyclo-oxygenase 2 (PTGS2/COX-2) in M1 cells,
+          and the broader signature is dominated by inflammatory effectors (TNF,
+          IL1B, IL6, the chemokines CXCL9/10/11). Inflammatory response is
+          intrinsic and core to what the M1 state IS, and these member genes
+          carry the annotation, so enrichment recovers it (annotation_supported).
+    curator_note: >-
+      Kept core (not supporting): unlike a partly-protective state where
+      inflammation is downgraded, pro-inflammatory activation is the defining
+      function of the classically activated M1 pole. specificity is
+      broadly_expressed because inflammatory response itself is shared across
+      very many immune contexts and is not macrophage-specific.
+  - term:
+      id: GO:0034341
+      label: response to type II interferon
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Interferon-gamma (type II interferon) is the canonical inducer of
+      classical M1 activation, and the IFN-gamma/STAT1-IRF1 response module is a
+      hallmark of the signature: the induced chemokines CXCL9, CXCL10 and CXCL11,
+      together with STAT1, IRF1 and IDO1, are core M1 markers annotated to
+      response to type II interferon, so enrichment recovers it
+      (annotation_supported). Kept core because IFN-gamma response is
+      mechanistically central to what defines the classically activated pole;
+      specificity is broadly_expressed because responsiveness to IFN-gamma is
+      shared across many cell types and is not macrophage-specific.
+  - term:
+      id: GO:0042742
+      label: defense response to bacterium
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Classically activated M1 macrophages are the microbicidal effector pole:
+      they kill intracellular and phagocytosed bacteria through reactive oxygen
+      and nitrogen species and antimicrobial effectors. Antibacterial defense
+      genes in the signature carry this annotation, so enrichment recovers it
+      (annotation_supported). Scored supporting rather than core, and
+      lineage_shared rather than cell_type_specific, because antibacterial
+      defense is a general myeloid/phagocyte capacity that is a downstream
+      effector function of the M1 state rather than its identity-defining axis.
+  - term:
+      id: GO:0006809
+      label: nitric oxide biosynthetic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Inducible nitric oxide synthase (NOS2/iNOS) is a canonical marker of
+      classically activated M1 macrophages, producing nitric oxide as a
+      microbicidal and pro-inflammatory effector. NOS2 is a member of the
+      signature and carries this annotation, so enrichment recovers it
+      (annotation_supported). Scored supporting (medium): NO biosynthesis is a
+      characteristic effector output of M1 activation rather than the defining
+      identity process, and is lineage_shared as a myeloid antimicrobial
+      capacity (and more pronounced in mouse than human macrophages).

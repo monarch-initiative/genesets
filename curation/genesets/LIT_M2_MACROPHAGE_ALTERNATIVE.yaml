@@ -1,0 +1,176 @@
+gene_set_id: LIT:M2_MACROPHAGE_ALTERNATIVE
+gene_set_name: M2_MACROPHAGE_ALTERNATIVELY_ACTIVATED
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:MACROPHAGE_POLARIZATION
+series_role: alternative
+description: >-
+  Literature-defined cell-state ACTIVITY signature of M2 (alternatively
+  activated) macrophages, the anti-inflammatory/reparative pole of the
+  macrophage polarization axis. The human program was transcriptionally defined
+  by Martinez, Gordon, Locati and Mantovani (J Immunol 2006, PMID:17082649),
+  who profiled the gene expression of human monocyte-to-macrophage
+  differentiation and of macrophages polarized toward the M1 (classical) or M2
+  (alternative) phenotype. Alternative (M2) activation is driven by the Th2
+  cytokines IL-4 and IL-13 signaling through IL4R and STAT6 (with PPARG and the
+  transcription factor MAF as further regulators), in explicit contrast to the
+  IFN-gamma/LPS-driven, inflammatory M1 (classically activated) pole curated as
+  the paired set in this series. Unlike MSigDB causal/driver disease pathway
+  sets, the members here are the READOUT of an ACTIVE program, not driver
+  mutations: they are the transcripts UP (high) in M2/alternatively activated
+  macrophages relative to resting macrophages. The signature is dominated by
+  the canonical alternative-activation markers - the mannose receptor
+  MRC1/CD206 and the hemoglobin-haptoglobin scavenger receptor CD163, the
+  C-type lectin CLEC10A/CD301, the M2 chemokines CCL17/TARC, CCL22/MDC and
+  CCL24/eotaxin-2, transglutaminase 2 (TGM2), the anti-inflammatory cytokine
+  IL10, and STAT6/PPARG/MAF (the arginase ARG1 is a robust M2 marker in mouse
+  but not in human). Functionally, M2 macrophages execute tissue repair and
+  wound healing, dampening of inflammation (anti-inflammatory/resolution), and
+  scavenging/endocytic clearance of debris and ligands via MRC1 and CD163 -
+  the reparative, homeostatic counterpart to the microbicidal M1 program.
+  Because the member genes literally carry the GO annotations for the processes
+  the state executes, enrichment recovers those processes
+  (annotation_supported) rather than leaving them as gaps. DISEASE RELEVANCE:
+  M2-like tumor-associated macrophages promote tumor progression and
+  immunosuppression, and the M1/M2 balance is a central axis in chronic
+  inflammation, fibrosis, wound repair and infection.
+contexts:
+  - term:
+      id: CL:0000890
+      label: M2 macrophage
+    context_type: cell_type
+    role_note: >-
+      Alternatively activated (IL-4/IL-13-driven) macrophage. The signature
+      reads out the M2/alternatively activated state of the macrophage rather
+      than any single disease; it is the anti-inflammatory/reparative pole
+      contrasted with the classically activated M1 state in this polarization
+      series, so the macrophage cell type (in its M2 state) is the anchoring
+      context.
+associations:
+  - term:
+      id: GO:0042116
+      label: macrophage activation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:17082649
+        reference_title: "Transcriptional profiling of the human monocyte-to-macrophage differentiation and polarization: new molecules and patterns of gene expression."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Comprehensive analysis of the gene expression profiles associated with human monocyte-to-macrophage differentiation and polarization toward M1 or M2 phenotypes"
+        explanation: >-
+          The gene set is, by definition, the readout of an ACTIVATED
+          (polarized) macrophage state: M2 is the alternative-activation
+          phenotype defined by transcriptional profiling of human macrophages
+          polarized toward M1 or M2. Macrophage activation is thus the central,
+          cell-type-specific process the signature represents, and the M2
+          polarization markers (e.g. MRC1, CD163, the M2 chemokines) carry this
+          GO annotation, so enrichment recovers it (annotation_supported).
+      - reference: PMID:17082649
+        reference_title: "Transcriptional profiling of the human monocyte-to-macrophage differentiation and polarization: new molecules and patterns of gene expression."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "M-CSF leads to expression of a substantial part of the M2 transcriptome, suggesting that under homeostatic conditions a default shift toward M2 occurs."
+        explanation: >-
+          The authors name and characterize the "M2 transcriptome" as a
+          coherent polarized-activation program, confirming that the member
+          genes are the readout of the M2/alternative macrophage activation
+          state this set captures rather than driver lesions. The M2 default
+          shift under homeostatic (M-CSF) conditions underlines that this is the
+          reparative, anti-inflammatory pole of macrophage activation.
+    curator_note: >-
+      This is the defining ACTIVE process of the set, not a driver lesion. It is
+      cell_type_specific because macrophage activation is, by construction, the
+      process this macrophage gene set reads out; M2/alternative activation is
+      the specific pole, contrasted with the M1 (classical) pole of the series.
+  - term:
+      id: GO:0070670
+      label: response to interleukin-4
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Alternative (M2) activation is the canonical IL-4 (and IL-13) -driven
+      macrophage program: IL-4 signals through IL4R and STAT6 to induce the M2
+      transcriptome, so response to interleukin-4 is the identity-defining input
+      of this state rather than an incidental process. The IL-4/STAT6 axis genes
+      and IL-4-induced effectors (e.g. CCL17, CCL22, MRC1, CLEC10A) are members
+      annotated to IL-4 response, so enrichment recovers the term
+      (annotation_supported). Kept core because IL-4-driven alternative
+      activation is precisely what distinguishes the M2 pole from the
+      IFN-gamma-driven M1 pole; specificity is lineage_shared because response
+      to IL-4 also occurs in other immune lineages (e.g. T and B cells), even
+      though it is the M2-defining signal here. No verbatim evidence snippet is
+      attached because the defining paper's retrievable abstract reports the M2
+      transcriptome and chemokinome rather than quoting the IL-4 stimulus
+      directly; the IL-4/IL-13 dependence of M2 is the well-established
+      framework the paper operates within (Interleukin-4 is an indexed MeSH term
+      for the study).
+  - term:
+      id: GO:0042060
+      label: wound healing
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      A defining functional output of the M2 state is tissue repair: alternatively
+      activated macrophages drive wound healing and resolution after injury, and
+      reparative effectors in the signature (e.g. transglutaminase 2/TGM2,
+      fibronectin and growth factors such as IGF1) carry wound-healing /
+      response-to-wounding annotations, so enrichment recovers the term
+      (annotation_supported). Scored supporting rather than core: tissue repair is
+      a real downstream consequence of M2 polarization but one effector arm rather
+      than the defining activation event, and wound healing is shared across many
+      tissue-repair contexts.
+  - term:
+      id: GO:0050728
+      label: negative regulation of inflammatory response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      M2 macrophages are anti-inflammatory: in explicit contrast to the
+      microbicidal, pro-inflammatory M1 pole, the alternative-activation program
+      dampens and resolves inflammation, and signature members (e.g. the
+      anti-inflammatory cytokine IL10 and the scavenger receptor CD163) carry
+      negative-regulation-of-inflammation annotations, so enrichment recovers the
+      term (annotation_supported). Scored supporting rather than core because the
+      defining event captured by the set is the alternative ACTIVATION itself,
+      with inflammation restraint as one of its functional consequences;
+      specificity is broadly_expressed because negative regulation of the
+      inflammatory response is shared across many immune contexts.
+  - term:
+      id: GO:0006898
+      label: receptor-mediated endocytosis
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Scavenging and endocytic clearance is a characteristic M2 effector function:
+      the two most canonical M2 markers are themselves endocytic receptors - the
+      mannose receptor MRC1/CD206 (clearance of mannosylated/glycosylated ligands)
+      and CD163 (the hemoglobin-haptoglobin scavenger receptor) - and they carry
+      receptor-mediated endocytosis annotations, so enrichment recovers the term
+      (annotation_supported). Scored supporting rather than core because endocytic
+      scavenging is one functional arm of the M2 state rather than the defining
+      activation event; specificity is broadly_expressed because receptor-mediated
+      endocytosis is a general cellular process used by many cell types.
