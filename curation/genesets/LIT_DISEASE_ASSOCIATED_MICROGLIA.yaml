@@ -5,6 +5,8 @@ taxon:
   id: NCBITaxon:9606
   label: Homo sapiens
 direction: UP
+series: SERIES:MICROGLIA_ACTIVATION
+series_role: activated
 description: >-
   Literature-defined disease-activity signature of disease-associated microglia
   (DAM), the conserved microglial cell state first described by Keren-Shaul et al.

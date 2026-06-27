@@ -6,6 +6,8 @@ taxon:
   id: NCBITaxon:9606
   label: Homo sapiens
 direction: UP
+series: SERIES:JISON_SICKLE_CELL_DISEASE
+series_role: up
 n_genes: 183
 description: >-
   Genes up-regulated in peripheral blood mononuclear cells (PBMC) from sickle

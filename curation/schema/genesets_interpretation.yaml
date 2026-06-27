@@ -53,6 +53,19 @@ classes:
       direction:
         range: DirectionEnum
         description: Whether the signature is the up, down, or undirected component.
+      series:
+        range: uriorcurie
+        description: >-
+          Identifier of a pair or series this set belongs to (e.g.
+          SERIES:MICROGLIA_ACTIVATION). Groups related signatures that form a
+          contrast (two poles), a directional pair (up/down of one experiment),
+          or an ordered series. The series id need not be separately defined.
+      series_role:
+        description: >-
+          This set's role or position within its `series` — a short label such
+          as baseline, activated, neurotoxic, reparative, up, down, or a step
+          name. Members of one series should use distinct roles. Free text
+          rather than an enum because the meaningful poles differ per series.
       n_genes:
         range: integer
         description: Number of genes in the source set.

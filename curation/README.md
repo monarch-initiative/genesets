@@ -12,7 +12,7 @@ gold standard for `genesets-rs`.
 ## Layout
 - `schema/genesets_interpretation.yaml` - LinkML schema (source of truth).
 - `conf/` - OAK adapters and reference-validator config.
-- `genesets/manifest.tsv` - index of curated sets (id, collection, biological context term).
+- `genesets/manifest.tsv` - index of curated sets (id, collection, biological context term, series, series_role).
 - `genesets/<SET>.yaml` - one interpretation per gene set.
 - `cache/` - committed ontology label cache (written by linkml-term-validator).
 - `references_cache/` - cited-paper cache (gitignored; rebuilt on demand).
@@ -78,6 +78,17 @@ annotations), and any driver/risk gene that rides along is at most
 carry no `nonspecific` housekeeping term at all — e.g. SenMayo contains no
 ribosomal-protein genes, so `translation` is not even an enrichment artefact
 for it.
+
+## Pairs and series
+Related signatures are linked with two optional fields: `series` (a shared id,
+e.g. `SERIES:MICROGLIA_ACTIVATION`) and `series_role` (this set's pole or
+position, e.g. `baseline` vs `activated`). One key groups contrasts (DAM vs
+homeostatic microglia; A1 neurotoxic vs A2 reparative astrocytes), directional
+up/down pairs (`DANG_MYC_TARGETS_UP`/`_DN`), and ordered series — so the eval
+can check that opposite poles of one axis resolve to *contrasting* GO
+interpretations (a shared term being core-up on one pole and absent or
+down on the other). `series_role` is free text because the meaningful poles
+differ per series; the `series` id need not be separately defined.
 
 ## Evidence
 Each `evidence` item carries a `reference` (PMID/DOI), a verbatim `snippet`

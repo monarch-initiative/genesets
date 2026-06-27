@@ -5,6 +5,8 @@ taxon:
   id: NCBITaxon:9606
   label: Homo sapiens
 direction: UP
+series: SERIES:MICROGLIA_ACTIVATION
+series_role: baseline
 description: >-
   Literature-defined cell-state ACTIVITY signature of homeostatic (surveillant,
   resting) microglia, the adult microglial identity program first defined by

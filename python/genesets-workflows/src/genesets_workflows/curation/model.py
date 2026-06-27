@@ -67,6 +67,8 @@ class GeneSetInterpretation:
     msigdb_release: str | None = None
     taxon: Term | None = None
     direction: str | None = None
+    series: str | None = None
+    series_role: str | None = None
     n_genes: int | None = None
     description: str | None = None
     contexts: list[BiologicalContext] = field(default_factory=list)

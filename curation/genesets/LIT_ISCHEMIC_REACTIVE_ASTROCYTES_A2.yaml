@@ -5,6 +5,8 @@ taxon:
   id: NCBITaxon:9606
   label: Homo sapiens
 direction: UP
+series: SERIES:ASTROCYTE_REACTIVITY
+series_role: reparative
 description: >-
   Literature-defined disease-activity signature of A2 (ischemia-induced) reactive
   astrocytes, the reactive-astrocyte cell state first transcriptionally defined by

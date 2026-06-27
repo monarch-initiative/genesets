@@ -6,6 +6,8 @@ taxon:
   id: NCBITaxon:9606
   label: Homo sapiens
 direction: DN
+series: SERIES:DANG_MYC_TARGETS
+series_role: down
 description: >-
   MSigDB C2:CGP genetic-perturbation signature of genes DOWN-regulated by the MYC oncogene
   (Zeller/Dang, PMID:14519204). This 31-gene set represents the DOWN component of the MYC

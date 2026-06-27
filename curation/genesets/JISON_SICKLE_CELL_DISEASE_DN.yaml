@@ -6,6 +6,8 @@ taxon:
   id: NCBITaxon:9606
   label: Homo sapiens
 direction: DN
+series: SERIES:JISON_SICKLE_CELL_DISEASE
+series_role: down
 description: >-
   MSigDB C2:CGP gene set of genes DOWN-regulated in peripheral blood mononuclear cells
   (PBMC) from patients with sickle cell disease compared to healthy subjects (Jison ML

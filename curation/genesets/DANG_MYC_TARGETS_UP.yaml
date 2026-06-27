@@ -6,6 +6,8 @@ taxon:
   id: NCBITaxon:9606
   label: Homo sapiens
 direction: UP
+series: SERIES:DANG_MYC_TARGETS
+series_role: up
 description: >-
   MSigDB C2:CGP gene set of genes up-regulated by the MYC oncogenic transcription
   factor and whose promoters are directly bound by MYC, as defined by Zeller and
