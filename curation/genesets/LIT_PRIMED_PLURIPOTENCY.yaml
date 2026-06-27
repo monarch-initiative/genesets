@@ -1,0 +1,190 @@
+gene_set_id: LIT:PRIMED_PLURIPOTENCY
+gene_set_name: PRIMED_PLURIPOTENCY
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:PLURIPOTENCY_STATE
+series_role: primed
+description: >-
+  Literature-defined cell-state ACTIVITY signature of PRIMED (post-implantation-
+  epiblast-like) human pluripotency, the developmentally later, lineage-primed
+  pole of the human pluripotency-state axis. Conventional human embryonic stem
+  cells (e.g. H1, H9, WIBR2/3) and human iPSCs are the PRIMED reference state:
+  they share molecular and functional properties with epiblast stem cells
+  (EpiSCs) of the mouse post-implantation epiblast, in explicit contrast to the
+  earlier NAIVE/ground-state pluripotency of mouse ESCs and of reset human cells.
+  The primed program was defined as the contrast state by the naive-resetting
+  studies of Theunissen, Jaenisch and colleagues (Cell Stem Cell 2014,
+  PMID:25090446) and Takashima, Smith and colleagues (Cell 2014, PMID:25215486),
+  which characterize naive human pluripotency precisely against conventional
+  (primed) human ESCs. Unlike MSigDB causal/driver disease pathway sets, the
+  members here are the READOUT of an ACTIVE cell-state program, not driver
+  mutations: they are the genes UP (high) in primed relative to naive human
+  pluripotent stem cells. The signature is characterized by primed-enriched
+  transcription factors and markers - ZIC2, OTX2, SOX11, the FGF/ERK negative-
+  feedback phosphatase DUSP6, the surface markers THY1/CD90 and CD24, and SFRP2 -
+  and by a distinct SIGNALING DEPENDENCE that is the core contrast with the naive
+  pole: primed self-renewal depends on FGF2 (FGF/ERK) and Activin-NODAL/SMAD2/3
+  signaling, whereas naive ground-state pluripotency depends on LIF/STAT3 with
+  MEK/GSK3 (2i) inhibition. Functionally, primed cells are poised/lineage-primed
+  for differentiation: OTX2 and ZIC2 redirect OCT4 to primed-state-specific
+  enhancers, bivalent developmental loci are armed, and the cells are competent
+  to undergo gastrulation and germ-layer formation upon induction. Because the
+  member genes literally carry the GO annotations for the processes this state
+  executes, enrichment recovers those processes (annotation_supported) rather
+  than leaving them as gaps. This set is paired via the shared `series` with the
+  NAIVE pole, so the eval can check that the two poles resolve to contrasting GO
+  interpretations - most sharply in the FGF/Activin (primed) versus LIF/STAT3
+  (naive) signaling dependence.
+contexts:
+  - term:
+      id: CL:0002322
+      label: embryonic stem cell
+    context_type: cell_type
+    role_note: >-
+      Primed / post-implantation-epiblast-like pluripotency. The signature reads
+      out the PRIMED state of the human embryonic (and induced) pluripotent stem
+      cell - the conventional hESC identity that resembles the mouse
+      post-implantation epiblast - rather than any single disease. It is the
+      lineage-primed pole contrasted with the earlier naive/ground-state pole in
+      this pluripotency-state series, so the embryonic stem cell type (in its
+      primed state) is the anchoring context.
+associations:
+  - term:
+      id: GO:0019827
+      label: stem cell population maintenance
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:25090446
+        reference_title: "Systematic identification of culture conditions for induction and maintenance of naive human pluripotency."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "our naive human ESCs exhibited marked downregulation of the transcription factors OTX2 and ZIC2/3, which were recently shown to direct Oct4 to primed state-specific enhancer sites"
+        explanation: >-
+          The defining contrast paper shows that OTX2 and ZIC2/3 - canonical
+          primed-enriched transcription factors that are DOWNregulated upon
+          resetting to naive pluripotency and therefore UP in the primed state
+          captured by this set - reconfigure the OCT4 pluripotency network by
+          directing OCT4 to primed-state-specific enhancer sites. The
+          self-renewing pluripotent (stem cell) identity is thus actively
+          maintained in the primed state through a distinct, primed-specific
+          OCT4 enhancer logic. These primed-enriched regulators are members of
+          the set annotated to stem cell population maintenance, so enrichment
+          recovers the term (annotation_supported). Scored core because
+          maintenance of the (primed) pluripotent stem cell state is the central
+          identity the signature reads out; specificity is lineage_shared because
+          stem cell population maintenance is shared across stem cell types
+          (including the naive pole), the primed-specific flavor being the point
+          of contrast.
+    curator_note: >-
+      This is the defining ACTIVE process of the set, not a driver lesion: the
+      signature is the readout of a self-renewing, pluripotent stem cell state.
+      It is the term shared with the naive pole of the series - core on both
+      poles - with the contrast carried by the signaling-dependence and
+      lineage-priming terms below rather than by maintenance itself.
+  - term:
+      id: GO:0008543
+      label: fibroblast growth factor receptor signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:25090446
+        reference_title: "Systematic identification of culture conditions for induction and maintenance of naive human pluripotency."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "withdrawal of recombinant FGF had no apparent effect on any of the parameters examined, which is consistent with this growth factor being involved in the maintenance of primed pluripotency"
+        explanation: >-
+          FGF (FGF2/FGFR-ERK) signaling is the identity-defining input that
+          distinguishes the primed pole from the naive pole: the paper states
+          directly that FGF is involved in the maintenance of primed
+          pluripotency (its withdrawal does not perturb the naive reset cells,
+          consistent with FGF being a primed-state requirement rather than a
+          naive one). This is the central naive-versus-primed signaling contrast
+          - primed cells depend on FGF/ERK (and Activin-NODAL), whereas naive
+          ground-state cells depend on LIF/STAT3 with MEK/GSK3 inhibition. The
+          FGF/ERK negative-feedback target DUSP6 and other FGF-pathway genes are
+          primed-enriched members annotated to FGF receptor signaling, so
+          enrichment recovers the term (annotation_supported). Specificity is
+          broadly_expressed because FGF receptor signaling as a GO term operates
+          in very many cell types; its primed-identity-defining ROLE here is the
+          point.
+    curator_note: >-
+      Kept core because FGF/ERK dependence is, together with Activin-NODAL, the
+      single sharpest axis distinguishing primed from naive pluripotency - the
+      contrast the paired series is designed to expose. Annotation_supported via
+      DUSP6 and other FGF-pathway feedback genes that ride high in the primed
+      state.
+  - term:
+      id: GO:0032924
+      label: activin receptor signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The second primed-defining signaling input is Activin-NODAL signaling
+      through the activin receptor and SMAD2/3, which sustains conventional
+      (primed) human ESC self-renewal alongside FGF and is dispensable for the
+      naive reset state. Primed-enriched NODAL/Activin pathway members (e.g. the
+      NODAL co-receptor TDGF1/CRIPTO and the NODAL antagonists LEFTY1/LEFTY2,
+      themselves Activin-SMAD targets) carry activin receptor signaling
+      annotations, so enrichment recovers the term (annotation_supported). Scored
+      supporting rather than core because FGF/ERK is curated as the primary
+      signaling-contrast core term and Activin-NODAL is the co-defining second
+      input; specificity is broadly_expressed because activin receptor signaling
+      operates in many contexts beyond pluripotency.
+  - term:
+      id: GO:0045165
+      label: cell fate commitment
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      A defining feature of the primed state, in contrast to the naive pole, is
+      lineage priming: primed cells are poised and competent for differentiation,
+      with developmental regulators armed at bivalent loci. Primed-enriched
+      developmental transcription factors in the signature (e.g. OTX2, ZIC2,
+      SOX11) carry cell-fate-commitment / cellular differentiation annotations,
+      so enrichment recovers the term (annotation_supported). Scored supporting
+      rather than core because the signature captures the poised, competent
+      pluripotent state itself - readiness for commitment - rather than the
+      executed, irreversible commitment event; specificity is broadly_expressed
+      because cell fate commitment is a general developmental process.
+  - term:
+      id: GO:0001704
+      label: formation of primary germ layer
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      Primed (post-implantation-epiblast-like) pluripotency is the state from
+      which gastrulation and germ-layer (ectoderm/mesoderm/endoderm) formation
+      proceed: the cells are lineage-primed and competent to form the primary
+      germ layers upon induction, a competence the earlier naive pole lacks. This
+      is a real, contrast-relevant property of the primed pole, recorded as an
+      annotation_gap rather than annotation_supported because the primed-UP
+      members are poising/competence regulators (e.g. OTX2, ZIC2) whose current
+      GO annotations capture upstream patterning rather than the germ-layer
+      formation process itself - the differentiation effectors that execute
+      gastrulation are not yet expressed in the undifferentiated primed state.
+      The gap is GO's (a GO annotation curation target), so the term is
+      curator_added and not recovered by enrichment.
