@@ -1,0 +1,227 @@
+gene_set_id: LIT:BEIGE_ADIPOCYTE
+gene_set_name: BEIGE_ADIPOCYTE
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:ADIPOCYTE_STATE
+series_role: beige
+description: >-
+  Literature-defined cell-state ACTIVITY signature of the BEIGE (brite)
+  adipocyte - the INDUCIBLE thermogenic pole that arises within white adipose
+  tissue on cold or beta-adrenergic/cAMP stimulation. The program was defined by
+  Wu, Bostrom, Spiegelman and colleagues (Cell 2012, PMID:22796012), who
+  isolated "beige" cells from murine white fat depots and showed they are a
+  distinct thermogenic fat-cell type that, like classical brown fat, respond to
+  cyclic AMP stimulation with high UCP1 expression and respiration rates, yet
+  have a gene-expression pattern distinct from either white or brown fat (and
+  argued that the brown-fat deposits previously identified in adult humans are in
+  fact composed of beige adipocytes). Beige is one of three members of
+  SERIES:ADIPOCYTE_STATE: white (energy-storage, unilocular, UCP1-negative),
+  classical brown (constitutive Myf5-lineage thermogenesis), and beige (this
+  set) - the INDUCIBLE thermogenesis that emerges within white depots from a
+  non-Myf5 lineage. The defining contrast is inducibility: beige cells have
+  extremely low BASAL UCP1 but switch on a full thermogenic program (UCP1,
+  PPARGC1A/PGC-1alpha, PRDM16, CIDEA, DIO2, ELOVL3, COX/ETC subunits, increased
+  mitochondrial mass) in response to cold, sympathetic noradrenaline and cAMP/PKA
+  signalling. The signature is anchored by beige-SELECTIVE surface and
+  transcriptional markers that distinguish beige from classical brown and white -
+  CD137/TNFRSF9, TMEM26 and TBX1 (the markers reported by the defining paper),
+  together with CITED1, SHOX2 and the inducible thermogenic effectors UCP1 and
+  PPARGC1A. Unlike MSigDB causal/driver disease pathway sets, the members here
+  are the READOUT of an ACTIVE program, not driver mutations: they are the
+  transcripts UP (high) in cold/cAMP-induced beige adipocytes relative to
+  unstimulated white fat, so they literally carry the GO annotations for the
+  thermogenic processes the state executes and enrichment recovers those
+  processes (annotation_supported) rather than leaving them as gaps. DISEASE
+  RELEVANCE: recruitable beige/brite fat increases whole-body energy expenditure
+  and improves glucose and lipid homeostasis, making beige-adipocyte induction a
+  much-pursued therapeutic strategy in obesity and type 2 diabetes - the paper
+  frames beige cells as a mammalian cell type with therapeutic potential.
+contexts:
+  - term:
+      id: CL:0001070
+      label: beige adipocyte
+    context_type: cell_type
+    role_note: >-
+      The directly matching Cell Ontology class: an adipocyte that is beige in
+      colour, thermogenic, and that differentiates within white adipose tissue
+      from a Myf5-negative progenitor. The signature reads out the INDUCIBLE
+      (cold/cAMP/beta-adrenergic) thermogenic state of this brite adipocyte - the
+      pole contrasted with the white (storage) and classical-brown (constitutive
+      thermogenesis) members of this adipocyte-state series - so the beige
+      adipocyte cell type is the anchoring context.
+associations:
+  - term:
+      id: GO:0106106
+      label: cold-induced thermogenesis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:22796012
+        reference_title: "Beige adipocytes are a distinct type of thermogenic fat cell in mouse and human."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "they respond to cyclic AMP stimulation with high UCP1 expression and respiration rates"
+        explanation: >-
+          The defining activity of the beige state is inducible UCP1-dependent
+          thermogenesis: beige cells carry extremely low BASAL UCP1 but, on
+          cyclic-AMP (downstream of cold/beta-adrenergic) stimulation, switch on
+          high UCP1 expression and high respiration rates - i.e. cold-induced
+          (non-shivering) thermogenesis. The thermogenic effectors driving this
+          (UCP1, PPARGC1A/PGC-1alpha, PRDM16, CIDEA, DIO2) are members of the set
+          and carry cold-induced-thermogenesis annotations, so enrichment recovers
+          this core process (annotation_supported). Scored cell_state-defining
+          core; specificity is lineage_shared because cold-induced thermogenesis
+          is the property beige shares with classical brown adipocytes (the
+          constitutive pole of this series), with the beige-specific distinction
+          being its INDUCIBILITY within white fat.
+      - reference: PMID:22796012
+        reference_title: "Beige adipocytes are a distinct type of thermogenic fat cell in mouse and human."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "Brown fat generates heat via the mitochondrial uncoupling protein UCP1, defending against hypothermia and obesity"
+        explanation: >-
+          The paper frames the entire beige program against the canonical
+          thermogenic mechanism it shares with brown fat - heat generation via
+          the mitochondrial uncoupling protein UCP1 - which beige cells deploy
+          upon induction. This establishes that the set's defining biological
+          output is UCP1-mediated thermogenesis (cold-induced thermogenesis),
+          recovered by enrichment because the UCP1/thermogenic effectors are
+          members annotated to the term (annotation_supported).
+    curator_note: >-
+      This is the defining ACTIVE process of the beige cell state - inducible,
+      UCP1-mediated non-shivering thermogenesis - and the central biological
+      contrast that separates the thermogenic poles (beige/brown) from the
+      storage pole (white) of SERIES:ADIPOCYTE_STATE.
+  - term:
+      id: GO:0009409
+      label: response to cold
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Beige adipocytes are, by definition, cold-INDUCED: they emerge within white
+      adipose tissue and acquire their thermogenic phenotype in response to cold
+      exposure (via sympathetic noradrenaline) - the inducibility that defines the
+      beige pole versus the constitutively thermogenic classical-brown pole and
+      the storage-only white pole. The cold-responsive thermogenic effectors
+      (UCP1, PPARGC1A, PRDM16, DIO2, CIDEA) are members annotated to response to
+      cold / cold-induced thermogenesis, so enrichment recovers the term
+      (annotation_supported). Kept core because cold induction is the
+      identity-defining input of this state; specificity is lineage_shared because
+      thermogenic response to cold is the program beige holds in common with
+      classical brown adipocytes.
+  - term:
+      id: GO:0160274
+      label: beige fat cell differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:22796012
+        reference_title: "Beige adipocytes are a distinct type of thermogenic fat cell in mouse and human."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "UCP1-positive cells that emerge in white fat from a non-myf-5 lineage"
+        explanation: >-
+          Beige fat cell differentiation is the cell-type-defining process of this
+          set: the paper distinguishes beige/brite adipocytes as UCP1-positive
+          cells that emerge within white fat from a non-Myf5 lineage - the white
+          adipose tissue browning that yields the beige cell. The regulators and
+          effectors of this differentiation program (PRDM16, PPARGC1A, EBF2,
+          UCP1, CIDEA, TBX1, TMEM26, CD137/TNFRSF9) are members of the set and
+          carry beige/brown fat-cell-differentiation annotations, so enrichment
+          recovers this term (annotation_supported).
+      - reference: PMID:22796012
+        reference_title: "Beige adipocytes are a distinct type of thermogenic fat cell in mouse and human."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Beige cells have a gene expression pattern distinct from either white or brown fat and are preferentially sensitive to the polypeptide hormone irisin"
+        explanation: >-
+          The defining paper demonstrates that beige cells are a distinct fat-cell
+          type with a gene-expression pattern unlike either white or classical
+          brown fat, establishing beige fat cell differentiation as a
+          cell_type_specific identity program rather than a shared one. This is
+          why the beige-SELECTIVE markers (CD137/TNFRSF9, TMEM26, TBX1) and the
+          irisin sensitivity define the set, and why enrichment over the
+          differentiation regulators recovers this term (annotation_supported).
+    curator_note: >-
+      The identity-defining differentiation program of the set. Scored
+      cell_type_specific (uniquely beige/brite) to contrast with the
+      lineage_shared brown fat cell differentiation term below; both describe a
+      thermogenic-adipocyte differentiation program, but only this one is specific
+      to the white-fat-resident, inducible beige cell.
+  - term:
+      id: GO:0005739
+      label: mitochondrion
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Thermogenesis is mitochondrial: induced beige adipocytes undergo
+      mitochondrial biogenesis (driven by PPARGC1A/PGC-1alpha) and pack their
+      mitochondria with UCP1 in the inner membrane plus electron-transport-chain
+      and TCA-cycle machinery, so the mitochondrion is the defining cellular
+      compartment of the thermogenic program this set reads out. The
+      UCP1/PPARGC1A/CIDEA/COX members carry mitochondrial-localisation
+      annotations, so enrichment recovers this core component
+      (annotation_supported); broadly_expressed because mitochondria are present
+      in essentially all human cell types even though their thermogenic
+      specialisation here is beige-specific.
+  - term:
+      id: GO:0051591
+      label: response to cAMP
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The proximal inducing signal for beige thermogenesis is cAMP: cold-driven
+      sympathetic noradrenaline acts through beta-adrenergic receptors to raise
+      cAMP, activating PKA and the downstream thermogenic transcriptional program
+      - the defining paper explicitly shows beige cells respond to cyclic AMP
+      stimulation with high UCP1 expression and respiration. cAMP-responsive
+      members (e.g. UCP1, PPARGC1A, DIO2 induction) are annotated to response to
+      cAMP, so enrichment recovers the term (annotation_supported). Scored
+      supporting rather than core because it is the upstream signalling input
+      (the browning trigger) rather than the thermogenic output itself;
+      broadly_expressed because cAMP signalling is a general second-messenger
+      response used across many cell types. No verbatim snippet is attached here
+      because the cyclic-AMP evidence quote is carried on the core cold-induced
+      thermogenesis term above.
+  - term:
+      id: GO:0050873
+      label: brown fat cell differentiation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Beige adipocytes share much of the classical brown thermogenic
+      differentiation program (PRDM16, PPARGC1A, EBF2, UCP1, CIDEA, DIO2), and
+      several of these regulators are annotated to brown fat cell differentiation,
+      so enrichment recovers the term (annotation_supported). Scored supporting
+      (not core) and lineage_shared because this is the thermogenic-adipocyte
+      program beige holds in COMMON with the constitutive classical-brown pole of
+      the series; the beige-SPECIFIC identity is captured by the
+      cell_type_specific beige fat cell differentiation term above, and beige
+      cells are explicitly distinguished from brown fat in the defining paper.

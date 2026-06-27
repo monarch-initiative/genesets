@@ -1,0 +1,183 @@
+gene_set_id: LIT:BROWN_ADIPOCYTE
+gene_set_name: BROWN_ADIPOCYTE
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:ADIPOCYTE_STATE
+series_role: brown
+description: >-
+  Literature-defined cell-state ACTIVITY signature of the classical BROWN
+  adipocyte, the constitutively THERMOGENIC pole of the adipocyte-state axis
+  (series SERIES:ADIPOCYTE_STATE; series_role brown), anchored on Wu, Spiegelman
+  and colleagues (Cell 2012, PMID:22796012) and Seale, Kajimura and Spiegelman
+  (Nature 2008, PMID:18719582). Unlike MSigDB causal/driver disease pathway sets,
+  the members here are the READOUT of an ACTIVE program rather than driver
+  mutations: they are the genes UPregulated in classical brown adipocytes — the
+  UCP1-positive, mitochondria-rich fat cells of the interscapular and
+  supraclavicular depots that arise from a Myf5+/myoblast-like (non-white)
+  lineage. The signature is dominated by the thermogenic/bioenergetic program
+  that defines the cell: the mitochondrial uncoupling protein UCP1, the
+  transcriptional coactivator PPARGC1A (PGC1-alpha), the brown-fat determination
+  factor PRDM16, the lipid-droplet/thermogenic effector CIDEA, the
+  very-long-chain fatty-acid elongase ELOVL3, and classical-brown-selective
+  markers such as ZIC1, LHX8 and EVA1 (MPZL2) that distinguish constitutive brown
+  fat from the inducible beige/brite cells of white depots. These cells carry a
+  high mitochondrial content and multilocular lipid droplets, and defend body
+  temperature by CONSTITUTIVE NON-SHIVERING THERMOGENESIS: UCP1 dissipates the
+  mitochondrial proton-motive force as heat (mitochondrial uncoupling), so brown
+  adipocytes burn rather than store chemical energy. Because the member genes
+  literally carry the GO annotations for the processes the brown-fat state
+  executes, enrichment recovers those processes (annotation_supported) rather than
+  leaving them as gaps — an active-program / activity signature, not a
+  driver-mutation panel. This set is one POLE of a three-member adipocyte-state
+  series: it contrasts with the WHITE adipocyte (energy STORAGE, unilocular,
+  low UCP1) and with the inducible BEIGE/brite adipocyte (low basal UCP1 but
+  cAMP/cold-inducible high UCP1), against which the same thermogenic terms resolve
+  to contrasting interpretations — constitutively core here, absent or merely
+  inducible on the other poles. DISEASE RELEVANCE: active brown-fat thermogenesis
+  raises energy expenditure and improves glucose and lipid handling, so the brown
+  adipocyte program is a therapeutic target in obesity, type 2 diabetes and
+  metabolic syndrome, where its loss or inactivity is linked to weight gain and
+  metabolic disease.
+contexts:
+  - term:
+      id: CL:0000449
+      label: brown adipocyte
+    context_type: cell_type
+    role_note: >-
+      thermogenic brown adipocyte (UCP1+, mitochondria-rich). The signature reads
+      out the constitutively thermogenic brown-fat state; CL:0000449 (brown
+      adipocyte) is the anchoring cell-state context, the contrast pole to the
+      white (storage) and inducible beige adipocytes of this adipocyte-state
+      series.
+associations:
+  - term:
+      id: GO:0050873
+      label: brown fat cell differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:18719582
+        reference_title: "PRDM16 controls a brown fat/skeletal muscle switch."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "ectopic expression of PRDM16 in myoblasts induces their differentiation into brown fat cells"
+        explanation: >-
+          The gene set is, by definition, the readout of the brown-adipocyte
+          differentiation program: the brown-fat determination factor PRDM16,
+          acting with PPARGC1A (PGC1-alpha) and PPARG, specifies the brown fat
+          fate, and ectopic PRDM16 is sufficient to convert myoblasts into UCP1+
+          brown fat cells. Brown fat cell differentiation is therefore the
+          central, cell-type-specific process the signature represents, and the
+          brown-selective members (UCP1, PPARGC1A, PRDM16, CIDEA) carry this GO
+          annotation, so enrichment recovers it (annotation_supported).
+    curator_note: >-
+      This is the defining ACTIVE/identity process of the set, not a driver
+      lesion. cell_type_specific because brown fat cell differentiation is, by
+      construction, the process this brown-adipocyte signature reads out.
+  - term:
+      id: GO:0106106
+      label: cold-induced thermogenesis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:22796012
+        reference_title: "Beige adipocytes are a distinct type of thermogenic fat cell in mouse and human."
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: "Brown fat generates heat via the mitochondrial uncoupling protein UCP1, defending against hypothermia and obesity."
+        explanation: >-
+          UCP1-mediated non-shivering thermogenesis is the defining function of
+          the brown adipocyte: brown fat generates heat by using the mitochondrial
+          uncoupling protein UCP1 to dissipate the proton-motive force, defending
+          against hypothermia and obesity. Cold-induced (adaptive) thermogenesis
+          is therefore the central process this constitutively thermogenic pole
+          executes, and its members (UCP1, PPARGC1A) carry the annotation, so
+          enrichment recovers it (annotation_supported).
+    curator_note: >-
+      Kept core: UCP1-mediated cold-induced/non-shivering thermogenesis is the
+      identity-defining function that separates the brown pole from the white
+      (storage) pole. Marked cell_type_specific because constitutive
+      UCP1-dependent non-shivering thermogenesis is essentially the brown/beige
+      adipocyte's signature output.
+  - term:
+      id: GO:0005739
+      label: mitochondrion
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Brown adipocytes are exceptionally mitochondria-dense — the high
+      mitochondrial content (the source of their brown colour) houses the UCP1
+      uncoupling machinery and the respiratory chain that thermogenesis depends
+      on. The thermogenic and oxidative members (UCP1, PPARGC1A targets, the ETC
+      and beta-oxidation enzymes) carry mitochondrial-localisation annotations, so
+      enrichment recovers this core component (annotation_supported).
+      broadly_expressed because mitochondria are present in virtually all human
+      cell types even though brown fat is unusually rich in them.
+  - term:
+      id: GO:1902600
+      label: proton transmembrane transport
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The biochemical heart of brown-fat thermogenesis is UCP1-mediated proton
+      leak: UCP1 transports protons back across the inner mitochondrial membrane,
+      uncoupling respiration from ATP synthesis so the energy is released as heat.
+      UCP1 carries the proton-transmembrane-transport annotation, so enrichment
+      recovers it (annotation_supported). Scored supporting rather than core
+      because the GO term is generic (it also covers ATP synthase and other proton
+      pumps) and is broadly_expressed, so it captures the uncoupling mechanism but
+      is not by itself specific to the brown-fat state.
+  - term:
+      id: GO:0009409
+      label: response to cold
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Cold exposure (via sympathetic/beta-adrenergic signalling) is the
+      physiological trigger that activates the brown-fat thermogenic program, and
+      thermogenic members such as UCP1 and PPARGC1A are annotated to response to
+      cold, so enrichment recovers it (annotation_supported). Scored supporting
+      (the upstream stimulus/enabling response) rather than core, and
+      broadly_expressed because responsiveness to cold is shared across many cell
+      types and is not brown-fat-specific.
+  - term:
+      id: GO:0006635
+      label: fatty acid beta-oxidation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Brown adipocytes are specialised for lipid CATABOLISM rather than storage:
+      fatty acids liberated from their multilocular droplets are oxidised in the
+      mitochondria to fuel the UCP1-uncoupled respiration that produces heat.
+      Beta-oxidation enzymes induced in the brown-fat program carry this
+      annotation, so enrichment recovers it (annotation_supported). Scored
+      supporting because beta-oxidation supplies the fuel for thermogenesis rather
+      than being the identity-defining process itself, and broadly_expressed
+      because fatty-acid oxidation operates across many oxidative tissues.
