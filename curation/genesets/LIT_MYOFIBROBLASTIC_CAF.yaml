@@ -1,0 +1,175 @@
+gene_set_id: LIT:MYOFIBROBLASTIC_CAF
+gene_set_name: MYOFIBROBLASTIC_CAF
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:CAF_STATE
+series_role: myofibroblastic
+description: >-
+  Literature-defined cell-state ACTIVITY signature of myofibroblastic
+  cancer-associated fibroblasts (myCAFs), the alpha-SMA-high, contractile and
+  ECM-depositing pole of cancer-associated fibroblast (CAF) heterogeneity first
+  defined by Ohlund, Handly-Santana, Biffi, Tuveson et al. (J Exp Med 2017,
+  PMID:28232471) in pancreatic ductal adenocarcinoma (PDA). Using a
+  three-dimensional co-culture of neoplastic pancreatic ductal organoids with
+  pancreatic stellate cells (PSCs), corroborated in human and mouse (KPC/KPCY) PDA
+  tissue, the authors resolved two mutually exclusive, reversible CAF states: a
+  juxtatumoral myofibroblastic state (myCAF) expressing high alpha-smooth muscle
+  actin (alphaSMA, gene ACTA2) located in a periglandular ring immediately adjacent
+  to neoplastic cells, and a more distant, cytokine-secreting inflammatory state
+  (iCAF; alphaSMA-low, IL6-high). Unlike MSigDB causal/driver disease pathway sets,
+  the members here are the READOUT of an ACTIVE program, not driver mutations: they
+  are the transcripts UPregulated when a resting, quiescent fibroblast/PSC is
+  converted to the myofibroblastic CAF state. The signature is dominated by a
+  contractile and ECM-deposition program: the myofibroblast contractile-apparatus
+  genes ACTA2 (alphaSMA), TAGLN and MYL9; the fibrillar collagens COL1A1, COL1A2 and
+  COL3A1; the matricellular protein POSTN; and TGF-beta-pathway effectors, reflecting
+  that myCAFs build the desmoplastic stroma of PDA. Because the member genes
+  literally carry the GO annotations for the processes the state executes, enrichment
+  recovers those processes (annotation_supported) rather than leaving them as gaps.
+  This set is one POLE of a CAF-state series (series SERIES:CAF_STATE): it is paired
+  with the reciprocal inflammatory CAF (iCAF) signature, the IL6/cytokine-secreting,
+  paracrine-induced pole, against which the same shared terms resolve to contrasting
+  interpretations (ECM/contractile programs up on the myofibroblastic pole versus
+  cytokine secretion up on the inflammatory pole). myCAF formation depends on direct
+  juxtacrine contact with cancer cells and on TGF-beta signaling, the canonical
+  inducer of the myofibroblast program. The defining paper was generated in mouse and
+  human PDA; we curate the human-orthologous program and keep the taxon human per
+  corpus convention. DISEASE RELEVANCE: myCAFs deposit the dense desmoplastic
+  extracellular matrix that constitutes the bulk of PDA tumor volume and acts as a
+  physical and biochemical barrier impairing drug delivery; CAF-targeting strategies
+  that fail to distinguish the myofibroblastic from the inflammatory state have
+  produced contradictory or worse outcomes, making the myCAF/iCAF axis a key stromal
+  target.
+contexts:
+  - term:
+      id: CL:0000186
+      label: myofibroblast cell
+    context_type: cell_type
+    role_note: >-
+      Myofibroblastic cancer-associated fibroblast (myCAF): the alpha-SMA-high,
+      TGF-beta-driven, juxtatumoral (periglandular) contractile/ECM-depositing CAF
+      state that this signature reads out. CL has no cancer-associated-fibroblast
+      class, so myofibroblast cell (CL:0000186, the alpha-SMA-positive contractile
+      connective-tissue cell) is used as the most specific verified anchoring cell
+      type; the myCAF is the contrast pole to the inflammatory CAF (iCAF) in this
+      CAF-state series.
+associations:
+  - term:
+      id: GO:0036446
+      label: myofibroblast differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:28232471
+        reference_title: "Distinct populations of inflammatory fibroblasts and myofibroblasts in pancreatic cancer."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "elevated expression of α-smooth muscle actin (αSMA)"
+        explanation: >-
+          The gene set is, by definition, the readout of the myofibroblastic CAF
+          state: the authors identify a CAF subpopulation with elevated expression of
+          the canonical myofibroblast marker alpha-smooth muscle actin (alphaSMA, gene
+          ACTA2) located immediately adjacent to neoplastic cells, and name this
+          alphaSMA-high subpopulation myofibroblastic CAFs (myCAFs). Acquiring the
+          alphaSMA-high contractile phenotype is myofibroblast differentiation, the
+          central, cell-type-specific process the signature represents, and its
+          members (ACTA2, TAGLN, MYL9) carry this GO annotation, so enrichment recovers
+          it (annotation_supported).
+    curator_note: >-
+      This is the defining ACTIVE process of the set, not a driver lesion. It is
+      cell_type_specific because, by construction, the myofibroblastic CAF signature
+      reads out the acquisition of the alphaSMA-high contractile myofibroblast
+      identity (the contrast pole to the inflammatory CAF state).
+  - term:
+      id: GO:0030198
+      label: extracellular matrix organization
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:28232471
+        reference_title: "Distinct populations of inflammatory fibroblasts and myofibroblasts in pancreatic cancer."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "demonstrated that organoid-activated CAFs produced desmoplastic stroma"
+        explanation: >-
+          myCAFs are the desmoplasia-building pole of CAF heterogeneity: in the
+          co-culture of murine PSCs and PDA organoids the organoid-activated CAFs
+          produced the desmoplastic stroma, depositing the collagen-rich extracellular
+          matrix that recapitulates the desmoplastic reaction of PDA. Extracellular
+          matrix organization is thus a
+          core process the myofibroblastic state executes, and its members (the
+          fibrillar collagens COL1A1/COL1A2/COL3A1, POSTN and other matrix proteins)
+          carry this GO annotation, so enrichment recovers it (annotation_supported).
+          lineage_shared rather than cell_type_specific because ECM organization is
+          produced across stromal/mesenchymal lineages, not by a single cell type.
+    curator_note: >-
+      Kept core: ECM deposition/remodeling is the defining functional output of the
+      myofibroblastic (as opposed to inflammatory) CAF pole, the molecular basis of
+      the desmoplastic stroma that dominates PDA.
+  - term:
+      id: GO:0007179
+      label: transforming growth factor beta receptor signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      TGF-beta is the canonical inducer of the myofibroblast program, and myCAF
+      formation is driven by juxtacrine TGF-beta signaling from neoplastic cells; the
+      paper shows that the pancreatic stellate cells respond to recombinant TGF-beta
+      by inducing TGF-beta target genes. TGF-beta receptor signaling is therefore a
+      core process the myofibroblastic state both receives and executes (SMAD-driven
+      induction of ACTA2 and the collagen/ECM program), and TGF-beta-pathway effectors
+      in the signature carry this annotation, so enrichment recovers it
+      (annotation_supported). Kept core because it is mechanistically central to what
+      defines the myCAF pole; specificity broadly_expressed because TGF-beta receptor
+      signaling is shared across very many cell types and is not fibroblast-specific.
+  - term:
+      id: GO:0042060
+      label: wound healing
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The desmoplastic reaction of PDA is a dysregulated, persistent wound-healing
+      response: activated myofibroblastic CAFs lay down provisional and fibrillar
+      matrix and contract the stroma exactly as myofibroblasts do during tissue
+      repair, and these effectors (collagens, POSTN, the contractile apparatus) carry
+      wound-healing/response-to-wounding annotations, so enrichment recovers the term
+      (annotation_supported). Scored supporting rather than core: tissue repair is the
+      physiological program the desmoplastic stroma co-opts, an accompanying frame
+      rather than the defining myCAF activity, and wound healing is shared across many
+      tissue-repair contexts.
+  - term:
+      id: GO:0030199
+      label: collagen fibril organization
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      A characteristic sub-process of the myCAF ECM program: in the co-culture the
+      activated CAFs deposit collagen I that is organized into collagen fibrils, and
+      the fibrillar collagens (COL1A1, COL1A2, COL3A1) and their organizing partners
+      carry this annotation, so enrichment recovers it (annotation_supported). Scored
+      supporting rather than core because it is one specialized arm of the broader
+      extracellular-matrix-organization program (the core process), restricted to the
+      collagen subset rather than the whole signature.

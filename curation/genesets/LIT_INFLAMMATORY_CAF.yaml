@@ -1,0 +1,179 @@
+gene_set_id: LIT:INFLAMMATORY_CAF
+gene_set_name: INFLAMMATORY_CAF
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:CAF_STATE
+series_role: inflammatory
+description: >-
+  Literature-defined cell-state ACTIVITY signature of inflammatory
+  cancer-associated fibroblasts (iCAFs), the secreted-cytokine pole of
+  cancer-associated fibroblast (CAF) heterogeneity in pancreatic ductal
+  adenocarcinoma (PDA) defined by Oehlund, Tuveson and colleagues (J Exp Med
+  2017, PMID:28232471). Using a three-dimensional co-culture of murine pancreatic
+  stellate cells (PSCs) with PDA tumor organoids, the authors resolved two
+  phenotypically distinct CAF states: a myofibroblastic CAF (myCAF) population
+  with elevated alpha-smooth muscle actin (alpha-SMA, ACTA2) located immediately
+  adjacent to neoplastic cells, and a second, spatially more distant population
+  that lacked elevated alpha-SMA and instead secreted IL6 and additional
+  inflammatory mediators - the inflammatory CAF (iCAF). Unlike MSigDB
+  causal/driver disease pathway sets, the members here are the READOUT of an
+  ACTIVE program, not driver mutations: they are the genes/factors UP in the
+  inflammatory CAF state relative to the myofibroblastic state. The iCAF program
+  is dominated by a secreted pro-inflammatory module - the GP130/JAK-STAT3
+  ligands IL6, IL11 and LIF (with IL6 the defining and prototypical iCAF
+  cytokine), the chemokines CXCL1, CXCL2 and CCL2, and the hyaluronan synthases
+  HAS1 and HAS2 - on a PDGFRA-positive, ACTA2-low fibroblast that sits distal to
+  the tumor and signals to it in a paracrine fashion. Because the member genes
+  literally carry the GO annotations for the processes the iCAF state executes,
+  enrichment recovers those processes (annotation_supported) rather than leaving
+  them as gaps. This set is one POLE of a CAF-state series (series
+  SERIES:CAF_STATE): it is paired with the reciprocal myofibroblastic CAF (myCAF)
+  signature - the tumor-adjacent, alpha-SMA-high, TGF-beta-driven
+  contractile/extracellular-matrix-depositing pole - against which the same
+  shared terms resolve to contrasting interpretations (a secreted inflammatory
+  program here versus a contractile desmoplastic program there). DISEASE
+  RELEVANCE: the iCAF state shapes the immunosuppressive, desmoplastic
+  microenvironment of pancreatic cancer; its IL-6/STAT3 secretory output promotes
+  tumor progression, cachexia and immune evasion, and the iCAF/myCAF balance is
+  an actively pursued therapeutic axis in PDA.
+contexts:
+  - term:
+      id: CL:0000057
+      label: fibroblast
+    context_type: cell_type
+    role_note: >-
+      Inflammatory CAF (IL-6/LIF-high, secreted, tumor-distal). The signature
+      reads out the inflammatory pole of cancer-associated fibroblast
+      heterogeneity in pancreatic cancer: an ACTA2 (alpha-SMA)-low, PDGFRA-high
+      fibroblast located distally to neoplastic cells that secretes IL6, IL11,
+      LIF and chemokines. Cell Ontology has no dedicated cancer-associated /
+      inflammatory fibroblast class, so the generic parent fibroblast (CL:0000057)
+      is the most specific VERIFIED anchoring context; the contrast pole in this
+      series, the myofibroblastic CAF, maps instead toward the contractile
+      myofibroblast.
+associations:
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:28232471
+        reference_title: "Distinct populations of inflammatory fibroblasts and myofibroblasts in pancreatic cancer."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "another distinct subpopulation of CAFs, located more distantly from neoplastic cells"
+        explanation: >-
+          The inflammatory CAF is, by definition, the pro-inflammatory secretory
+          pole of CAF heterogeneity: the co-culture platform revealed this
+          distinct, tumor-distal CAF subpopulation, which (per the same sentence)
+          lacked elevated alpha-SMA and instead secreted IL6 and additional
+          inflammatory mediators. A pro-inflammatory secretory program is
+          therefore the identity-defining activity of the state, and the iCAF
+          members (IL6, IL11, LIF, CXCL1/2, CCL2) carry inflammatory response
+          annotations, so enrichment recovers it (annotation_supported). The
+          spatially distal localization noted here is the spatial contrast to the
+          tumor-adjacent myofibroblastic (myCAF) pole of this series.
+    curator_note: >-
+      Kept core because the inflammatory secretory phenotype is what the iCAF
+      state IS, not a peripheral effect; specificity is broadly_expressed because
+      inflammatory response itself is shared across very many immune and stromal
+      contexts and is not fibroblast-specific (the cell-type specificity here lives
+      in the fibroblast context, not in this generic process term).
+  - term:
+      id: GO:0032635
+      label: interleukin-6 production
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:28232471
+        reference_title: "Distinct populations of inflammatory fibroblasts and myofibroblasts in pancreatic cancer."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "instead secreted IL6 and additional inflammatory mediators"
+        explanation: >-
+          IL-6 is the defining and prototypical iCAF cytokine: the paper
+          identifies the inflammatory CAF subpopulation precisely by its secretion
+          of IL6 (with the related GP130/STAT3 ligands IL11 and LIF), in contrast
+          to the alpha-SMA-high myofibroblastic pole. Interleukin-6 production is
+          therefore a central, identity-defining activity of the signature, and
+          its member genes (IL6, and the cytokine cluster IL11/LIF) carry
+          interleukin-6 / cytokine production annotations, so enrichment recovers
+          this core process (annotation_supported). A SPECIFIC child of cytokine
+          production is used deliberately (rather than the generic, do-not-annotate
+          parent) because IL-6 is the cytokine that names and defines the state.
+    curator_note: >-
+      Most identity-defining secreted-cytokine term of the set; kept core/high.
+      specificity is broadly_expressed because IL-6 production occurs across many
+      immune and stromal contexts and is not unique to the iCAF, even though IL-6
+      is the marker that distinguishes this CAF pole.
+  - term:
+      id: GO:0032602
+      label: chemokine production
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The "additional inflammatory mediators" secreted by the iCAF beyond IL6
+      prominently include the chemokines CXCL1, CXCL2 and CCL2, which are
+      characteristic iCAF members and recruit immune cells into the PDA stroma.
+      These chemokine genes carry chemokine production annotations, so enrichment
+      recovers this core secretory process (annotation_supported). Kept core
+      because chemokine output is part of the defining secreted inflammatory
+      program (not a peripheral effect), but a specific child of cytokine
+      production is used rather than the generic parent; specificity is
+      broadly_expressed because chemokine production is shared across many
+      inflammatory cell types.
+  - term:
+      id: GO:0070098
+      label: chemokine-mediated signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The iCAF chemokines (CXCL1, CXCL2, CCL2) act through chemokine receptors to
+      drive paracrine recruitment and positioning of immune cells in the
+      desmoplastic stroma; the corresponding chemokine ligand members carry this
+      annotation, so enrichment recovers it (annotation_supported). Scored
+      supporting rather than core: chemokine-mediated signaling is a downstream
+      paracrine consequence of the iCAF secretory output rather than the
+      identity-defining activity, and it is broadly expressed across inflammatory
+      contexts.
+  - term:
+      id: GO:0070555
+      label: response to interleukin-1
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    curator_note: >-
+      Tumor-derived interleukin-1 (IL1A/IL1B) signaling is an established upstream
+      inducer of the inflammatory CAF state, biasing fibroblasts toward the
+      IL-6/LIF/JAK-STAT3 secretory iCAF program (and away from the TGF-beta-driven
+      myCAF program); this mechanism is from the broader iCAF literature
+      subsequent to the defining Oehlund 2017 paper, so it is curator_added rather
+      than enrichment-seeded from that report. Scored supporting because response
+      to IL-1 is an enabling inducing input rather than the defining secretory
+      output of the signature; IL-1-responsive iCAF members (e.g. IL6, CXCL1,
+      CXCL2, CCL2) carry response-to-interleukin-1 annotations, so it is
+      annotation_supported, and broadly_expressed because IL-1 responsiveness is
+      shared across many cell types.

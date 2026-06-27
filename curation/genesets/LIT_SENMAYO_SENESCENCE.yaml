@@ -65,8 +65,8 @@ associations:
       brain, adipose and hematopoietic/mesenchymal compartments and across human and
       mouse), so it is shared across lineages rather than tied to one cell type.
   - term:
-      id: GO:0050663
-      label: cytokine secretion
+      id: GO:0032635
+      label: interleukin-6 production
     aspect: biological_process
     category: core_process
     confidence: high
@@ -81,16 +81,18 @@ associations:
         snippet: "Although cellular senescence drives multiple age-related co-morbidities through the senescence-associated secretory phenotype, in vivo senescent cell identification remains challenging."
         explanation: >-
           The senescence-associated secretory phenotype (SASP) named here is, by
-          definition, a secretory program: senescent cells secrete pro-inflammatory
-          cytokines and chemokines, and the paper reports that cytokines/chemokines
-          form the most densely connected module of the SenMayo network. The secreted
-          interleukins and chemokines (IL6, IL1A, IL1B, CXCL1/2/8, CCL2/8/20) are
-          SenMayo members that carry cytokine secretion/production annotations, so
-          enrichment recovers this core process (annotation_supported). Cytokine
-          secretion is the mechanistic heart of the SASP through which, per this
-          statement, senescence exerts its paracrine and systemic effects. Marked
-          broadly_expressed because cytokine secretion occurs across many immune and
-          inflammatory contexts and is not unique to the senescent state.
+          definition, a secretory program of pro-inflammatory cytokines. IL-6 is the
+          archetypal SASP factor and a SenMayo member, so interleukin-6 production is
+          the representative core cytokine process for the signature; the paper reports
+          that cytokines/chemokines form the most densely connected module of the
+          SenMayo network. IL6 carries the interleukin-6 production annotation, so
+          enrichment recovers this core process (annotation_supported). The broader
+          secretory program — IL1A/IL1B and the CXCL/CCL chemokines (CXCL1/2/8,
+          CCL2/8/20) — is additionally captured by the inflammatory response and
+          leukocyte chemotaxis terms in this file. Marked broadly_expressed because
+          cytokine production occurs across many inflammatory contexts and is not
+          unique to the senescent state. (This term replaces the obsolete GO:0050663
+          "cytokine secretion".)
   - term:
       id: GO:0006954
       label: inflammatory response
