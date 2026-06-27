@@ -1,0 +1,167 @@
+gene_set_id: MSIGDB:HALLMARK_GLYCOLYSIS
+gene_set_name: HALLMARK_GLYCOLYSIS
+collection: H
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+series: SERIES:TUMOR_METABOLISM
+series_role: glycolytic
+n_genes: 200
+description: >-
+  MSigDB Hallmark gene set of 200 genes encoding proteins involved in glycolysis
+  and gluconeogenesis. This is a metabolic-process signature, not a cell-type
+  signature; the member genes are dominated by the cytosolic glucose-catabolising
+  enzymes of the Embden-Meyerhof pathway (e.g. HK2, PFKP, ALDOA, PGK1, ENO1, the
+  proliferation-associated pyruvate kinase isoform PKM, and LDHA) together with
+  carbohydrate-metabolism and gluconeogenic enzymes and several HIF-responsive
+  glycolytic regulators. The hallmark captures the aerobic-glycolysis (Warburg)
+  programme by which proliferating and tumour cells ferment glucose to lactate
+  even under adequate oxygen, supplying both rapid ATP and the biosynthetic
+  precursors needed for growth. It is the glycolytic pole of the
+  SERIES:TUMOR_METABOLISM (Warburg) axis, paired with
+  HALLMARK_OXIDATIVE_PHOSPHORYLATION as the opposing mitochondrial-respiration
+  pole; the set also overlaps strongly with the HIF-driven hypoxia programme
+  (HALLMARK_HYPOXIA and the Buffa hypoxia metagene), because HIF-1 transactivates
+  most of these glycolytic genes. Glycolysis is a metabolic process rather than a
+  cell type, disease, or anatomical entity, and is cytosolic with no distinctive
+  organellar compartment, so (as in the Buffa hypoxia and proliferation metagene
+  panels) this file intentionally carries zero biological contexts and no
+  core_component; the biology is captured entirely in the associations below.
+  Because the member enzymes literally carry the GO annotations for the glycolytic
+  pathway they execute, enrichment recovers those processes (annotation_supported)
+  rather than leaving them as gaps. Founder reference PMID:26771021.
+associations:
+  - term:
+      id: GO:0006096
+      label: glycolytic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:19460998
+        reference_title: "Understanding the Warburg Effect: The Metabolic Requirements of Cell Proliferation."
+        supports: SUPPORT
+        snippet: "In this review, we explore the metabolic requirements of cell proliferation in an attempt to understand why proliferating cells metabolize glucose by aerobic glycolysis."
+        explanation: >-
+          The glycolytic process is the defining metabolic activity this Hallmark
+          set represents: its members are the glucose-catabolising enzymes
+          (HK2, PFKP, ALDOA, PGK1, ENO1, PKM, LDHA) that execute glycolysis, and
+          this canonical review establishes aerobic glycolysis (the Warburg
+          effect) as the central, selectively engaged metabolic phenotype of
+          proliferating and tumour cells. These enzyme members carry glycolysis
+          GO annotations, so enrichment recovers the term (annotation_supported).
+      - reference: PMID:26771021
+        reference_title: "The Molecular Signatures Database (MSigDB) hallmark gene set collection."
+        supports: SUPPORT
+        snippet: "The 100 top scoring gene sets show numerous instances of three biological processes: NFκB signaling, EMT (epithelial-mesenchymal transition), and hypoxia/glycolysis."
+        explanation: >-
+          The founder paper for the Hallmark collection identifies glycolysis
+          (jointly with the HIF-driven hypoxia programme) as one of the small
+          number of biological processes that dominate the highest-scoring gene
+          sets used to refine the hallmarks, confirming that glycolysis is the
+          core process this hallmark was built to represent.
+  - term:
+      id: GO:0061621
+      label: canonical glycolysis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:19460998
+        reference_title: "Understanding the Warburg Effect: The Metabolic Requirements of Cell Proliferation."
+        supports: SUPPORT
+        snippet: "In contrast to differentiated cells, proliferating cells selectively express the M2 isoform of the glycolytic enzyme pyruvate kinase (PK-M2)"
+        explanation: >-
+          Canonical glycolysis (GO:0061621) is the specific Embden-Meyerhof route
+          from glucose to pyruvate executed step-by-step by the enzyme members of
+          this set, with pyruvate kinase (PKM, a prominent member) catalysing the
+          final pyruvate-forming step. The review highlights that proliferating
+          cells selectively use the PKM2 isoform of this glycolytic enzyme,
+          grounding the canonical pathway in a specific, dominant member of the
+          gene set; these enzymes carry the annotation, so enrichment recovers
+          the term (annotation_supported). Kept core alongside the parent
+          glycolytic-process term because the literal glucose-to-pyruvate pathway
+          is the defining activity of the set.
+  - term:
+      id: GO:0006094
+      label: gluconeogenesis
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Gluconeogenesis is named explicitly in the MSigDB systematic description
+      ("genes encoding proteins involved in glycolysis and gluconeogenesis"): the
+      set includes the bidirectional enzymes shared between the glycolytic and
+      gluconeogenic pathways, which carry gluconeogenesis annotations so
+      enrichment recovers the term (annotation_supported). Scored as supporting
+      rather than core because, in the proliferative/tumour context this hallmark
+      models, the net carbon flux is glycolytic; gluconeogenesis is the reverse
+      pathway that rides along through shared enzyme membership rather than the
+      defining activity of the signature.
+  - term:
+      id: GO:0005975
+      label: carbohydrate metabolic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Carbohydrate metabolic process is the broad parent umbrella under which
+      glycolysis and gluconeogenesis sit; the glucose-handling enzyme members of
+      the set carry this annotation, so enrichment recovers it
+      (annotation_supported). Retained as a real but non-defining supporting
+      process: it is the correct superclass of the set's activity but is more
+      general than the glycolytic core terms asserted above, so it adds breadth
+      rather than specificity.
+  - term:
+      id: GO:0001666
+      label: response to hypoxia
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The glycolytic switch is one of the canonical HIF-1 outputs: HIF-1
+      transactivates many of the set's members (e.g. HK2, LDHA, PGK1, ENO1) to
+      drive aerobic glycolysis under low oxygen, and this hallmark overlaps
+      strongly with HALLMARK_HYPOXIA and the Buffa tumour-hypoxia metagene
+      (LIT:HYPOXIA_METAGENE_BUFFA), where glycolytic process is itself a core
+      term. Several hypoxia-induced members carry response-to-hypoxia
+      annotations, so enrichment recovers the term (annotation_supported). Scored
+      supporting rather than core because hypoxia is the upstream inducing
+      condition of the glycolytic programme this set reads out, not the metabolic
+      activity itself; it is the mechanistic link tying the glycolytic pole to the
+      hypoxia/tumour-metabolism axis.
+  - term:
+      id: GO:0046034
+      label: ATP metabolic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Glycolysis generates ATP by substrate-level phosphorylation, and the
+      glycolytic enzyme members of the set carry ATP-metabolic-process
+      annotations, so enrichment recovers the term (annotation_supported). Scored
+      supporting because ATP turnover is the bioenergetic output of the glycolytic
+      activity rather than the activity itself; ATP metabolism is also the shared
+      currency that unifies the SERIES:TUMOR_METABOLISM axis, generated here by
+      cytosolic glycolysis as opposed to mitochondrial oxidative phosphorylation
+      on the paired HALLMARK_OXIDATIVE_PHOSPHORYLATION pole.

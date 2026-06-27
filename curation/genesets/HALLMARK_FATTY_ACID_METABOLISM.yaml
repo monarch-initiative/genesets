@@ -1,0 +1,155 @@
+gene_set_id: MSIGDB:HALLMARK_FATTY_ACID_METABOLISM
+gene_set_name: HALLMARK_FATTY_ACID_METABOLISM
+collection: H
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 158
+description: >-
+  MSigDB Hallmark gene set of genes encoding proteins involved in the metabolism
+  of fatty acids (MSigDB brief description: "Genes encoding proteins involved in
+  metabolism of fatty acids"). This is a metabolic-process signature, not a
+  cell-type signature; the dominant functional module is fatty acid
+  beta-oxidation (FAO), the catabolic pathway that shortens activated fatty
+  acyl-CoAs two carbons at a time. Member genes include the acyl-CoA
+  dehydrogenases that catalyse the first FAO step (ACADM, ACADL, ACADVL, ACADS),
+  the mitochondrial trifunctional protein and matrix enzymes for the remaining
+  hydratase / hydroxyacyl-CoA dehydrogenase / thiolase steps (HADHA, HADHB, HADH,
+  ECH1, EHHADH, ACAA1, ACAA2), the carnitine shuttle that imports long-chain
+  acyl-CoAs into the mitochondrion (CPT1A, CPT2, CRAT, SLC25A20), peroxisomal FAO
+  enzymes (ACOX1, EHHADH, HSD17B4), and additional lipid-metabolism enzymes. FAO
+  proceeds in both mitochondria and peroxisomes and supplies acetyl-CoA to the
+  TCA cycle and reducing equivalents to the electron transport chain, making this
+  an energy-homeostasis programme that is active across liver, heart, and
+  skeletal muscle. Because the member enzymes literally carry the GO annotations
+  for the fatty-acid metabolic processes they execute, enrichment recovers those
+  processes (annotation_supported) rather than leaving them as gaps. Fatty acid
+  metabolism is a pan-tissue metabolic program rather than a cell type, disease,
+  or anatomical entity, so this file intentionally carries zero biological
+  contexts; the program is captured entirely in the associations below.
+associations:
+  - term:
+      id: GO:0006631
+      label: fatty acid metabolic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:20195903
+        reference_title: "A general introduction to the biochemistry of mitochondrial fatty acid beta-oxidation."
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: "FAO is a key metabolic pathway for energy homoeostasis in organs such as the liver, heart and skeletal muscle."
+        explanation: >-
+          Fatty acid metabolic process is the defining axis of this Hallmark set,
+          whose members encode the enzymes that interconvert and degrade fatty
+          acids. This biochemistry review establishes fatty-acid catabolism (FAO)
+          as the key metabolic route through which fatty acids are handled for
+          energy homoeostasis in the very tissues (liver, heart, skeletal muscle)
+          where these genes are highly expressed. The set's acyl-CoA
+          dehydrogenases, hydratases, hydroxyacyl-CoA dehydrogenases and
+          thiolases carry fatty-acid-metabolic-process annotations, so enrichment
+          recovers this overarching process (annotation_supported).
+  - term:
+      id: GO:0006635
+      label: fatty acid beta-oxidation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:20195903
+        reference_title: "A general introduction to the biochemistry of mitochondrial fatty acid beta-oxidation."
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: "Once inside the mitochondria, acyl-CoAs are degraded into acetyl-CoA units via the classic series of four enzyme reactions"
+        explanation: >-
+          Fatty acid beta-oxidation is the most specific and most heavily
+          populated module of the gene set. The review describes the canonical
+          four-reaction cycle (dehydrogenation, hydration, second dehydrogenation,
+          thiolytic cleavage) that shortens an acyl-CoA by two carbons per turn.
+          Each step maps directly onto member genes: the acyl-CoA dehydrogenases
+          ACADM/ACADL/ACADVL/ACADS (step 1), the enoyl-CoA hydratases ECH1/EHHADH
+          and the trifunctional protein HADHA (steps 2-3), and the thiolases
+          ACAA1/ACAA2 (step 4), with CPT1A/CPT2 providing the carnitine shuttle
+          that delivers long-chain substrates. These genes carry
+          fatty-acid-beta-oxidation annotations, so enrichment recovers this core
+          process (annotation_supported); broadly_expressed because FAO operates
+          across essentially all oxidative tissues rather than being
+          lineage-restricted.
+  - term:
+      id: GO:0005739
+      label: mitochondrion
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The mitochondrion is the principal site of fatty acid beta-oxidation and
+      the dominant cellular compartment for this gene set. The carnitine-shuttle
+      proteins (CPT1A, CPT2, CRAT, SLC25A20), the membrane-bound and matrix FAO
+      enzymes (ACADVL, ACADM, HADHA, HADHB, ECH1, ACAA2) and the electron-transfer
+      flavoproteins that feed FAO-derived electrons into the respiratory chain are
+      all mitochondrial. These products carry mitochondrion annotations, so the
+      compartment is recovered (annotation_supported).
+  - term:
+      id: GO:0005777
+      label: peroxisome
+    aspect: cellular_component
+    category: core_component
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Fatty acid beta-oxidation also proceeds in the peroxisome, which handles
+      very-long-chain and branched-chain fatty acids that mitochondria cannot
+      fully oxidise. The peroxisomal FAO members of the set (ACOX1, EHHADH,
+      HSD17B4, and the peroxisomal thiolase activity of ACAA1) carry peroxisome
+      annotations, so this second FAO compartment is recovered
+      (annotation_supported). Scored core_component but at medium confidence
+      because it represents a smaller, complementary fraction of the set relative
+      to the dominant mitochondrial compartment.
+  - term:
+      id: GO:0006629
+      label: lipid metabolic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Lipid metabolic process is the broad parent of fatty-acid metabolism and is
+      recovered because the set also includes lipid-handling enzymes beyond the
+      core FAO cycle (e.g. fatty-acid activation, elongation, ketone-body and
+      sterol/lipid-modifying enzymes). It is supporting rather than core because
+      it is a generic superclass of the defining fatty-acid-metabolic-process
+      axis asserted above rather than a separate biological activity.
+  - term:
+      id: GO:0006637
+      label: acyl-CoA metabolic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Fatty acids are metabolised as their coenzyme-A thioesters, and many set
+      members act on acyl-CoA intermediates: the acyl-CoA synthetases/ligases that
+      activate fatty acids, the carnitine acyltransferases (CPT1A, CPT2, CRAT)
+      that exchange the CoA and carnitine moieties, and the acyl-CoA thioesterases.
+      These carry acyl-CoA-metabolic-process annotations, so the term is recovered
+      (annotation_supported). Scored supporting: it captures the thioester
+      chemistry that enables FAO rather than constituting a separate defining
+      activity of the set.
