@@ -1,0 +1,191 @@
+gene_set_id: LIT:EPITHELIAL_STATE
+gene_set_name: EPITHELIAL_STATE
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:EMT
+series_role: epithelial
+description: >-
+  Literature-defined cell-state ACTIVITY signature of the EPITHELIAL state - the
+  adhesive, junction-bearing, apicobasally polarized and non-migratory pole of the
+  epithelial-to-mesenchymal transition (EMT) spectrum. This is the epithelial pole
+  of SERIES:EMT, the first of three ordered members (epithelial -> partial ->
+  mesenchymal); the existing LIT:PARTIAL_EMT (the metastable p-EMT state of Puram
+  et al.) is the middle pole. The signature is defined by contrasting epithelial
+  versus mesenchymal cells, e.g. by Taube, Mani, Weinberg et al. (PNAS 2010,
+  PMID:20713713), who derived an "EMT core signature" in human mammary epithelial
+  (HMLE) cells from the changes in gene expression shared by up-regulation of the
+  EMT-inducing transcription factors Goosecoid, Snail, Twist and TGF-beta1 and by
+  down-regulation of E-cadherin - so the epithelial pole is the set of genes
+  DOWNregulated during EMT (E-cadherin and its epithelial co-program). It is
+  further defined by the meta-analysis of Groger, Mikulits et al. (PLoS One 2012,
+  PMID:23251436), who distilled 18 independent EMT gene-expression studies into a
+  130-gene EMT-core list of which 63 are DOWNregulated in EMT - the epithelial
+  markers - including the classical epithelial genes CDH1 (E-cadherin), EPCAM, the
+  keratins (KRT15, KRT17; canonically also KRT8/18/19), the tight-junction protein
+  OCLN (occludin; canonically also the claudins CLDN3/4/7 and TJP1/ZO-1), the
+  desmosomal genes JUP, PKP2 and DSG3, the coxsackie-adenovirus receptor CXADR, and
+  the epithelial master regulator OVOL2 (canonically with GRHL2, ESRP1/ESRP2). Our
+  direction is UP: members are HIGH (expressed) in the epithelial state and DOWN
+  during EMT. Unlike MSigDB causal/driver disease pathway sets, the members here are
+  the READOUT of an ACTIVE identity program - the genes that build and maintain the
+  epithelial phenotype - not driver mutations. The program is dominated by
+  cell-cell junctions (adherens junctions via E-cadherin, tight junctions via
+  occludin/claudins, desmosomes via plakophilin/plakoglobin/desmoglein), epithelial
+  cell differentiation, and apicobasal polarity, and it is functionally the
+  CONTRAST of the mesenchymal pole: epithelial cells are sessile and invade
+  collectively in adherent clusters, whereas mesenchymal cells lose junctions,
+  acquire front-rear polarity and migrate individually. Because the member genes
+  literally carry the GO annotations for epithelial differentiation, junction
+  organization and cadherin adhesion, enrichment recovers those processes
+  (annotation_supported); apicobasal polarity is recorded as an annotation_gap
+  because the present epithelial markers are annotated to their junction/adhesion
+  effector roles rather than to the polarity term. DISEASE RELEVANCE: this
+  junction-bearing epithelial program is the baseline state LOST during EMT in
+  carcinoma progression - its loss (especially of E-cadherin) licenses detachment,
+  invasion and metastatic dissemination, and its re-expression accompanies the
+  reverse mesenchymal-to-epithelial transition (MET) at metastatic colonization. The
+  signature was defined largely in human carcinoma and mammary-epithelial cell-line
+  models; we curate the human epithelial program and keep the taxon human per corpus
+  convention.
+contexts:
+  - term:
+      id: CL:0000066
+      label: epithelial cell
+    context_type: cell_type
+    role_note: >-
+      epithelial state (E-cadherin+, junction-bearing) - the epithelial pole of the
+      EMT axis. The signature reads out the adhesive, apicobasally polarized,
+      non-migratory epithelial identity that is actively maintained in differentiated
+      epithelia and is lost when cells undergo EMT toward a mesenchymal phenotype, so
+      the epithelial cell type is the anchoring context rather than one MONDO disease.
+associations:
+  - term:
+      id: GO:0030855
+      label: epithelial cell differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Epithelial cell differentiation is the identity-defining ACTIVE program this
+      signature reads out: the meta-analysis of 18 EMT gene-expression studies
+      (Groger et al., PMID:23251436) identifies a block of epithelial cell markers
+      (EPCAM, JUP, the keratins KRT15/KRT17, the tight-junction protein OCLN, the
+      desmosomal PKP2, PPL) that are consistently DOWNregulated during EMT - i.e.
+      HIGH in the epithelial pole that this set captures (direction UP). These
+      members carry epithelial-cell-differentiation annotations, so enrichment
+      recovers the term (annotation_supported). Kept core because acquisition and
+      maintenance of the differentiated epithelial phenotype is the defining activity
+      of this state; lineage_shared because epithelial differentiation spans many
+      epithelial cell types rather than one. Verbatim evidence is attached instead to
+      the two most directly groundable core terms (cadherin adhesion and junction
+      organization) for which the Taube abstract provides exact-substring support.
+  - term:
+      id: GO:0045216
+      label: cell-cell junction organization
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:20713713
+        reference_title: "Core epithelial-to-mesenchymal transition interactome gene-expression signature is associated with claudin-low and metaplastic breast cancer subtypes."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "The EMT core signature associates closely with the claudin-low and metaplastic breast cancer subtypes"
+        explanation: >-
+          Organized cell-cell junctions are the structural hallmark distinguishing the
+          epithelial pole from the mesenchymal pole, and the cited paper anchors this to
+          claudins - epithelial tight-junction proteins: the EMT (mesenchymal) core
+          signature associates with the claudin-LOW breast cancer subtype, i.e. the
+          epithelial pole this set captures is the contrasting claudin-HIGH,
+          junction-bearing state. The junctional members of the signature - CDH1
+          (adherens junction), OCLN (tight junction) and JUP/PKP2/DSG3 (desmosome) -
+          carry cell-cell-junction-organization annotations, so enrichment recovers the
+          term (annotation_supported). Kept core because assembly of intercellular
+          junctions is constitutive of the epithelial state and is dismantled during
+          EMT; lineage_shared because junction organization is common to epithelial
+          lineages. evidence_source HUMAN_CLINICAL because the claudin-low and
+          metaplastic subtypes are clinical breast-cancer classifications.
+  - term:
+      id: GO:0044331
+      label: cell-cell adhesion mediated by cadherin
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:20713713
+        reference_title: "Core epithelial-to-mesenchymal transition interactome gene-expression signature is associated with claudin-low and metaplastic breast cancer subtypes."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "down-regulation of E-cadherin, loss of which can also trigger an EMT in certain cell types"
+        explanation: >-
+          E-cadherin (CDH1) homophilic adhesion is the single most defining molecular
+          feature of the epithelial pole: CDH1 is the canonical epithelial marker and a
+          member of this set (DOWNregulated during EMT, hence HIGH in the epithelial
+          state, direction UP), and the cited paper derived its EMT core signature in
+          part from the down-regulation of E-cadherin, whose loss can itself trigger
+          EMT - so the epithelial pole is the E-cadherin-high, adhesive state. CDH1
+          carries the cadherin-mediated-cell-cell-adhesion annotation, so enrichment
+          recovers the term (annotation_supported). Kept core because cadherin-based
+          adhesion is the activity that physically holds the epithelium together;
+          lineage_shared because cadherin adhesion operates across epithelial and other
+          adherent lineages even though E-cadherin specifically marks the epithelial
+          state. evidence_source IN_VITRO because the core signature was derived in the
+          human mammary epithelial (HMLE) cell-line model.
+  - term:
+      id: GO:0045197
+      label: establishment or maintenance of epithelial cell apical/basal polarity
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      Apical/basal (apicobasal) polarity is a defining hallmark of the epithelial
+      state - the CL definition of epithelial cell itself describes polarity with the
+      apical part directed toward the lumen and the basal part toward the basal lamina
+      - and it is lost when cells acquire the front-rear polarity of the migratory
+      mesenchymal pole. It is recorded as an annotation_gap rather than
+      annotation_supported: the dedicated apicobasal-polarity-complex genes
+      (PARD3/PARD6/PRKCZ, CRB3/PALS1/PATJ, SCRIB/DLG/LLGL) are largely NOT in this
+      carcinoma-derived epithelial membership, and the epithelial markers that ARE
+      present (CDH1, OCLN, EPCAM, LSR) establish polarity biologically but are annotated
+      to their junction/adhesion effector roles rather than to the polarity term, so
+      enrichment does not recover it. Added as curator_added because polarity is the
+      curator's framing of the epithelial architecture rather than an enrichment hit;
+      kept core because apicobasal polarity is constitutive of the epithelial identity.
+      The gap is a GO/membership curation target.
+  - term:
+      id: GO:0030336
+      label: negative regulation of cell migration
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    curator_note: >-
+      The epithelial state is sessile: epithelial cells are held in place by their
+      junctions and, when they move at all, invade collectively in adherent clusters,
+      in contrast to the individually migrating mesenchymal pole. This restraint of
+      migration is an emergent property of the adhesive epithelial program - E-cadherin
+      (CDH1) and other junctional members actively suppress cell migration and carry
+      negative-regulation-of-cell-migration annotations, so enrichment recovers the term
+      (annotation_supported). Scored supporting rather than core because migration
+      restraint is a functional consequence of the junctional/adhesive core rather than
+      the identity-defining activity itself, and broadly_expressed because negative
+      regulation of migration is a general capacity. This is the contrast term expected
+      to be core-up on the epithelial pole and absent or reversed on the mesenchymal
+      pole of SERIES:EMT.

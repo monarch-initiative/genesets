@@ -1,0 +1,185 @@
+gene_set_id: LIT:MESENCHYMAL_STATE
+gene_set_name: MESENCHYMAL_STATE
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:EMT
+series_role: mesenchymal
+description: >-
+  Literature-defined cell-state ACTIVITY signature of the full MESENCHYMAL state
+  — the migratory/invasive, junction-less pole reached at the completion of the
+  epithelial-to-mesenchymal transition (EMT). It is anchored on the core EMT-up
+  program of Taube, Mani, Weinberg et al. (PNAS 2010, PMID:20713713), an "EMT
+  core signature" derived from human mammary epithelial (HMLE) cells in which the
+  shared up-regulated changes induced by the EMT-driving transcription factors
+  (Goosecoid, Snail, Twist and secreted TGF-beta1) and by loss of E-cadherin
+  were intersected, and is corroborated by the cross-study meta-analysis of 18
+  EMT gene-expression signatures by Groger, Mikulits et al. (PLoS One 2012,
+  PMID:23251436), which distilled a shared EMT core gene list. Unlike MSigDB
+  causal/driver disease pathway sets, the members here are the READOUT of an
+  ACTIVE cellular program, not driver mutations: they are the genes UPregulated
+  as an epithelial cell sheds apical-basal polarity, dissolves its intercellular
+  junctions, breaches the basement membrane and becomes a free, migratory
+  mesenchymal cell. The program is dominated by the canonical mesenchymal
+  markers and effectors: the intermediate filament vimentin (VIM), fibronectin
+  (FN1), the mesenchymal cadherin switch partner N-cadherin (CDH2), and the
+  matrix-degrading metalloproteinases MMP2 and MMP9, together with the master
+  EMT transcription factors that both define and drive the state — SNAI1 (Snail),
+  SNAI2 (Slug), ZEB1, ZEB2 and TWIST1 — with the reciprocal LOSS of epithelial
+  E-cadherin (CDH1) and claudins. This set is one POLE of a three-member series
+  (series SERIES:EMT) that traces the epithelial -> partial -> mesenchymal
+  spectrum: the existing LIT:PARTIAL_EMT is the metastable MIDDLE pole (an
+  EMT-like state that retains epithelial markers and pointedly LACKS the
+  SNAIL/ZEB/TWIST drivers), whereas this MESENCHYMAL pole is the COMPLETE
+  conversion in which those master EMT transcription factors are present and
+  active. The two poles thus resolve shared terms to contrasting interpretations:
+  the EMT-driving transcription-factor program and the loss-of-adhesion arm are
+  fully realized (annotation_supported) on this mesenchymal pole, and the
+  contrast to an epithelial pole is the inversion of cell-cell adhesion —
+  mesenchymal cells are migratory/invasive and junction-less rather than
+  polarized and tightly adherent. Because the member genes literally carry the GO
+  annotations for the processes the state executes (EMT, migration, ECM
+  remodeling, loss of adhesion), enrichment recovers those processes
+  (annotation_supported) rather than leaving them as gaps. DISEASE RELEVANCE: the
+  mesenchymal EMT program endows carcinoma cells with invasion, migration,
+  treatment resistance and stem-like traits, and the Taube core signature marks
+  the aggressive claudin-low and metaplastic breast-cancer subtypes and
+  correlates with poor therapeutic response, making the full mesenchymal state a
+  central axis of metastatic progression across epithelial cancers.
+contexts:
+  - term:
+      id: CL:0008019
+      label: mesenchymal cell
+    context_type: cell_type
+    role_note: >-
+      Mesenchymal / post-EMT migratory state — the mesenchymal pole of the EMT
+      axis. CL:0008019 is defined as a non-polarised cell that is associated with
+      the cell matrix but is not connected to other cells and is capable of
+      migration, matching the junction-less, migratory phenotype this signature
+      reads out at the completion of EMT (the contrast to the polarized,
+      tightly-adherent epithelial pole and the metastable partial-EMT middle
+      pole of this series).
+associations:
+  - term:
+      id: GO:0001837
+      label: epithelial to mesenchymal transition
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:20713713
+        reference_title: "Core epithelial-to-mesenchymal transition interactome gene-expression signature is associated with claudin-low and metaplastic breast cancer subtypes."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "The epithelial-to-mesenchymal transition (EMT) produces cancer cells that are invasive, migratory, and exhibit stem cell characteristics, hallmarks of cells that have the potential to generate metastases."
+        explanation: >-
+          Epithelial-to-mesenchymal transition is the defining ACTIVE program
+          this signature reads out: the set is literally the "EMT core signature"
+          derived from the shared up-regulated genes of the EMT-driving factors
+          (Goosecoid, Snail, Twist, TGF-beta1) in human mammary epithelial cells,
+          i.e. the genes that go up as a cell completes EMT to become an invasive,
+          migratory mesenchymal cell. Its members (VIM, FN1, CDH2, ZEB1/ZEB2,
+          SNAI1/SNAI2, TWIST1) carry EMT-related GO annotations, so enrichment
+          recovers this overarching process (annotation_supported). Scored
+          lineage_shared because EMT is a program common to epithelial lineages
+          and carcinomas rather than specific to one cell type; evidence_source
+          IN_VITRO because the core signature was derived from the HMLE
+          cell-line system.
+  - term:
+      id: GO:0010718
+      label: positive regulation of epithelial to mesenchymal transition
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Positive regulation of EMT is core to the full mesenchymal pole and is the
+      key contrast with the partial-EMT middle pole of this series: the COMPLETE
+      mesenchymal conversion is defined and driven by the master EMT
+      transcription factors SNAI1/SNAI2, ZEB1/ZEB2 and TWIST1, which are present
+      in this set and carry positive-regulation-of-EMT annotations, so enrichment
+      recovers the term (annotation_supported). This deliberately mirrors and
+      inverts the sibling LIT:PARTIAL_EMT set, where the same term was an
+      annotation_gap precisely because that metastable state LACKS the
+      SNAIL/ZEB/TWIST drivers — here, on the mesenchymal pole, those drivers are
+      present and active, so the regulatory arm is annotation_supported. Kept
+      core because the transcription-factor-driven induction of EMT is
+      mechanistically central to what defines this pole.
+  - term:
+      id: GO:0016477
+      label: cell migration
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:23251436
+        reference_title: "Meta-analysis of gene expression signatures defining the epithelial to mesenchymal transition during cancer progression."
+        supports: SUPPORT
+        evidence_source: COMPUTATIONAL
+        snippet: "EMT is the conversion of carcinoma cells from an epithelial to a mesenchymal phenotype that associates with a higher cell motility as well as enhanced chemoresistance and cancer stemness."
+        explanation: >-
+          Acquisition of migratory/invasive capacity is the defining functional
+          OUTPUT of the mesenchymal pole: the meta-analysis characterizes the
+          mesenchymal phenotype reached by EMT as one of higher cell motility,
+          and the cross-study EMT core gene list (the basis of this set) carries
+          cell-migration/motility annotations through members such as VIM, FN1
+          and the MMPs, so enrichment recovers the term (annotation_supported).
+          Scored high because migration is the hallmark activity that
+          distinguishes the migratory mesenchymal pole from the polarized,
+          adherent epithelial pole; broadly_expressed because cell migration is a
+          generic process invoked here as the functional consequence of the
+          program rather than a mesenchymal-specific term. evidence_source
+          COMPUTATIONAL because the supporting characterization comes from a
+          computational meta-analysis of 18 EMT expression signatures.
+  - term:
+      id: GO:0030198
+      label: extracellular matrix organization
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Remodeling of the extracellular matrix is an enabling arm of the mesenchymal
+      program: mesenchymal cells deposit fibronectin (FN1) and secrete the
+      matrix-degrading metalloproteinases MMP2 and MMP9 that breach the basement
+      membrane to permit invasion, and these members carry
+      extracellular-matrix-organization annotations, so enrichment recovers the
+      term (annotation_supported). Scored supporting rather than core because ECM
+      remodeling is one mechanistic arm enabling the migratory/invasive output
+      rather than the defining EMT identity itself, and lineage_shared because ECM
+      organization is produced across stromal/mesenchymal lineages rather than by
+      a single cell type.
+  - term:
+      id: GO:0007162
+      label: negative regulation of cell adhesion
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Loss of intercellular adhesion is the sharpest CONTRAST between the
+      mesenchymal pole and the epithelial pole: completing EMT requires severing
+      the cell-cell junctions of the epithelium, and the core signature is built
+      in part on the reciprocal down-regulation of E-cadherin (CDH1) and claudins
+      (Taube et al. note that loss of E-cadherin can itself trigger an EMT). The
+      EMT transcription factors in this set (SNAI1/SNAI2, ZEB1/ZEB2) directly
+      repress E-cadherin and carry negative-regulation-of-cell-adhesion
+      annotations, so enrichment recovers the term (annotation_supported). Scored
+      supporting because junction dissolution is an enabling mechanism of the
+      migratory mesenchymal state rather than the defining EMT process itself;
+      lineage_shared because de-adhesion accompanies many epithelial and stromal
+      transitions.

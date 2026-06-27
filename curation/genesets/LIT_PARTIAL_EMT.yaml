@@ -5,6 +5,8 @@ taxon:
   id: NCBITaxon:9606
   label: Homo sapiens
 direction: UP
+series: SERIES:EMT
+series_role: partial
 description: >-
   Literature-defined disease-activity signature of the partial
   epithelial-to-mesenchymal transition (p-EMT) program in malignant head and
