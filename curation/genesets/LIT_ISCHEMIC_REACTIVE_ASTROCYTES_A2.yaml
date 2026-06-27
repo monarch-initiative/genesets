@@ -1,0 +1,169 @@
+gene_set_id: LIT:ISCHEMIC_REACTIVE_ASTROCYTES_A2
+gene_set_name: ISCHEMIC_REACTIVE_ASTROCYTES_A2
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+description: >-
+  Literature-defined disease-activity signature of A2 (ischemia-induced) reactive
+  astrocytes, the reactive-astrocyte cell state first transcriptionally defined by
+  Zamanian, Xu, Foo, Barres et al. (J Neurosci 2012, PMID:22553043). The authors
+  profiled FACS-purified reactive astrocytes after two mouse injury models -
+  ischemic stroke (middle cerebral artery occlusion, MCAO) and LPS neuroinflammation
+  - and found that, although a core set of genes is shared, at least half of the
+  induced program is injury-type-specific. The ischemia/MCAO-induced arm was later
+  termed "A2" (and the LPS/neuroinflammatory arm "A1") by Liddelow, Barres et al.
+  (Nature 2017, PMID:28099414). This file curates the A2 (ischemia) arm. Unlike the
+  MSigDB causal/driver disease pathway sets, the members here are the READOUT of an
+  ACTIVE program, not driver mutations: they are the transcripts UPregulated when
+  resting astrocytes are converted to the ischemic reactive state. The pan-reactive
+  markers Lcn2 and Serpina3n are induced in both injury models, while the
+  A2-distinguishing transcripts (e.g. CLCF1, TGM1, PTX3, S100A10, SPHK1, CD109,
+  PTGS2, EMP1, TM4SF1, CD14, B3GNT5) mark the ischemic state specifically. In
+  explicit contrast to the NEUROTOXIC A1 state, the paper reports that ischemic
+  reactive astrocytes adopt a molecular phenotype suggesting they may be BENEFICIAL
+  or PROTECTIVE - upregulating neurotrophic/anti-apoptotic factors (e.g. the
+  CNTF-family neuropoietic cytokine CLCF1, the anti-apoptotic sphingosine kinase
+  SPHK1, the pro-survival/pro-migratory S100A10) and tissue-repair effectors -
+  consistent with a reparative role after ischemic injury. Because the member genes
+  literally carry the GO annotations for the processes the state executes, enrichment
+  recovers those processes (annotation_supported) rather than leaving them as gaps.
+  The signature was defined in mouse; we curate the human-orthologous program and
+  keep the taxon human per corpus convention.
+contexts:
+  - term:
+      id: CL:0000127
+      label: astrocyte
+    context_type: cell_type
+    role_note: >-
+      The signature reads out the A2 ischemic reactive state of the astrocyte. A2
+      is one of (at least) two molecularly distinct reactive-astrocyte subtypes the
+      paper distinguishes by inducing injury; the astrocyte cell type is the
+      anchoring context and the ischemic disease context is given separately below.
+  - term:
+      id: MONDO:1060198
+      label: ischemic stroke
+    context_type: disease
+    role_note: >-
+      Inducing condition. The A2 program was defined in the mouse middle cerebral
+      artery occlusion (MCAO) ischemic-stroke model; it is the ischemia/MCAO-induced
+      reactive astrocyte state, as opposed to the LPS/neuroinflammation-induced A1
+      state.
+associations:
+  - term:
+      id: GO:0048143
+      label: astrocyte activation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:22553043
+        reference_title: "Genomic analysis of reactive astrogliosis."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "Reactive astrogliosis is characterized by a profound change in astrocyte phenotype in response to all CNS injuries and diseases."
+        explanation: >-
+          The gene set is, by definition, the readout of an ACTIVATED astrocyte
+          state: A2 is the reactive-astrocyte subtype induced when resting astrocytes
+          undergo the profound phenotypic change of reactive astrogliosis in response
+          to ischemic CNS injury. Astrocyte activation is thus the central,
+          cell-type-specific process the signature represents, and reactive-astrocyte
+          activation markers (e.g. the pan-reactive Lcn2 and Serpina3n) carry this GO
+          annotation, so enrichment recovers it (annotation_supported).
+    curator_note: >-
+      This is the defining ACTIVE process of the set, not a driver lesion. It is
+      cell_type_specific because astrocyte activation is, by construction, the process
+      this astrocyte gene set reads out.
+  - term:
+      id: GO:0043524
+      label: negative regulation of neuron apoptotic process
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:22553043
+        reference_title: "Genomic analysis of reactive astrogliosis."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "Reactive astrocytes in ischemia exhibited a molecular phenotype that suggests that they may be beneficial or protective, whereas reactive astrocytes induced by LPS exhibited a phenotype that suggests that they may be detrimental."
+        explanation: >-
+          The defining functional feature that distinguishes A2 from the neurotoxic
+          A1 state is its putatively PROTECTIVE phenotype: the paper concludes the
+          ischemic reactive astrocytes may be beneficial or protective. Neuroprotection
+          - suppression of neuron death after ischemia - is therefore a core OUTPUT
+          the A2 program executes. Unlike the A1 set, where neurotoxicity is a
+          membership_gap (the killing effector is a non-transcript lipid residing in
+          the dying neuron), the A2 neuroprotective effectors ARE transcripts present
+          in the set: the CNTF-family neuropoietic cytokine CLCF1, the anti-apoptotic
+          sphingosine kinase SPHK1 and the pro-survival S100A10 carry survival /
+          anti-apoptotic annotations, so enrichment recovers the term
+          (annotation_supported).
+    curator_note: >-
+      Kept core (the protective output is the defining contrast with neurotoxic A1)
+      but at medium confidence because the protective interpretation is inferred from
+      the molecular phenotype rather than from a direct functional rescue assay in
+      this paper. lineage_shared because anti-apoptotic / pro-survival signaling is a
+      general capacity, not astrocyte-specific. seed_source is curator_added because
+      neuroprotection is the curator's overarching judgment about the set's protective
+      role rather than the individual effector term each member gene is annotated to.
+  - term:
+      id: GO:0071456
+      label: cellular response to hypoxia
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The A2 state is induced by ischemia (MCAO), in which the defining cellular
+      stress is reduced oxygen and blood supply, and the induced program includes
+      canonical hypoxia-response effectors (e.g. PTGS2 and SPHK1). Cellular response
+      to hypoxia is therefore a genuine enabling process represented in the set and
+      recovered by enrichment (annotation_supported), but it is scored supporting
+      rather than core: it is the upstream inducing stimulus of the state and a
+      broadly expressed stress response, not the A2-specific reactive program itself.
+  - term:
+      id: GO:0042060
+      label: wound healing
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The protective A2 phenotype is reparative: ischemic reactive astrocytes
+      contribute to restoring tissue integrity after injury, and tissue-repair
+      effectors in the signature (e.g. the cross-linking transglutaminase TGM1, the
+      pentraxin PTX3, and the pro-migratory S100A10) carry wound-healing /
+      response-to-wounding annotations, so enrichment recovers the term
+      (annotation_supported). Scored supporting rather than core: tissue repair is a
+      real downstream consequence of the A2 state but one effector arm rather than the
+      defining activity, and wound healing is shared across many tissue-repair contexts.
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      A2 reactive astrocytes still mount an injury/immune response and the signature
+      contains inflammatory effectors (e.g. PTGS2/COX-2, the pentraxin PTX3, and the
+      innate-immune co-receptor CD14), so inflammatory response is recovered by
+      enrichment (annotation_supported). It is scored supporting rather than core:
+      unlike the A1 (neuroinflammatory) state where complement/innate-immune
+      activation is the defining program, the A2 ischemic state is framed as
+      protective/reparative, so inflammation here is an accompanying response rather
+      than the defining activity, and inflammatory response is broadly expressed
+      across many immune contexts.
