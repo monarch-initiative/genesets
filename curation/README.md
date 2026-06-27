@@ -58,6 +58,27 @@ machinery is annotated only to the generic parent), and `ferroptosis`
 (GO:0097707) is a `membership_gap` (real PD biology, but GPX4/ACSL4/SLC7A11 are
 not in this legacy KEGG set) — not a `false_association`.
 
+## Sources and the driver-vs-activity axis
+Most sets are MSigDB (`MSIGDB:` ids). A second source is **literature-defined**
+gene sets (`LIT:` ids, `collection: LIT:DISEASE_ACTIVITY`) taken directly from a
+defining paper, where the paper is simultaneously the identity, the membership,
+and the evidence. These capture the **biological activity** of a disease or cell
+state — the active program a state exhibits (e.g. disease-associated microglia,
+neurotoxic A1 reactive astrocytes, the SenMayo senescence/SASP panel) — as
+opposed to the mutated **drivers** of a disease (PanelApp/OMIM-style causal
+panels, and the `C5:HPO` phenotype gene sets here).
+
+The two need opposite `recovery_status` defaults. In a **driver/causal** panel
+the disease's active process is usually an `annotation_gap` (the driver genes
+are not annotated to the downstream process they enact). In an **activity**
+signature the perturbed processes are `annotation_supported` (the
+differentially-expressed genes *are* the readout and carry those GO
+annotations), and any driver/risk gene that rides along is at most
+`marker_driven_plausible`. A hand-curated activity panel may also legitimately
+carry no `nonspecific` housekeeping term at all — e.g. SenMayo contains no
+ribosomal-protein genes, so `translation` is not even an enrichment artefact
+for it.
+
 ## Evidence
 Each `evidence` item carries a `reference` (PMID/DOI), a verbatim `snippet`
 (substring-checked against the cited paper by linkml-reference-validator), a

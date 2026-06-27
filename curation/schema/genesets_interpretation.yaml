@@ -20,6 +20,7 @@ prefixes:
   NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
   EFO: http://www.ebi.ac.uk/efo/EFO_
   MSIGDB: https://www.gsea-msigdb.org/gsea/msigdb/cards/
+  LIT: https://w3id.org/genesets-rs/lit/
   PMID: http://identifiers.org/pubmed/
   DOI: https://doi.org/
 default_prefix: genesets
@@ -37,7 +38,7 @@ classes:
         identifier: true
         range: uriorcurie
         required: true
-        description: Stable identifier for the gene set (e.g. MSIGDB:HAY_BONE_MARROW_DENDRITIC_CELL).
+        description: Stable identifier for the gene set (e.g. MSIGDB:HAY_BONE_MARROW_DENDRITIC_CELL, or LIT:DISEASE_ASSOCIATED_MICROGLIA for a literature-defined gene set identified by its defining paper).
       gene_set_name:
         required: true
         description: Human-readable name of the gene set.
