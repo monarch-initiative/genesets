@@ -1,0 +1,202 @@
+gene_set_id: LIT:REGULATORY_T_CELL
+gene_set_name: REGULATORY_T_CELL
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:CD4_THELPER
+series_role: treg
+description: >-
+  Literature-defined cell-state ACTIVITY signature of regulatory T cells (Treg),
+  the FOXP3-driven immunosuppressive CD4 T cell program defined at the molecular
+  level by Hori, Nomura and Sakaguchi (Science 2003, PMID:12522256) and by
+  Fontenot, Gavin and Rudensky (Nat Immunol 2003, PMID:12612578), who identified
+  the forkhead transcription factor Foxp3 as the lineage-specifying master
+  regulator that is specifically expressed in CD4+CD25+ regulatory T cells and is
+  both necessary and sufficient to program their development and suppressor
+  function. Unlike MSigDB causal/driver disease pathway sets, the members here
+  are the READOUT of an ACTIVE program, not driver mutations: they are the genes
+  UP in Tregs that constitute the suppressive identity. The curated panel is the
+  canonical FOXP3-anchored, human-orthologous Treg marker set: the master
+  transcription factor FOXP3, the high-affinity IL-2 receptor alpha chain IL2RA
+  (CD25), the inhibitory co-receptor CTLA4, the Ikaros-family factor IKZF2
+  (Helios), the TNF-receptor-superfamily member TNFRSF18 (GITR), the
+  latent-TGF-beta docking receptor LRRC32 (GARP), and the immunosuppressive
+  cytokines IL10 and TGFB1. The state carries a DUAL semantics that this
+  interpretation captures: it is simultaneously (1) a distinct FOXP3-driven
+  differentiation/lineage-identity program (regulatory T cell differentiation)
+  and (2) an active immunosuppressive FUNCTION — the dominant negative regulation
+  of T cell activation and of the immune response that maintains peripheral
+  self-tolerance, "actively suppressing self-reactive lymphocytes". Because the
+  suppressive members literally carry the GO annotations for these processes
+  (FOXP3 to regulatory T cell differentiation and to negative regulation of
+  immune response; CTLA4 to negative regulation of T cell activation), enrichment
+  recovers the lineage and suppression terms (annotation_supported); the
+  suppressive-effector cytokine output (interleukin-10 production) and the
+  downstream physiological role (tolerance induction) are recorded as
+  annotation_gaps because the relevant member genes ARE present but their current
+  GO annotations do not capture those processes. This set is the treg pole of
+  SERIES:CD4_THELPER, one of four CD4 T-helper effector/regulatory fates
+  (th1/th2/th17/treg) against which the same shared T cell terms resolve to
+  contrasting interpretations: the treg pole is uniquely defined by FOXP3 and
+  active suppression, whereas the th1/th2/th17 effector poles drive their
+  respective pro-inflammatory cytokine programs. DISEASE RELEVANCE:
+  loss-of-function FOXP3 mutation causes the fatal autoimmune syndrome IPEX (and
+  scurfy in the mouse); Treg deficiency or dysfunction underlies autoimmunity,
+  allergy and graft-versus-host disease, while Treg accumulation in the tumor
+  microenvironment suppresses anti-tumor immunity and is a target of cancer
+  immunotherapy. The program was defined in mouse; we curate the
+  human-orthologous signature and keep the taxon human per corpus convention.
+contexts:
+  - term:
+      id: CL:0000815
+      label: regulatory T cell
+    context_type: cell_type
+    role_note: >-
+      FOXP3+ suppressive Treg. The signature reads out the regulatory T cell
+      (Treg) identity and immunosuppressive program; CL:0000815 (regulatory T
+      cell) — the FOXP3+ CD25+ IL-10/TGF-beta-secreting suppressive T cell that
+      maintains immunological self-tolerance — is the anchoring cell-state
+      context. This is the treg pole of the CD4 T-helper series, contrasted with
+      the th1/th2/th17 effector poles.
+associations:
+  - term:
+      id: GO:0045066
+      label: regulatory T cell differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:12522256
+        reference_title: "Control of regulatory T cell development by the transcription factor Foxp3."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "Foxp3 is a key regulatory gene for the development of regulatory T cells."
+        explanation: >-
+          The defining paper establishes Foxp3 as the master regulatory gene
+          controlling the development (differentiation) of regulatory T cells:
+          retroviral Foxp3 transfer converts naive T cells toward the Treg
+          phenotype. The signature IS the transcriptional readout of cells that
+          have undergone this FOXP3-driven differentiation, and FOXP3 is a member
+          annotated to regulatory T cell differentiation, so enrichment recovers
+          the term (annotation_supported).
+      - reference: PMID:12612578
+        reference_title: "Foxp3 programs the development and function of CD4+CD25+ regulatory T cells."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "the forkhead transcription factor Foxp3 is specifically expressed in CD4+CD25+ regulatory T cells and is required for their development"
+        explanation: >-
+          Independent confirmation that Foxp3 is specifically expressed in
+          CD4+CD25+ regulatory T cells and is required for their development,
+          identifying regulatory T cell differentiation as the lineage-identity
+          process the signature reads out.
+    curator_note: >-
+      The defining FOXP3-driven lineage-identity process of the set and the
+      process the whole signature reads out, so it is kept core and
+      cell_type_specific. annotation_supported because the master regulator
+      FOXP3 and the suppressive cytokine TGFB1 are members annotated to
+      regulatory T cell differentiation in GOA (FOXP3 by IDA/ISS, TGFB1 by IDA),
+      so enrichment recovers it (enrichment_recovered).
+  - term:
+      id: GO:0050868
+      label: negative regulation of T cell activation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:12522256
+        reference_title: "Control of regulatory T cell development by the transcription factor Foxp3."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "Regulatory T cells engage in the maintenance of immunological self-tolerance by actively suppressing self-reactive lymphocytes."
+        explanation: >-
+          The defining functional hallmark of the Treg state is active
+          suppression of self-reactive lymphocytes to maintain self-tolerance.
+          The inhibitory co-receptor CTLA4 (a member) and other suppressive
+          components dampen conventional T cell activation, and CTLA4 carries the
+          GO annotation to negative regulation of T cell activation, so
+          enrichment recovers this active-dampening process (annotation_supported).
+      - reference: PMID:12612578
+        reference_title: "Foxp3 programs the development and function of CD4+CD25+ regulatory T cells."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "CD4+CD25+ regulatory T cells are essential for the active suppression of autoimmunity."
+        explanation: >-
+          Confirms that the Treg program is an ACTIVE suppressive function (not a
+          passive default): CD4+CD25+ Tregs are essential for active suppression
+          of autoimmunity. Negative regulation of T cell activation is the
+          cell-level machinery of this suppression that the signature executes.
+    curator_note: >-
+      One of the two defining ACTIVE axes of the Treg program — the active
+      dampening of conventional T cell activation that mediates suppression — so
+      it is kept core. specificity is lineage_shared because negative regulation
+      of T cell activation is a general immune-checkpoint/tolerance process
+      shared with exhausted CD8 T cells and other contexts; its Treg-defining
+      ROLE here is the point. annotation_supported because CTLA4, the canonical
+      Treg inhibitory co-receptor and a member of the panel, is annotated to
+      negative regulation of T cell activation by IDA in GOA, so enrichment
+      recovers it.
+  - term:
+      id: GO:0050777
+      label: negative regulation of immune response
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The broader suppressive output of the Treg program: active negative
+      regulation of the immune response that enforces peripheral self-tolerance.
+      Kept core as the immunosuppressive function the state executes; specificity
+      lineage_shared because dominant immune suppression is shared across
+      regulatory immune contexts rather than unique to one cell type.
+      annotation_supported because the master regulator FOXP3 is a member
+      annotated to negative regulation of immune response by IDA in GOA, so
+      enrichment recovers it (enrichment_recovered).
+  - term:
+      id: GO:0032613
+      label: interleukin-10 production
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      IL-10 is a principal suppressive effector cytokine of Tregs and IL10 (with
+      the latent-TGF-beta machinery TGFB1/LRRC32) is a member of the panel, so
+      interleukin-10 production is a real supporting process of the state. Scored
+      supporting (the secreted effector output) rather than core. It is recorded
+      as an annotation_gap rather than annotation_supported because GO:0032613
+      currently carries essentially no positive gene annotations in GOA (FOXP3 is
+      paradoxically annotated only to its NEGATIVE regulation, GO:0032693): the
+      suppressive-cytokine members ARE in the set but the production process is
+      not captured by their GO annotations, so the gap is GO's and the term is
+      curator_added (not recovered by enrichment).
+  - term:
+      id: GO:0002507
+      label: tolerance induction
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      Induction of immunological (self-)tolerance is the central physiological
+      role of the Treg state ("maintenance of immunological self-tolerance").
+      Scored supporting — the downstream organism-level outcome of the suppressive
+      function rather than the cell-intrinsic identity process. It is an
+      annotation_gap because the core Treg members FOXP3, CTLA4 and IL2RA ARE in
+      the set but are annotated to neighbouring terms (e.g. IL2RA to regulation
+      of T cell tolerance induction) rather than to tolerance induction
+      (GO:0002507) itself, whose annotated genes in GOA are largely others (AIRE,
+      ICOS, HAVCR2, LGALS9); the gap is GO's, so the term is curator_added.

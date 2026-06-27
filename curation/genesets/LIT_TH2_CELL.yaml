@@ -1,0 +1,171 @@
+gene_set_id: LIT:TH2_CELL
+gene_set_name: TH2_CELL
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:CD4_THELPER
+series_role: th2
+description: >-
+  Literature-defined cell-state ACTIVITY signature of the type 2 T-helper (Th2)
+  CD4+ effector lineage, the GATA-3/IL-4 differentiation program established by
+  Zheng and Flavell (Cell 1997, PMID:9160750), who showed that the transcription
+  factor GATA-3 is selectively expressed in Th2 cells and is necessary and
+  sufficient for Th2 cytokine gene expression in CD4 T cells. Unlike MSigDB
+  causal/driver disease pathway sets, the members here are the READOUT of an
+  ACTIVE program, not driver mutations: they are the genes UP in the
+  differentiated Th2 state relative to naive or alternatively polarized CD4 T
+  cells. The signature is built around the master Th2 transcription factor GATA3
+  and the signature type 2 cytokines it controls — IL4, IL5 and IL13 (with IL9
+  and the regulatory IL10) — together with the IL-4 receptor/STAT6 signaling axis
+  (IL4R, STAT6) that drives and amplifies the program, the alarmin (IL-33)
+  receptor IL1RL1/ST2, the Th2 trafficking chemokine receptors CCR4 and CCR8, the
+  prostaglandin D2 receptor PTGDR2/CRTH2, and Th2-promoting transcriptional
+  regulators such as MAF (c-Maf) and GFI1. Because the member genes literally
+  carry the GO annotations for the processes the Th2 state executes (Th2
+  differentiation, IL-4/IL-5/IL-13 production, the type 2 immune response, B-cell
+  help and IgE class switching), enrichment recovers those processes
+  (annotation_supported) rather than leaving them as gaps. This set is ONE pole
+  of a four-member SERIES of CD4 T-helper effector fates (series
+  SERIES:CD4_THELPER): Th1 (IFN-gamma/T-bet), Th2 (this set, IL-4/GATA-3), Th17
+  (IL-17/RORgammaT) and Treg (FOXP3), mutually antagonistic differentiation
+  programs against which the same lineage-level terms (T-helper cell
+  differentiation, cytokine production) resolve to contrasting type-specific
+  interpretations. DISEASE RELEVANCE: the Th2 program is the central driver of
+  type 2 immunity — protective against helminth and other extracellular parasites
+  but, when dysregulated, the core pathogenic axis of allergic disease (allergic
+  asthma, atopic dermatitis, allergic rhinitis, eosinophilic esophagitis and
+  food allergy), where IL-4/IL-13 drive IgE class switching and IL-5 drives
+  eosinophilia. The defining mechanistic experiments were performed in the mouse
+  (transgenic CD4 T cells and the D10 Th2 clone); we curate the
+  human-orthologous program and keep the taxon human per corpus convention.
+contexts:
+  - term:
+      id: CL:0000546
+      label: T-helper 2 cell
+    context_type: cell_type
+    role_note: >-
+      Type 2 T-helper cell, the GATA3/IL-4 program. The signature reads out the
+      differentiated Th2 state of the CD4-positive, alpha-beta T cell — defined
+      by the master transcription factor GATA-3 and capacity to produce
+      interleukin-4 — rather than any single disease. CL:0000546 (T-helper 2
+      cell) is the anchoring cell-state context; its contrasting poles in the
+      series are the Th1, Th17 and Treg CD4 effector fates.
+associations:
+  - term:
+      id: GO:0045064
+      label: T-helper 2 cell differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:9160750
+        reference_title: "The transcription factor GATA-3 is necessary and sufficient for Th2 cytokine gene expression in CD4 T cells."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "GATA-3 was selectively expressed in Th2 cells"
+        explanation: >-
+          The gene set is, by definition, the readout of the Th2 lineage
+          differentiation program: the defining paper identifies GATA-3 as the
+          master transcription factor that is selectively expressed in Th2 cells
+          as naive CD4 precursors commit to the Th2 subset, and shows it is
+          necessary and sufficient to drive the Th2 cytokine program. GATA3 and
+          the cytokine and signaling genes it controls are the dominant members
+          of this UP signature and carry the T-helper 2 cell differentiation
+          annotation, so enrichment recovers it (annotation_supported). This is
+          the central identity-defining ACTIVE program of the set, not a driver
+          lesion, and it is precisely the fate that is NOT taken at the
+          contrasting Th1/Th17/Treg poles of the series.
+    curator_note: >-
+      Kept core and cell_type_specific because acquisition of the Th2 fate is the
+      single identity-defining process of this signature, and the master
+      regulator GATA3 together with the STAT6 axis and the type 2 cytokines are
+      the dominant members of the UP set.
+  - term:
+      id: GO:0032633
+      label: interleukin-4 production
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:9160750
+        reference_title: "The transcription factor GATA-3 is necessary and sufficient for Th2 cytokine gene expression in CD4 T cells."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "GATA-3 directly activated an IL-4 promoter-luciferase reporter gene in M12 cells"
+        explanation: >-
+          Production of interleukin-4 is the signature effector output of the Th2
+          state: the defining paper shows the Th2 master factor GATA-3 directly
+          activates the IL-4 promoter, and IL4 is a canonical member of this UP
+          signature. The IL4 gene and its transcriptional regulators carry the
+          interleukin-4 production annotation, so enrichment recovers it
+          (annotation_supported). Kept core because IL-4 is the defining,
+          autocrine-amplifying Th2 cytokine; scored lineage_shared rather than
+          cell_type_specific because IL-4 production is shared with mast cells,
+          basophils, NKT cells and group 2 innate lymphoid cells.
+    curator_note: >-
+      One of the two strongest core terms (with T-helper 2 cell differentiation);
+      evidence attached here. IL-4 both defines and reinforces the Th2 program,
+      so it is core despite being produced by other type 2 effectors as well.
+  - term:
+      id: GO:0042092
+      label: type 2 immune response
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The Th2 cell is the central adaptive orchestrator of the type 2 immune
+      response — the IL-4/IL-5/IL-13-driven program of resistance to helminths
+      and the basis of allergic inflammation. The signature cytokine members
+      (IL4, IL5, IL13) and the receptor/transcription-factor module carry this
+      annotation, so enrichment recovers it (annotation_supported). Kept core
+      because mounting the type 2 response is the physiological purpose the Th2
+      state serves; scored lineage_shared because, by its own definition, the
+      type 2 response is executed jointly with eosinophils, basophils, mast cells
+      and ILC2 rather than by Th2 cells alone.
+  - term:
+      id: GO:0032616
+      label: interleukin-13 production
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Interleukin-13 is a signature Th2 effector cytokine that, alongside IL-4,
+      drives IgE class switching, goblet-cell/mucus responses and airway
+      hyperreactivity; IL13 is a member of this UP signature and carries the
+      interleukin-13 production annotation, so enrichment recovers it
+      (annotation_supported). Scored supporting rather than core, and
+      lineage_shared, because IL-13 is a downstream type 2 effector output that
+      is prominently shared with group 2 innate lymphoid cells, mast cells and
+      basophils rather than a Th2-identity-defining process.
+  - term:
+      id: GO:0048295
+      label: positive regulation of isotype switching to IgE isotypes
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Provision of B-cell help and induction of IgE class switching is the
+      classic humoral arm of the Th2 program: IL-4 (and IL-13) produced by the
+      Th2 cell positively regulate switching of B cells to the IgE isotype, the
+      molecular basis of atopic and allergic disease. The member cytokine IL4
+      carries this annotation, so enrichment recovers it (annotation_supported).
+      Scored supporting rather than core, and lineage_shared, because IgE
+      switching is a downstream effector consequence enacted in cooperation with
+      B cells rather than an intrinsic identity-defining Th2 process.

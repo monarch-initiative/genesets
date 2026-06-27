@@ -1,0 +1,174 @@
+gene_set_id: LIT:TH1_CELL
+gene_set_name: TH1_CELL
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:CD4_THELPER
+series_role: th1
+description: >-
+  Literature-defined cell-state ACTIVITY signature of the type 1 T-helper (Th1)
+  CD4+ T cell identity/differentiation program, one POLE of the four-member CD4
+  T-helper lineage series (series SERIES:CD4_THELPER; th1 / th2 / th17 / treg).
+  The Th1 lineage was first defined by Mosmann and Coffman, who distinguished two
+  helper T cell types by their lymphokine profiles — Th1 cells producing IL-2,
+  interferon-gamma and GM-CSF (J Immunol 1986, PMID:2419430) — and its master
+  regulator was identified by Szabo, Glimcher and colleagues as T-bet (TBX21), a
+  Th1-specific T-box transcription factor that controls the hallmark Th1 cytokine
+  IFN-gamma and that, by retroviral transduction, redirects polarized Th2 cells
+  into the Th1 fate (Cell 2000, PMID:10761931). Unlike MSigDB causal/driver
+  disease pathway sets, the members here are the READOUT of an ACTIVE lineage
+  program, not driver mutations: they are the genes UP in the Th1-committed state.
+  The signature is dominated by the canonical Th1 identity module — the master
+  transcription factor TBX21 (T-bet) and the upstream STAT4; the signature
+  effector cytokine IFNG (interferon-gamma) and the related TNF/LTA; the
+  Th1-polarizing IL-12/IL-18 receptor chains IL12RB2 and IL18R1; and the Th1
+  trafficking/homing chemokine receptors CXCR3 and CCR5. Because these member
+  genes literally carry the GO annotations for the processes the Th1 state
+  executes (Th1 lineage differentiation, IFN-gamma production, Th1-type immune
+  response), enrichment recovers those processes (annotation_supported) rather
+  than leaving them as gaps. This set is the th1 pole of the CD4 T-helper series:
+  it is contrasted against the th2 (IL-4/IL-5/IL-13, GATA3), th17 (IL-17, RORC)
+  and treg (FOXP3, immunosuppressive) poles, against which the same shared CD4
+  T cell terms resolve to contrasting lineage interpretations. DISEASE RELEVANCE:
+  the Th1 program is the cell-mediated-immunity arm of CD4 help that drives host
+  defense against intracellular pathogens (mycobacteria, Listeria, intracellular
+  protozoa and viruses) by IFN-gamma-mediated macrophage activation, but when
+  chronic or dysregulated it is a central driver of organ-specific autoimmune and
+  inflammatory disease (type 1 diabetes, multiple sclerosis, rheumatoid arthritis,
+  Crohn's disease, Hashimoto thyroiditis). The lineage program was defined in the
+  mouse; we curate the human-orthologous program and keep the taxon human per
+  corpus convention.
+contexts:
+  - term:
+      id: CL:0000545
+      label: T-helper 1 cell
+    context_type: cell_type
+    role_note: >-
+      type 1 T-helper, T-bet/IFN-gamma program. The signature reads out the Th1
+      identity/differentiation state of the CD4-positive helper T cell rather than
+      any single disease: CL:0000545 (T-helper 1 cell) is the anchoring cell-state
+      context, the IFN-gamma-producing, T-bet/TBX21-driven th1 pole of the CD4
+      T-helper series whose contrasting poles are the th2, th17 and treg states.
+associations:
+  - term:
+      id: GO:0045063
+      label: T-helper 1 cell differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:10761931
+        reference_title: "A novel transcription factor, T-bet, directs Th1 lineage commitment."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "T-bet initiates Th1 lineage development from naive Thp cells both by activating Th1 genetic programs and by repressing the opposing Th2 programs"
+        explanation: >-
+          The gene set is, by definition, the UP readout of the Th1-committed
+          differentiation state: the defining paper shows that the master
+          transcription factor T-bet (TBX21) initiates Th1 lineage development
+          from naive T-helper precursors by activating the Th1 genetic program and
+          repressing the opposing Th2 program. T-helper 1 cell differentiation is
+          therefore the central, cell-type-defining process this signature reads
+          out, and the lineage members (TBX21, STAT4, IL12RB2, IL18R1, IFNG) carry
+          this GO annotation, so enrichment recovers it (annotation_supported).
+          This is the defining ACTIVE program of the set, not a driver lesion, and
+          it is precisely the axis that distinguishes the th1 pole from the th2,
+          th17 and treg poles of the series.
+    curator_note: >-
+      Kept core and cell_type_specific because Th1 lineage differentiation is the
+      single identity-defining program of this set, and the master regulator TBX21
+      and its upstream/downstream partners (STAT4, IL12RB2, IFNG) are the dominant
+      members of the UP signature.
+  - term:
+      id: GO:0032609
+      label: type II interferon production
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:10761931
+        reference_title: "A novel transcription factor, T-bet, directs Th1 lineage commitment."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "a Th1-specific T box transcription factor that controls the expression of the hallmark Th1 cytokine, IFNgamma"
+        explanation: >-
+          Production of interferon-gamma (type II interferon) is the signature
+          effector output of the Th1 state: the defining paper identifies T-bet as
+          the Th1-specific transcription factor that controls expression of the
+          hallmark Th1 cytokine IFN-gamma, and the effector cytokine gene IFNG
+          (together with its drivers TBX21 and STAT4) is a canonical member of this
+          UP signature. The member genes carry the annotation, so enrichment
+          recovers it (annotation_supported). Kept core because IFN-gamma
+          production is, alongside lineage commitment, the defining functional
+          output of Th1 cells; scored lineage_shared rather than cell_type_specific
+          because IFN-gamma production is shared with CD8 Tc1 and NK cells.
+    curator_note: >-
+      One of the two strongest core terms (with T-helper 1 cell differentiation):
+      IFN-gamma is the defining cytokine of the Th1 lineage and the functional
+      readout by which Th1 cells were originally distinguished from Th2 cells.
+  - term:
+      id: GO:0042088
+      label: T-helper 1 type immune response
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The Th1-type (cell-mediated) immune response is the integrated effector
+      function the signature executes: IFN-gamma-driven activation of macrophages
+      and cytotoxic responses against intracellular pathogens. The Th1 module genes
+      (IFNG, TBX21, IL12RB2, IL18R1, STAT4) carry this annotation, so enrichment
+      recovers it (annotation_supported). Kept core and cell_type_specific because
+      a Th1-type immune response is, by name and biology, the response this lineage
+      orchestrates, distinguishing the th1 pole from the humoral/allergic th2 pole
+      of the series.
+  - term:
+      id: GO:0042742
+      label: defense response to bacterium
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Th1 cells are the cell-mediated-immunity arm directed against intracellular
+      bacteria: their IFN-gamma output activates macrophages to kill phagocytosed
+      and intracellular bacteria (e.g. mycobacteria, Listeria), which is the
+      physiological purpose of the Th1 program. Antibacterial-defense members of
+      the signature carry this annotation, so enrichment recovers it
+      (annotation_supported). Scored supporting rather than core, and
+      lineage_shared, because antibacterial defense is a downstream effector
+      purpose shared with innate and other adaptive effectors rather than the
+      identity-defining lineage axis itself.
+  - term:
+      id: GO:0002711
+      label: positive regulation of T cell mediated immunity
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    curator_note: >-
+      Th1 cells actively amplify and positively drive T cell mediated immunity —
+      through IFN-gamma output, IL-12/IL-18 receptor signaling and provision of
+      help that licenses cytotoxic and macrophage effector function — so this
+      regulatory process is a genuine part of the active Th1 program and belongs in
+      a complete interpretation. It is recorded as an annotation_gap rather than
+      annotation_supported because the relevant effector genes ARE in the set
+      (IFNG, TBX21, IL12RB2, IL18R1) but their GO annotations capture the direct
+      effector functions (IFN-gamma production, Th1 differentiation) rather than
+      this higher-level positive-regulation term; the gap is GO's (a GO annotation
+      curation target), so the term is curator_added and not recovered by
+      enrichment.
