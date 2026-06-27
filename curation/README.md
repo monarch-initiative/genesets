@@ -23,7 +23,7 @@ gold standard for `genesets-rs`.
    `genesets-workflows curate draft MSIGDB:<SET> --enrichment-tsv <tsv> -o genesets/<SET>.yaml`
 3. Adjudicate: set each association's `category`, `confidence`, `specificity`;
    add `curator_added` core terms the tool missed; add `evidence`.
-4. `just curate-validate` - structural + term + reference validation.
+4. `just curate-validate` - structural + term + reference + obsolescence validation.
 5. `just curate-report` - precision/recall/F1.
 
 ## Categories (biology)
@@ -98,3 +98,11 @@ Each `evidence` item carries a `reference` (PMID/DOI), a verbatim `snippet`
 OTHER — mirrors dismech for interoperability). A schema rule enforces that any
 item with a `snippet` also has a `reference`, so a quote can never bypass
 reference validation.
+
+## Term obsolescence
+`curate validate` adds a fourth gate: every ontology term id is swept against
+its ontology's OAK `obsoletes()` set. This catches obsolete terms the
+term-validator misses — the `sqlite:obo:*` builds retain labels for obsolete
+classes, so an obsolete id paired with its old label still passes id+label
+validation. An obsolete `id:` now fails the build (e.g. `GO:0050663` cytokine
+secretion → use `GO:0032635`; `GO:0062023` → `GO:0031012`).
