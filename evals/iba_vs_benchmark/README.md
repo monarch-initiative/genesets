@@ -49,47 +49,59 @@ a real evaluation.
 
 ## Metrics
 
-Per variant, over the CORE terms (`category` in `core_process`/`core_component`):
+The PRIMARY metric scores the curated **biology** — recall of CORE terms
+(`category` in `core_process`/`core_component`) — which is independent of the
+gold's `recovery_status` labels. `recovery_status` is the curator's diagnostic
+prediction and is used only descriptively; it is never refit to a method's
+output (see "Guardrail").
 
-- **`recall_supported`** — recovered / total of `annotation_supported` core terms.
-  The *fair* target: the curator asserts the genes carry these, so enrichment
-  should recover them.
-- **`gap_recovered`** — count of `annotation_gap` core terms recovered. The
-  curator marked these too shallow in current GOA; recovery here means either a
-  method surfaced it anyway or the gold label is conservative (a re-label
-  candidate annotation_gap -> annotation_supported).
-- **`unique_vs_baseline`** — supported-core terms a variant recovers that the
-  `all` baseline does not.
+- **`recall_core`** — recovered / total of all CORE terms. The headline: how
+  much curator-validated biology a variant recovers.
+- **`recall_supported`** — recall over the `annotation_supported` CORE subset
+  (descriptive: of terms the curator *predicted* recoverable).
+- **`gap_recovered`** — count of `annotation_gap` CORE terms a variant recovered.
+  A **disagreement** between the curator's prediction and a tool run — a curator
+  review item, not an automatic gold edit (see "Guardrail").
+- **`unique_vs_baseline`** — supported-core terms a variant recovers that `all`
+  does not.
 
 ## Headline result (2026, 98 sets, GOA `goa_human` current)
 
-| variant | recall_supported | gap_recovered | unique_vs_all |
+| variant | recall_core | recall_supported | gap_recovered (disagreements) |
 |---|---|---|---|
-| all | 0.707 (145/205) | 0/40 | – |
-| no_contributes_to | 0.702 (144/205) | 0/40 | 0 |
-| iba_iea | 0.566 (116/205) | 0/40 | 0 |
-| iba | 0.473 (97/205) | 0/40 | 2 |
+| all | 0.600 (180/300) | 0.694 | 9 |
+| no_contributes_to | 0.597 (179/300) | 0.689 | 9 |
+| iba_iea | 0.480 (144/300) | 0.561 | 6 |
+| iba | 0.383 (115/300) | 0.469 | 5 |
 
-(Post-fix numbers — see finding 3.)
-
-1. **IBA carries ~2/3 of the core biology full GOA does** (0.47 vs 0.69); IEA
-   recovers much of the difference (iba_iea 0.56).
+1. **IBA carries ~2/3 of the core biology full GOA does** (recall_core 0.38 vs
+   0.60); IEA recovers much of the difference (iba_iea 0.48).
 2. **IBA is nearly a strict subset of all-GOA — it does not fill experimental
    gaps here.** Restricting to IBA loses 46 supported-core terms and uniquely
    recovers only 2, both conserved-housekeeping cellular components (ribosome
    `GO:0005840`, nucleolus `GO:0005730`).
-3. **The eval audited and corrected the gold.** The first run found 9
-   `annotation_gap` core terms that standard all-GOA enrichment *did* recover
+3. **The eval surfaces a review queue — it does not edit the gold.** 9
+   `annotation_gap` core terms were recovered by standard all-GOA enrichment
    (e.g. SCHUHMACHER_MYC -> rRNA processing, TRAVAGLINI_CILIATED -> axoneme
-   assembly, KEGG_RCC -> positive regulation of angiogenesis). Those were
-   over-pessimistic gap predictions and were re-labeled `annotation_supported`;
-   the table above is post-fix, with `gap_recovered` now 0/40 across every
-   variant — the gold's `annotation_gap` set is empirically self-consistent (no
-   remaining gap term is recoverable by any evidence variant).
+   assembly, KEGG_RCC -> positive regulation of angiogenesis). These are
+   *disagreements* between the curator's gap prediction and a tool run, queued
+   for deliberate curator review against GOA facts — not auto-relabeled.
 
-Calibration: even all-GOA recovers only ~71% of `annotation_supported` core under
-Bonferroni, so that label means "the genes carry it", not "it always reaches
-genome-wide significance".
+Calibration: even all-GOA recovers only ~69% of `annotation_supported` core
+under Bonferroni, so that label means "the genes carry it", not "it always
+reaches genome-wide significance".
+
+## Guardrail: the eval must not refit the gold
+
+The eval is a measurement, not an editor. The gold's `category` (biology) is the
+ground truth scored here and stays the authority. `recovery_status` is the
+curator's diagnostic prediction; it is checked against GOA facts during
+curation, never auto-updated to match whatever a given method + annotation
+snapshot + p-threshold happens to recover. Refitting `recovery_status` to a tool
+would make recall-vs-gold circular — the tool could not be "wrong" because we'd
+have redefined truth to match it — and would forfeit the gold's independence
+across methods and GOA versions. The `gap_recovered` disagreements are review
+*inputs*, adjudicated deliberately on the merits, not automatic relabels.
 
 Generated tables (`/tmp/iba_eval/`) are not committed; rerun the pipeline to
 regenerate. The scorer is `scripts/score_method_vs_benchmark.py`.

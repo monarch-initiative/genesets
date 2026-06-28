@@ -151,16 +151,18 @@ associations:
     confidence: medium
     specificity: broadly_expressed
     seed_source: curator_added
-    recovery_status: annotation_supported
+    recovery_status: annotation_gap
     curator_note: >-
-      Negative regulation of insulin receptor signaling - operationally insulin
-      resistance - is the primary T2D mechanism (IRS1 serine phosphorylation by
-      IKBKB/MAPK8, SOCS suppression of INSR, PTEN antagonism of PI3K), so this
-      term is biologically core. Curator-added, but recorded as
-      annotation_supported: contrary to an initial annotation-gap prediction,
-      enrichment over current GOA-human recovers it from the set (overlap 5,
-      Bonferroni p_adj 1.2e-2 in the 2026 iba_vs_benchmark eval); the
-      inhibitory-interaction annotations are present.
+      Negative regulation of insulin receptor signaling — operationally equivalent
+      to insulin resistance, the primary pathogenic mechanism of T2D — is biologically
+      core to this gene set. Multiple KEGG T2D pathway members participate in this
+      process: IRS1 serine phosphorylation by IKKβ (IKBKB) and JNK (MAPK8) inhibits
+      canonical insulin signaling; SOCS proteins suppress INSR tyrosine kinase activity;
+      and PTEN dephosphorylates PIP3 to antagonize PI3K signaling. This is an
+      annotation_gap: the underlying biology is present in the gene set but GO
+      annotation coverage of these inhibitory interactions is incomplete, so enrichment
+      analysis is unlikely to recover this specific child term. This is a GO annotation
+      curation target for T2D-relevant genes.
   - term:
       id: GO:0006412
       label: translation

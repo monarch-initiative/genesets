@@ -81,16 +81,23 @@ associations:
     confidence: high
     specificity: lineage_shared
     seed_source: curator_added
-    recovery_status: annotation_supported
+    recovery_status: annotation_gap
     curator_note: >-
-      Chylomicron remodeling - LPL-mediated triglyceride hydrolysis with APOC2
-      as obligate cofactor, GPIHBP1 anchoring and LMF1 maturation - is the
-      molecular event abrogated in familial chylomicronemia, so this term is
-      biologically core. Curator-added, but recorded as annotation_supported:
-      contrary to an initial annotation-gap prediction, enrichment over current
-      GOA-human recovers it from the set (overlap 3 of a 4-gene term, Bonferroni
-      p_adj 9.7e-4 in the 2026 iba_vs_benchmark eval) - LPL and APOC2 carry the
-      annotation.
+      Chylomicron remodeling (GO:0034371) is defined as "the acquisition,
+      loss or modification of a protein or lipid within a chylomicron,
+      including the hydrolysis of triglyceride by lipoprotein lipase and
+      the subsequent loss of free fatty acid." This is precisely the
+      molecular event abrogated in familial chylomicronemia syndrome: LPL
+      (with APOC2 as obligate activating cofactor) hydrolyses the
+      triglyceride core of chylomicrons at the capillary endothelium
+      (facilitated by GPIHBP1), and LMF1 is required for LPL maturation
+      and secretion into the capillary lumen. This term is curator-added
+      and classified as annotation_gap: while LPL and APOC2 are
+      functionally central to chylomicron remodeling, the majority of the
+      18 set members do not yet carry this specific GO annotation in
+      GOA-human, preventing reliable enrichment recovery from a small gene
+      set. Chylomicron remodeling is a priority GO annotation curation
+      target for familial chylomicronemia syndrome gene sets.
   - term:
       id: GO:0019433
       label: triglyceride catabolic process

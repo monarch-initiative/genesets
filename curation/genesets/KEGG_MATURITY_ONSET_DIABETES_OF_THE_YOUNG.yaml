@@ -174,11 +174,16 @@ associations:
     confidence: medium
     specificity: cell_type_specific
     seed_source: curator_added
-    recovery_status: annotation_supported
+    recovery_status: annotation_gap
     curator_note: >-
-      Beta-cell specification (PDX1/MODY4, NEUROD1/MODY6, PAX4, NKX2-2, MAFA) is
-      core to MODY. Curator-added, but recorded as annotation_supported:
-      contrary to an initial annotation-gap prediction, enrichment over current
-      GOA-human recovers this specific term from the set (overlap 4 of a 16-gene
-      term, Bonferroni p_adj 9.4e-4 in the 2026 iba_vs_benchmark eval) - the
-      driver transcription factors do carry the annotation.
+      Type B pancreatic cell differentiation (GO:0003309) captures the
+      specification of insulin-secreting beta-cell identity, controlled
+      principally by PDX1, NEUROD1, PAX4, NKX2-2, and MAFA. PDX1 (MODY4) and
+      NEUROD1 (MODY6) are present in the KEGG MODY gene set and are key drivers
+      of beta-cell differentiation. This term is biologically core to MODY
+      because loss of these TFs impairs beta-cell differentiation and reduces
+      functional beta-cell mass. It is an annotation_gap: PDX1 and NEUROD1 carry
+      GO annotations to broader developmental terms in GOA-human but are not
+      consistently annotated to this specific child term, so enrichment analysis
+      is unlikely to recover GO:0003309 from this gene set. This is a GO
+      annotation curation target.

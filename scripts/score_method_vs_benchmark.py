@@ -12,13 +12,19 @@ Pipeline (see evals/iba_vs_benchmark/README.md):
   3. genesets-rs run <variant>/config.yaml  ->  <variant>/results.tsv
   4. this script
 
+The PRIMARY metric is recall of the curated CORE biology (`category` in
+core_process/core_component) — this is tool-independent of the gold's
+`recovery_status` labels, so the eval never pressures us to refit the gold to a
+method's output (which would make recall-vs-gold circular).
+
 Metrics per variant:
-  recall_supported  recovered / total of annotation_supported CORE terms
-                    (the "fair" target: the curator asserts these are recoverable)
-  gap_recovered     recovered / total of annotation_gap CORE terms
-                    (terms the curator flagged as too shallow in current GOA;
-                     recovery here is a method surfacing them anyway -> also a
-                     candidate to re-label the gold as annotation_supported)
+  recall_core       recovered / total of all CORE terms (the biology). HEADLINE.
+  recall_supported  recovered / total of the annotation_supported CORE subset
+                    (descriptive: of terms the curator predicted recoverable)
+  gap_recovered     count of annotation_gap CORE terms a method recovered. This
+                    is a DISAGREEMENT signal between the curator's prediction and
+                    a tool run -> a curator REVIEW item, adjudicated against GOA
+                    facts. NOT auto-applied to the gold (tail must not wag dog).
   unique_vs_all     terms a variant recovers that the `all` variant does not
 """
 
@@ -101,20 +107,23 @@ def main() -> int:
         sup = recovered(hits[v], gold, scored, "annotation_supported")
         gap = recovered(hits[v], gold, scored, "annotation_gap")
         sup_t = sum(len(gold[n].get("annotation_supported", set())) for n in scored)
-        gap_t = sum(len(gold[n].get("annotation_gap", set())) for n in scored)
+        # all CORE terms regardless of recovery_status = the curated biology
+        core_t = sum(sum(len(b) for b in gold[n].values()) for n in scored)
+        core_r = sum(len(set().union(*gold[n].values()) & hits[v].get(n, set()))
+                     for n in scored if gold[n])
         rows.append({
             "variant": v,
             "sets": len(scored),
-            "supported_core": sup_t,
-            "supported_recovered": len(sup),
+            "core": core_t,
+            "core_recovered": core_r,
+            "recall_core": round(core_r / core_t, 3) if core_t else 0.0,
             "recall_supported": round(len(sup) / sup_t, 3) if sup_t else 0.0,
-            "gap_core": gap_t,
             "gap_recovered": len(gap),
             "unique_vs_baseline": len(sup - base_sup),
         })
 
-    header = ["variant", "sets", "supported_core", "supported_recovered",
-              "recall_supported", "gap_core", "gap_recovered", "unique_vs_baseline"]
+    header = ["variant", "sets", "core", "core_recovered", "recall_core",
+              "recall_supported", "gap_recovered", "unique_vs_baseline"]
     width = {h: max(len(h), max(len(str(r[h])) for r in rows)) for h in header}
     print("  ".join(h.rjust(width[h]) for h in header))
     for r in rows:
