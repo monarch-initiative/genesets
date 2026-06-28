@@ -18,9 +18,14 @@ a real evaluation.
 1. **Membership** — fetch the benchmark's MSigDB sets' member symbols into a
    `queries.gmt`. mygeneset.info's `_id` is the MSigDB set name, so each curated
    `MSIGDB:<NAME>` set is fetched by querying `<NAME>` and taking the exact
-   `_id`/`source=msigdb` hit. (The 31 `LIT:` sets store markers in prose, not
-   membership, so they are out of scope here; 11 MSigDB sets — mostly newer C8
-   single-cell clusters — are absent from mygeneset, leaving **98** evaluable.)
+   `_id`/`source=msigdb` hit. (11 MSigDB sets — mostly newer C8 single-cell
+   clusters — are absent from mygeneset.) Most `LIT:` sets store markers in prose
+   rather than full membership, but the 4 `LIT:GENETIC` sets are defined by
+   short, explicit gene lists, so their membership was **captured directly from
+   the primary sources** (Satterstrom 2020 Table S2; Trubetskoy 2022 prioritized
+   + SCHEMA + C4; the Jostins 2012 GWAS-Catalog loci; the Daniloski + Wei
+   CRISPR-screen hit tables) into `curation/genesets/lit_members.gmt` (HGNC-
+   normalized) and folded into `queries.gmt`. Total evaluable: **102**.
 
 2. **Annotation variants** —
    ```bash
@@ -97,21 +102,39 @@ With the corpus-wide `insight` tags, recall splits by whether a term is
 `confirmatory` (restates the set's construction) or `mechanistic` (a non-obvious
 process — a genuine enrichment insight). Over the evaluable sets:
 
-| variant | recall_confirm (n=505) | recall_mechan (n=44) |
+| variant | recall_confirm (n=514) | recall_mechan (n=57) |
 |---|---|---|
-| all | 0.626 | 0.295 |
-| no_contributes_to | 0.624 | 0.295 |
-| iba_iea | 0.483 | 0.205 |
-| iba | 0.364 | 0.227 |
+| all | 0.621 | 0.351 |
+| no_contributes_to | 0.619 | 0.351 |
+| iba_iea | 0.481 | 0.228 |
+| iba | 0.360 | 0.211 |
 
 **Mechanistic insight is ~2x harder to recover than confirmatory biology** —
-even all-GOA recovers only ~30% of mechanistic terms vs ~63% of confirmatory
+even all-GOA recovers only ~35% of mechanistic terms vs ~62% of confirmatory
 ones. Standard enrichment surfaces the obvious and largely misses the
 non-obvious convergent mechanisms the curators flagged (often the
-`annotation_gap` ones). The `mechanistic` denominator is small (44 evaluable of
-the corpus's 50, since several live in `LIT:` sets with no fetched membership),
-so those numbers are noisier — growing mechanistic-rich, agnostically-derived
-sets is the way to sharpen this measure.
+`annotation_gap` ones).
+
+The 4 `LIT:GENETIC` sets (their membership captured directly from the primary
+sources — see Membership) make this concrete, per famous mechanism, under
+all-GOA:
+
+- **Autism -> chromatin organization / regulation of transcription: 3/3
+  recovered** — EA *does* reveal this insight (102 genes converge on
+  well-annotated chromatin biology).
+- **Schizophrenia -> complement-mediated synapse pruning (`GO:0150062`): 0/2** —
+  the celebrated C4 mechanism is *invisible* to enrichment, driven by 2 genes
+  (C4A/C4B) in a 121-gene set.
+- **IBD -> autophagy: missed** — the landmark NOD2/ATG16L1/IRGM mechanism is not
+  surfaced from the GWAS gene list.
+- **SARS-CoV-2 host factors: 3/6** — V-ATPase / vacuolar acidification recovered;
+  cholesterol biosynthesis, retrograde transport, PI3P biosynthesis missed.
+
+This is exactly why a *curated* gold standard is needed: it asserts "complement
+is the mechanism" from biological knowledge, which 2-gene enrichment never will.
+The aggregate `recall_mechan` (~0.35) also hides this bimodality — some
+mechanistic terms are recoverable (chromatin, V-ATPase), the celebrated ones
+often are not.
 
 ## Guardrail: the eval must not refit the gold
 
