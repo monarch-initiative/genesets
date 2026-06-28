@@ -138,17 +138,14 @@ associations:
     confidence: high
     specificity: lineage_shared
     seed_source: curator_added
-    recovery_status: annotation_gap
+    recovery_status: annotation_supported
     curator_note: >-
-      VEGFA, the principal HIF transcriptional target and angiogenic driver in
-      ccRCC, is annotated to positive regulation of angiogenesis in GOA-human, as
-      are PDGFB, FLT1, and KDR — all present in the KEGG RCC gene set. This term
-      is mechanistically more precise than the parent GO:0001525 for capturing the
-      VEGF-axis biology of VHL-loss-driven RCC. Curated as annotation_gap because
-      not all KEGG RCC gene set members that mediate HIF-to-VEGF positive angiogenic
-      regulation carry this specific annotation in the current GOA-human release;
-      enrichment tools therefore do not reliably recover it, yet it describes a
-      core biological event.
+      VEGFA (the principal HIF target), PDGFB, FLT1 and KDR drive the VEGF-axis
+      angiogenesis of VHL-loss-driven RCC, so this term is biologically core.
+      Curator-added, but recorded as annotation_supported: contrary to an
+      initial annotation-gap prediction, enrichment over current GOA-human
+      recovers positive regulation of angiogenesis from the set (overlap 9,
+      Bonferroni p_adj 5.3e-4 in the 2026 iba_vs_benchmark eval).
   - term:
       id: GO:0006412
       label: translation

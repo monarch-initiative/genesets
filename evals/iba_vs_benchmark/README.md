@@ -65,10 +65,12 @@ Per variant, over the CORE terms (`category` in `core_process`/`core_component`)
 
 | variant | recall_supported | gap_recovered | unique_vs_all |
 |---|---|---|---|
-| all | 0.694 (136/196) | 9/49 | – |
-| no_contributes_to | 0.689 (135/196) | 9/49 | 0 |
-| iba_iea | 0.561 (110/196) | 6/49 | 0 |
-| iba | 0.469 (92/196) | 5/49 | 2 |
+| all | 0.707 (145/205) | 0/40 | – |
+| no_contributes_to | 0.702 (144/205) | 0/40 | 0 |
+| iba_iea | 0.566 (116/205) | 0/40 | 0 |
+| iba | 0.473 (97/205) | 0/40 | 2 |
+
+(Post-fix numbers — see finding 3.)
 
 1. **IBA carries ~2/3 of the core biology full GOA does** (0.47 vs 0.69); IEA
    recovers much of the difference (iba_iea 0.56).
@@ -76,12 +78,16 @@ Per variant, over the CORE terms (`category` in `core_process`/`core_component`)
    gaps here.** Restricting to IBA loses 46 supported-core terms and uniquely
    recovers only 2, both conserved-housekeeping cellular components (ribosome
    `GO:0005840`, nucleolus `GO:0005730`).
-3. **The eval audits the gold.** 9 `annotation_gap` core terms were recovered by
-   standard all-GOA enrichment (e.g. SCHUHMACHER_MYC -> rRNA processing,
-   TRAVAGLINI_CILIATED -> axoneme assembly, KEGG_RCC -> positive regulation of
-   angiogenesis) — candidates to re-label `annotation_supported`.
+3. **The eval audited and corrected the gold.** The first run found 9
+   `annotation_gap` core terms that standard all-GOA enrichment *did* recover
+   (e.g. SCHUHMACHER_MYC -> rRNA processing, TRAVAGLINI_CILIATED -> axoneme
+   assembly, KEGG_RCC -> positive regulation of angiogenesis). Those were
+   over-pessimistic gap predictions and were re-labeled `annotation_supported`;
+   the table above is post-fix, with `gap_recovered` now 0/40 across every
+   variant — the gold's `annotation_gap` set is empirically self-consistent (no
+   remaining gap term is recoverable by any evidence variant).
 
-Calibration: even all-GOA recovers only 69% of `annotation_supported` core under
+Calibration: even all-GOA recovers only ~71% of `annotation_supported` core under
 Bonferroni, so that label means "the genes carry it", not "it always reaches
 genome-wide significance".
 

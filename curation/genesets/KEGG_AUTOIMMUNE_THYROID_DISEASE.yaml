@@ -163,18 +163,13 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: curator_added
-    recovery_status: annotation_gap
+    recovery_status: annotation_supported
     curator_note: >-
-      The KEGG autoimmune thyroid disease pathway is mechanistically defined by
-      adaptive immunity: MHC-restricted antigen presentation activates autoreactive
-      T and B lymphocytes bearing somatically diversified receptors specific for
-      thyroid autoantigens, leading to cytotoxic killing (Hashimoto's thyroiditis)
-      and autoantibody production (Graves' disease). Adaptive immune response
-      (GO:0002250) is therefore biologically core for this pathway. It is an
-      annotation_gap: the major gene-set members carrying specific child-term
-      annotations (antigen processing and presentation, T cell mediated
-      cytotoxicity, B cell activation) are not all directly annotated to the
-      parent adaptive immune response in GOA-human — annotations are fragmented
-      across granular descendant terms rather than rolled up to this parent.
-      This is a GO annotation incompleteness issue, not evidence against the
-      association; it is a GO annotation curation target.
+      Autoimmune thyroid disease is mechanistically defined by adaptive immunity
+      (MHC-restricted antigen presentation, autoreactive T and B lymphocytes,
+      autoantibodies), so this term is biologically core. Curator-added, but
+      recorded as annotation_supported: contrary to an initial annotation-gap
+      prediction, enrichment over current GOA-human recovers adaptive immune
+      response from the set (overlap 20, Bonferroni p_adj 1.3e-19 in the 2026
+      iba_vs_benchmark eval); the granular descendant annotations roll up to
+      this parent under closure.

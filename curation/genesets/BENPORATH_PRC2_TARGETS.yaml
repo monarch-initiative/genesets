@@ -131,16 +131,13 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: curator_added
-    recovery_status: annotation_gap
+    recovery_status: annotation_supported
     curator_note: >-
-      PRC2 target genes in ES cells are body-plan regulators that directly
-      control embryonic morphogenesis when expressed during differentiation:
-      HOX, PAX, DLX, HAND, and TWIST family members all participate in
-      embryonic organ, limb, and craniofacial morphogenesis. This term is
-      biologically core for the gene set's functional identity. However, the GO
-      annotations on these transcription factor genes are largely to "regulation
-      of morphogenesis" or to the upstream pattern specification process (which
-      IS annotation-supported), rather than to embryonic morphogenesis itself.
-      The annotation gap reflects GO's depth and curation priorities, not a
-      failure of biology. This is a GO annotation curation target and is
-      recorded here so that recall analysis includes it as expected biology.
+      PRC2 target genes in ES cells are body-plan regulators (HOX, PAX, DLX,
+      HAND, TWIST) that control embryonic morphogenesis upon differentiation, so
+      this term is biologically core. Curator-added, but recorded as
+      annotation_supported: contrary to an initial annotation-gap prediction,
+      closure-aware enrichment over current GOA-human recovers the exact term
+      strongly (overlap 56, Bonferroni p_adj 3.5e-33 in the 2026
+      iba_vs_benchmark eval) - the relevant members are annotated to it or to
+      descendants that roll up to it.

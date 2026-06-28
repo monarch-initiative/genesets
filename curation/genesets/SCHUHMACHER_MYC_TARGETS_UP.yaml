@@ -138,14 +138,12 @@ associations:
     confidence: high
     specificity: broadly_expressed
     seed_source: curator_added
-    recovery_status: annotation_gap
+    recovery_status: annotation_supported
     curator_note: >-
-      rRNA processing is a core nucleolar function directly driven by MYC. The source paper
-      (Schuhmacher 2001) explicitly names nucleolus function/RNA binding as a key functional
-      class of the MYC transcriptional program. Genes encoding nucleolar RNA-binding proteins
-      and processing factors are present in this set, yet many are annotated to the generic
-      parent term (ribosome biogenesis or RNA processing) rather than specifically to rRNA
-      processing in GOA-human. This is an annotation_gap: the biology is unambiguously
-      supported, but current GO annotations for relevant set members are too broad to recover
-      this term by enrichment analysis from these genes alone. It is a GO/GOA curation target
-      for rRNA processing-specific annotations.
+      rRNA processing is a core nucleolar function driven by MYC (Schuhmacher
+      2001 names nucleolar/RNA-binding function as a key MYC class). Curator-
+      added, but recorded as annotation_supported: contrary to an initial
+      annotation-gap prediction, enrichment over current GOA-human recovers rRNA
+      processing from the set (overlap 10, Bonferroni p_adj 2.0e-4 in the 2026
+      iba_vs_benchmark eval) - the nucleolar processing factors carry the
+      annotation.

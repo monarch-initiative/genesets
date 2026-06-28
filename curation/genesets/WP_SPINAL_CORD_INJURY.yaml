@@ -162,15 +162,15 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: curator_added
-    recovery_status: annotation_gap
+    recovery_status: annotation_supported
     curator_note: >-
-      The extracellular matrix is the dominant structural feature of the SCI glial scar.
-      CSPG core proteins (ACAN, BCAN, NCAN, VCAN) and tenascins deposited at the injury site
-      localise to this compartment. This is recorded as annotation_gap: the relevant genes are
-      expected members of the WikiPathways SCI set, but standard enrichment analyses recover
-      biological-process terms (GO:0030198) more readily than cellular-component parent terms
-      (GO:0031012) for these structural ECM genes. The glial scar is genuinely an ECM-rich
-      structure and GO:0031012 is the appropriate CC counterpart to the BP term GO:0030198.
+      The extracellular matrix is the dominant structural feature of the spinal-
+      cord-injury glial scar (CSPG core proteins ACAN/BCAN/NCAN/VCAN and
+      tenascins), the core cellular-component counterpart to the BP term
+      GO:0030198. Curator-added, but recorded as annotation_supported: contrary
+      to an initial annotation-gap prediction, enrichment over current GOA-human
+      recovers extracellular matrix from the set (overlap 20, Bonferroni p_adj
+      7.8e-9 in the 2026 iba_vs_benchmark eval).
   - term:
       id: GO:0006412
       label: translation

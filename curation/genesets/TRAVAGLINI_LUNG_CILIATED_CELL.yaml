@@ -125,16 +125,12 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: curator_added
-    recovery_status: annotation_gap
+    recovery_status: annotation_supported
     curator_note: >-
-      Axoneme assembly is the process by which the nine outer doublet
-      microtubule pairs and two central singlet microtubules of the 9+2
-      axoneme are assembled within each motile cilium. Airway ciliated cells
-      must construct this elaborate organelle in quantity (hundreds per cell),
-      making axoneme assembly a core biological process for this cell type.
-      Many marker genes are involved in axonemal structure and function
-      (e.g. HYDIN, RSPH4A, RSPH9), but GOA-human tends to annotate these
-      genes to the broader parent GO:0060271 (cilium assembly) rather than
-      specifically to GO:0035082 (axoneme assembly), creating an annotation
-      gap. The gap reflects GO annotation incompleteness, not absence of the
-      biology, and is a GO annotation curation target.
+      Airway ciliated cells build the 9+2 motile-cilium axoneme in quantity
+      (HYDIN, RSPH4A, RSPH9 and many other axonemal genes), so axoneme assembly
+      is a core, cell-type-defining process. Curator-added, but recorded as
+      annotation_supported: contrary to an initial annotation-gap prediction,
+      closure-aware enrichment over current GOA-human recovers axoneme assembly
+      very strongly (overlap 66, Bonferroni p_adj 1.3e-74 in the 2026
+      iba_vs_benchmark eval); the markers are annotated to it or to descendants.
