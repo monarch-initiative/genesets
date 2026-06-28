@@ -1,0 +1,230 @@
+gene_set_id: LIT:FLAVIVIRUS_HOST_FACTORS
+gene_set_name: FLAVIVIRUS_HOST_FACTORS
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 20
+description: >-
+  Literature-defined set of human host genes REQUIRED for flavivirus infection
+  (knockout confers resistance), taken from the two defining genome-wide CRISPR
+  loss-of-function screens published back-to-back in Nature 2016: Zhang et al.
+  (PMID:27383988), a West Nile virus (WNV)-induced cell-death CRISPR screen that
+  validated nine ER-associated host factors and was extended to Zika, dengue,
+  Japanese encephalitis, yellow fever and hepatitis C viruses; and Marceau et al.
+  (PMID:27383987), parallel haploid and CRISPR screens for dengue virus (DENV)
+  host factors in Huh7.5.1 cells, also tested against Zika, WNV and YFV. The
+  members are host DEPENDENCY factors — cellular machinery the virus co-opts,
+  whose knockout makes cells resistant — not antiviral restriction factors. The
+  interpretive value of the set is its striking convergence on the NON-OBVIOUS ER
+  protein-biogenesis machinery, which one would never predict from "viral
+  infection": the oligosaccharyltransferase (OST) complex and N-linked
+  glycosylation (STT3A, STT3B, MAGT1, RPN1, RPN2, OSTC — the single most
+  significantly enriched cluster in both DENV screens), the ER signal peptidase
+  complex (SPCS1, SPCS3, which cleave the flavivirus prM/E structural proteins),
+  the ER translocon and Translocon-Associated Protein (TRAP) complex (SEC61B,
+  SSR1, SSR2, SSR3), the ER membrane protein complex / EMC (EMC1, EMC2, EMC3,
+  EMC4, MMGT1), and ER-associated degradation (SEL1L, AUP1, UBE2J1). All arms
+  converge on one compartment, the endoplasmic reticulum, because the flavivirus
+  genome encodes a single ER-targeted polyprotein that must be co-translationally
+  inserted, signal-cleaved and glycosylated. Mechanistically, Marceau et al.
+  showed the OST dependence maps to viral RNA replication (not entry or
+  translation), with OST physically binding the viral NS replication complex —
+  so viral entry, the naively expected arm of an infection screen, is NOT what
+  these convergent hits do (it is recorded as a confirmatory membership_gap).
+  MEMBERSHIP CAVEAT: the full ranked supplementary hit tables (Nature
+  nature18625 / nature18631 supplementary datasets) were not retrievable in this
+  environment (PMC OA package and supplementary-file endpoints returned 404).
+  The 20 members are therefore the high-confidence genes the two papers
+  explicitly NAME and/or VALIDATE in their abstracts, results text, figure
+  legends and validation guide-RNA panels (the convergent ER protein-biogenesis
+  arm), NOT the complete statistical hit list; HCV-specific hits (ELAVL1, RFK,
+  FLAD1) and entry receptors (CD81, CLDN1, OCLN) and non-ER hits were
+  deliberately excluded to keep the set focused on the flavivirus ER-biogenesis
+  convergence. All symbols were HGNC-normalized to current official symbols via
+  mygene.info. msigdb_release omitted: this is a literature/screen-defined set.
+contexts:
+  - term:
+      id: MONDO:0005502
+      label: dengue disease
+    context_type: infection
+    role_note: >-
+      Host dependency factors from genome-wide CRISPR knockout screens — human
+      genes REQUIRED for flavivirus infection (knockout confers resistance), not
+      antiviral genes. Dengue is the index disease of the Marceau et al. screen;
+      the same ER-biogenesis factors were validated for Zika, West Nile, Japanese
+      encephalitis and yellow fever viruses across the two papers.
+associations:
+  - term:
+      id: GO:0008250
+      label: oligosaccharyltransferase complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:27383987
+        reference_title: "Genetic dissection of Flaviviridae host factors through genome-scale CRISPR screens."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Strikingly, in both the haploid and CRISPR screens, the most significantly enriched genes were subunits of the OST complex, an enzyme essential for N-linked glycosylation"
+        explanation: >-
+          The oligosaccharyltransferase (OST) complex is the single most
+          significantly enriched cluster of host-dependency hits in both the
+          haploid and CRISPR DENV screens. Its subunits — STT3A, STT3B, MAGT1
+          (the highest-scoring CRISPR hit), RPN1, RPN2 and OSTC — are members of
+          the set and carry the OST complex annotation directly, so enrichment
+          recovers it (annotation_supported). It is scored mechanistic, not
+          confirmatory: a flavivirus depending on the ER N-glycosylation enzyme
+          complex is non-obvious, and Marceau et al. further show the dependence
+          is on a non-canonical, catalysis-independent role of OST at the viral
+          RNA-replication complex (NS proteins bind OST), not on glycosylation
+          per se — a genuine mechanistic discovery rather than anything entailed
+          by the set's "infection" framing.
+    curator_note: >-
+      Core convergent component of the set. STT3A is independently a validated
+      hit in the Zhang et al. WNV screen, so the OST/N-glycosylation arm is
+      recovered by both defining papers.
+  - term:
+      id: GO:0005787
+      label: signal peptidase complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:27383988
+        reference_title: "A CRISPR screen defines a signal peptide processing pathway required by flaviviruses."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "a subset of endoplasmic reticulum-associated signal peptidase complex (SPCS) proteins was necessary for proper cleavage of the flavivirus structural proteins (prM and E) and secretion of viral particles."
+        explanation: >-
+          The Zhang et al. screen converges on the ER signal peptidase complex:
+          SPCS1 and SPCS3 (two of the five SPCS components) were validated as
+          required host factors, and loss of SPCS1 markedly reduced the yield of
+          every Flaviviridae member tested (WNV, DENV, Zika, yellow fever,
+          Japanese encephalitis, hepatitis C) while sparing al/bunya/rhabdoviruses.
+          SPCS1 and SPCS3 are members of the set and carry the signal peptidase
+          complex annotation (annotation_supported). Scored mechanistic because a
+          virus-specific dependence on host signal-peptide cleavage of its
+          structural proteins (prM/E) is a non-obvious processing requirement, not
+          an expected consequence of "infection". Note SEC11A/SEC11C — the other
+          SPCS components — were tested but had minimal effect, so they are
+          deliberately not members.
+  - term:
+      id: GO:0072546
+      label: EMC complex
+    aspect: cellular_component
+    category: core_component
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      The ER membrane protein complex (EMC) — a transmembrane insertase for
+      newly synthesized ER membrane proteins. EMC1, EMC2, EMC3, EMC4 and MMGT1
+      (EMC5) are members of the set, recovered as DENV host factors in the
+      Marceau et al. validation guide-RNA panel, and carry the EMC complex
+      annotation (annotation_supported). Scored mechanistic: a dependence on the
+      machinery that inserts multi-pass membrane proteins into the ER membrane is
+      a non-obvious biogenesis requirement for the ER-membrane-embedded flavivirus
+      replication complex, not entailed by the set's construction. Confidence is
+      medium because EMC is a smaller, validation-panel-level arm than the OST and
+      signal-peptidase convergences. No verbatim snippet is attached because the
+      EMC subunits are named in the screen's figures/validation panel rather than
+      in a single quotable sentence of the abstract.
+  - term:
+      id: GO:0036503
+      label: ERAD pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:27383987
+        reference_title: "Genetic dissection of Flaviviridae host factors through genome-scale CRISPR screens."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Genes involved in protein quality control and ER-Associated protein Degradation (ERAD) pathway also scored high"
+        explanation: >-
+          One of the three functional categories of enriched DENV host factors
+          identified by Marceau et al. is the ER-associated degradation (ERAD)
+          pathway. SEL1L, AUP1 and UBE2J1 are members of the set and carry the
+          ERAD pathway annotation (annotation_supported). Scored mechanistic — co-option of the ER
+          protein quality-control/degradation machinery is a non-obvious
+          dependency; the Zhang et al. paper independently lists "protein
+          degradation" among the ER functions of its validated factors, and ERAD
+          has been implicated in WNV replication. Supporting rather than core
+          because it is a quantitatively smaller and more virus-variable arm than
+          the OST and signal-peptidase convergences.
+  - term:
+      id: GO:0005783
+      label: endoplasmic reticulum
+    aspect: cellular_component
+    category: core_component
+    confidence: medium
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:27383987
+        reference_title: "Genetic dissection of Flaviviridae host factors through genome-scale CRISPR screens."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "The identified ER-associated protein complexes were also important for infection by other mosquito-borne flaviviruses including Zika virus, an emerging pathogen causing severe birth defects."
+        explanation: >-
+          The endoplasmic reticulum is the convergent compartment that unites
+          every arm of the set: OST, signal peptidase, translocon/TRAP, EMC and
+          ERAD are all ER-resident, because the flavivirus genome encodes a single
+          ER-targeted polyprotein that is co-translationally inserted, cleaved and
+          glycosylated at the ER membrane, where the viral RNA-replication complex
+          also assembles. All 20 members carry the ER annotation
+          (annotation_supported). Taken alone the ER is a ubiquitous housekeeping
+          compartment (hence specificity ubiquitous, confidence medium), but the
+          fact that an unbiased flavivirus host-factor screen collapses almost
+          entirely onto this one compartment is itself the mechanistic insight —
+          so it is scored mechanistic rather than nonspecific.
+  - term:
+      id: GO:0019065
+      label: receptor-mediated endocytosis of virus by host cell
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: membership_gap
+    insight: confirmatory
+    evidence:
+      - reference: PMID:27383987
+        reference_title: "Genetic dissection of Flaviviridae host factors through genome-scale CRISPR screens."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Mechanistic studies pinpointed viral RNA replication and not entry or translation as the crucial step requiring the OST complex."
+        explanation: >-
+          Receptor-mediated viral entry is the naively EXPECTED, confirmatory arm
+          of any "host factors required for infection" screen, so it is recorded
+          here for completeness. But it is marked membership_gap and curator_added
+          because this set's convergent hits are NOT entry factors: Marceau et al.
+          explicitly mapped the OST dependence to viral RNA replication and not to
+          entry or translation, and the entry receptors/attachment factors (e.g.
+          for HCV, CD81/CLDN1/OCLN) are deliberately excluded from this
+          ER-biogenesis set. The genuine surprise of these screens is precisely
+          that the dependency lies in post-entry ER protein biogenesis rather than
+          in the obvious entry step — which is why entry is confirmatory while the
+          ER arms are mechanistic.
+    curator_note: >-
+      Included as the contrastive confirmatory arm. No member of the set carries
+      this annotation (membership_gap): the convergent ER-biogenesis hits act
+      after entry, at polyprotein processing and RNA replication.

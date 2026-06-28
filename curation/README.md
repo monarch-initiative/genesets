@@ -78,11 +78,13 @@ correct but uninformative.
 A corpus-wide audit (tightened rule: `mechanistic` only for a specific,
 non-obvious process not entailed by the set's construction; all generic
 downstream hallmarks — apoptosis, proliferation, generic PI3K/MAPK, disease
-OXPHOS-as-known-hallmark, expected immune terms — are `confirmatory`) tagged all
-781 core/supporting terms: **731 confirmatory, 50 mechanistic (~94% / 6%)**. The
-mechanistic minority concentrates in causal-gene phenotype sets (the convergent
-molecular mechanisms behind a phenotype, e.g. RNA splicing / SMN-snRNP assembly
-in motor-neuron disease), the down-arm of expression contrasts
+OXPHOS-as-known-hallmark, expected immune terms — are `confirmatory`) tags every
+insight-bearing term: **760 confirmatory, 86 mechanistic (~90% / 10%)** of 846.
+The mechanistic minority concentrates in causal-gene phenotype sets (the
+convergent molecular mechanisms behind a phenotype, e.g. RNA splicing / SMN-snRNP
+assembly in motor-neuron disease), CRISPR-screen convergences (flavivirus host
+factors → ER protein-biogenesis complexes; the *negative*-regulator brake modules
+in T-cell and tumor-evasion screens), the down-arm of expression contrasts
 (`JISON_SICKLE_CELL_DISEASE_DN`), and a few perturbations. This confirms the
 benchmark is predominantly an *annotation/method* test bed; its insight-testing
 power is concentrated in a minority of sets.

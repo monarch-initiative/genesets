@@ -1,0 +1,185 @@
+gene_set_id: LIT:T_CELL_FUNCTION_REGULATORS
+gene_set_name: T_CELL_FUNCTION_REGULATORS
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 32
+description: >-
+  Literature-defined set of genes whose CRISPR knockout changes the proliferation
+  of primary human T cells, taken from the defining genome-wide loss-of-function
+  screen of Shifrut et al. (Cell 2018, PMID:30449619). Using the SLICE platform
+  (sgRNA lentiviral infection with Cas9 protein electroporation) the authors
+  stimulated CD8 T cells from healthy human donors, sorted highly-proliferating
+  (CFSE-low) from non-proliferating (CFSE-high) cells, and used MAGeCK robust rank
+  aggregation to call genes positively or negatively selected in the dividing
+  population. The set has two arms with opposite biology. The non-obvious arm — and
+  the interpretive value of this set — is a convergent network of NEGATIVE
+  regulators / "brakes" (positively selected; knockout ENHANCES proliferation and,
+  for several, anti-tumor killing): the diacylglycerol kinases DGKZ/DGKA, the
+  SOCS1/TCEB2(ELOB)/CUL5/RNF7 cullin-RING complex that suppresses JAK/STAT cytokine
+  signaling, the E3 ligase CBLB and its partner CD5, the RAS-GAP RASA2, the
+  NF-kB-restraining TNFAIP3 and UBASH3A, and others (TMEM222, CDKN1B, SMARCB1).
+  These are not what a "T cell proliferation" framing predicts; their loss removes
+  inhibitory checkpoints, which is of direct relevance to immunotherapy and is the
+  set's mechanistic insight. The confirmatory arm is the canonical TCR/CD28
+  activation machinery (negatively selected; knockout IMPAIRS proliferation): CD3D,
+  CD3E, CD247, LCK, ZAP70, LCP2, VAV1, RHOH, LAT, PLCG1, PRKCQ, CARD11, RELA, SH2D1A,
+  CD28 — entailed by the premise of a TCR-stimulation proliferation screen.
+  MEMBERSHIP was captured authoritatively from the paper's supplementary MAGeCK
+  output (Elsevier mmc4.xlsx, sheet "MAGeCK_Gene_GWscreen_rep1and2", the integrated
+  genome-wide screen, which reproduces the gene ranks quoted in the Results, e.g.
+  DGKZ pos-rank 1, SOCS1 3, CBLB 4, TCEB2 5). The negative-regulator arm is the full
+  set of positively-selected genes at MAGeCK pos|FDR < 0.10 (n=17; a natural cutoff
+  with a gap between rank 17 DGKA, FDR 0.093, and rank 18, FDR 0.165 — retains DGKA,
+  the most weakly-significant brake the authors explicitly validate). The
+  positive-regulator arm is RESTRICTED to the canonical TCR/CD28 activation
+  components the authors name as the depleted TCR-signaling machinery (all
+  neg|FDR <= 0.0031), because the unrestricted negatively-selected list is ~960 genes
+  at FDR < 0.05 dominated by pan-essential housekeeping genes (ribosome, splicing,
+  translation factors) that impair proliferation non-specifically and are not T-cell
+  immune regulators; including them would misrepresent the set. CAVEATS: (1) ARID1A
+  is named as a brake in some summaries of this work, but in this integrated
+  genome-wide screen it is NOT significant (pos|rank 41, FDR 0.74) and is therefore
+  excluded; the related SWI/SNF subunit SMARCB1 IS a significant hit and is included.
+  (2) TCEB2 is the symbol used in the 2018 paper; it is HGNC-normalized here to ELOB
+  (elongin B, HGNC:11619). (3) CD8A appears as a positively-selected hit and is
+  retained on threshold, though in a CD8 T cell screen its enrichment in the dividing
+  fraction is plausibly a marker/readout effect rather than a genuine proliferation
+  brake. Symbols HGNC-verified via mygene.info; only TCEB2 required normalization.
+contexts:
+  - term:
+      id: CL:0000084
+      label: T cell
+    context_type: cell_type
+    role_note: >-
+      Regulators of primary human T cell proliferation from genome-wide CRISPR
+      knockout screens (SLICE) in stimulated CD8 T cells.
+associations:
+  - term:
+      id: GO:0050868
+      label: negative regulation of T cell activation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:30449619
+        reference_title: "Genome-wide CRISPR Screens in Primary Human T Cells Reveal Key Regulators of Immune Function."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Genome-wide loss-of-function screens identified essential T cell receptor signaling components and genes that negatively tune proliferation following stimulation."
+        explanation: >-
+          The central, non-obvious discovery of the screen is a convergent network of
+          negative regulators — "genes that negatively tune proliferation following
+          stimulation" — whose knockout ENHANCES T cell function. These brake genes —
+          SOCS1, CBLB, CD5, TNFAIP3, UBASH3A, DGKA/DGKZ, RASA2, TCEB2(ELOB) — are
+          members of the set and carry the negative-regulation-of-T-cell-activation
+          annotation, so enrichment recovers the term (annotation_supported). It is
+          scored mechanistic because removing inhibitory checkpoints to boost immunity
+          is not entailed by a "T cell proliferation" framing; it is the
+          immunotherapy-relevant insight the screen was built to surface. (Snippet is
+          the abstract sentence; the full text further shows ablation of SOCS1, TCEB2,
+          RASA2 and CBLB enhanced both proliferation and anti-tumor killing.)
+    curator_note: >-
+      Core mechanistic term for this set: the positively-selected ("brake") arm. Loss
+      of these genes increases proliferation, activation-marker expression (CD69,
+      CD154), and for SOCS1/TCEB2/RASA2/CBLB also in vitro tumor-cell killing.
+  - term:
+      id: GO:0001960
+      label: negative regulation of cytokine-mediated signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      A specific mechanistic axis within the brake network: SOCS1 (pos-rank 3) and its
+      binding partner TCEB2/ELOB (pos-rank 5), together with CUL5 and RNF7, form a
+      cullin-RING complex that the authors describe as suppressing JAK/STAT cytokine
+      signaling in activated T cells (Shifrut 2018 full text). Both SOCS1 and ELOB are
+      members of the set and carry negative-regulation-of-cytokine-signaling
+      annotations, so the term is recovered (annotation_supported). Scored mechanistic
+      because a cytokine-signaling brake emerging from a TCR-stimulation proliferation
+      screen is non-obvious, and supporting rather than core because it is one
+      molecular module of the broader negative-regulation discovery; ablation of TCEB2
+      improved tumor clearance, nominating the complex as an immunotherapy target. No
+      verbatim snippet is attached because this complex is described in the full text,
+      not the abstract (the only text available to the reference validator), and per
+      curation policy snippets are not fabricated.
+  - term:
+      id: GO:0050852
+      label: T cell receptor signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:30449619
+        reference_title: "Genome-wide CRISPR Screens in Primary Human T Cells Reveal Key Regulators of Immune Function."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "essential T cell receptor signaling components"
+        explanation: >-
+          The negatively-selected ("positive regulator") arm of the set is the
+          canonical TCR-proximal signaling machinery — CD3D, CD3E, CD247, LCK, ZAP70,
+          LCP2, VAV1, RHOH, LAT, PLCG1, PRKCQ, CARD11 — whose knockout impairs
+          stimulation-dependent proliferation. These genes are members of the set and
+          carry the TCR-signaling annotation, so enrichment recovers it
+          (annotation_supported). Scored confirmatory because identifying the TCR
+          pathway as required for a TCR-stimulation proliferation screen recapitulates
+          the assay design rather than revealing new mechanism.
+    curator_note: >-
+      GSEA in the paper reported significant over-representation of the depleted hits
+      in the TCR signaling pathway (FDR < 0.01).
+  - term:
+      id: GO:0042110
+      label: T cell activation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Both arms of the set converge on T cell activation: the TCR-machinery positives
+      are required for it, and the brakes tune it. Arrayed knockout of negative
+      regulators raised the early activation markers CD69 and CD154, while knockout of
+      the positive regulator LCP2 lowered them, confirming these genes act on the
+      activation program. Confirmatory rather than mechanistic because T cell
+      activation is the assayed process itself. No verbatim snippet attached: the
+      relevant full-text sentences interleave figure callouts; grounding is the CD69/
+      CD154 arrayed-validation experiments.
+  - term:
+      id: GO:0042129
+      label: regulation of T cell proliferation
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:30449619
+        reference_title: "Genome-wide CRISPR Screens in Primary Human T Cells Reveal Key Regulators of Immune Function."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "genes that negatively tune proliferation following stimulation"
+        explanation: >-
+          Regulation of T cell proliferation is the phenotype the screen selected on
+          directly (CFSE-based sorting of dividing vs non-dividing T cells), so every
+          member is a member precisely because it tunes this process. The term is
+          recovered from the members' annotations (annotation_supported) but scored
+          confirmatory because it restates the selection criterion rather than adding
+          mechanism.

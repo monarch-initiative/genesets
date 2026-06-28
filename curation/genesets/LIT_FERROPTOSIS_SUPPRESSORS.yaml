@@ -1,0 +1,180 @@
+gene_set_id: LIT:FERROPTOSIS_SUPPRESSORS
+gene_set_name: FERROPTOSIS_SUPPRESSORS
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 5
+description: >-
+  Literature-defined set of the core regulators of FERROPTOSIS — an iron-dependent
+  form of regulated cell death driven by the peroxidation of polyunsaturated-fatty-acid
+  (PUFA) phospholipids (Dixon et al., Cell 2012, PMID:22632970). The interpretive
+  value of this set is the NON-OBVIOUS discovery, reported back-to-back from a
+  synthetic-lethal CRISPR-Cas9 screen (Bersuker et al., Nature 2019, PMID:31634900)
+  and a parallel expression-cloning screen (Doll et al., Nature 2019, PMID:31634899),
+  of ferroptosis suppressor protein 1 (FSP1 / AIFM2) as a GLUTATHIONE-INDEPENDENT
+  ferroptosis brake. FSP1 is an NAD(P)H-dependent oxidoreductase that reduces
+  coenzyme Q10 (ubiquinone) to ubiquinol, a lipophilic radical-trapping antioxidant
+  that halts the propagation of lipid peroxides, defining a non-mitochondrial CoQ
+  antioxidant system that acts in PARALLEL to the canonical glutathione/GPX4 pathway
+  rather than downstream of it. Membership was captured authoritatively from the
+  functional validations in the defining papers rather than from memory: the
+  anti-ferroptotic suppressors AIFM2 (FSP1), GPX4, SLC7A11 (system xc-, the
+  cystine/glutamate antiporter that supplies cystine for glutathione synthesis) and
+  COQ2 (ubiquinone biosynthesis — its knockout sensitizes cells to ferroptosis,
+  placing CoQ synthesis in the FSP1 pathway), plus the pro-ferroptotic driver ACSL4
+  (incorporates PUFAs into phospholipids — its knockout confers ferroptosis
+  resistance). NQO1, tested in Bersuker et al. as an alternative quinone/CoQ
+  oxidoreductase, did NOT suppress ferroptosis and is deliberately excluded. The set
+  is intentionally short (n=5): the FSP1 papers are focused, and these are the
+  high-confidence regulators they identify/validate. Caveat: this is a curated
+  regulator panel, NOT a genome-wide screen hit list; additional canonical
+  lipid-peroxidation drivers named in the broader ferroptosis literature (e.g.
+  LPCAT3, ALOX15) were NOT captured because they were not validated or named in the
+  retrieved full text of these grounding papers, to avoid padding from memory.
+  direction is NA because the set mixes suppressors and drivers (it is a regulator
+  panel, not an up/down expression signature). Ferroptosis is a pan-tissue cell-death
+  PROCESS rather than a disease, cell type, or anatomical structure (and there is no
+  natural BiologicalContext anchor for it), so this file intentionally carries zero
+  biological contexts; the biology is captured entirely in the associations below.
+associations:
+  - term:
+      id: GO:0006744
+      label: ubiquinone biosynthetic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:31634900
+        reference_title: "The CoQ oxidoreductase FSP1 acts parallel to GPX4 to inhibit ferroptosis."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "FSP1 as a key component of a non-mitochondrial CoQ antioxidant system that acts in parallel to the canonical glutathione-based GPX4 pathway"
+        explanation: >-
+          This is the defining mechanistic discovery of the set: a synthetic-lethal
+          CRISPR-Cas9 screen identified FSP1 (AIFM2) as a potent ferroptosis-resistance
+          factor that reduces coenzyme Q10 (ubiquinone), and the authors show that
+          lowering cellular CoQ by knockout of the CoQ-biosynthesis enzyme COQ2
+          sensitizes cells to ferroptosis specifically in the FSP1 pathway. COQ2 is a
+          member of this set and carries the ubiquinone biosynthetic process annotation
+          (annotation_supported). It is scored mechanistic, not confirmatory, because a
+          CoQ/ubiquinone antioxidant arm — biochemically and genetically distinct from
+          the glutathione/GPX4 system that had been thought to be the sole ferroptosis
+          brake — is the non-obvious, illuminating insight of these papers, and is not
+          entailed by the bare framing "ferroptosis regulators".
+    curator_note: >-
+      The CoQ/ubiquinone axis is the core mechanistic insight. FSP1 (AIFM2) regenerates
+      reduced ubiquinol (the active radical-trapping antioxidant) from ubiquinone using
+      NAD(P)H, while COQ2 supplies the ubiquinone substrate; both place the set's
+      suppressor activity on the CoQ pathway. ubiquitous specificity: CoQ biosynthesis
+      is a housekeeping process present in essentially all cells.
+  - term:
+      id: GO:0006979
+      label: response to oxidative stress
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:31634900
+        reference_title: "The CoQ oxidoreductase FSP1 acts parallel to GPX4 to inhibit ferroptosis."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "lipophilic radical-trapping antioxidant that halts the propagation of lipid peroxides"
+        explanation: >-
+          The "how" behind ferroptosis suppression: the FSP1-reduced ubiquinol acts as
+          a lipophilic radical-trapping antioxidant (RTA) that quenches the propagating
+          lipid-peroxyl radicals, and GPX4 likewise detoxifies lipid hydroperoxides —
+          both are oxidative-stress-defense activities, and the set's suppressor members
+          (GPX4, AIFM2, SLC7A11) carry response-to-oxidative-stress annotations
+          (annotation_supported). Scored confirmatory, not mechanistic: ferroptosis is
+          by definition iron-dependent lipid-peroxidation death, so a generic
+          "response to oxidative stress" umbrella term restates the set's identity (the
+          known hallmark) rather than revealing the non-obvious mechanism. The genuinely
+          mechanistic finding — that ferroptosis is gated by radical-trapping chemistry
+          through a CoQ/ubiquinol system operating in PARALLEL to glutathione/GPX4 — is
+          carried by the specific ubiquinone biosynthetic process term above, which is
+          where the insight tag belongs. Supporting rather than core because it is the
+          shared enabling chemistry of the suppressors rather than the defining death
+          process itself.
+  - term:
+      id: GO:0097707
+      label: ferroptosis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:22632970
+        reference_title: "Ferroptosis: an iron-dependent form of nonapoptotic cell death."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "a unique iron-dependent form of nonapoptotic cell death that we term ferroptosis"
+        explanation: >-
+          Ferroptosis is the defining death process that the whole panel regulates, so it
+          is the curator's overarching core_process term (curator_added). It is scored
+          confirmatory, not mechanistic, because naming ferroptosis simply restates the
+          identity of the set ("ferroptosis regulators") rather than revealing anything
+          non-obvious. Annotation support is genuine: the driver member ACSL4 carries
+          ferroptosis annotations, and the suppressor members (AIFM2, GPX4, SLC7A11,
+          COQ2) carry the negative regulation of ferroptosis child term, so the process
+          is recovered from the set rather than left as a gap.
+    curator_note: >-
+      Coined by Dixon et al. (PMID:22632970), who identified ferroptosis as an
+      iron-dependent, lipid-peroxidation-driven cell death triggered by erastin's
+      inhibition of system xc- (SLC7A11). broadly_expressed because ferroptosis can be
+      executed across many cell lineages and tissues rather than being confined to one
+      cell type.
+  - term:
+      id: GO:0019369
+      label: arachidonate metabolic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The PUFA/lipid-peroxidation chemistry that DEFINES ferroptosis: the pro-ferroptotic
+      driver ACSL4 is a member of this set and preferentially activates polyunsaturated
+      fatty acids — especially arachidonic and adrenic acid — for incorporation into
+      membrane phospholipids, generating the oxidizable PUFA-phospholipid substrate whose
+      peroxidation executes ferroptosis; ACSL4 carries the arachidonate metabolic process
+      annotation (annotation_supported). Scored confirmatory because PUFA/lipid oxidation
+      is the very chemistry entailed by the definition of ferroptosis, and supporting
+      rather than core because it is one effector arm (substrate supply) rather than the
+      death process itself. broadly_expressed: fatty-acid metabolism is shared across many
+      tissues.
+  - term:
+      id: GO:0006749
+      label: glutathione metabolic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The canonical glutathione/GPX4 arm against which the FSP1-CoQ discovery is
+      contrasted. The selenoenzyme GPX4 uses reduced glutathione to convert toxic lipid
+      hydroperoxides into non-toxic lipid alcohols, and SLC7A11 (system xc-) imports the
+      cystine needed to synthesize glutathione; both are members and carry glutathione
+      metabolic process annotations (annotation_supported). Scored confirmatory because
+      the glutathione-dependent GPX4 pathway was already the established ferroptosis brake
+      (the construction premise these papers build on), and supporting rather than core
+      because it is the parallel arm, not the CoQ insight that distinguishes this set.
+      broadly_expressed: glutathione metabolism is a near-ubiquitous redox housekeeping
+      process.

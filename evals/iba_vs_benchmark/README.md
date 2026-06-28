@@ -20,14 +20,18 @@ a real evaluation.
    `MSIGDB:<NAME>` set is fetched by querying `<NAME>` and taking the exact
    `_id`/`source=msigdb` hit. (11 MSigDB sets — mostly newer C8 single-cell
    clusters — are absent from mygeneset.) Most `LIT:` sets store markers in prose
-   rather than full membership, but the 8 `LIT:GENETIC` sets are defined by
+   rather than full membership, but the 12 `LIT:GENETIC` sets are defined by
    short, explicit gene lists, so their membership was **captured directly from
-   the primary sources** (Satterstrom 2020 Table S2; Trubetskoy 2022 prioritized
-   + SCHEMA + C4; the Daniloski + Wei CRISPR-screen hit tables; and the GWAS-
-   Catalog loci for Jostins 2012 [IBD], Bellenguez 2022 [Alzheimer's], Nalls
-   2019 [Parkinson's], van der Harst 2018 [CAD], Morris 2019 [bone density])
-   into `curation/genesets/lit_members.gmt` (HGNC-normalized) and folded into
-   `queries.gmt`. Total evaluable: **106**.
+   the primary sources**: GWAS / sequencing convergences (Satterstrom 2020 Table
+   S2 [autism]; Trubetskoy 2022 prioritized + SCHEMA + C4 [schizophrenia]; the
+   GWAS-Catalog loci for Jostins 2012 [IBD], Bellenguez 2022 [Alzheimer's], Nalls
+   2019 [Parkinson's], van der Harst 2018 [CAD], Morris 2019 [bone density]) and
+   CRISPR-screen hit tables (Daniloski + Wei [SARS-CoV-2]; Marceau/Zhang 2016
+   flavivirus host-factor screens [OST/EMC convergence]; Shifrut 2018 T-cell
+   proliferation regulators; Manguso 2017 in-vivo melanoma immunotherapy screen),
+   plus one short curated mechanism panel (Bersuker/Doll 2019 FSP1-CoQ ferroptosis
+   suppressors). All HGNC-normalized into `curation/genesets/lit_members.gmt` and
+   folded into `queries.gmt`. Total evaluable: **110** (108 producing enrichment).
 
 2. **Annotation variants** —
    ```bash
@@ -72,31 +76,31 @@ output (see "Guardrail").
 - **`unique_vs_baseline`** — supported-core terms a variant recovers that `all`
   does not.
 
-## Headline result (2026, 98 sets, GOA `goa_human` current)
+## Headline result (2026, 110 evaluable / 108 scored sets, GOA `goa_human` current)
 
-| variant | recall_core | recall_supported | gap_recovered (disagreements) |
-|---|---|---|---|
-| all | 0.600 (180/300) | 0.694 | 9 |
-| no_contributes_to | 0.597 (179/300) | 0.689 | 9 |
-| iba_iea | 0.480 (144/300) | 0.561 | 6 |
-| iba | 0.383 (115/300) | 0.469 | 5 |
+| variant | recall_core | gap_recovered (disagreements) |
+|---|---|---|
+| all | 0.581 (193/332) | 7 |
+| no_contributes_to | 0.578 (192/332) | 7 |
+| iba_iea | 0.461 (153/332) | 4 |
+| iba | 0.367 (122/332) | 3 |
 
-1. **IBA carries ~2/3 of the core biology full GOA does** (recall_core 0.38 vs
-   0.60); IEA recovers much of the difference (iba_iea 0.48).
+1. **IBA carries ~2/3 of the core biology full GOA does** (recall_core 0.37 vs
+   0.58); IEA recovers much of the difference (iba_iea 0.46).
 2. **IBA is nearly a strict subset of all-GOA — it does not fill experimental
-   gaps here.** Restricting to IBA loses 46 supported-core terms and uniquely
-   recovers only 2, both conserved-housekeeping cellular components (ribosome
+   gaps here.** Restricting to IBA loses 73 core terms and uniquely recovers
+   only 2, both conserved-housekeeping cellular components (ribosome
    `GO:0005840`, nucleolus `GO:0005730`).
-3. **The eval surfaces a review queue — it does not edit the gold.** 9
+3. **The eval surfaces a review queue — it does not edit the gold.** 7
    `annotation_gap` core terms were recovered by standard all-GOA enrichment
    (e.g. SCHUHMACHER_MYC -> rRNA processing, TRAVAGLINI_CILIATED -> axoneme
    assembly, KEGG_RCC -> positive regulation of angiogenesis). These are
    *disagreements* between the curator's gap prediction and a tool run, queued
    for deliberate curator review against GOA facts — not auto-relabeled.
 
-Calibration: even all-GOA recovers only ~69% of `annotation_supported` core
-under Bonferroni, so that label means "the genes carry it", not "it always
-reaches genome-wide significance".
+Calibration: even all-GOA recovers only ~58% of core terms under Bonferroni, so
+a `core` + `annotation_supported` label means "the genes carry it", not "it
+always reaches genome-wide significance".
 
 ## Confirmatory vs mechanistic (the insight split)
 
@@ -104,12 +108,12 @@ With the corpus-wide `insight` tags, recall splits by whether a term is
 `confirmatory` (restates the set's construction) or `mechanistic` (a non-obvious
 process — a genuine enrichment insight). Over the evaluable sets:
 
-| variant | recall_confirm (n=524) | recall_mechan (n=69) |
+| variant | recall_confirm (n=534) | recall_mechan (n=80) |
 |---|---|---|
-| all | 0.615 | 0.319 |
-| no_contributes_to | 0.613 | 0.319 |
-| iba_iea | 0.475 | 0.217 |
-| iba | 0.353 | 0.203 |
+| all | 0.607 | 0.338 |
+| no_contributes_to | 0.605 | 0.338 |
+| iba_iea | 0.470 | 0.225 |
+| iba | 0.352 | 0.212 |
 
 **Mechanistic insight is ~2x harder to recover than confirmatory biology** —
 even all-GOA recovers only ~32% of mechanistic terms vs ~62% of confirmatory
@@ -117,9 +121,9 @@ ones. Standard enrichment surfaces the obvious and largely misses the
 non-obvious convergent mechanisms the curators flagged (often the
 `annotation_gap` ones).
 
-The 8 `LIT:GENETIC` sets (membership captured directly from the primary sources
-— see Membership) make this concrete, per famous mechanism, under all-GOA. Two
-patterns emerge.
+The `LIT:GENETIC` sets (membership captured directly from the primary sources —
+see Membership) make this concrete, per famous mechanism, under all-GOA. Among
+the **GWAS / sequencing** convergences, two patterns emerge.
 
 **EA recovers** the gene-dense, well-annotated convergences:
 - Autism -> chromatin organization / transcription regulation (3/3)
@@ -140,8 +144,46 @@ disease, PD as a lysosomal disorder, the schizophrenia C4 mechanism — are
 exactly the ones standard enrichment cannot surface. A *curated* gold standard
 captures them because a human asserts the mechanism from the literature, which
 diffuse, many-gene, weak-per-gene enrichment never will. (The aggregate
-`recall_mechan` ~0.32 hides this bimodality: the few recoverable mechanisms are
+`recall_mechan` ~0.34 hides this bimodality: the few recoverable mechanisms are
 gene-dense and well-annotated; the celebrated ones are neither.)
+
+### Why a mechanism is (in)visible — the CRISPR-screen sets
+
+The four **CRISPR-screen** `LIT:GENETIC` sets sharpen the picture: unlike diffuse
+GWAS loci, screen hits are direct functional convergences, yet they are recovered
+very unevenly. Three distinct *reasons* a mechanism stays invisible emerge —
+diffuseness (the GWAS story above) is only one of them:
+
+- **Visible — the mechanism is a tight, well-annotated physical complex.**
+  Flavivirus host-factor screens (Marceau/Zhang 2016) converge on ER protein-
+  biogenesis machinery, and EA recovers **4/5** mechanistic terms: OST complex
+  (`GO:0008250`), EMC complex (`GO:0072546`), ERAD (`GO:0036503`), ER
+  (`GO:0005783`). The hits *are* the complex (STT3A/STT3B/RPN1/RPN2/OSTC →
+  OST; EMC1-4/MMGT1 → EMC), so the convergence is gene-dense and densely
+  annotated — the opposite of the GWAS case. (Only the 3-subunit signal
+  peptidase complex is missed: too few member genes carry the annotation.)
+- **Sign-invisible — the insight is the *direction* of regulation.** The two
+  immune screens converge on *negative* regulators, and that sign is exactly
+  what GO enrichment cannot see. Shifrut 2018 T-cell regulators: EA recovers the
+  generic *T cell activation* / *TCR signaling* (confirmatory ✓✓) but misses
+  **negative regulation of T cell activation** and **negative regulation of
+  cytokine signaling** (0/2 mechanistic) — the brake module (CBLB, SOCS1,
+  TNFAIP3, RASA2) is annotated to the activation processes, not to their
+  repression. Manguso 2017 melanoma evasion: EA recovers the IFN-γ–sensing axis
+  (*cellular response to type II interferon* ✓) but misses **negative regulation
+  of IFN-γ signaling** — the PTPN2 insight, whose *loss* sensitizes tumors, the
+  whole therapeutic point.
+- **Size-invisible — the curated mechanism panel is too small to reach
+  significance.** The 5-gene ferroptosis-suppressor panel (FSP1-CoQ axis,
+  Bersuker/Doll 2019) recovers **0/5** terms, including the celebrated
+  *ubiquinone biosynthetic process* mechanism: with n=5, no term clears
+  Bonferroni regardless of annotation quality. A real, well-annotated mechanism
+  can be invisible purely on set size.
+
+So the gold standard now records three orthogonal failure modes for mechanistic
+recall — **diffuse** (GWAS), **sign-blind** (directional regulation), and
+**under-powered** (tiny panels) — only the first of which is about annotation
+depth. The single recoverable family is the tight physical complex.
 
 ## Guardrail: the eval must not refit the gold
 

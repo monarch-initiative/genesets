@@ -1,0 +1,184 @@
+gene_set_id: LIT:TUMOR_IMMUNE_EVASION
+gene_set_name: TUMOR_IMMUNE_EVASION
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 10
+description: >-
+  Literature-defined set of tumour-intrinsic genes whose loss-of-function changes
+  the susceptibility of cancer cells to T-cell- and immunotherapy-mediated killing,
+  taken from the defining in vivo pooled CRISPR–Cas9 screen of Manguso et al.
+  (Nature 2017, PMID:28723893), performed in the B16 melanoma model in mice treated
+  with a GM-CSF tumour-cell vaccine (GVAX) plus anti-PD-1 checkpoint blockade, with
+  the companion human-melanoma screen of Patel et al. (Nature 2017, PMID:28783722)
+  that independently converged on the same antigen-presentation / IFN-γ axis (and
+  added APLNR). The interpretive value of the set is the convergence the screens
+  reveal: the genes that, when deleted, CONFER RESISTANCE to immunotherapy are the
+  tumour-intrinsic interferon-γ-sensing and JAK–STAT signalling machinery (IFNGR1,
+  IFNGR2, JAK1, JAK2, STAT1) — the discovery that a tumour cell's own ability to
+  sense interferon-γ determines whether immunotherapy works — while the genes whose
+  loss SENSITIZES tumours act on the antigen-processing/presentation arm (the
+  non-classical MHC-I molecule HLA-E / mouse Qa-1b) and, most prominently, the
+  phosphatase PTPN2, whose normal job is to put a brake on IFN-γ signalling: removing
+  that brake amplifies IFN-γ sensing, antigen presentation and growth arrest, making
+  the tumour more visible to cytotoxic CD8 T cells. The set also carries the known
+  immune-evasion molecules recovered by the screen (CD274/PD-L1, CD47) and the
+  TNF/NF-κB-arm kinase RIPK1, whose loss likewise sensitizes. Note on directionality:
+  resistance hits (IFN-γ pathway) and sensitization hits (PTPN2, HLA-E, RIPK1, CD274,
+  CD47) have OPPOSITE phenotypic signs but are unified as tumour-intrinsic regulators
+  of response to T-cell killing, so direction is NA. taxon is kept human per corpus
+  convention even though the defining screen is the mouse B16 model: mouse symbols
+  were normalised to their HGNC human orthologs (Ptpn2→PTPN2, etc.), and Qa-1b is
+  given as HLA-E, the human ortholog the paper itself names. CAVEAT on membership:
+  the authoritative ranked STARS hit list lives in the paper's Supplementary Tables
+  (S-Table1–7), which were NOT retrievable (PMC5924693 is not flagged Open Access on
+  the PMC/EuropePMC OA service and nature.com is access-gated, and the PMC full text
+  had its italicised gene symbols stripped). Membership was therefore captured from
+  the genes the paper EXPLICITLY names and validates in its abstract, full text,
+  figures and Extended Data, not padded from memory; additional discussed pathway
+  members (the classical antigen-presentation machinery B2M/TAP1/TAP2/TAPBP, LUBAC
+  components, and a UPR-associated E3 ligase) whose exact symbols could not be
+  recovered without fabrication are omitted and are noted as a membership gap.
+contexts:
+  - term:
+      id: MONDO:0005105
+      label: melanoma
+    context_type: disease
+    role_note: >-
+      Tumour-intrinsic regulators of response to immunotherapy / T-cell killing
+      from in vivo CRISPR screens. The defining screen (Manguso et al.) used the
+      B16 mouse melanoma model under GVAX + anti-PD-1; the companion screen (Patel
+      et al.) used human melanoma lines.
+associations:
+  - term:
+      id: GO:0071346
+      label: cellular response to type II interferon
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:28723893
+        reference_title: "In vivo CRISPR screening identifies Ptpn2 as a cancer immunotherapy target."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "We recovered the known immune evasion molecules PD-L1 and CD47, and confirmed that defects in interferon-γ signalling caused resistance to immunotherapy."
+        explanation: >-
+          The screen's central resistance signal is the tumour-intrinsic interferon-γ
+          (type II interferon) sensing machinery: deletion of five genes required for
+          sensing/signalling through the IFN-γ pathway (IFNGR1, IFNGR2, JAK1, JAK2,
+          STAT1 — all members of this set) made tumours RESISTANT to immunotherapy.
+          These genes carry the cellular-response-to-type-II-interferon annotation, so
+          enrichment recovers the term (annotation_supported). It is scored mechanistic
+          rather than confirmatory because the finding — that a tumour cell's own
+          ability to sense IFN-γ, rather than any property of the T cells, dictates
+          immunotherapy response — is the non-obvious discovery of the paper, not a
+          restatement of "immune evasion".
+    curator_note: >-
+      The IFN-γ-sensing convergence is the core mechanistic insight of the set.
+      Epistasis in the paper shows that double knockout of any IFN-γ-sensing gene
+      abolishes the immunotherapy-sensitising effect of PTPN2 loss, placing IFN-γ
+      sensing causally upstream of the whole phenotype.
+  - term:
+      id: GO:0019882
+      label: antigen processing and presentation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:28723893
+        reference_title: "In vivo CRISPR screening identifies Ptpn2 as a cancer immunotherapy target."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "Tumours were sensitized to immunotherapy by deletion of genes involved in several diverse pathways, including NF-κB signalling, antigen presentation and the unfolded protein response."
+        explanation: >-
+          Antigen processing and presentation is one of the convergent arms the screen
+          identifies: loss of the non-classical MHC-I molecule HLA-E (mouse Qa-1b, a
+          member of this set) sensitises tumours, and PTPN2 loss acts by raising MHC-I
+          antigen presentation. It is scored mechanistic because the screen shows
+          antigen presentation is the functional axis through which IFN-γ sensing
+          controls tumour visibility to CD8 T cells, illuminating how immune evasion
+          operates rather than merely labelling it.
+    curator_note: >-
+      annotation_supported via HLA-E, which is in the captured membership and carries
+      MHC-I antigen-presentation annotations. The classical antigen-presentation
+      machinery the paper also highlights (B2M, TAP1, TAP2, TAPBP) is a MEMBERSHIP GAP
+      here: those genes are screen hits in the gated Supplementary Tables but could not
+      be authoritatively captured, so they are not in this set even though the biology
+      is theirs.
+  - term:
+      id: GO:0060336
+      label: negative regulation of type II interferon-mediated signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:28723893
+        reference_title: "In vivo CRISPR screening identifies Ptpn2 as a cancer immunotherapy target."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "deletion of the protein tyrosine phosphatase PTPN2 in tumour cells increased the efficacy of immunotherapy by enhancing interferon-γ-mediated effects on antigen presentation and growth suppression"
+        explanation: >-
+          PTPN2 is the standout sensitising hit. Its normal function is to NEGATIVELY
+          regulate IFN-γ signalling by dephosphorylating JAK1 and STAT1; deleting PTPN2
+          therefore releases this brake, amplifying IFN-γ sensing, antigen presentation
+          and cytokine-driven growth arrest, and rendering tumours more sensitive to
+          immunotherapy. This is the paper's key mechanistic discovery and a nominated
+          drug target, so it is scored mechanistic. seed_source is curator_added because
+          the term captures PTPN2's specific brake function (PTPN2 is the sole member
+          carrying this annotation) rather than a set-wide enrichment signal.
+    curator_note: >-
+      Direction of the brake matters: PTPN2 is a NEGATIVE regulator of IFN-γ signalling,
+      so its loss (a sensitising hit) is mechanistically the mirror image of the IFN-γ
+      sensing resistance hits — both converge on the magnitude of tumour-intrinsic IFN-γ
+      response.
+  - term:
+      id: GO:0042612
+      label: MHC class I protein complex
+    aspect: cellular_component
+    category: core_component
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The cellular-component counterpart of the antigen-presentation arm. HLA-E
+      (mouse Qa-1b), a captured member, is a non-classical MHC class I molecule and
+      carries this complex annotation, so it is recovered (annotation_supported).
+      Scored confirmatory and supporting (medium confidence) rather than a fresh
+      insight: that an antigen-presentation gene set implicates the MHC class I
+      complex is entailed by the antigen-presentation biology already captured above.
+      No verbatim snippet is attached because the abstract names "antigen presentation"
+      as a process but does not name the MHC class I complex as such.
+  - term:
+      id: GO:0007259
+      label: cell surface receptor signaling pathway via JAK-STAT
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      JAK1, JAK2 and STAT1 are captured members and carry the JAK–STAT annotation, so
+      enrichment recovers it (annotation_supported). Scored confirmatory because
+      JAK–STAT is the canonical signal-transduction cascade immediately downstream of
+      the IFN-γ receptor (IFNGR1/IFNGR2); its appearance is entailed by the IFN-γ
+      sensing core_process rather than being an independent mechanistic surprise. Kept
+      as a distinct supporting_process because it is the specific molecular conduit
+      (receptor-associated kinases → STAT1) the resistance hits and PTPN2 act on.
