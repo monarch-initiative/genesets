@@ -1,0 +1,156 @@
+gene_set_id: LIT:IBD_RISK_GENES
+gene_set_name: IBD_RISK_GENES
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Literature-defined catalogue of inflammatory bowel disease (IBD = Crohn's
+  disease + ulcerative colitis) risk genes from genome-wide association studies,
+  anchored on the Jostins et al. trans-ancestry meta-analysis (Nature 2012,
+  PMID:23128233), which combined >75,000 cases and controls and brought the count
+  of genome-wide-significant IBD susceptibility loci to 163 (300 prioritized
+  candidate genes across 125 loci). Unlike a cell-state activity signature, the
+  members here are DISEASE-RISK / DRIVER genes implicated by inherited common
+  variation, so the interpretive value is the CONVERGENT biology the risk genes
+  share. That convergence has three arms. (1) AUTOPHAGY — the landmark,
+  genuinely non-obvious discovery for a "bowel disease": the macroautophagy /
+  xenophagy genes ATG16L1, IRGM and the bacterial sensor NOD2 (plus LRRK2) are
+  IBD risk genes, implicating autophagic clearance of intracellular bacteria in
+  the gut epithelium as a core mechanism. (2) IL-23 / T-helper-17 immunity —
+  IL23R, IL12B, STAT3, JAK2 and related signalling genes drive the Th17 axis.
+  (3) Innate / antibacterial host-defence and the host-microbe interface — NOD2,
+  CARD9 and NOD-like-receptor signalling, with the meta-analysis emphasising
+  striking overlap between IBD loci and loci for mycobacterial infection and
+  primary immunodeficiency, i.e. an essential role for host defence against
+  enteric microbes. Inflammatory response itself is the disease's namesake and
+  therefore confirmatory rather than insightful. Because this is a GWAS risk
+  catalogue rather than an enumerated MSigDB set, no exact gene count is asserted
+  (n_genes omitted) and terms are curator_added; most converge on immune genes
+  that DO carry the relevant GO annotations, so they are annotation_supported.
+contexts:
+  - term:
+      id: MONDO:0005265
+      label: inflammatory bowel disease
+    context_type: disease
+    role_note: >-
+      IBD risk genes from GWAS meta-analysis (Crohn's disease and ulcerative
+      colitis; 163 susceptibility loci, Jostins et al. 2012).
+associations:
+  - term:
+      id: GO:0006914
+      label: autophagy
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:23128233
+        reference_title: "Host-microbe interactions have shaped the genetic architecture of inflammatory bowel disease."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "previously unsuspected mechanisms, such as autophagy, in"
+        explanation: >-
+          Autophagy is the landmark mechanistic insight of IBD genetics: GWAS
+          implicated it as a "previously unsuspected" pathogenic mechanism for a
+          disease that had been framed as a generic inflammatory/autoimmune
+          condition of the bowel. The IBD risk catalogue contains the core
+          autophagy genes ATG16L1 and IRGM and the bacterial sensor NOD2 (and
+          LRRK2), which are directly annotated to autophagy/macroautophagy, so
+          the term is annotation_supported. It is tagged mechanistic — not
+          confirmatory — because antibacterial autophagy (xenophagy) in the gut
+          epithelium is a non-obvious process not entailed by the disease's
+          inflammatory identity, and it is the discovery that reoriented IBD
+          pathogenesis toward handling of intracellular microbes.
+    curator_note: >-
+      Member autophagy risk genes: ATG16L1 (autophagy related 16 like 1), IRGM
+      (immunity related GTPase M), NOD2 (which recruits ATG16L1 to the plasma
+      membrane to initiate antibacterial autophagy), and LRRK2. The convergence
+      of these on macroautophagy/xenophagy is the defining non-obvious mechanism
+      of the set.
+  - term:
+      id: GO:0042742
+      label: defense response to bacterium
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      NOD2 is the prototypical intracellular sensor of bacterial muramyl
+      dipeptide and the first identified Crohn's disease gene; together with
+      CARD9, the autophagy/xenophagy genes (ATG16L1, IRGM), and the IBD-loci
+      overlap with mycobacterial-infection and primary-immunodeficiency genes,
+      the set converges strongly on antibacterial host defence. Jostins et al.
+      conclude that "most of the evidence relating to possible causal genes
+      points to an essential role for host defence against infection in IBD,"
+      and report enrichment of IBD loci for the GO term "defense response to
+      bacterium" and for "response to molecules of bacterial origin." Tagged
+      mechanistic because the convergence of a chronic inflammatory bowel
+      disease on antibacterial sensing/clearance (the host-microbe interface) is
+      a genuine, non-obvious finding rather than something entailed by the
+      disease's inflammatory name. annotation_supported: NOD2/CARD9 carry the
+      relevant antibacterial-defence GO annotations.
+  - term:
+      id: GO:0072539
+      label: T-helper 17 cell differentiation
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The IL-23/Th17 axis is a well-established arm of IBD immunopathology, with
+      IL23R (an early surprising GWAS hit), IL12B, STAT3, JAK2 and TYK2 among the
+      risk genes; these signalling genes carry T-helper-17-differentiation and
+      IL-23-response annotations, so the term is annotation_supported. Tagged
+      confirmatory rather than mechanistic: by the time of the 2012
+      meta-analysis the IL-23/Th17 pathway was a recognised, expected component
+      of IBD biology and an active drug target, so it recapitulates known
+      immunology rather than revealing a non-obvious mechanism. Scored supporting
+      rather than core because it is one immune effector arm of a broader
+      host-defence convergence.
+  - term:
+      id: GO:0045087
+      label: innate immune response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Innate immune / NOD-like-receptor signalling (NOD2, CARD9, and pattern-
+      recognition pathways) is a real enabling arm of the IBD risk-gene
+      convergence and the genes carry innate-immunity annotations
+      (annotation_supported). Confirmatory and broadly_expressed: innate immunity
+      is expected for an immune-mediated disease and is not specific to IBD,
+      so it supports rather than defines the set.
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Inflammatory response is the disease's namesake (inflammatory bowel
+      disease) and is therefore entailed by the set's identity — the canonical
+      confirmatory term. It is genuinely present (many risk genes carry
+      inflammatory-response annotations, annotation_supported) but carries no
+      mechanistic information for this set: it recapitulates the disease label
+      rather than revealing how/why. Scored supporting and broadly_expressed
+      because inflammation is a generic, ubiquitous downstream readout across
+      many immune contexts.
