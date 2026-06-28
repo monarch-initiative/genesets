@@ -47,6 +47,7 @@ class TermAssociation:
     specificity: str | None = None
     specificity_score: float | None = None
     recovery_status: str | None = None
+    insight: str | None = None
     enrichment_stats: EnrichmentStats | None = None
     evidence: list[EvidenceItem] = field(default_factory=list)
     curator_note: str | None = None

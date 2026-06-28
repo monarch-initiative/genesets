@@ -58,6 +58,23 @@ machinery is annotated only to the generic parent), and `ferroptosis`
 (GO:0097707) is a `membership_gap` (real PD biology, but GPX4/ACSL4/SLC7A11 are
 not in this legacy KEGG set) — not a `false_association`.
 
+## Insight (confirmatory vs mechanistic)
+`insight` is an optional per-term curator judgment of a GO term's *interpretive
+value for this set*, relative to how the set was derived (`collection`,
+`context_type`, `direction`). It separates two kinds of correct-and-core term:
+
+- `confirmatory` — entailed by the set's construction or known identity, so it
+  recapitulates the design rather than revealing a mechanism (e.g. an
+  estradiol-response set enriching for "response to estradiol"; the PRC2-target
+  set `BENPORATH_PRC2_TARGETS` enriching for "embryonic morphogenesis").
+- `mechanistic` — a non-obvious process that illuminates how/why and is not
+  entailed by the set's construction; a genuine enrichment insight.
+
+Free text is allowed (not a closed enum), so curators can record nuance. The
+point is to let the eval separate *recall of mechanistic insight* from raw
+recall of correct terms — a method that returns only confirmatory terms is
+correct but uninformative.
+
 ## Sources and the driver-vs-activity axis
 Most sets are MSigDB (`MSIGDB:` ids). A second source is **literature-defined**
 gene sets (`LIT:` ids, `collection: LIT:DISEASE_ACTIVITY`) taken directly from a

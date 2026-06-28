@@ -131,16 +131,25 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: curator_added
-    recovery_status: annotation_gap
+    recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
-      PRC2 target genes in ES cells are body-plan regulators that directly
-      control embryonic morphogenesis when expressed during differentiation:
-      HOX, PAX, DLX, HAND, and TWIST family members all participate in
-      embryonic organ, limb, and craniofacial morphogenesis. This term is
-      biologically core for the gene set's functional identity. However, the GO
-      annotations on these transcription factor genes are largely to "regulation
-      of morphogenesis" or to the upstream pattern specification process (which
-      IS annotation-supported), rather than to embryonic morphogenesis itself.
-      The annotation gap reflects GO's depth and curation priorities, not a
-      failure of biology. This is a GO annotation curation target and is
-      recorded here so that recall analysis includes it as expected biology.
+      insight=confirmatory: for a set defined as the PRC2-silenced developmental
+      program, "embryonic morphogenesis" restates the set's construction rather
+      than revealing a mechanism — the mechanistic interpretation here is the
+      Polycomb/bivalent-chromatin repression itself, not the developmental
+      output. The PRC2/H3K27me3 target genes in this set are the body-plan regulators
+      (HOX, PAX, DLX, HAND, TWIST families) that PRC2 keeps silenced in ES cells
+      and that drive embryonic morphogenesis upon de-repression during
+      differentiation, so the term is biologically core. Recorded as
+      annotation_supported on GOA facts (not on any enrichment result): in
+      current goa_human, ~56 set genes are annotated within the embryonic
+      morphogenesis subtree - 2 directly (ITGA4, MSX1) and ~54 to specific
+      children that roll up under the is_a/part_of closure (e.g. PDGFRA and
+      HOXD9 to embryonic skeletal system morphogenesis, MESP1 to embryonic
+      heart tube morphogenesis, IRX5 to embryonic cranial skeleton
+      morphogenesis). The earlier gap premise - that these genes carry only
+      "regulation of morphogenesis" or pattern-specification annotations rather
+      than embryonic morphogenesis itself - was incorrect: most are annotated
+      to embryonic-morphogenesis sub-processes, which is more specific, not
+      outside the subtree.

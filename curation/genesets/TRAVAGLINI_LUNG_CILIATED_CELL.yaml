@@ -125,16 +125,19 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: curator_added
-    recovery_status: annotation_gap
+    recovery_status: annotation_supported
     curator_note: >-
-      Axoneme assembly is the process by which the nine outer doublet
-      microtubule pairs and two central singlet microtubules of the 9+2
-      axoneme are assembled within each motile cilium. Airway ciliated cells
-      must construct this elaborate organelle in quantity (hundreds per cell),
-      making axoneme assembly a core biological process for this cell type.
-      Many marker genes are involved in axonemal structure and function
-      (e.g. HYDIN, RSPH4A, RSPH9), but GOA-human tends to annotate these
-      genes to the broader parent GO:0060271 (cilium assembly) rather than
-      specifically to GO:0035082 (axoneme assembly), creating an annotation
-      gap. The gap reflects GO annotation incompleteness, not absence of the
-      biology, and is a GO annotation curation target.
+      Axoneme assembly is the construction of the 9+2 microtubule axoneme of
+      each motile cilium; airway ciliated cells build it in quantity (hundreds
+      per cell), so it is a core, cell-type-defining process. Recorded as
+      annotation_supported on GOA facts (not on any enrichment result): in
+      current goa_human, 18 set genes are directly annotated to axoneme
+      assembly (CCDC40, DNAAF1, DRC1, DRC4, FOXJ1, RSPH1, RSPH4A, RSPH9,
+      SPAG16, STK36, ...) and ~48 more to specific axonemal sub-processes
+      (outer/inner dynein arm assembly, radial spoke assembly, axonemal central
+      apparatus assembly) that roll up to it under the is_a/part_of closure.
+      The genes the earlier gap note cited are in fact annotated at or below
+      this term: RSPH4A and RSPH9 directly to axoneme assembly, and HYDIN to
+      its child axonemal central apparatus assembly. The previous
+      "annotated only to the broader cilium-assembly parent" premise was a
+      misreading of GOA.

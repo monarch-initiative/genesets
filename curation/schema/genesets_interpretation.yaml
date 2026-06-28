@@ -141,6 +141,19 @@ classes:
           annotation supports it; the gap is recorded here so it is visible and
           scoreable. annotation_gap marks a GO curation target; membership_gap
           marks gene-set incompleteness.
+      insight:
+        description: >-
+          Curator judgment of the term's interpretive value FOR THIS SET,
+          relative to how the set was derived (its collection / context_type /
+          direction). Recommended values: `confirmatory` — true and core, but
+          entailed by the set's construction or known identity (e.g. an
+          estradiol-response set enriching for "response to estradiol", or a
+          PRC2-target set enriching for embryonic morphogenesis); recapitulates
+          the design rather than revealing mechanism. `mechanistic` — a
+          non-obvious process that illuminates how/why and is not entailed by the
+          set's construction; a genuine enrichment insight. Free text is allowed
+          (not a closed enum) so curators can record nuance or other
+          distinctions.
       enrichment_stats:
         range: EnrichmentStats
         inlined: true
