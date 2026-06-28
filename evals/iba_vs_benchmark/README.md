@@ -91,6 +91,28 @@ Calibration: even all-GOA recovers only ~69% of `annotation_supported` core
 under Bonferroni, so that label means "the genes carry it", not "it always
 reaches genome-wide significance".
 
+## Confirmatory vs mechanistic (the insight split)
+
+With the corpus-wide `insight` tags, recall splits by whether a term is
+`confirmatory` (restates the set's construction) or `mechanistic` (a non-obvious
+process — a genuine enrichment insight). Over the evaluable sets:
+
+| variant | recall_confirm (n=505) | recall_mechan (n=44) |
+|---|---|---|
+| all | 0.626 | 0.295 |
+| no_contributes_to | 0.624 | 0.295 |
+| iba_iea | 0.483 | 0.205 |
+| iba | 0.364 | 0.227 |
+
+**Mechanistic insight is ~2x harder to recover than confirmatory biology** —
+even all-GOA recovers only ~30% of mechanistic terms vs ~63% of confirmatory
+ones. Standard enrichment surfaces the obvious and largely misses the
+non-obvious convergent mechanisms the curators flagged (often the
+`annotation_gap` ones). The `mechanistic` denominator is small (44 evaluable of
+the corpus's 50, since several live in `LIT:` sets with no fetched membership),
+so those numbers are noisier — growing mechanistic-rich, agnostically-derived
+sets is the way to sharpen this measure.
+
 ## Guardrail: the eval must not refit the gold
 
 The eval is a measurement, not an editor. The gold's `category` (biology) is the
