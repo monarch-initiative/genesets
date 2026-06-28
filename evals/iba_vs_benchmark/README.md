@@ -20,12 +20,14 @@ a real evaluation.
    `MSIGDB:<NAME>` set is fetched by querying `<NAME>` and taking the exact
    `_id`/`source=msigdb` hit. (11 MSigDB sets — mostly newer C8 single-cell
    clusters — are absent from mygeneset.) Most `LIT:` sets store markers in prose
-   rather than full membership, but the 4 `LIT:GENETIC` sets are defined by
+   rather than full membership, but the 8 `LIT:GENETIC` sets are defined by
    short, explicit gene lists, so their membership was **captured directly from
    the primary sources** (Satterstrom 2020 Table S2; Trubetskoy 2022 prioritized
-   + SCHEMA + C4; the Jostins 2012 GWAS-Catalog loci; the Daniloski + Wei
-   CRISPR-screen hit tables) into `curation/genesets/lit_members.gmt` (HGNC-
-   normalized) and folded into `queries.gmt`. Total evaluable: **102**.
+   + SCHEMA + C4; the Daniloski + Wei CRISPR-screen hit tables; and the GWAS-
+   Catalog loci for Jostins 2012 [IBD], Bellenguez 2022 [Alzheimer's], Nalls
+   2019 [Parkinson's], van der Harst 2018 [CAD], Morris 2019 [bone density])
+   into `curation/genesets/lit_members.gmt` (HGNC-normalized) and folded into
+   `queries.gmt`. Total evaluable: **106**.
 
 2. **Annotation variants** —
    ```bash
@@ -102,39 +104,44 @@ With the corpus-wide `insight` tags, recall splits by whether a term is
 `confirmatory` (restates the set's construction) or `mechanistic` (a non-obvious
 process — a genuine enrichment insight). Over the evaluable sets:
 
-| variant | recall_confirm (n=514) | recall_mechan (n=57) |
+| variant | recall_confirm (n=524) | recall_mechan (n=69) |
 |---|---|---|
-| all | 0.621 | 0.351 |
-| no_contributes_to | 0.619 | 0.351 |
-| iba_iea | 0.481 | 0.228 |
-| iba | 0.360 | 0.211 |
+| all | 0.615 | 0.319 |
+| no_contributes_to | 0.613 | 0.319 |
+| iba_iea | 0.475 | 0.217 |
+| iba | 0.353 | 0.203 |
 
 **Mechanistic insight is ~2x harder to recover than confirmatory biology** —
-even all-GOA recovers only ~35% of mechanistic terms vs ~62% of confirmatory
+even all-GOA recovers only ~32% of mechanistic terms vs ~62% of confirmatory
 ones. Standard enrichment surfaces the obvious and largely misses the
 non-obvious convergent mechanisms the curators flagged (often the
 `annotation_gap` ones).
 
-The 4 `LIT:GENETIC` sets (their membership captured directly from the primary
-sources — see Membership) make this concrete, per famous mechanism, under
-all-GOA:
+The 8 `LIT:GENETIC` sets (membership captured directly from the primary sources
+— see Membership) make this concrete, per famous mechanism, under all-GOA. Two
+patterns emerge.
 
-- **Autism -> chromatin organization / regulation of transcription: 3/3
-  recovered** — EA *does* reveal this insight (102 genes converge on
-  well-annotated chromatin biology).
-- **Schizophrenia -> complement-mediated synapse pruning (`GO:0150062`): 0/2** —
-  the celebrated C4 mechanism is *invisible* to enrichment, driven by 2 genes
-  (C4A/C4B) in a 121-gene set.
-- **IBD -> autophagy: missed** — the landmark NOD2/ATG16L1/IRGM mechanism is not
-  surfaced from the GWAS gene list.
-- **SARS-CoV-2 host factors: 3/6** — V-ATPase / vacuolar acidification recovered;
-  cholesterol biosynthesis, retrograde transport, PI3P biosynthesis missed.
+**EA recovers** the gene-dense, well-annotated convergences:
+- Autism -> chromatin organization / transcription regulation (3/3)
+- Bone mineral density -> Wnt signaling (2/2)
+- SARS-CoV-2 -> V-ATPase / vacuolar acidification (3/6)
 
-This is exactly why a *curated* gold standard is needed: it asserts "complement
-is the mechanism" from biological knowledge, which 2-gene enrichment never will.
-The aggregate `recall_mechan` (~0.35) also hides this bimodality — some
-mechanistic terms are recoverable (chromatin, V-ATPase), the celebrated ones
-often are not.
+**EA is blind** to the celebrated mechanistic reframings — each invisible
+because the convergence is spread thinly across many weakly-contributing genes
+(and/or under-annotated):
+- Alzheimer's -> microglia / lipid / complement / endocytosis: **0/5**
+- Parkinson's -> lysosomal / autophagy: **0/3**
+- Coronary artery disease -> vascular-wall ECM / NO signaling: **0/2**
+- Schizophrenia -> complement-mediated synapse pruning (C4): **0/2**
+- IBD -> autophagy: **missed**
+
+The most field-reshaping insights of disease genetics — AD as a microglial/lipid
+disease, PD as a lysosomal disorder, the schizophrenia C4 mechanism — are
+exactly the ones standard enrichment cannot surface. A *curated* gold standard
+captures them because a human asserts the mechanism from the literature, which
+diffuse, many-gene, weak-per-gene enrichment never will. (The aggregate
+`recall_mechan` ~0.32 hides this bimodality: the few recoverable mechanisms are
+gene-dense and well-annotated; the celebrated ones are neither.)
 
 ## Guardrail: the eval must not refit the gold
 

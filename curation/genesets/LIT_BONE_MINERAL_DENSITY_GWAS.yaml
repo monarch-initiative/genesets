@@ -1,0 +1,158 @@
+gene_set_id: LIT:BONE_MINERAL_DENSITY_GWAS
+gene_set_name: BONE_MINERAL_DENSITY_GWAS
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 692
+description: >-
+  Literature-defined panel of target genes from the largest genome-wide
+  association study of bone mineral density to date (Morris JA, Kemp JP et al.,
+  Nature Genetics 2019, PMID:30598549). BMD, estimated by heel quantitative
+  ultrasound (eBMD), was assessed in 426,824 UK Biobank individuals, identifying
+  518 genome-wide significant loci (301 novel) that explain ~20% of eBMD
+  variance; 13 fracture loci were also identified in ~1.2 million individuals.
+  Members here are the author-reported/mapped target genes at the eBMD loci
+  (GWAS Catalog study GCST006979), HGNC-normalized and restricted to
+  protein-coding genes (intergenic, lncRNA, antisense, microRNA and pseudogene
+  reported loci were dropped). Unlike a transcriptional READOUT signature, this
+  is an agnostically derived, genotype-anchored DRIVER panel: the members are
+  the genes at loci where common variation alters bone density. Its value is
+  mechanistic convergence. The landmark, NON-OBVIOUS insight is that an
+  agnostic scan of a quantitative skeletal trait converges strongly on WNT
+  SIGNALING: the panel is dense in canonical Wnt pathway components and
+  regulators -- WNT16, WNT4, WNT1, WNT2B, WNT7B, LRP5, LRP4, LRP6, SOST
+  (sclerostin, the Wnt co-receptor antagonist), CTNNB1 (beta-catenin), WLS,
+  AXIN1, AXIN2, FZD7, RSPO2, RSPO3, LGR4, ZNRF3, KREMEN1, FRZB and SFRP4 --
+  establishing that bone density is, genetically, a Wnt-pathway trait. One would
+  not predict from a coarse "low bone mass" phenotype that the dominant genetic
+  architecture is a single developmental signaling cascade. The confirmatory
+  arm is the expected bone biology entailed by the trait: ossification and
+  skeletal development (RUNX1, SP7/Osterix, COL1A1, COL1A2, SOX5, SOX6, DMP1,
+  MEPE, ALPL, BMP2/4/5, BMPR1B) and the resorption/osteoclast axis (TNFSF11
+  /RANKL, TNFRSF11A/RANK, TNFRSF11B/OPG). Because the convergent processes ARE
+  the directly annotated functions of these driver genes, a GO analysis over the
+  panel recovers the core terms (annotation_supported), so these are not
+  annotation gaps.
+contexts:
+  - term:
+      id: MONDO:0005298
+      label: osteoporosis
+    context_type: disease
+    role_note: >-
+      Target/mapped genes at heel estimated bone-mineral-density (eBMD) GWAS
+      loci; osteoporosis is the disease endpoint, diagnosed primarily by low
+      BMD. The genes are eBMD determinants in the general population rather than
+      a curated Mendelian osteoporosis panel.
+associations:
+  - term:
+      id: GO:0016055
+      label: Wnt signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:30598549
+        reference_title: "An atlas of genetic influences on osteoporosis in humans and mice."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "We observed known pathways such as Wnt signalling, endochondral ossification, osteoclast and osteoblast signalling"
+        explanation: >-
+          The authors' pathway analysis of the eBMD target genes explicitly
+          highlights Wnt signalling among the convergent enriched pathways. A
+          large block of the highest-confidence target genes (WNT16, WNT4,
+          WNT1, WNT2B, WNT7B, LRP5, LRP4, LRP6, SOST, CTNNB1, WLS, AXIN1, AXIN2,
+          FZD7, RSPO2, RSPO3, LGR4, ZNRF3, KREMEN1, FRZB, SFRP4) are canonical
+          Wnt-pathway ligands, receptors, co-receptors, antagonists and
+          intracellular components that directly carry Wnt-signaling GO
+          annotations, so a GO analysis of the panel recovers this process
+          (annotation_supported). That an agnostic GWAS of a quantitative bone
+          trait converges on a single developmental signaling cascade is the
+          landmark, non-obvious insight, hence mechanistic.
+    curator_note: >-
+      This is the headline mechanistic insight of the set: a genome-wide,
+      hypothesis-free scan of bone mineral density resolves, genetically, into a
+      Wnt-pathway trait. Kept core_process at high confidence because Wnt is the
+      dominant convergent axis of the locus set, not a peripheral hit. The
+      classic monogenic proof-points (LRP5 high-bone-mass / osteoporosis-
+      pseudoglioma; SOST sclerosteosis/van Buchem) are recovered agnostically
+      here at the population scale.
+  - term:
+      id: GO:0001503
+      label: ossification
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Bone-forming/matrix genes among the targets (SP7/Osterix, RUNX1, COL1A1,
+      COL1A2, DMP1, MEPE, ALPL, BMP2, BMP4) carry ossification annotations
+      directly, so the term is annotation_supported. Marked confirmatory rather
+      than mechanistic: ossification is the expected, trait-entailed biology for
+      a bone-mineral-density GWAS and recapitulates how the set was defined.
+      Kept core_process because bone formation is a defining axis of the panel.
+  - term:
+      id: GO:0030316
+      label: osteoclast differentiation
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The resorption arm of bone remodeling: the RANKL/RANK/OPG axis is present
+      in the target genes (TNFSF11/RANKL, TNFRSF11A/RANK, TNFRSF11B/OPG), which
+      carry osteoclast-differentiation annotations (annotation_supported).
+      Supporting rather than core because resorption is one (expected) side of
+      the bone-mass balance and the panel's dominant signal is the Wnt/
+      osteoblast formation axis; confirmatory because it is entailed by the BMD
+      trait.
+  - term:
+      id: GO:0001501
+      label: skeletal system development
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Broad developmental framing: many targets are skeletal patterning and
+      chondro-/osteogenic developmental regulators (SOX5, SOX6, RUNX1, the HOXA
+      /HOXC/HOXD clusters, BMPR1B, GDF/BMP family, FGFRL1) that carry
+      skeletal-system-development annotations. Supporting rather than core
+      because it is a broad term that follows directly from the trait being
+      skeletal (confirmatory); the sharper signal lives in the Wnt and
+      ossification terms.
+  - term:
+      id: GO:0060828
+      label: regulation of canonical Wnt signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      A more specific facet of the Wnt convergence: a large share of the Wnt
+      hits are dedicated REGULATORS of canonical Wnt rather than core
+      transducers -- the secreted antagonist SOST, the destruction-complex
+      scaffolds AXIN1/AXIN2, the R-spondin/ZNRF3/RNF43/LGR4 turnover module
+      (RSPO2, RSPO3, ZNRF3, LGR4), KREMEN1, and the SFRP antagonists (FRZB,
+      SFRP4). These carry regulation-of-canonical-Wnt annotations
+      (annotation_supported). Scored supporting to avoid double-counting the Wnt
+      axis already captured by GO:0016055; the insight is mechanistic because it
+      pinpoints tunable Wnt rheostats (e.g. SOST -> romosozumab) as the genetic
+      levers on bone density.

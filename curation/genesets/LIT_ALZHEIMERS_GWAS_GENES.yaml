@@ -1,0 +1,207 @@
+gene_set_id: LIT:ALZHEIMERS_GWAS_GENES
+gene_set_name: ALZHEIMERS_GWAS_GENES
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 82
+description: >-
+  Literature-defined panel of Alzheimer's disease (AD) GWAS risk genes,
+  agnostically derived from common-variant association mapping in the largest
+  AD/dementia GWAS at the time (Bellenguez, Kuccukali, Jansen et al., Nat Genet
+  2022, PMID:35379992; two-stage GWAS of 111,326 clinically diagnosed/'proxy' AD
+  cases and 677,663 controls, 75 risk loci, 42 new). Because the loci are found
+  with no prior hypothesis about mechanism, the value of the set is its
+  MECHANISTIC CONVERGENCE: hypothesis-free association mapping for "dementia" --
+  a clinical phenotype of neuronal loss and cognitive decline -- does NOT point
+  primarily at neurons or synapses, but converges on a small number of
+  non-obvious cell-biological processes. The famous reframing is that AD is in
+  large part a microglial / innate-immune and lipid disease. The captured genes
+  fall into recurrent functional groups: (i) microglia / innate immunity --
+  TREM2, INPP5D, PLCG2, SPI1, MS4A4A, SIGLEC11, LILRB2, IL34, RHOH; (ii) lipid /
+  cholesterol metabolism and transport -- ABCA1, ABCA7, CLU, SORL1, SORT1; (iii)
+  endocytosis / intracellular trafficking -- BIN1, CD2AP, SNX1, PTK2B, FERMT2;
+  (iv) complement -- CR1, CLU; and (v) the tumor-necrosis-factor-alpha pathway
+  acting through the linear ubiquitin chain assembly complex (LUBAC) --
+  SHARPIN, RBCK1, TNIP1, TNFSF13, a new process the paper highlights. The
+  expected / CONFIRMATORY arm is amyloid precursor protein processing -- APP,
+  APH1B (gamma-secretase), ADAM17 (alpha-secretase sheddase), SORL1 -- which is
+  entailed by the well-known amyloid hypothesis, in contrast to the
+  microglia/lipid/endocytosis/TNF convergences that are mechanistic insights.
+  MEMBERSHIP PROVENANCE: genes were captured authoritatively (not from memory)
+  from the NHGRI-EBI GWAS Catalog association download for PMID 35379992
+  (https://www.ebi.ac.uk/gwas/api/search/downloads?q=pubmedId:35379992). The
+  REPORTED GENE(S) column is empty for this deposit, so the MAPPED_GENE column
+  was used; multi-gene loci were split, lncRNA/antisense/pseudogene/RNA tokens
+  were dropped, and the remaining symbols were normalized and filtered to
+  protein-coding current official HGNC symbols via mygene.info. NOTE: the GWAS
+  Catalog deposit for this PMID does NOT contain the APOE locus (nor PICALM,
+  ADAM10, RIN3, MS4A6A, ACE); these flagship AD genes are therefore ABSENT from
+  the captured membership and were deliberately NOT padded in from memory. The
+  82 captured genes include some bystander flanking genes from intergenic loci,
+  an accepted consequence of using positional MAPPED_GENE annotation.
+contexts:
+  - term:
+      id: MONDO:0004975
+      label: Alzheimer disease
+    context_type: disease
+    role_note: >-
+      AD risk genes from genome-wide association studies (common-variant,
+      hypothesis-free); these are statistically implicated risk loci, not a
+      differential-expression signature.
+associations:
+  - term:
+      id: GO:0008203
+      label: cholesterol metabolic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      Lipid/cholesterol handling is one of the headline non-obvious convergences
+      of AD genetics: from a hypothesis-free scan for dementia, a cluster of risk
+      genes are cholesterol/lipid transporters and metabolism genes -- ABCA1 and
+      ABCA7 (ATP-binding-cassette cholesterol/phospholipid transporters), CLU
+      (clusterin/apolipoprotein J), SORL1 and SORT1 (sortilin-family lipoprotein
+      receptors) -- which carry cholesterol/lipid metabolic GO annotations, so a
+      GO analysis of the panel recovers the term (annotation_supported). Marked
+      mechanistic because lipid metabolism is not the predictable interpretation
+      of a neurodegenerative dementia phenotype. NB: APOE, the strongest AD lipid
+      gene, is absent from this GWAS Catalog deposit and is not in the captured
+      membership, yet the lipid convergence is still carried by ABCA1/ABCA7/CLU/
+      SORL1/SORT1.
+  - term:
+      id: GO:0001774
+      label: microglial cell activation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:35379992
+        reference_title: "New insights into the genetic etiology of Alzheimer's disease and related dementias."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "highlighted microglia implication"
+        explanation: >-
+          The authors' pathway-enrichment analysis of the 75 AD risk loci
+          explicitly highlights microglia, and a recurrent group of risk genes
+          are microglial / innate-immune effectors -- TREM2, INPP5D, PLCG2, SPI1
+          (the master myeloid transcription factor PU.1), MS4A4A and SIGLEC11 --
+          which carry microglial-activation / myeloid GO annotations, so the term
+          is recovered by GO analysis of the panel (annotation_supported). The
+          convergence of a dementia GWAS on microglial activation rather than on
+          neuronal genes is the central non-obvious insight ("AD is a microglial
+          disease"), hence mechanistic.
+    curator_note: >-
+      Headline mechanistic insight of the set. Kept core_process at high
+      confidence because microglia/innate-immunity is one of the two dominant
+      convergent groups (with lipid metabolism) the paper emphasizes.
+  - term:
+      id: GO:0006897
+      label: endocytosis
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      The endosomal/endocytic-trafficking convergence is a third non-obvious axis
+      of AD genetics. BIN1 (the second-strongest common-variant AD locus, a BAR-
+      domain endocytic adaptor), CD2AP, SNX1 (sorting nexin), PTK2B and FERMT2
+      are members that carry endocytosis/membrane-trafficking GO annotations, so
+      the term is recovered (annotation_supported). Scored supporting rather than
+      core to avoid overweighting relative to the microglia and lipid axes, but
+      the insight is mechanistic: endocytic trafficking is not the predictable
+      reading of a dementia phenotype. (Note: PICALM and RIN3, other classic AD
+      endocytosis genes, are absent from this GWAS Catalog deposit and not in the
+      captured membership.)
+  - term:
+      id: GO:0006956
+      label: complement activation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      Complement is a specific, defensible facet of the innate-immune
+      convergence. CR1 (complement receptor type 1, a top AD locus) and CLU
+      (clusterin, a fluid-phase regulator of the complement membrane-attack
+      complex) are captured members that carry complement GO annotations, so the
+      term is recovered (annotation_supported). Mechanistic because
+      complement-mediated synapse pruning by microglia is a non-obvious disease
+      mechanism implicated by these loci, not entailed by the dementia phenotype.
+      Confidence set to medium because only two captured genes drive it.
+  - term:
+      id: GO:0033209
+      label: tumor necrosis factor-mediated signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:35379992
+        reference_title: "New insights into the genetic etiology of Alzheimer's disease and related dementias."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "including the tumor necrosis factor alpha pathway through the linear ubiquitin chain assembly complex"
+        explanation: >-
+          A genuinely new process the paper surfaces by prioritizing genes in the
+          novel loci: TNF-alpha signaling acting through the linear ubiquitin
+          chain assembly complex (LUBAC). The LUBAC components SHARPIN and RBCK1
+          (HOIL-1), together with TNIP1 and TNFSF13, are captured members that
+          carry TNF/NF-kB-signaling GO annotations, so the term is recovered by
+          GO analysis (annotation_supported). This is a non-obvious, mechanism-
+          revealing convergence rather than a recapitulation of the disease
+          definition, hence mechanistic.
+    curator_note: >-
+      Distinct from the broad microglia term: this captures the paper's
+      explicitly named new TNF-alpha/LUBAC mechanism. Scored supporting/medium
+      because it rests on a small number of loci, but the insight is high because
+      the authors call it out as a newly implicated process.
+  - term:
+      id: GO:0042987
+      label: amyloid precursor protein catabolic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:35379992
+        reference_title: "New insights into the genetic etiology of Alzheimer's disease and related dementias."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "confirmed the involvement of amyloid/tau pathways"
+        explanation: >-
+          APP processing is the expected arm. The pathway-enrichment analysis
+          confirms amyloid involvement, and captured members APP (the amyloid
+          precursor itself), APH1B (a gamma-secretase subunit), ADAM17 (an
+          alpha-secretase sheddase) and SORL1 (a regulator of APP trafficking/
+          processing) carry APP-catabolism GO annotations, so the term is
+          recovered (annotation_supported). Marked confirmatory, not mechanistic:
+          amyloid/APP processing is entailed by the long-standing amyloid
+          hypothesis and is the predictable reading of an AD gene set, in
+          contrast to the microglia/lipid/endocytosis/TNF convergences.
+    curator_note: >-
+      The confirmatory counterpoint to the mechanistic convergences: a
+      hypothesis-free AD scan is expected to recover amyloid biology, and it
+      does, but this recapitulates the known disease model rather than revealing
+      new mechanism.
