@@ -36,6 +36,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:15031206
         reference_title: "Blood mononuclear cell gene expression profiles characterize the oxidant, hemolytic, and inflammatory stress of sickle cell disease."
@@ -65,6 +66,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:15031206
         reference_title: "Blood mononuclear cell gene expression profiles characterize the oxidant, hemolytic, and inflammatory stress of sickle cell disease."
@@ -94,6 +96,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:30332562
         reference_title: "Pathophysiology of Sickle Cell Disease."
@@ -123,6 +126,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Immune response (GO:0006955) is the parent of innate immune response
       and is expected to be recovered alongside the more specific child term.
@@ -139,6 +143,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:15031206
         reference_title: "Blood mononuclear cell gene expression profiles characterize the oxidant, hemolytic, and inflammatory stress of sickle cell disease."

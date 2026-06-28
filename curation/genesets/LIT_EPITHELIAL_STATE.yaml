@@ -71,6 +71,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Epithelial cell differentiation is the identity-defining ACTIVE program this
       signature reads out: the meta-analysis of 18 EMT gene-expression studies
@@ -94,6 +95,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:20713713
         reference_title: "Core epithelial-to-mesenchymal transition interactome gene-expression signature is associated with claudin-low and metaplastic breast cancer subtypes."
@@ -123,6 +125,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:20713713
         reference_title: "Core epithelial-to-mesenchymal transition interactome gene-expression signature is associated with claudin-low and metaplastic breast cancer subtypes."
@@ -152,6 +155,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Apical/basal (apicobasal) polarity is a defining hallmark of the epithelial
       state - the CL definition of epithelial cell itself describes polarity with the
@@ -176,6 +180,7 @@ associations:
     specificity: broadly_expressed
     seed_source: curator_added
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The epithelial state is sessile: epithelial cells are held in place by their
       junctions and, when they move at all, invade collectively in adherent clusters,

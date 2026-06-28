@@ -37,6 +37,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:18473901
         reference_title: "Molecular targets of rheumatoid arthritis."
@@ -66,6 +67,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:19804846
         reference_title: "Interleukin-6 subfamily cytokines and rheumatoid arthritis: role of antagonists."
@@ -96,6 +98,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       MHC class II molecules (HLA-DRA, HLA-DRB1, HLA-DQA1, HLA-DQB1, HLA-DPA1,
       HLA-DPB1) are among the most strongly associated genetic risk factors for RA
@@ -114,6 +117,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       TNFSF11 (RANKL) and its receptor TNFRSF11A (RANK), together with the decoy
       receptor TNFRSF11B (OPG), are canonical members of the KEGG RA pathway and
@@ -134,6 +138,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Chemokines including CXCL1, CCL2 (MCP-1), CCL3, and CCL5 encoded in the
       KEGG RA pathway mediate recruitment of neutrophils, monocytes, and
@@ -151,6 +156,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       HLA class II alpha and beta chain gene products (HLA-DRA, HLA-DRB1,
       HLA-DQA1, HLA-DQB1, HLA-DPA1, HLA-DPB1) in the KEGG RA pathway

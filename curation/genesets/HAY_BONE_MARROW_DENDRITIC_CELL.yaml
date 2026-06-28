@@ -27,6 +27,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     evidence:
       - reference: PMID:9521319
         reference_title: Dendritic cells and the control of immunity.
@@ -43,6 +44,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
   - term:
       id: GO:0045087
       label: innate immune response
@@ -51,6 +53,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
   - term:
       id: GO:0050900
       label: leukocyte migration
@@ -59,6 +62,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
   - term:
       id: GO:0006412
       label: translation
@@ -75,3 +79,4 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: curator_added
+    insight: confirmatory

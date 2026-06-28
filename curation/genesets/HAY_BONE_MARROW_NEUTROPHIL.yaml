@@ -31,6 +31,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     evidence:
       - reference: PMID:32053993
         reference_title: The Impact of Hypoxia on Neutrophil Degranulation and Consequences for the Host.
@@ -50,6 +51,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Neutrophil chemotaxis is a defining functional property of this cell type;
       neutrophils are rapidly recruited to sites of infection and inflammation
@@ -63,6 +65,7 @@ associations:
     confidence: medium
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Neutrophils are characterised by prominent cytoplasmic granule
       populations—azurophil (primary), specific (secondary), and gelatinase
@@ -78,6 +81,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Neutrophils are primary responders to bacterial infection, deploying
       phagocytosis, degranulation, and oxidative killing against bacteria.
@@ -92,6 +96,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       The oxidative respiratory burst—generation of superoxide and H2O2 via
       NADPH oxidase—is a critical neutrophil antimicrobial mechanism. It is
@@ -120,6 +125,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: curator_added
+    insight: confirmatory
     curator_note: >-
       Phagocytosis is a canonical neutrophil function for internalisation and
       destruction of microorganisms, but is shared broadly with macrophages,

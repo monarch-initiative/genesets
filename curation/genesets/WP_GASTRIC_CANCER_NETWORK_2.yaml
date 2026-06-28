@@ -43,6 +43,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:41845875
         reference_title: "Transcriptional Reinforcement of the HER2-RAS Network in HER2-Positive Gastric Cancer: The RUNX-SOS1 Axis in Context."
@@ -70,6 +71,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Deregulated proliferation is a hallmark of gastric carcinoma. RTKs
       (EGFR, HER2/ERBB2, FGFR2, MET) amplified or mutated in gastric cancer
@@ -90,6 +92,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:37310490
         reference_title: "Comprehensive insight into altered host cell-signaling cascades upon Helicobacter pylori and Epstein-Barr virus infections in cancer."
@@ -115,6 +118,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       RTK-initiated MAPK and PI3K-AKT signalling converges on cell-cycle entry
       by inducing cyclin D1 (CCND1) and suppressing CDK inhibitors p21/CDKN1A
@@ -134,6 +138,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Evasion of apoptosis is a key step in gastric cancer progression and is
       promoted by PI3K-AKT signalling (phosphorylation and inactivation of

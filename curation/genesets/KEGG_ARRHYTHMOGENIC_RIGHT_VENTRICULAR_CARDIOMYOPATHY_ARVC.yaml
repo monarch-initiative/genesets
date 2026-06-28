@@ -41,6 +41,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:28912183
         reference_title: "Arrhythmogenic Cardiomyopathy."
@@ -72,6 +73,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Cell-cell adhesion is the functional process executed by the desmosomal
       and adherens-junction proteins that dominate the KEGG ARVC gene set.
@@ -91,6 +93,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       In cardiomyocytes the intercalated disc contains both desmosomes and
       adherens junctions; the two structures are mechanically and molecularly
@@ -110,6 +113,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Cardiac muscle contraction is a supporting process in the KEGG ARVC
       pathway gene set rather than the core process (as it is in DCM/HCM
@@ -130,6 +134,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The calcium-handling and adrenergic components of the KEGG ARVC pathway
       — RYR2, CACNA1C, CACNB2, ADRB1, ADRB2 — are annotated to the
@@ -165,6 +170,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Desmosome assembly is biologically core to ARVC because the primary
       molecular defect — loss-of-function mutations in PKP2, DSP, DSG2, DSC2,

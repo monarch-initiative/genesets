@@ -65,6 +65,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:17950003
         reference_title: "Molecular signature of CD8+ T cell exhaustion during chronic viral infection."
@@ -107,6 +108,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     evidence:
       - reference: PMID:17950003
         reference_title: "Molecular signature of CD8+ T cell exhaustion during chronic viral infection."
@@ -137,6 +139,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Loss of cytotoxic effector function is one of the two defining axes of
       exhaustion (alongside sustained inhibitory-receptor expression): exhausted
@@ -157,6 +160,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Mechanistically, the exhaustion inhibitory receptors act by negatively
       regulating proximal T cell receptor signaling: PD-1, CTLA4 and BTLA recruit
@@ -177,6 +181,7 @@ associations:
     specificity: broadly_expressed
     seed_source: curator_added
     recovery_status: membership_gap
+    insight: confirmatory
     curator_note: >-
       Exhaustion is induced and sustained by the chronic viral antigen the cells
       respond to, so the antiviral/defense-response context is a real supporting

@@ -39,6 +39,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:20195903
         reference_title: "A general introduction to the biochemistry of mitochondrial fatty acid beta-oxidation."
@@ -64,6 +65,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:20195903
         reference_title: "A general introduction to the biochemistry of mitochondrial fatty acid beta-oxidation."
@@ -93,6 +95,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The mitochondrion is the principal site of fatty acid beta-oxidation and
       the dominant cellular compartment for this gene set. The carnitine-shuttle
@@ -110,6 +113,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Fatty acid beta-oxidation also proceeds in the peroxisome, which handles
       very-long-chain and branched-chain fatty acids that mitochondria cannot
@@ -128,6 +132,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Lipid metabolic process is the broad parent of fatty-acid metabolism and is
       recovered because the set also includes lipid-handling enzymes beyond the
@@ -144,6 +149,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Fatty acids are metabolised as their coenzyme-A thioesters, and many set
       members act on acyl-CoA intermediates: the acyl-CoA synthetases/ligases that

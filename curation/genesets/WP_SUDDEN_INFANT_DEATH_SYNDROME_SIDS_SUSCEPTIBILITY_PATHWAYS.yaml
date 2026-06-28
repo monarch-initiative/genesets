@@ -37,6 +37,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:17340630
         reference_title: "Sudden Infant Death Syndrome: review of implicated genetic factors."
@@ -69,6 +70,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:26916278
         reference_title: "The role of mutations in the SCN5A gene in cardiomyopathies."
@@ -103,6 +105,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       SCN5A (Nav1.5) and its regulatory beta-subunits (SCN1B, SCN4B), all of
       which are present in the SIDS susceptibility gene set, localise to the
@@ -120,6 +123,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:21152449
         reference_title: "Serotonin in the sudden infant death syndrome."
@@ -154,6 +158,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:29908886
         reference_title: >-

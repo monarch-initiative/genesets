@@ -38,6 +38,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:15660528
         reference_title: "Gene therapy for severe combined immunodeficiency."
@@ -74,6 +75,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       B cell differentiation is the second major core process of the KEGG
       PRIMARY_IMMUNODEFICIENCY gene set. BTK is the defining gene for
@@ -97,6 +99,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The CD3 complex subunit genes (CD3D, CD3E, CD3G) are direct members of
       the KEGG primary immunodeficiency pathway. These CD3 polypeptides assemble
@@ -116,6 +119,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Lymphocyte differentiation is the parent GO term encompassing both T cell
       differentiation (GO:0030217) and B cell differentiation (GO:0030183), both
@@ -134,6 +138,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       RAG1 and RAG2 encode the V(D)J recombinase complex that catalyses
       assembly of immunoglobulin heavy- and light-chain gene segments during
@@ -155,6 +160,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The adaptive immune response is the high-level functional outcome of the
       processes encoded by this gene set. Genes involved in T cell and B cell
@@ -173,6 +179,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Generic immune response term recovered by enrichment of any immune-system
       gene set. The KEGG primary immunodeficiency pathway is heavily annotated
@@ -208,6 +215,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Negative thymic T cell selection — elimination of self-reactive T cell
       clones in the thymus mediated by AIRE-driven ectopic expression of

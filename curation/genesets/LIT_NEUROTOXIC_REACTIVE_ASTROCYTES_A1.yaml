@@ -49,6 +49,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:28099414
         reference_title: "Neurotoxic reactive astrocytes are induced by activated microglia."
@@ -78,6 +79,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:28099414
         reference_title: "Neurotoxic reactive astrocytes are induced by activated microglia."
@@ -105,6 +107,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       A1 is explicitly the "classically activated neuroinflammatory" reactive
       subtype, induced by pro-inflammatory microglial cytokines and expressing
@@ -124,6 +127,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The A1 state is induced by the microglial cytokines IL-1alpha, TNF and C1q,
       and the induced signature includes canonical cytokine/interferon-response
@@ -141,6 +145,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: membership_gap
+    insight: confirmatory
     curator_note: >-
       The defining functional OUTPUT of the A1 state is neurotoxicity: A1
       astrocytes induce the death of neurons (and oligodendrocytes). This is a

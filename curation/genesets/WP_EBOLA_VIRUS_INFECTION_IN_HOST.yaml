@@ -43,6 +43,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:36558734
         reference_title: "Filoviruses: Innate Immunity, Inflammatory Cell Death, and Cytokines."
@@ -67,6 +68,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:21994800
         reference_title: "Filoviral immune evasion mechanisms."
@@ -91,6 +93,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Innate immune response is the umbrella process encompassing pattern
       recognition, cytokine induction, and effector activation during EBOV
@@ -110,6 +113,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Ebola virus enters cells primarily via macropinocytosis followed by
       endosomal routing; the intracellular receptor NPC1 (Niemann-Pick C1) is
@@ -131,6 +135,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Ebola virus disease is characterised by dysregulated systemic inflammation
       and cytokine storm, caused by massive induction of TNF, IL6, IL1B, IL8,
@@ -166,6 +171,7 @@ associations:
     specificity: broadly_expressed
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: mechanistic
     evidence:
       - reference: PMID:21994800
         reference_title: "Filoviral immune evasion mechanisms."

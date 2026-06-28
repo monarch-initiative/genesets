@@ -41,6 +41,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:28490504
         reference_title: "Fasciculation in amyotrophic lateral sclerosis: origin and pathophysiological relevance."
@@ -74,6 +75,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:32270509
         reference_title: "Guidelines on clinical presentation and management of nondystrophic myotonias."
@@ -106,6 +108,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Recorded as core_process per the curation convention that a defining
       molecular activity is a biological role (the aspect remains
@@ -129,6 +132,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Fasciculation is a recognised early clinical harbinger of lower-motor-
       neuron degeneration in amyotrophic lateral sclerosis and other motor
@@ -153,6 +157,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The motor unit whose spontaneous discharge produces a fasciculation is a
       lower motor neuron together with the muscle fibres it innervates, and the

@@ -66,6 +66,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:28232471
         reference_title: "Distinct populations of inflammatory fibroblasts and myofibroblasts in pancreatic cancer."
@@ -96,6 +97,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:28232471
         reference_title: "Distinct populations of inflammatory fibroblasts and myofibroblasts in pancreatic cancer."
@@ -126,6 +128,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       TGF-beta is the canonical inducer of the myofibroblast program, and myCAF
       formation is driven by juxtacrine TGF-beta signaling from neoplastic cells; the
@@ -146,6 +149,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The desmoplastic reaction of PDA is a dysregulated, persistent wound-healing
       response: activated myofibroblastic CAFs lay down provisional and fibrillar
@@ -165,6 +169,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       A characteristic sub-process of the myCAF ECM program: in the co-culture the
       activated CAFs deposit collagen I that is organized into collagen fibrils, and

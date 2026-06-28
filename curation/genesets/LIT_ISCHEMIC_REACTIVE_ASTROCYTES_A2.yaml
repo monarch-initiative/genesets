@@ -62,6 +62,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:22553043
         reference_title: "Genomic analysis of reactive astrogliosis."
@@ -89,6 +90,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:22553043
         reference_title: "Genomic analysis of reactive astrogliosis."
@@ -124,6 +126,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The A2 state is induced by ischemia (MCAO), in which the defining cellular
       stress is reduced oxygen and blood supply, and the induced program includes
@@ -141,6 +144,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The protective A2 phenotype is reparative: ischemic reactive astrocytes
       contribute to restoring tissue integrity after injury, and tissue-repair
@@ -159,6 +163,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       A2 reactive astrocytes still mount an injury/immune response and the signature
       contains inflammatory effectors (e.g. PTGS2/COX-2, the pentraxin PTX3, and the

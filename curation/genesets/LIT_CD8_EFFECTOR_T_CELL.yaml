@@ -58,6 +58,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:17950003
         reference_title: "Molecular signature of CD8+ T cell exhaustion during chronic viral infection."
@@ -90,6 +91,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The effector signature is, by construction, the antigen-ACTIVATED state of
       the CD8 T cell: it is the program induced after acute infection drives naive
@@ -107,6 +109,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Production of interferon-gamma (type II interferon) is, alongside cytotoxic
       killing, a hallmark effector function of acute-antigen CD8 T cells, and the
@@ -125,6 +128,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The signature was defined in functional effector CD8 T cells responding to
       acute LCMV infection, and antiviral defense is the physiological purpose the
@@ -143,6 +147,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Functional effector CD8 T cells actively amplify and positively drive T cell
       mediated immunity (clonal effector expansion, effector cytokine output and

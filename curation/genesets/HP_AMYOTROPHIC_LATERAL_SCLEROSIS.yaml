@@ -41,6 +41,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     evidence:
       - reference: PMID:25959569
         reference_title: "Current developments in gene therapy for amyotrophic lateral sclerosis."
@@ -67,6 +68,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: mechanistic
     evidence:
       - reference: PMID:23931993
         reference_title: "Converging mechanisms in ALS and FTD: disrupted RNA and protein homeostasis."
@@ -91,6 +93,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: mechanistic
     curator_note: >-
       SOD1, the first identified ALS gene, is a superoxide dismutase, and ANG
       (angiogenin) and other set members participate in the oxidative-stress
@@ -109,6 +112,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: mechanistic
     curator_note: >-
       A cluster of ALS genes in this set encodes the autophagy/proteostasis
       machinery: OPTN and SQSTM1/p62 are selective-autophagy receptors, TBK1
@@ -128,6 +132,7 @@ associations:
     specificity: broadly_expressed
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: mechanistic
     curator_note: >-
       The prion-like RNA-binding proteins encoded by ALS genes in this set
       (TARDBP/TDP-43, FUS, HNRNPA1) are core constituents of stress granules,

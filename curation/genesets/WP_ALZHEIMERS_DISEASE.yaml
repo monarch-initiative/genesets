@@ -36,6 +36,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:39392435
         reference_title: "Alzheimer's Disease: Exploring the Landscape of Cognitive Decline."
@@ -63,6 +64,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The WikiPathways WP5124 set includes a rich complement of synaptic
       proteins absent from the narrower KEGG set: ionotropic glutamate receptor
@@ -80,6 +82,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The WP5124 set is markedly enriched for glutamatergic and cholinergic
       synaptic transmission components (GRIN1, GRIN2A, GRIN2B, GRIA1, GRIA2,
@@ -96,6 +99,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Neuroinflammation is a major arm of the WP5124 AD pathway, represented by
       cytokines (IL1B, TNF, IL6), complement components, microglial genes (TREM2,
@@ -113,6 +117,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       CASP3, CASP9, BAD, and BCL2-family members in the WP5124 AD pathway
       encode canonical intrinsic apoptosis components. Apoptosis is shared
@@ -127,6 +132,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Mitochondrial dysfunction and impaired oxidative phosphorylation are
       represented in WP5124 through ETC subunits and related genes. This arm
@@ -157,6 +163,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Tau hyperphosphorylation leading to neurofibrillary tangle (NFT) formation
       is the second molecular hallmark of Alzheimer's disease and is a major

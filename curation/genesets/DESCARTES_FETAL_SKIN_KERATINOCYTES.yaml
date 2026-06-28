@@ -33,6 +33,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:38643989
         reference_title: "Skin Barrier in Atopic Dermatitis."
@@ -56,6 +57,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:19043850
         reference_title: "The skin: an indispensable barrier."
@@ -78,6 +80,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The cornified envelope is a specialised protein/lipid polymer structure
       assembled on the inner face of the plasma membrane during terminal
@@ -94,6 +97,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Keratin intermediate filaments are the principal cytoskeletal elements of
       keratinocytes, composed of type I (acidic) and type II (basic) keratin
@@ -111,6 +115,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Epidermis development encompasses the full programme of epidermal
       organogenesis, including stratification and differentiation of multiple
@@ -142,6 +147,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Epidermal cell differentiation is the parent term of keratinocyte
       differentiation (GO:0030216) and captures the full spectrum of epidermal

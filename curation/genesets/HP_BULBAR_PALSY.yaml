@@ -44,6 +44,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     evidence:
       - reference: PMID:36836867
         reference_title: "Involvement of Lipids in the Pathogenesis of Amyotrophic Lateral Sclerosis."
@@ -77,6 +78,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:29295857
         reference_title: "Defects in synaptic transmission at the neuromuscular junction precede motor deficits in a TDP-43 transgenic mouse model of amyotrophic lateral sclerosis."
@@ -107,6 +109,7 @@ associations:
     specificity: broadly_expressed
     seed_source: curator_added
     recovery_status: annotation_supported
+    insight: mechanistic
     curator_note: >-
       supporting_process. Bulbar lower motor neurons project long axons to the
       bulbar musculature, and distal "dying-back" axonopathy with impaired
@@ -125,6 +128,7 @@ associations:
     specificity: broadly_expressed
     seed_source: curator_added
     recovery_status: annotation_supported
+    insight: mechanistic
     curator_note: >-
       supporting_process. A substantial subset of motor-neuron-disease genes in
       this set are RNA-binding proteins that regulate splicing (e.g. TARDBP/TDP-43,

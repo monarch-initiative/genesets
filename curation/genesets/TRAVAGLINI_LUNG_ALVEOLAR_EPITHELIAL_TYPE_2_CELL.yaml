@@ -30,6 +30,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     evidence:
       - reference: PMID:2163206
         reference_title: Regulation of lung surfactant secretion.
@@ -48,6 +49,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Alveolar lamellar bodies are specialized secretory organelles unique to
       AT2 cells, used for storage and exocytosis of pulmonary surfactant. Their
@@ -60,6 +62,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       AT2 cells are major producers of surfactant phospholipids, making lipid
       metabolism a prominent process in this signature. However, lipid metabolic
@@ -73,6 +76,7 @@ associations:
     confidence: low
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Gas exchange at the alveolar surface is the primary function of the lung
       but is executed principally by type I alveolar epithelial cells (AT1),
@@ -100,6 +104,7 @@ associations:
     confidence: medium
     specificity: cell_type_specific
     seed_source: curator_added
+    insight: confirmatory
     curator_note: >-
       AT2 cells are essential for alveolar development and repair, functioning
       as alveolar progenitor cells. Enrichment-based approaches may recover

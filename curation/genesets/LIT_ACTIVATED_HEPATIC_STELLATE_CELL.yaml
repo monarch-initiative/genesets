@@ -75,6 +75,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:17484886
         reference_title: "Gene expression profiles during hepatic stellate cell activation in culture and in vivo."
@@ -103,6 +104,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:17484886
         reference_title: "Gene expression profiles during hepatic stellate cell activation in culture and in vivo."
@@ -132,6 +134,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       TGF-beta is the canonical inducer of the myofibroblast program, and HSC
       activation is driven by TGF-beta signaling from Kupffer cells and injured
@@ -152,6 +155,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       A characteristic sub-process of the activated-HSC ECM program: the
       myofibroblasts deposit fibrillar collagen I/III that is organized into
@@ -170,6 +174,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Liver fibrosis is a dysregulated, persistent wound-healing response:
       activated HSCs lay down provisional and fibrillar matrix and contract the

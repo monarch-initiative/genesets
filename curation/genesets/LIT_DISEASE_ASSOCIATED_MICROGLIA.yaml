@@ -46,6 +46,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:28602351
         reference_title: "A Unique Microglia Type Associated with Restricting Development of Alzheimer's Disease."
@@ -75,6 +76,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:28602351
         reference_title: "A Unique Microglia Type Associated with Restricting Development of Alzheimer's Disease."
@@ -101,6 +103,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The DAM UP signature is strongly enriched for the endolysosomal/degradative
       compartment: cathepsins CTSB, CTSD and CTSL, plus CD68 and other lysosomal
@@ -117,6 +120,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: mechanistic
     curator_note: >-
       Lipid handling is one of the defining axes of the DAM program: LPL
       (lipoprotein lipase), APOE, and lipid-processing genes are induced as DAM
@@ -134,6 +138,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       DAM arise in an inflamed, neurodegenerative microenvironment and the
       signature contains immune/inflammatory effector genes, so inflammatory

@@ -64,6 +64,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:28232471
         reference_title: "Distinct populations of inflammatory fibroblasts and myofibroblasts in pancreatic cancer."
@@ -96,6 +97,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:28232471
         reference_title: "Distinct populations of inflammatory fibroblasts and myofibroblasts in pancreatic cancer."
@@ -127,6 +129,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The "additional inflammatory mediators" secreted by the iCAF beyond IL6
       prominently include the chemokines CXCL1, CXCL2 and CCL2, which are
@@ -147,6 +150,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The iCAF chemokines (CXCL1, CXCL2, CCL2) act through chemokine receptors to
       drive paracrine recruitment and positioning of immune cells in the
@@ -165,6 +169,7 @@ associations:
     specificity: broadly_expressed
     seed_source: curator_added
     recovery_status: annotation_supported
+    insight: mechanistic
     curator_note: >-
       Tumor-derived interleukin-1 (IL1A/IL1B) signaling is an established upstream
       inducer of the inflammatory CAF state, biasing fibroblasts toward the

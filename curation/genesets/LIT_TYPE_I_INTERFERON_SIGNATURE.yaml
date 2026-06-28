@@ -54,6 +54,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:12604793
         reference_title: "Interferon-inducible gene expression signature in peripheral blood cells of patients with severe lupus."
@@ -83,6 +84,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:12604793
         reference_title: "Interferon-inducible gene expression signature in peripheral blood cells of patients with severe lupus."
@@ -108,6 +110,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Antiviral defense is the core biological purpose of the ISG program: the
       dominant members are dedicated antiviral effectors (the OAS1/2/3-RNase L
@@ -128,6 +131,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The type I IFN response is a central arm of innate immunity, and many ISG
       members carry the innate immune response annotation, so enrichment recovers
@@ -144,6 +148,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       A specific antiviral effector arm of the ISG program: MX1/MX2, the
       OAS-RNase L system and RSAD2/viperin restrict viral genome replication, and

@@ -37,6 +37,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:36148775
         reference_title: "Molecular mechanisms of metabolic associated fatty liver disease (MAFLD): functional analysis of lipid metabolism pathways."
@@ -69,6 +70,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Fatty acid metabolic process is a direct child of lipid metabolic process
       and captures the more specific arm of NAFLD biology: fatty acid uptake
@@ -87,6 +89,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:29357123
         reference_title: "Triglyceride Metabolism in the Liver."
@@ -118,6 +121,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Insulin resistance is a central metabolic feature of NAFLD: impaired
       insulin signalling in hepatocytes fails to suppress gluconeogenesis and
@@ -137,6 +141,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Progression from steatosis to non-alcoholic steatohepatitis (NASH)
       requires hepatic inflammation mediated by pro-inflammatory cytokines
@@ -169,6 +174,7 @@ associations:
     specificity: broadly_expressed
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Lipid droplets are the organelles where triglycerides and cholesterol
       esters accumulate in steatotic hepatocytes; their enlargement and

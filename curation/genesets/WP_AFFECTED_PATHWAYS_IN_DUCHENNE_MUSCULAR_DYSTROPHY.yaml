@@ -39,6 +39,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:29067652
         reference_title: "An Overview of Recent Therapeutics Advances for Duchenne Muscular Dystrophy."
@@ -69,6 +70,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The sarcolemma is the plasma membrane of the muscle fibre and the immediate
       site of mechanical failure in DMD. Loss of dystrophin and DGC integrity causes
@@ -86,6 +88,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Muscle contraction is the physiological process whose mechanical stress
       continuously stresses the dystrophin-deficient sarcolemma in DMD, driving
@@ -103,6 +106,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:29067652
         reference_title: "An Overview of Recent Therapeutics Advances for Duchenne Muscular Dystrophy."
@@ -134,6 +138,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Chronic inflammatory infiltration of dystrophin-deficient skeletal muscle
       by macrophages, neutrophils and T-cells is a prominent secondary
@@ -166,6 +171,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Skeletal muscle regeneration is a defining feature of DMD pathophysiology:
       repeated cycles of muscle necrosis trigger satellite-cell-mediated

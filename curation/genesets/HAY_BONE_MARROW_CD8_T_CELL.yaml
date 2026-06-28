@@ -29,6 +29,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     evidence:
       - reference: PMID:11861606
         reference_title: Lymphocyte-mediated cytotoxicity.
@@ -47,6 +48,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       CD8+ cytotoxic T cells store perforin and granzymes in lytic/secretory
       granules that are polarised toward the immunological synapse upon target
@@ -61,6 +63,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Antigen recognition through the TCR-CD8 complex is the initiating event
       for CD8+ T cell activation and cytotoxic function. TCR signaling pathway
@@ -73,6 +76,7 @@ associations:
     confidence: medium
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Generic immune response term recovered by enrichment of any immune cell
       signature. Provides contextual support for immune identity but is not
@@ -85,6 +89,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       CD8+ T cells are adaptive immune lymphocytes that respond to specific
       antigens via a somatically diversified TCR. Shared with CD4+ T cells and
@@ -110,6 +115,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: curator_added
+    insight: confirmatory
     curator_note: >-
       T cell activation encompasses the morphological and functional changes that
       follow antigen recognition by CD8+ T cells, including proliferation,

@@ -32,6 +32,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:28847903
         reference_title: "T Helper Cell Differentiation, Heterogeneity, and Plasticity."
@@ -54,6 +55,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       T cell activation encompasses the morphological and functional changes that
       follow antigen recognition by CD4+ T cells through their TCR-CD4 complex,
@@ -69,6 +71,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The immunological synapse is the specialized contact zone formed between a
       CD4+ T cell and an antigen-presenting cell, where TCR, CD4, and co-stimulatory
@@ -84,6 +87,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       This term captures the developmental process by which precursor cells commit
       to the CD4+ alpha-beta T cell lineage. It is a supporting annotation because
@@ -100,6 +104,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Generic immune response term recovered by enrichment of any immune cell
       signature. CD4+ T helper cells are central coordinators of adaptive immune
@@ -129,6 +134,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       T cell differentiation is biologically core to CD4+ T cell identity —
       surface markers (CD4), lineage transcription factors (ThPOK/ZBTB7B), and

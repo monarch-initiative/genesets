@@ -75,6 +75,18 @@ point is to let the eval separate *recall of mechanistic insight* from raw
 recall of correct terms — a method that returns only confirmatory terms is
 correct but uninformative.
 
+A corpus-wide audit (tightened rule: `mechanistic` only for a specific,
+non-obvious process not entailed by the set's construction; all generic
+downstream hallmarks — apoptosis, proliferation, generic PI3K/MAPK, disease
+OXPHOS-as-known-hallmark, expected immune terms — are `confirmatory`) tagged all
+781 core/supporting terms: **731 confirmatory, 50 mechanistic (~94% / 6%)**. The
+mechanistic minority concentrates in causal-gene phenotype sets (the convergent
+molecular mechanisms behind a phenotype, e.g. RNA splicing / SMN-snRNP assembly
+in motor-neuron disease), the down-arm of expression contrasts
+(`JISON_SICKLE_CELL_DISEASE_DN`), and a few perturbations. This confirms the
+benchmark is predominantly an *annotation/method* test bed; its insight-testing
+power is concentrated in a minority of sets.
+
 ## Sources and the driver-vs-activity axis
 Most sets are MSigDB (`MSIGDB:` ids). A second source is **literature-defined**
 gene sets (`LIT:` ids, `collection: LIT:DISEASE_ACTIVITY`) taken directly from a

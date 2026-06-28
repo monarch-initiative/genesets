@@ -39,6 +39,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: mechanistic
     evidence:
       - reference: PMID:15031206
         reference_title: "Blood mononuclear cell gene expression profiles characterize the oxidant, hemolytic, and inflammatory stress of sickle cell disease."
@@ -75,6 +76,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: mechanistic
     curator_note: >-
       T cell activation is the broader functional program initiated by TCR signaling and
       is a defining biological process of T cells present in PBMC. Its relative
@@ -95,6 +97,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: mechanistic
     curator_note: >-
       T and B cells are the primary mediators of adaptive immunity in peripheral blood
       mononuclear cells. Their collective down-regulation in SCD PBMC supports adaptive
@@ -112,6 +115,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: mechanistic
     curator_note: >-
       Generic immune response term expected to be recovered by enrichment of any immune
       gene signature. Here it is supporting_process because it is broadly applicable
@@ -129,6 +133,7 @@ associations:
     specificity: ubiquitous
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: mechanistic
     curator_note: >-
       Translation is elevated here to supporting_process rather than nonspecific because
       ribosomal protein genes (RPL and RPS family members) are highly expressed in
@@ -150,6 +155,7 @@ associations:
     specificity: ubiquitous
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: mechanistic
     curator_note: >-
       Ribosomal protein genes (RPL and RPS family members) are among the most abundant
       transcripts in resting lymphocytes and are expected to drive ribosome CC enrichment
@@ -168,6 +174,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: mechanistic
     curator_note: >-
       The T cell receptor complex (TCR/CD3 complex) is the defining structural
       compartment of T cells. Genes encoding TCR chains (TRAC, TRBC) and CD3 signaling

@@ -64,6 +64,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:16990136
         reference_title: "The orphan nuclear receptor RORgammat directs the differentiation program of proinflammatory IL-17+ T helper cells."
@@ -94,6 +95,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:16990136
         reference_title: "The orphan nuclear receptor RORgammat directs the differentiation program of proinflammatory IL-17+ T helper cells."
@@ -122,6 +124,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The Th17-type immune response (orchestrated by IL-17, IL-21 and IL-22 from
       Th17 cells) is, alongside lineage differentiation and IL-17 production, a
@@ -139,6 +142,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Th17 cells are the proinflammatory pole of CD4+ helper differentiation,
       and their IL-17/IL-22 effector output drives tissue inflammation
@@ -156,6 +160,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       A principal physiological purpose of the Th17 program is mucosal host
       defense against fungi, most notably Candida albicans, executed through the

@@ -36,6 +36,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:26702787
         reference_title: >-
@@ -72,6 +73,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:11812646
         reference_title: "The regulation of exocytosis in the pancreatic acinar cell."
@@ -104,6 +106,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Protein secretion (GO:0009306) captures the intracellular trafficking and
       regulated exocytosis pathway by which newly synthesised digestive enzymes
@@ -122,6 +125,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Serine-type endopeptidase activity (GO:0004252) is the molecular function
       executed by trypsin (PRSS1, PRSS2), chymotrypsin (CTRB1, CTRB2), and
@@ -161,6 +165,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Acinar cell differentiation (GO:0090425) captures the developmental
       program that specifies acinar cell identity, controlled by transcription

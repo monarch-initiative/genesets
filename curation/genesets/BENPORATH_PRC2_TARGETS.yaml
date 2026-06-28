@@ -33,6 +33,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:18443585
         reference_title: "An embryonic stem cell-like gene expression signature in poorly differentiated aggressive human tumors."
@@ -65,6 +66,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       HOX cluster genes (HOXA1-HOXA13, HOXB1-HOXB9, HOXC4-HOXC13,
       HOXD1-HOXD13) are canonical PRC2 targets in ES cells and form the largest
@@ -82,6 +84,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Many PRC2 targets in ES cells (GATA, PAX, NKX, CDX, and DLX family TFs)
       regulate lineage-specific cell fate decisions. They are kept repressed by
@@ -99,6 +102,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The gene set members are overwhelmingly DNA-binding transcription factors:
       HOX, CDX, GATA, PAX, NKX, DLX, HAND, and TWIST family genes all carry
@@ -116,6 +120,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       All major gene families represented in this set (HOX, PAX, GATA, CDX,
       DLX, NKX, HAND, TWIST) encode nuclear transcription factors that localise

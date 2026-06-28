@@ -33,6 +33,7 @@ associations:
     confidence: high
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     evidence:
       - reference: PMID:34777681
         reference_title: "Interplay between Mitochondrial Metabolism and Cellular Redox State Dictates Cancer Cell Survival."
@@ -52,6 +53,7 @@ associations:
     confidence: high
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       All TCA-cycle enzymes encoded by this gene set are localised to the
       mitochondrion. In eukaryotes the entire cycle is confined to the
@@ -65,6 +67,7 @@ associations:
     confidence: high
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       The TCA-cycle enzymes (citrate synthase, aconitase, isocitrate
       dehydrogenase, 2-oxoglutarate dehydrogenase complex, succinyl-CoA
@@ -81,6 +84,7 @@ associations:
     confidence: high
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       The TCA cycle is the central pathway for generation of NADH and
       FADH2 (energy precursors for oxidative phosphorylation) and of
@@ -98,6 +102,7 @@ associations:
     confidence: high
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       The TCA cycle is an integral phase of aerobic respiration: it
       accepts acetyl-CoA derived from pyruvate oxidation and generates
@@ -114,6 +119,7 @@ associations:
     confidence: high
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Four of the eight enzymatic steps of the TCA cycle involve
       oxidoreductases: isocitrate dehydrogenase (IDH2/IDH3 complex),

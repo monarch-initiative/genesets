@@ -61,6 +61,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:18195085
         reference_title: "Hepatic stellate cells: protean, multifunctional, and enigmatic cells of the liver."
@@ -94,6 +95,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:18195085
         reference_title: "Hepatic stellate cells: protean, multifunctional, and enigmatic cells of the liver."
@@ -128,6 +130,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The cytoplasmic lipid droplet is the characteristic organelle of the quiescent
       hepatic stellate cell - the retinyl-ester-laden droplet historically used to
@@ -148,6 +151,7 @@ associations:
     specificity: broadly_expressed
     seed_source: curator_added
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Quiescence is, by definition, a non-proliferative state: the quiescent HSC is
       held out of the cell cycle, and activation into the myofibroblast is
@@ -169,6 +173,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_supported
+    insight: mechanistic
     curator_note: >-
       The quiescent state is maintained in part by ACTIVE restraint of the fibrogenic
       TGF-beta axis: the pseudoreceptor BAMBI, expressed in quiescent HSC and

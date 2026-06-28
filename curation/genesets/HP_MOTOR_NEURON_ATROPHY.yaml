@@ -37,6 +37,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     evidence:
       - reference: PMID:14720310
         reference_title: "Programmed cell death in amyotrophic lateral sclerosis: a mechanism of pathogenic and therapeutic importance."
@@ -63,6 +64,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: mechanistic
     curator_note: >-
       Axonal degeneration is central to motor-neuron atrophy: a "dying-back"
       distal axonopathy precedes or accompanies cell-body loss across ALS, SMA,
@@ -81,6 +83,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: mechanistic
     evidence:
       - reference: PMID:25689976
         reference_title: "Linking RNA Dysfunction and Neurodegeneration in Amyotrophic Lateral Sclerosis."
@@ -105,6 +108,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: mechanistic
     curator_note: >-
       Impaired axonal transport is a recurrent mechanism in motor-neuron
       degeneration: the long axons of motor neurons are especially dependent on
@@ -122,6 +126,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: mechanistic
     curator_note: >-
       Denervation at the neuromuscular junction is an early event in motor-neuron
       atrophy, and NMJ maintenance / development genes are represented among the

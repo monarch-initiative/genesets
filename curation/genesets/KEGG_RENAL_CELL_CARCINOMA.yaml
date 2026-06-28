@@ -34,6 +34,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:36106637
         reference_title: "Von Hippel-Lindau disease: insights into oxygen sensing, protein degradation, and cancer."
@@ -62,6 +63,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:33020645
         reference_title: "Targeting the HIF2-VEGF axis in renal cell carcinoma."
@@ -91,6 +93,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Growth factor signalling downstream of HIF targets (EGFR, TGF-alpha) and
       RAS/MAPK/PI3K pathway components in the KEGG RCC gene set collectively
@@ -106,6 +109,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       RAS-RAF-MEK-ERK cascade components (KRAS, RAF1, MAP2K1, MAPK1/3) appear in
       the KEGG RCC pathway as mediators of proliferative signalling downstream of
@@ -123,6 +127,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       PI3K/AKT pathway members and HIF target genes in the KEGG RCC gene set
       suppress apoptosis to promote tumour cell survival. BCL2-family members and
@@ -139,6 +144,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       VEGFA, the principal HIF transcriptional target and angiogenic driver in
       ccRCC, is annotated to positive regulation of angiogenesis in GOA-human, as

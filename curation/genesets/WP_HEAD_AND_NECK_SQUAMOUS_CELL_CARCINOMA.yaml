@@ -36,6 +36,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:37686523
         reference_title: >-
@@ -72,6 +73,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       EGFR-driven RAS/MAPK and PI3K/AKT signalling together with CCND1
       amplification and CDK4/6 overactivity collectively promote uncontrolled
@@ -90,6 +92,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       MAPK cascade is categorised as supporting_process rather than core_process
       because it is mechanistically downstream of EGFR signalling (the core
@@ -106,6 +109,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:34164549
         reference_title: >-
@@ -141,6 +145,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:34164549
         reference_title: >-
@@ -178,6 +183,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       BCL2-family anti-apoptotic members, CASP3, CASP9, CYCS, and TP53-dependent
       apoptosis effectors are encoded in this WikiPathways gene set. AKT

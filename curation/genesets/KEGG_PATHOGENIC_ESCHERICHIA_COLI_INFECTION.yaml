@@ -39,6 +39,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:12615225
         reference_title: "Tails of two Tirs: actin pedestal formation by enteropathogenic E. coli and enterohemorrhagic E. coli O157:H7."
@@ -73,6 +74,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The actin cytoskeleton is the central host cellular structure manipulated by
       EPEC and EHEC during infection. Effector injection triggers local actin
@@ -91,6 +93,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       EPEC and EHEC disrupt intestinal epithelial tight junctions through injected
       effectors (EspF, Map), increasing paracellular permeability and contributing
@@ -110,6 +113,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Rho-family small GTPases (CDC42, RAC1, RHOA, RHOG) and their regulators
       (GEFs, GAPs) encoded in the KEGG Pathogenic E. coli pathway transduce
@@ -130,6 +134,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Multiple genes in the KEGG Pathogenic E. coli pathway participate in innate
       immune responses to bacterial stimuli, including pattern recognition

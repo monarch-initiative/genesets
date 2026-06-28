@@ -61,6 +61,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:10761931
         reference_title: "A novel transcription factor, T-bet, directs Th1 lineage commitment."
@@ -93,6 +94,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:10761931
         reference_title: "A novel transcription factor, T-bet, directs Th1 lineage commitment."
@@ -123,6 +125,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The Th1-type (cell-mediated) immune response is the integrated effector
       function the signature executes: IFN-gamma-driven activation of macrophages
@@ -141,6 +144,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Th1 cells are the cell-mediated-immunity arm directed against intracellular
       bacteria: their IFN-gamma output activates macrophages to kill phagocytosed
@@ -160,6 +164,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Th1 cells actively amplify and positively drive T cell mediated immunity —
       through IFN-gamma output, IL-12/IL-18 receptor signaling and provision of

@@ -41,6 +41,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:20087356
         reference_title: "Large meta-analysis of multiple cancers reveals a common, compact and highly prognostic hypoxia metagene."
@@ -64,6 +65,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:20087356
         reference_title: "Large meta-analysis of multiple cancers reveals a common, compact and highly prognostic hypoxia metagene."
@@ -88,6 +90,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       A glycolytic metabolic shift is one of the canonical, well-characterised
       HIF-1 outputs and a dominant axis of this metagene: the glycolytic enzyme
@@ -109,6 +112,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Hypoxia drives new blood vessel formation via HIF-1 transactivation of
       VEGFA and related factors; VEGFA is the single highest-connectivity,
@@ -128,6 +132,7 @@ associations:
     specificity: broadly_expressed
     seed_source: curator_added
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The HIF-1alpha signalling pathway is the mechanistic engine driving the
       metagene: the paper identifies HIF1a as the main mediator of the hypoxia

@@ -31,6 +31,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Cilium movement is the defining molecular function of airway ciliated
       cells. The coordinated, ATP-driven beating of hundreds of motile cilia
@@ -47,6 +48,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Airway ciliated cells are densely covered by hundreds of 9+2 motile
       cilia, with the motile cilium as the defining cellular structure of
@@ -63,6 +65,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Assembly of hundreds of motile cilia per cell requires substantial
       transcriptional investment in ciliogenesis machinery, including
@@ -80,6 +83,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:25386990
         reference_title: "Cilia dysfunction in lung disease."
@@ -126,6 +130,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Axoneme assembly is the construction of the 9+2 microtubule axoneme of
       each motile cilium; airway ciliated cells build it in quantity (hundreds

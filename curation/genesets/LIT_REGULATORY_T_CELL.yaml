@@ -70,6 +70,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:12522256
         reference_title: "Control of regulatory T cell development by the transcription factor Foxp3."
@@ -110,6 +111,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:12522256
         reference_title: "Control of regulatory T cell development by the transcription factor Foxp3."
@@ -152,6 +154,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The broader suppressive output of the Treg program: active negative
       regulation of the immune response that enforces peripheral self-tolerance.
@@ -170,6 +173,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       IL-10 is a principal suppressive effector cytokine of Tregs and IL10 (with
       the latent-TGF-beta machinery TGFB1/LRRC32) is a member of the panel, so
@@ -190,6 +194,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Induction of immunological (self-)tolerance is the central physiological
       role of the Treg state ("maintenance of immunological self-tolerance").

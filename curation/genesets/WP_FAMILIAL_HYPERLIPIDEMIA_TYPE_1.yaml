@@ -37,6 +37,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:30183397
         reference_title: "Familial Chylomicronemia Syndrome: A Clinical Guide For Endocrinologists."
@@ -62,6 +63,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Chylomicrons are the triglyceride-rich lipoprotein particles that
       accumulate in plasma in familial chylomicronemia syndrome. They are
@@ -82,6 +84,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Chylomicron remodeling (GO:0034371) is defined as "the acquisition,
       loss or modification of a protein or lipid within a chylomicron,
@@ -107,6 +110,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Triglyceride catabolic process (GO:0019433) is the child of
       triglyceride metabolic process that captures the hydrolytic direction
@@ -126,6 +130,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Familial chylomicronemia syndrome impairs the delivery of dietary
       fatty acids from chylomicrons to peripheral tissues. Apolipoproteins
@@ -146,6 +151,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Lipid metabolic process is the ancestral umbrella term for the
       triglyceride-specific biology of this gene set. It is recovered

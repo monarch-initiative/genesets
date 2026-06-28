@@ -66,6 +66,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:22796012
         reference_title: "Beige adipocytes are a distinct type of thermogenic fat cell in mouse and human."
@@ -101,6 +102,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The chemical form of the white adipocyte's stored energy is triacylglycerol:
       the unilocular droplet is a triglyceride depot, filled by insulin-driven
@@ -120,6 +122,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:22796012
         reference_title: "Beige adipocytes are a distinct type of thermogenic fat cell in mouse and human."
@@ -150,6 +153,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The single large unilocular lipid droplet is the defining organelle of the
       white adipocyte - the scant cytoplasm surrounds one droplet that holds the
@@ -171,6 +175,7 @@ associations:
     specificity: broadly_expressed
     seed_source: curator_added
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The white adipocyte is the principal insulin-responsive energy-storage cell:
       insulin drives GLUT4-mediated glucose uptake, lipogenesis and triglyceride

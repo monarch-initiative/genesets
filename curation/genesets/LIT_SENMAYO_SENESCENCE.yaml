@@ -40,6 +40,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:35974106
         reference_title: "A new gene set identifies senescent cells and predicts senescence-associated pathways across tissues."
@@ -73,6 +74,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:35974106
         reference_title: "A new gene set identifies senescent cells and predicts senescence-associated pathways across tissues."
@@ -102,6 +104,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The SASP is a pro-inflammatory program with deleterious paracrine and systemic
       effects; the paper notes enrichment of genes regulating inflammatory mediators
@@ -120,6 +123,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The SASP includes extracellular-matrix-degrading proteins; the
       matrix-metalloprotease members of SenMayo (e.g. MMP1, MMP3, MMP12) and the
@@ -138,6 +142,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       A major function of the SASP is to recruit immune cells for senescence
       surveillance and clearance; the SenMayo chemokine members (CXCL1/2/8,

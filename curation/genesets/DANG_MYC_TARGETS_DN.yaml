@@ -34,6 +34,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:14519204
         reference_title: "An integrated database of genes responsive to the Myc oncogenic transcription factor: identification of direct genomic targets."
@@ -64,6 +65,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       CDKN1A (p21/CIP1) is the archetype MYC-repressed growth-arrest gene; MYC binds
       the CDKN1A promoter and represses it through multiple mechanisms including Miz1
@@ -82,6 +84,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       A substantial fraction of MYC-repressed genes encode extracellular matrix proteins
       or ECM-associated proteins (THBS1/thrombospondin-1, fibronectin/FN1, collagens).
@@ -97,6 +100,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       MYC is a master suppressor of differentiation: it maintains cells in a proliferative,
       undifferentiated state by repressing lineage-specific differentiation genes. Genes in
@@ -114,6 +118,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Several MYC-repressed genes encode proteins that physically organise the extracellular
       matrix (THBS1 regulates fibronectin and collagen fibre assembly; thrombospondin family
@@ -131,6 +136,7 @@ associations:
     specificity: broadly_expressed
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       TGF-beta signalling is functionally linked to the MYC-repressed programme: THBS1
       (thrombospondin-1) is a major activator of latent TGF-beta in the extracellular

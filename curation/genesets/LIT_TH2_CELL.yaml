@@ -62,6 +62,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:9160750
         reference_title: "The transcription factor GATA-3 is necessary and sufficient for Th2 cytokine gene expression in CD4 T cells."
@@ -94,6 +95,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:9160750
         reference_title: "The transcription factor GATA-3 is necessary and sufficient for Th2 cytokine gene expression in CD4 T cells."
@@ -123,6 +125,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The Th2 cell is the central adaptive orchestrator of the type 2 immune
       response — the IL-4/IL-5/IL-13-driven program of resistance to helminths
@@ -142,6 +145,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Interleukin-13 is a signature Th2 effector cytokine that, alongside IL-4,
       drives IgE class switching, goblet-cell/mucus responses and airway
@@ -160,6 +164,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Provision of B-cell help and induction of IgE class switching is the
       classic humoral arm of the Th2 program: IL-4 (and IL-13) produced by the

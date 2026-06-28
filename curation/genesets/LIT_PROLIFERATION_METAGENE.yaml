@@ -43,6 +43,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:12058064
         reference_title: "Identification of genes periodically expressed in the human cell cycle and their expression in tumors."
@@ -81,6 +82,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:12058064
         reference_title: "Identification of genes periodically expressed in the human cell cycle and their expression in tumors."
@@ -106,6 +108,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Chromosome segregation is the second fundamental cell-cycle process the
       defining paper names (alongside DNA replication) as the coexpressed module
@@ -126,6 +129,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Cell division is the overall outcome the proliferation metagene reports: the
       signature is elevated specifically because proliferation-high tumours contain
@@ -144,6 +148,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The M-phase mitotic-kinase and spindle members of the panel (AURKA, AURKB,
       CCNB1, CDK1, and MKI67, an M-phase-associated antigen) carry

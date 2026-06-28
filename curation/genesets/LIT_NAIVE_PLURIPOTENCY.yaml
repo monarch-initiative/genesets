@@ -64,6 +64,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:25090446
         reference_title: "Systematic identification of culture conditions for induction and maintenance of naive human pluripotency."
@@ -109,6 +110,7 @@ associations:
     specificity: broadly_expressed
     seed_source: curator_added
     recovery_status: membership_gap
+    insight: confirmatory
     curator_note: >-
       LIF/STAT3 responsiveness is a defining axis that separates the naive pole
       from the primed pole of this series: naive cells (like mouse ground-state
@@ -135,6 +137,7 @@ associations:
     specificity: broadly_expressed
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       The downstream, cell-state side of the LIF/STAT3 axis: the naive state is
       the transcriptional RESPONSE to LIF, and the LIF/STAT3 target effectors
@@ -154,6 +157,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The naive state is defined as much by ACTIVE restraint of lineage priming
       as by self-renewal: the ground-state circuitry (NANOG, the KLF factors)
@@ -174,6 +178,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: membership_gap
+    insight: confirmatory
     curator_note: >-
       Developmental-stage anchor: the naive program corresponds to the
       pre-implantation epiblast / inner cell mass of the human blastocyst, the

@@ -32,6 +32,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:31715003
         reference_title: "Origin and ontogeny of lung macrophages: from mice to humans."
@@ -53,6 +54,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Alveolar macrophages are the primary cells responsible for clearing
       spent and excess pulmonary surfactant from the alveolar surface by
@@ -70,6 +72,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Alveolar macrophages secrete pro-inflammatory cytokines (TNF-alpha,
       IL-6, IL-1beta, IL-12) and chemokines upon encountering pathogens or
@@ -85,6 +88,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Alveolar macrophages are frontline innate immune sentinels that express
       pattern-recognition receptors (TLRs, NLRs, scavenger receptors) and
@@ -100,6 +104,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Alveolar macrophages form abundant phagocytic vesicles as part of their
       central role in engulfing inhaled particles, bacteria, apoptotic cells,
@@ -130,6 +135,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Macrophage activation (M1-like inflammatory and M2-like tolerogenic
       polarization) is a defining feature of alveolar macrophage biology;

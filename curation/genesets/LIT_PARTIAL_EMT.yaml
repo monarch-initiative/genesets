@@ -54,6 +54,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:29198524
         reference_title: "Single-Cell Transcriptomic Analysis of Primary and Metastatic Tumor Ecosystems in Head and Neck Cancer."
@@ -80,6 +81,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The p-EMT program is dominated by extracellular-matrix and basement-membrane
       genes: the laminins LAMC2 and LAMB3, the top-ranked member TGFBI, and MMP10
@@ -99,6 +101,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:29198524
         reference_title: "Single-Cell Transcriptomic Analysis of Primary and Metastatic Tumor Ecosystems in Head and Neck Cancer."
@@ -125,6 +128,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Cell-substrate adhesion is an enabling process of the p-EMT state: the
       integrin ITGA5 and the laminin ligands (LAMC2, LAMB3) that dominate the
@@ -143,6 +147,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       The p-EMT program actively drives an EMT-like state, so positive regulation
       of EMT is biologically real for this set, but it is recorded as an

@@ -59,6 +59,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:17082649
         reference_title: "Transcriptional profiling of the human monocyte-to-macrophage differentiation and polarization: new molecules and patterns of gene expression."
@@ -99,6 +100,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Alternative (M2) activation is the canonical IL-4 (and IL-13) -driven
       macrophage program: IL-4 signals through IL4R and STAT6 to induce the M2
@@ -125,6 +127,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       A defining functional output of the M2 state is tissue repair: alternatively
       activated macrophages drive wound healing and resolution after injury, and
@@ -144,6 +147,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       M2 macrophages are anti-inflammatory: in explicit contrast to the
       microbicidal, pro-inflammatory M1 pole, the alternative-activation program
@@ -164,6 +168,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Scavenging and endocytic clearance is a characteristic M2 effector function:
       the two most canonical M2 markers are themselves endocytic receptors - the

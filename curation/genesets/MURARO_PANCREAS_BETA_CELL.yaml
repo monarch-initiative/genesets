@@ -34,6 +34,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:25697093
         reference_title: "Pancreatic beta-cell identity, glucose sensing and the control of insulin secretion."
@@ -61,6 +62,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Glucose sensing is the hallmark trigger of beta-cell function: rising
       blood glucose enters via GLUT2 (SLC2A2), is phosphorylated by
@@ -79,6 +81,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Dense core granules (also called B-granules or insulin secretory
       granules) are the organelles in which mature insulin is stored and from
@@ -97,6 +100,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Regulation of insulin secretion (GO:0050796) reflects the extensive
       molecular circuitry that modulates the magnitude and timing of insulin
@@ -133,6 +137,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Type B pancreatic cell differentiation (GO:0003309) captures the
       developmental program that specifies the beta-cell identity, controlled

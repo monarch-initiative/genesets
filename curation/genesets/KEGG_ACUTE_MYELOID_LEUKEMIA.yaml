@@ -35,6 +35,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:17934489
         reference_title: "Transcriptional dysregulation during myeloid transformation in AML."
@@ -65,6 +66,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       RUNX1, CEBPA, PML-RARA, and MYC are hematopoietic transcription factors
       that directly regulate Pol II-driven gene expression programs controlling
@@ -84,6 +86,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       FLT3, KIT, RAS, and their downstream effectors in the KEGG AML pathway drive
       aberrant blast proliferation. FLT3-ITD and activating KIT mutations are among
@@ -100,6 +103,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       RAS, RAF, MAP2K, and MAPK members of the RAS-RAF-MEK-ERK cascade are
       included in the KEGG AML pathway. Activating RAS mutations occur in
@@ -116,6 +120,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       BCL2-family members, CASP3, CYCS, and death-receptor pathway components
       in the KEGG AML pathway encode canonical apoptosis regulators. Evasion of
@@ -131,6 +136,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       AML arises from transformation of hematopoietic stem or early progenitor
       cells, whose normal differentiation is subverted by the disease-defining

@@ -51,6 +51,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:16153702
         reference_title: "Core transcriptional regulatory circuitry in human embryonic stem cells."
@@ -92,6 +93,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:16153702
         reference_title: "Core transcriptional regulatory circuitry in human embryonic stem cells."
@@ -123,6 +125,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       OCT4, SOX2 and NANOG are sequence-specific master transcriptional
       activators that co-occupy and drive their target promoters (including
@@ -143,6 +146,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       A defining feature of the circuitry in the paper is that OCT4/SOX2/NANOG
       co-occupy target genes that frequently encode developmentally important
@@ -163,6 +167,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Human embryonic stem cells are the in-vitro counterpart of the pluripotent
       inner cell mass of the blastocyst, and the core factors (POU5F1/OCT4,

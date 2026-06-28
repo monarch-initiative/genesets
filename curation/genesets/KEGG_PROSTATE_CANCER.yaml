@@ -35,6 +35,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:33321757
         reference_title: "Androgen Receptor Signaling Pathway in Prostate Cancer: From Genetics to Clinical Applications."
@@ -58,6 +59,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Multiple KEGG prostate cancer pathway members directly regulate cell-cycle
       entry and proliferative expansion: CCND1 (cyclin D1), CDK4, E2F1, RB1, and
@@ -74,6 +76,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       PTEN loss is one of the most frequent somatic genomic events in prostate cancer,
       and PIK3CA and AKT1 are explicit KEGG pathway members. Activated PI3K/AKT
@@ -90,6 +93,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       TP53, BCL2, CASP3, and BAD in the KEGG prostate cancer pathway encode canonical
       intrinsic apoptosis components. Evasion of apoptosis via AR-mediated BCL2
@@ -105,6 +109,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The RB1/E2F axis and CDK inhibitors (CDKN1A/CDKN2A) in the KEGG prostate cancer
       pathway are canonical cell-cycle checkpoint regulators whose loss accelerates G1-S

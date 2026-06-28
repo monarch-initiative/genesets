@@ -42,6 +42,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:19460998
         reference_title: "Understanding the Warburg Effect: The Metabolic Requirements of Cell Proliferation."
@@ -74,6 +75,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:19460998
         reference_title: "Understanding the Warburg Effect: The Metabolic Requirements of Cell Proliferation."
@@ -99,6 +101,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Gluconeogenesis is named explicitly in the MSigDB systematic description
       ("genes encoding proteins involved in glycolysis and gluconeogenesis"): the
@@ -118,6 +121,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Carbohydrate metabolic process is the broad parent umbrella under which
       glycolysis and gluconeogenesis sit; the glucose-handling enzyme members of
@@ -135,6 +139,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The glycolytic switch is one of the canonical HIF-1 outputs: HIF-1
       transactivates many of the set's members (e.g. HK2, LDHA, PGK1, ENO1) to
@@ -156,6 +161,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Glycolysis generates ATP by substrate-level phosphorylation, and the
       glycolytic enzyme members of the set carry ATP-metabolic-process

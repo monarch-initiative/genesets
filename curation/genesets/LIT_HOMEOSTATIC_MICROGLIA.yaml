@@ -55,6 +55,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:24316888
         reference_title: "Identification of a unique TGF-β-dependent molecular and functional signature in microglia."
@@ -96,6 +97,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Constant surveillance of the brain parenchyma by motile processes and
       directed migration toward injury-associated nucleotides is the defining
@@ -115,6 +117,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       The homeostatic state is defined as much by ACTIVE restraint of reactivity
       as by any positive function: TGF-β signaling holds microglia in a quiescent,
@@ -137,6 +140,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Homeostatic microglia constitutively clear apoptotic cells and cellular
       debris. The signature highlights the TAM receptor system (the paper notes
@@ -157,6 +161,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: mechanistic
     curator_note: >-
       Activity-dependent pruning of supernumerary synapses is a characteristic
       homeostatic microglial function during CNS development and maintenance. The

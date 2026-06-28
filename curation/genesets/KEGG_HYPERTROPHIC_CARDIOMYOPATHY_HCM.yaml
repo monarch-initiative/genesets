@@ -38,6 +38,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:42307069
         reference_title: "Adeno-Associated Virus Vector Mediated Gene Therapy: A Promising Approach to Transform Hypertrophic Cardiomyopathy Treatment."
@@ -69,6 +70,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The sarcomere is the repeating contractile unit of cardiac myofibrils. The
       overwhelming majority of HCM-causing genes encode sarcomeric proteins: the
@@ -86,6 +88,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: mechanistic
     curator_note: >-
       The dystrophin-associated glycoprotein complex (DGC) mechanically links the
       intracellular cytoskeleton to the extracellular matrix in cardiomyocytes,
@@ -105,6 +108,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Muscle contraction is the parent term of cardiac muscle contraction
       (GO:0060048) and is shared with skeletal and smooth muscle lineages. It is
@@ -120,6 +124,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The KEGG HCM gene set includes multiple regulators of cardiac contractile
       function in addition to structural sarcomere proteins: calcium-handling genes
@@ -152,6 +157,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Cardiac muscle hypertrophy — the enlargement of cardiac muscle cells without
       cell division — is the defining pathological phenotype of hypertrophic

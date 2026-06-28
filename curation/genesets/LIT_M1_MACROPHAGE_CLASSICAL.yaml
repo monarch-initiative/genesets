@@ -56,6 +56,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:17082649
         reference_title: "Transcriptional profiling of the human monocyte-to-macrophage differentiation and polarization: new molecules and patterns of gene expression."
@@ -84,6 +85,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:17082649
         reference_title: "Transcriptional profiling of the human monocyte-to-macrophage differentiation and polarization: new molecules and patterns of gene expression."
@@ -112,6 +114,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Interferon-gamma (type II interferon) is the canonical inducer of
       classical M1 activation, and the IFN-gamma/STAT1-IRF1 response module is a
@@ -131,6 +134,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Classically activated M1 macrophages are the microbicidal effector pole:
       they kill intracellular and phagocytosed bacteria through reactive oxygen
@@ -149,6 +153,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Inducible nitric oxide synthase (NOS2/iNOS) is a canonical marker of
       classically activated M1 macrophages, producing nitric oxide as a

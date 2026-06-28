@@ -47,6 +47,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:34777681
         reference_title: "Interplay between Mitochondrial Metabolism and Cellular Redox State Dictates Cancer Cell Survival."
@@ -76,6 +77,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:34777681
         reference_title: "Interplay between Mitochondrial Metabolism and Cellular Redox State Dictates Cancer Cell Survival."
@@ -104,6 +106,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Aerobic respiration is the overarching oxygen-dependent energy-yielding
       program that this gene set executes end to end: the TCA-cycle enzymes (CS,
@@ -125,6 +128,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Nearly all gene products in the Hallmark OXPHOS set localise to the
       mitochondrion (ETC complex subunits, ATP-synthase subunits, TCA-cycle
@@ -142,6 +146,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Several TCA-cycle enzymes are members of the set - succinate dehydrogenase
       (SDHA/B/C/D, which doubles as ETC complex II) plus CS, ACO2, IDH3A/3B/3G,

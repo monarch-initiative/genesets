@@ -38,6 +38,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:34198949
         reference_title: "Molecular Pathogenesis of Pulmonary Fibrosis, with Focus on Pathways Related to TGF-β and the Ubiquitin-Proteasome Pathway."
@@ -70,6 +71,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:25745043
         reference_title: "Mode of action of nintedanib in the treatment of idiopathic pulmonary fibrosis."
@@ -100,6 +102,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The extracellular matrix is the cellular compartment into which the
       effector gene products of this pathway are secreted and assembled. In
@@ -119,6 +122,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:21719092
         reference_title: "Idiopathic pulmonary fibrosis."
@@ -150,6 +154,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:34198949
         reference_title: "Molecular Pathogenesis of Pulmonary Fibrosis, with Focus on Pathways Related to TGF-β and the Ubiquitin-Proteasome Pathway."
@@ -197,6 +202,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     evidence:
       - reference: PMID:25745043
         reference_title: "Mode of action of nintedanib in the treatment of idiopathic pulmonary fibrosis."

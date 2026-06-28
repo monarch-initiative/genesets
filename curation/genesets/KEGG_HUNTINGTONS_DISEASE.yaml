@@ -37,6 +37,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:31013638
         reference_title: "Oxidative Stress: A Key Modulator in Neurodegenerative Diseases."
@@ -60,6 +61,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       A large fraction of KEGG HD pathway members (NADH dehydrogenase subunits,
       cytochrome bc1 complex subunits, COX subunits, ATP synthase subunits) are
@@ -76,6 +78,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Transcriptional dysregulation is a defining mechanistic arm of the KEGG
       Huntington's disease pathway. Mutant HTT sequesters and inhibits CBP
@@ -94,6 +97,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       CASP3, CASP9, CYCS, and BCL2-family members in the KEGG HD pathway
       encode canonical intrinsic apoptosis components. Apoptosis is shared
@@ -109,6 +113,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Formation of intranuclear inclusion bodies by misfolded polyglutamine-
       expanded mutant HTT is the defining molecular hallmark of Huntington's
@@ -130,6 +135,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Striatal neuron death by apoptosis is the central downstream outcome of
       the KEGG Huntington's disease pathway. This is a curator_added term

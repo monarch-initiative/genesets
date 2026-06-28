@@ -71,6 +71,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:20713713
         reference_title: "Core epithelial-to-mesenchymal transition interactome gene-expression signature is associated with claudin-low and metaplastic breast cancer subtypes."
@@ -99,6 +100,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Positive regulation of EMT is core to the full mesenchymal pole and is the
       key contrast with the partial-EMT middle pole of this series: the COMPLETE
@@ -121,6 +123,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:23251436
         reference_title: "Meta-analysis of gene expression signatures defining the epithelial to mesenchymal transition during cancer progression."
@@ -150,6 +153,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Remodeling of the extracellular matrix is an enabling arm of the mesenchymal
       program: mesenchymal cells deposit fibronectin (FN1) and secrete the
@@ -170,6 +174,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Loss of intercellular adhesion is the sharpest CONTRAST between the
       mesenchymal pole and the epithelial pole: completing EMT requires severing

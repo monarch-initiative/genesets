@@ -36,6 +36,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:29321659
         reference_title: "Epidermal growth factor receptor and EGFRvIII in glioblastoma: signaling pathways and targeted therapies."
@@ -64,6 +65,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       CDKN2A (p16/p14ARF), CDK4, CDK6, CCND1, RB1, and E2F transcription factors
       in the KEGG glioma pathway constitute the core G1/S cell-cycle entry and
@@ -81,6 +83,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:12580545
         reference_title: "Targeted molecular therapy of GBM."
@@ -108,6 +111,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:22512247
         reference_title: "Glioblastoma--a moving target."
@@ -135,6 +139,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       CDKN2A deletion (removing p16INK4A inhibition of CDK4/6) and CDK4/CDK6
       amplification are among the highest-frequency events in glioma, directly

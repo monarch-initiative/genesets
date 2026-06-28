@@ -30,6 +30,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     evidence:
       - reference: PMID:12846805
         reference_title: The X-box binding protein-1 transcription factor is required for plasma cell differentiation and the unfolded protein response.
@@ -49,6 +50,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Plasma cells undergo massive expansion of rough endoplasmic reticulum to
       support high-level immunoglobulin synthesis and secretion. The ER is a
@@ -62,6 +64,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Plasma cells are the terminal effectors of the humoral immune response,
       which is shared across B-lineage cells. This term is broader than
@@ -74,6 +77,7 @@ associations:
     confidence: medium
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Protein secretion is the general process by which plasma cells export
       immunoglobulins. While the term is broadly applicable to many secretory
@@ -87,6 +91,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       The unfolded protein response (UPR) / ER stress response is activated
       during plasma cell differentiation to accommodate the massive increase in
@@ -116,6 +121,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: curator_added
+    insight: confirmatory
     curator_note: >-
       Plasma cells represent the terminally differentiated endpoint of B cell
       differentiation. Marker genes that distinguish plasma cells from earlier

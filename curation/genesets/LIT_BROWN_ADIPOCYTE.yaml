@@ -62,6 +62,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:18719582
         reference_title: "PRDM16 controls a brown fat/skeletal muscle switch."
@@ -90,6 +91,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:22796012
         reference_title: "Beige adipocytes are a distinct type of thermogenic fat cell in mouse and human."
@@ -119,6 +121,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Brown adipocytes are exceptionally mitochondria-dense — the high
       mitochondrial content (the source of their brown colour) houses the UCP1
@@ -137,6 +140,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The biochemical heart of brown-fat thermogenesis is UCP1-mediated proton
       leak: UCP1 transports protons back across the inner mitochondrial membrane,
@@ -155,6 +159,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Cold exposure (via sympathetic/beta-adrenergic signalling) is the
       physiological trigger that activates the brown-fat thermogenic program, and
@@ -172,6 +177,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: mechanistic
     curator_note: >-
       Brown adipocytes are specialised for lipid CATABOLISM rather than storage:
       fatty acids liberated from their multilocular droplets are oxidised in the

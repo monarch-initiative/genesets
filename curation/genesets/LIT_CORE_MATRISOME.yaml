@@ -42,6 +42,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Extracellular matrix organization is the canonical process the core matrisome
       executes: the collagens, ECM glycoproteins (FN1, FBN1, ELN, THBS1, laminins)
@@ -61,6 +62,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:22159717
         reference_title: "The matrisome: in silico definition and in vivo characterization by proteomics of normal and tumor extracellular matrices."
@@ -91,6 +93,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:22159717
         reference_title: "The matrisome: in silico definition and in vivo characterization by proteomics of normal and tumor extracellular matrices."
@@ -132,6 +135,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Collagen fibril organization is a real, characteristic sub-process of the core
       matrisome: the fibrillar collagens (COL1A1, COL1A2, COL3A1, COL5) and their
@@ -149,6 +153,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Many core-matrisome glycoproteins (fibronectin FN1, laminins, thrombospondin
       THBS1) are adhesive ligands through which cells attach to the ECM via integrins,

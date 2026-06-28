@@ -32,6 +32,7 @@ associations:
     confidence: high
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     evidence:
       - reference: PMID:32709961
         reference_title: "Brain energy rescue: an emerging therapeutic concept for neurodegenerative disorders of ageing."
@@ -51,6 +52,7 @@ associations:
     confidence: high
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       A large fraction of KEGG AD pathway members (COX subunits, NADH
       dehydrogenase subunits, ATP synthase subunits, cytochrome bc1
@@ -64,6 +66,7 @@ associations:
     confidence: high
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       APP, PSEN1, PSEN2, BACE1, and ADAM10 are all members of the KEGG
       AD pathway and directly participate in amyloid precursor protein
@@ -77,6 +80,7 @@ associations:
     confidence: medium
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       CASP3, CASP9, BAD, and BCL2-family members in the KEGG AD pathway
       encode canonical intrinsic apoptosis components. Apoptosis is
@@ -91,6 +95,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: curator_added
+    insight: confirmatory
     curator_note: >-
       Neuronal cell death by apoptosis is the central downstream outcome
       of the KEGG Alzheimer's disease pathway. Added as curator_added
@@ -105,6 +110,7 @@ associations:
     confidence: medium
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Voltage-gated calcium channels, RYR3, and ITPR1/2/3 (inositol
       trisphosphate receptors) feature in the KEGG AD pathway calcium

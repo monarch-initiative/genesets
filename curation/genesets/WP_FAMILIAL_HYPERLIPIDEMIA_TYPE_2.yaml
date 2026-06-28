@@ -40,6 +40,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:29219151
         reference_title: "Familial hypercholesterolaemia."
@@ -66,6 +67,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Cholesterol homeostasis (GO:0042632) captures the steady-state
       regulatory axis that is disrupted in familial hypercholesterolemia.
@@ -88,6 +90,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:38125244
         reference_title: "Familial Hypercholesterolemia: A Literature Review of the Pathophysiology and Current and Novel Treatments."
@@ -116,6 +119,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The LDL particle (GO:0034362) is the cholesterol ester-rich
       lipoprotein particle that accumulates in plasma in familial
@@ -137,6 +141,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Lipid transport (GO:0006869) is enriched in this gene set because
       multiple members encode apolipoproteins and other proteins involved
@@ -158,6 +163,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Negative regulation of cholesterol biosynthetic process (GO:0045541)
       captures a mechanistic arm central to the Brown-Goldstein model of

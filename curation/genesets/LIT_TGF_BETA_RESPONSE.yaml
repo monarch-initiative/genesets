@@ -53,6 +53,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:11279127
         reference_title: "Identification of novel TGF-beta /Smad gene targets in dermal fibroblasts using a combined cDNA microarray/promoter transactivation approach."
@@ -84,6 +85,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:11279127
         reference_title: "Identification of novel TGF-beta /Smad gene targets in dermal fibroblasts using a combined cDNA microarray/promoter transactivation approach."
@@ -114,6 +116,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The upstream signaling event that defines the set: TGF-beta ligand binding to
       the TGF-beta receptor activates receptor-regulated SMADs and drives the
@@ -132,6 +135,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The pro-fibrotic output of the program and the dominant functional axis of
       this fibroblast-derived signature: TGF-beta/SMAD induction of the fibrillar
@@ -153,6 +157,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       TGF-beta is the canonical inducer of epithelial-to-mesenchymal transition, and
       the SMAD-driven response upregulates EMT effectors (e.g. SERPINE1/PAI-1, TGFBI
