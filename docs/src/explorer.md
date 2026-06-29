@@ -1,8 +1,9 @@
 # Web Explorer
 
-The explorer is a local browser for workflow report bundles. It does not run
-enrichment itself. It reads `summary.yaml`, query metadata, GMT query genes,
-and Parquet result/diff files from one or more existing report directories.
+The explorer is a local browser for workflow report bundles. It is not deployed
+yet, and it does not run enrichment itself. It reads `summary.yaml`, query
+metadata, GMT query genes, and Parquet result/diff files from one or more
+existing report directories.
 
 Install or run with the optional explorer dependencies:
 
@@ -55,6 +56,8 @@ go-impact`. The summary points to:
 If no bundle path is supplied, the explorer looks for
 `notebooks/generated/*/summary.yaml`.
 
+For the artifact contract, see [Report Bundles](report-bundles.md).
+
 ## Current Views
 
 The first screen ranks gene sets. The table can be searched and filtered by
@@ -85,3 +88,18 @@ genes on demand.
 The web explorer belongs to the workflow layer. It is a reader over report
 artifacts and DuckDB queries; it should not add web-specific behavior to the
 Rust enrichment kernel.
+
+## Relationship To Curated Gene Set Browsing
+
+The current explorer browses eval report bundles. A curated gene set browser is
+a related but separate surface: it should read validated interpretation YAML or
+generated JSON from `curation/`, then render one page per curated gene set plus
+indexes by context, collection, category, and recovery status.
+
+Both browsers can share workflow-layer tooling and static assets, but they
+should keep different input contracts:
+
+- eval explorer: `summary.yaml` plus Parquet report artifacts;
+- curated browser: LinkML-validated YAML plus generated corpus indexes.
+
+See [Static Browser Plan](curation/browser-plan.md).

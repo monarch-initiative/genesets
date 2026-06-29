@@ -1,7 +1,7 @@
 [book]
-title = "genesets-rs"
+title = "GeneSets Enrichment, Evals, and Curation"
 authors = ["genesets-rs contributors"]
-description = "A fast, ontology-neutral gene set enrichment CLI and eval framework."
+description = "A fast gene set enrichment engine, workflow/report layer, local eval explorer, and curated interpretation corpus."
 language = "en"
 src = "docs/src"
 

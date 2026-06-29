@@ -15,7 +15,9 @@ logic:
 - querying result Parquet with DuckDB;
 - computing global report diagnostics such as GO term coverage and terms that
   are scorable but never appear as significant enrichment hits;
-- generating report summaries for docs, notebooks, and web views.
+- generating report summaries for docs, notebooks, and web views;
+- validating curated interpretations and, eventually, generating curated
+  corpus browser pages.
 
 ## Local Use
 
@@ -91,6 +93,14 @@ or `just browser-contributes` to open one analysis directly.
 ```bash
 uv run --project python/genesets-workflows --extra explorer \
   genesets-workflows explore notebooks/generated/go_iba_impact_expression5000_diverse
+```
+
+Use the curation commands when the task is adjudicating or validating curated
+GO interpretations:
+
+```bash
+uv run --project python/genesets-workflows --extra curation \
+  genesets-workflows curate --help
 ```
 
 ## Global Diagnostics
@@ -199,8 +209,8 @@ batch abstractions before Python grows tight bindings.
 
 ## Artifact Layout
 
-Workflow outputs should be predictable so notebooks, docs, CI jobs, and a
-future web viewer can consume the same products:
+Workflow outputs should be predictable so notebooks, docs, CI jobs, and web
+viewers can consume the same products:
 
 ```text
 run-dir/
@@ -268,3 +278,8 @@ The web explorer follows the same model: select a run directory, read
 `summary.yaml`, query Parquet with DuckDB, and render threshold crossings,
 timing, top changed targets, enrichment rows, and query genes. No web-specific
 behavior enters the Rust enrichment kernel.
+
+The curated gene set browser should follow the same separation. Validate the
+YAML corpus, materialize a JSON read model, and generate static pages or a
+client-side browser from that model. Do not move curation or browser behavior
+into the Rust enrichment core.

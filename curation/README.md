@@ -1,13 +1,16 @@
-# Curated GO Interpretations of Non-GO Gene Sets
+# Curated Gene Set Interpretations
 
 Curated, validated GO-term interpretations of non-GO MSigDB gene sets. The
-corpus is deliberately diverse: C8 single-cell cell-type signatures (immune,
-epithelial, and hepatic), plus a C2 curated disease pathway and a C7 cytokine
-perturbation contrast — exercising the ontology-agnostic `contexts` (cell type,
-tissue, disease, chemical perturbagen). Each `genesets/<SET>.yaml` records, per
-GO term, a curator judgment (role category, confidence, specificity) and
-optional verbatim literature evidence. The data doubles as a precision/recall
-gold standard for `genesets-rs`.
+corpus is deliberately diverse: C8 single-cell cell-type signatures, KEGG
+legacy disease and pathway sets, Reactome and Hallmark sets, and a C7 cytokine
+perturbation contrast. These exercise ontology-grounded `contexts` such as cell
+type, tissue, disease, phenotype, experimental condition, and perturbagen.
+
+Each `genesets/<SET>.yaml` records, per GO term, a curator judgment
+(role category, confidence, specificity), recovery status, enrichment stats,
+and optional verbatim literature evidence. The data doubles as a
+precision/recall gold standard for `genesets-rs` and as source content for a
+future curated gene set browser.
 
 ## Layout
 - `schema/genesets_interpretation.yaml` - LinkML schema (source of truth).
