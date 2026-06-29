@@ -1,0 +1,161 @@
+gene_set_id: LIT:CD8_EFFECTOR_T_CELL
+gene_set_name: CD8_EFFECTOR_T_CELL
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:CD8_TCELL_EXHAUSTION
+series_role: effector
+description: >-
+  Literature-defined cell-state ACTIVITY signature of acute-antigen effector
+  cytotoxic CD8+ T cells, the functional effector program profiled by Wherry,
+  Ha, Kaech, Ahmed et al. (Immunity 2007, PMID:17950003) when they compared the
+  gene-expression profiles of dysfunctional, exhausted lymphocytic
+  choriomeningitis virus (LCMV)-specific CD8+ T cells from chronic infection to
+  FUNCTIONAL LCMV-specific effector and memory CD8+ T cells generated after
+  acute infection. Unlike MSigDB causal/driver disease pathway sets, the members
+  here are the READOUT of an ACTIVE program, not driver mutations: they are the
+  transcripts UP (high) in the antigen-activated, cytotoxic effector CD8 state.
+  The signature is dominated by the canonical effector/cytotoxic markers — the
+  cytotoxic granule effectors GZMB, GZMA, PRF1 and (in human) GNLY, the
+  killer-lectin/degranulation markers NKG7 and KLRG1, the death-ligand FASLG,
+  the hallmark effector cytokine IFNG (interferon-gamma), the master effector
+  transcription factor TBX21 (T-bet), and the terminal-effector chemokine
+  receptor CX3CR1. Because the member genes literally carry the GO annotations
+  for the processes the effector state executes (cytotoxic killing, IFN-gamma
+  production, antiviral defense), enrichment recovers those processes
+  (annotation_supported) rather than leaving them as gaps. This set is the
+  EFFECTOR pole of a two-state SERIES: it is paired with the EXHAUSTED CD8 T cell
+  signature (series_role exhausted) from the same defining experiment, where the
+  effector program is progressively lost as cells become exhausted during chronic
+  antigen exposure. DISEASE RELEVANCE: loss of this effector cytotoxic program is
+  the core lesion of T cell exhaustion in chronic viral infection and cancer, and
+  its reinvigoration is the intended outcome of checkpoint-blockade immunotherapy.
+  The signature was defined in the LCMV mouse model; we curate the
+  human-orthologous program and keep the taxon human per corpus convention (of
+  note, the cytotoxic effector GNLY/granulysin has no mouse ortholog and is a
+  human-specific member).
+contexts:
+  - term:
+      id: CL:0001050
+      label: effector CD8-positive, alpha-beta T cell
+    context_type: cell_type
+    role_note: >-
+      The signature reads out the acute-antigen effector cytotoxic state of the
+      CD8-positive, alpha-beta T cell rather than any single disease. This is the
+      functional effector pole generated after acute infection (the comparator
+      against which exhaustion was defined), so the effector CD8 T cell type is
+      the anchoring context rather than one MONDO disease; its contrasting pole in
+      the series is the exhausted CD8 T cell state of chronic infection.
+associations:
+  - term:
+      id: GO:0001913
+      label: T cell mediated cytotoxicity
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:17950003
+        reference_title: "Molecular signature of CD8+ T cell exhaustion during chronic viral infection."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "functional LCMV-specific effector and memory CD8(+) T cells generated after acute infection"
+        explanation: >-
+          The gene set is, by definition, the UP readout of the FUNCTIONAL
+          effector CD8 T cells that the authors generated after acute LCMV
+          infection and used as the functional comparator for exhaustion. The
+          defining function of these functional effector CD8 cells is contact-
+          dependent cytotoxic killing of antigen-bearing target cells, executed by
+          the cytotoxic-granule and death-ligand effectors that dominate this
+          signature (GZMB, GZMA, PRF1, GNLY, NKG7, FASLG); these genes carry the
+          T cell mediated cytotoxicity annotation, so enrichment recovers the term
+          (annotation_supported). This is the central ACTIVE effector function of
+          the set, not a driver lesion, and it is precisely the function that is
+          lost at the contrasting exhausted pole of the series.
+    curator_note: >-
+      Kept core and cell_type_specific because cytotoxic killing of infected
+      target cells is the single defining effector function of the antigen-
+      activated CD8 T cell, and the cytotoxic granule/death-ligand effectors that
+      mediate it are the dominant members of this UP signature.
+  - term:
+      id: GO:0042110
+      label: T cell activation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The effector signature is, by construction, the antigen-ACTIVATED state of
+      the CD8 T cell: it is the program induced after acute infection drives naive
+      cells to differentiate into functional effectors. T cell activation is thus
+      a central process the set reads out, and the effector member genes carry the
+      annotation, so enrichment recovers it (annotation_supported). specificity is
+      broadly_expressed because activation is a generic property of every
+      responding T cell and is not unique to the cytotoxic effector state.
+  - term:
+      id: GO:0032609
+      label: type II interferon production
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Production of interferon-gamma (type II interferon) is, alongside cytotoxic
+      killing, a hallmark effector function of acute-antigen CD8 T cells, and the
+      effector cytokine gene IFNG is a canonical member of this UP signature. The
+      member genes carry the annotation, so enrichment recovers it
+      (annotation_supported). Scored lineage_shared rather than cell_type_specific
+      because IFN-gamma production is shared with Th1 CD4 and NK cells; it is kept
+      core because it is one of the two defining effector outputs (killing plus
+      IFN-gamma) that are coordinately lost upon exhaustion.
+  - term:
+      id: GO:0051607
+      label: defense response to virus
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The signature was defined in functional effector CD8 T cells responding to
+      acute LCMV infection, and antiviral defense is the physiological purpose the
+      effector cytotoxic and IFN-gamma programs serve. Several effector/
+      interferon-associated members carry the defense response to virus
+      annotation, so enrichment recovers it (annotation_supported). Scored
+      supporting rather than core, and broadly_expressed, because antiviral
+      defense is a downstream purpose shared with innate and other adaptive
+      effectors rather than the cell-type-defining effector function itself.
+  - term:
+      id: GO:0002711
+      label: positive regulation of T cell mediated immunity
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Functional effector CD8 T cells actively amplify and positively drive T cell
+      mediated immunity (clonal effector expansion, effector cytokine output and
+      target killing), so this regulatory process is a genuine part of the active
+      effector program and belongs in a complete interpretation. It is recorded as
+      an annotation_gap rather than annotation_supported because the relevant
+      effector genes ARE in the set (e.g. IFNG, TBX21, the cytotoxic effectors)
+      but their GO annotations capture the direct effector functions (cytotoxicity,
+      IFN-gamma production) rather than this higher-level positive-regulation term;
+      the gap is GO's (a GO annotation curation target), so the term is
+      curator_added and not recovered by enrichment.

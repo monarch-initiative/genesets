@@ -1,0 +1,202 @@
+gene_set_id: MSIGDB:WP_SUDDEN_INFANT_DEATH_SYNDROME_SIDS_SUSCEPTIBILITY_PATHWAYS
+gene_set_name: WP_SUDDEN_INFANT_DEATH_SYNDROME_SIDS_SUSCEPTIBILITY_PATHWAYS
+collection: C2:CP:WIKIPATHWAYS
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 159
+description: >-
+  WikiPathways SIDS susceptibility pathways gene set (MSigDB C2 curated gene
+  set). This is a disease susceptibility pathway gene set, not a cell-type
+  signature. Spanning 159 genes, it captures the major mechanistic arms
+  implicated in Sudden Infant Death Syndrome: (1) cardiac-conduction ion
+  channels whose loss- or gain-of-function mutations prolong the QT interval
+  or otherwise disturb cardiac rhythm (SCN5A/Nav1.5, KCNQ1, KCNH2/hERG,
+  KCNE1, KCNE2), (2) serotonergic (5-HT) brainstem signalling components
+  (SLC6A4 serotonin transporter, HTR1A, HTR2A, HTR1B serotonin receptors)
+  whose deficits impair the arousal response to hypoxia and hypercarbia,
+  (3) autonomic nervous system developmental and signalling genes (PHOX2B,
+  RET, EDN3, EDNRB) governing brainstem respiratory and cardiovascular
+  control, and (4) immune/infection-response and metabolic stress genes whose
+  dysregulation can precipitate acute physiological decompensation in a
+  vulnerable infant.
+contexts:
+  - term:
+      id: MONDO:1010116
+      label: sudden unexpected infant death
+    context_type: disease
+associations:
+  - term:
+      id: GO:0061337
+      label: cardiac conduction
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:17340630
+        reference_title: "Sudden Infant Death Syndrome: review of implicated genetic factors."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "genes for ion channel proteins based on electrocardiographic evidence of prolonged QT intervals in SIDS victims"
+        explanation: >-
+          The WikiPathways SIDS susceptibility gene set is anchored by ion
+          channel genes whose mutations disrupt cardiac conduction: SCN5A
+          (Nav1.5), KCNQ1 (LQT1), KCNH2/hERG (LQT2), KCNE1 (LQT5), and
+          KCNE2 (LQT6). This comprehensive review of genetic factors in SIDS
+          explicitly identifies prolonged QT intervals as a primary
+          electrophysiological finding in SIDS victims and proposes cardiac ion
+          channel gene variants as a first-category genetic risk factor,
+          directly supporting cardiac conduction as the dominant core
+          biological process in this gene set.
+    curator_note: >-
+      Impaired cardiac conduction — specifically prolonged ventricular
+      repolarisation manifesting as long-QT syndrome — is the best-established
+      genetic mechanism for at least a fraction of SIDS cases. KCNQ1, KCNH2,
+      SCN5A, KCNE1, and KCNE2 are all members of this gene set and are directly
+      annotated to cardiac conduction in GOA-human, making enrichment recovery
+      of GO:0061337 straightforward.
+  - term:
+      id: GO:0035725
+      label: sodium ion transmembrane transport
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:26916278
+        reference_title: "The role of mutations in the SCN5A gene in cardiomyopathies."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Since 1995 several hundred mutations in this gene have been found to be causative for inherited arrhythmias including Long QT syndrome, Brugada syndrome, cardiac conduction disease, sudden infant death syndrome, etc."
+        explanation: >-
+          SCN5A encodes Nav1.5, the primary cardiac voltage-gated sodium
+          channel, and is a direct member of the WikiPathways SIDS
+          susceptibility gene set. This review of SCN5A-associated
+          cardiomyopathies confirms that SCN5A mutations cause sudden infant
+          death syndrome and documents the channel's role in sodium ion
+          transmembrane transport underlying cardiac action potential
+          depolarisation. SCN5A is annotated to GO:0035725 in GOA-human,
+          ensuring enrichment recovery of this term from the gene set.
+    curator_note: >-
+      SCN5A (Nav1.5) is the primary cardiac sodium channel and a direct SIDS
+      susceptibility gene; loss-of-function variants cause Brugada
+      syndrome/LQT3-type SIDS and gain-of-function variants cause LQT3.
+      The gene set additionally contains potassium channel genes (KCNQ1, KCNH2)
+      whose repolarising currents interact tightly with the sodium current;
+      both ion-species' transmembrane transport terms are biologically core
+      to the SIDS cardiac arm. Sodium ion transmembrane transport is selected
+      as the more specific representative because SCN5A is the gene most
+      directly implicated in SIDS.
+  - term:
+      id: GO:0001518
+      label: voltage-gated sodium channel complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      SCN5A (Nav1.5) and its regulatory beta-subunits (SCN1B, SCN4B), all of
+      which are present in the SIDS susceptibility gene set, localise to the
+      voltage-gated sodium channel complex in cardiomyocytes. Nav1.5 is the
+      pore-forming alpha-subunit and its complex with beta-subunits is
+      annotated to GO:0001518 in GOA-human. This cellular-component term
+      captures the dominant ion-channel complex through which SCN5A mutations
+      exert their arrhythmogenic effect in SIDS.
+  - term:
+      id: GO:0007210
+      label: serotonin receptor signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:21152449
+        reference_title: "Serotonin in the sudden infant death syndrome."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "The serotonergic neuromodulator system has roles in the control of cardiac autonomic and respiratory function, as well as now being identified as abnormal in infants with SIDS."
+        explanation: >-
+          Multiple serotonin-system genes are members of the WikiPathways SIDS
+          susceptibility set: SLC6A4 (serotonin transporter), HTR1A, HTR2A,
+          and HTR1B (serotonin receptors). This review directly states that the
+          serotonergic system controls cardiac autonomic and respiratory
+          function and is abnormal in SIDS infants, establishing serotonin
+          receptor signalling as a well-supported supporting biological process.
+          The HTR genes are annotated to GO:0007210 in GOA-human, enabling
+          enrichment recovery.
+    curator_note: >-
+      Post-mortem studies of SIDS victims show decreased serotonergic receptor
+      binding in brainstem nuclei (Kinney et al. triple-risk model). The SIDS
+      susceptibility gene set includes SLC6A4, HTR1A, HTR2A, and HTR1B,
+      which collectively encode the key transporter and receptor proteins of
+      the 5-HT system implicated in brainstem homeostatic control. This is
+      classified as supporting_process rather than core_process because the
+      serotonergic arm is one of two major etiological hypotheses (alongside
+      the cardiac ion channel arm), and not all SIDS cases involve serotonergic
+      dysfunction.
+  - term:
+      id: GO:0043576
+      label: regulation of respiratory gaseous exchange
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:29908886
+        reference_title: >-
+          The potential role of substance P in brainstem homeostatic control in
+          the pathogenesis of sudden infant death syndrome (SIDS).
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Victims of sudden infant death syndrome (SIDS) are believed to have an underlying dysfunction in medullary homeostatic control that impairs critical responses to life threatening challenges such as hypoxia, hypercarbia and asphyxia, often during a sleep period."
+        explanation: >-
+          Brainstem regulation of respiratory gaseous exchange — specifically
+          the medullary homeostatic response to hypoxia and hypercarbia — is
+          a central mechanism proposed for SIDS pathogenesis. The WikiPathways
+          SIDS susceptibility set includes PHOX2B (paired-like homeobox 2b,
+          the master regulator of autonomic neurons in the respiratory centre),
+          RET, EDN3, and EDNRB, several of which carry annotations to
+          regulation of respiratory system processes in GOA-human, supporting
+          enrichment recovery of this term.
+    curator_note: >-
+      The failure of the infant to arouse and correct hypoxia/hypercarbia is
+      the proximate mechanism of death in SIDS. Brainstem control of
+      respiratory gaseous exchange is therefore core to the SIDS aetiology
+      but is classified here as supporting_process because it is mediated
+      primarily through the serotonergic and autonomic developmental genes
+      (PHOX2B, RET) whose GO annotations may not be sufficiently deep to
+      recover this precise term at high enrichment significance from only
+      159 genes.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance as an
+      enrichment hit reflects ribosomal protein subunit genes or other broadly
+      expressed housekeeping genes incidentally present in the WikiPathways SIDS
+      susceptibility gene set. It does not reflect a SIDS-specific function
+      and is recorded here to flag this non-informative enrichment result.

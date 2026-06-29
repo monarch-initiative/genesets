@@ -1,0 +1,175 @@
+gene_set_id: MSIGDB:KEGG_CHRONIC_MYELOID_LEUKEMIA
+gene_set_name: KEGG_CHRONIC_MYELOID_LEUKEMIA
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy chronic myeloid leukemia pathway gene set (MSigDB C2 curated gene set).
+  This is a blood cancer disease pathway gene set, not a cell-type signature. The member
+  genes encode signaling proteins activated by the BCR-ABL1 fusion tyrosine kinase (the
+  product of the Philadelphia chromosome t(9;22)(q34;q11) translocation), hematopoietic
+  growth-factor receptors, RAS/MAPK proliferative signaling components (RAS, RAF,
+  MAP2K, MAPK), PI3K-AKT survival effectors, JAK-STAT transcriptional activators, and
+  core apoptosis regulators (BCL2-family, CASP3, CYCS), reflecting the major mechanistic
+  arms of the KEGG chronic myeloid leukemia pathway: BCR-ABL1-driven constitutive
+  tyrosine kinase signaling, RAS/MAPK-mediated proliferation, PI3K-AKT survival
+  signaling, JAK-STAT-dependent transcription, and apoptosis evasion.
+contexts:
+  - term:
+      id: MONDO:0011996
+      label: chronic myeloid leukemia
+    context_type: disease
+  - term:
+      id: UBERON:0002371
+      label: bone marrow
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0000165
+      label: MAPK cascade
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:22156549
+        reference_title: "Molecular pathways: BCR-ABL."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "several compounds can hit the RAS pathway and the resulting mitogen-activated protein (MAP) extracellular signal-regulated kinase (ERK)1/2 (MEK) and MAP kinase activation"
+        explanation: >-
+          BCR-ABL1 constitutively activates the RAS/RAF/MEK/ERK MAPK cascade through
+          adaptor proteins GRB2 and SOS. This review of BCR-ABL molecular pathways
+          (Cilloni & Saglio, Clin Cancer Res 2012) directly documents MAP kinase
+          activation as a key downstream effector of BCR-ABL1 that drives proliferation
+          and survival of CML leukemic cells, placing the MAPK cascade at the center
+          of the BCR-ABL1 oncogenic signaling network.
+    curator_note: >-
+      The MAPK cascade is the primary proliferative signaling arm downstream of
+      BCR-ABL1 in CML. RAS, RAF, MAP2K, and MAPK members are encoded in the KEGG CML
+      pathway and are constitutively activated by BCR-ABL1 through GRB2/SOS adaptor
+      coupling. While the MAPK cascade is broadly expressed and not CML-specific, its
+      constitutive activation is a direct consequence of the BCR-ABL1 oncogene and is
+      mechanistically core to CML pathogenesis.
+  - term:
+      id: GO:0042127
+      label: regulation of cell population proliferation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Uncontrolled myeloid progenitor proliferation is the defining feature of CML
+      chronic phase. BCR-ABL1 drives constitutive proliferative signaling through the
+      MAPK and PI3K-AKT axes, causing the massive leukocytosis characteristic of CML.
+      Genes in the KEGG CML pathway encoding RAS-family GTPases, RAF kinases, PI3K
+      subunits, and MYC are annotated to regulation of cell population proliferation or
+      its children in GOA-human, making this a well-supported core_process association.
+  - term:
+      id: GO:0043491
+      label: phosphatidylinositol 3-kinase/protein kinase B signal transduction
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:22156549
+        reference_title: "Molecular pathways: BCR-ABL."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "the phosphoinositide 3-kinase (PI3K)/AKT pathway can be effectively blocked by mTOR inhibitors"
+        explanation: >-
+          This review of BCR-ABL signaling pathways explicitly identifies the PI3K/AKT
+          pathway as an abnormally activated downstream effector of BCR-ABL1 in CML,
+          and notes it as a therapeutic target. The PI3K/AKT axis promotes leukemic
+          cell survival by suppressing apoptosis and supporting cell growth.
+    curator_note: >-
+      The PI3K/AKT axis is activated downstream of BCR-ABL1 and promotes leukemic
+      cell survival and resistance to apoptosis in CML. PI3K and AKT subunits encoded
+      in the KEGG CML pathway are annotated to this term in GOA-human. The pathway is
+      broadly expressed but represents a mechanistically significant survival arm that
+      contributes to BCR-ABL1-mediated apoptosis evasion and is a validated therapeutic
+      target (mTOR inhibitors) in CML.
+  - term:
+      id: GO:0007259
+      label: cell surface receptor signaling pathway via JAK-STAT
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      BCR-ABL1 activates STAT5 both directly through tyrosine phosphorylation and
+      indirectly via JAK2 activation. STAT5 is a primary transcriptional effector in
+      CML that drives expression of antiapoptotic genes (BCL-XL/BCL2L1) and
+      proliferation-promoting genes (MYC, CCND1). JAK-STAT signaling genes in the
+      KEGG CML pathway (JAK2, STAT5A, STAT5B) are annotated to this GO term in
+      GOA-human. While JAK-STAT is broadly expressed, its constitutive activation is
+      a mechanistically critical effector of BCR-ABL1 in CML pathogenesis.
+  - term:
+      id: GO:0006915
+      label: apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      BCL2-family members, CASP3, CASP9, and CYCS in the KEGG CML pathway encode
+      canonical apoptosis regulators. Evasion of apoptosis through BCR-ABL1-driven
+      PI3K-AKT signaling and STAT5-mediated upregulation of BCL-XL is a key survival
+      mechanism for CML leukemic cells. Apoptosis is broadly expressed across many
+      cancer pathway gene sets and is not CML-specific, but its suppression by
+      BCR-ABL1 signaling is a significant mechanistic component of CML pathogenesis.
+  - term:
+      id: GO:0030099
+      label: myeloid cell differentiation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      In CML chronic phase, myeloid differentiation is partially preserved but
+      progressively impaired, culminating in a complete differentiation block at blast
+      crisis. BCR-ABL1 suppresses normal myeloid differentiation programs through
+      multiple mechanisms, including STAT5 activation and MYC upregulation. Key KEGG
+      CML pathway genes regulate myeloid differentiation, but GOA-human annotations
+      map these genes predominantly to proliferative and signaling terms rather than
+      to myeloid cell differentiation (GO:0030099) directly. This is an annotation_gap:
+      the biological association is genuine and worsens with disease progression, but
+      enrichment cannot surface it because the gene-level GO annotations are incomplete
+      at this process term.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation appears as a non-specific enrichment hit driven by ribosomal protein
+      subunit genes present in the KEGG CML pathway gene set. It is a ubiquitous
+      housekeeping process and does not reflect a CML-specific biological function.
+      Its recovery reflects ribosomal gene content in the KEGG pathway representation
+      and is a non-informative enrichment hit that should be flagged as nonspecific.

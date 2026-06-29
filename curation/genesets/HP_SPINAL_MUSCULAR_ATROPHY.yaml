@@ -1,0 +1,153 @@
+gene_set_id: MSIGDB:HP_SPINAL_MUSCULAR_ATROPHY
+gene_set_name: HP_SPINAL_MUSCULAR_ATROPHY
+collection: C5:HPO
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 24
+description: >-
+  MSigDB C5:HPO gene set for the Human Phenotype Ontology term spinal muscular
+  atrophy (HP:0007269): the human genes whose variation causes, or is associated
+  with, spinal muscular atrophy. This is a phenotype/disease-gene set, not a
+  single pathway. Its members span several mechanistically distinct arms of SMA
+  genetics: the canonical determinants SMN1/SMN2, whose product (the SMN
+  protein) is the assembly chaperone for spliceosomal Sm-class snRNPs; the
+  autosomal-dominant and X-linked SMA genes encoding the axonal-transport
+  machinery (DYNC1H1, BICD2 — cytoplasmic dynein/dynactin) and other motor-axon
+  and RNA-handling proteins (VAPB, IGHMBP2, UBA1, GARS1, PLEKHG5, ASAH1, TRPV4,
+  ATP7A). The shared biology of these causal genes converges on motor neuron
+  maintenance and survival rather than on one canonical pathway: SMN-dependent
+  snRNP/spliceosome biogenesis, motor-axon cargo transport, the neuromuscular
+  junction, and ultimately motor neuron degeneration. Because the set is keyed
+  on a clinical phenotype, several terms are genuine biology that GO annotation
+  captures only at a shallow (generic-parent) level; these are recorded below as
+  annotation_gap rather than downgraded.
+contexts:
+  - term:
+      id: HP:0007269
+      label: Spinal muscular atrophy
+    context_type: phenotype
+  - term:
+      id: MONDO:0001516
+      label: spinal muscular atrophy
+    context_type: disease
+associations:
+  - term:
+      id: GO:0000387
+      label: spliceosomal snRNP assembly
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:28642865
+        reference_title: "Spinal Muscular Atrophy: From Defective Chaperoning of snRNP Assembly to Neuromuscular Dysfunction."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Both complexes function as molecular chaperones, interacting with and assisting in the assembly of an Sm protein core onto small nuclear RNAs (snRNAs) to generate small nuclear ribonucleoproteins (snRNPs), which are the operating components of the spliceosome."
+        explanation: >-
+          The disease-determining genes SMN1/SMN2 encode the SMN protein, the
+          chaperone that assembles the Sm protein core onto snRNAs to build
+          spliceosomal snRNPs. Reduced snRNP assembly capacity is the defining
+          molecular lesion of SMA, making this the central biological process
+          for the causal genes in this phenotype set.
+  - term:
+      id: GO:0032797
+      label: SMN complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:15120993
+        reference_title: "The SMN complex."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "The SMN complex contains, in addition to SMN, at least six other proteins, named Gemins2-7, and plays an essential role in the assembly of the spliceosomal small nuclear ribonucleoproteins (snRNPs)."
+        explanation: >-
+          The SMN protein (product of the SMA-determining SMN1/SMN2 genes) is the
+          eponymous core subunit of the SMN complex, the multiprotein
+          assemblyosome that builds snRNPs. The complex is the characteristic
+          macromolecular structure defined by this gene set's primary causal
+          genes, so it is the core cellular component.
+  - term:
+      id: GO:0097049
+      label: motor neuron apoptotic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Selective degeneration and death of lower (alpha) motor neurons is the
+      pathological hallmark that defines spinal muscular atrophy, so this term is
+      biologically core and is NOT weakened on annotation grounds. It is an
+      annotation_gap: the causal genes ARE in the set, but their GO annotations
+      capture cell death only at generic parents (apoptotic process / neuron
+      apoptotic process) rather than at the motor-neuron-specific child, so
+      enrichment cannot recover this term from the current annotations. The
+      shallow annotation is GO/GOA's incompleteness, not evidence against the
+      association — this is a GO annotation curation target.
+  - term:
+      id: GO:0098930
+      label: axonal transport
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      The autosomal-dominant SMA genes DYNC1H1 (cytoplasmic dynein 1 heavy
+      chain) and BICD2 (a dynein-dynactin adaptor) encode core components of the
+      microtubule motor machinery that moves cargo along the axon. Long motor
+      axons are critically dependent on intact bidirectional axonal transport,
+      and disruption of this dynein-based transport is an established mechanism
+      in the dominant forms of SMA. These genes are annotated to axonal
+      transport (and its retrograde child), so the term is annotation-supported;
+      it is a real enabling process rather than the defining SMN lesion.
+  - term:
+      id: GO:0007528
+      label: neuromuscular junction development
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: mechanistic
+    curator_note: >-
+      Defective formation and maturation of the neuromuscular junction (delayed
+      maturation, reduced terminal arborization, denervation) is a consistent
+      and early feature of SMA across patient and model studies, making NMJ
+      development a genuine supporting process for this phenotype set. It is an
+      annotation_gap: the relevant causal genes are present but are not annotated
+      to NMJ development at sufficient depth for enrichment to recover the term,
+      so the gap is GO/GOA's rather than evidence against the biology.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation appears as a non-specific hit driven by SMA genes with
+      housekeeping roles in protein synthesis (e.g. GARS1, a glycyl-tRNA
+      synthetase that aminoacylates tRNA for translation, and IGHMBP2, an RNA
+      helicase associated with ribosomes). Translation is a ubiquitous
+      housekeeping process carried out by every cell and does not reflect a
+      spinal-muscular-atrophy-specific function of the gene set.

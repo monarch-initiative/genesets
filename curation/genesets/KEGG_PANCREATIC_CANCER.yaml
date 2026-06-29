@@ -1,0 +1,160 @@
+gene_set_id: MSIGDB:KEGG_PANCREATIC_CANCER
+gene_set_name: KEGG_PANCREATIC_CANCER
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy pancreatic cancer pathway gene set (MSigDB C2 curated gene set).
+  This is a cancer disease pathway gene set, not a cell-type signature. The member
+  genes are heavily enriched for KRAS/RAS-MAPK signaling components (KRAS, RAF1,
+  MAP2K1, MAPK1/3), PI3K/AKT effectors (PIK3CA, PIK3CG, AKT1/2, PTEN), TP53 and
+  cell-cycle regulators (CDKN2A, RB1, CDK4/6), TGF-beta pathway members (TGFB1/2,
+  SMAD2/3/4, TGFBR1/2), and apoptosis modulators (CASP3/9, BCL2-family), reflecting
+  the major mechanistic arms of the KEGG pancreatic cancer pathway: KRAS-driven
+  proliferation, PI3K/AKT survival signaling, TP53/CDKN2A-mediated cell-cycle
+  dysregulation, TGF-beta/SMAD invasion signaling, and apoptosis evasion.
+contexts:
+  - term:
+      id: MONDO:0005192
+      label: exocrine pancreatic carcinoma
+    context_type: disease
+  - term:
+      id: UBERON:0001264
+      label: pancreas
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0000165
+      label: MAPK cascade
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:33676749
+        reference_title: "KRAS mutation in pancreatic cancer."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "The KRAS oncogene plays a critical role in the initiation and maintenance of pancreatic tumors and its signaling network represents a major target for therapeutic intervention."
+        explanation: >-
+          The KEGG pancreatic cancer gene set is dominated by KRAS and its downstream
+          effectors in the RAF-MEK-ERK (MAPK) cascade. Oncogenic KRAS mutations occur
+          in approximately 95% of pancreatic ductal adenocarcinomas, constitutively
+          activating the MAPK cascade to drive tumour initiation and maintenance. This
+          NCI review (Luo 2021, Semin Oncol) directly supports MAPK cascade as the
+          central core process of this gene set.
+  - term:
+      id: GO:0042127
+      label: regulation of cell population proliferation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      CDKN2A (p16INK4A/p14ARF), CDK4, CDK6, CCND1, and the RB1/E2F axis are among
+      the KEGG pancreatic cancer pathway members that directly regulate cell cycle
+      entry and proliferative expansion. CDKN2A loss occurs in approximately 90% of
+      pancreatic cancers. Uncontrolled proliferation is the primary downstream
+      phenotype of constitutively active KRAS in pancreatic epithelia and is a
+      hallmark represented across multiple arms of the KEGG pathway gene set.
+  - term:
+      id: GO:0043491
+      label: phosphatidylinositol 3-kinase/protein kinase B signal transduction
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:37356222
+        reference_title: "The KRAS signaling pathway's impact on the characteristics of pancreatic cancer cells."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Several targeted therapies have been developed against kinase effectors particularly those in the MAPK and PI3K (phosphoinositide 3-kinase)/mTOR signaling pathways and several inhibitors are undergoing clinical studies at the moment."
+        explanation: >-
+          The KEGG pancreatic cancer gene set includes PIK3CA, PIK3CG, AKT1, AKT2,
+          and PTEN, which together constitute the core PI3K-AKT survival signalling
+          cassette. Downstream of oncogenic KRAS, PI3K/AKT signalling promotes cell
+          survival and suppresses apoptosis in pancreatic cancer. This review
+          confirms that both MAPK and PI3K pathway inhibition are primary therapeutic
+          strategies in KRAS-mutant pancreatic ductal adenocarcinoma, supporting this
+          term as a significant process in the KEGG gene set.
+  - term:
+      id: GO:0006915
+      label: apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      CASP3, CASP9, CYCS, BAD, BAX, and BCL2-family members in the KEGG pancreatic
+      cancer pathway encode canonical intrinsic and extrinsic apoptosis components.
+      Evasion of apoptosis, mediated partly through PI3K/AKT survival signalling and
+      TP53 loss, is a key step in pancreatic tumour progression. Apoptosis is a
+      broadly expressed process shared across many cancer disease pathway gene sets
+      and is not pancreatic cancer-specific, but is a mechanistically significant
+      component of this pathway representation.
+  - term:
+      id: GO:0051726
+      label: regulation of cell cycle
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      TP53, CDKN2A (p16/p14ARF), CDK4, CDK6, RB1, and E2F transcription factors in
+      the KEGG pancreatic cancer pathway are canonical cell-cycle regulators. Loss of
+      CDKN2A and TP53 mutation or loss are two of the four most frequent somatic
+      alterations in pancreatic ductal adenocarcinoma, alongside KRAS and SMAD4,
+      driving aberrant S-phase entry. Cell-cycle regulation is a broadly expressed
+      process and is not pancreatic cancer-specific, but is a mechanistically
+      significant component of this pathway.
+  - term:
+      id: GO:0007179
+      label: transforming growth factor beta receptor signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      TGFB1, TGFB2, SMAD2, SMAD3, SMAD4, TGFBR1, and TGFBR2 are members of the
+      KEGG pancreatic cancer pathway. SMAD4/DPC4 loss occurs in approximately 55% of
+      pancreatic cancers and is one of the canonical driver alterations. TGF-beta
+      signalling transitions from a tumour-suppressive role in early lesions to a
+      pro-invasive and immunosuppressive role in advanced disease. This pathway arm is
+      a distinct and important mechanistic component of the KEGG representation, not
+      specific to pancreatic cancer but prominent in this pathway gene set.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in enrichment
+      results for this gene set reflects ribosomal protein subunit genes present in
+      the KEGG pancreatic cancer pathway representation. It does not reflect a
+      pancreatic cancer-specific function and is a non-informative enrichment hit.

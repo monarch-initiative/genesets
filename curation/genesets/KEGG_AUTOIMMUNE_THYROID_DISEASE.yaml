@@ -1,0 +1,186 @@
+gene_set_id: MSIGDB:KEGG_AUTOIMMUNE_THYROID_DISEASE
+gene_set_name: KEGG_AUTOIMMUNE_THYROID_DISEASE
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy autoimmune thyroid disease pathway gene set (MSigDB C2 curated gene set).
+  This is a disease pathway gene set covering both Graves' disease (GD,
+  autoantibody-mediated hyperthyroidism) and Hashimoto's thyroiditis (HT,
+  T-cell-mediated hypothyroidism). Member genes are dominated by MHC class I and
+  II antigen-presentation machinery (HLA-A, HLA-B, HLA-DRA, HLA-DRB1, HLA-DQA1,
+  HLA-DQB1), cytotoxic T-cell effectors (granzymes, perforin), complement components,
+  and immunoglobulin-related genes, reflecting the major mechanistic arms of the
+  KEGG autoimmune thyroid disease pathway: MHC-restricted autoantigen presentation,
+  CD8+ cytotoxic T-cell killing of thyrocytes, B-cell activation and autoantibody
+  production against thyroid autoantigens (thyroglobulin, TPO, TSHR), and
+  complement-mediated cytotoxicity. Shared pathway members with the KEGG type 1
+  diabetes pathway include much of the MHC and cytotoxic machinery, reflecting the
+  common adaptive-immune core of organ-specific autoimmunity.
+contexts:
+  - term:
+      id: MONDO:0005623
+      label: autoimmune thyroid disease
+    context_type: disease
+  - term:
+      id: UBERON:0002046
+      label: thyroid gland
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0019882
+      label: antigen processing and presentation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      MHC class I and II molecules (HLA-A, HLA-B, HLA-C, HLA-DRA, HLA-DRB1,
+      HLA-DQA1, HLA-DQB1, HLA-DPA1, HLA-DPB1) are central members of the KEGG
+      autoimmune thyroid disease pathway. Antigen processing and presentation of
+      thyroid autoantigen-derived peptides (from thyroglobulin, TPO, and TSHR) to
+      autoreactive T cells by professional antigen-presenting cells is the initiating
+      step of the autoimmune cascade in both Graves' disease and Hashimoto's
+      thyroiditis, and is the defining feature that distinguishes this gene set as
+      an adaptive-immunity-driven autoimmune disease pathway.
+  - term:
+      id: GO:0001913
+      label: T cell mediated cytotoxicity
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:26836805
+        reference_title: "Regulatory B and T cell responses in patients with autoimmune thyroid disease and healthy controls."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "HT is primarily a T-cell mediated disease"
+        explanation: >-
+          Cytotoxic CD8+ T cells infiltrate the thyroid gland in Hashimoto's
+          thyroiditis and kill thyrocytes through granzyme/perforin granule
+          release and Fas/FasL-mediated apoptosis. This review from the Danish
+          Medical Journal confirms that HT is primarily T-cell mediated,
+          directly supporting T cell mediated cytotoxicity as a core process
+          for the Hashimoto's thyroiditis component of this pathway gene set.
+          Granzyme A (GZMA), granzyme B (GZMB), and perforin (PRF1) — canonical
+          effectors of cytotoxic T-cell killing — are members of the KEGG
+          autoimmune thyroid disease pathway.
+    curator_note: >-
+      Medium confidence because cytotoxic T-cell killing of thyrocytes is the
+      central pathogenic mechanism in Hashimoto's thyroiditis but is less prominent
+      in Graves' disease (where autoantibody-mediated stimulation dominates without
+      significant glandular destruction), making this term mechanistically core to
+      one sub-disease but not uniformly defining across both.
+  - term:
+      id: GO:0042613
+      label: MHC class II protein complex
+    aspect: cellular_component
+    category: core_component
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      HLA class II alpha and beta chain gene products (HLA-DRA, HLA-DRB1,
+      HLA-DQA1, HLA-DQB1, HLA-DPA1, HLA-DPB1) in the KEGG autoimmune thyroid
+      disease pathway assemble into MHC class II protein complexes on
+      antigen-presenting cells. These complexes present thyroid autoantigen-derived
+      peptides to autoreactive CD4+ T helper cells, orchestrating the adaptive
+      immune cascade. Medium confidence because enrichment also recovers MHC
+      class I complex members (HLA-A, HLA-B, HLA-C), and both class I and class
+      II complexes are represented in the gene set.
+  - term:
+      id: GO:0006955
+      label: immune response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Generic immune response term recovered because the KEGG autoimmune thyroid
+      disease pathway is dominated by immune effector genes (HLA molecules,
+      T-cell receptor components, cytokines, complement proteins, immunoglobulins).
+      Provides high-level contextual support for the autoimmune disease mechanism
+      but is not specific to autoimmune thyroid disease. Subsumed by the more
+      informative core_process and supporting_process terms in this file.
+  - term:
+      id: GO:0042113
+      label: B cell activation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:37047805
+        reference_title: "Characterizing the Interplay of Lymphocytes in Graves' Disease."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "The disease is primarily mediated by B cells, which produce autoantibodies against the thyroid-stimulating hormone receptor (TSHR), chronically stimulating it and leading to high levels of thyroid hormones in the body."
+        explanation: >-
+          B cell activation and subsequent differentiation into antibody-secreting
+          plasma cells drives the hallmark feature of Graves' disease: production
+          of pathogenic anti-TSHR autoantibodies. This 2023 review in the
+          International Journal of Molecular Sciences confirms B-cell-mediated
+          autoantibody production as the primary disease mechanism in GD. The
+          KEGG pathway includes immunoglobulin-related genes and TSHR, reflecting
+          this B-cell-to-autoantibody axis. Category is supporting_process rather
+          than core_process because T-cell-mediated cytotoxicity is the dominant
+          arm in Hashimoto's thyroiditis, making B-cell activation a major but
+          not universally defining feature across both disease sub-types in this
+          combined gene set.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment results reflects ribosomal protein subunit genes present in
+      the gene set. It does not reflect any disease-specific function of the
+      KEGG autoimmune thyroid disease pathway and is a non-informative
+      enrichment hit.
+  - term:
+      id: GO:0002250
+      label: adaptive immune response
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      The KEGG autoimmune thyroid disease pathway is mechanistically defined by
+      adaptive immunity: MHC-restricted antigen presentation activates autoreactive
+      T and B lymphocytes bearing somatically diversified receptors specific for
+      thyroid autoantigens, leading to cytotoxic killing (Hashimoto's thyroiditis)
+      and autoantibody production (Graves' disease). Adaptive immune response
+      (GO:0002250) is therefore biologically core for this pathway. It is an
+      annotation_gap: the major gene-set members carrying specific child-term
+      annotations (antigen processing and presentation, T cell mediated
+      cytotoxicity, B cell activation) are not all directly annotated to the
+      parent adaptive immune response in GOA-human — annotations are fragmented
+      across granular descendant terms rather than rolled up to this parent.
+      This is a GO annotation incompleteness issue, not evidence against the
+      association; it is a GO annotation curation target.

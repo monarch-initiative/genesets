@@ -1,0 +1,171 @@
+gene_set_id: MSIGDB:KEGG_RENAL_CELL_CARCINOMA
+gene_set_name: KEGG_RENAL_CELL_CARCINOMA
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy renal cell carcinoma pathway gene set (MSigDB C2 curated gene set).
+  This is a cancer disease pathway gene set, not a cell-type signature. The member
+  genes capture the dominant molecular mechanisms of renal cell carcinoma: VHL tumour
+  suppressor loss leading to constitutive HIF stabilisation (pseudohypoxia), VEGF-driven
+  angiogenesis, growth-factor receptor signalling via RAS/MAPK and PI3K/AKT pathways,
+  and cell cycle dysregulation. Clear-cell RCC (ccRCC), the most prevalent subtype,
+  is almost universally driven by VHL inactivation, making the HIF transcriptional
+  programme the defining molecular axis of this pathway representation.
+contexts:
+  - term:
+      id: MONDO:0005086
+      label: renal cell carcinoma
+    context_type: disease
+  - term:
+      id: UBERON:0002113
+      label: kidney
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0071456
+      label: cellular response to hypoxia
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:36106637
+        reference_title: "Von Hippel-Lindau disease: insights into oxygen sensing, protein degradation, and cancer."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Deregulation of HIF, and particularly HIF2, drives the growth of VHL-defective ccRCCs."
+        explanation: >-
+          VHL loss prevents HIF-alpha ubiquitination and proteasomal degradation,
+          causing constitutive HIF stabilisation in the absence of true hypoxia
+          (pseudohypoxia). This Kaelin 2022 JCI review establishes the VHL-HIF axis
+          as the defining oncogenic mechanism of ccRCC, directly supporting cellular
+          response to hypoxia as the core process represented by this gene set.
+    curator_note: >-
+      Cellular response to hypoxia (GO:0071456) is the most direct GO annotation
+      for the VHL-HIF axis that defines ccRCC. VHL loss mimics constitutive hypoxia
+      at the molecular level: HIF-alpha subunits accumulate, translocate to the
+      nucleus, and drive transcription of HIF target genes including VEGF, PDGF,
+      TGF-alpha, and EPO. VHL and HIF1A/HIF2A (EPAS1) are founding members of the
+      KEGG RCC pathway gene set.
+  - term:
+      id: GO:0001525
+      label: angiogenesis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:33020645
+        reference_title: "Targeting the HIF2-VEGF axis in renal cell carcinoma."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Multiple VEGF inhibitors are now approved for the treatment of ccRCC"
+        explanation: >-
+          VEGF is the principal HIF transcriptional target and the dominant driver
+          of tumour angiogenesis in ccRCC. The clinical approval of multiple VEGF
+          pathway inhibitors (sunitinib, pazopanib, axitinib, cabozantinib) as
+          first-line ccRCC therapies underscores angiogenesis as a mechanistically
+          core and clinically validated process in this gene set.
+    curator_note: >-
+      Angiogenesis is the primary therapeutic target in RCC: VEGF, VEGFR, and PDGFR
+      inhibitors constitute a major approved drug class for ccRCC. While angiogenesis
+      is shared across tumour types, the VEGF axis in RCC is uniquely driven by
+      constitutive HIF-alpha secondary to VHL loss, making it mechanistically core
+      in this pathway representation. Classified as lineage_shared rather than
+      cell_type_specific because HIF-driven VEGF expression occurs in many cancer
+      lineages, though VHL-dependent pseudohypoxia is most characteristic of RCC.
+  - term:
+      id: GO:0042127
+      label: regulation of cell population proliferation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Growth factor signalling downstream of HIF targets (EGFR, TGF-alpha) and
+      RAS/MAPK/PI3K pathway components in the KEGG RCC gene set collectively
+      drive cell cycle entry and proliferative expansion. Dysregulated proliferation
+      is a hallmark of RCC, but the underlying proliferative circuitry is shared
+      across many cancer types, making this a supporting rather than RCC-specific process.
+  - term:
+      id: GO:0000165
+      label: MAPK cascade
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      RAS-RAF-MEK-ERK cascade components (KRAS, RAF1, MAP2K1, MAPK1/3) appear in
+      the KEGG RCC pathway as mediators of proliferative signalling downstream of
+      growth factor receptors (EGFR, PDGFR, FGFR). Although activating MAPK mutations
+      are less prevalent in ccRCC than in melanoma or colorectal cancer, the pathway
+      is functionally active and cooperates with PI3K/AKT to promote RCC cell
+      survival and proliferation; mTOR (a downstream MAPK/PI3K node) is a validated
+      therapeutic target in RCC.
+  - term:
+      id: GO:0006915
+      label: apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      PI3K/AKT pathway members and HIF target genes in the KEGG RCC gene set
+      suppress apoptosis to promote tumour cell survival. BCL2-family members and
+      caspase regulators included in the KEGG RCC pathway contribute to apoptosis
+      evasion, a hallmark of cancer. Apoptotic process is broadly relevant across
+      cancer types and is therefore a supporting rather than RCC-specific process
+      in this gene set.
+  - term:
+      id: GO:0045766
+      label: positive regulation of angiogenesis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      VEGFA, the principal HIF transcriptional target and angiogenic driver in
+      ccRCC, is annotated to positive regulation of angiogenesis in GOA-human, as
+      are PDGFB, FLT1, and KDR — all present in the KEGG RCC gene set. This term
+      is mechanistically more precise than the parent GO:0001525 for capturing the
+      VEGF-axis biology of VHL-loss-driven RCC. Curated as annotation_gap because
+      not all KEGG RCC gene set members that mediate HIF-to-VEGF positive angiogenic
+      regulation carry this specific annotation in the current GOA-human release;
+      enrichment tools therefore do not reliably recover it, yet it describes a
+      core biological event.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in enrichment
+      results for this gene set reflects ribosomal protein subunit genes present in
+      the KEGG RCC pathway representation. It does not reflect an RCC-specific
+      function and is a non-informative enrichment hit.

@@ -1,0 +1,161 @@
+gene_set_id: MSIGDB:WP_FRAGILE_X_SYNDROME
+gene_set_name: WP_FRAGILE_X_SYNDROME
+collection: C2:CP:WIKIPATHWAYS
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 121
+description: >-
+  WikiPathways Fragile X syndrome gene set (MSigDB C2:CP:WIKIPATHWAYS, 121 genes).
+  Fragile X syndrome (FXS) is the most common inherited cause of intellectual
+  disability and a leading monogenic cause of autism spectrum disorder, arising
+  from CGG trinucleotide repeat expansion in FMR1 that silences FMRP (fragile X
+  mental retardation protein). FMRP is a selective RNA-binding protein that represses
+  local translation of hundreds of target mRNAs at synapses and regulates dendritic
+  mRNA transport in response to metabotropic glutamate receptor activation. Loss of
+  FMRP leads to excess and dysregulated synaptic protein synthesis, dendritic spine
+  dysmorphology, and impaired activity-dependent synaptic plasticity. The gene set
+  captures the major mechanistic arms: translational repression at synapses,
+  chemical synaptic transmission, dendritic spine structure, mRNA transport to
+  dendrites, and synaptic plasticity.
+contexts:
+  - term:
+      id: MONDO:0010383
+      label: fragile X syndrome
+    context_type: disease
+  - term:
+      id: UBERON:0000955
+      label: brain
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0017148
+      label: negative regulation of translation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:18957214
+        reference_title: "Fragile X syndrome: loss of local mRNA regulation alters synaptic development and function."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "FMRP is a selective RNA-binding protein that regulates the local translation of a subset of mRNAs at synapses in response to activation of Gp1 metabotropic glutamate receptors (mGluRs) and possibly other receptors. In the absence of FMRP, excess and dysregulated mRNA translation leads to altered synaptic function and loss of protein synthesis-dependent plasticity."
+        explanation: >-
+          FMRP is the defining molecular component of the FXS gene set: it acts as
+          a translational repressor at synapses, negatively regulating local
+          translation of hundreds of target mRNAs. Loss of this repression is the
+          core molecular pathomechanism of Fragile X syndrome, making negative
+          regulation of translation the most central functional annotation for this
+          gene set. Multiple gene-set members (FMR1, CYFIP1, NUFIP1, AGO1) carry
+          GO annotations to this term.
+  - term:
+      id: GO:0007268
+      label: chemical synaptic transmission
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:24346713
+        reference_title: "From FMRP function to potential therapies for fragile X syndrome."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "Numerous studies have demonstrated that FMRP interacts with both coding and non-coding RNAs and represses protein synthesis at dendritic and synaptic locations."
+        explanation: >-
+          The WikiPathways FX gene set includes numerous postsynaptic and
+          presynaptic components (mGluRs, AMPA receptors, NMDARs, CaMKII, SHANK
+          proteins, PSD-95) whose coordinated activity underlies chemical synaptic
+          transmission. Dysregulated local protein synthesis at synaptic locations
+          disrupts the fidelity of postsynaptic receptor signalling and is the
+          primary functional deficit in FXS.
+  - term:
+      id: GO:0043197
+      label: dendritic spine
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:29380377
+        reference_title: "Imbalance of synaptic actin dynamics as a key to fragile X syndrome?"
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "dysregulations of spine actin dynamics (reflected by alterations in dendritic spine morphology) can be found in a variety of neurological disorders ranging from schizophrenia to several forms of autism spectrum disorders such as fragile X syndrome (FXS)"
+        explanation: >-
+          Dendritic spines are the postsynaptic compartments where FMRP exerts its
+          translational repression. Spine dysmorphology — long, thin, immature
+          spines — is the defining neuropathological hallmark of FXS in postmortem
+          human tissue and in Fmr1 KO mice. The gene set includes postsynaptic
+          scaffolding genes (SHANK3, DLGAP1, DLG4/PSD-95) and cytoskeletal
+          regulators concentrated at dendritic spines.
+  - term:
+      id: GO:0051028
+      label: mRNA transport
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:29380377
+        reference_title: "Imbalance of synaptic actin dynamics as a key to fragile X syndrome?"
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "FMRP is involved in mRNA transport as well as regulation of local translation at the synapse"
+        explanation: >-
+          In addition to translational repression, FMRP participates in the
+          regulated dendritic transport of target mRNAs to synaptic sites.
+          Correct localisation of mRNAs to dendrites is a prerequisite for
+          activity-dependent local translation. Several FXS gene-set members encode
+          RNA-binding proteins and motor-complex components involved in mRNA
+          localisation (e.g. CYFIP1, FXR1, FXR2).
+  - term:
+      id: GO:0048167
+      label: regulation of synaptic plasticity
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      FMRP-dependent translational control underlies mGluR-mediated long-term
+      depression (mGluR-LTD) and other forms of synaptic plasticity. Loss of
+      FMRP results in exaggerated mGluR1/5-LTD and impaired NMDAR-dependent LTP,
+      collectively disrupting regulation of synaptic plasticity. Multiple
+      gene-set members are directly implicated in this process (GRM1, GRM5,
+      CYFIP1, SHANK3, CAMK2A). PMID:24346713 documents that "certain aspects of
+      mGluR1/5- and NMDAR-dependent synaptic plasticity (such as long-term
+      depression and long-term potentiation) are altered in Fmr1 KO mice."
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance as an
+      enrichment hit for the FXS gene set reflects the many ribosomal protein
+      and translation initiation factor genes in the set. Although FMRP regulates
+      local synaptic translation, the broader GO:0006412 term is not
+      meaningfully diagnostic for FXS biology; the specific child term GO:0017148
+      (negative regulation of translation) is the biologically informative
+      annotation and is recorded above as core_process.

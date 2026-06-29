@@ -1,0 +1,150 @@
+gene_set_id: MSIGDB:DANG_MYC_TARGETS_DN
+gene_set_name: DANG_MYC_TARGETS_DN
+collection: C2:CGP
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: DN
+series: SERIES:DANG_MYC_TARGETS
+series_role: down
+description: >-
+  MSigDB C2:CGP genetic-perturbation signature of genes DOWN-regulated by the MYC oncogene
+  (Zeller/Dang, PMID:14519204). This 31-gene set represents the DOWN component of the MYC
+  transcriptional program — genes whose promoters are bound by MYC and whose expression is
+  repressed upon MYC activation. The set is enriched for cell-adhesion molecules (integrins,
+  thrombospondin-1/THBS1), growth-arrest mediators (CDKN1A/p21), extracellular matrix
+  proteins, and differentiation-associated genes, reflecting MYC's oncogenic function of
+  silencing growth-restraint and differentiation programs. Unlike the MYC-UP set, the DN set
+  does not enrich for translation or ribosomal biogenesis; spurious translation enrichment
+  is not expected and is excluded here.
+contexts:
+  - term:
+      id: PR:P01106
+      label: Myc proto-oncogene protein (human)
+    context_type: genetic_perturbation
+    role_note: "oncogene activation (repressed targets)"
+associations:
+  - term:
+      id: GO:0007155
+      label: cell adhesion
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:14519204
+        reference_title: "An integrated database of genes responsive to the Myc oncogenic transcription factor: identification of direct genomic targets."
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: "Fifteen, which are downregulated, involve cell adhesion."
+        explanation: >-
+          The Zeller/Dang Myc Target Gene database paper directly documents that among
+          the functional clusters of Myc-responsive genes, fifteen downregulated entries
+          involve cell adhesion — establishing cell adhesion as the defining biological
+          process of the MYC-repressed transcriptome from which this MSigDB C2:CGP
+          gene set is derived. The snippet is from the "Features of Myc-responsive genes"
+          section of PMC328458.
+    curator_note: >-
+      Cell adhesion is the dominant functional class among MYC-repressed genes in the
+      Zeller/Dang database. The gene set includes integrins, thrombospondin-1 (THBS1),
+      and other ECM-adhesion proteins. MYC activation down-regulates these adhesion
+      molecules to reduce contact inhibition and promote anchorage-independent growth,
+      a hallmark of oncogenic transformation. The more specific child term cell-matrix
+      adhesion (GO:0007160) captures the integrin-ECM axis; the parent GO:0007155 is
+      the appropriate level for enrichment recovery from 31 genes.
+  - term:
+      id: GO:0008285
+      label: negative regulation of cell population proliferation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      CDKN1A (p21/CIP1) is the archetype MYC-repressed growth-arrest gene; MYC binds
+      the CDKN1A promoter and represses it through multiple mechanisms including Miz1
+      co-repressor recruitment. The broader gene set includes additional CDK inhibitors
+      and growth-arrest mediators. Negative regulation of cell population proliferation
+      is the core molecular consequence of MYC repressing this class of genes: when
+      these genes are silenced, cell cycle brakes are removed and cells proliferate
+      without restraint. The obsolete GO:0007050 (cell cycle arrest) was the previous
+      term; GO:0008285 is the appropriate current replacement.
+  - term:
+      id: GO:0031012
+      label: extracellular matrix
+    aspect: cellular_component
+    category: core_component
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      A substantial fraction of MYC-repressed genes encode extracellular matrix proteins
+      or ECM-associated proteins (THBS1/thrombospondin-1, fibronectin/FN1, collagens).
+      The extracellular matrix is the dominant cellular compartment represented in the
+      localisation annotations of this gene set, sharply contrasting with MYC-activated
+      targets which localise predominantly to the nucleus and ribosomes.
+  - term:
+      id: GO:0030154
+      label: cell differentiation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      MYC is a master suppressor of differentiation: it maintains cells in a proliferative,
+      undifferentiated state by repressing lineage-specific differentiation genes. Genes in
+      this DN set include differentiation-associated structural and signalling proteins whose
+      re-expression is required for terminal differentiation. Cell differentiation is
+      supporting rather than core because the specific differentiation lineage is
+      cell-context-dependent; the term is broadly applicable across the multiple tissues
+      where MYC-driven repression of differentiation has been documented.
+  - term:
+      id: GO:0030198
+      label: extracellular matrix organization
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Several MYC-repressed genes encode proteins that physically organise the extracellular
+      matrix (THBS1 regulates fibronectin and collagen fibre assembly; thrombospondin family
+      members modulate ECM remodelling). MYC repression of ECM organisation genes contributes
+      to reduced contact inhibition and altered tissue architecture in oncogenic contexts. This
+      BP term complements the CC term GO:0031012 by capturing the active process of ECM
+      assembly and remodelling, and is expected to be enrichment-recoverable alongside the
+      cell adhesion term.
+  - term:
+      id: GO:0071559
+      label: response to transforming growth factor beta
+    aspect: biological_process
+    category: supporting_process
+    confidence: low
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      TGF-beta signalling is functionally linked to the MYC-repressed programme: THBS1
+      (thrombospondin-1) is a major activator of latent TGF-beta in the extracellular
+      matrix, and TGF-beta signalling itself antagonises MYC-driven proliferation. However,
+      a 31-gene set is unlikely to recover this term from annotation-based enrichment alone
+      because few members carry explicit GO annotations to response to transforming growth
+      factor beta. This is added as an annotation_gap: the biological connection is real
+      (TGF-beta pathway intersection through THBS1 and related targets), but current GO
+      annotation coverage is insufficient for enrichment recovery. Confidence is low because
+      the link is indirect rather than through direct TGF-beta pathway membership of most
+      set genes.

@@ -1,0 +1,157 @@
+gene_set_id: MSIGDB:DESCARTES_FETAL_KIDNEY_PODOCYTES
+gene_set_name: DESCARTES_FETAL_KIDNEY_PODOCYTES
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of podocytes (glomerular visceral epithelial
+  cells) from human fetal kidney (Descartes atlas, MSigDB C8). Podocytes
+  are highly specialised, terminally differentiated epithelial cells that
+  wrap around glomerular capillaries, extending interdigitating foot
+  processes bridged by slit diaphragms to form the glomerular filtration
+  barrier. The signature reflects the core structural and physiological
+  identity of the podocyte: selective macromolecular filtration, slit-
+  diaphragm junction biology, and foot-process cytoskeletal organisation,
+  together with a developmental component appropriate for the fetal
+  tissue of origin.
+contexts:
+  - term:
+      id: CL:0000653
+      label: podocyte
+    context_type: cell_type
+  - term:
+      id: UBERON:0002113
+      label: kidney
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0003094
+      label: glomerular filtration
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:26084928
+        reference_title: "Podocyte endocytosis in the regulation of the glomerular filtration barrier."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "The podocyte, a specialized epithelial cell with interdigitating foot processes separated by a slit diaphragm, plays a vital role in regulating the passage of proteins from the capillary lumen to Bowman's space."
+        explanation: >-
+          Glomerular filtration is the defining physiological function of the
+          podocyte. Marker genes for podocytes, including nephrin (NPHS1) and
+          podocin (NPHS2), are directly annotated to glomerular filtration in
+          GOA-human, making annotation_supported the appropriate recovery
+          status. The snippet establishes the essential role of the podocyte
+          in the glomerular filtration process.
+    curator_note: >-
+      Glomerular filtration is the primary cellular function of the podocyte.
+      Podocyte markers dominate the gene set; their GO annotations make this
+      term readily recoverable by enrichment methods.
+  - term:
+      id: GO:0036057
+      label: slit diaphragm
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:16889564
+        reference_title: "Role of podocyte slit diaphragm as a filtration barrier."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "some recent studies have demonstrated that the slit diaphragm of the glomerular epithelial cell (podocyte) is the structure likely to be the barrier in the glomerular capillary wall"
+        explanation: >-
+          The slit diaphragm is the podocyte-specific intercellular junction
+          bridging adjacent foot processes and constituting the molecular
+          filtration barrier. Key podocyte marker genes — NPHS1 (nephrin) and
+          NPHS2 (podocin) — are annotated to GO:0036057 in GOA-human, making
+          this term annotation_supported and expected to be enriched by any
+          competent tool from this gene set.
+    curator_note: >-
+      The slit diaphragm is the hallmark cellular structure of the podocyte,
+      unique to glomerular visceral epithelial cells among mammalian cell
+      types. It is the most cell-type-specific component term recoverable
+      from this gene set.
+  - term:
+      id: GO:0042995
+      label: cell projection
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Podocyte foot processes are elaborate actin-supported cell projections
+      that interdigitate with those of neighbouring podocytes to wrap around
+      glomerular capillaries. Although GO:0042995 is a broad term (covering
+      axons, cilia, lamellipodia, etc.), it is annotated in GOA-human for
+      major podocyte cytoskeletal proteins such as ACTN4, MYO1E, and SYNPO,
+      making it recoverable from this marker set. The foot processes are so
+      architecturally central to podocyte identity that core_component
+      assignment is warranted despite the breadth of the parent term.
+  - term:
+      id: GO:0032835
+      label: glomerulus development
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Podocytes are the principal cell type driving glomerulogenesis. As the
+      gene set is derived from fetal kidney, developmental terms are
+      biologically appropriate and expected in enrichment results. Glomerulus
+      development is categorised as supporting_process because the gene set
+      is a marker signature of podocyte cellular identity rather than a
+      developmental-stage readout per se.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Ribosomal protein
+      and elongation factor genes are broadly expressed and inflate enrichment
+      p-values in metabolically active cell types. Appearance in enrichment
+      results does not reflect a podocyte-specific function and is a
+      non-informative housekeeping hit.
+  - term:
+      id: GO:0072112
+      label: podocyte differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Podocyte differentiation is the developmental process by which glomerular
+      epithelial progenitors acquire the specialised podocyte morphology,
+      including foot-process formation and slit-diaphragm assembly. As the
+      gene set derives from fetal kidney, the biological relevance of a
+      differentiation term is high. This is an annotation_gap: although key
+      podocyte transcription factors (WT1, MAFB, TCF21) and structural marker
+      genes are present in the gene set, many are annotated only to the
+      parent term 'cell differentiation' rather than the podocyte-specific
+      child GO:0072112. The curation incompleteness in GOA-human means
+      standard enrichment methods will under-recover this process term, even
+      though it is genuine biology for this fetal podocyte population.

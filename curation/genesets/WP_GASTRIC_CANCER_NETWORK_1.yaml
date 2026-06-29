@@ -1,0 +1,151 @@
+gene_set_id: MSIGDB:WP_GASTRIC_CANCER_NETWORK_1
+gene_set_name: WP_GASTRIC_CANCER_NETWORK_1
+collection: C2:CP:WIKIPATHWAYS
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 28
+description: >-
+  WikiPathways gastric cancer network 1 gene set (MSigDB C2:CP:WIKIPATHWAYS,
+  28 genes). This is a cancer disease pathway gene set representing the major
+  mechanistic arms of gastric (stomach) adenocarcinoma: growth factor receptor
+  signaling (EGFR, ERBB2/HER2) driving proliferation, Wnt/β-catenin pathway
+  components (CDH1/E-cadherin, CTNNB1/β-catenin) coupling cell adhesion loss
+  to oncogenic transcription, cell-cycle regulators (CCND1, CDK4/6), and
+  apoptosis modulators (TP53, BCL2 family). The gene set captures the canonical
+  oncogenic network activated in gastric carcinogenesis.
+contexts:
+  - term:
+      id: MONDO:0004950
+      label: gastric carcinoma
+    context_type: disease
+  - term:
+      id: UBERON:0000945
+      label: stomach
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0042127
+      label: regulation of cell population proliferation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:36209270
+        reference_title: "Signaling pathways and therapeutic interventions in gastric cancer."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Modern molecular classifications have uncovered the vital roles that signaling pathways, including EGFR/HER2, p53, PI3K, immune checkpoint pathways, and cell adhesion signaling molecules, play in GC tumorigenesis, progression, metastasis, and therapeutic responsiveness."
+        explanation: >-
+          EGFR and ERBB2 (HER2) are canonical members of this WikiPathways gastric
+          cancer gene set and are the primary growth factor receptors driving
+          gastric epithelial proliferation. HER2 amplification occurs in ~15–20%
+          of gastric adenocarcinomas and is the established molecular target of
+          trastuzumab. This comprehensive review directly supports regulation of
+          cell population proliferation as the dominant core biological process
+          represented by the growth factor receptor and downstream signaling
+          components of this gene set.
+    curator_note: >-
+      Growth factor receptors (EGFR, ERBB2) together with downstream RAS/MAPK
+      and PI3K/AKT effectors, and cell-cycle regulators (CCND1, CDK4/6), in this
+      WikiPathways gene set collectively drive gastric epithelial cell
+      proliferation. Uncontrolled proliferation downstream of these components
+      is the defining hallmark of gastric carcinoma represented in this pathway
+      network.
+  - term:
+      id: GO:0007049
+      label: cell cycle
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Cyclin D1 (CCND1) and CDK4/CDK6 complexes included in this WikiPathways
+      gastric cancer network directly regulate G1-to-S-phase cell cycle entry.
+      EGFR and ERBB2 receptor signaling activates the RAS/MAPK axis, which
+      in turn induces CCND1 expression and suppresses CDK inhibitors. Deregulation
+      of the cell cycle is a mechanistically fundamental event in gastric
+      carcinogenesis, positioned downstream of the receptor-level signaling
+      components that dominate this 28-gene set.
+  - term:
+      id: GO:0016055
+      label: Wnt signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:39849657
+        reference_title: "Helicobacter pylori and gastric cancer: mechanisms and new perspectives."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Our investigation of the molecular mechanisms reveals a complex network involving STAT3, NF-κB, Hippo, and Wnt/β-catenin pathways, which are dysregulated in gastric cancer caused by H. pylori."
+        explanation: >-
+          CDH1 (E-cadherin) and CTNNB1 (β-catenin) are central members of this
+          WikiPathways gene set. Loss of CDH1-mediated cell adhesion releases
+          membrane-bound CTNNB1, enabling its nuclear translocation and activation
+          of Wnt target gene transcription, directly coupling cell adhesion
+          disruption to Wnt/β-catenin-driven oncogenic signaling. This
+          comprehensive H. pylori and gastric cancer review explicitly identifies
+          Wnt/β-catenin as one of the core dysregulated pathways in gastric
+          carcinogenesis.
+    curator_note: >-
+      Wnt/β-catenin signaling is a well-established driver of gastric cancer but
+      is broadly expressed and not specific to this disease. It is categorized as
+      supporting_process rather than core_process because it operates upstream of,
+      and in crosstalk with, the proliferative and invasive phenotypes that are
+      the truly defining biological outcomes in this pathway representation.
+  - term:
+      id: GO:0007155
+      label: cell adhesion
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      CDH1 (E-cadherin), the principal determinant of gastric epithelial
+      cell-cell adhesion, is a central member of this gene set. Somatic and
+      germline loss-of-function of CDH1 is among the earliest and most frequent
+      events in diffuse-type gastric adenocarcinoma. Disruption of CDH1-mediated
+      adhesion releases β-catenin from the adherens junction complex and enables
+      invasive behaviour. Cell adhesion is a real and mechanistically central
+      process for this gene set, though not specific to gastric cancer.
+  - term:
+      id: GO:0006915
+      label: apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:39849657
+        reference_title: "Helicobacter pylori and gastric cancer: mechanisms and new perspectives."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Furthermore, we highlight the role of H. pylori in inducing oxidative stress, DNA damage, chronic inflammation, and cell apoptosis-key cellular events that pave the way for carcinogenesis."
+        explanation: >-
+          TP53 and BCL2-family members included in this WikiPathways gastric
+          cancer gene set encode canonical apoptosis regulators. TP53 loss-of-function
+          and BCL2 overexpression enable evasion of apoptosis, a key step in
+          gastric tumor progression. This is categorized as supporting_process
+          because apoptotic process is a broadly expressed pathway shared across
+          virtually all cancer disease gene sets and is not specific to gastric
+          carcinoma.

@@ -1,0 +1,184 @@
+gene_set_id: MSIGDB:KEGG_BLADDER_CANCER
+gene_set_name: KEGG_BLADDER_CANCER
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy bladder cancer pathway gene set (MSigDB C2 curated gene set).
+  This is a cancer disease pathway gene set, not a cell-type signature. The member
+  genes are heavily enriched for RAS/RAF/MAPK pathway components (HRAS, NRAS, RAF1,
+  MAP2K1/2, MAPK1/3), cell-cycle regulators and tumour suppressors from the RB/TP53
+  axis (RB1, TP53, CDKN2A, CDK4, MDM2, E2F family), PI3K/AKT survival effectors
+  (PIK3CA, PTEN, AKT1), VEGF-driven angiogenesis components (VEGFA, FLT1, KDR),
+  and ECM/invasion machinery (MMP family, integrin subunits), reflecting the major
+  mechanistic arms of the KEGG urinary bladder cancer pathway: RAS-MAPK-driven
+  proliferative signalling, RB/TP53-mediated cell-cycle control, VEGF-stimulated
+  tumour angiogenesis, ECM remodelling for local invasion, and apoptosis evasion.
+contexts:
+  - term:
+      id: MONDO:0004986
+      label: urinary bladder carcinoma
+    context_type: disease
+  - term:
+      id: UBERON:0001255
+      label: urinary bladder
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0000165
+      label: MAPK cascade
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:17158541
+        reference_title: "Molecular pathways in invasive bladder cancer: new insights into mechanisms, progression, and target identification."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "these tumors are generally characterized by alterations in the p53 and retinoblastoma (RB) pathways that normally regulate the cell cycle by interacting with the Ras-mitogen activated protein kinase signal transduction pathway"
+        explanation: >-
+          This Journal of Clinical Oncology review (Mitra et al. 2006) directly
+          identifies the Ras-MAPK signal transduction pathway as a central mechanistic
+          arm of invasive bladder cancer, co-operating with the RB/TP53 axis to drive
+          cell-cycle dysregulation. HRAS, NRAS, RAF1, MAP2K1/2, and MAPK1/3 (ERK1/2)
+          are represented in the KEGG bladder cancer gene set and encode the canonical
+          RAS-RAF-MEK-ERK cascade, supporting MAPK cascade as the dominant core process
+          in this pathway.
+    curator_note: >-
+      HRAS, NRAS, RAF1, MAP2K1, MAP2K2, MAPK1, and MAPK3 (ERK1/2) in the KEGG
+      bladder cancer pathway constitute the RAS-RAF-MEK-ERK cascade. Activating
+      mutations in RAS family members, particularly HRAS, are among the most
+      frequent somatic alterations in low-grade papillary urothelial carcinoma,
+      driving proliferative signalling downstream of growth factor receptors.
+      The MAPK cascade is the primary oncogenic signalling axis in this pathway
+      representation and is shared across many cancer types, though it carries
+      particular mechanistic weight in the KEGG bladder cancer pathway.
+  - term:
+      id: GO:0042127
+      label: regulation of cell population proliferation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The RB/TP53 arm of the KEGG bladder cancer pathway includes RB1, TP53,
+      CDKN2A (p16INK4a/p14ARF), CDK4, and E2F family members that directly
+      regulate G1/S cell-cycle entry and proliferative expansion. Loss of RB1
+      or TP53 function, and deletion of CDKN2A, are cardinal molecular events in
+      muscle-invasive bladder cancer. Constitutive MAPK signalling further
+      amplifies proliferation via cyclin D1 induction, making regulation of cell
+      population proliferation a core downstream output of all major oncogenic
+      axes represented in this gene set.
+  - term:
+      id: GO:0001525
+      label: angiogenesis
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:17158541
+        reference_title: "Molecular pathways in invasive bladder cancer: new insights into mechanisms, progression, and target identification."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Tumor angiogenesis further contributes to the neoplastic growth by providing a constant supply of oxygen and nutrients."
+        explanation: >-
+          This JCO review directly identifies tumour angiogenesis as a mechanistic
+          contributor to bladder cancer neoplastic growth. The KEGG bladder cancer
+          gene set includes VEGFA, FLT1 (VEGFR1), and KDR (VEGFR2) — the core
+          VEGF-receptor angiogenic axis — supporting angiogenesis as a meaningful
+          supporting process. Anti-VEGF approaches have been investigated in bladder
+          cancer clinical trials, though angiogenesis per se is not urothelial-specific.
+    curator_note: >-
+      VEGFA, FLT1 (VEGFR1), and KDR (VEGFR2) in the KEGG bladder cancer pathway
+      encode the primary VEGF-receptor angiogenic axis. Upregulation of VEGFA,
+      often driven by HIF1A under hypoxic conditions in invasive tumours, stimulates
+      endothelial proliferation and new vessel formation to support tumour growth.
+      Angiogenesis is a mechanistically significant arm of the KEGG pathway
+      representation but is broadly expressed across many solid tumours and is
+      not bladder-specific.
+  - term:
+      id: GO:0006915
+      label: apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      TP53, MDM2, CASP3, and BCL2-family members in the KEGG bladder cancer pathway
+      encode canonical apoptosis components. Inactivation of TP53 and RB1
+      simultaneously disrupts apoptosis checkpoints and allows unrestricted cell-cycle
+      progression, particularly in muscle-invasive disease. Evasion of apoptosis is a
+      key step in bladder tumour progression, but apoptotic process is broadly
+      expressed and shared across cancer types, not bladder-specific.
+  - term:
+      id: GO:0007155
+      label: cell adhesion
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The KEGG bladder cancer pathway includes integrin subunits and E-cadherin
+      (CDH1) whose altered expression underlies the epithelial-to-mesenchymal
+      transition and invasive phenotype of muscle-invasive urothelial carcinoma.
+      Disruption of cell adhesion is a prerequisite for local invasion and
+      subsequent metastasis, making cell adhesion a mechanistically relevant
+      supporting process in this pathway representation. The term is broadly
+      expressed and not urothelial-specific.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment results for this gene set reflects ribosomal protein subunit
+      genes present in the KEGG bladder cancer pathway representation. It does
+      not reflect a bladder-cancer-specific function and is a non-informative
+      enrichment hit.
+  - term:
+      id: GO:0031012
+      label: extracellular matrix
+    aspect: cellular_component
+    category: core_component
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      ECM remodelling by matrix metalloproteinases (MMP1, MMP2, MMP9) and ECM
+      adhesion through integrin subunits are mechanistically central to bladder
+      cancer invasion: degradation of the basement membrane and stromal ECM by
+      MMPs is a rate-limiting step in the transition from non-muscle-invasive to
+      muscle-invasive disease. These genes ARE members of the KEGG bladder cancer
+      set, but in GOA-human they are annotated primarily to processes (proteolysis,
+      ECM organisation) rather than to the extracellular matrix cellular-component
+      term itself. This is therefore an annotation_gap: the ECM is the dominant
+      cellular compartment involved in the invasion biology of this pathway, but
+      shallow cellular-component annotations mean enrichment analyses under-recover
+      it from this gene set. This is a GO annotation curation target.

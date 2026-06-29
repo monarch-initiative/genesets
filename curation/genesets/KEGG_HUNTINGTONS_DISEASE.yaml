@@ -1,0 +1,161 @@
+gene_set_id: MSIGDB:KEGG_HUNTINGTONS_DISEASE
+gene_set_name: KEGG_HUNTINGTONS_DISEASE
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy Huntington's disease pathway gene set (MSigDB C2 curated gene set).
+  This is a disease pathway gene set, not a cell-type signature. The member genes
+  are heavily enriched for mitochondrial electron-transport-chain subunits
+  (oxidative phosphorylation), transcriptional coactivators and repressors
+  (CBP/CREBBP, SP1, NCOR, HDAC families reflecting transcriptional dysregulation),
+  and apoptosis regulators, reflecting the major mechanistic arms of the KEGG
+  Huntington's disease pathway representation. Polyglutamine-expanded mutant
+  huntingtin (HTT) drives intranuclear inclusion body formation, and the resulting
+  transcriptional dysregulation and mitochondrial impairment converge on striatal
+  neuron death. As a legacy/core pathway it captures established mechanism and
+  omits more recently characterised arms such as selective autophagy/mitophagy.
+contexts:
+  - term:
+      id: MONDO:0007739
+      label: Huntington disease
+    context_type: disease
+  - term:
+      id: UBERON:0000955
+      label: brain
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0006119
+      label: oxidative phosphorylation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:31013638
+        reference_title: "Oxidative Stress: A Key Modulator in Neurodegenerative Diseases."
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: "Mitochondria play a key role in ATP supply to cells via oxidative phosphorylation, as well as synthesis of essential biological molecules. Various redox reactions catalyzed by enzymes take place in the oxidative phosphorylation process. An inefficient oxidative phosphorylation may generate reactive oxygen species (ROS), leading to mitochondrial dysfunction."
+        explanation: >-
+          The KEGG Huntington's disease pathway gene set is dominated by ETC
+          complex I–V and ATP-synthase subunits. Impaired oxidative phosphorylation
+          and the resulting mitochondrial dysfunction are core mechanistic features
+          of Huntington's disease pathophysiology alongside transcriptional
+          dysregulation. The abstract of this neurodegenerative oxidative-stress
+          review explicitly names HD among diseases caused by biochemical
+          alterations from oxidative stress and mitochondrial dysfunction.
+  - term:
+      id: GO:0005739
+      label: mitochondrion
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      A large fraction of KEGG HD pathway members (NADH dehydrogenase subunits,
+      cytochrome bc1 complex subunits, COX subunits, ATP synthase subunits) are
+      localised to the mitochondrion. Mitochondrial dysfunction driven by mutant
+      HTT-mediated impairment of the electron transport chain is a primary
+      hallmark of Huntington's disease pathology, making the mitochondrion the
+      dominant cellular compartment represented in this gene set.
+  - term:
+      id: GO:0006357
+      label: regulation of transcription by RNA polymerase II
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Transcriptional dysregulation is a defining mechanistic arm of the KEGG
+      Huntington's disease pathway. Mutant HTT sequesters and inhibits CBP
+      (CREBBP), a transcriptional coactivator with histone acetyltransferase
+      activity, and interacts with SP1 and TAFII130 to repress RNA Pol II-
+      dependent transcription. The KEGG HD pathway includes SP1, CREBBP,
+      NCOR1, NCOR2, and multiple HDAC and TAF subunits, all of which regulate
+      RNA Pol II-mediated transcription. This arm distinguishes the HD pathway
+      from other mitochondria-heavy KEGG neurodegeneration pathways.
+  - term:
+      id: GO:0006915
+      label: apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      CASP3, CASP9, CYCS, and BCL2-family members in the KEGG HD pathway
+      encode canonical intrinsic apoptosis components. Apoptosis is shared
+      across many disease contexts and is not HD-specific, but is a significant
+      mechanistic component of striatal neuron death in this pathway
+      representation.
+  - term:
+      id: GO:0070841
+      label: inclusion body assembly
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Formation of intranuclear inclusion bodies by misfolded polyglutamine-
+      expanded mutant HTT is the defining molecular hallmark of Huntington's
+      disease, distinguishing it from other neurodegenerative conditions. HTT
+      (huntingtin) is a member of the KEGG HD pathway and is annotated to
+      inclusion body assembly in GOA-human, but the term is annotation_gap
+      because the remaining majority of set members (ETC subunits, apoptosis
+      regulators, transcription factors) do not carry this annotation, making
+      enrichment recovery from the full gene set statistically impractical.
+      The shallow annotation reflects GO/GOA curation incompleteness rather
+      than absence of the biology — this is a high-priority GO annotation
+      curation target for HD genes.
+  - term:
+      id: GO:0051402
+      label: neuron apoptotic process
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Striatal neuron death by apoptosis is the central downstream outcome of
+      the KEGG Huntington's disease pathway. This is a curator_added term
+      because enrichment tools preferentially recover the parent term
+      (apoptotic process) rather than this neuron-restricted child. Key
+      apoptosis executors in the set (CASP3, CASP9, CYCS, BAX) are annotated
+      to the generic apoptotic process in GOA-human but not to neuron apoptotic
+      process, making the GO annotation too sparse to support enrichment recovery
+      of this more specific and biologically accurate term.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation appears as a non-specific enrichment hit driven by ribosomal
+      protein subunit genes present in the gene set. It is a ubiquitous
+      housekeeping process and does not reflect a disease-specific function of
+      the Huntington's disease pathway.

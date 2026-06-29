@@ -1,0 +1,171 @@
+gene_set_id: MSIGDB:KEGG_THYROID_CANCER
+gene_set_name: KEGG_THYROID_CANCER
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy thyroid cancer pathway gene set (MSigDB C2 curated gene set).
+  This is a cancer disease pathway gene set, not a cell-type signature. The member
+  genes are enriched for components of the RET/PTC–RAS–BRAF–MAPK signaling axis
+  (the dominant oncogenic driver in papillary thyroid carcinoma), the PAX8–PPARG
+  fusion and PAX8/NKX2-1 transcription factor network, CTNNB1/Wnt signaling
+  components, and regulators of cell proliferation. A defining biological feature
+  captured in this gene set is dedifferentiation: constitutive MAPK activation
+  leads to loss of thyroid-specific differentiation markers (NIS/SLC5A5,
+  thyroglobulin, TSH receptor), a clinically significant hallmark of
+  radioactive-iodine–refractory thyroid cancer. The PAX8-PPARG fusion, recurring
+  in follicular thyroid carcinomas, and activating CTNNB1 mutations, enriched in
+  anaplastic/poorly-differentiated carcinomas, provide additional mechanistic arms
+  in this gene set.
+contexts:
+  - term:
+      id: MONDO:0002108
+      label: thyroid cancer
+    context_type: disease
+  - term:
+      id: UBERON:0002046
+      label: thyroid gland
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0000165
+      label: MAPK cascade
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:33995657
+        reference_title: >-
+          Molecular mechanisms of radioactive iodine refractoriness in
+          differentiated thyroid cancer: Impaired sodium iodide symporter (NIS)
+          expression owing to altered signaling pathway activity and
+          intracellular localization of NIS.
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: >-
+          In thyroid cancer, the MAPK signaling pathway regulates cell
+          proliferation, growth, survival, and dedifferentiation.
+        explanation: >-
+          RET/PTC rearrangements and activating point mutations in NRAS and
+          BRAF V600E constitutively engage the MAPK cascade in the majority
+          of papillary thyroid carcinomas. This Theranostics 2021 review
+          (Oh & Ahn) directly states that the MAPK signaling pathway regulates
+          cell proliferation, growth, survival, and dedifferentiation in
+          thyroid cancer, confirming the MAPK cascade as the mechanistic core
+          of the KEGG thyroid cancer pathway gene set.
+  - term:
+      id: GO:0042127
+      label: regulation of cell population proliferation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Constitutive RAS–BRAF–MEK–ERK signaling drives uncontrolled follicular-
+      cell proliferation; MAPK activation downstream of RET/PTC fusions also
+      promotes cell-cycle entry. Regulation of cell population proliferation
+      is a direct downstream output of the core oncogenic signaling represented
+      in this gene set. While the term is broadly expressed, its appearance
+      here reflects the proliferative hallmark of thyroid carcinoma rather
+      than a generic association.
+  - term:
+      id: GO:0006357
+      label: regulation of transcription by RNA polymerase II
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      PAX8 and PPARG are RNA Pol II transcription factors whose fusion (PAX8-
+      PPARG) is a driver event in follicular thyroid carcinoma. NKX2-1/TTF1
+      is a homeodomain transcription factor essential for thyroid differentiation
+      gene expression, and CTNNB1 acts as a transcriptional co-activator through
+      TCF/LEF complexes in Wnt-active carcinomas. All three are annotated to
+      regulation of transcription by RNA Pol II. The term is broadly expressed
+      and not thyroid-cancer-specific, but reflects a mechanistically relevant
+      component of this pathway.
+  - term:
+      id: GO:0016055
+      label: Wnt signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Activating mutations in CTNNB1 (beta-catenin) stabilise beta-catenin and
+      constitutively activate Wnt target gene transcription; these mutations are
+      most prevalent in anaplastic/undifferentiated thyroid carcinoma and in a
+      subset of follicular carcinomas. APC is also included in the KEGG
+      representation. Wnt signaling is a shared cancer mechanism and not
+      thyroid-specific, but is a real mechanistic arm of this gene set.
+  - term:
+      id: GO:0030154
+      label: cell differentiation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Loss of thyroid follicular-cell differentiation—manifested as reduced NIS
+      expression, loss of thyroglobulin secretion, and TSH-receptor
+      downregulation—is the central clinical consequence of constitutive MAPK
+      and PI3K/AKT activation in advanced differentiated thyroid cancer and
+      anaplastic carcinoma. PAX8, NKX2-1/TTF1, and TSHR are differentiation
+      regulators encoded by genes in this pathway. Cell differentiation is
+      broadly expressed and captured here in the reverse (dedifferentiation)
+      sense; it is biologically real but not thyroid-specific.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment results for this gene set reflects ribosomal protein subunit
+      genes present in the KEGG thyroid cancer pathway representation. It does
+      not reflect a thyroid-cancer-specific function and is a non-informative
+      enrichment hit.
+  - term:
+      id: GO:0030878
+      label: thyroid gland development
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      PAX8 and NKX2-1/TTF1, both present in the KEGG thyroid cancer pathway,
+      are master regulators of thyroid gland development and are annotated to
+      GO:0030878 in GOA-human. However, their developmental-role annotations
+      are unlikely to be recovered by enrichment against a cancer pathway gene
+      set, because other KEGG pathway members do not carry thyroid-gland-
+      development annotations. The annotation gap is the mismatch between the
+      developmental biology these transcription factors embody and the cancer-
+      pathway framing of the gene set, not an absence of developmental
+      relevance. This is a GO annotation curation opportunity: more members
+      such as TSHR and SLC5A5 could be linked to thyroid gland development.

@@ -1,0 +1,158 @@
+gene_set_id: MSIGDB:HP_DEGENERATION_OF_ANTERIOR_HORN_CELLS
+gene_set_name: HP_DEGENERATION_OF_ANTERIOR_HORN_CELLS
+collection: C5:HPO
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 21
+description: >-
+  MSigDB C5:HPO phenotype gene set: human genes annotated to the Human Phenotype
+  Ontology term "Degeneration of anterior horn cells" (HP:0002398). The anterior
+  (ventral) horn of the spinal cord houses the cell bodies of lower motor
+  neurons, so this is a lower-motor-neuron-degeneration gene set rather than a
+  cell-type expression signature. The members are causal genes for spinal
+  muscular atrophy and related lower motor neuron disorders (e.g. SMN1, SMN2,
+  DYNC1H1, BICD2, VAPB, IGHMBP2, ASAH1, TRPV4). Their shared biology converges on
+  the maintenance and survival of spinal motor neurons: SMN-driven assembly of
+  spliceosomal snRNPs (whose deficiency selectively kills motor neurons in SMA,
+  the prototypic anterior-horn disease), dynein-based axonal transport, neuronal
+  process outgrowth, and ultimately the apoptotic death of motor neurons that
+  produces the degeneration phenotype.
+contexts:
+  - term:
+      id: HP:0002398
+      label: Degeneration of anterior horn cells
+    context_type: phenotype
+  - term:
+      id: UBERON:0002257
+      label: ventral horn of spinal cord
+    context_type: anatomical_structure
+    role_note: >-
+      The anterior horn of the spinal cord is the ventral (gray) horn, which
+      contains the lower motor neuron cell bodies that degenerate in this
+      phenotype.
+associations:
+  - term:
+      id: GO:0097049
+      label: motor neuron apoptotic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    evidence:
+      - reference: PMID:27260405
+        reference_title: "Neuron-specific knock-down of SMN1 causes neuron degeneration and death through an apoptotic mechanism."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "We show that genes of the classical apoptosis pathway are involved in the smn-1-mediated neuronal death, and that this phenotype can be rescued by the expression of human SMN1"
+        explanation: >-
+          The defining phenotype of this gene set is degeneration and death of
+          the lower motor neurons of the anterior horn. Using neuron-targeted
+          knock-down of the SMA gene smn-1/SMN1, this study shows that the
+          resulting motor neuron degeneration proceeds through the classical
+          apoptotic cell-death pathway and is rescued by human SMN1, establishing
+          motor neuron apoptosis as the cellular correlate of the anterior-horn
+          degeneration phenotype.
+    curator_note: >-
+      Apoptotic death of lower motor neurons is the defining downstream outcome
+      of this phenotype, so GO:0097049 (motor neuron apoptotic process, a child
+      of GO:0051402 neuron apoptotic process) is biologically core and is NOT
+      weakened on annotation grounds. It is recorded as an annotation_gap: the
+      relevant genes ARE in the set, but the apoptotic-death machinery they
+      engage is annotated in GOA-human predominantly to the generic parent
+      GO:0006915 (apoptotic process) rather than to this motor-neuron-specific
+      child term. The shallow annotation is GO/GOA's incompleteness, not evidence
+      against the association — this is a GO annotation curation target.
+  - term:
+      id: GO:0000387
+      label: spliceosomal snRNP assembly
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:29462610
+        reference_title: "Spinal muscular atrophy: Selective motor neuron loss and global defect in the assembly of ribonucleoproteins."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "The SMN protein is an essential molecular chaperone that is required for the biogenesis of multiple ribonucleoprotein (RNP) complexes including spliceosomal small nuclear RNPs (snRNPs). Reductions in SMN expression result in a reduced abundance of snRNPs and to downstream RNA splicing alterations."
+        explanation: >-
+          Spinal muscular atrophy, the prototypic anterior-horn degeneration
+          disease, is caused by loss of SMN protein. The canonical molecular
+          function of SMN is to act as the assembly chaperone for spliceosomal
+          snRNPs; reduced SMN lowers snRNP abundance and perturbs splicing,
+          which selectively compromises motor neuron survival. SMN1 and SMN2 are
+          members of this gene set and are annotated to GO:0000387 in GOA-human,
+          making spliceosomal snRNP assembly a core, annotation-supported process
+          for the set.
+    curator_note: >-
+      SMN1/SMN2 (and partner Gemin genes) are members of this set and carry
+      GO:0000387 (spliceosomal snRNP assembly) annotations in GOA-human, so the
+      term is enrichment-recoverable and annotation_supported. The process itself
+      is broadly expressed (snRNP biogenesis occurs in all nucleated cells), but
+      its disruption is selectively lethal to anterior-horn motor neurons in SMA,
+      which is why it is judged core rather than nonspecific. Category (core
+      biology) is orthogonal to specificity (broadly_expressed).
+  - term:
+      id: GO:0098930
+      label: axonal transport
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      The cytoplasmic dynein heavy chain DYNC1H1 and the dynein adaptor BICD2 are
+      members of this set and are annotated to axonal transport (GO:0098930) and
+      its retrograde child in GOA-human; dominant mutations in both cause
+      lower-motor-neuron forms of spinal muscular atrophy / SMA-LED. Motor
+      neurons have exceptionally long axons and are critically dependent on
+      microtubule-based axonal transport, so impaired transport is a genuine
+      enabling mechanism of anterior-horn degeneration. It is supporting rather
+      than core because the defining lesion is motor neuron death, and the term
+      is lineage_shared across neurons rather than specific to motor neurons.
+  - term:
+      id: GO:0007409
+      label: axonogenesis
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: mechanistic
+    curator_note: >-
+      Several members of this set (e.g. DYNC1H1, BICD2, TRPV4) participate in
+      neuronal process outgrowth and the establishment of motor axons, and
+      defective axon development / maintenance contributes to the failure of
+      anterior-horn motor neurons. The term is a supporting, lineage_shared
+      neuron-development process rather than the defining lesion. It is marked as
+      an annotation_gap because the relevant genes are in the set but are
+      annotated mainly to transport / cytoskeletal terms rather than directly to
+      GO:0007409 (axonogenesis) in GOA-human, so enrichment under-recovers it.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. It surfaces here only
+      because a few RNA-metabolism genes in the set (e.g. the helicase IGHMBP2,
+      which associates with ribosomes and tRNA) carry translation-related
+      annotations in GOA-human. It is not informative about the anterior-horn
+      degeneration phenotype and is recorded as nonspecific so that this generic
+      signal is not mistaken for disease-relevant biology.

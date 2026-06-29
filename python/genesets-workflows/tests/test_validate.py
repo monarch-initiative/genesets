@@ -1,6 +1,33 @@
 from pathlib import Path
 
-from genesets_workflows.curation import validate
+from genesets_workflows.curation import model, validate
+
+
+def test_term_ids_by_prefix_groups_and_skips_taxon():
+    interp = model.GeneSetInterpretation(
+        gene_set_id="LIT:X",
+        gene_set_name="X",
+        taxon=model.Term(id="NCBITaxon:9606", label="Homo sapiens"),
+        contexts=[
+            model.BiologicalContext(
+                term=model.Term(id="MONDO:0004976", label="amyotrophic lateral sclerosis"),
+                context_type="disease",
+            )
+        ],
+        associations=[
+            model.TermAssociation(
+                term=model.Term(id="GO:0006909", label="phagocytosis"),
+                seed_source="enrichment_recovered",
+            ),
+            model.TermAssociation(
+                term=model.Term(id="GO:0005764", label="lysosome"),
+                seed_source="enrichment_recovered",
+            ),
+        ],
+    )
+    by = validate.term_ids_by_prefix(interp)
+    assert by == {"MONDO": {"MONDO:0004976"}, "GO": {"GO:0006909", "GO:0005764"}}
+    assert "NCBITaxon" not in by
 
 
 def test_build_commands():

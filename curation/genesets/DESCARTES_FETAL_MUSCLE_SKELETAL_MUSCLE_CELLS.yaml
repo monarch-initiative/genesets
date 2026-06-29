@@ -1,0 +1,182 @@
+gene_set_id: MSIGDB:DESCARTES_FETAL_MUSCLE_SKELETAL_MUSCLE_CELLS
+gene_set_name: DESCARTES_FETAL_MUSCLE_SKELETAL_MUSCLE_CELLS
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+series: SERIES:MUSCLE_TYPE
+series_role: skeletal
+description: >-
+  Single-cell marker signature of skeletal muscle cells (myocytes/myofibers)
+  from human fetal skeletal muscle (Descartes atlas, MSigDB C8). Fetal skeletal
+  muscle cells are striated, voluntary-muscle lineage cells that arise from
+  myoblast fusion, progressively assemble sarcomeric contractile apparatus, and
+  undergo myogenesis to form mature multinucleated myofibers. They are
+  fundamentally distinct from cardiac muscle cells: contraction is voluntary,
+  innervated by somatic motor neurons, and sarcomere composition is dominated by
+  fetal/neonatal skeletal myosin heavy-chain isoforms (MYH3, MYH8) rather than
+  cardiac isoforms (MYH6, MYH7). The fetal context means these cells are in
+  active developmental transition, making myogenesis and fiber maturation
+  processes biologically prominent alongside structural contractile genes.
+contexts:
+  - term:
+      id: CL:0000188
+      label: cell of skeletal muscle
+    context_type: cell_type
+  - term:
+      id: UBERON:0001134
+      label: skeletal muscle tissue
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0003009
+      label: skeletal muscle contraction
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:29419405
+        reference_title: "Muscle Contraction."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "the filaments of actin and myosin that power their contraction are organized into repeating arrays, called sarcomeres, that have a striated microscopic appearance"
+        explanation: >-
+          Skeletal muscle contraction is the defining functional process of
+          skeletal myocytes and myofibers. This review establishes that skeletal
+          (and cardiac) striated muscle contracts via actin/myosin sarcomere
+          arrays. GO:0003009 is the skeletal-muscle-specific child of the
+          generic muscle contraction term and directly captures the core process
+          of this fetal skeletal muscle cell type. Crucially distinct from
+          cardiac muscle contraction (GO:0060048): both share the sarcomere
+          mechanism, but the cell type, isoforms, regulatory circuitry, and
+          voluntary versus autonomous control are entirely different.
+    curator_note: >-
+      Skeletal muscle contraction is the defining process of this cell type.
+      Fetal skeletal muscle cells are already assembling the contractile
+      apparatus at the developmental stages captured by the Descartes atlas;
+      this is the most specific GO term for their core function and is not
+      shared with cardiac or smooth muscle lineages.
+  - term:
+      id: GO:0030017
+      label: sarcomere
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The sarcomere is the repeating contractile unit of the myofibril and is
+      the defining ultrastructural hallmark of striated muscle cells, including
+      skeletal myofibers. Marker genes encoding sarcomeric proteins (MYH3, MYH8,
+      ACTA1, TNNI2, TNNT3) are prominent in fetal skeletal muscle signatures.
+      Shared structurally with cardiac muscle but with distinct isoform
+      composition; the term is cell-type-specific to the striated muscle lineage.
+  - term:
+      id: GO:0030016
+      label: myofibril
+    aspect: cellular_component
+    category: core_component
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Myofibrils are the highly organized bundles of sarcomeres that fill the
+      cytoplasm of skeletal muscle fibers. Formation of myofibrils is a key
+      step in myofiber maturation during fetal myogenesis. Enrichment of
+      myofibril-associated genes is characteristic of striated muscle marker
+      sets; medium confidence because enrichment of myofibril genes partially
+      overlaps with genes annotated to the sarcomere child term.
+  - term:
+      id: GO:0006936
+      label: muscle contraction
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Parent term of skeletal muscle contraction (GO:0003009); shared across
+      skeletal, cardiac, and smooth muscle lineages. Expected to appear in
+      enrichment results alongside the more specific skeletal muscle contraction
+      child term. Classified as supporting_process and lineage_shared rather than
+      core, because it is less specific than GO:0003009 for this cell type.
+  - term:
+      id: GO:0007519
+      label: skeletal muscle tissue development
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:31407867
+        reference_title: "Skeletal muscle: A review of molecular structure and function, in health and disease."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "molecular mechanisms underlying muscle tissue development (myogenesis), with an emphasis on satellite cells and muscle regeneration"
+        explanation: >-
+          Fetal skeletal muscle cells in the Descartes atlas represent cells
+          undergoing active myogenesis — fusion of myoblasts into myotubes and
+          progressive assembly of the contractile apparatus. This review
+          confirms that myogenesis is the central developmental programme of
+          skeletal muscle, directly supporting the inclusion of skeletal muscle
+          tissue development as a core process for this fetal signature.
+    curator_note: >-
+      Because the Descartes atlas captures fetal tissue, these skeletal muscle
+      cells are in an active developmental state, making skeletal muscle tissue
+      development a biologically core process rather than merely a supporting
+      or peripheral process. Medium confidence because enrichment tools may not
+      reliably recover developmental terms from marker sets dominated by
+      structural and contractile protein genes.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment results reflects highly expressed ribosomal protein genes
+      common to actively growing and differentiating cells such as fetal
+      skeletal muscle myocytes; not a skeletal-muscle-specific function.
+      Illustrates a non-informative housekeeping enrichment hit.
+  - term:
+      id: GO:0048741
+      label: skeletal muscle fiber development
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Skeletal muscle fiber development — the maturation of myotubes into
+      mature, fiber-type-specified muscle fibers — is biologically core to the
+      Descartes fetal skeletal muscle signature; fetal skeletal muscle cells
+      are precisely the transitional state this term describes. It is more
+      specific than GO:0007519 (skeletal muscle tissue development) and captures
+      the single-cell-level fiber maturation process. This is an annotation_gap:
+      key structural genes in this signature (MYH3, MYH8, ACTA1, TNNT3) are
+      annotated primarily to sarcomere/myofibril components and to muscle
+      contraction, but are not consistently annotated to this developmental
+      child term in GOA-human, reflecting incomplete GO annotation depth rather
+      than absence of the biological process. This represents a GO annotation
+      curation target.

@@ -1,0 +1,172 @@
+gene_set_id: MSIGDB:HAY_BONE_MARROW_PLATELET
+gene_set_name: HAY_BONE_MARROW_PLATELET
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of platelets from human bone marrow (Hay et al.,
+  MSigDB C8). Platelets are small, anucleate cell fragments derived from
+  megakaryocytes in the bone marrow via thrombopoiesis. They are the primary
+  cellular effectors of hemostasis and thrombosis, becoming activated upon
+  vascular injury to adhere to the subendothelial matrix, aggregate, and
+  release granule contents that propagate the hemostatic response and promote
+  fibrin clot formation.
+contexts:
+  - term:
+      id: CL:0000233
+      label: platelet
+    context_type: cell_type
+  - term:
+      id: UBERON:0002371
+      label: bone marrow
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0030168
+      label: platelet activation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:26926581
+        reference_title: "Platelet Physiology."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "The ability of activated platelets to adhere to an injured vessel wall and form aggregates was first described in the 19th century."
+        explanation: >-
+          Platelet activation is the defining functional response of platelets
+          upon vascular injury, encompassing shape change, adhesion, aggregation,
+          and granule release. It is the central core process of this platelet
+          marker gene set and is strongly expected to be enriched by genes
+          encoding surface glycoproteins (e.g. GP1BA, GP6), intracellular
+          signalling mediators, and cytoskeletal components that are hallmark
+          platelet markers.
+  - term:
+      id: GO:0007596
+      label: blood coagulation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:32682574
+        reference_title: "Interplay between platelets and coagulation."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Haemostasis is initiated by a damaged vessel wall, followed with a rapid adhesion, activation and aggregation of platelets to the exposed subendothelial extracellular matrix. At the same time, coagulation factors aggregate on the procoagulant surface of activated platelets to consolidate the platelet plug by forming a mesh of cross-linked fibrin."
+        explanation: >-
+          Platelets directly support blood coagulation by providing a
+          procoagulant phospholipid surface for coagulation factor complex
+          assembly and by releasing coagulation-promoting cargo stored in
+          alpha granules (fibrinogen, factor V, von Willebrand factor).
+          Blood coagulation is a core platelet function, shared more broadly
+          with the megakaryocyte lineage and with liver-derived coagulation
+          factors.
+  - term:
+      id: GO:0070527
+      label: platelet aggregation
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Platelet aggregation—the adhesion of one platelet to another mediated
+      primarily by integrin ITGA2B/ITGB3 and fibrinogen bridges—is a
+      mechanistic sub-process of platelet activation and hemostatic plug
+      formation. It is expected to be recovered as a supporting enrichment
+      term alongside the broader platelet activation parent (GO:0030168).
+      Specificity is cell_type_specific because homotypic platelet-platelet
+      aggregation of this form is unique to the platelet lineage.
+  - term:
+      id: GO:0031091
+      label: platelet alpha granule
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Platelet alpha granules are the most abundant secretory organelle of
+      platelets, containing hundreds of proteins including fibrinogen, von
+      Willebrand factor, P-selectin (SELP), platelet factor 4 (CXCL4), and
+      thrombospondin. Genes encoding alpha-granule cargo proteins are among
+      the strongest platelet marker genes in single-cell datasets and are
+      expected to drive robust enrichment of this cellular component term.
+      The platelet alpha granule is unique to the megakaryocyte/platelet
+      lineage and is the hallmark structural compartment of platelets.
+  - term:
+      id: GO:0007599
+      label: hemostasis
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Hemostasis is the overarching process that stops bleeding at sites of
+      vascular injury, encompassing platelet plug formation and blood
+      coagulation. As a parent term of both platelet activation and blood
+      coagulation it is expected to be recovered as a supporting enrichment
+      hit. It is classified as lineage_shared because hemostasis involves
+      coordinated contributions from platelets, coagulation factors (liver),
+      and endothelial cells, rather than being an exclusive platelet function.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Although mature
+      platelets are anucleate and lack the capacity for genomic
+      transcription, they retain functional ribosomes and megakaryocyte-
+      derived mRNAs and can synthesise proteins locally. Despite this
+      biological nuance, the appearance of translation in enrichment results
+      is non-specific: ribosomal protein genes are broadly expressed and
+      annotated to GO:0006412 across all cell types. Its recovery is an
+      expected non-informative enrichment artifact driven by highly expressed
+      ribosomal protein genes, not a platelet-specific functional signal.
+  - term:
+      id: GO:0002576
+      label: platelet degranulation
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Platelet degranulation—the regulated exocytosis of alpha, dense, and
+      lysosomal granules upon platelet activation—is a defining core process
+      of platelet biology and the principal mechanism by which platelets
+      amplify the hemostatic response. Numerous HAY_BONE_MARROW_PLATELET
+      member genes encode alpha-granule cargo proteins (e.g. CXCL4, SELP,
+      THBS1, VWF, FGA) that are products of degranulation. However, GO
+      annotation of these cargo genes is typically to their molecular
+      functions or to platelet activation (GO:0030168) rather than directly
+      to platelet degranulation (GO:0002576), creating an annotation gap
+      in which the relevant biology is biologically evident but the specific
+      GO term is not well populated for these marker genes. This is a
+      GO annotation curation target; the term is curator_added with
+      annotation_gap status.

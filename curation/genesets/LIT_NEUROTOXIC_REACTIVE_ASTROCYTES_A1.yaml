@@ -1,0 +1,174 @@
+gene_set_id: LIT:NEUROTOXIC_REACTIVE_ASTROCYTES_A1
+gene_set_name: NEUROTOXIC_REACTIVE_ASTROCYTES_A1
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:ASTROCYTE_REACTIVITY
+series_role: neurotoxic
+description: >-
+  Literature-defined disease-activity signature of A1 neurotoxic reactive
+  astrocytes, the reactive-astrocyte cell state first described by Liddelow,
+  Guttenplan, Clarke, Barres et al. (Nature 2017, PMID:28099414). Unlike the
+  MSigDB causal/driver disease pathway sets, the members here are the READOUT of
+  an ACTIVE program, not driver mutations: they are the transcripts UPregulated
+  when resting astrocytes are converted to the A1 state by classically activated
+  neuroinflammatory microglia, which secrete IL-1alpha, TNF and C1q (necessary
+  and sufficient to induce A1). The signature is dominated by a complement and
+  innate-immune/inflammatory program (canonically complement C3, plus the C1
+  inhibitor Serping1, complement factor B/Cfb, the interferon-induced Gbp2 and
+  Mx1, the MHC-I gene H2-T23, Fbln5, Ugt1a and Amigo2). A1 astrocytes are
+  NEUROTOXIC: they lose homeostatic support functions and actively induce the
+  death of neurons and oligodendrocytes. Because the member genes literally
+  carry the GO annotations for the processes the state executes, enrichment
+  recovers those processes (annotation_supported) rather than leaving them as
+  gaps. The signature was defined in mouse; we curate the human-orthologous
+  program and keep the taxon human per corpus convention. A1 reactive astrocytes
+  are a pan-neurodegeneration state, abundant in Alzheimer's, Huntington's and
+  Parkinson's disease, amyotrophic lateral sclerosis and multiple sclerosis.
+contexts:
+  - term:
+      id: CL:0000127
+      label: astrocyte
+    context_type: cell_type
+    role_note: >-
+      The signature reads out the A1 reactive state of the astrocyte rather than
+      a single disease. A1 reactive astrocytes are not specific to one disorder:
+      the paper shows they are abundant across multiple human neurodegenerative
+      diseases (Alzheimer's, Huntington's and Parkinson's disease, amyotrophic
+      lateral sclerosis and multiple sclerosis), so the astrocyte cell type is
+      used as the anchoring context rather than any one MONDO disease.
+associations:
+  - term:
+      id: GO:0006956
+      label: complement activation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:28099414
+        reference_title: "Neurotoxic reactive astrocytes are induced by activated microglia."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "complement component C3 is one of the most characteristic and highly upregulated genes in A1s and is not expressed by ischemic A2 reactive astrocytes"
+        explanation: >-
+          Complement component C3 is the single most characteristic A1-specific
+          transcript, and the broader complement arm of the signature (the C1
+          inhibitor Serping1 and complement factor B/Cfb) carries complement
+          activation annotations. Complement activation is therefore a core
+          process the A1 program actively executes, and because these genes are
+          members of the set and annotated to the term, enrichment recovers it
+          (annotation_supported).
+    curator_note: >-
+      lineage_shared rather than cell_type_specific because complement activation
+      is a general innate-immune capacity shared across many immune cell types,
+      but C3 upregulation is the defining marker that distinguishes A1
+      (neuroinflammatory) from A2 (ischemic) reactive astrocytes, so it is kept
+      as a core ACTIVE process of this state.
+  - term:
+      id: GO:0048143
+      label: astrocyte activation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:28099414
+        reference_title: "Neurotoxic reactive astrocytes are induced by activated microglia."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "a subtype of reactive astrocytes, which we termed A1, is induced by classically activated neuroinflammatory microglia"
+        explanation: >-
+          The gene set is, by definition, the readout of an ACTIVATED astrocyte
+          state: A1 is the subtype of reactive astrocytes induced when resting
+          astrocytes are activated by classically activated neuroinflammatory
+          microglia (via IL-1alpha, TNF and C1q). Astrocyte activation is thus
+          the central, cell-type-specific process the signature represents, and
+          reactive-astrocyte activation markers carry this GO annotation, so
+          enrichment recovers it (annotation_supported).
+    curator_note: >-
+      This is the defining ACTIVE process of the set, not a driver lesion. It is
+      cell_type_specific because astrocyte activation is, by construction, the
+      process this astrocyte gene set reads out.
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      A1 is explicitly the "classically activated neuroinflammatory" reactive
+      subtype, induced by pro-inflammatory microglial cytokines and expressing
+      innate-immune effectors (complement, Gbp2, Mx1, H2-T23). Unlike the
+      partly-protective DAM microglial state where inflammation is downgraded to
+      supporting, neuroinflammation is intrinsic and core to what the A1 state
+      is, so it is kept core (medium confidence). specificity is broadly_expressed
+      because inflammatory response itself is shared across very many immune
+      contexts and is not astrocyte-specific; the member genes carry the
+      annotation, so enrichment recovers it (annotation_supported).
+  - term:
+      id: GO:0034097
+      label: response to cytokine
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The A1 state is induced by the microglial cytokines IL-1alpha, TNF and C1q,
+      and the induced signature includes canonical cytokine/interferon-response
+      genes (Gbp2, Mx1, the MHC-I gene H2-T23). Response to cytokine is therefore
+      a genuine enabling process represented in the set and recovered by
+      enrichment (annotation_supported), but it is scored supporting rather than
+      core: it is the upstream inducer of the state and a broadly expressed
+      response, not the defining A1-specific program.
+  - term:
+      id: GO:0051402
+      label: neuron apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: membership_gap
+    insight: confirmatory
+    curator_note: >-
+      The defining functional OUTPUT of the A1 state is neurotoxicity: A1
+      astrocytes induce the death of neurons (and oligodendrocytes). This is a
+      real, biologically central consequence of the signature and so belongs in a
+      complete interpretation, but it is recorded as a membership_gap rather than
+      annotation_supported because the killing is non-cell-autonomous: the
+      apoptotic machinery executing neuron death resides in the dying NEURON, not
+      in the astrocyte A1 marker genes, and the secreted neurotoxic effector
+      (later shown to be a long-chain saturated lipid) is not itself a transcript
+      marker in this set. Enrichment therefore cannot and should not recover this
+      term from the A1 genes; it is kept (curator_added, supporting) so the
+      neurotoxic output is visible and the recall denominator stays honest.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation appears as a non-specific enrichment hit driven by ribosomal
+      protein genes co-induced in the transcriptionally active A1 state. It is a
+      ubiquitous housekeeping process and carries no astrocyte- or
+      disease-specific information for this signature.

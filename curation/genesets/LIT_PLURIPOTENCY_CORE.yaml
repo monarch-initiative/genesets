@@ -1,0 +1,180 @@
+gene_set_id: LIT:PLURIPOTENCY_CORE
+gene_set_name: PLURIPOTENCY_CORE
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+description: >-
+  Literature-defined cell-state ACTIVITY signature of the core pluripotency
+  transcriptional program — the OCT4/SOX2/NANOG (POU5F1/SOX2/NANOG) core
+  regulatory circuitry that maintains the self-renewing, undifferentiated state
+  of human embryonic stem cells, mapped by Boyer, Young et al. (Cell 2005,
+  PMID:16153702) using genome-scale location analysis (ChIP) of OCT4, SOX2 and
+  NANOG in human ES cells. The authors showed that the three master factors
+  co-occupy a substantial fraction of their target genes, autoregulate their own
+  promoters, and form interconnected autoregulatory and feed-forward regulatory
+  loops, and concluded that OCT4, SOX2 and NANOG contribute to pluripotency and
+  self-renewal. Unlike MSigDB causal/driver disease pathway sets, the members
+  here are the READOUT of an ACTIVE identity program, not driver mutations: they
+  are the genes UP (high) in the pluripotent state. The panel is anchored by the
+  core circuitry and its co-bound, positively regulated targets — POU5F1 (OCT4),
+  SOX2, NANOG, FOXD3, TDGF1 (CRIPTO), SALL4, ZFP42 (REX1), LIN28A, DPPA4 and
+  DNMT3B. Because the member genes literally carry the GO annotations for the
+  processes the pluripotent state executes (stem-cell self-renewal, active
+  repression of differentiation, master-transcription-factor-driven activation),
+  enrichment recovers those processes (annotation_supported) rather than leaving
+  them as gaps. STATE/DISEASE RELEVANCE: this active circuitry is the defining
+  axis of pluripotency; its experimental re-activation is the basis of induced
+  pluripotency (reprogramming), and aberrant expression of these same factors
+  (OCT4/SOX2/NANOG/LIN28A) marks poorly differentiated, stem-like tumours. The
+  program was defined in human embryonic stem cells in vitro; we keep the taxon
+  human per corpus convention.
+contexts:
+  - term:
+      id: CL:0002322
+      label: embryonic stem cell
+    context_type: cell_type
+    role_note: >-
+      The signature reads out the core OCT4/SOX2/NANOG pluripotency circuitry of
+      the embryonic stem cell — the self-renewing, undifferentiated identity
+      program, not any single disease. The pluripotent ES cell is therefore the
+      anchoring context; the same factors define the inner cell mass in vivo and
+      are the substrate of somatic-cell reprogramming.
+associations:
+  - term:
+      id: GO:0019827
+      label: stem cell population maintenance
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:16153702
+        reference_title: "Core transcriptional regulatory circuitry in human embryonic stem cells."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "The transcription factors OCT4, SOX2, and NANOG have essential roles in early development and are required for the propagation of undifferentiated embryonic stem (ES) cells in culture."
+        explanation: >-
+          Maintenance of the self-renewing stem cell population is the defining
+          function the signature reads out: the paper states the core factors
+          OCT4, SOX2 and NANOG are required for the propagation of undifferentiated
+          ES cells in culture. The member transcription factors (POU5F1/OCT4,
+          SOX2, NANOG, SALL4, FOXD3, ZFP42) carry the stem cell population
+          maintenance annotation, so enrichment recovers the term
+          (annotation_supported). This is the central active process of the
+          pluripotency circuitry, not a driver lesion.
+      - reference: PMID:16153702
+        reference_title: "Core transcriptional regulatory circuitry in human embryonic stem cells."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "These results provide new insights into the transcriptional regulation of stem cells and reveal how OCT4, SOX2, and NANOG contribute to pluripotency and self-renewal."
+        explanation: >-
+          The authors' summary conclusion states explicitly that OCT4, SOX2 and
+          NANOG contribute to pluripotency and self-renewal, confirming that
+          stem-cell self-renewal/maintenance is the core process the whole gene
+          set is organized around rather than an incidental enrichment hit.
+    curator_note: >-
+      Kept core because maintenance of the self-renewing, undifferentiated state
+      is the single defining axis of the pluripotency circuitry in the defining
+      paper. specificity is lineage_shared because the GO term covers all stem
+      cell types and is not unique to embryonic/pluripotent stem cells; its
+      pluripotency-defining ROLE here is the point, and the core factors are
+      signature members annotated to it (annotation_supported).
+  - term:
+      id: GO:0045596
+      label: negative regulation of cell differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:16153702
+        reference_title: "Core transcriptional regulatory circuitry in human embryonic stem cells."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "required for the propagation of undifferentiated embryonic stem (ES) cells in culture"
+        explanation: >-
+          Pluripotency is maintained by ACTIVELY holding cells in the
+          undifferentiated state: the paper notes the core factors are required
+          for the propagation of undifferentiated ES cells. The circuitry
+          occupies and restrains developmental regulators, and member factors
+          (NANOG, SOX2, FOXD3) carry the negative regulation of cell
+          differentiation annotation, so enrichment recovers the term
+          (annotation_supported). Active repression of differentiation is a
+          biologically core function of this set, complementary to self-renewal.
+    curator_note: >-
+      The pluripotent state is defined as much by ACTIVE blockade of
+      differentiation as by positive self-renewal; loss of this restraint is what
+      licenses exit from pluripotency and lineage commitment. Kept core.
+      specificity is broadly_expressed because negative regulation of
+      differentiation as a GO term operates across many lineages and is not
+      specific to ES cells.
+  - term:
+      id: GO:0045944
+      label: positive regulation of transcription by RNA polymerase II
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      OCT4, SOX2 and NANOG are sequence-specific master transcriptional
+      activators that co-occupy and drive their target promoters (including
+      autoregulatory loops on their own genes); the paper frames the set as the
+      transcriptional regulatory circuitry of ES cells. The core members
+      (POU5F1, SOX2, NANOG, SALL4, DPPA4) carry this annotation, so enrichment
+      recovers it (annotation_supported). Scored supporting rather than core
+      because positive regulation of Pol II transcription is the generic
+      MECHANISM by which the circuitry acts rather than the identity-defining
+      pluripotency axis itself, and the term is broadly_expressed across cell
+      types; it is a real enabling process, not a housekeeping artifact.
+  - term:
+      id: GO:0045165
+      label: cell fate commitment
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      A defining feature of the circuitry in the paper is that OCT4/SOX2/NANOG
+      co-occupy target genes that frequently encode developmentally important
+      homeodomain transcription factors — i.e. the regulators of cell fate
+      commitment are held poised but silent in the pluripotent state. Member
+      factors (SOX2, FOXD3) carry cell fate commitment annotations, so enrichment
+      recovers the term (annotation_supported). Scored supporting (medium): the
+      pluripotent cell is poised for, but actively uncommitted to, any single
+      fate, so cell fate commitment is an associated developmental-potential axis
+      rather than a process the resting pluripotent state executes; the term is
+      broadly_expressed across developing lineages.
+  - term:
+      id: GO:0001824
+      label: blastocyst development
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Human embryonic stem cells are the in-vitro counterpart of the pluripotent
+      inner cell mass of the blastocyst, and the core factors (POU5F1/OCT4,
+      NANOG) are the canonical inner-cell-mass/pluripotency markers required for
+      blastocyst inner cell mass formation. These members carry blastocyst
+      development annotations, so enrichment recovers the term
+      (annotation_supported). Scored supporting (medium): it captures the in-vivo
+      developmental origin/context of the pluripotent state rather than a process
+      the cultured ES cell actively executes; specificity is lineage_shared
+      because blastocyst development also encompasses the trophectoderm lineage.

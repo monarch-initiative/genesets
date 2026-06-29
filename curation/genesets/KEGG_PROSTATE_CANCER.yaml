@@ -1,0 +1,133 @@
+gene_set_id: MSIGDB:KEGG_PROSTATE_CANCER
+gene_set_name: KEGG_PROSTATE_CANCER
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy prostate cancer pathway gene set (MSigDB C2 curated gene set).
+  This is a cancer disease pathway gene set, not a cell-type signature. The member
+  genes are dominated by androgen-receptor (AR) signaling components (AR, KLK3/PSA,
+  FKBP5, SRD5A1/2), PI3K/AKT effectors (PIK3CA, PTEN, AKT1), RAS/MAPK pathway
+  members (KRAS, BRAF, MAP2K1, MAPK1/3), cell-cycle regulators acting through the
+  RB1/TP53 axis (RB1, E2F1, CDKN1A/CDKN2A), and apoptosis modulators (TP53, BCL2,
+  CASP3), reflecting the major mechanistic arms of the KEGG prostate cancer pathway:
+  androgen-driven transcription, PI3K survival signaling, MAPK-mediated proliferation,
+  cell-cycle dysregulation, and apoptosis evasion.
+contexts:
+  - term:
+      id: MONDO:0008315
+      label: prostate cancer
+    context_type: disease
+  - term:
+      id: UBERON:0002367
+      label: prostate gland
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0030521
+      label: androgen receptor signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:33321757
+        reference_title: "Androgen Receptor Signaling Pathway in Prostate Cancer: From Genetics to Clinical Applications."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Around 80-90% of prostate cancer (PCa) cases are dependent on androgens at initial diagnosis; hence, androgen ablation therapy directed toward a reduction in serum androgens and the inhibition of androgen receptor (AR) is generally the first therapy adopted."
+        explanation: >-
+          The androgen receptor signaling pathway is the primary oncogenic driver
+          in prostate cancer. AR and its transcriptional targets (KLK3, FKBP5,
+          SRD5A1/2) are core members of the KEGG prostate cancer gene set. This
+          comprehensive clinical review directly supports androgen receptor signaling
+          pathway as the dominant core process represented in the KEGG prostate cancer
+          gene set, and confirms that AR dependence is the defining molecular feature
+          of the disease at diagnosis.
+  - term:
+      id: GO:0042127
+      label: regulation of cell population proliferation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Multiple KEGG prostate cancer pathway members directly regulate cell-cycle
+      entry and proliferative expansion: CCND1 (cyclin D1), CDK4, E2F1, RB1, and
+      CDKN1A/CDKN2A enforce or oppose the G1-S transition downstream of both AR
+      and PI3K signaling. Uncontrolled proliferation is a hallmark of prostate
+      cancer progression and is downstream of the central AR-driven transcriptional
+      axis represented in this gene set.
+  - term:
+      id: GO:0043491
+      label: phosphatidylinositol 3-kinase/protein kinase B signal transduction
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      PTEN loss is one of the most frequent somatic genomic events in prostate cancer,
+      and PIK3CA and AKT1 are explicit KEGG pathway members. Activated PI3K/AKT
+      signaling promotes cell survival, bypasses AR dependence in advanced disease,
+      and cross-talks directly with AR by phosphorylating coactivators. The term is
+      mechanistically well-supported by the gene set membership but is broadly
+      expressed and not prostate-specific.
+  - term:
+      id: GO:0006915
+      label: apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      TP53, BCL2, CASP3, and BAD in the KEGG prostate cancer pathway encode canonical
+      intrinsic apoptosis components. Evasion of apoptosis via AR-mediated BCL2
+      upregulation and TP53 inactivation is a key step in prostate tumor progression,
+      but apoptosis is a broadly expressed process shared across many cancer and
+      disease pathway gene sets and is not prostate-specific.
+  - term:
+      id: GO:0051726
+      label: regulation of cell cycle
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The RB1/E2F axis and CDK inhibitors (CDKN1A/CDKN2A) in the KEGG prostate cancer
+      pathway are canonical cell-cycle checkpoint regulators whose loss accelerates G1-S
+      progression. AR signaling promotes cell cycle entry by inducing CCND1 and
+      suppressing CDKN1B. Cell-cycle dysregulation is a mechanistically significant
+      component of this pathway representation but is broadly expressed and not
+      prostate-specific.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in enrichment
+      results for this gene set reflects ribosomal protein subunit genes present in
+      the KEGG prostate cancer pathway representation. It does not reflect a prostate
+      cancer-specific function and is a non-informative enrichment hit.

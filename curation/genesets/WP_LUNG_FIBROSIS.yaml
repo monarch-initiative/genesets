@@ -1,0 +1,234 @@
+gene_set_id: MSIGDB:WP_LUNG_FIBROSIS
+gene_set_name: WP_LUNG_FIBROSIS
+collection: C2:CP:WIKIPATHWAYS
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 63
+description: >-
+  WikiPathways lung fibrosis gene set (MSigDB C2:CP:WIKIPATHWAYS, 63 genes).
+  This disease pathway gene set represents the molecular framework of pulmonary
+  fibrosis, capturing the core signalling and effector arms: TGF-β-driven
+  fibroblast-to-myofibroblast activation via the canonical SMAD cascade,
+  excessive extracellular matrix and collagen deposition causing progressive
+  tissue scarring, repetitive alveolar epithelial injury with dysregulated
+  repair, and the downstream loss of pulmonary function. Member genes include
+  TGF-β receptors (TGFBR1, TGFBR2), SMAD transcription factors, structural
+  collagens, fibronectin, matrix metalloproteinases, and their regulators,
+  reflecting the canonical profibrotic cascade in idiopathic pulmonary fibrosis
+  and related interstitial lung diseases.
+contexts:
+  - term:
+      id: MONDO:0800504
+      label: idiopathic pulmonary fibrosis
+    context_type: disease
+  - term:
+      id: UBERON:0002048
+      label: lung
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0007179
+      label: transforming growth factor beta receptor signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:34198949
+        reference_title: "Molecular Pathogenesis of Pulmonary Fibrosis, with Focus on Pathways Related to TGF-β and the Ubiquitin-Proteasome Pathway."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "As described above, TGF-β signaling promotes EMT of pulmonary epithelial cells to myofibroblast cells and increases the expression of fibrosis-related proteins, such as collagens and fibronectin."
+        explanation: >-
+          TGF-β receptor signalling is the central molecular driver of pulmonary
+          fibrosis. Activation of TGFBR1/TGFBR2 initiates canonical SMAD2/3
+          phosphorylation, which drives fibroblast-to-myofibroblast conversion
+          and upregulates collagen and ECM gene expression. The WP_LUNG_FIBROSIS
+          gene set encodes TGF-β receptors, SMAD transcription factors, and
+          downstream effectors, making this the cardinal signalling process for
+          the gene set. Its annotation in GOA-human covers TGFBR1, TGFBR2,
+          SMAD2, SMAD3, and SMAD4, ensuring reliable enrichment recovery.
+    curator_note: >-
+      TGF-β receptor signalling is the master regulator of pulmonary fibrosis
+      and the conceptual backbone of the WikiPathways lung fibrosis pathway.
+      The term is broadly_expressed because TGF-β signalling also operates in
+      wound healing, immune regulation, and development across many tissues;
+      its central role here reflects the disease context rather than organ
+      specificity. This does not reduce the biological centrality — it remains
+      core_process for this gene set.
+  - term:
+      id: GO:0030198
+      label: extracellular matrix organization
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:25745043
+        reference_title: "Mode of action of nintedanib in the treatment of idiopathic pulmonary fibrosis."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "uncontrolled proliferation of lung fibroblasts and differentiation of fibroblasts into myofibroblasts, which excessively deposit extracellular matrix (ECM) proteins in the interstitial space"
+        explanation: >-
+          Excessive ECM deposition by activated lung fibroblasts and myofibroblasts
+          is the defining pathological event in pulmonary fibrosis. The
+          WP_LUNG_FIBROSIS gene set includes the downstream ECM structural
+          components (collagens, fibronectin) and their regulators. ECM
+          organization is therefore a core biological process represented in this
+          gene set, and multiple structural collagen genes (COL1A1, COL1A2,
+          COL3A1) carry GO:0030198 annotations in GOA-human, supporting reliable
+          enrichment recovery.
+    curator_note: >-
+      Extracellular matrix organization is the central effector process of the
+      activated fibroblast/myofibroblast in pulmonary fibrosis. The term is
+      lineage_shared because ECM organisation is a hallmark of fibroblasts
+      across connective tissues, not uniquely pulmonary, but it is unambiguously
+      core for this disease pathway gene set.
+  - term:
+      id: GO:0031012
+      label: extracellular matrix
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The extracellular matrix is the cellular compartment into which the
+      effector gene products of this pathway are secreted and assembled. In
+      pulmonary fibrosis, pathological accumulation of ECM components — principally
+      fibrillar collagens — in the lung interstitium drives the progressive loss
+      of pulmonary function. Structural collagens, fibronectin, and associated
+      glycoproteins encoded in the WP_LUNG_FIBROSIS gene set are incorporated
+      into the extracellular matrix. Note: GO:0062023 (collagen-containing
+      extracellular matrix) is obsolete; GO:0031012 extracellular matrix is the
+      appropriate current term.
+  - term:
+      id: GO:0030199
+      label: collagen fibril organization
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:21719092
+        reference_title: "Idiopathic pulmonary fibrosis."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "The fibroblast and myofibroblast foci secrete excessive amounts of extracellular matrix, mainly collagens, resulting in scarring and destruction of the lung architecture."
+        explanation: >-
+          The WP_LUNG_FIBROSIS gene set includes multiple structural collagen
+          genes whose encoded proteins are cross-linked into fibrillar ECM
+          structures. Collagen fibril organisation captures the predominant
+          biochemical activity driving fibrotic scar formation in IPF, making
+          it a well-supported supporting process. Collagen structural genes
+          (COL1A1, COL1A2, COL3A1, COL6A1–3) carry GO:0030199 annotations
+          in GOA-human, enabling enrichment recovery.
+    curator_note: >-
+      Collagen fibril organisation is a specific sub-process of ECM organisation
+      that captures the excessive collagen cross-linking and fibril assembly
+      defining the fibrotic scar in IPF. It is classified as supporting_process
+      rather than core_process because the gene set's primary mechanistic scope
+      encompasses both the upstream TGF-β signalling and the downstream ECM
+      organisation more broadly. The term is lineage_shared as collagen fibril
+      assembly is common to fibroblasts across connective tissues.
+  - term:
+      id: GO:0042060
+      label: wound healing
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:34198949
+        reference_title: "Molecular Pathogenesis of Pulmonary Fibrosis, with Focus on Pathways Related to TGF-β and the Ubiquitin-Proteasome Pathway."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "In the wound healing process, TGF-β is released from alveolar epithelial cells, macrophages, platelet granules, and infiltrating regulatory T cells after an injury event and promotes wound repair by increasing the production and deposition of extracellular matrix, inflammatory cell recruitment, and fibroblast differentiation."
+        explanation: >-
+          Idiopathic pulmonary fibrosis is mechanistically understood as a
+          failure of normal wound healing following repetitive alveolar epithelial
+          injury. The WP_LUNG_FIBROSIS gene set encodes components of the
+          TGF-β-driven wound repair programme that, when dysregulated, produce
+          fibrosis instead of resolved repair. Wound healing is therefore a
+          biologically appropriate supporting process for this gene set, though
+          it is broadly_expressed rather than disease- or tissue-specific.
+    curator_note: >-
+      Wound healing is classified as medium confidence and supporting_process
+      because it describes the normal repair programme of which fibrosis is
+      a pathological dysregulation. The term is broadly_expressed: fibroblast-
+      mediated wound healing occurs in many organs, and the GO:0042060 annotation
+      set in GOA-human spans diverse tissue contexts. Its presence in enrichment
+      results for this gene set is biologically meaningful but should not be
+      mistaken for a lung-specific or fibrosis-specific annotation.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance as an
+      enrichment hit in disease pathway gene sets typically reflects the
+      representation of ribosomal protein genes or the high secretory burden
+      of fibroblasts sustaining continuous synthesis of collagen and ECM
+      glycoproteins. This association does not reflect a fibrosis-specific
+      function and is recorded as nonspecific.
+  - term:
+      id: GO:0036446
+      label: myofibroblast differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    evidence:
+      - reference: PMID:25745043
+        reference_title: "Mode of action of nintedanib in the treatment of idiopathic pulmonary fibrosis."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "In IPF, fibroblasts exhibit unregulated proliferation and differentiate into myofibroblasts, which excessively produce ECM components."
+        explanation: >-
+          Fibroblast-to-myofibroblast transition is the central cellular event
+          in IPF pathogenesis, and its unregulated occurrence in IPF is directly
+          stated in this clinical review. The WP_LUNG_FIBROSIS gene set encodes
+          key drivers of this transition (TGFBR1, TGFBR2, SMAD2, SMAD3, ACTA2).
+          Despite the biological centrality, standard GO enrichment tools
+          infrequently recover GO:0036446 because TGF-β signalling genes and
+          collagen structural genes in the set carry annotations to the broader
+          parent processes (GO:0007179, GO:0030198) rather than to this specific
+          differentiation term in current GOA-human. The gap is GO annotation
+          incompleteness, not absent biology.
+    curator_note: >-
+      Myofibroblast differentiation is the single most important cellular
+      process in pulmonary fibrosis pathogenesis. Conversion of fibroblasts
+      to contractile, collagen-secreting myofibroblasts — marked by alpha-smooth
+      muscle actin (ACTA2) expression — is mediated by TGF-β/SMAD2/3 signalling
+      and drives progressive lung scarring. This term is biologically essential
+      for a complete representation of the WP_LUNG_FIBROSIS gene set. It is
+      classified as annotation_gap because the key driving genes (TGFBR1,
+      TGFBR2, SMAD2, SMAD3) are annotated primarily to the upstream signalling
+      pathway rather than to the downstream differentiation outcome, and
+      GO annotation of effector genes to GO:0036446 is sparse in current
+      GOA-human. This is a GO annotation curation target.

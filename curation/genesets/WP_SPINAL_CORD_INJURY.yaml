@@ -1,0 +1,193 @@
+gene_set_id: MSIGDB:WP_SPINAL_CORD_INJURY
+gene_set_name: WP_SPINAL_CORD_INJURY
+collection: C2:CP:WIKIPATHWAYS
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 117
+description: >-
+  WikiPathways community-curated spinal cord injury pathway gene set (MSigDB
+  C2:CP:WIKIPATHWAYS). The 117-member set captures the major molecular arms of
+  traumatic SCI pathophysiology: acute neuroinflammation mediated by innate
+  immune cells and inflammatory cytokines; secondary neuronal apoptosis driven
+  by caspase activation and Bcl-2 family signalling; reactive astrogliosis and
+  glial scar formation; deposition of inhibitory chondroitin sulphate
+  proteoglycans (CSPGs) in the extracellular matrix that impede axon
+  regeneration; and the attempted but largely abortive axon regeneration
+  response including growth-cone dynamics and axon-guidance signalling.
+contexts:
+  - term:
+      id: MONDO:0043797
+      label: spinal cord injury
+    context_type: disease
+  - term:
+      id: UBERON:0002240
+      label: spinal cord
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:36685598
+        reference_title: "Immune response following traumatic spinal cord injury: Pathophysiology and therapies."
+        supports: SUPPORT
+        snippet: "Among the secondary injury mechanisms, inflammation has been shown to be a key determinant of the secondary injury severity and significantly worsens cell death and functional outcomes."
+        explanation: >-
+          Neuroinflammation is the dominant secondary-injury mechanism after traumatic SCI.
+          The WikiPathways SCI gene set includes canonical inflammatory mediators (cytokines,
+          chemokines, NF-κB pathway components) whose GO:0006954 annotations make inflammatory
+          response a confidently enriched term. This review directly identifies inflammation
+          as a key determinant of secondary injury severity in SCI.
+    curator_note: >-
+      Inflammatory response is the defining secondary-injury process after SCI. Cytokines,
+      chemokines, and immune-cell-recruitment genes annotate directly to GO:0006954.
+      Neuroinflammation drives macrophage infiltration, microglial activation, and is the
+      primary contributor to secondary neuronal death, making this a high-confidence
+      core_process association.
+  - term:
+      id: GO:0031103
+      label: axon regeneration
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:24816452
+        reference_title: "Spinal cord regeneration."
+        supports: SUPPORT
+        snippet: "The third theory proposes that chondroitin sulfate proteoglycans (CSPGs) prevent axon growth. Blockade of Nogo, CSPG, and their receptors indeed can stop axon growth in vitro and improve functional recovery in animal spinal cord injury (SCI) models."
+        explanation: >-
+          Axon regeneration after SCI is inhibited by CSPGs and Nogo/myelin-associated
+          inhibitors. The WikiPathways SCI gene set includes axon growth regulators, Nogo
+          pathway components, and Rho-GTPase effectors whose GO:0031103 annotations allow
+          enrichment to recover this term. Confidence is medium because the set jointly
+          represents the inhibitory and the pro-regenerative sides of the axon growth axis.
+    curator_note: >-
+      Axon regeneration after SCI is impeded by the inhibitory microenvironment established by
+      the glial scar and CSPGs. The WikiPathways set captures both pro-regenerative signals
+      (neurotrophins, cAMP elevators) and inhibitory molecules (Nogo receptor pathway, CSPG
+      receptors). It is classified as lineage_shared because the biology is shared across CNS
+      neuron subtypes, and medium confidence because failure of regeneration — not successful
+      regrowth — is the dominant outcome captured by this gene set.
+  - term:
+      id: GO:0006915
+      label: apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:42274604
+        reference_title: "The Role of Interleukin-18 After Spinal Cord Injury: Mechanisms and Therapeutic Potential."
+        supports: SUPPORT
+        snippet: "Spinal cord injury (SCI) triggers a secondary injury cascade characterized by neuroinflammation, reactive gliosis, and neuronal apoptosis."
+        explanation: >-
+          Neuronal apoptosis is a major driver of secondary cell loss after SCI. Caspase-3,
+          caspase-9, and Bcl-2 family members expected in the WikiPathways SCI set annotate
+          to GO:0006915, making this a recoverable enrichment term. The reference provides
+          direct evidence that apoptosis is a defining feature of the SCI secondary injury
+          cascade.
+    curator_note: >-
+      Apoptosis drives secondary neuronal and oligodendrocyte death after SCI. It is classified
+      as supporting_process rather than core_process because apoptotic machinery is broadly
+      expressed across many cell types and disease contexts, and is not unique to SCI pathology.
+  - term:
+      id: GO:0048143
+      label: astrocyte activation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:38607020
+        reference_title: "NF-κB and JAK/STAT Signaling Pathways as Crucial Regulators of Neuroinflammation and Astrocyte Modulation in Spinal Cord Injury."
+        supports: SUPPORT
+        snippet: "Astrocytes undergo changes and form a glial scar after SCI, which has traditionally been viewed as a barrier to axonal regeneration and functional recovery."
+        explanation: >-
+          Reactive astrogliosis is the defining chronic-phase response to SCI. Astrocyte
+          activation markers (GFAP, vimentin) and JAK/STAT signalling components that drive
+          astrogliosis are expected members of the WikiPathways SCI gene set and carry
+          GO:0048143 annotations.
+    curator_note: >-
+      Astrocyte activation (astrogliosis) is the primary cellular mechanism of glial scar
+      formation, which is simultaneously neuroprotective (sealing the lesion core) and
+      regeneration-inhibitory (blocking axon regrowth via CSPG deposition). Classified as
+      lineage_shared because it is a CNS-glial-lineage response, and as supporting_process
+      because it is downstream of the primary inflammatory and excitotoxic events.
+  - term:
+      id: GO:0030198
+      label: extracellular matrix organization
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:17254568
+        reference_title: "Matrix metalloproteinases and proteoglycans in axonal regeneration."
+        supports: SUPPORT
+        snippet: "A glial scar forms at the site of injury and is composed of numerous molecular substances, including chondroitin sulfate proteoglycans (CSPGs). These proteoglycans inhibit axonal growth in vitro and in vivo."
+        explanation: >-
+          The glial scar is defined by its ECM composition, especially inhibitory CSPGs
+          deposited by reactive astrocytes. Genes encoding CSPG core proteins and ECM
+          remodelling enzymes (MMPs) annotate to GO:0030198 and are expected members of the
+          WikiPathways SCI set.
+    curator_note: >-
+      Extracellular matrix organization underlies glial scar formation in SCI. CSPGs deposited
+      by reactive astrocytes create a molecular barrier to axon regeneration. This process is
+      classified as supporting because ECM remodelling is not unique to SCI, and as
+      lineage_shared because the major contributors here (astrocytes, pericytes) are
+      CNS-injury-associated rather than ubiquitously expressed.
+  - term:
+      id: GO:0031012
+      label: extracellular matrix
+    aspect: cellular_component
+    category: core_component
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      The extracellular matrix is the dominant structural feature of the SCI glial scar.
+      CSPG core proteins (ACAN, BCAN, NCAN, VCAN) and tenascins deposited at the injury site
+      localise to this compartment. This is recorded as annotation_gap: the relevant genes are
+      expected members of the WikiPathways SCI set, but standard enrichment analyses recover
+      biological-process terms (GO:0030198) more readily than cellular-component parent terms
+      (GO:0031012) for these structural ECM genes. The glial scar is genuinely an ECM-rich
+      structure and GO:0031012 is the appropriate CC counterpart to the BP term GO:0030198.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its recovery in enrichment of the
+      WikiPathways SCI gene set reflects ribosomal protein genes present in the set, not an
+      SCI-specific function. Recorded as nonspecific to flag it as a non-informative enrichment
+      hit that does not reflect the disease biology of the gene set.

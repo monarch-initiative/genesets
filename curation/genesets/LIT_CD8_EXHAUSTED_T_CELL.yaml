@@ -1,0 +1,195 @@
+gene_set_id: LIT:CD8_EXHAUSTED_T_CELL
+gene_set_name: CD8_EXHAUSTED_T_CELL
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:CD8_TCELL_EXHAUSTION
+series_role: exhausted
+description: >-
+  Literature-defined cell-state ACTIVITY signature of exhausted CD8+ T cells
+  (TEX), the dysfunctional CD8 T cell program first defined at the molecular
+  level by Wherry, Ha, Kaech, Ahmed et al. (Immunity 2007, PMID:17950003) by
+  gene-expression profiling of LCMV-specific CD8+ T cells from CHRONIC viral
+  infection compared to functional effector and memory CD8+ T cells generated
+  after ACUTE infection. Unlike MSigDB causal/driver disease pathway sets, the
+  members here are the READOUT of an ACTIVE program, not driver mutations: they
+  are the genes UP (high) in exhausted CD8 T cells. The defining hallmark of the
+  state, established in this paper, is the sustained over-expression of multiple
+  co-inhibitory receptors (canonically PD-1/PDCD1, plus LAG3, CD160, 2B4/CD244
+  and CTLA4), together with major changes in T cell receptor and cytokine
+  signaling and a distinct transcription-factor program. The signature curated
+  here is the consolidated, human-orthologous canonical TEX marker panel anchored
+  on this paper and refined by subsequent work: the inhibitory-receptor module
+  PDCD1, HAVCR2 (TIM-3), LAG3, TIGIT, CTLA4, BTLA and CD160, the
+  exhaustion-lineage transcription factor TOX, the T-box factor EOMES, and the
+  ectonucleotidase ENTPD1 (CD39). The state has a DUAL semantics that this
+  interpretation captures: it is simultaneously (1) the active up-regulation of
+  inhibitory/exhaustion machinery and (2) the active and passive DAMPENING of
+  effector function (reduced cytotoxicity and cytokine production) — "functional
+  exhaustion is probably due to both active suppression and passive defects in
+  signaling and metabolism." Because the inhibitory-receptor members literally
+  carry the GO annotations for negative regulation of T cell activation,
+  enrichment recovers that dampening process (annotation_supported); the most
+  exhaustion-specific processes (exhausted T cell differentiation, loss of T cell
+  mediated cytotoxicity, inhibitory receptor signaling) are recorded as
+  annotation_gaps because the relevant genes are present but their GO annotations
+  do not yet capture the exhaustion-specific biology. This set is the EXHAUSTED
+  pole of SERIES:CD8_TCELL_EXHAUSTION, paired with the functional EFFECTOR CD8 T
+  cell pole. DISEASE RELEVANCE: TEX arises during chronic antigen exposure — both
+  chronic viral infections (LCMV, HIV, HBV, HCV) and the tumor microenvironment —
+  and is the direct target of immune-checkpoint blockade (anti-PD-1, anti-CTLA4).
+  The signature was defined in mouse LCMV; we curate the human-orthologous
+  program and keep the taxon human per corpus convention.
+contexts:
+  - term:
+      id: CL:0020031
+      label: CD8-positive exhausted alpha-beta T cell
+    context_type: cell_type
+    role_note: >-
+      The signature reads out the exhausted (TEX) state of the CD8-positive
+      alpha-beta T cell arising under chronic antigen stimulation, rather than a
+      single disease. T cell exhaustion is not specific to one disorder: it is
+      induced by chronic viral infection (LCMV, HIV, HBV, HCV) and within the
+      tumor microenvironment, so the exhausted CD8 T cell cell type is used as the
+      anchoring context rather than any one MONDO disease. This is the exhausted
+      pole, contrasted in the series with the functional effector CD8 T cell.
+associations:
+  - term:
+      id: GO:0050868
+      label: negative regulation of T cell activation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:17950003
+        reference_title: "Molecular signature of CD8+ T cell exhaustion during chronic viral infection."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "overexpressed several inhibitory receptors, including PD-1"
+        explanation: >-
+          The defining molecular hallmark of the exhausted CD8 T cell state is the
+          sustained over-expression of multiple co-inhibitory receptors. These
+          receptors (PD-1/PDCD1, CTLA4, LAG3, TIGIT, TIM-3/HAVCR2, BTLA, CD160)
+          act to restrain and reduce T cell activation, and the receptor members
+          of the panel carry GO annotations to negative regulation of T cell
+          activation and its descendants (e.g. CTLA4, HAVCR2, LAG3, TIGIT), so
+          enrichment recovers the term (annotation_supported). This active
+          dampening of activation is the central process the signature reads out.
+      - reference: PMID:17950003
+        reference_title: "Molecular signature of CD8+ T cell exhaustion during chronic viral infection."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "functional exhaustion is probably due to both active suppression and passive defects in signaling and metabolism"
+        explanation: >-
+          The authors conclude that exhaustion involves ACTIVE suppression, not
+          only passive loss of function. The inhibitory-receptor program that the
+          signature up-regulates is the machinery of this active suppression of T
+          cell activation, confirming negative regulation of T cell activation as
+          a core process the exhausted state executes.
+    curator_note: >-
+      This is the single defining ACTIVE process of the set, not a driver lesion.
+      specificity is lineage_shared because negative regulation of T cell
+      activation is a general immune-tolerance/checkpoint process shared with
+      regulatory T cells and other contexts; its exhaustion-defining ROLE here is
+      the point, and the inhibitory-receptor members are annotated to it, so it is
+      annotation_supported and recovered by enrichment.
+  - term:
+      id: GO:0160083
+      label: exhausted T cell differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    evidence:
+      - reference: PMID:17950003
+        reference_title: "Molecular signature of CD8+ T cell exhaustion during chronic viral infection."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "T cell exhaustion was progressive, and gene-expression profiling indicated that T cell exhaustion and anergy were distinct processes"
+        explanation: >-
+          The paper establishes exhaustion as a progressive, distinct
+          differentiation program (separable from anergy and from effector/memory
+          differentiation), i.e. exhausted T cell differentiation. The signature
+          IS the transcriptional readout of cells that have undergone this
+          differentiation, and the exhaustion-lineage transcription factor TOX
+          (and PDCD1) are members that drive it.
+    curator_note: >-
+      The most exhaustion-specific GO term and the process the whole signature
+      reads out, so it is kept core/cell_type_specific. It is recorded as an
+      annotation_gap rather than annotation_supported because GO:0160083 is a very
+      recently added term that currently carries NO gene annotations at all
+      (verified against GOA): the driver/marker genes (TOX, PDCD1) ARE in the set
+      but are not yet annotated to it, so the gap is GO's (a GO annotation curation
+      target) and enrichment cannot recover it (curator_added).
+  - term:
+      id: GO:0001915
+      label: negative regulation of T cell mediated cytotoxicity
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Loss of cytotoxic effector function is one of the two defining axes of
+      exhaustion (alongside sustained inhibitory-receptor expression): exhausted
+      CD8 T cells lose the ability to kill efficiently. This is a genuinely core
+      process of the state, so it is kept core. It is an annotation_gap rather
+      than annotation_supported because the inhibitory-receptor members that
+      enforce this loss of cytotoxicity (PD-1/PDCD1, TIM-3/HAVCR2, LAG3, CTLA4)
+      ARE in the set but are not annotated to negative regulation of T cell
+      mediated cytotoxicity in GOA (the annotated genes for this term are others,
+      e.g. CEACAM1, LILRB1, PTPRC); the gap is GO's, so the term is curator_added
+      and not recovered by enrichment.
+  - term:
+      id: GO:0050860
+      label: negative regulation of T cell receptor signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Mechanistically, the exhaustion inhibitory receptors act by negatively
+      regulating proximal T cell receptor signaling: PD-1, CTLA4 and BTLA recruit
+      phosphatases (SHP-1/SHP-2) that dampen the TCR signalosome, which is the
+      proximate cause of the "major changes in T cell receptor signaling pathways"
+      reported in the defining paper. Scored supporting (the enabling
+      signaling-level mechanism) rather than core. It is an annotation_gap because
+      these receptor members are present in the set but are not annotated to
+      negative regulation of T cell receptor signaling pathway in GOA (the
+      annotated genes for this term are the phosphatases/adaptors they recruit,
+      e.g. PTPN6, PTPN22, PTPN2), so the gap is GO's and the term is curator_added.
+  - term:
+      id: GO:0051607
+      label: defense response to virus
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: membership_gap
+    insight: confirmatory
+    curator_note: >-
+      Exhaustion is induced and sustained by the chronic viral antigen the cells
+      respond to, so the antiviral/defense-response context is a real supporting
+      backdrop of the state. It is recorded as a membership_gap rather than
+      annotation_supported because exhaustion is by definition a DAMPENING of the
+      antiviral effector response: the genes that carry defense response to virus
+      (interferon-stimulated and cytotoxic effector genes) are precisely the ones
+      that are DOWN/absent in this UP exhaustion marker panel, so enrichment cannot
+      and should not recover the term from these members. It is kept (curator_added,
+      supporting) so the chronic viral driving context is visible without
+      contaminating the annotation-support scoring.

@@ -47,6 +47,7 @@ class TermAssociation:
     specificity: str | None = None
     specificity_score: float | None = None
     recovery_status: str | None = None
+    insight: str | None = None
     enrichment_stats: EnrichmentStats | None = None
     evidence: list[EvidenceItem] = field(default_factory=list)
     curator_note: str | None = None
@@ -67,6 +68,8 @@ class GeneSetInterpretation:
     msigdb_release: str | None = None
     taxon: Term | None = None
     direction: str | None = None
+    series: str | None = None
+    series_role: str | None = None
     n_genes: int | None = None
     description: str | None = None
     contexts: list[BiologicalContext] = field(default_factory=list)

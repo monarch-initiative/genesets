@@ -1,0 +1,203 @@
+gene_set_id: MSIGDB:WP_EBOLA_VIRUS_INFECTION_IN_HOST
+gene_set_name: WP_EBOLA_VIRUS_INFECTION_IN_HOST
+collection: C2:CP:WIKIPATHWAYS
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 129
+description: >-
+  WikiPathways Ebola virus infection in host gene set (MSigDB C2:CP:WIKIPATHWAYS).
+  This is a host-response disease pathway gene set covering the major molecular
+  events during Ebola virus disease (EVD). The 129 member genes span five
+  mechanistic arms: (1) innate immune sensing and type I interferon induction —
+  RIG-I (DDX58), MDA5 (IFIH1), MAVS, TBK1, IRF3, IRF7; (2) JAK-STAT-mediated
+  type I IFN signalling and interferon-stimulated gene (ISG) expression — STAT1,
+  STAT2, IRF9, JAK1, TYK2, IFNAR1, IFNAR2, MX1, OAS family, IFIT family, ISG15;
+  (3) viral entry into host cells — NPC1 (intracellular EBOV receptor), HAVCR1/
+  TIM1 (attachment factor), cathepsins B and L (CTSB, CTSL) for glycoprotein
+  processing; (4) Ebola virus immune evasion via antagonism of IFN production —
+  host signalling components hijacked by EBOV VP35 (TBK1, IRF3 axis) and VP24
+  (STAT1/karyopherin axis); and (5) inflammatory and cytokine responses — TNF,
+  IL6, IL1B, and NFkB signalling driving the cytokine storm characteristic of
+  severe EVD. As an infection pathway gene set it captures both host antiviral
+  defence and viral immune antagonism, making it a rich resource for studying
+  EBOV pathogenesis and host-directed therapeutic targets.
+contexts:
+  - term:
+      id: MONDO:0005737
+      label: Ebola hemorrhagic fever
+    context_type: disease
+  - term:
+      id: NCBITaxon:1570291
+      label: Ebola virus
+    context_type: infection
+associations:
+  - term:
+      id: GO:0051607
+      label: defense response to virus
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:36558734
+        reference_title: "Filoviruses: Innate Immunity, Inflammatory Cell Death, and Cytokines."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "The innate immune system is the first line of defense against pathogenic insults such as filoviruses. Pattern recognition receptors (PRRs), including toll-like receptors, retinoic acid-inducible gene-I-like receptors, C-type lectin receptors, AIM2-like receptors, and NOD-like receptors, detect pathogens and activate downstream signaling to induce the production of proinflammatory cytokines and interferons, alert the surrounding cells to the threat, and clear infected and damaged cells through innate immune cell death."
+        explanation: >-
+          This review (Lu et al. 2022, Pathogens) describes the innate immune
+          sensing of filoviruses including EBOV and the downstream antiviral
+          effector response. The WP_EBOLA_VIRUS_INFECTION_IN_HOST gene set is
+          dominated by RIG-I-pathway genes (DDX58/RIG-I, IFIH1/MDA5, MAVS, TBK1,
+          IRF3, IRF7) and ISGs (MX1, OAS family, IFIT family, ISG15), which are
+          directly annotated to GO:0051607 (defense response to virus) in
+          GOA-human. Defense response to virus is therefore the primary core
+          biological process represented by the gene set's antiviral arm.
+  - term:
+      id: GO:0060337
+      label: type I interferon-mediated signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:21994800
+        reference_title: "Filoviral immune evasion mechanisms."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "The Type I interferon (IFN) response is critical for establishing an antiviral state in the host cell and subsequent activation of the adaptive immune responses. Several filoviral encoded components target Type I IFN responses, and this innate immune suppression is important for viral replication and pathogenesis."
+        explanation: >-
+          Type I interferon signalling through JAK1/TYK2-STAT1/STAT2-IRF9 is a
+          mechanistically central arm of the Ebola host-response pathway. Genes
+          encoding IFNAR1, IFNAR2, JAK1, TYK2, STAT1, STAT2, IRF9, and multiple
+          ISGs present in the WikiPathways gene set are annotated to GO:0060337
+          (type I interferon-mediated signaling pathway) in GOA-human. The fact
+          that EBOV dedicates multiple proteins (VP35, VP24) specifically to
+          antagonising this pathway — described in this review — underscores its
+          centrality to EVD pathogenesis and to this gene set's biology.
+  - term:
+      id: GO:0045087
+      label: innate immune response
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Innate immune response is the umbrella process encompassing pattern
+      recognition, cytokine induction, and effector activation during EBOV
+      infection. Genes encoding PRRs (DDX58/RIG-I, IFIH1/MDA5, TLR3, TLR7),
+      adaptor proteins (MAVS), kinases (TBK1, IKBKE), and transcription factors
+      (IRF3, IRF7, NFkB subunits) in the WikiPathways set are annotated to
+      GO:0045087 in GOA-human. This term is the direct parent of GO:0051607 and
+      is broadly shared across many infection-context gene sets, making it a
+      well-supported but non-discriminating supporting rather than a uniquely
+      informative core descriptor of the EBOV pathway.
+  - term:
+      id: GO:0019065
+      label: receptor-mediated endocytosis of virus by host cell
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Ebola virus enters cells primarily via macropinocytosis followed by
+      endosomal routing; the intracellular receptor NPC1 (Niemann-Pick C1) is
+      the obligate EBOV entry receptor in late endosomes, and cathepsins B and L
+      (CTSB, CTSL) process the viral glycoprotein to enable NPC1 binding. These
+      genes are present in the WikiPathways gene set, but their GOA-human
+      annotations are predominantly to generic receptor-mediated endocytosis
+      (GO:0006898) and endosomal biogenesis terms rather than to the virus-
+      specific child GO:0019065. This is an annotation gap: the viral entry
+      biology is biologically correct (NPC1, CTSL, CTSB are the documented EBOV
+      entry machinery) and the genes ARE members, but GOA-human lacks explicit
+      GO:0019065 annotations for these host entry factors — a GO curation target.
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Ebola virus disease is characterised by dysregulated systemic inflammation
+      and cytokine storm, caused by massive induction of TNF, IL6, IL1B, IL8,
+      and MCP-1 by infected monocytes and macrophages. The WikiPathways gene set
+      includes cytokines and their signalling intermediaries annotated to
+      GO:0006954 in GOA-human, supporting this classification. Inflammatory
+      response is a significant mechanistic component of EBOV pathogenesis but
+      is broadly shared across infectious-disease and immune pathway gene sets,
+      hence classified as a supporting rather than a uniquely defining core
+      process.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance as an
+      enrichment hit in this gene set reflects ribosomal protein or translation
+      factor genes included as background in the WikiPathways pathway
+      representation. Translation does not reflect a biologically informative
+      or EBOV-specific function of the WP_EBOLA_VIRUS_INFECTION_IN_HOST gene
+      set and is classified as a non-specific enrichment artefact.
+  - term:
+      id: GO:0032480
+      label: negative regulation of type I interferon production
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: mechanistic
+    evidence:
+      - reference: PMID:21994800
+        reference_title: "Filoviral immune evasion mechanisms."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "EBOV VP35 inhibits the phosphorylation of IRF-3/7 by the TBK-1/IKKε kinases in addition to sequestering viral RNA from detection by RIG-I like receptors. MARV VP40 inhibits STAT1/2 phosphorylation by inhibiting the JAK family kinases. EBOV VP24 inhibits nuclear translocation of activated STAT1 by karyopherin-α."
+        explanation: >-
+          Antagonism of type I interferon production is the single most
+          important immune evasion strategy of EBOV, enabling unrestricted
+          viral replication in the face of ongoing innate immune activation.
+          EBOV VP35 targets the TBK1/IRF3/IRF7 phosphorylation axis and VP24
+          blocks STAT1 nuclear import; TBK1, IRF3, IRF7, and STAT1 are all
+          present in the WikiPathways gene set. However, GOA-human annotates
+          these host genes to the positive (sensing/signalling) arms of the
+          IFN pathway; the negative regulatory outcome into which they are
+          subverted by EBOV is not captured in their current GO annotations.
+          This is therefore an annotation gap and a GO curation target.
+    curator_note: >-
+      annotation_gap, not membership_gap. Immune evasion of type I IFN
+      production is a defining and central feature of EVD pathogenesis:
+      EBOV VP35 and VP24 suppress IFN production by hijacking host signalling
+      components (TBK1, IRF3, IRF7, STAT1, karyopherins) that are members of
+      the WikiPathways gene set. GOA-human annotates these host genes to the
+      positive-sensing arms of the pathway; the negative regulatory outcome
+      driven by viral antagonism is not represented in their GO annotations.
+      Enrichment analyses of this gene set will therefore not recover
+      GO:0032480 even though the underlying biology is core to EVD. This term
+      is biologically core and is NOT weakened on annotation grounds — it is
+      a GO annotation curation target.

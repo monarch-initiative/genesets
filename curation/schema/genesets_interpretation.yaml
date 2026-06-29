@@ -20,6 +20,7 @@ prefixes:
   NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
   EFO: http://www.ebi.ac.uk/efo/EFO_
   MSIGDB: https://www.gsea-msigdb.org/gsea/msigdb/cards/
+  LIT: https://w3id.org/genesets-rs/lit/
   PMID: http://identifiers.org/pubmed/
   DOI: https://doi.org/
 default_prefix: genesets
@@ -37,7 +38,7 @@ classes:
         identifier: true
         range: uriorcurie
         required: true
-        description: Stable identifier for the gene set (e.g. MSIGDB:HAY_BONE_MARROW_DENDRITIC_CELL).
+        description: Stable identifier for the gene set (e.g. MSIGDB:HAY_BONE_MARROW_DENDRITIC_CELL, or LIT:DISEASE_ASSOCIATED_MICROGLIA for a literature-defined gene set identified by its defining paper).
       gene_set_name:
         required: true
         description: Human-readable name of the gene set.
@@ -52,6 +53,19 @@ classes:
       direction:
         range: DirectionEnum
         description: Whether the signature is the up, down, or undirected component.
+      series:
+        range: uriorcurie
+        description: >-
+          Identifier of a pair or series this set belongs to (e.g.
+          SERIES:MICROGLIA_ACTIVATION). Groups related signatures that form a
+          contrast (two poles), a directional pair (up/down of one experiment),
+          or an ordered series. The series id need not be separately defined.
+      series_role:
+        description: >-
+          This set's role or position within its `series` — a short label such
+          as baseline, activated, neurotoxic, reparative, up, down, or a step
+          name. Members of one series should use distinct roles. Free text
+          rather than an enum because the meaningful poles differ per series.
       n_genes:
         range: integer
         description: Number of genes in the source set.
@@ -127,6 +141,19 @@ classes:
           annotation supports it; the gap is recorded here so it is visible and
           scoreable. annotation_gap marks a GO curation target; membership_gap
           marks gene-set incompleteness.
+      insight:
+        description: >-
+          Curator judgment of the term's interpretive value FOR THIS SET,
+          relative to how the set was derived (its collection / context_type /
+          direction). Recommended values: `confirmatory` — true and core, but
+          entailed by the set's construction or known identity (e.g. an
+          estradiol-response set enriching for "response to estradiol", or a
+          PRC2-target set enriching for embryonic morphogenesis); recapitulates
+          the design rather than revealing mechanism. `mechanistic` — a
+          non-obvious process that illuminates how/why and is not entailed by the
+          set's construction; a genuine enrichment insight. Free text is allowed
+          (not a closed enum) so curators can record nuance or other
+          distinctions.
       enrichment_stats:
         range: EnrichmentStats
         inlined: true

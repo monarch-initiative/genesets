@@ -16,3 +16,7 @@ python/*/*.egg-info/
 # command defaults to ./references_cache, so ignore it at any level.
 curation/references_cache/
 references_cache/
+
+# Stray OAK ontology cache written at the repo root during validation (the
+# committed label cache lives at curation/cache/, not here).
+/cache/

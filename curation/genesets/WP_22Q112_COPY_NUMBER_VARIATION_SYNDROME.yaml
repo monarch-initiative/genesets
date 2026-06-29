@@ -1,0 +1,198 @@
+gene_set_id: MSIGDB:WP_22Q112_COPY_NUMBER_VARIATION_SYNDROME
+gene_set_name: WP_22Q112_COPY_NUMBER_VARIATION_SYNDROME
+collection: C2:CP:WIKIPATHWAYS
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 130
+description: >-
+  WikiPathways gene set representing the 22q11.2 copy number variation syndrome
+  pathway (MSigDB C2:CP:WIKIPATHWAYS, 130 genes). This is a disease pathway gene
+  set, not a cell-type expression signature. The member genes reflect the
+  multi-system biology of 22q11.2 deletion syndrome (DiGeorge/velocardiofacial
+  syndrome), caused by hemizygous deletion of chromosome 22q11.2. The primary
+  pathological driver is haploinsufficiency of TBX1, a T-box transcription factor
+  required for pharyngeal apparatus development. TBX1 loss disrupts neural crest
+  cell migration and the organogenesis of the cardiac outflow tract, thymus,
+  parathyroid glands, and craniofacial structures. The gene set additionally
+  encodes downstream transcriptional regulators, signal transduction effectors,
+  and neurodevelopmental factors including DGCR8 (a microRNA biogenesis component
+  linked to schizophrenia risk), collectively capturing the cardiac, immunological,
+  craniofacial, and neurodevelopmental dimensions of this syndrome.
+contexts:
+  - term:
+      id: MONDO:0018923
+      label: 22q11.2 deletion syndrome
+    context_type: disease
+associations:
+  - term:
+      id: GO:0007507
+      label: heart development
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:40038168
+        reference_title: "Review of the Pathophysiology and Clinical Manifestations of 22q11.2 Deletion and Duplication Syndromes."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Neural crest development is usually impacted leading to various cardiovascular defects including Tetralogy of Fallot and truncus arteriosus."
+        explanation: >-
+          Conotruncal cardiac defects (Tetralogy of Fallot, truncus arteriosus,
+          interrupted aortic arch) are among the most penetrant and clinically
+          defining features of 22q11.2 deletion syndrome, affecting approximately
+          75% of individuals. TBX1, the primary haploinsufficient gene in the
+          deleted region, acts as a transcription factor governing second heart
+          field specification and pharyngeal arch artery remodelling; its loss
+          directly impairs cardiac outflow tract septation and aortic arch
+          morphogenesis. The WikiPathways 22q11.2 CNV gene set captures this
+          cardiac developmental biology, making heart development (GO:0007507)
+          the single most biologically central process represented in this set.
+    curator_note: >-
+      Heart development is the primary core process of this gene set. TBX1
+      regulates proliferation of second heart field progenitors that contribute
+      to the right ventricle and outflow tract. Additional cardiac developmental
+      genes in the set (e.g. GATA4, NKX2-5, CRKL) reinforce this annotation.
+      The conotruncal defect rate in 22q11.2DS (~75%) makes this the dominant
+      phenotypic feature and the strongest biological basis for core_process
+      classification.
+  - term:
+      id: GO:0014032
+      label: neural crest cell development
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:40038168
+        reference_title: "Review of the Pathophysiology and Clinical Manifestations of 22q11.2 Deletion and Duplication Syndromes."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Neural crest development is usually impacted leading to various cardiovascular defects including Tetralogy of Fallot and truncus arteriosus. It can also cause palatal defects, especially velopharyngeal deficiency, considered another hallmark of 22q11DS. Individuals may also present with hypocalcemia and thyroid dysfunction due to impaired parathyroid gland formation and thyroid dysgenesis, respectively. Immunodeficiencies result from impaired T-cell development due to thymic hypoplasia, also a consequence of abnormal neural crest development."
+        explanation: >-
+          Disrupted neural crest cell development is the unifying developmental
+          mechanism that accounts for the multi-organ phenotype of 22q11.2
+          deletion syndrome. Cardiac neural crest cells populate the pharyngeal
+          arches and are required for remodelling the aortic arch arteries and
+          septating the cardiac outflow tract. The same neural crest lineage
+          contributes to the thymic and parathyroid primordia that arise from the
+          third and fourth pharyngeal pouches, explaining thymic hypoplasia and
+          hypoparathyroidism. The 22q11.2 WikiPathways gene set encodes key
+          regulators of this developmental lineage, including TBX1, which is
+          expressed in pharyngeal mesoderm and controls the inductive environment
+          for neural crest colonisation.
+  - term:
+      id: GO:0048538
+      label: thymus development
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:23996541
+        reference_title: "Understanding the role of Tbx1 as a candidate gene for 22q11.2 deletion syndrome."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Clinical findings include cardiac malformations, thymic and parathyroid hypoplasia, craniofacial dysmorphisms, and dental defects. These phenotypes are due mainly to abnormal development of the pharyngeal apparatus."
+        explanation: >-
+          Thymic hypoplasia or aplasia is a hallmark of 22q11.2 deletion
+          syndrome that results in variable T-cell immunodeficiency, and in its
+          complete form (complete DiGeorge syndrome) produces profound combined
+          immunodeficiency. TBX1 is required for normal formation of the third
+          pharyngeal pouch, the embryonic source of the thymic primordium.
+          The gene set includes TBX1 and downstream pharyngeal-pouch regulators,
+          making thymus development a biologically substantive supporting process
+          distinct from a non-specific housekeeping hit.
+    curator_note: >-
+      Thymus development is a supporting_process rather than core_process
+      because, while thymic hypoplasia is a cardinal feature of 22q11.2DS,
+      the dominant clinical burden and the largest fraction of gene-set members
+      relate to cardiac outflow tract and neural crest biology. Thymus
+      development is nonetheless specific to this syndrome and non-trivially
+      supported by gene-set membership.
+  - term:
+      id: GO:0006357
+      label: regulation of transcription by RNA polymerase II
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:28057265
+        reference_title: "Tbx1: Transcriptional and Developmental Functions."
+        supports: SUPPORT
+        snippet: "Tbx1 is haploinsufficient and is involved in an important genetic disorder. The gene encodes a T-box transcription factor that is expressed from approximately E7.5 in mouse embryos and continues to be expressed in a highly dynamic manner. It is neither a strong transcriptional activator nor a strong repressor, but it regulates a large number of genes through epigenetic modifications."
+        explanation: >-
+          TBX1, the primary haploinsufficient driver of 22q11.2 deletion
+          syndrome, encodes a T-box transcription factor that directly regulates
+          RNA Pol II-dependent gene networks through DNA binding and epigenetic
+          modifications. The WikiPathways 22q11.2 gene set further includes
+          additional transcriptional regulators (HIRA, DGCR8, and other genes
+          in the deleted region) that modulate gene expression during development,
+          making regulation of transcription by RNA polymerase II a broadly
+          represented supporting process reflecting the set's TF composition.
+    curator_note: >-
+      Regulation of transcription by RNA Pol II is a broadly expressed term
+      not specific to 22q11.2 biology, but its enrichment in this gene set is
+      mechanistically grounded: TBX1 is the causal transcription factor whose
+      haploinsufficiency drives the syndrome, and the pathway gene set is
+      enriched for TF-encoding members. Classified as supporting_process and
+      broadly_expressed to reflect its non-tissue-specific nature.
+  - term:
+      id: GO:0007399
+      label: nervous system development
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:28057265
+        reference_title: "Tbx1: Transcriptional and Developmental Functions."
+        supports: SUPPORT
+        snippet: "Here, we review recent literature concerning mechanisms of gene regulation by Tbx1 and its role in mammalian development, with a special focus on the cardiac, vascular, and central nervous systems."
+        explanation: >-
+          22q11.2 deletion syndrome presents with prominent neurodevelopmental
+          features including intellectual disability, autism spectrum disorder,
+          and markedly elevated risk of schizophrenia (approximately 25–30% of
+          affected individuals). DGCR8, a key gene within the 22q11.2 locus,
+          encodes a component of the microprocessor complex required for
+          microRNA biogenesis and is essential for normal neuronal development.
+          TBX1 itself has documented roles in central nervous system development.
+          The gene set therefore captures nervous system development as a
+          genuine, biologically substantive supporting process, though the term
+          is lineage-shared rather than syndrome-specific.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance as an
+      enrichment hit in this gene set reflects ribosomal protein subunit genes
+      or broadly expressed metabolic genes present in the WikiPathways 22q11.2
+      pathway representation. It does not reflect a disease-specific or
+      developmental mechanism of the syndrome and is recorded to flag a
+      non-informative housekeeping enrichment result, consistent with the
+      pattern observed across disease pathway gene sets of this size.

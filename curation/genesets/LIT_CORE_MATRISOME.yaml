@@ -1,0 +1,163 @@
+gene_set_id: LIT:CORE_MATRISOME
+gene_set_name: CORE_MATRISOME
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 278
+description: >-
+  Literature-defined COMPOSITIONAL/structural signature: the "core matrisome", the
+  ensemble of bona fide extracellular-matrix (ECM) structural proteins defined in
+  silico and characterized by proteomics by Naba et al. (Mol Cell Proteomics 2012,
+  PMID:22159717). Unlike the up/down activity contrasts in this collection, this is
+  a compositional CATEGORY, not a differential-expression contrast, hence
+  direction: NA. The authors screened the human and mouse proteomes for ECM-diagnostic
+  domains and defined the matrisome as the ECM proteins (the "core matrisome") plus
+  the associated factors ("matrisome-associated": ECM-affiliated proteins, ECM
+  regulators, secreted factors). The CORE matrisome curated here is the 278-gene human
+  set partitioned into three structural classes: collagens (43; e.g. COL1A1, COL1A2,
+  COL3A1), ECM glycoproteins (200; e.g. FN1, LAMA1, FBN1, THBS1, ELN), and
+  proteoglycans (35; e.g. HSPG2/perlecan, BGN, DCN, VCAN). These genes literally
+  constitute the ECM compartment and provide its structural integrity, so their
+  coordinated expression is the readout of ECM deposition and remodeling; in disease
+  (fibrosis, tumor stroma) excessive/dysregulated core-matrisome expression is the
+  molecular signature of ECM-remodeling activity. Because the member genes carry the
+  GO annotations for the ECM compartment and ECM organization, enrichment recovers
+  those terms (annotation_supported) rather than leaving them as gaps; there is no
+  housekeeping/ribosomal noise in a hand-defined structural set, so no nonspecific
+  term is asserted. The defining paper is simultaneously the identity, the membership,
+  and the evidence for this set. The ECM is a structural compartment rather than a
+  cell type, disease, or anatomical organ (GO:0031012 "extracellular matrix" is a
+  cellular_component, used below as an association, and no general UBERON anatomical
+  ECM term exists), so this file intentionally carries zero biological contexts; the
+  set is captured entirely in the associations below.
+associations:
+  - term:
+      id: GO:0030198
+      label: extracellular matrix organization
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Extracellular matrix organization is the canonical process the core matrisome
+      executes: the collagens, ECM glycoproteins (FN1, FBN1, ELN, THBS1, laminins)
+      and proteoglycans that make up this set assemble, cross-link and arrange into
+      the ECM meshwork. These members carry the ECM-organization annotation, so it is
+      the top enrichment hit for any matrisome set (annotation_supported), and it is
+      the defining ACTIVE process whose coordinated upregulation reads out ECM
+      deposition/remodeling in fibrosis and tumor stroma. lineage_shared rather than
+      cell_type_specific because ECM is produced across stromal/mesenchymal and
+      basement-membrane-forming lineages rather than by a single cell type.
+  - term:
+      id: GO:0005201
+      label: extracellular matrix structural constituent
+    aspect: molecular_function
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:22159717
+        reference_title: "The matrisome: in silico definition and in vivo characterization by proteomics of normal and tumor extracellular matrices."
+        supports: SUPPORT
+        evidence_source: COMPUTATIONAL
+        snippet: "The human core matrisome is composed of 278 genes corresponding to somewhat more than 1% of the proteome"
+        explanation: >-
+          The defining molecular activity of the core matrisome is providing the
+          structural integrity of the ECM. The 278-gene human core matrisome curated
+          here is exactly the set of proteins the authors defined in silico as the
+          structural constituents of the matrix (collagens, ECM glycoproteins,
+          proteoglycans). These members carry the extracellular matrix structural
+          constituent annotation, so enrichment recovers it (annotation_supported).
+          Treated as core (not merely supporting) because the structural-constituent
+          function IS what makes a gene part of the core matrisome. evidence_source is
+          COMPUTATIONAL because the core matrisome was defined by a bioinformatic
+          domain-based screen of the proteome; the 278-gene count also grounds n_genes.
+    curator_note: >-
+      lineage_shared: ECM structural constituents are expressed across the
+      connective-tissue/stromal and basement-membrane-producing lineages, not confined
+      to one cell type.
+  - term:
+      id: GO:0031012
+      label: extracellular matrix
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:22159717
+        reference_title: "The matrisome: in silico definition and in vivo characterization by proteomics of normal and tumor extracellular matrices."
+        supports: SUPPORT
+        evidence_source: COMPUTATIONAL
+        snippet: "Finally, knowledge-based annotation of these gene lists allowed us to define subcategories within the core matrisome; namely, ECM glycoproteins, collagens, and proteoglycans."
+        explanation: >-
+          The extracellular matrix is the cellular component this entire set defines:
+          the core matrisome IS the protein composition of the ECM compartment, which
+          the authors partition into ECM glycoproteins, collagens, and proteoglycans.
+          The member genes carry the extracellular matrix cellular-component
+          annotation, so enrichment recovers it (annotation_supported). This is the
+          characteristic, defining compartment of the set rather than an incidental
+          localization. evidence_source COMPUTATIONAL for the in silico definition of
+          the core matrisome and its three structural subcategories.
+      - reference: PMID:22159717
+        reference_title: "The matrisome: in silico definition and in vivo characterization by proteomics of normal and tumor extracellular matrices."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "led to the identification of more than 100 extracellular matrix proteins within any given tissue or tumor."
+        explanation: >-
+          Beyond the in silico definition, the authors characterized the ECM
+          compartment in vivo by proteomics of murine lung and colon and of human
+          melanoma xenografts, recovering well over 100 ECM proteins per tissue/tumor.
+          This confirms the core matrisome as the empirically observable ECM
+          compartment, not merely a predicted list. evidence_source MODEL_ORGANISM
+          because the in vivo proteomic characterization was performed on murine
+          tissues and xenograft tumors.
+    curator_note: >-
+      Uses the current non-obsolete cellular_component GO:0031012 "extracellular
+      matrix". The previously-used GO:0062023 "collagen-containing extracellular
+      matrix" is now OBSOLETE in GO, so it is deliberately not used here.
+  - term:
+      id: GO:0030199
+      label: collagen fibril organization
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Collagen fibril organization is a real, characteristic sub-process of the core
+      matrisome: the fibrillar collagens (COL1A1, COL1A2, COL3A1, COL5) and their
+      organizing partners determine fibril size and arrangement within the matrix, and
+      carry this annotation, so enrichment recovers it (annotation_supported). Scored
+      as supporting rather than core because it is one specialized arm of the broader
+      ECM-organization program (which is the core process), restricted to the collagen
+      subset rather than the whole core matrisome.
+  - term:
+      id: GO:0007155
+      label: cell adhesion
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Many core-matrisome glycoproteins (fibronectin FN1, laminins, thrombospondin
+      THBS1) are adhesive ligands through which cells attach to the ECM via integrins,
+      so cell adhesion is recovered by enrichment over this set (annotation_supported).
+      Scored supporting, not core: cell adhesion is an enabling function of a subset of
+      ECM glycoproteins rather than the defining structural identity of the matrisome,
+      and it is broadly_expressed across many adhesion contexts beyond the ECM.

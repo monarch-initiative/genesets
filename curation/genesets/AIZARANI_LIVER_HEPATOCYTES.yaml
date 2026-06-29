@@ -1,0 +1,156 @@
+gene_set_id: MSIGDB:AIZARANI_LIVER_HEPATOCYTES
+gene_set_name: AIZARANI_LIVER_HEPATOCYTES
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of mature hepatocytes from human liver (Aizarani
+  et al. liver atlas, MSigDB C8). Hepatocytes are the principal metabolic
+  parenchymal cells of the liver, accounting for roughly 80% of liver volume;
+  they execute xenobiotic detoxification via cytochrome P450 enzymes, lipid and
+  lipoprotein metabolism, bile acid biosynthesis, synthesis of most plasma
+  proteins including coagulation factors and complement components, and
+  gluconeogenesis. This mature-hepatocyte signature is distinguished from the
+  fetal hepatoblast set (DESCARTES_FETAL_LIVER_HEPATOBLASTS) by strong
+  expression of adult-phase drug-metabolising enzymes and full hepatocyte
+  metabolic differentiation.
+contexts:
+  - term:
+      id: CL:0000182
+      label: hepatocyte
+    context_type: cell_type
+  - term:
+      id: UBERON:0002107
+      label: liver
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0006805
+      label: xenobiotic metabolic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:26233906
+        reference_title: "Xenobiotic and Endobiotic Mediated Interactions Between the Cytochrome P450 System and the Inflammatory Response in the Liver."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Hepatocytes in the liver carry a nearly complete complement of drug metabolizing enzymes, including numerous cytochrome P450s."
+        explanation: >-
+          Cytochrome P450 enzymes concentrated in hepatocytes are the dominant
+          machinery for xenobiotic biotransformation in humans. This review
+          explicitly states that hepatocytes harbour a near-complete complement
+          of drug-metabolising enzymes, establishing xenobiotic metabolic process
+          as the single most defining functional GO term that distinguishes
+          mature hepatocytes from all other liver cell types, including fetal
+          hepatoblasts.
+  - term:
+      id: GO:0006629
+      label: lipid metabolic process
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Hepatocytes are the primary site of de-novo lipogenesis, fatty-acid
+      beta-oxidation, cholesterol synthesis, and VLDL assembly and secretion.
+      Lipid metabolic process is a core hepatocyte function, but it is
+      broadly_expressed because multiple metabolically active cell types share
+      this annotation, reducing its specificity as a hepatocyte marker.
+  - term:
+      id: GO:0006956
+      label: complement activation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The liver is the principal source of most soluble complement proteins
+      (C3, C4, C5, factor B, C1q subunits). Complement component genes are
+      shared hepatocyte lineage markers; the term is classified as
+      supporting_process because complement synthesis is a secretory support
+      function rather than the primary metabolic activity defining the mature
+      hepatocyte. The association is lineage_shared with other hepatic cell
+      types and fetal hepatoblasts.
+  - term:
+      id: GO:0005783
+      label: endoplasmic reticulum
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Hepatocytes contain one of the most extensively developed endoplasmic
+      reticulum systems among differentiated mammalian cells. The smooth ER
+      houses the cytochrome P450 drug-metabolising enzymes (CYP3A4, CYP2C9,
+      CYP2D6, CYP1A2 etc.), and the rough ER supports the massive secretory
+      throughput of plasma proteins. ER-resident and ER-associated proteins
+      dominate hepatocyte marker gene lists and their GO CC annotations.
+  - term:
+      id: GO:0007596
+      label: blood coagulation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The liver synthesises the majority of plasma coagulation factors
+      (fibrinogen and factors II, VII, IX, X, as well as protein C and
+      protein S). Blood coagulation is a lineage-shared supporting process;
+      it is biologically important for hepatocyte identity but not the
+      primary defining metabolic function of the mature hepatocyte.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Ribosomal protein
+      genes are highly expressed in metabolically active hepatocytes, producing
+      a non-informative enrichment hit that reflects high translational
+      activity rather than any hepatocyte-specific function.
+  - term:
+      id: GO:0006699
+      label: bile acid biosynthetic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Bile acid biosynthesis via the CYP7A1-initiated cholesterol
+      7-alpha-hydroxylation pathway is a defining metabolic function of
+      mature hepatocytes and is essentially absent from hepatoblasts and
+      non-parenchymal liver cells. This term is curator-added and classified
+      as annotation_gap: the key enzyme genes (CYP7A1, CYP8B1, CYP27A1) are
+      present in mature hepatocyte signatures but are not always among the
+      top differentially expressed markers recovered from single-cell atlas
+      clustering, and their GO annotations are insufficiently dense to allow
+      confident automated enrichment recovery from a typical C8 marker set.
+      Bile acid biosynthetic process is a GO annotation curation target for
+      mature-hepatocyte gene sets.

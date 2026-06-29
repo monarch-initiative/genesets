@@ -1,0 +1,164 @@
+gene_set_id: MSIGDB:KEGG_ACUTE_MYELOID_LEUKEMIA
+gene_set_name: KEGG_ACUTE_MYELOID_LEUKEMIA
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy acute myeloid leukemia pathway gene set (MSigDB C2 curated gene set).
+  This is a blood cancer disease pathway gene set, not a cell-type signature. The member
+  genes encode hematopoietic transcription factors recurrently mutated or dysregulated
+  in AML (RUNX1, CEBPA, PML-RARA, MYC, EVI1/MECOM), growth-factor receptors and
+  RAS/MAPK signaling components (KIT, FLT3, RAS, RAF, MAP2K, MAPK), PI3K-AKT
+  survival effectors, and core apoptosis regulators (BCL2-family, CASP3, CYCS),
+  reflecting the major mechanistic arms of the KEGG acute myeloid leukemia pathway:
+  transcription-factor-driven differentiation block, growth-factor/RAS/MAPK
+  proliferative signaling, PI3K-AKT survival signaling, and apoptosis evasion.
+contexts:
+  - term:
+      id: MONDO:0018874
+      label: acute myeloid leukemia
+    context_type: disease
+  - term:
+      id: UBERON:0002371
+      label: bone marrow
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0030099
+      label: myeloid cell differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:17934489
+        reference_title: "Transcriptional dysregulation during myeloid transformation in AML."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Loss of the CCAAT/enhancer binding protein-alpha (CEBPA) function in myeloid cells in vitro and in vivo leads to a differentiation block, similar to that observed in blasts from AML patients."
+        explanation: >-
+          Blockade of myeloid cell differentiation is the defining molecular event
+          in AML: leukemic blasts are arrested at an immature progenitor stage and
+          fail to complete normal myeloid maturation. CEBPA and RUNX1, master
+          transcription factors whose loss-of-function or dominant-negative forms
+          are characteristic of specific AML subtypes, are required for myeloid
+          differentiation. This review (Pabst & Mueller, Oncogene 2007) directly
+          links transcription-factor dysfunction to the myeloid differentiation block
+          that constitutes the defining pathological mechanism in AML.
+    curator_note: >-
+      Myeloid cell differentiation is blocked, not absent, in AML: the disease IS
+      a failure of this process. Key KEGG AML pathway genes (CEBPA, RUNX1, PML-RARA,
+      EVI1/MECOM) are annotated to myeloid cell differentiation or its regulation in
+      GOA-human. The association is core_process because AML is fundamentally a
+      disease of this pathway's impairment.
+  - term:
+      id: GO:0006357
+      label: regulation of transcription by RNA polymerase II
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      RUNX1, CEBPA, PML-RARA, and MYC are hematopoietic transcription factors
+      that directly regulate Pol II-driven gene expression programs controlling
+      myeloid differentiation and proliferation. Mutations or chromosomal
+      rearrangements involving these factors are among the most frequent genetic
+      events in AML, directly altering transcriptional programs that normally
+      drive myeloid maturation. While regulation of transcription by RNA Pol II
+      is broadly expressed, it is mechanistically central to AML pathogenesis
+      through these lineage-defining transcription factors and their oncogenic
+      fusion proteins.
+  - term:
+      id: GO:0042127
+      label: regulation of cell population proliferation
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      FLT3, KIT, RAS, and their downstream effectors in the KEGG AML pathway drive
+      aberrant blast proliferation. FLT3-ITD and activating KIT mutations are among
+      the most common somatic alterations in AML and constitutively activate
+      proliferative signaling. Uncontrolled blast expansion is a hallmark of AML,
+      making regulation of cell population proliferation a significant but not
+      AML-specific supporting process in this gene set.
+  - term:
+      id: GO:0000165
+      label: MAPK cascade
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      RAS, RAF, MAP2K, and MAPK members of the RAS-RAF-MEK-ERK cascade are
+      included in the KEGG AML pathway. Activating RAS mutations occur in
+      approximately 10-15% of AML cases and are also activated downstream of
+      FLT3-ITD and KIT mutations, driving proliferative signaling. The MAPK
+      cascade is shared across many cancer types and is not AML-specific, but
+      represents a mechanistically significant proliferative arm of this pathway.
+  - term:
+      id: GO:0006915
+      label: apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      BCL2-family members, CASP3, CYCS, and death-receptor pathway components
+      in the KEGG AML pathway encode canonical apoptosis regulators. Evasion of
+      apoptosis supports leukemic blast survival and is a key step in AML
+      pathogenesis, but the apoptotic process is broadly expressed and not
+      specific to AML; it is shared across many cancer disease pathway gene sets.
+  - term:
+      id: GO:0060218
+      label: hematopoietic stem cell differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      AML arises from transformation of hematopoietic stem or early progenitor
+      cells, whose normal differentiation is subverted by the disease-defining
+      mutations. Key KEGG AML pathway genes (RUNX1, FLT3, KIT, CEBPA) are
+      required for hematopoietic stem and progenitor cell maintenance and
+      differentiation. This is an annotation_gap: the genes are present in the
+      set but are predominantly annotated to the broader myeloid cell
+      differentiation (GO:0030099) rather than to the more specific hematopoietic
+      stem cell differentiation (GO:0060218). GOA-human annotation depth at this
+      more specific term is limited; the biological association is genuine and
+      represents a GO annotation curation target.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment results for this gene set reflects ribosomal protein subunit
+      genes present in the KEGG AML pathway representation. It does not reflect
+      an AML-specific biological function and is a non-informative enrichment hit.

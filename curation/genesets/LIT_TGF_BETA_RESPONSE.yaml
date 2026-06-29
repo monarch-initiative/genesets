@@ -1,0 +1,171 @@
+gene_set_id: LIT:TGF_BETA_RESPONSE
+gene_set_name: TGF_BETA_RESPONSE
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+description: >-
+  Literature-defined disease-activity signature of the TGF-beta/SMAD response
+  program, the master pro-fibrotic signaling output that drives myofibroblast
+  activation and extracellular-matrix deposition across fibrotic tissues. It is
+  anchored on the direct TGF-beta/Smad3 target genes identified by Verrecchia,
+  Chu and Mauviel (J Biol Chem 2001, PMID:11279127) in human dermal fibroblasts
+  using a combined cDNA microarray / promoter-transactivation approach, in which
+  a gene qualified as a direct Smad target only if its TGF-beta induction was
+  rapid (30 min), Smad3-dependent (promoter transactivated by co-transfected
+  Smad3, abrogated by dominant-negative Smad3 and inhibitory Smad7, and absent in
+  Smad3-null fibroblasts) — yielding COL1A1, COL1A2, COL3A1, COL5A2, COL6A1,
+  COL6A3 and TIMP1. It is broadened to the canonical genome-wide TGF-beta
+  response signature (TBRS) of Padua, Massague et al. (Cell 2008, PMID:18394990),
+  defined in breast cancer cells as the set of genes induced by TGF-beta through
+  the Smad signaling pathway (e.g. the Smad-dependent target ANGPTL4). Unlike
+  MSigDB causal/driver disease pathway sets, the members here are the READOUT of
+  an ACTIVE signaling program, not driver mutations: they are the transcripts
+  UPregulated when TGF-beta engages its receptor and activates receptor-regulated
+  SMAD2/3. The signature spans the recognisable arms of the response: the
+  immediate negative-feedback regulators (SMAD7, SKIL/SnoN), immediate-early
+  transcription factors (JUNB, ID1), the cell-cycle-arrest effector CDKN1A
+  (p21), the matricellular and matrix effectors that constitute the pro-fibrotic
+  output (the fibrillar collagens, fibronectin FN1, CTGF/CCN2, TGFBI and the
+  serpin SERPINE1/PAI-1). Because the member genes literally carry the GO
+  annotations for the TGF-beta response, SMAD signal transduction and ECM
+  organization they read out, enrichment recovers those processes
+  (annotation_supported) rather than leaving them as gaps. The TGF-beta response
+  is a signaling-pathway program operating across many fibrotic tissues and cell
+  types (dermal and tissue fibroblasts, myofibroblastic CAFs, epithelial cells
+  undergoing EMT) rather than one cell type, disease or anatomical entity, so (as
+  in the Buffa hypoxia metagene) this file intentionally carries zero biological
+  contexts; the program is captured entirely in the associations below. The exact
+  membership list is not enumerated here, so n_genes is omitted, and the set is
+  standalone (not one pole of a contrast series). DISEASE RELEVANCE: persistent
+  TGF-beta/SMAD signaling is the central driver of pathological fibrosis in
+  skin, lung, liver, kidney and heart and of the desmoplastic stroma of solid
+  tumours; this response signature is the transcriptional readout that
+  anti-fibrotic and TGF-beta-pathway-targeting strategies aim to suppress.
+associations:
+  - term:
+      id: GO:0071560
+      label: cellular response to transforming growth factor beta stimulus
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:11279127
+        reference_title: "Identification of novel TGF-beta /Smad gene targets in dermal fibroblasts using a combined cDNA microarray/promoter transactivation approach."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "extracellular matrix-related genes rapidly induced by TGF-beta in human dermal fibroblasts"
+        explanation: >-
+          The cellular response to a TGF-beta stimulus is the defining ACTIVE
+          program this signature reads out: by construction the set is the
+          transcripts whose steady-state mRNA rises rapidly when human dermal
+          fibroblasts are stimulated with TGF-beta, identified here by cDNA
+          microarray as extracellular matrix-related genes rapidly induced by
+          TGF-beta. These TGF-beta-induced members (the fibrillar collagens,
+          TIMP1 and the broader response program) carry the
+          response-to-TGF-beta annotation, so enrichment recovers this
+          overarching process (annotation_supported). Marked broadly_expressed
+          because essentially all human cell types mount a transcriptional
+          response to TGF-beta rather than this being fibroblast-specific.
+    curator_note: >-
+      The overarching ACTIVE process that defines the set. Kept core because the
+      gene set is, by definition, the cell-level transcriptional readout of a
+      TGF-beta stimulus.
+  - term:
+      id: GO:0060395
+      label: SMAD protein signal transduction
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:11279127
+        reference_title: "Identification of novel TGF-beta /Smad gene targets in dermal fibroblasts using a combined cDNA microarray/promoter transactivation approach."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "we have identified COL1A2, COL3A1, COL6A1, COL6A3, and tissue inhibitor of metalloproteases-1 as definite TGF-beta/Smad3 targets"
+        explanation: >-
+          The signature is, by construction, the SMAD-dependent arm of the
+          TGF-beta response: the authors retained only genes whose TGF-beta
+          induction is Smad-mediated, requiring promoter transactivation by
+          co-transfected Smad3 and its abrogation by dominant-negative Smad3 and
+          inhibitory Smad7, and on this stringent basis identified COL1A2,
+          COL3A1, COL6A1, COL6A3 and TIMP1 as definite TGF-beta/Smad3 targets.
+          SMAD protein signal transduction is therefore the core intracellular
+          signaling cassette the members read out, and they carry this GO
+          annotation, so enrichment recovers it (annotation_supported).
+    curator_note: >-
+      Core: the set is explicitly the Smad-dependent (Smad3-mediated) transcriptional
+      output of TGF-beta, with negative-feedback members (SMAD7, SKIL/SnoN) that are
+      themselves SMAD-pathway components. broadly_expressed because SMAD signal
+      transduction operates across most cell types.
+  - term:
+      id: GO:0007179
+      label: transforming growth factor beta receptor signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The upstream signaling event that defines the set: TGF-beta ligand binding to
+      the TGF-beta receptor activates receptor-regulated SMADs and drives the
+      transcriptional program these genes constitute. Negative-feedback members of
+      the response (SMAD7, SKIL/SnoN) and other receptor-pathway effectors carry this
+      annotation, so enrichment recovers it (annotation_supported). Kept core because
+      TGF-beta receptor signaling is mechanistically central to what the set is;
+      broadly_expressed because the receptor pathway operates across very many cell
+      types and is not fibroblast-specific.
+  - term:
+      id: GO:0030198
+      label: extracellular matrix organization
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The pro-fibrotic output of the program and the dominant functional axis of
+      this fibroblast-derived signature: TGF-beta/SMAD induction of the fibrillar
+      collagens (COL1A1, COL1A2, COL3A1, COL5A2, COL6A1/COL6A3), fibronectin (FN1),
+      the matricellular protein CTGF/CCN2 and the protease inhibitor TIMP1 builds and
+      remodels the extracellular matrix, the molecular basis of myofibroblast
+      activation and tissue fibrosis. These members carry ECM-organization
+      annotations, so enrichment recovers the term (annotation_supported). Kept core
+      because ECM deposition/remodeling is the defining effector output of the
+      TGF-beta response in fibrosis; specificity lineage_shared because ECM
+      organization is produced across stromal/mesenchymal lineages rather than by a
+      single cell type.
+  - term:
+      id: GO:0010718
+      label: positive regulation of epithelial to mesenchymal transition
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      TGF-beta is the canonical inducer of epithelial-to-mesenchymal transition, and
+      the SMAD-driven response upregulates EMT effectors (e.g. SERPINE1/PAI-1, TGFBI
+      and the SNAI/ZEB transcription-factor programme) that positively regulate EMT
+      during fibrosis and tumour progression; these members carry the annotation, so
+      the term is annotation_supported. Added as curator_added because enrichment
+      recovers the core upstream signaling and ECM processes more readily than this
+      regulatory term, and scored supporting rather than core: EMT regulation is a
+      real, mechanistically central downstream branch of the TGF-beta response but one
+      arm rather than the defining activity, invoked chiefly in the epithelial
+      compartment, hence lineage_shared.

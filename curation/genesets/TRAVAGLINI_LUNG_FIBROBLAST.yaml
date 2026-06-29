@@ -1,0 +1,149 @@
+gene_set_id: MSIGDB:TRAVAGLINI_LUNG_FIBROBLAST
+gene_set_name: TRAVAGLINI_LUNG_FIBROBLAST
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of fibroblasts from human lung (Travaglini et al.
+  lung cell atlas). Fibroblasts are stromal/mesenchymal cells that maintain the
+  structural integrity of the lung by secreting extracellular matrix components,
+  principally collagens and associated glycoproteins, and by orchestrating tissue
+  remodelling and repair responses.
+contexts:
+  - term:
+      id: CL:0000057
+      label: fibroblast
+    context_type: cell_type
+  - term:
+      id: UBERON:0002048
+      label: lung
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0030198
+      label: extracellular matrix organization
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:32317643
+        reference_title: "Collagen-producing lung cell atlas identifies multiple subsets with distinct localization and relevance to fibrosis."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Collagen-producing cells maintain the complex architecture of the lung and drive pathologic scarring in pulmonary fibrosis."
+        explanation: >-
+          Lung fibroblasts are the principal collagen-producing cells that
+          organise and maintain the extracellular matrix scaffolding of the lung.
+          This single-cell atlas study directly characterises fibroblast
+          subpopulations defined by their ECM-organising activity, supporting
+          extracellular matrix organization as a core process of this marker
+          signature.
+    curator_note: >-
+      Extracellular matrix organization is the canonical effector process of
+      fibroblasts. Although the term is broadly shared across connective tissue
+      fibroblasts in many organs, it is the most direct molecular descriptor of
+      what fibroblasts do and is highly specific relative to non-stromal cell
+      types in the lung (e.g., epithelial, endothelial, or immune cells).
+  - term:
+      id: GO:0031012
+      label: extracellular matrix
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The extracellular matrix is the primary cellular compartment to which
+      fibroblast marker genes contribute. Many signature genes encode structural
+      ECM proteins (collagens, fibronectin, elastin, proteoglycans) that are
+      secreted and incorporated into the extracellular matrix. Note: GO:0062023
+      (collagen-containing extracellular matrix) is obsolete; GO:0031012
+      extracellular matrix is used as the appropriate current term.
+  - term:
+      id: GO:0030199
+      label: collagen fibril organization
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:21719092
+        reference_title: "Idiopathic pulmonary fibrosis."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "The fibroblast and myofibroblast foci secrete excessive amounts of extracellular matrix, mainly collagens, resulting in scarring and destruction of the lung architecture."
+        explanation: >-
+          Collagen fibril formation and organisation is a key downstream activity
+          of lung fibroblasts in both homeostasis and pathological remodelling.
+          The large number of collagen structural genes (COL1A1, COL1A2, COL3A1,
+          COL6A1–3) expected in this marker signature reflects active fibril
+          assembly, making collagen fibril organization a well-supported
+          supporting process. The term is lineage_shared across connective tissue
+          fibroblasts in different organs.
+  - term:
+      id: GO:0042060
+      label: wound healing
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Fibroblasts are central effectors of the wound healing response, migrating
+      to sites of injury, proliferating, and depositing provisional extracellular
+      matrix during tissue repair. In the lung, fibroblast-mediated wound healing
+      is pivotal after epithelial injury; its dysregulation underpins fibrotic
+      diseases such as idiopathic pulmonary fibrosis. Wound healing is
+      lineage_shared because fibroblasts in many organs contribute to this
+      response, and the term is not confined to lung fibroblasts.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment results reflects the high secretory load of fibroblasts, which
+      requires substantial ribosomal machinery to sustain continuous synthesis
+      of collagen and other ECM proteins. This is a non-specific enrichment hit
+      and does not reflect a fibroblast-specific function.
+  - term:
+      id: GO:0032964
+      label: collagen biosynthetic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Collagen biosynthesis is a defining biochemical activity of fibroblasts,
+      encompassing transcription of collagen genes, intracellular hydroxylation
+      and glycosylation of procollagen chains, and secretion for fibril assembly.
+      This process is expected to be among the top biological process annotations
+      for the fibroblast signature, but standard GO enrichment tools frequently
+      recover the parent GO:0030198 (extracellular matrix organization) rather
+      than this specific biosynthetic child, because many human collagen genes
+      carry annotations at the broader organizational level in current GOA-human.
+      This is therefore an annotation_gap rather than a true enrichment failure —
+      the biology is unambiguous but GO annotation coverage for collagen
+      biosynthetic process in the relevant human genes is incomplete.

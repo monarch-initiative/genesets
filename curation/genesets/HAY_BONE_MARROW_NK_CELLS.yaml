@@ -29,6 +29,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     evidence:
       - reference: PMID:11861606
         reference_title: Lymphocyte-mediated cytotoxicity.
@@ -47,6 +48,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       NK cells store cytotoxic effectors (perforin, granzymes) in lytic/secretory
       granules. The secretory granule compartment is a hallmark of cytotoxic
@@ -59,6 +61,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: curator_added
+    insight: confirmatory
     curator_note: >-
       Broader NK-cell immunity term encompassing both cytotoxic killing and
       cytokine-mediated functions. Marker-based enrichment may miss this parent
@@ -72,6 +75,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Parent term of NK-cell mediated cytotoxicity; shared with cytotoxic T
       lymphocytes. Expected to appear in enrichment results alongside the more
@@ -84,6 +88,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       NK cells are innate immune lymphocytes that respond without prior
       sensitization. Innate immune response is shared with other innate cells
@@ -96,6 +101,7 @@ associations:
     confidence: medium
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Generic immune response term that will be recovered by enrichment of any
       immune cell signature. Provides contextual support but is not specific to

@@ -1,0 +1,181 @@
+gene_set_id: MSIGDB:MURARO_PANCREAS_ACINAR_CELL
+gene_set_name: MURARO_PANCREAS_ACINAR_CELL
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of pancreatic acinar cells (exocrine, digestive-
+  enzyme-secreting) from human pancreas (Muraro et al. single-cell atlas of the
+  human pancreas, MSigDB C8). Pancreatic acinar cells are the predominant
+  exocrine cell type, constituting approximately 80% of pancreatic mass. Their
+  defining function is the synthesis of digestive enzyme precursors (zymogens),
+  storage in apical zymogen granules, and regulated secretion into the
+  pancreatic duct lumen in response to cholecystokinin (CCK) and neural
+  stimuli. Secreted enzymes include serine proteases (trypsinogen, PRSS1/PRSS2;
+  chymotrypsinogen, CTRB1/CTRB2; elastase, CELA3A/CELA2A), alpha-amylase
+  (AMY2A), pancreatic lipase (PNLIP), and phospholipase A2 (PLA2G1B).
+contexts:
+  - term:
+      id: CL:0002064
+      label: pancreatic acinar cell
+    context_type: cell_type
+  - term:
+      id: UBERON:0001264
+      label: pancreas
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0007586
+      label: digestion
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:26702787
+        reference_title: >-
+          The econobiology of pancreatic acinar cells granule inventory and the
+          stealthy nano-machine behind it.
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: >-
+          The pancreatic gland secretes most of the enzymes and many other
+          macromolecules needed for food digestion in the gastrointestinal
+          tract.
+        explanation: >-
+          Digestion (GO:0007586) is the multicellular process by which ingested
+          nutrients are broken down; it is directly enabled by the digestive
+          enzyme complement secreted by pancreatic acinar cells (amylase,
+          lipase, trypsin, chymotrypsin, elastase). The Muraro acinar-cell
+          signature is enriched for the genes encoding these enzymes — PRSS1,
+          CTRB1, AMY2A, PNLIP, CELA3A — all of which carry digestion or
+          descendant GO annotations in GOA-human, making digestion the
+          cardinal core process of this cell-type signature.
+    curator_note: >-
+      Digestion (GO:0007586) captures the whole-organism process that acinar
+      cells enable through digestive enzyme secretion. The term is essentially
+      diagnostic of exocrine pancreatic cell-type identity; no other cell type
+      in the Muraro pancreas atlas contributes comparably to alimentary
+      digestion. The enrichment signal is driven by the abundant zymogen-
+      encoding genes that dominate the acinar transcriptome.
+  - term:
+      id: GO:0042588
+      label: zymogen granule
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:11812646
+        reference_title: "The regulation of exocytosis in the pancreatic acinar cell."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: >-
+          In transit through the secretory pathway, these enzymes are separated
+          from constitutively secreted proteins and packaged into zymogen
+          granules, which are localised in the apical pole of the cell.
+        explanation: >-
+          Zymogen granules are the defining secretory organelles of pancreatic
+          acinar cells, in which inactive digestive enzyme precursors are
+          concentrated and stored prior to regulated apical exocytosis. Multiple
+          Muraro acinar-cell signature genes encode zymogen-granule-resident
+          proteins (PRSS1, CTRB1, CELA3A, PNLIP, AMY2A), making the zymogen
+          granule the cardinal cellular-component annotation for this gene set.
+    curator_note: >-
+      Zymogen granules (GO:0042588) are membrane-bounded secretory granules
+      containing inactive digestive enzyme precursors packed at the apical pole
+      of the acinar cell. They are virtually absent from endocrine islet cells
+      and duct cells in the same Muraro atlas, making this cellular component
+      essentially diagnostic of acinar cell identity within the pancreas
+      single-cell landscape.
+  - term:
+      id: GO:0009306
+      label: protein secretion
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Protein secretion (GO:0009306) captures the intracellular trafficking and
+      regulated exocytosis pathway by which newly synthesised digestive enzymes
+      travel from the rough ER through the Golgi into zymogen granules and are
+      released into the pancreatic duct lumen. Multiple Muraro signature genes
+      participate in this pathway (RAB3D, VAMP8, SNAP23, and the zymogen cargo
+      proteins themselves). The term is supporting rather than core because it
+      represents the delivery mechanism rather than the defining enzymatic output
+      of acinar cell function.
+  - term:
+      id: GO:0004252
+      label: serine-type endopeptidase activity
+    aspect: molecular_function
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Serine-type endopeptidase activity (GO:0004252) is the molecular function
+      executed by trypsin (PRSS1, PRSS2), chymotrypsin (CTRB1, CTRB2), and
+      elastase (CELA3A, CELA2A) — among the most abundant secreted proteins of
+      the pancreatic acinar cell. These serine proteases collectively constitute
+      the majority of pancreatic digestive enzyme output by mass and are
+      directly responsible for protein digestion in the small intestine. This
+      molecular function term directly reflects the dominant biochemical
+      activity of the acinar cell secretory product and is diagnostic of
+      exocrine pancreatic identity.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation (GO:0006412) is a ubiquitous housekeeping process. Its
+      enrichment in the Muraro acinar-cell signature reflects the extraordinary
+      translational demand of the acinar cell, which must synthesise large
+      quantities of digestive enzyme proteins — estimated at up to 90% of total
+      cellular protein output. Ribosomal protein and elongation-factor genes
+      drive this enrichment signal and are present in virtually every
+      transcriptionally active cell type. Despite the extreme translational
+      load being physiologically significant in the acinar cell context, the
+      term itself is not informative as an acinar-cell marker and is a canonical
+      non-specific housekeeping enrichment hit.
+  - term:
+      id: GO:0090425
+      label: acinar cell differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Acinar cell differentiation (GO:0090425) captures the developmental
+      program that specifies acinar cell identity, controlled by transcription
+      factors PTF1A, RBPJL, NR5A2, and BHLHA15 (MIST1) — several of which
+      appear in or are connected to the Muraro acinar-cell signature.
+      Enrichment-based approaches recover functional secretion terms
+      preferentially but not developmental identity terms, because the
+      transcription factors maintaining acinar identity carry incomplete
+      downstream GO annotations. This is an annotation_gap: relevant genes are
+      present in the set but their GO annotations do not propagate to acinar
+      cell differentiation at sufficient depth to be recovered by enrichment.
+      Added by curator to reflect the defining developmental process of this
+      cell-type signature and to flag a GO annotation curation target.

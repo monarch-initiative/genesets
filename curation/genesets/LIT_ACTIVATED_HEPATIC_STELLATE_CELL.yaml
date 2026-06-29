@@ -1,0 +1,187 @@
+gene_set_id: LIT:ACTIVATED_HEPATIC_STELLATE_CELL
+gene_set_name: ACTIVATED_HEPATIC_STELLATE_CELL
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:HEPATIC_STELLATE_CELL_ACTIVATION
+series_role: activated
+description: >-
+  Literature-defined cell-state ACTIVITY signature of the ACTIVATED,
+  myofibroblast-like hepatic stellate cell (HSC), the fibrogenic driver state of
+  liver fibrosis, anchored on De Minicis, Seki, Brenner, Schwabe et al.
+  (Gastroenterology 2007, PMID:17484886), who profiled gene-expression changes
+  across three models of HSC activation (culture activation, and in vivo
+  activation after carbon tetrachloride [CCl4] injury or bile-duct ligation
+  [BDL]). Following hepatic injury, quiescent retinoid-storing HSCs
+  transdifferentiate into extracellular-matrix-producing myofibroblasts that
+  drive hepatic fibrogenesis. Unlike MSigDB causal/driver disease pathway sets,
+  the members here are the READOUT of an ACTIVE program, not driver mutations:
+  they are the transcripts UPregulated when a quiescent HSC is converted to the
+  activated myofibroblastic state. The signature is dominated by a contractile
+  and ECM-deposition/remodeling program: the myofibroblast contractile-apparatus
+  markers ACTA2 (alpha-smooth muscle actin, alphaSMA) and TAGLN (transgelin); the
+  fibrillar collagens COL1A1, COL1A2 and COL3A1; the matrix-remodeling regulators
+  TIMP1 and LOX; the growth-factor receptor PDGFRB; the fibrinolysis inhibitor
+  SERPINE1 (PAI-1); and the TGF-beta ligand TGFB1 and its downstream effectors,
+  reflecting that activated HSCs build the fibrotic scar of the injured liver.
+  Because the member genes literally carry the GO annotations for the processes
+  the state executes, enrichment recovers those processes (annotation_supported)
+  rather than leaving them as gaps. This set is one POLE of an HSC-activation
+  series (series SERIES:HEPATIC_STELLATE_CELL_ACTIVATION): it is paired with the
+  reciprocal QUIESCENT HSC signature (the retinoid-storing, non-fibrogenic
+  baseline pole), against which the same shared terms resolve to contrasting
+  interpretations (ECM/contractile/TGF-beta programs up on the activated pole
+  versus retinoid storage and quiescence markers on the quiescent pole). HSC
+  activation is driven by TGF-beta, the canonical inducer of the myofibroblast
+  program, together with PDGF and injury-associated signals from Kupffer cells
+  and damaged hepatocytes. The defining profiling was performed in mouse; we
+  curate the human-orthologous program and keep the taxon human per corpus
+  convention. DISEASE RELEVANCE: activated HSC-derived myofibroblasts are the
+  principal source of the excess extracellular matrix that accumulates in chronic
+  liver injury of any etiology (viral hepatitis, alcohol, metabolic
+  steatohepatitis), progressing to cirrhosis; reversing or deactivating the
+  activated HSC state is the central goal of antifibrotic therapy.
+contexts:
+  - term:
+      id: CL:0000632
+      label: hepatic stellate cell
+    context_type: cell_type
+    role_note: >-
+      Activated, myofibroblast-like fibrogenic state of the hepatic stellate
+      cell. CL:0000632 explicitly notes that upon activation the HSC produces
+      extracellular-matrix components that contribute to liver fibrosis and
+      acquires a myofibroblast-like phenotype; this signature reads out that
+      activated pole, the contrast to the quiescent (retinoid-storing) HSC in
+      this activation series.
+  - term:
+      id: MONDO:0005155
+      label: cirrhosis of liver
+    context_type: disease
+    role_note: >-
+      Cirrhosis is the end-stage of progressive liver fibrosis, the disease the
+      activated HSC drives: replacement of liver parenchyma by the fibrous
+      (collagen-rich) scar that activated HSC-derived myofibroblasts deposit. The
+      signature is the cellular activity underlying fibrogenesis across etiologies
+      rather than a marker of one specific cirrhosis subtype.
+associations:
+  - term:
+      id: GO:0036446
+      label: myofibroblast differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:17484886
+        reference_title: "Gene expression profiles during hepatic stellate cell activation in culture and in vivo."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "transdifferentiate to become extracellular matrix-producing myofibroblasts"
+        explanation: >-
+          The gene set is, by definition, the readout of HSC activation: after
+          hepatic injury the quiescent hepatic stellate cells transdifferentiate
+          to become myofibroblasts. Acquiring the alphaSMA-high contractile
+          myofibroblast phenotype is myofibroblast differentiation, the central,
+          cell-type-specific process this signature represents, and its members
+          (ACTA2/alphaSMA, TAGLN) carry this GO annotation, so enrichment recovers
+          it (annotation_supported).
+    curator_note: >-
+      This is the defining ACTIVE process of the set, not a driver lesion. It is
+      cell_type_specific because, by construction, the activated-HSC signature
+      reads out the quiescent-to-myofibroblast transdifferentiation (the contrast
+      pole to the quiescent HSC state in this activation series).
+  - term:
+      id: GO:0030198
+      label: extracellular matrix organization
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:17484886
+        reference_title: "Gene expression profiles during hepatic stellate cell activation in culture and in vivo."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "extracellular matrix-producing myofibroblasts and to promote hepatic fibrogenesis"
+        explanation: >-
+          Activated HSCs are the matrix-producing pole: the authors define the
+          activated cell as an extracellular-matrix-producing myofibroblast that
+          promotes hepatic fibrogenesis. Extracellular matrix organization is thus
+          a core process the activated state executes, and its members (the
+          fibrillar collagens COL1A1/COL1A2/COL3A1 and the matrix regulators
+          TIMP1/LOX) carry this GO annotation, so enrichment recovers it
+          (annotation_supported). lineage_shared rather than cell_type_specific
+          because ECM organization is produced across stromal/mesenchymal lineages,
+          not by a single cell type.
+    curator_note: >-
+      Kept core: ECM deposition/remodeling is the defining functional output of
+      the activated HSC, the molecular basis of the fibrotic scar that progresses
+      to cirrhosis.
+  - term:
+      id: GO:0007179
+      label: transforming growth factor beta receptor signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      TGF-beta is the canonical inducer of the myofibroblast program, and HSC
+      activation is driven by TGF-beta signaling from Kupffer cells and injured
+      hepatocytes; the activated signature includes the TGF-beta ligand TGFB1 and
+      its SMAD-driven effectors, which induce ACTA2 and the collagen/ECM program.
+      TGF-beta receptor signaling is therefore a core process the activated state
+      both receives and executes, and its effectors in the signature carry this
+      annotation, so enrichment recovers it (annotation_supported). Kept core
+      because it is mechanistically central to what defines the activated pole;
+      specificity broadly_expressed because TGF-beta receptor signaling is shared
+      across very many cell types and is not HSC-specific.
+  - term:
+      id: GO:0030199
+      label: collagen fibril organization
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      A characteristic sub-process of the activated-HSC ECM program: the
+      myofibroblasts deposit fibrillar collagen I/III that is organized into
+      collagen fibrils, and the fibrillar collagens (COL1A1, COL1A2, COL3A1) and
+      their organizing partners carry this annotation, so enrichment recovers it
+      (annotation_supported). Scored supporting rather than core because it is one
+      specialized arm of the broader extracellular-matrix-organization program
+      (the core process), restricted to the collagen subset rather than the whole
+      signature.
+  - term:
+      id: GO:0042060
+      label: wound healing
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Liver fibrosis is a dysregulated, persistent wound-healing response:
+      activated HSCs lay down provisional and fibrillar matrix and contract the
+      injured parenchyma exactly as myofibroblasts do during tissue repair, and
+      these effectors (collagens, the contractile apparatus, SERPINE1) carry
+      wound-healing/response-to-wounding annotations, so enrichment recovers the
+      term (annotation_supported). Scored supporting rather than core: tissue
+      repair is the physiological program that hepatic fibrogenesis co-opts, an
+      accompanying frame rather than the defining activated-HSC activity, and
+      wound healing is shared across many tissue-repair contexts.

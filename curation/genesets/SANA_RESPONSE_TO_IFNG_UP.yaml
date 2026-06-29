@@ -1,0 +1,167 @@
+gene_set_id: MSIGDB:SANA_RESPONSE_TO_IFNG_UP
+gene_set_name: SANA_RESPONSE_TO_IFNG_UP
+collection: C2:CGP
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+n_genes: 75
+description: >-
+  MSigDB C2:CGP signature of genes up-regulated by interferon-gamma (IFN-γ)
+  stimulation across five primary human endothelial cell types (iliac artery,
+  aortic, lung, colon, and dermal), as reported by Sana et al. (2005,
+  PMID:15749026). A cytokine-perturbation UP signature: member genes are
+  induced by IFN-γ in endothelium and encompass MHC class I antigen
+  presentation machinery, CXCL chemokines (CXCL9/10/11), adhesion molecules
+  (ICAM1), and interferon-stimulated genes. This is an independent endothelial
+  dataset distinct from the Hallmark IFN-γ Response set (which is cell-type
+  agnostic); both share the PR:000000017 interferon-gamma chemical_perturbagen
+  context.
+contexts:
+  - term:
+      id: PR:000000017
+      label: interferon gamma
+    context_type: chemical_perturbagen
+    role_note: stimulus
+  - term:
+      id: CL:0000115
+      label: endothelial cell
+    context_type: cell_type
+associations:
+  - term:
+      id: GO:0071346
+      label: cellular response to type II interferon
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:15749026
+        reference_title: "Microarray analysis of primary endothelial cells challenged with different inflammatory and immune cytokines."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Overall, IFN-gamma caused the largest number of gene expression changes and its profile was least correlated with IL-4."
+        explanation: >-
+          Sana et al. challenged five primary human endothelial cell types
+          with IFN-gamma and measured genome-wide gene expression changes by
+          microarray. The SANA_RESPONSE_TO_IFNG_UP set is explicitly defined
+          as genes elevated upon IFN-gamma stimulation across those endothelial
+          cells, making cellular response to type II interferon (GO:0071346)
+          the canonical and most direct GO descriptor of this signature.
+  - term:
+      id: GO:0019882
+      label: antigen processing and presentation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:14525967
+        reference_title: "Interferon-gamma: an overview of signals, mechanisms and functions."
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: "Cellular effects of IFN-gamma are described, including up-regulation of pathogen recognition, antigen processing and presentation, the antiviral state, inhibition of cellular proliferation and effects on apoptosis, activation of microbicidal effector functions, immunomodulation, and leukocyte trafficking."
+        explanation: >-
+          IFN-gamma is the primary inducer of MHC class I expression via
+          CIITA transactivation and up-regulation of antigen processing
+          components (TAP1, TAP2, TAPBP, PSMB8/9/10, B2M, HLA-A/B/C) in
+          endothelial cells. This landmark review explicitly lists antigen
+          processing and presentation as a canonical cellular effect of
+          IFN-gamma, consistent with the endothelial gene set composition.
+  - term:
+      id: GO:0042612
+      label: MHC class I protein complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      IFN-gamma strongly up-regulates MHC class I heavy chains (HLA-A, HLA-B,
+      HLA-C) and beta-2-microglobulin (B2M) in endothelial cells. These are
+      the two obligate subunits of the MHC class I protein complex, making
+      this surface complex the dominant downstream cellular structure induced
+      by IFN-gamma in this endothelial dataset.
+  - term:
+      id: GO:0051607
+      label: defense response to virus
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      IFN-gamma induces a broad antiviral state in endothelial cells through
+      interferon-stimulated genes including MX1, OAS family members, IFIT1/2/3,
+      and IRF1. Defense response to virus is a major functional output of
+      IFN-gamma signalling but is shared with type I interferons and is
+      therefore supporting rather than uniquely defining for this
+      IFN-gamma endothelial signature.
+  - term:
+      id: GO:0070098
+      label: chemokine-mediated signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:15749026
+        reference_title: "Microarray analysis of primary endothelial cells challenged with different inflammatory and immune cytokines."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "The list included highly regulated adhesion molecules, chemokines, cytokines, metalloproteases, and IFN-gamma-induced genes."
+        explanation: >-
+          Sana et al. identified highly regulated chemokines among
+          IFN-gamma-response genes in primary endothelial cells. IFN-gamma
+          specifically induces CXCL9, CXCL10, and CXCL11 in endothelium,
+          which signal via CXCR3 to recruit effector T cells and NK cells.
+          Chemokine-mediated signaling is a characteristic output of
+          IFN-gamma in endothelium but is supporting rather than defining.
+  - term:
+      id: GO:0050900
+      label: leukocyte migration
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Leukocyte recruitment by IFN-gamma-stimulated endothelium is a
+      biologically core function: CXCL9, CXCL10, CXCL11, and ICAM1 are
+      expected members of this gene set and together orchestrate T cell and
+      NK cell migration across the endothelial barrier. The annotation gap
+      arises because these genes are annotated to chemokine activity or
+      receptor binding rather than to leukocyte migration (GO:0050900)
+      directly in GOA-human, so standard enrichment is unlikely to recover
+      this term from the current annotations. The gap is a GO annotation
+      curation target and does not weaken the biological category.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment results reflects ribosomal protein genes present in the
+      gene set and does not reflect an IFN-gamma-specific function in
+      endothelial cells. Illustrates a non-informative enrichment hit.

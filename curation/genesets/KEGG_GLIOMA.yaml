@@ -1,0 +1,165 @@
+gene_set_id: MSIGDB:KEGG_GLIOMA
+gene_set_name: KEGG_GLIOMA
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy glioma pathway gene set (MSigDB C2 curated gene set).
+  This is a cancer disease pathway gene set, not a cell-type signature. The member
+  genes are heavily enriched for growth-factor receptor signaling components (EGFR,
+  PDGFRA/B and their downstream effectors), RAS/MAPK pathway members (HRAS, KRAS,
+  NRAS, RAF1, MAP2K1, MAPK1/3), PI3K/AKT effectors (PIK3CA, PIK3R1, PTEN, AKT1),
+  cell-cycle regulators driving G1/S transition (CDKN2A, CDK4, CDK6, CCND1, RB1,
+  E2F family), and the TP53 tumor-suppressor axis, reflecting the major mechanistic
+  arms of the KEGG glioma pathway: receptor tyrosine kinase-driven initiation,
+  RAS/MAPK-mediated proliferation, PI3K/AKT survival signaling, cell-cycle
+  checkpoint bypass, and TP53-mediated apoptosis deregulation.
+contexts:
+  - term:
+      id: MONDO:0005499
+      label: brain glioma
+    context_type: disease
+  - term:
+      id: UBERON:0000955
+      label: brain
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0007173
+      label: epidermal growth factor receptor signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:29321659
+        reference_title: "Epidermal growth factor receptor and EGFRvIII in glioblastoma: signaling pathways and targeted therapies."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Amplification of epidermal growth factor receptor (EGFR) and its active mutant EGFRvIII occurs frequently in glioblastoma (GBM). While EGFR and EGFRvIII play critical roles in pathogenesis"
+        explanation: >-
+          EGFR amplification and overexpression is the most frequent oncogenic
+          alteration in glioblastoma, the malignant end of the glioma spectrum.
+          EGFR is a central gene in the KEGG glioma pathway, and its downstream
+          signaling (RAS/MAPK, PI3K/AKT) drives tumour proliferation and survival.
+          This Oncogene review directly supports epidermal growth factor receptor
+          signaling pathway as the primary core process of the KEGG glioma gene set.
+    curator_note: >-
+      EGFR amplification or overexpression occurs in ~40-60% of glioblastomas and
+      at lower frequencies across lower-grade gliomas. PDGFRA is amplified in a
+      complementary subset. Both genes are members of this KEGG pathway and feed into
+      the same downstream RAS/MAPK and PI3K/AKT arms. The epidermal growth factor
+      receptor signaling pathway term directly captures this central initiating event.
+  - term:
+      id: GO:0042127
+      label: regulation of cell population proliferation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      CDKN2A (p16/p14ARF), CDK4, CDK6, CCND1, RB1, and E2F transcription factors
+      in the KEGG glioma pathway constitute the core G1/S cell-cycle entry and
+      proliferation-control axis. CDKN2A deletion and CDK4/6 amplification are among
+      the most frequent somatic alterations in glioma at all grades, directly
+      deregulating cell proliferation. Uncontrolled tumour-cell expansion is a
+      hallmark of glioma and is downstream of both RTK/RAS/MAPK and PI3K/AKT arms
+      represented in this gene set.
+  - term:
+      id: GO:0000165
+      label: MAPK cascade
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:12580545
+        reference_title: "Targeted molecular therapy of GBM."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Some of these alterations lead to activation of the P13K/Akt and Ras/MAPK pathways, which provide targets for therapy."
+        explanation: >-
+          EGFR and PDGFR overexpression in GBM leads to constitutive activation
+          of the RAS/MAPK cascade. This Brain Pathology review explicitly names
+          Ras/MAPK pathway activation as a downstream consequence of the RTK
+          alterations that dominate the KEGG glioma gene set, supporting inclusion
+          of MAPK cascade as a supporting process.
+    curator_note: >-
+      HRAS, KRAS, NRAS, RAF1, MAP2K1, MAPK1, and MAPK3 (ERK1/2) in the KEGG
+      glioma pathway constitute the RAS-RAF-MEK-ERK cascade downstream of EGFR
+      and PDGFR activation. The MAPK cascade is shared across many cancer types
+      and is not glioma-specific, but it is a mechanistically significant component
+      of this pathway representation mediating proliferative signaling.
+  - term:
+      id: GO:0043491
+      label: phosphatidylinositol 3-kinase/protein kinase B signal transduction
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:22512247
+        reference_title: "Glioblastoma--a moving target."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Amplification and overexpression of receptor tyrosine kinases, particularly EGFR and PDGFRA, are complemented by mutations in the PI3K, RB1, and p53 signaling pathways."
+        explanation: >-
+          PTEN loss and PIK3CA activating mutations are frequent in glioblastoma,
+          constitutively activating PI3K/AKT signalling downstream of EGFR/PDGFR.
+          This Upsala Journal review directly names PI3K pathway mutations as a
+          major complementary arm of the RTK-driven alterations captured in the
+          KEGG glioma gene set.
+    curator_note: >-
+      PIK3CA, PIK3R1, PTEN, and AKT1 in the KEGG glioma pathway encode canonical
+      PI3K/AKT signaling components. PTEN loss is one of the most frequent events
+      in glioblastoma (~40%), leading to constitutive AKT activation and promoting
+      tumour-cell survival and growth. This term is broadly expressed but is a
+      mechanistically important supporting arm of this disease pathway representation.
+  - term:
+      id: GO:0000082
+      label: G1/S transition of mitotic cell cycle
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      CDKN2A deletion (removing p16INK4A inhibition of CDK4/6) and CDK4/CDK6
+      amplification are among the highest-frequency events in glioma, directly
+      accelerating the G1/S transition and committing cells to S-phase entry. The
+      RB1/E2F axis in this gene set is the direct effector of this transition. The
+      G1/S transition of mitotic cell cycle term is an orthogonal but complementary
+      cell-cycle representation to the broader regulation of cell population
+      proliferation association above, capturing the mechanistic checkpoint bypass
+      that is specifically deregulated in glioma.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in enrichment
+      results for this gene set reflects ribosomal protein subunit genes present in
+      the KEGG glioma pathway representation. It does not reflect a glioma-specific
+      function and is a non-informative enrichment hit.

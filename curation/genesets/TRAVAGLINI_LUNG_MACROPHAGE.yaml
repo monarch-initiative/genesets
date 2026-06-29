@@ -1,0 +1,147 @@
+gene_set_id: MSIGDB:TRAVAGLINI_LUNG_MACROPHAGE
+gene_set_name: TRAVAGLINI_LUNG_MACROPHAGE
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of alveolar macrophages from human lung
+  (Travaglini et al.). Alveolar macrophages are tissue-resident phagocytes
+  that patrol the alveolar space, phagocytose inhaled particulate matter,
+  apoptotic cells, and spent surfactant aggregates. They serve as frontline
+  innate immune sentinels, regulate local inflammation, and maintain alveolar
+  lipid and surfactant homeostasis.
+contexts:
+  - term:
+      id: CL:0000583
+      label: alveolar macrophage
+    context_type: cell_type
+  - term:
+      id: UBERON:0002048
+      label: lung
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0006909
+      label: phagocytosis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:31715003
+        reference_title: "Origin and ontogeny of lung macrophages: from mice to humans."
+        supports: SUPPORT
+        evidence_source: OTHER
+        snippet: "They phagocytose inhaled material and initiate protective immune responses to pathogens, while preventing excessive inflammatory responses and tissue damage."
+        explanation: >-
+          Phagocytosis is the defining functional activity of alveolar macrophages;
+          they continuously engulf inhaled particles, bacteria, apoptotic cells,
+          and surplus surfactant debris. This review explicitly identifies
+          phagocytosis of inhaled material as a core function of alveolar
+          macrophages in the alveolar niche.
+  - term:
+      id: GO:0043129
+      label: surfactant homeostasis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Alveolar macrophages are the primary cells responsible for clearing
+      spent and excess pulmonary surfactant from the alveolar surface by
+      phagocytosis of surfactant aggregates. This function is unique to the
+      alveolar niche and differentiates alveolar macrophages from other
+      tissue-resident macrophage populations such as Kupffer cells. Lipid-handling
+      marker genes prominent in alveolar macrophage signatures (FABP4, ABCA1,
+      APOC1) support recovery of surfactant and lipid homeostasis terms.
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Alveolar macrophages secrete pro-inflammatory cytokines (TNF-alpha,
+      IL-6, IL-1beta, IL-12) and chemokines upon encountering pathogens or
+      injury signals in the alveolar space. Inflammatory response is a
+      property shared across macrophage lineages and is therefore lineage_shared
+      rather than alveolar-macrophage-specific.
+  - term:
+      id: GO:0045087
+      label: innate immune response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Alveolar macrophages are frontline innate immune sentinels that express
+      pattern-recognition receptors (TLRs, NLRs, scavenger receptors) and
+      respond to inhaled pathogens and particulates. Innate immune response
+      is shared broadly across macrophage and myeloid cell types and is
+      lineage_shared rather than alveolar-macrophage-specific.
+  - term:
+      id: GO:0045335
+      label: phagocytic vesicle
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Alveolar macrophages form abundant phagocytic vesicles as part of their
+      central role in engulfing inhaled particles, bacteria, apoptotic cells,
+      and surfactant aggregates. Phagocytic vesicles (phagosomes) are the
+      organellar hallmark of professional phagocytes and are expected to be
+      enriched in alveolar macrophage gene signatures.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      alveolar macrophage enrichment results reflects highly expressed ribosomal
+      protein genes rather than a macrophage-specific function. This is a
+      non-informative housekeeping enrichment hit typical of cell-type gene
+      signatures.
+  - term:
+      id: GO:0042116
+      label: macrophage activation
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Macrophage activation (M1-like inflammatory and M2-like tolerogenic
+      polarization) is a defining feature of alveolar macrophage biology;
+      these cells switch between activation states in response to the alveolar
+      microenvironment, inhaled stimuli, and tissue signals. Key activation
+      markers such as MRC1 (CD206), CD163, and PPARG are present in the
+      Travaglini alveolar macrophage signature, but these genes are not
+      consistently annotated to GO:0042116 in GOA-human. The gap is in
+      GO annotation depth, not in the biology — this is a GO curation target.

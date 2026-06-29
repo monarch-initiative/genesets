@@ -1,0 +1,188 @@
+gene_set_id: MSIGDB:JISON_SICKLE_CELL_DISEASE_DN
+gene_set_name: JISON_SICKLE_CELL_DISEASE_DN
+collection: C2:CGP
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: DN
+series: SERIES:JISON_SICKLE_CELL_DISEASE
+series_role: down
+description: >-
+  MSigDB C2:CGP gene set of genes DOWN-regulated in peripheral blood mononuclear cells
+  (PBMC) from patients with sickle cell disease compared to healthy subjects (Jison ML
+  et al. 2004, PMID:15031206). The DOWN component captures the relative reduction of
+  lymphocyte (T-cell and B-cell) signatures and ribosomal/translation programs in SCD
+  PBMC. This relative decrease reflects the pathological inflammatory myeloid shift that
+  accompanies SCD: the expanded and activated myeloid/inflammatory compartment dilutes
+  the lymphoid signal, so T-cell receptor signaling, adaptive immune response, and
+  ribosomal protein expression — hallmarks of resting lymphocytes — appear
+  down-regulated in SCD PBMC relative to healthy controls. The set is complementary to
+  JISON_SICKLE_CELL_DISEASE_UP, which captures the oxidant, hemolytic, and inflammatory
+  response genes that are up-regulated in the same comparison.
+contexts:
+  - term:
+      id: MONDO:0011382
+      label: sickle cell disease
+    context_type: disease
+  - term:
+      id: UBERON:0000178
+      label: blood
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0050852
+      label: T cell receptor signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:15031206
+        reference_title: "Blood mononuclear cell gene expression profiles characterize the oxidant, hemolytic, and inflammatory stress of sickle cell disease."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "To characterize the role of circulating leukocytes in sickle cell pathogenesis we performed global transcriptional analysis of blood mononuclear cells from 27 patients in steady-state sickle cell disease (10 patients treated and 17 patients untreated with hydroxyurea) compared with 13 control subjects."
+        explanation: >-
+          This is the primary source paper for the MSigDB JISON_SICKLE_CELL_DISEASE gene
+          sets. Global transcriptional profiling of blood mononuclear cells from SCD
+          patients vs healthy controls generated both UP and DN expression signatures. The
+          DN component captures genes relatively reduced in SCD PBMC; T cell receptor
+          signaling pathway genes (encoding TCR chains and CD3 signaling subunits such as
+          CD3D, CD3E, CD3G, ZAP70, and LCK) are canonical lymphocyte markers whose
+          expression is diluted in SCD PBMC by the inflammatory myeloid expansion. T cell
+          receptor signaling pathway is the most T-cell-specific and biologically core
+          process captured by this DOWN signature.
+    curator_note: >-
+      The DOWN-regulated signature in SCD PBMC reflects the relative reduction of
+      lymphocyte programs as activated myeloid/inflammatory cells expand in the
+      sickle cell disease state. T cell receptor signaling pathway genes are among
+      the most T-cell-lineage-specific markers in PBMC; their apparent down-regulation
+      is primarily a compositional dilution effect — the SCD inflammatory milieu shifts
+      PBMC composition toward myeloid cells, reducing the relative fraction of T
+      lymphocytes. The association is real (TCR signaling genes belong to T cells, which
+      are a major PBMC compartment), and their relative decrease is a primary biological
+      signal of the DN set. GOA-human carries well-curated annotations for TCR signaling
+      genes to GO:0050852, supporting annotation_supported recovery_status.
+  - term:
+      id: GO:0042110
+      label: T cell activation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: mechanistic
+    curator_note: >-
+      T cell activation is the broader functional program initiated by TCR signaling and
+      is a defining biological process of T cells present in PBMC. Its relative
+      down-regulation in SCD PBMC mirrors the reduction in TCR signaling genes. Added by
+      curator because enrichment may not directly recover this parent term when more
+      specific child terms (e.g. GO:0050852, T cell receptor signaling pathway) dominate
+      the enrichment results. annotation_gap: T cell marker genes in this set carry GOA
+      annotations preferentially to more specific child processes (TCR signaling,
+      cytotoxicity) rather than directly to the GO:0042110 parent in a way that would
+      drive its enrichment recovery; the biological association with T cell activation is
+      solid and core.
+  - term:
+      id: GO:0002250
+      label: adaptive immune response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      T and B cells are the primary mediators of adaptive immunity in peripheral blood
+      mononuclear cells. Their collective down-regulation in SCD PBMC supports adaptive
+      immune response as a supporting process for this DN set. The term is
+      lineage_shared: it encompasses both T-cell and B-cell contributions and is not
+      specific to either alone. The relative reduction in adaptive immune gene expression
+      in SCD PBMC reflects the dilution of lymphocytes by the expanded myeloid
+      compartment, not a direct suppression of adaptive immune gene expression per se.
+  - term:
+      id: GO:0006955
+      label: immune response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      Generic immune response term expected to be recovered by enrichment of any immune
+      gene signature. Here it is supporting_process because it is broadly applicable
+      across all immune cell types and is less informative than the more specific
+      lymphocyte terms. Its presence in the DN set contextualises the lymphocyte
+      component of the PBMC immune landscape. The term is broadly expressed across
+      all immune cell types and does not distinguish the T-cell-specific character of
+      the DOWN signature from general myeloid or innate immune biology.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      Translation is elevated here to supporting_process rather than nonspecific because
+      ribosomal protein genes (RPL and RPS family members) are highly expressed in
+      resting lymphocytes and constitute a genuine DOWN component of this signature.
+      Their relative reduction in SCD PBMC reflects the dilution of lymphocytes (which
+      are translationally active at rest) and possibly reduced lymphocyte translational
+      output under the SCD inflammatory microenvironment. Unlike in a disease-pathway
+      gene set where translation genes are incidental bystanders, here ribosomal gene
+      down-regulation is a direct biological feature of the lymphocyte depletion signal
+      that defines this DN set. However, translation is fundamentally ubiquitous and does
+      not define T cell or lymphocyte identity alone, so supporting_process is appropriate
+      rather than core_process.
+  - term:
+      id: GO:0005840
+      label: ribosome
+    aspect: cellular_component
+    category: core_component
+    confidence: medium
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      Ribosomal protein genes (RPL and RPS family members) are among the most abundant
+      transcripts in resting lymphocytes and are expected to drive ribosome CC enrichment
+      from the DOWN signature. The ribosome is the dominant cellular compartment
+      annotation expected from a set with strong ribosomal protein gene content.
+      Although the ribosome is ubiquitous, its appearance as core_component reflects the
+      quantitative dominance of ribosomal protein genes in this DOWN signature; the
+      component is real, structurally defined, and biologically consistent with the
+      lymphocyte-rich character of the DOWN set.
+  - term:
+      id: GO:0042101
+      label: T cell receptor complex
+    aspect: cellular_component
+    category: core_component
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: mechanistic
+    curator_note: >-
+      The T cell receptor complex (TCR/CD3 complex) is the defining structural
+      compartment of T cells. Genes encoding TCR chains (TRAC, TRBC) and CD3 signaling
+      subunits (CD3D, CD3E, CD3G, CD247) are expected members of the DOWN signature as
+      T-cell markers whose expression is relatively reduced in SCD PBMC. Added by
+      curator: annotation_gap because GOA coverage for the full TCR complex as a cellular
+      component may be incomplete relative to the set's TCR-related gene membership;
+      some TCR-associated genes may carry annotations to more specific child structures
+      or to the biological process (GO:0050852) rather than to the complex itself. The
+      biological association is strong — any T-cell signature in PBMC intrinsically
+      involves the T cell receptor complex.

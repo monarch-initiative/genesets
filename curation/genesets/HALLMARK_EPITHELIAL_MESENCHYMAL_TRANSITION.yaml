@@ -29,6 +29,7 @@ associations:
     confidence: high
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     evidence:
       - reference: PMID:30459476
         reference_title: "New insights into the mechanisms of epithelial-mesenchymal transition and implications for cancer."
@@ -49,6 +50,7 @@ associations:
     confidence: high
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       The largest functional cluster within the Hallmark EMT gene set is ECM
       remodelling: collagens (COL1A1, COL3A1, COL5A1, COL5A2), fibronectin (FN1),
@@ -64,6 +66,7 @@ associations:
     confidence: high
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       A large proportion of Hallmark EMT gene products (collagens, fibronectin,
       laminins, periostin, tenascin-C) are secreted and localise to the
@@ -79,6 +82,7 @@ associations:
     confidence: medium
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Acquisition of migratory capacity is a hallmark outcome of EMT. Genes
       such as VIM, FN1, SNAI1, TWIST1, and integrins (ITGB1, ITGB3, ITGAV)
@@ -93,6 +97,7 @@ associations:
     confidence: medium
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       EMT involves dissolution of epithelial adherens junctions (E-cadherin
       downregulation) and gain of mesenchymal adhesion programmes (N-cadherin,

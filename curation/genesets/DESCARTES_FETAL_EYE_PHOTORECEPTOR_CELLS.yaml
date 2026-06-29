@@ -1,0 +1,158 @@
+gene_set_id: MSIGDB:DESCARTES_FETAL_EYE_PHOTORECEPTOR_CELLS
+gene_set_name: DESCARTES_FETAL_EYE_PHOTORECEPTOR_CELLS
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of photoreceptor cells from human fetal eye/retina
+  (Descartes fetal atlas, Cao et al. 2020 Science; MSigDB C8). Because the cells
+  are FETAL, the signature is dominated by the structural machinery that
+  photoreceptors build first — the outer segment and the connecting cilium /
+  periciliary apparatus (RPGRIP1, MAK, CDHR1, EYS, USH2A, IMPG1, IMPG2, CERKL,
+  LRIT2, PDC) — rather than by the mature light-response cascade. Phototransduction
+  is only partially represented: the transducin alpha subunits GNAT1 (rod) and
+  GNAT2 (cone), the rod cyclic-nucleotide-gated channel subunit CNGB1, the
+  transducin regulator PDC (phosducin), and the cone channel modulator KCNV2 are
+  present, but the mature rod/cone effector module — rhodopsin (RHO), the cone
+  opsins (OPN1LW/MW/SW), the phosphodiesterase catalytic subunits (PDE6A/PDE6B),
+  recoverin (RCVRN), arrestin (SAG) and rhodopsin kinase (GRK1) — is largely
+  ABSENT, consistent with photoreceptors that have not yet switched on the mature
+  cascade. A large fraction of the set is lincRNA / antisense / pseudogene noise
+  (e.g. LINC00457/00463/01053/01915/02058/02932/03062, EGFLAM-AS1, PRICKLE2-AS1/AS2,
+  GPC5-IT1, MTATP6P15, MTCO1P15/CO2P15, RPL18P11, RPL30P7) that carries no
+  informative GO signal.
+contexts:
+  - term:
+      id: CL:0000210
+      label: photoreceptor cell
+    context_type: cell_type
+  - term:
+      id: UBERON:0000966
+      label: retina
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0001750
+      label: photoreceptor outer segment
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The photoreceptor outer segment is the defining subcellular structure of
+      this fetal signature. The set is dominated by genes that build and maintain
+      the outer segment and its surrounding interphotoreceptor matrix: CDHR1
+      (outer-segment disc morphogenesis), EYS, IMPG1 and IMPG2 (interphotoreceptor
+      matrix proteoglycans), USH2A, CERKL, LRIT2, plus the outer-segment-localised
+      phototransduction components GNAT1, CNGB1 and PDC. These genes carry
+      photoreceptor-outer-segment annotations in GOA-human, making this the
+      expected top cellular-component recovery for a photoreceptor marker set.
+  - term:
+      id: GO:0097733
+      label: photoreceptor cell cilium
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The photoreceptor connecting cilium (the transition zone of the specialised
+      9+0 photoreceptor cell cilium, GO:0097733) links the inner segment to the
+      outer segment and is the conduit through which all outer-segment cargo is
+      trafficked. This is a structural hallmark that fetal photoreceptors assemble
+      early, and the set carries its canonical machinery: RPGRIP1 (connecting-cilium
+      scaffold, Leber congenital amaurosis), MAK (regulates photoreceptor ciliary
+      length), and USH2A (periciliary membrane complex). These genes are annotated
+      to the photoreceptor cell cilium / connecting cilium in GOA-human.
+  - term:
+      id: GO:0042461
+      label: photoreceptor cell development
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Because the Descartes sample is FETAL, the cells are actively building their
+      sensory apparatus, so photoreceptor cell development is core biology rather
+      than incidental. Marker genes including CDHR1, EYS, RPGRIP1, CERKL, USH2A,
+      MPP4 (photoreceptor synaptic scaffolding) and the photoreceptor
+      transcriptional regulator SAMD7 participate in photoreceptor morphogenesis
+      and maturation and carry photoreceptor-cell-development annotations. The
+      structural-before-functional bias of the signature (outer-segment/cilium
+      genes present, mature cascade absent) is itself a developmental-stage
+      signature of immature photoreceptors.
+  - term:
+      id: GO:0007602
+      label: phototransduction
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Phototransduction is only PARTIALLY represented, so it is recorded as
+      supporting rather than core for this fetal set. It is annotation_supported
+      because real cascade components are present and carry phototransduction
+      annotations in GOA-human: GNAT1 (rod transducin alpha), GNAT2 (cone
+      transducin alpha), CNGB1 (rod CNG channel beta subunit), PDC (phosducin,
+      transducin regulator) and the cone light-response modulator KCNV2; enrichment
+      would recover the term through these genes. However the mature rod/cone
+      effector module is ABSENT — there is no rhodopsin (RHO), no cone opsin
+      (OPN1LW/MW/SW), no PDE6 catalytic subunit (PDE6A/PDE6B), no recoverin
+      (RCVRN), arrestin (SAG) or rhodopsin kinase (GRK1). That missing effector
+      core is a membership gap at the sub-process level: it reflects fetal
+      photoreceptors that have not yet activated the mature cascade, not an error
+      in the term. confidence is medium to flag this partial support.
+  - term:
+      id: GO:0007601
+      label: visual perception
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Visual perception is the organism-level sensory process to which most
+      inherited-retinal-dystrophy genes in this set are annotated in GOA-human
+      (USH2A, EYS, CDHR1, RPGRIP1, CNGB1, GNAT1, IMPG2, CERKL, KCNV2), so it is
+      annotation_supported and readily recovered by enrichment. It is categorised
+      as supporting_process rather than core because, as with phototransduction,
+      the image-forming output depends on the mature opsin-driven cascade that is
+      not yet expressed in these fetal cells; the recovered signal here reflects
+      the structural and partial-cascade genes that underlie, but do not by
+      themselves complete, vision.
+  - term:
+      id: GO:0060041
+      label: retina development in camera-type eye
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Photoreceptors differentiate within the developing neural retina, and many
+      set genes (EYS, RPGRIP1, CERKL, USH2A, CDHR1) carry retina-development
+      annotations in GOA-human, so the term is annotation_supported. It is marked
+      lineage_shared because retina development in the camera-type eye is a process
+      common to the whole retinal lineage (Muller glia, bipolar, ganglion,
+      amacrine and horizontal cells as well as photoreceptors) rather than being
+      exclusive to photoreceptors, and supporting_process because it is the
+      developmental context within which the photoreceptor-specific core processes
+      above are executed.

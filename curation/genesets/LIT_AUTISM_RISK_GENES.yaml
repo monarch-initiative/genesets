@@ -1,0 +1,161 @@
+gene_set_id: LIT:AUTISM_RISK_GENES
+gene_set_name: AUTISM_RISK_GENES
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 102
+description: >-
+  Literature-defined panel of high-confidence autism spectrum disorder (ASD)
+  risk genes from the largest ASD exome sequencing study to date (Satterstrom,
+  Kosmicki, Wang et al., Cell 2020, PMID:31981491; n = 35,584 samples, 11,986
+  with ASD). Integrating de novo and case-control rare variation, the study
+  identifies 102 risk genes at FDR <= 0.1. Unlike the LIT:DISEASE_ACTIVITY
+  signatures (which are transcriptional READOUTS of an active cell state), this
+  is a DRIVER/causal panel: the members are the mutated genes themselves, defined
+  by an excess of disruptive de novo and rare variants. Its value is mechanistic
+  convergence. The paper shows the 102 genes fall into two major functional
+  groups: gene-expression regulation (GER) -- chromatin regulators and
+  transcription factors (e.g. CHD8, CHD2, ARID1B, POGZ, KMT2A, KMT2E, ADNP,
+  SETD5, TBR1, BCL11A, FOXP1) -- and neuronal communication (NC) -- synaptic and
+  ion-channel genes (e.g. SCN2A, SHANK3, SYNGAP1, GRIN2B, DYRK1A). The landmark,
+  NON-OBVIOUS insight is the convergence on chromatin/transcriptional regulation:
+  one would not predict, from the behavioral/synaptic phenotype of autism, that a
+  large share of risk genes are nuclear regulators of gene expression. The
+  synaptic/neuronal-communication convergence is also real and co-equal in the
+  paper, but more expected for a neurodevelopmental disorder. Risk genes are
+  expressed early (prenatally biased for GER genes) in brain development and are
+  enriched in maturing excitatory and inhibitory neuronal lineages, consistent
+  with multiple paths to an excitatory-inhibitory imbalance underlying ASD.
+  Because the convergent processes ARE the direct, annotated molecular functions
+  of these driver genes (chromatin regulators carry chromatin/transcription GO
+  annotations; channel/scaffold genes carry synaptic annotations), a simple GO
+  analysis over the 102 genes recovers them, so the core terms are
+  annotation_supported rather than annotation gaps.
+contexts:
+  - term:
+      id: MONDO:0005258
+      label: autism spectrum disorder
+    context_type: disease
+    role_note: >-
+      High-confidence ASD risk genes identified by large-scale exome sequencing
+      (de novo and rare case-control variation); these are causal/driver genes,
+      not a differential-expression signature.
+associations:
+  - term:
+      id: GO:0006325
+      label: chromatin organization
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:31981491
+        reference_title: "Large-Scale Exome Sequencing Study Implicates Both Developmental and Functional Changes in the Neurobiology of Autism."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "including chromatin regulators and transcription factors"
+        explanation: >-
+          The landmark non-obvious convergence of the 102 ASD risk genes is on
+          gene-expression regulation, of which chromatin regulators are an
+          explicit component named by the authors. A large cluster of the risk
+          genes (CHD8, CHD2, ARID1B, POGZ, KMT2A, KMT2E, ADNP, SETD5) are
+          chromatin-modifying or chromatin-organizing factors that directly carry
+          chromatin-organization GO annotations, so a GO analysis of the panel
+          recovers this process (annotation_supported). This nuclear,
+          chromatin-level convergence is not predictable from the synaptic
+          behavioral phenotype of autism, hence mechanistic.
+    curator_note: >-
+      This is the headline mechanistic insight of the set: that a large fraction
+      of autism risk genes are chromatin regulators. Kept core_process at high
+      confidence because chromatin regulation is one of the two convergent
+      functional groups the paper defines, not a peripheral hit.
+  - term:
+      id: GO:0006357
+      label: regulation of transcription by RNA polymerase II
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:31981491
+        reference_title: "Large-Scale Exome Sequencing Study Implicates Both Developmental and Functional Changes in the Neurobiology of Autism."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "most risk genes have roles in regulation of gene expression or neuronal communication"
+        explanation: >-
+          The authors group the 102 risk genes into gene-expression regulation
+          (GER) and neuronal communication (NC). The GER group is built from
+          chromatin regulators AND sequence-specific transcription factors (e.g.
+          TBR1, BCL11A, FOXP1, RFX3), which act as DNA-binding regulators
+          of RNA polymerase II transcription and carry that GO annotation, so the
+          term is recovered by GO analysis of the panel (annotation_supported).
+          The convergence of an autism panel on transcriptional control of gene
+          expression is the second, non-obvious mechanistic axis, hence
+          mechanistic.
+    curator_note: >-
+      Co-equal mechanistic axis with chromatin organization: together they form
+      the gene-expression-regulation (GER) group. Transcription-factor risk genes
+      (TBR1, BCL11A, FOXP1) carry RNA Pol II transcription-regulation annotations.
+  - term:
+      id: GO:0007268
+      label: chemical synaptic transmission
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The neuronal-communication (NC) group -- the paper's second co-equal
+      convergent functional group -- comprises synaptic and ion-channel genes
+      (SCN2A, SHANK3, SYNGAP1, GRIN2B, DYRK1A) that carry synaptic-transmission
+      annotations, so the term is annotation_supported. Kept core_process at high
+      confidence because it is a defining convergent axis, but marked
+      confirmatory: synaptic/neuronal dysfunction is the expected interpretation
+      for a neurodevelopmental disorder and is entailed by the disease context,
+      unlike the chromatin/transcription convergence.
+  - term:
+      id: GO:0006338
+      label: chromatin remodeling
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      A more specific facet of the chromatin convergence: several of the
+      highest-confidence risk genes are ATP-dependent chromatin remodelers --
+      CHD8 and CHD2 (CHD family) and ARID1B (a SWI/SNF / BAF subunit) -- which
+      carry chromatin-remodeling annotations directly. Scored supporting rather
+      than core only to avoid double-counting the chromatin axis already captured
+      by chromatin organization; the insight is mechanistic for the same reason
+      (nuclear remodeling is not predictable from the autism phenotype).
+  - term:
+      id: GO:0007399
+      label: nervous system development
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The risk genes are expressed early in brain development and converge on
+      neurodevelopmental processes; the paper frames ASD risk as developmental
+      and functional changes in neurobiology. Supporting rather than core because
+      nervous system development is a broad framing that follows directly from
+      the disease being a neurodevelopmental disorder (confirmatory), and the
+      sharper mechanistic signal lives in the chromatin/transcription and
+      synaptic terms.

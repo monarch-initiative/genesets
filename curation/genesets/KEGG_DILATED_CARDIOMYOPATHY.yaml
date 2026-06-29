@@ -1,0 +1,167 @@
+gene_set_id: MSIGDB:KEGG_DILATED_CARDIOMYOPATHY
+gene_set_name: KEGG_DILATED_CARDIOMYOPATHY
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy dilated cardiomyopathy pathway gene set (MSigDB C2 curated gene set).
+  This is a disease pathway gene set, not a cell-type signature. The member genes
+  are dominated by sarcomere and contractile apparatus proteins (actin, myosin heavy
+  and light chains, troponins, tropomyosin, titin), the dystrophin-glycoprotein
+  complex (dystrophin/DMD, sarcoglycans, dystrobrevin), cytoskeletal and ECM
+  linkage components, and adrenergic/calcium-handling regulators whose loss-of-
+  function or structural disruption causes ventricular dilation and systolic
+  dysfunction. As a KEGG legacy pathway it captures established mechanistic arms
+  and reflects the major gene families whose mutations underlie familial dilated
+  cardiomyopathy.
+contexts:
+  - term:
+      id: MONDO:0005021
+      label: dilated cardiomyopathy
+    context_type: disease
+  - term:
+      id: UBERON:0000948
+      label: heart
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0060048
+      label: cardiac muscle contraction
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:31073128
+        reference_title: "Dilated cardiomyopathy."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Mutations in several genes can cause DCM, including genes encoding structural components of the sarcomere and desmosome."
+        explanation: >-
+          Cardiac muscle contraction is the central physiological process that
+          fails in dilated cardiomyopathy. The review establishes that DCM is
+          caused by mutations in sarcomere structural genes whose protein products
+          power cardiac contractile force, directly supporting cardiac muscle
+          contraction as the core biological process disrupted in this disease.
+    curator_note: >-
+      The defining pathophysiology of dilated cardiomyopathy is impaired systolic
+      contraction of the left ventricle. The KEGG DCM pathway gene set is dominated
+      by genes encoding actin (ACTC1), myosin heavy chains (MYH6, MYH7), myosin
+      light chains (MYL2, MYL3), troponins (TNNT2, TNNI3, TNNC1), and
+      tropomyosin (TPM1) — the core molecular machinery of the sarcomere that
+      directly executes cardiac muscle contraction. This is a legitimately
+      cell-type-specific association for a cardiac disease gene set.
+  - term:
+      id: GO:0030017
+      label: sarcomere
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The sarcomere is the repeating contractile unit of cardiac myofibrils and
+      the defining ultrastructural hallmark of striated muscle cells. A large
+      fraction of the KEGG DCM pathway genes encode sarcomeric proteins (MYH6,
+      MYH7, MYL2, MYL3, TNNT2, TNNI3, TNNC1, TPM1, ACTC1, TTN), making the
+      sarcomere the dominant cellular compartment represented in this gene set.
+      Mutations in sarcomere genes are the most common genetic cause of familial
+      dilated cardiomyopathy.
+  - term:
+      id: GO:0016010
+      label: dystrophin-associated glycoprotein complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The dystrophin-associated glycoprotein complex (DGC) provides a critical
+      mechanical link between the intracellular cytoskeleton and the extracellular
+      matrix in cardiomyocytes, transmitting contractile force and protecting the
+      sarcolemma from contraction-induced damage. The KEGG DCM pathway explicitly
+      includes genes encoding DGC components: DMD (dystrophin), SGCA/SGCB/SGCG/
+      SGCD (sarcoglycans), DAG1 (dystroglycan), and SNTA1 (syntrophin). Loss of
+      DGC integrity is a well-established primary mechanism of DCM, particularly
+      in X-linked DCM caused by DMD mutations (MONDO:0010542).
+  - term:
+      id: GO:0006936
+      label: muscle contraction
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Parent term of cardiac muscle contraction; shared with skeletal and smooth
+      muscle lineages. Expected to appear alongside the more specific cardiac
+      muscle contraction child term (GO:0060048) in enrichment results from this
+      predominantly sarcomeric gene set. The association is biologically valid
+      but less informative than the cardiac-specific child term.
+  - term:
+      id: GO:0055117
+      label: regulation of cardiac muscle contraction
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The KEGG DCM pathway gene set includes multiple regulators of cardiac
+      contractile function beyond structural sarcomere proteins: adrenergic
+      receptor components (ADRA1A, ADRB1, ADRB2), calcium-handling proteins
+      (ATP2A2/SERCA2a, RYR2, PLN), and signalling kinases. These collectively
+      modulate the frequency, rate and extent of cardiac muscle contraction and
+      represent the functional regulatory arm of the KEGG DCM pathway
+      representation. Dysregulation of calcium handling is a secondary consequence
+      of sarcomere gene mutations in DCM.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance as an
+      enrichment hit reflects ribosomal protein genes that are incidentally
+      co-expressed in cardiomyocytes or present in the KEGG pathway gene set as
+      background members. It does not reflect a DCM-specific function and is
+      recorded here to flag a non-informative enrichment result.
+  - term:
+      id: GO:0048738
+      label: cardiac muscle tissue development
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Cardiac muscle tissue development is biologically relevant to DCM because
+      several DCM-causing genes (e.g. MYH7, TNNT2, TTN, LMNA) play roles in
+      cardiac tissue formation and maturation, and DCM frequently manifests as a
+      developmental failure to maintain normal ventricular architecture. However,
+      many of the sarcomere and DGC genes in this set are annotated predominantly
+      to contraction/structural GO terms rather than developmental terms, even
+      though their roles in tissue development are well-established. This is an
+      annotation gap: the biology is genuine but the gene-level GO annotations to
+      this term are incomplete, so enrichment is unlikely to recover it from this
+      gene set.

@@ -1,0 +1,158 @@
+gene_set_id: LIT:TYPE_I_INTERFERON_SIGNATURE
+gene_set_name: TYPE_I_INTERFERON_SIGNATURE
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+description: >-
+  Literature-defined disease-activity signature of the type I interferon (IFN)
+  response: the set of interferon-stimulated genes (ISGs) UPregulated when cells
+  are exposed to type I interferon (IFN-alpha/beta). The canonical clinical
+  description is the "interferon signature" of Baechler, Gregersen, Behrens et al.
+  (PNAS 2003, PMID:12604793), who used global gene expression profiling of
+  peripheral blood mononuclear cells to show that about half of systemic lupus
+  erythematosus (SLE) patients overexpress a coherent block of IFN-inducible
+  genes, and that this IFN signature marks more severe disease. Unlike MSigDB
+  causal/driver disease pathway sets, the members here are the READOUT of an
+  ACTIVE program, not driver mutations: they are the transcripts INDUCED by type
+  I IFN signaling and are the direct molecular footprint of an engaged IFN-alpha/
+  beta program. The signature is dominated by canonical ISGs - the ISG15
+  conjugation/effector arm (ISG15, USP18, HERC5), the 2'-5'-oligoadenylate
+  synthetases (OAS1, OAS2, OAS3) and the GTPase antiviral effectors (MX1, MX2),
+  the IFN-induced proteins with tetratricopeptide repeats (IFIT1, IFIT3) and the
+  IFI/IFITM family (IFI6, IFI27, IFI44, IFI44L), plus RSAD2/viperin, LY6E,
+  EPSTI1 and SIGLEC1. Because these member genes literally carry the GO
+  annotations for the processes the IFN program executes (response to type I
+  interferon, type I interferon-mediated signaling, antiviral defense),
+  enrichment recovers those processes (annotation_supported) rather than leaving
+  them as gaps. The type I IFN signature is not lupus-specific: the same ISG
+  program is the shared core of antiviral innate immunity and is elevated across
+  the interferonopathies and many systemic autoimmune diseases (SLE,
+  dermatomyositis, Sjogren syndrome). It was discovered/applied in lupus, which
+  is the anchoring context retained here.
+contexts:
+  - term:
+      id: MONDO:0007915
+      label: systemic lupus erythematosus
+    context_type: disease
+    role_note: >-
+      Discovery/application context: the IFN signature was defined in SLE
+      peripheral blood mononuclear cells and serves as a biomarker of severe SLE.
+      The type I IFN signature is shared, not SLE-specific: the same ISG program
+      is the effector core of the antiviral type I IFN response and is elevated
+      across multiple systemic autoimmune diseases (e.g. dermatomyositis,
+      Sjogren syndrome) and the monogenic type I interferonopathies, so the
+      disease is used as the anchoring context rather than as an exclusive label.
+associations:
+  - term:
+      id: GO:0034340
+      label: response to type I interferon
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:12604793
+        reference_title: "Interferon-inducible gene expression signature in peripheral blood cells of patients with severe lupus."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "about half of the patients studied showed dysregulated expression of genes in the IFN pathway"
+        explanation: >-
+          The signature IS the cellular response to type I interferon: it is the
+          coordinated block of IFN-inducible genes that Baechler et al. found
+          overexpressed in the peripheral blood of about half of SLE patients.
+          The defining ISG members (ISG15, IFI27, IFI44/IFI44L, OAS1/2/3, MX1/MX2,
+          IFIT1/3, RSAD2, USP18, LY6E) are induced by and annotated to response
+          to type I interferon, so this is the central process the set reads out
+          and enrichment recovers it (annotation_supported).
+    curator_note: >-
+      The defining ACTIVE identity of the set, not a driver lesion. specificity
+      is broadly_expressed (orthogonal to the core category): the type I IFN/ISG
+      program is mounted across essentially all nucleated cell types rather than
+      being restricted to one cell type or lineage, yet it remains the single
+      most specific descriptor of this molecular signature.
+  - term:
+      id: GO:0060337
+      label: type I interferon-mediated signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:12604793
+        reference_title: "Interferon-inducible gene expression signature in peripheral blood cells of patients with severe lupus."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "identify a subgroup of patients who may benefit from therapies targeting the IFN pathway"
+        explanation: >-
+          The signature is the transcriptional output of an engaged type I
+          IFN-mediated signaling pathway (IFN-alpha/beta -> IFNAR -> JAK/STAT/IRF
+          -> ISRE-driven transcription). The paper frames the IFN pathway as the
+          mechanistic axis underlying the signature and a therapeutic target.
+          Signaling and amplification components carried in the ISG program
+          (e.g. STAT1, STAT2, IRF7, ISG15, IFIT family) are annotated to this
+          pathway, so enrichment recovers it (annotation_supported). Kept core
+          because the signaling pathway is the mechanism that defines what the
+          signature reads out.
+  - term:
+      id: GO:0051607
+      label: defense response to virus
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Antiviral defense is the core biological purpose of the ISG program: the
+      dominant members are dedicated antiviral effectors (the OAS1/2/3-RNase L
+      arm, MX1/MX2 GTPases, RSAD2/viperin, IFIT1/3, ISG15/HERC5, IFITM family),
+      which carry defense response to virus annotations, so enrichment recovers
+      the term (annotation_supported). It is kept core because the type I IFN
+      signature is, in its native antiviral context, the cell-autonomous
+      antiviral state; in autoimmunity the same effectors are engaged as a
+      sterile mis-firing of this program. specificity is broadly_expressed
+      because the antiviral ISG response is deployed across essentially all
+      nucleated cells.
+  - term:
+      id: GO:0045087
+      label: innate immune response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The type I IFN response is a central arm of innate immunity, and many ISG
+      members carry the innate immune response annotation, so enrichment recovers
+      the term (annotation_supported). Scored supporting rather than core: innate
+      immune response is the broad parent context of the program rather than its
+      defining type-I-IFN-specific activity, and it is broadly expressed across
+      many immune contexts.
+  - term:
+      id: GO:0045071
+      label: negative regulation of viral genome replication
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      A specific antiviral effector arm of the ISG program: MX1/MX2, the
+      OAS-RNase L system and RSAD2/viperin restrict viral genome replication, and
+      these members carry the corresponding GO annotation, so enrichment recovers
+      the term (annotation_supported). Scored supporting because it is one
+      mechanistic effector branch of the broader antiviral defense (above) rather
+      than the defining activity of the whole signature.

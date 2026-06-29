@@ -1,0 +1,142 @@
+gene_set_id: MSIGDB:FRASOR_RESPONSE_TO_ESTRADIOL_UP
+gene_set_name: FRASOR_RESPONSE_TO_ESTRADIOL_UP
+collection: C2:CGP
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+description: >-
+  MSigDB C2:CGP gene set of genes upregulated in MCF-7 breast cancer cells
+  following treatment with 17β-estradiol (E2; Frasor et al. 2004,
+  PMID:14973112). This is a chemical/hormone perturbation UP signature: member
+  genes are induced specifically by the sex steroid 17β-estradiol acting through
+  nuclear estrogen receptor alpha (ERα) in an ER-positive luminal breast cancer
+  cell line. The 35-member set captures the canonical estradiol transcriptional
+  response in breast cancer cells, including cell-cycle promoting, growth-factor
+  signalling, and ER co-regulatory genes, and is widely used as an in vitro
+  estrogen response reference in breast cancer transcriptomics.
+contexts:
+  - term:
+      id: CHEBI:16469
+      label: 17beta-estradiol
+    context_type: chemical_perturbagen
+    role_note: treatment in MCF-7 breast cancer cells
+associations:
+  - term:
+      id: GO:0032355
+      label: response to estradiol
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:14973112
+        reference_title: "Selective estrogen receptor modulators: discrimination of agonistic versus antagonistic activities by gene expression profiling in breast cancer cells."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Analysis of gene stimulation and inhibition by the SERMs trans-hydroxytamoxifen (TOT) and raloxifene (Ral) or ICI 182,780 (ICI) and by estradiol (E2) in estrogen receptor-containing MCF-7 human breast cancer cells"
+        explanation: >-
+          The Frasor 2004 study directly characterises genome-wide gene
+          expression changes in MCF-7 cells induced by estradiol (E2). The gene
+          set is derived from the upregulated subset of these E2-stimulated
+          genes, making "response to estradiol" the primary and most direct
+          biological process descriptor for this signature.
+    curator_note: >-
+      GO:0032355 directly captures the biological context that defines this gene
+      set: MCF-7 genes whose expression rises upon E2 stimulus. Classified as
+      cell_type_specific because the estrogen response magnitude and gene
+      repertoire differ markedly between ER-positive and ER-negative cell types;
+      in ER-negative cells this response is absent.
+  - term:
+      id: GO:0030520
+      label: estrogen receptor signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Note: the task brief suggested "intracellular estrogen receptor signaling
+      pathway" for GO:0030520, but the verified OLS label is "estrogen receptor
+      signaling pathway". This pathway — nuclear ERα binding 17β-estradiol,
+      homodimerising, and activating estrogen response element (ERE)-driven
+      transcription — is the mechanistic engine generating the upregulated gene
+      set. High confidence; cell_type_specific because ERα expression defines
+      whether this pathway is active.
+  - term:
+      id: GO:0071392
+      label: cellular response to estradiol stimulus
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      This child of GO:0032355 is the ideal mechanistic descriptor for the
+      individual member genes: it specifies a cellular-level response to
+      estradiol specifically. However, most of the 35 member genes are annotated
+      to the parent GO:0032355 in GOA-human rather than to this more specific
+      child term, so enrichment analysis is unlikely to recover it despite the
+      underlying biology being unambiguous. This is a GO annotation curation
+      target — expanding GOA coverage of GO:0071392 for estradiol-response
+      genes would make enrichment results more precise.
+  - term:
+      id: GO:0008284
+      label: positive regulation of cell population proliferation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      17β-estradiol is the primary mitogenic hormone for ER-positive luminal
+      breast cancer cells including MCF-7. The upregulated gene set includes
+      growth-promoting genes whose induction collectively drives the
+      ER-positive cell-cycle entry programme. Classified as supporting_process
+      rather than core_process because proliferative outcome is downstream and
+      indirect relative to the direct stimulus-response and receptor-signalling
+      processes above.
+  - term:
+      id: GO:0045944
+      label: positive regulation of transcription by RNA polymerase II
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      ERα is a ligand-activated transcription factor that, upon 17β-estradiol
+      binding, recruits co-activators and drives RNA Pol II-dependent
+      transcription of target genes. Many of the 35 upregulated genes encode
+      transcription co-regulators and downstream targets of ER-driven Pol II
+      activity, so this term is well-represented in enrichment but is not
+      specific to the estrogen response since Pol II transcriptional activation
+      is broadly expressed.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance as an
+      enrichment hit in analyses of this gene set reflects highly expressed
+      ribosomal protein and translation-factor genes that co-segregate with
+      estradiol-upregulated genes due to general transcriptional activation. It
+      does not reflect a specific biological function of the estradiol response
+      signature and is a non-informative enrichment artefact.

@@ -6,6 +6,8 @@ taxon:
   id: NCBITaxon:9606
   label: Homo sapiens
 direction: NA
+series: SERIES:CEREBRUM_NEURON_CLASS
+series_role: excitatory
 description: >-
   Single-cell marker signature of excitatory (glutamatergic) neurons from human
   fetal cerebrum (Descartes atlas). These cells are of neural lineage, not
@@ -32,6 +34,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     evidence:
       - reference: PMID:17229973
         reference_title: NMDA Receptors in glia.
@@ -50,6 +53,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       The synapse is the defining subcellular structure of neurons. Marker genes
       for excitatory neurons include abundant synaptic proteins (e.g. SYN1,
@@ -63,6 +67,7 @@ associations:
     confidence: medium
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Neuron projections (axons and dendrites) are the elongated processes
       through which excitatory neurons form synaptic connections. Marker genes
@@ -76,6 +81,7 @@ associations:
     confidence: medium
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Excitatory neurons secrete glutamate as their primary neurotransmitter via
       regulated exocytosis of synaptic vesicles. Genes encoding SNARE proteins,
@@ -89,6 +95,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Excitatory neurons generate and propagate action potentials by regulating
       membrane potential through voltage-gated ion channels. This process is
@@ -115,6 +122,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: curator_added
+    insight: confirmatory
     curator_note: >-
       Excitatory projection neurons in the fetal cerebrum form long axons that
       establish cortico-cortical and corticofugal connections. Axon-specific

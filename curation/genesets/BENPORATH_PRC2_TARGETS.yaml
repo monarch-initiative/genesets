@@ -1,0 +1,160 @@
+gene_set_id: MSIGDB:BENPORATH_PRC2_TARGETS
+gene_set_name: BENPORATH_PRC2_TARGETS
+collection: C2:CGP
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  MSigDB C2:CGP gene set of Polycomb Repressive Complex 2 (PRC2) target genes
+  in human embryonic stem cells. Member genes bear the H3K27me3 histone mark
+  and are bound by the PRC2 subunits SUZ12 and EED, as identified by ChIP-seq
+  in hES cells (Ben-Porath et al. 2008, PMID:18443585; 650 genes). The set is
+  dominated by developmental transcription factors — HOX cluster genes (HOXA,
+  HOXB, HOXC, HOXD), PAX, GATA, CDX, DLX, NKX, HAND, and TWIST family
+  regulators — that are kept epigenetically silenced by PRC2 to maintain
+  pluripotency in ES cells. This is a chromatin/genetic-perturbation target
+  set (genes repressed by polycomb), not a directional expression signature;
+  direction is NA.
+contexts:
+  - term:
+      id: PR:000007278
+      label: histone-lysine N-methyltransferase EZH2
+    context_type: genetic_perturbation
+    role_note: polycomb-repressed targets
+associations:
+  - term:
+      id: GO:0006357
+      label: regulation of transcription by RNA polymerase II
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:18443585
+        reference_title: "An embryonic stem cell-like gene expression signature in poorly differentiated aggressive human tumors."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "preferential repression of Polycomb-regulated genes"
+        explanation: >-
+          Ben-Porath et al. 2008 defined the BENPORATH_PRC2_TARGETS gene set
+          by ChIP-seq of PRC2 subunits (SUZ12, EED) and H3K27me3 in human ES
+          cells. The paper explicitly identifies "Polycomb-regulated genes" as a
+          category that is preferentially repressed across tumour types,
+          confirming the gene set captures a PRC2-silenced programme. The set
+          members are overwhelmingly developmental transcription factors (HOX,
+          CDX, PAX, GATA, DLX, NKX, HAND, TWIST) whose primary molecular
+          activity is regulation of transcription by RNA polymerase II.
+    curator_note: >-
+      The largest functional cluster in this gene set is Pol II transcription
+      regulation: HOX cluster genes, CDX, GATA, NKX, DLX, PAX, HAND, and TWIST
+      family TFs are all Pol II transcription regulators that PRC2 silences in
+      ES cells to preserve pluripotency. Enrichment reliably recovers this term
+      as the dominant GO biological process. Specificity is broadly_expressed
+      because the Pol II TF activity is shared across diverse cell lineages, even
+      though the specific TFs here are developmentally specialised.
+  - term:
+      id: GO:0007389
+      label: pattern specification process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      HOX cluster genes (HOXA1-HOXA13, HOXB1-HOXB9, HOXC4-HOXC13,
+      HOXD1-HOXD13) are canonical PRC2 targets in ES cells and form the largest
+      functionally coherent subset of this gene set. These genes are directly
+      annotated to pattern specification process (GO:0007389) in GO. Body-axis
+      and segmental patterning is the defining developmental biology of HOX-gene
+      PRC2 silencing. Together with CDX, DLX, and NKX genes, the set is strongly
+      enriched for body-plan specification.
+  - term:
+      id: GO:0045165
+      label: cell fate commitment
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Many PRC2 targets in ES cells (GATA, PAX, NKX, CDX, and DLX family TFs)
+      regulate lineage-specific cell fate decisions. They are kept repressed by
+      PRC2 to preserve pluripotency; upon differentiation and loss of PRC2
+      occupancy, they drive commitment to mesoderm, endoderm, and ectoderm
+      lineages. The term is biologically real but secondary to pattern
+      specification and transcriptional regulation as descriptors of gene set
+      function.
+  - term:
+      id: GO:0003700
+      label: DNA-binding transcription factor activity
+    aspect: molecular_function
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The gene set members are overwhelmingly DNA-binding transcription factors:
+      HOX, CDX, GATA, PAX, NKX, DLX, HAND, and TWIST family genes all carry
+      GO:0003700 annotations. This MF term (not a BP term, hence category is
+      core_process by convention for MF terms defining the set's molecular
+      identity) captures the defining molecular function of the member proteins.
+      These TFs bind sequence-specific DNA motifs in cis-regulatory regions to
+      drive developmental gene programmes.
+  - term:
+      id: GO:0005634
+      label: nucleus
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      All major gene families represented in this set (HOX, PAX, GATA, CDX,
+      DLX, NKX, HAND, TWIST) encode nuclear transcription factors that localise
+      to the nucleus. The nucleus is the dominant and expected cellular
+      compartment for this PRC2-target TF gene set. Specificity is
+      broadly_expressed because the nucleus is a universal eukaryotic organelle,
+      though the developmental TF localisation to the nucleus is defining.
+  - term:
+      id: GO:0048598
+      label: embryonic morphogenesis
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      insight=confirmatory: for a set defined as the PRC2-silenced developmental
+      program, "embryonic morphogenesis" restates the set's construction rather
+      than revealing a mechanism — the mechanistic interpretation here is the
+      Polycomb/bivalent-chromatin repression itself, not the developmental
+      output. The PRC2/H3K27me3 target genes in this set are the body-plan regulators
+      (HOX, PAX, DLX, HAND, TWIST families) that PRC2 keeps silenced in ES cells
+      and that drive embryonic morphogenesis upon de-repression during
+      differentiation, so the term is biologically core. Recorded as
+      annotation_supported on GOA facts (not on any enrichment result): in
+      current goa_human, ~56 set genes are annotated within the embryonic
+      morphogenesis subtree - 2 directly (ITGA4, MSX1) and ~54 to specific
+      children that roll up under the is_a/part_of closure (e.g. PDGFRA and
+      HOXD9 to embryonic skeletal system morphogenesis, MESP1 to embryonic
+      heart tube morphogenesis, IRX5 to embryonic cranial skeleton
+      morphogenesis). The earlier gap premise - that these genes carry only
+      "regulation of morphogenesis" or pattern-specification annotations rather
+      than embryonic morphogenesis itself - was incorrect: most are annotated
+      to embryonic-morphogenesis sub-processes, which is more specific, not
+      outside the subtree.

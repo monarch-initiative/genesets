@@ -1,0 +1,199 @@
+gene_set_id: MSIGDB:WP_MEASLES_VIRUS_INFECTION
+gene_set_name: WP_MEASLES_VIRUS_INFECTION
+collection: C2:CP:WIKIPATHWAYS
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 136
+description: >-
+  WikiPathways WP_MEASLES_VIRUS_INFECTION gene set (MSigDB C2:CP:WIKIPATHWAYS, 136
+  genes). This is a host-gene pathway set capturing the major cellular programmes
+  engaged during measles virus (MeV) infection of human cells. Three interlinked
+  biological axes are represented: (1) innate antiviral defence — cytoplasmic
+  recognition of viral RNA through RIG-I (DDX58) and MDA5 (IFIH1), MAVS-mediated
+  signalling through TBK1 to IRF3/IRF7, and induction of type I/III interferons and
+  interferon-stimulated genes (IFIT1/2/3, MX1, OAS1/2/3, ISG15, RSAD2/viperin);
+  (2) viral entry via host-surface receptors — SLAMF1 (CD150) on lymphoid cells and
+  PVRL4 (nectin-4) on epithelial cells, which determine MeV tropism and underlie
+  lymphocyte infection and subsequent depletion; and (3) measles-induced immune
+  suppression — depletion of CD150-expressing memory T and B lymphocytes,
+  DC-mediated T-cell silencing via IL-12 suppression, and Th1-to-Th2 immune
+  skewing that creates the transient "immune amnesia" characteristic of measles
+  infection. The gene set does not contain viral protein-coding sequences; the MeV
+  V, P, and C proteins that directly antagonise type I IFN production and signalling
+  are viral genes absent from this human host gene set by design.
+contexts:
+  - term:
+      id: MONDO:0004619
+      label: measles
+    context_type: disease
+  - term:
+      id: NCBITaxon:11234
+      label: Measles morbillivirus
+    context_type: infection
+associations:
+  - term:
+      id: GO:0051607
+      label: defense response to virus
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:19198566
+        reference_title: "Measles virus interaction with host cells and impact on innate immunity."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "The 5' triphosphate-ended virus leader transcript is recognised by RIG-I, a cellular helicase, and induces the interferon response."
+        explanation: >-
+          The WP_MEASLES_VIRUS_INFECTION gene set is dominated by innate antiviral
+          defence genes: RIG-I (DDX58), MDA5 (IFIH1), MAVS, TBK1, IRF3, IRF7,
+          STAT1, STAT2, MX1, OAS1/2/3, IFIT1/2/3, RSAD2 (viperin), and ISG15 are
+          canonical members. Each is annotated to GO:0051607 (defense response to
+          virus) in GOA-human. This 2009 review (Gerlier & Valentin, Curr Top
+          Microbiol Immunol) confirms that RIG-I-mediated recognition of MeV 5'
+          triphosphate RNA and downstream interferon induction is the primary
+          antiviral mechanism represented in this gene set, making GO:0051607 its
+          most direct and specific core-process descriptor.
+  - term:
+      id: GO:0060337
+      label: type I interferon-mediated signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:19198566
+        reference_title: "Measles virus interaction with host cells and impact on innate immunity."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "By interacting with STAT1 and Jak1, the viral P and V proteins prevent the type I interferon receptor (IFNAR) signalling."
+        explanation: >-
+          Type I interferon signalling via IFNAR is the central host-protective axis
+          of the measles antiviral response. JAK1, TYK2, STAT1, STAT2, IRF9,
+          IFNAR1/2, and downstream ISGs are present in the gene set and are annotated
+          to GO:0060337 in GOA-human. The snippet demonstrates that MeV specifically
+          targets the IFNAR/JAK1/STAT1 signalling axis to block type I IFN
+          signalling, confirming that this pathway is central to measles infection
+          biology and is one of the two most specific core-process descriptors for
+          this gene set.
+  - term:
+      id: GO:0045087
+      label: innate immune response
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:36560645
+        reference_title: "Measles Virus-Induced Host Immunity and Mechanisms of Viral Evasion."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Considerable knowledge has been accumulated regarding MeV interactions with the innate immune system through two antagonistic aspects: recognition of the virus by cellular sensors and viral ability to inhibit the induction of the interferon cascade."
+        explanation: >-
+          Innate immune response is the broad parent term encompassing both the
+          RLR/IFN antiviral arm and the TLR/NF-κB inflammatory arm engaged during
+          MeV infection. This review (Amurri et al. 2022, Viruses) confirms that the
+          interplay between innate immune sensing and viral immune evasion is a
+          defining feature of measles biology. The term reliably appears in
+          enrichment analyses of antiviral gene sets and is therefore supporting
+          rather than core; the more specific terms GO:0051607 and GO:0060337 better
+          capture the dominant biology.
+  - term:
+      id: GO:0046718
+      label: symbiont entry into host cell
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    evidence:
+      - reference: PMID:19198566
+        reference_title: "Measles virus interaction with host cells and impact on innate immunity."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "At the entry level, measles virus uses at least two cellular receptors, CD150 and a yet to be identified epithelial receptor to which the virus H protein binds."
+        explanation: >-
+          Viral entry via SLAMF1 (CD150) on lymphoid cells and PVRL4 (nectin-4) on
+          epithelial cells initiates measles infection, determines cell-type tropism,
+          and directly drives lymphocyte depletion and immune amnesia. Both receptor
+          genes are present in the gene set. However, GO annotations of SLAMF1
+          capture primarily its role in lymphocyte co-stimulatory signalling, and
+          those of PVRL4 capture cell-cell adhesion; GO:0046718 (symbiont entry into
+          host cell) is sparsely annotated for these genes in GOA-human, making this
+          term an annotation_gap: the biology is central but GO/GOA coverage of
+          measles receptor-mediated entry is incomplete.
+    curator_note: >-
+      annotation_gap, not false_association. SLAMF1 (CD150) and PVRL4 (nectin-4)
+      are the two principal entry receptors for wild-type MeV strains and their
+      presence in the gene set is biologically meaningful. At the time of the Gerlier
+      & Valentin 2009 review, PVRL4/nectin-4 had not yet been identified as the
+      epithelial receptor; it was confirmed by Muhlebach et al. (2011) and Noyce et
+      al. (2011). The term would not reliably be recovered in standard enrichment
+      analyses due to sparse annotation of these receptor genes to GO:0046718, but
+      it reflects real and important biology of measles pathogenesis.
+  - term:
+      id: GO:0032480
+      label: negative regulation of type I interferon production
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: membership_gap
+    insight: mechanistic
+    evidence:
+      - reference: PMID:19198566
+        reference_title: "Measles virus interaction with host cells and impact on innate immunity."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Measles virus V protein binds to the MDAS helicase and prevents the MDA5-mediated activation of interferon."
+        explanation: >-
+          Antagonism of type I IFN production by MeV V protein (blocking MDA5/IFIH1)
+          and C protein is the mechanistic basis of measles immune evasion and the
+          "immune amnesia" phenotype. This biology therefore belongs in a complete
+          description of measles virus infection. However, the responsible actors are
+          viral proteins (MeV V and C) that are absent from this human host gene set
+          by design. The host genes present in the set — IFIH1 (MDA5), IRF3, IRF7,
+          MAVS — are the targets of suppression rather than the suppressors.
+          No enrichment analysis of these 136 host genes is expected to recover
+          GO:0032480 from GOA-human annotations.
+    curator_note: >-
+      membership_gap, not false_association. Measles IFN antagonism is mechanistically
+      central to MeV virulence and the immune amnesia phenotype, and belongs in a
+      complete biological description of measles virus infection. The canonical actors
+      (MeV V protein blocking MDA5; MeV V/P proteins blocking JAK1/STAT1/STAT2)
+      are viral proteins absent from this human-only gene set. No enrichment of
+      GO:0032480 from these 136 human genes is expected from GOA-human annotations.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. It may appear as an
+      enrichment hit driven by ribosomal protein or translation-initiation factor
+      genes present in the WikiPathways gene set. Additionally, the MeV
+      nucleoprotein (N) is known to interact with the eIF3-p40 translation
+      initiation subunit to inhibit cellular mRNA translation, and representation
+      of translation-pathway host genes in the WikiPathways measles pathway may
+      reflect this mechanism. In either case, translation does not constitute a
+      measles-specific biological annotation for this host gene set and is
+      classified as nonspecific.

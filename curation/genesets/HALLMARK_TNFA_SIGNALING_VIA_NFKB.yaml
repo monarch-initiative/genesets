@@ -1,0 +1,142 @@
+gene_set_id: MSIGDB:HALLMARK_TNFA_SIGNALING_VIA_NFKB
+gene_set_name: HALLMARK_TNFA_SIGNALING_VIA_NFKB
+collection: H
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  MSigDB Hallmark gene set of genes up-regulated by TNF-alpha signaling through
+  NF-kB. This is a stimulus-response signature, not a cell-type signature:
+  member genes are induced by TNF-alpha (tumor necrosis factor) through the
+  canonical IKK–NF-kB axis and represent the early inflammatory transcriptional
+  response. The set includes cytokines, chemokines, adhesion molecules,
+  anti-apoptotic factors, and other NF-kB target genes up-regulated in diverse
+  cell types upon TNF-alpha stimulation. It is widely used to infer NF-kB
+  pathway activity and TNF-driven inflammation in bulk and single-cell RNA-seq
+  data.
+contexts:
+  - term:
+      id: PR:000000134
+      label: tumor necrosis factor
+    context_type: chemical_perturbagen
+    role_note: stimulus
+associations:
+  - term:
+      id: GO:0071356
+      label: cellular response to tumor necrosis factor
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The Hallmark gene set is specifically defined as genes whose expression is
+      elevated upon TNF-alpha stimulation; cellular response to tumor necrosis
+      factor is therefore the most direct and precise GO descriptor of the
+      signature. Member genes annotated to this term include NFKBIA, TNFAIP3,
+      CXCL2, IL6, and numerous other canonical TNF targets, and enrichment
+      analysis routinely recovers this term from the gene set.
+  - term:
+      id: GO:0007249
+      label: canonical NF-kappaB signal transduction
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:32958760
+        reference_title: "Targeting NF-κB pathway for the therapy of diseases: mechanism and clinical study."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "The canonical NF-κB is activated by various stimuli, transducing a quick but transient transcriptional activity, to regulate the expression of various proinflammatory genes and also serve as the critical mediator for inflammatory response."
+        explanation: >-
+          TNF-alpha is a primary activator of the canonical NF-kB cascade via
+          TNFR1–TRADD–RIP1–IKK signalling. This review confirms that the
+          canonical NF-kB pathway mediates rapid, transient transcriptional
+          induction of proinflammatory genes — precisely the signature captured
+          by the Hallmark TNF-alpha/NF-kB gene set. Genes encoding IKK complex
+          components (IKBKB, IKBKG), IkB proteins (NFKBIA, NFKBIB), and NF-kB
+          subunits are annotated to this GO term.
+    curator_note: >-
+      The gene set name itself names the mechanistic pathway — canonical NF-kB
+      signal transduction is the defining molecular mechanism whose output is
+      captured by this Hallmark set. NFKBIA (IkB-alpha), NFKBIZ, TNFAIP3
+      (A20), and BIRC2/BIRC3 are among the well-annotated set members.
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      TNF-alpha is a master pro-inflammatory cytokine and the inflammatory
+      response is a major downstream consequence of NF-kB activation. Genes
+      encoding cytokines (IL6, IL8/CXCL8), chemokines (CCL2, CXCL1/2/3),
+      adhesion molecules (ICAM1, VCAM1), and COX-2 (PTGS2) in the Hallmark set
+      carry inflammatory response annotations. The term is broadly expressed and
+      generic across many stimuli, so it is supporting rather than
+      uniquely defining for TNF-alpha/NF-kB signalling.
+  - term:
+      id: GO:0001816
+      label: cytokine production
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      A defining output of NF-kB activation by TNF-alpha is the induction of
+      secondary cytokine and chemokine production, including IL-6, IL-8
+      (CXCL8), CXCL1, CXCL2, CCL2, and TNF itself, creating a pro-inflammatory
+      amplification loop. Cytokine production is therefore a central functional
+      theme in the Hallmark gene set, though it is shared across many
+      inflammatory stimuli. Note: this GO term is flagged for use in regulation
+      child terms for direct gene-product annotation, but is appropriate here as
+      a gene-set-level process descriptor.
+  - term:
+      id: GO:0045944
+      label: positive regulation of transcription by RNA polymerase II
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The Hallmark set captures the NF-kB transcriptional output: activated
+      NF-kB p65/p50 dimers translocate to the nucleus and drive transcription
+      of target genes via RNA polymerase II promoters. NF-kB subunits (RELA,
+      NFKB1) and co-activators in the set are annotated to positive regulation
+      of transcription by RNA polymerase II. This term is broadly expected in
+      any transcription-factor-driven gene set and is therefore supporting
+      rather than distinctive for TNF-alpha/NF-kB.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment analyses of the Hallmark TNF-alpha/NF-kB set reflects
+      ribosomal protein genes present in the set and does not reflect a
+      TNF-alpha- or NF-kB-specific biological function. Illustrates a
+      non-informative enrichment hit that should be filtered from
+      biological interpretation.

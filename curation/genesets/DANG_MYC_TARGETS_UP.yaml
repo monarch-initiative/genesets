@@ -1,0 +1,184 @@
+gene_set_id: MSIGDB:DANG_MYC_TARGETS_UP
+gene_set_name: DANG_MYC_TARGETS_UP
+collection: C2:CGP
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:DANG_MYC_TARGETS
+series_role: up
+description: >-
+  MSigDB C2:CGP gene set of genes up-regulated by the MYC oncogenic transcription
+  factor and whose promoters are directly bound by MYC, as defined by Zeller and
+  Dang et al. (2003, PMID:14519204). This is a genetic-perturbation response
+  signature (MYC oncogene activation, UP component), not a cell-type signature:
+  member genes are induced across diverse cellular contexts by enforced MYC
+  expression and reflect the canonical MYC transcriptional programme, which centres
+  on ribosome biogenesis, rRNA processing and modification, translation, nucleotide
+  biosynthesis, and cell cycle entry. The 130 member genes were prioritised by
+  transcriptomic evidence of MYC responsiveness and validated by chromatin
+  immunoprecipitation of MYC promoter binding.
+contexts:
+  - term:
+      id: PR:P01106
+      label: Myc proto-oncogene protein (human)
+    context_type: genetic_perturbation
+    role_note: oncogene activation
+associations:
+  - term:
+      id: GO:0042254
+      label: ribosome biogenesis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:20332779
+        reference_title: "MYC as a regulator of ribosome biogenesis and protein synthesis."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "MYC coordinates protein synthesis through the transcriptional control of RNA and protein components of ribosomes, and of gene products required for the processing of ribosomal RNA, the nuclear export of ribosomal subunits and the initiation of mRNA translation."
+        explanation: >-
+          This Nature Reviews Cancer review establishes that MYC directly
+          regulates all three RNA polymerases to coordinate ribosome production.
+          The DANG_MYC_TARGETS_UP set was constructed from ChIP-validated direct
+          MYC target genes, and ribosome biogenesis is the mechanistically primary
+          output of MYC oncogenic activation represented in this set.
+    curator_note: >-
+      Ribosome biogenesis is the defining molecular programme of MYC oncogenic
+      activation. MYC simultaneously drives RNA Pol I (rRNA transcription), RNA
+      Pol II (ribosomal protein genes), and RNA Pol III (5S rRNA, tRNA) to
+      coordinate all arms of ribosome production. Many of the 130 member genes
+      encode ribosomal proteins, rRNA processing factors, or snoRNP components.
+      This term is core and is mechanistically distinct from translation (the
+      downstream functional output of the assembled ribosome).
+  - term:
+      id: GO:0006364
+      label: rRNA processing
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      MYC directly activates genes encoding pre-rRNA processing factors,
+      including members of the small subunit processome and LSU processing
+      complexes. The Zeller/Dang 2003 source database clusters MYC-responsive
+      genes into functional groups, with RNA metabolism and processing as
+      prominent classes. rRNA processing is integral to the ribosome biogenesis
+      programme that MYC drives and is well-represented among set members.
+  - term:
+      id: GO:0005730
+      label: nucleolus
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The nucleolus is the site of rRNA transcription, processing, and ribosome
+      assembly — all processes driven by MYC. Many DANG_MYC_TARGETS_UP members
+      encode nucleolar proteins (rRNA processing factors, snoRNP components,
+      ribosomal assembly factors). MYC overexpression consistently enlarges the
+      nucleolus, and nucleolar hypertrophy is a recognised histological hallmark
+      of MYC-driven tumours. The nucleolus is the cellular compartment most
+      directly reflecting MYC oncogenic activity.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:20332779
+        reference_title: "MYC as a regulator of ribosome biogenesis and protein synthesis."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "MYC coordinates protein synthesis through the transcriptional control of RNA and protein components of ribosomes, and of gene products required for the processing of ribosomal RNA, the nuclear export of ribosomal subunits and the initiation of mRNA translation."
+        explanation: >-
+          MYC directly controls the initiation of mRNA translation by regulating
+          ribosome biogenesis and eIF family initiation factors. In the context of
+          this gene set, translation is a defining mechanistic output of MYC
+          oncogenic activation, not housekeeping background signal.
+    curator_note: >-
+      Translation is categorised as core_process here, in deliberate contrast
+      to the nonspecific classification used for HALLMARK_INTERFERON_GAMMA_RESPONSE
+      and cell-type marker sets, where ribosomal protein gene membership is
+      incidental and enrichment of translation is uninformative housekeeping
+      signal. In DANG_MYC_TARGETS_UP, ribosomal protein genes, eIF family members,
+      and elongation factors are direct transcriptional targets of MYC oncogenic
+      activation (van Riggelen et al. 2010, PMID:20332779). Their upregulation
+      is a programmatic, mechanism-specific consequence of MYC binding and is
+      the intended biology of the set.
+  - term:
+      id: GO:0006164
+      label: purine nucleotide biosynthetic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      MYC drives de novo purine and pyrimidine nucleotide biosynthesis to supply
+      building blocks for the dramatically elevated rRNA and mRNA production
+      required during oncogenic growth. Enzymes of the de novo purine biosynthesis
+      pathway (including PAICS, PFAS, GART, ADSS, ADSL) are established MYC
+      transcriptional targets. Nucleotide biosynthesis is a supporting process
+      that provides substrates for the core ribosome biogenesis programme: it
+      is quantitatively important but downstream of the primary MYC transcriptional
+      output.
+  - term:
+      id: GO:0008284
+      label: positive regulation of cell population proliferation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      MYC is one of the principal drivers of cell cycle entry and proliferation.
+      The DANG_MYC_TARGETS_UP set includes well-validated direct MYC targets
+      that mediate its proliferative output (e.g. CDK4, CCND2, CDC25A).
+      Positive regulation of cell population proliferation is a significant
+      biological theme in the set but is secondary to the biochemical ribosome
+      biogenesis programme, which is the most immediate molecular consequence
+      of MYC binding at gene promoters.
+  - term:
+      id: GO:0000154
+      label: rRNA modification
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      rRNA modification by snoRNPs (pseudouridylation guided by H/ACA snoRNPs;
+      2'-O-methylation guided by C/D snoRNPs) is required for proper ribosome
+      assembly and is a mechanistic component of the MYC nucleolar programme.
+      MYC directly activates DKC1 (dyskerin, the pseudouridine synthase of H/ACA
+      snoRNPs) and numerous snoRNA host genes whose products guide rRNA
+      modification. rRNA modification is therefore core biology encoded by this
+      gene set. This is an annotation_gap: proteins such as DKC1, FBL (fibrillarin),
+      NOP58, and NOP56 are present as MYC targets but are annotated in GOA-human
+      predominantly to the parent processes (ribosome biogenesis, rRNA processing)
+      rather than to rRNA modification specifically, so enrichment analysis will
+      not reliably recover this child term from the current annotations. This
+      represents a GO annotation curation target.

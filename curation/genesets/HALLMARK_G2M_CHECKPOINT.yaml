@@ -1,0 +1,155 @@
+gene_set_id: MSIGDB:HALLMARK_G2M_CHECKPOINT
+gene_set_name: HALLMARK_G2M_CHECKPOINT
+collection: H
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  MSigDB Hallmark gene set of genes involved in the G2/M cell-cycle checkpoint
+  and mitosis. This is a PROCESS signature, not a cell-type signature; the
+  member genes encode core regulators of the G2-to-M phase transition (CDK1,
+  CCNB1/B2, CDC25A/B/C, WEE1, PKMYT1), spindle assembly checkpoint proteins
+  (BUB1, BUB1B/BUBR1, MAD1L1, MAD2L1), mitotic kinases (AURKA, AURKB, PLK1),
+  and chromosome condensation and segregation factors. The hallmark represents
+  the proliferative cell-cycle programme active in all dividing human cell types.
+contexts:
+  - term:
+      id: GO:0000086
+      label: G2/M transition of mitotic cell cycle
+    context_type: experimental_condition
+associations:
+  - term:
+      id: GO:0000278
+      label: mitotic cell cycle
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The Hallmark G2M CHECKPOINT gene set is built from genes whose products
+      directly control progression through the mitotic cell cycle: CDK1,
+      CCNB1/B2 (cyclin B1/B2), CDC25A/B/C (Cdc25 phosphatases), WEE1, PLK1
+      (polo-like kinase 1), AURKA/B (Aurora kinases), and BUB1/BUB1B/MAD1L1/
+      MAD2L1 (spindle assembly checkpoint). GO:0000278 is the broadest term
+      encompassing all phases and transitions of the mitotic cell cycle and is
+      definitionally appropriate as the top-level core-process annotation for
+      this gene set.
+  - term:
+      id: GO:0000086
+      label: G2/M transition of mitotic cell cycle
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:29168755
+        reference_title: "Regulation of G2/M Transition by Inhibition of WEE1 and PKMYT1 Kinases."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "The main factor influencing the decision to enter mitosis is a complex composed of Cdk1 and cyclin B. Cdk1/CycB is regulated by various feedback mechanisms, in particular inhibitory phosphorylations at Thr14 and Tyr15 of Cdk1. In fact, Cdk1/CycB activity is restricted by the balance between WEE family kinases and Cdc25 phosphatases."
+        explanation: >-
+          The HALLMARK_G2M_CHECKPOINT gene set is built around the CDK1/cyclin B
+          complex and its direct regulators (WEE1, PKMYT1, CDC25A/B/C), which
+          constitute the molecular switch governing the G2/M transition of the
+          mitotic cell cycle. This review identifies CDK1/CycB as the master
+          effector of mitotic entry and describes the WEE kinase / CDC25
+          phosphatase balance that controls it — precisely the core member genes
+          of this Hallmark set.
+    curator_note: >-
+      GO:0000086 is the most specific process term directly named by this gene
+      set. It captures the CDK1/cyclin B activation cascade and the regulatory
+      phosphatases (CDC25A/B/C) and inhibitory kinases (WEE1, PKMYT1) that are
+      the most prominent members of this Hallmark.
+  - term:
+      id: GO:0044818
+      label: mitotic G2/M transition checkpoint
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The Hallmark is explicitly named for the G2/M checkpoint. Canonical
+      checkpoint genes BUB1, BUB1B (BUBR1), MAD1L1, and MAD2L1 (spindle
+      assembly checkpoint), together with AURKA, AURKB, and PLK1, are prominent
+      members. GO:0044818 precisely captures the signalling process that
+      negatively regulates G2-to-M progression and is the checkpoint-specific
+      complement to the transition term GO:0000086.
+  - term:
+      id: GO:0007059
+      label: chromosome segregation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Correct chromosome segregation requires the spindle assembly checkpoint
+      proteins (BUB1, BUB1B/BUBR1, MAD1L1, MAD2L1) and mitotic kinases
+      (AURKA, AURKB, PLK1) encoded by set members. These proteins ensure
+      kinetochores are properly bi-oriented before anaphase onset, linking the
+      G2/M checkpoint to faithful segregation. The process is supporting rather
+      than core because the gene set is not exclusively composed of segregation
+      factors.
+  - term:
+      id: GO:0051301
+      label: cell division
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Cell division is the downstream outcome of successful G2/M checkpoint
+      passage and mitosis. Genes such as CDK1, CCNB1, PLK1, and AURKA/B that
+      drive mitotic progression are annotated to cell division in GOA-human,
+      making this a genuine but secondary enrichment signal for the G2M set.
+      The term is broadly expressed and supporting rather than core.
+  - term:
+      id: GO:0005819
+      label: spindle
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The mitotic spindle is the central structural compartment of M phase.
+      Multiple members of the Hallmark G2M set localise to the spindle,
+      including AURKA and AURKB (spindle assembly), PLK1 (centrosome maturation
+      and spindle formation), KIF2C/MCAK (spindle microtubule depolymerisation),
+      and various kinesins and microtubule-associated proteins. The spindle is
+      therefore the dominant cellular compartment represented among the gene
+      set's members.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation appears as a non-specific enrichment signal driven by genes
+      with broad functional annotations or dual roles in translational regulation
+      and cell cycle control. Translation is a ubiquitous housekeeping process
+      that does not reflect a specific function of the G2/M checkpoint machinery;
+      its presence is a secondary consequence of annotation breadth and does not
+      indicate that this Hallmark represents a translation programme.

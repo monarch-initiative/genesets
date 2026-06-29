@@ -1,0 +1,186 @@
+gene_set_id: MSIGDB:KEGG_TYPE_II_DIABETES_MELLITUS
+gene_set_name: KEGG_TYPE_II_DIABETES_MELLITUS
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy type 2 diabetes mellitus pathway gene set (MSigDB C2 curated gene set).
+  This is a disease pathway gene set representing the pathophysiology of type 2 diabetes,
+  characterized by insulin resistance in peripheral tissues and progressive pancreatic
+  beta-cell failure. Member genes are enriched for insulin receptor signaling components
+  (INSR, IRS1, IRS2, PIK3CA, AKT1/2), downstream MAPK and PI3K-AKT cascade mediators,
+  glucose and fatty acid metabolic enzymes, and pancreatic beta-cell secretory machinery.
+  The gene set reflects the two cardinal defects of T2D: impaired insulin signal
+  transduction (insulin resistance) and insufficient insulin secretion, along with
+  downstream metabolic dysregulation in liver, skeletal muscle, and adipose tissue.
+contexts:
+  - term:
+      id: MONDO:0005148
+      label: type 2 diabetes mellitus
+    context_type: disease
+  - term:
+      id: UBERON:0001264
+      label: pancreas
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0008286
+      label: insulin receptor signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:27189025
+        reference_title: "Type 2 diabetes mellitus."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Insulin resistance and impaired insulin secretion remain the core defects in T2DM"
+        explanation: >-
+          The KEGG T2D pathway is dominated by insulin receptor and insulin receptor
+          substrate genes (INSR, IRS1, IRS2) together with downstream PI3K and AKT
+          effectors. This canonical Nat Rev Dis Primers review by DeFronzo et al.
+          identifies insulin resistance — failure of insulin receptor signaling in
+          liver, muscle, and adipose — as one of the two core defects of type 2
+          diabetes, directly supporting this as the primary core process association
+          for this gene set.
+  - term:
+      id: GO:0042593
+      label: glucose homeostasis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Maintenance of blood glucose homeostasis is the fundamental physiological
+      function disrupted in type 2 diabetes. Genes in the KEGG T2D pathway
+      directly regulate glucose uptake (SLC2A4/GLUT4), hepatic glucose production
+      (PCK1, PCK2, PYGL), and glycogen synthesis (GYS1, GYS2). Glucose homeostasis
+      is a defining measurable endpoint of T2D pathophysiology and a natural
+      enrichment term for this gene set.
+  - term:
+      id: GO:0030073
+      label: insulin secretion
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:27189025
+        reference_title: "Type 2 diabetes mellitus."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Insulin resistance and impaired insulin secretion remain the core defects in T2DM"
+        explanation: >-
+          Impaired insulin secretion from pancreatic beta cells is identified as
+          one of the two core defects of T2D in this authoritative review. The
+          KEGG T2D pathway includes beta-cell-associated genes (KCNJ11/Kir6.2,
+          ABCC8/SUR1) that form the ATP-sensitive K+ channel controlling
+          glucose-stimulated insulin exocytosis, as well as calcium-signaling
+          components that trigger secretion. Insulin secretion is cell-type-specific
+          to pancreatic beta cells.
+  - term:
+      id: GO:0043491
+      label: phosphatidylinositol 3-kinase/protein kinase B signal transduction
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The PI3K-AKT cassette is the canonical metabolic arm of insulin receptor
+      signaling. In T2D, impaired activation of PI3K (PIK3CA, PIK3CB, PIK3R1)
+      and AKT (AKT1, AKT2) by phosphorylated IRS1/IRS2 underlies insulin
+      resistance in liver, muscle, and adipose tissue. The KEGG T2D pathway
+      contains multiple PI3K regulatory and catalytic subunit genes along with
+      PDK1 (PDPK1) and AKT isoforms. This term is classified as a supporting
+      process because it acts downstream of the more proximal insulin receptor
+      signaling pathway and is a broadly deployed signaling module shared across
+      many receptor systems.
+  - term:
+      id: GO:0000165
+      label: MAPK cascade
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The MAPK (ERK) cascade is the mitogenic arm of insulin receptor signaling,
+      activated via IRS1/Grb2/SOS/Ras/Raf/MEK/ERK. MAPK1 and MAPK3 (ERK1/2)
+      are represented in the KEGG T2D pathway. In the context of insulin resistance,
+      serine phosphorylation of IRS1 by stress-activated MAPKs (JNK/MAPK8,
+      p38/MAPK14) contributes to signal desensitization. MAPK cascade is a
+      supporting process — broadly expressed and not T2D-specific — but mechanistically
+      relevant as a downstream branch of insulin receptor signaling and as a
+      contributor to IRS1 inhibitory serine phosphorylation.
+  - term:
+      id: GO:0006631
+      label: fatty acid metabolic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Dyslipidemia and ectopic lipid accumulation are closely coupled to insulin
+      resistance in T2D. Insulin normally suppresses lipolysis and fatty acid
+      oxidation via AKT-mediated downstream targets; impaired insulin signaling
+      in T2D leads to unrestrained lipolysis and elevated circulating free fatty
+      acids, which in turn worsen peripheral insulin resistance. Fatty acid
+      metabolic genes are represented in the KEGG T2D pathway and the term is
+      recoverable by enrichment from the set, though it is a broadly expressed
+      metabolic process without T2D specificity.
+  - term:
+      id: GO:0046627
+      label: negative regulation of insulin receptor signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Negative regulation of insulin receptor signaling — operationally equivalent
+      to insulin resistance, the primary pathogenic mechanism of T2D — is biologically
+      core to this gene set. Multiple KEGG T2D pathway members participate in this
+      process: IRS1 serine phosphorylation by IKKβ (IKBKB) and JNK (MAPK8) inhibits
+      canonical insulin signaling; SOCS proteins suppress INSR tyrosine kinase activity;
+      and PTEN dephosphorylates PIP3 to antagonize PI3K signaling. This is an
+      annotation_gap: the underlying biology is present in the gene set but GO
+      annotation coverage of these inhibitory interactions is incomplete, so enrichment
+      analysis is unlikely to recover this specific child term. This is a GO annotation
+      curation target for T2D-relevant genes.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation appears as a non-specific enrichment hit driven by ribosomal
+      protein subunit genes present in the KEGG T2D gene set. It is a ubiquitous
+      housekeeping process with no diabetes-specific relevance and does not
+      reflect a disease-specific function of the type 2 diabetes mellitus pathway.

@@ -1,0 +1,179 @@
+gene_set_id: MSIGDB:WP_FAMILIAL_HYPERLIPIDEMIA_TYPE_1
+gene_set_name: WP_FAMILIAL_HYPERLIPIDEMIA_TYPE_1
+collection: C2:CP:WIKIPATHWAYS
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 18
+description: >-
+  WikiPathways Familial Hyperlipidemia Type 1 gene set (MSigDB
+  C2:CP:WIKIPATHWAYS, 18 genes). This pathway gene set represents the
+  molecular machinery required for triglyceride-rich lipoprotein
+  (chylomicron) hydrolysis at the capillary endothelium. The five causal
+  proteins — lipoprotein lipase (LPL), its cofactors apolipoprotein C-II
+  (APOC2) and apolipoprotein A-V (APOA5), the endothelial LPL-anchoring
+  glycoprotein GPIHBP1, and the LPL maturation factor LMF1 — constitute
+  the rate-limiting chylomicron-triglyceride hydrolysis apparatus.
+  Loss-of-function variants in any of these five genes impair LPL
+  enzymatic activity, causing the accumulation of chylomicrons in plasma
+  and severe hypertriglyceridemia, the hallmarks of familial
+  chylomicronemia syndrome (hyperlipoproteinemia type I). Additional set
+  members encode apolipoproteins and structural components that participate
+  in chylomicron metabolism and downstream lipid transport.
+contexts:
+  - term:
+      id: MONDO:0018637
+      label: familial chylomicronemia syndrome
+    context_type: disease
+associations:
+  - term:
+      id: GO:0006641
+      label: triglyceride metabolic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:30183397
+        reference_title: "Familial Chylomicronemia Syndrome: A Clinical Guide For Endocrinologists."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Familial chylomicronemia syndrome (FCS) is a rare autosomal recessive disorder caused by mutations in lipoprotein lipase, resulting in accumulation of chylomicrons in plasma and hypertriglyceridemia."
+        explanation: >-
+          The defining metabolic defect in familial chylomicronemia syndrome
+          is impaired LPL-mediated hydrolysis of triglycerides from
+          chylomicrons, producing chylomicron accumulation and extreme
+          hypertriglyceridemia. Triglyceride metabolic process (GO:0006641)
+          is the GO term that most directly captures the impaired biochemistry
+          represented in this 18-gene set. LPL, APOC2, APOA5, GPIHBP1, and
+          LMF1 are all involved in triglyceride metabolic process or its
+          children in GOA-human, making this term reliably recovered by
+          enrichment and the single most defining GO:BP term for the set.
+  - term:
+      id: GO:0042627
+      label: chylomicron
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Chylomicrons are the triglyceride-rich lipoprotein particles that
+      accumulate in plasma in familial chylomicronemia syndrome. They are
+      the direct substrate of LPL and carry the apolipoprotein cofactors
+      encoded by APOC2 and APOA5. The GO definition of GO:0042627 states
+      that chylomicrons "may include a variety of apolipoproteins, including
+      APOAs, APOCs and APOE", directly naming set members. Multiple set
+      members are annotated to GO:0042627 in GOA-human, making this the
+      most precise disease-defining GO CC term for the set. The term is
+      lineage_shared because the same apolipoproteins associate with VLDL
+      and IDL particles in related lipoprotein metabolic contexts.
+  - term:
+      id: GO:0034371
+      label: chylomicron remodeling
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Chylomicron remodeling (GO:0034371) is defined as "the acquisition,
+      loss or modification of a protein or lipid within a chylomicron,
+      including the hydrolysis of triglyceride by lipoprotein lipase and
+      the subsequent loss of free fatty acid." This is precisely the
+      molecular event abrogated in familial chylomicronemia syndrome: LPL
+      (with APOC2 as obligate activating cofactor) hydrolyses the
+      triglyceride core of chylomicrons at the capillary endothelium
+      (facilitated by GPIHBP1), and LMF1 is required for LPL maturation
+      and secretion into the capillary lumen. This term is curator-added
+      and classified as annotation_gap: while LPL and APOC2 are
+      functionally central to chylomicron remodeling, the majority of the
+      18 set members do not yet carry this specific GO annotation in
+      GOA-human, preventing reliable enrichment recovery from a small gene
+      set. Chylomicron remodeling is a priority GO annotation curation
+      target for familial chylomicronemia syndrome gene sets.
+  - term:
+      id: GO:0019433
+      label: triglyceride catabolic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Triglyceride catabolic process (GO:0019433) is the child of
+      triglyceride metabolic process that captures the hydrolytic direction
+      executed by LPL. LPL cleaves fatty acids from the triglyceride core
+      of chylomicrons; its loss-of-function is the primary cause of
+      familial chylomicronemia syndrome. APOC2 activates LPL and APOA5
+      promotes LPL-mediated triglyceride hydrolysis, placing multiple set
+      members directly in this term. The term is broadly_expressed because
+      adipose-tissue lipolysis and hepatic triglyceride catabolism share
+      this annotation class beyond the chylomicron-specific context.
+  - term:
+      id: GO:0006869
+      label: lipid transport
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Familial chylomicronemia syndrome impairs the delivery of dietary
+      fatty acids from chylomicrons to peripheral tissues. Apolipoproteins
+      encoded in this set (APOA5, APOC2) facilitate the release of fatty
+      acids from triglyceride-rich lipoprotein particles by enabling LPL
+      activity, and GPIHBP1 anchors LPL to endothelial cells facing the
+      plasma lipid stream, enabling lipid delivery to underlying tissues.
+      Lipid transport (GO:0006869) captures this functional role and is
+      enriched in the set, though the term is broadly shared across
+      lipoprotein and lipid-handling pathways, reducing its specificity as
+      a discriminator for this disease context.
+  - term:
+      id: GO:0006629
+      label: lipid metabolic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Lipid metabolic process is the ancestral umbrella term for the
+      triglyceride-specific biology of this gene set. It is recovered
+      robustly by enrichment because all five causal genes (LPL, APOC2,
+      APOA5, GPIHBP1, LMF1) and most additional set members participate in
+      lipid metabolism. It is classified as supporting_process rather than
+      core_process because GO:0006641 (triglyceride metabolic process) is
+      the more specific and informative term for the disease biology, and
+      the broader parent adds minimal discriminating power for this set.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Ribosomal protein
+      genes present in WikiPathways pathway gene sets drive non-specific
+      enrichment of this term. Any enrichment recovery of translation from
+      this set reflects general cellular translational activity rather than
+      a familial-chylomicronemia-specific function and is not informative
+      about the disease biology.

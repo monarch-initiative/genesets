@@ -1,0 +1,196 @@
+gene_set_id: MSIGDB:KEGG_EPITHELIAL_CELL_SIGNALING_IN_HELICOBACTER_PYLORI_INFECTION
+gene_set_name: KEGG_EPITHELIAL_CELL_SIGNALING_IN_HELICOBACTER_PYLORI_INFECTION
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy Helicobacter pylori epithelial-cell signaling pathway gene set
+  (MSigDB C2 curated gene set). This is an infection-driven inflammatory disease
+  pathway gene set, not a cell-type signature. H. pylori colonises the gastric
+  mucosa and deploys virulence factors — CagA (injected via the type IV secretion
+  system, T4SS), VacA (vacuolating cytotoxin), and peptidoglycan fragments
+  (recognised by the intracellular receptor NOD1) — to activate the canonical
+  IKK-NF-kappaB cascade and multiple MAPK branches (ERK1/2, p38, JNK) in gastric
+  epithelial cells. The downstream transcriptional output drives robust
+  pro-inflammatory chemokine and cytokine production, most prominently CXCL8
+  (IL-8), which recruits neutrophils to the gastric mucosa and initiates the acute
+  inflammatory response underlying H. pylori-associated gastritis. Persistent
+  infection establishes a chronic inflammatory microenvironment that is a major
+  risk factor for peptic ulcer disease and intestinal-type gastric cancer. Member
+  genes encode kinases of the IKK complex and MAPK tiers, IkB proteins (NFKBIA),
+  NF-kappaB subunits, chemokines and cytokines (CXCL8, IL-1B), receptor tyrosine
+  kinases (EGFR, MET), and adaptors (SHP2/PTPN11) that mediate cytoskeletal
+  remodelling. As a legacy KEGG pathway it captures the established core
+  mechanism.
+contexts:
+  - term:
+      id: MONDO:0006781
+      label: Helicobacter pylori infectious disease
+    context_type: disease
+  - term:
+      id: UBERON:0000945
+      label: stomach
+    context_type: anatomical_structure
+  - term:
+      id: NCBITaxon:210
+      label: Helicobacter pylori
+    context_type: infection
+associations:
+  - term:
+      id: GO:0007249
+      label: canonical NF-kappaB signal transduction
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:15044093
+        reference_title: "Curcumin blocks NF-kappaB and the motogenic response in Helicobacter pylori-infected epithelial cells."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Infection of epithelial cells by the microbial pathogen Helicobacter pylori leads to activation of the transcription factor nuclear factor kappaB (NF-kappaB), the induction of pro-inflammatory cytokine/chemokine genes, and the motogenic response (cell scattering)."
+        explanation: >-
+          CagA injected via the T4SS and peptidoglycan sensed by NOD1 both converge
+          on the IKK complex to trigger canonical NF-kappaB signalling in gastric
+          epithelial cells. This paper directly demonstrates that H. pylori infection
+          of epithelial cells activates NF-kappaB, and that curcumin blocks this by
+          inhibiting IkappaBalpha degradation and IKK kinase activity. NF-kappaB
+          activation is the central transcriptional mechanism driving CXCL8/IL-8 and
+          other pro-inflammatory gene induction in the KEGG pathway.
+    curator_note: >-
+      Canonical NF-kappaB signal transduction is the defining intracellular
+      signalling mechanism of this KEGG pathway. H. pylori CagA and NOD1-mediated
+      peptidoglycan sensing both activate the trimeric IKK complex (IKBKA, IKBKB,
+      IKBKG/NEMO), leading to phosphorylation and proteasomal degradation of IkB
+      proteins (NFKBIA, NFKBIB), nuclear translocation of NF-kappaB dimers (RELA,
+      NFKB1), and transcriptional induction of CXCL8, IL-1B, and other
+      pro-inflammatory genes present in the gene set. Well-annotated set members
+      include NFKBIA, IKBKB, and RELA.
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The entire KEGG H. pylori signalling pathway is configured to produce an
+      acute mucosal inflammatory response. NF-kappaB and MAPK activation in
+      gastric epithelial cells drives expression of pro-inflammatory chemokines
+      (CXCL8, CXCL1), cytokines (IL-1B, TNF), and adhesion molecules, initiating
+      the neutrophil-dominated inflammatory infiltrate that defines H.
+      pylori-associated gastritis. Genes encoding inflammatory mediators (CXCL8,
+      IL-1B) in the set carry inflammatory response annotations. The term is
+      broadly expressed across many inflammatory stimuli and is therefore a core
+      but not uniquely discriminating descriptor for this pathway.
+  - term:
+      id: GO:0000165
+      label: MAPK cascade
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:15044093
+        reference_title: "Curcumin blocks NF-kappaB and the motogenic response in Helicobacter pylori-infected epithelial cells."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "The mitogen-activated protein kinases (MAPK), extracellular signal-regulated kinases 1/2 (ERK1/2) and p38, which are also activated by H. pylori infection, were not inhibited by curcumin."
+        explanation: >-
+          This paper explicitly confirms that H. pylori infection activates ERK1/2
+          and p38 MAPK in gastric epithelial cells in parallel with NF-kappaB. MAPK
+          cascades (ERK, p38, JNK tiers) are independently activated downstream of
+          CagA-mediated receptor tyrosine kinase (EGFR, MET/HGF receptor) signalling
+          and contribute to pro-inflammatory gene expression and cytoskeletal
+          remodelling (the hummingbird/cell-scattering phenotype) alongside the
+          canonical NF-kappaB branch.
+    curator_note: >-
+      H. pylori activates three MAPK tiers in gastric epithelial cells: ERK1/2
+      downstream of RAS/RAF (promoted by CagA-mediated EGFR and MET
+      transactivation), p38 (activated by NOD1 and TLR4 signalling), and JNK.
+      Each tier contributes to pro-inflammatory gene expression and cytoskeletal
+      changes. The KEGG pathway includes multiple MAPK-tier kinases (MAP2K1/2,
+      MAP3K7/TAK1) and their regulators. MAPK cascade is a real and important
+      mechanistic component of this pathway but is secondary in specificity to
+      NF-kappaB signalling — hence supporting rather than core.
+  - term:
+      id: GO:0070098
+      label: chemokine-mediated signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:28434172
+        reference_title: "Lactobacillus paracasei strain 06TCa19 suppresses inflammatory chemokine induced by Helicobacter pylori in human gastric epithelial cells."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Inflammatory chemokines such as interleukin (IL)-8 and regulated on activation normal T cell expressed and secreted (RANTES) are elevated in the gastric mucosa by H. pylori."
+        explanation: >-
+          CXCL8 (IL-8) is the signature output chemokine of H. pylori-infected
+          gastric epithelial cells and the dominant mechanism of neutrophil
+          recruitment to the gastric mucosa. This paper confirms that H. pylori
+          elevates both IL-8 and RANTES (CCL5) production in human gastric epithelial
+          cell lines via NF-kappaB and p38 MAPK, directly linking the upstream
+          signalling cascade in the KEGG pathway to its chemokine output. Chemokine-
+          mediated signalling is therefore a key functional output of this pathway,
+          though it reflects the downstream consequences of NF-kappaB activation
+          rather than being its defining mechanism.
+    curator_note: >-
+      CXCL8 (IL-8), the primary output chemokine of this pathway, is a canonical
+      NF-kappaB target gene whose induction drives neutrophil recruitment to the
+      gastric mucosa and initiates the inflammatory cascade underlying H.
+      pylori-associated gastritis. CXCL8 and its receptor CXCR1/CXCR2 are present
+      in the gene set. Chemokine-mediated signalling is a major downstream
+      functional output of NF-kappaB activation in this pathway; it is supporting
+      rather than uniquely defining because it is shared across many infectious and
+      inflammatory contexts.
+  - term:
+      id: GO:0009617
+      label: response to bacterium
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The entire KEGG pathway models the cellular response of gastric epithelial
+      cells to a bacterial pathogen, H. pylori. Response to bacterium is therefore
+      a direct and accurate descriptor of this pathway's biological context. Many
+      set members involved in innate sensing and downstream signalling (e.g.
+      NFKBIA, MAP3K7/TAK1, NOD1-downstream adaptors) carry response-to-bacterium
+      annotations in GOA-human. The term is broadly applicable across cell types
+      and bacterial species and is therefore supporting rather than uniquely
+      discriminating for this specific pathway.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment analyses of this KEGG pathway gene set reflects ribosomal protein
+      subunit genes present in the set and does not reflect a H. pylori-specific
+      or infection-specific biological function. This illustrates a non-informative
+      enrichment hit that should be filtered from biological interpretation.

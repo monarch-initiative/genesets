@@ -1,0 +1,158 @@
+gene_set_id: MSIGDB:SCHUHMACHER_MYC_TARGETS_UP
+gene_set_name: SCHUHMACHER_MYC_TARGETS_UP
+collection: C2:CGP
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+description: >-
+  MSigDB C2:CGP signature of genes up-regulated upon conditional MYC induction
+  in P493-6 Burkitt's lymphoma B cells (Schuhmacher 2001, PMID:11139609). The
+  P493-6 cell line carries a tetracycline-repressible MYC transgene, allowing
+  clean induction of MYC expression; 79 genes were identified by oligonucleotide
+  microarray as transcriptionally activated downstream of MYC. This is an
+  independent MYC genetic-perturbation UP signature, distinct from the DANG
+  MYC targets set (different cell model and experimental system), and defines the
+  canonical transcriptional program driven by MYC induction: ribosome
+  biogenesis, translation, nucleotide biosynthesis, and cell growth.
+contexts:
+  - term:
+      id: PR:P01106
+      label: Myc proto-oncogene protein (human)
+    context_type: genetic_perturbation
+    role_note: conditional overexpression
+associations:
+  - term:
+      id: GO:0042254
+      label: ribosome biogenesis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:11139609
+        reference_title: "The transcriptional program of a human B cell line in response to Myc."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "The identified genes belong to gene classes whose products are involved in amino acid/protein synthesis, lipid metabolism, protein turnover/folding, nucleotide/DNA synthesis, transport, nucleolus function/RNA binding, transcription and splicing, oxidative stress and signal transduction."
+        explanation: >-
+          The Schuhmacher 2001 source paper reports that MYC-induced genes in P493-6 cells
+          fall into classes including nucleolus function/RNA binding, which encompasses ribosome
+          biogenesis. Ribosome biogenesis is a well-established primary output of MYC
+          transcriptional activation and is directly supported by the composition of this gene set.
+    curator_note: >-
+      Ribosome biogenesis is a defining output of MYC activity. MYC drives transcription of
+      nearly all ribosomal protein genes and ribosome assembly factors, and stimulates RNA Pol I
+      activity at rDNA. In this set, which arises from conditional MYC induction, ribosome
+      biogenesis is a core MYC program — not housekeeping noise — and is the term that most
+      specifically describes the dominant biological content of the up-regulated signature.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Translation appears here as a core MYC output, not as housekeeping nonspecific noise
+      (contrast with its nonspecific classification in HALLMARK_INTERFERON_GAMMA_RESPONSE and
+      KEGG_PARKINSONS_DISEASE). MYC directly activates the ribosomal protein genes (RPL*, RPS*)
+      that populate this gene set; their induction is a purposeful transcriptional program
+      coordinating translational capacity with cell growth. When the perturbagen is MYC
+      overexpression, translation machinery induction is the mechanistic signal, not background
+      enrichment. The Schuhmacher abstract explicitly identifies amino acid/protein synthesis as
+      one of the major functional classes of MYC target genes identified.
+  - term:
+      id: GO:0005730
+      label: nucleolus
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The nucleolus is the site of rDNA transcription, pre-rRNA processing, and ribosome
+      subunit assembly — all central outputs of MYC activation. MYC directly activates RNA
+      Pol I transcription and associates with nucleolar factors. The Schuhmacher source paper
+      explicitly names nucleolus function/RNA binding as a functional class of MYC target
+      genes. Many member genes of this set encode nucleolus-localised proteins involved in
+      rRNA processing and ribosome biogenesis.
+  - term:
+      id: GO:0009165
+      label: nucleotide biosynthetic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      MYC induces nucleotide biosynthesis to support rapid cell growth and DNA replication.
+      The Schuhmacher source paper identifies nucleotide/DNA synthesis as one of the functional
+      classes of MYC target genes in P493-6 cells. Nucleotide biosynthetic process is a
+      supporting rather than core annotation because it is a downstream metabolic consequence
+      of MYC-driven growth, not the defining transcriptional signature identity.
+  - term:
+      id: GO:0022613
+      label: ribonucleoprotein complex biogenesis
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Ribonucleoprotein complex biogenesis is the parent of ribosome biogenesis in the GO
+      hierarchy and encompasses the broader process of assembling RNA-protein complexes.
+      Many member genes of this set encode components or assembly factors of ribosomal
+      subunits (RNP complexes), making this a high-confidence supporting annotation at a
+      slightly more general level than the core ribosome biogenesis term. Annotated as
+      supporting because it is less informative than GO:0042254 for this specific signature.
+  - term:
+      id: GO:0042127
+      label: regulation of cell population proliferation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      MYC is a master regulator of cell growth and proliferation; induction of MYC in the
+      P493-6 model drives robust cell cycle entry and proliferation. Some member genes
+      of this set are annotated to regulation of cell population proliferation, and the
+      overall signature is consistent with the pro-proliferative transcriptional program
+      downstream of MYC. Classified as supporting because this is a functional consequence
+      of MYC activation rather than the primary mechanistic identity of the signature.
+  - term:
+      id: GO:0006364
+      label: rRNA processing
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      rRNA processing is a core nucleolar function directly driven by MYC. The source paper
+      (Schuhmacher 2001) explicitly names nucleolus function/RNA binding as a key functional
+      class of the MYC transcriptional program. Genes encoding nucleolar RNA-binding proteins
+      and processing factors are present in this set, yet many are annotated to the generic
+      parent term (ribosome biogenesis or RNA processing) rather than specifically to rRNA
+      processing in GOA-human. This is an annotation_gap: the biology is unambiguously
+      supported, but current GO annotations for relevant set members are too broad to recover
+      this term by enrichment analysis from these genes alone. It is a GO/GOA curation target
+      for rRNA processing-specific annotations.

@@ -6,6 +6,8 @@ taxon:
   id: NCBITaxon:9606
   label: Homo sapiens
 direction: NA
+series: SERIES:MUSCLE_TYPE
+series_role: cardiac
 description: >-
   Single-cell marker signature of ventricular cardiomyocytes from human heart
   (Tucker et al.). Ventricular cardiomyocytes are striated, non-blood muscle
@@ -30,6 +32,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     evidence:
       - reference: PMID:29419405
         reference_title: "Muscle Contraction."
@@ -48,6 +51,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       The sarcomere is the repeating contractile unit of the myofibril and is
       the defining ultrastructural hallmark of striated muscle cells including
@@ -61,6 +65,7 @@ associations:
     confidence: medium
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Myofibrils are the highly organized bundles of sarcomeres that fill the
       cytoplasm of cardiomyocytes and constitute the contractile apparatus.
@@ -74,6 +79,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Parent term of cardiac muscle contraction; shared with skeletal muscle
       cells and smooth muscle cells. Expected to appear in enrichment results
@@ -87,6 +93,7 @@ associations:
     confidence: high
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Ventricular cardiomyocytes have the highest ATP demand of any cell type,
       consuming ATP continuously to power actomyosin cross-bridge cycling.
@@ -115,6 +122,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: curator_added
+    insight: confirmatory
     curator_note: >-
       Heart contraction is the organ-level process to which ventricular
       cardiomyocyte activity directly contributes. Marker-based enrichment may

@@ -1,0 +1,193 @@
+gene_set_id: MSIGDB:KEGG_NON_SMALL_CELL_LUNG_CANCER
+gene_set_name: KEGG_NON_SMALL_CELL_LUNG_CANCER
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy non-small cell lung cancer pathway gene set (MSigDB C2 curated gene set).
+  This is a cancer disease pathway gene set, not a cell-type signature. The member
+  genes represent the major mechanistic arms of NSCLC pathogenesis: EGFR/HER2
+  activating mutations or amplification driving constitutive receptor tyrosine kinase
+  signalling, KRAS/HRAS/NRAS oncogenic mutation directly activating RAS-RAF-MEK-ERK
+  (MAPK cascade) and PI3K-AKT survival signalling, homozygous deletion of CDKN2A
+  derepressing CDK4/6-CCND1 to override RB1 and drive G1/S transition, and TP53/MDM2
+  axis abrogating DNA-damage checkpoint responses. NSCLC encompasses adenocarcinoma,
+  squamous cell carcinoma, and large-cell carcinoma and is distinguished from small-cell
+  lung cancer by its dominant dependence on RTK/RAS oncogene addiction and by the
+  absence of near-universal RB1 biallelic loss.
+contexts:
+  - term:
+      id: MONDO:0005233
+      label: non-small cell lung carcinoma
+    context_type: disease
+  - term:
+      id: UBERON:0002048
+      label: lung
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0007173
+      label: epidermal growth factor receptor signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:31564718
+        reference_title: "Resistance mechanisms to osimertinib in EGFR-mutated non-small cell lung cancer."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "patients with advanced non-small cell lung cancer (NSCLC) with EGFR oncogene addiction"
+        explanation: >-
+          EGFR-activating mutations (exon 19 deletions, L858R point mutation) are the
+          defining oncogenic lesion in approximately 10-15% of Western NSCLC patients
+          and ~30-50% of East Asian NSCLC patients, establishing constitutive EGFR
+          signalling as the primary therapeutic target and the core oncogenic driver in
+          this disease subtype. The phrase "EGFR oncogene addiction" used in this
+          clinical review directly captures why GO:0007173 is the primary core_process
+          for the KEGG NSCLC gene set. EGFR itself, together with ERBB2, EGF, AREG,
+          TGFA, GRB2, and SOS1, are annotated to GO:0007173 in GOA-human, making this
+          term strongly recoverable by enrichment.
+    curator_note: >-
+      GO:0007173 is the most biologically specific core process for the KEGG NSCLC
+      gene set. KRAS-driven NSCLC also routes through EGFR-pathway signalling
+      components downstream of growth factor receptor activation. Multiple KEGG NSCLC
+      pathway members carry direct GOA-human annotations to GO:0007173, placing this
+      term among the highest-confidence enrichment hits expected from this gene set.
+
+  - term:
+      id: GO:0000165
+      label: MAPK cascade
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:31564718
+        reference_title: "Resistance mechanisms to osimertinib in EGFR-mutated non-small cell lung cancer."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "activation of the RAS-mitogen-activated protein kinase (MAPK) or RAS-phosphatidylinositol 3-kinase (PI3K) pathways"
+        explanation: >-
+          KRAS is the most frequently mutated oncogene in NSCLC (~25-30% of all NSCLC;
+          ~40% of lung adenocarcinoma), and EGFR-driven NSCLC activates RAS-MAPK
+          signalling as the primary proliferative arm downstream of receptor stimulation.
+          The KEGG NSCLC pathway encodes the complete RAS-RAF-MEK-ERK cascade (KRAS,
+          HRAS, NRAS, BRAF, RAF1, MAP2K1, MAP2K2, MAPK1, MAPK3), all of which carry
+          GOA-human annotations to GO:0000165. This review confirms MAPK pathway
+          activation as a defining downstream arm of oncogenic RAS in NSCLC, and
+          also its role as a resistance bypass in EGFR-targeted therapy.
+    curator_note: >-
+      KRAS-mutant NSCLC was historically the most treatment-refractory subtype
+      until the approval of KRAS G12C inhibitors; RAS-MAPK cascade activation is
+      therefore mechanistically central to NSCLC biology. The MAPK cascade is shared
+      across many cancer types and is not NSCLC-specific, but it is one of the two
+      primary oncogenic driver arms (alongside PI3K-AKT) in this disease pathway.
+
+  - term:
+      id: GO:0043491
+      label: phosphatidylinositol 3-kinase/protein kinase B signal transduction
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      PI3K-AKT signalling is the second major downstream survival arm activated by
+      both EGFR mutation and KRAS mutation in NSCLC. PIK3CA mutations or PTEN loss
+      (~5-10% of NSCLC each) additionally activate this pathway independent of
+      upstream oncogenes. The KEGG NSCLC pathway encodes PIK3CA, PIK3CB, PIK3R1,
+      PTEN, AKT1, AKT2, and AKT3, all of which carry GOA-human annotations to
+      GO:0043491. This arm is categorised as supporting_process because PI3K-AKT
+      signalling is broadly shared across cancer types and is not NSCLC-specific,
+      even though it is mechanistically important for survival and therapeutic
+      resistance in NSCLC.
+
+  - term:
+      id: GO:0042127
+      label: regulation of cell population proliferation
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Uncontrolled proliferation is a hallmark of NSCLC. EGFR-MAPK and PI3K-AKT
+      signalling both converge on promotion of tumour cell proliferation; downstream,
+      CDK4/CDK6-CCND1 complexes drive G1/S progression when CDKN2A (p16INK4A) is
+      lost. Multiple KEGG NSCLC pathway members including EGFR, KRAS, BRAF, AKT1,
+      CDK4, CDK6, CCND1, RB1, and CDKN2A carry GOA-human annotations to GO:0042127.
+      This term is shared broadly across cancer pathway gene sets and is categorised
+      as supporting_process rather than core_process.
+
+  - term:
+      id: GO:0006915
+      label: apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      TP53, MDM2, BAD, BCL2L1 (BCL-XL), CASP3, CASP9, APAF1, and CYCS in the
+      KEGG NSCLC pathway encode canonical apoptosis components, primarily of the
+      intrinsic (mitochondrial) pathway. Evasion of apoptosis is a key step in
+      NSCLC progression, particularly through TP53 mutation or loss (~50% of NSCLC)
+      and AKT-mediated phosphorylation of BAD. Apoptosis is shared broadly across
+      disease pathway gene sets and is not NSCLC-specific, placing this as
+      supporting_process rather than core_process.
+
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance as an
+      enrichment hit for this gene set reflects ribosomal protein subunit genes
+      present in the KEGG NSCLC pathway representation. It does not reflect an
+      NSCLC-specific function and is a non-informative enrichment hit.
+
+  - term:
+      id: GO:0000082
+      label: G1/S transition of mitotic cell cycle
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      CDKN2A (encoding p16INK4A and p14ARF) is homozygously deleted in approximately
+      40-60% of NSCLC, and CDK4 is amplified in a further ~10-15%. Loss of p16INK4A
+      derepresses CDK4/CDK6-CCND1 kinase activity, leading to constitutive RB1
+      hyperphosphorylation and unrestrained G1/S transition — a central oncogenic
+      event in a large fraction of NSCLC. However, CDKN2A's GOA-human annotations
+      are primarily to "negative regulation of cyclin-dependent protein kinase
+      activity" and "cell cycle arrest" rather than to GO:0000082 directly; enrichment
+      therefore recovers this term only from CDK4, CDK6, and CCND1 (which are
+      directly annotated to GO:0000082) but not from CDKN2A, the gene whose loss
+      is the primary disease-relevant deregulatory event. This partial annotation
+      coverage understates the biological importance of G1/S deregulation in NSCLC
+      and represents a GO annotation gap: CDKN2A should carry a GO:0000082
+      annotation in the context of CDK4/6-RB1 axis deregulation in lung cancer.

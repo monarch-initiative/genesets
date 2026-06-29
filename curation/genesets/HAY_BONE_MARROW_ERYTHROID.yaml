@@ -29,6 +29,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     evidence:
       - reference: PMID:17449336
         reference_title: The role of hemoglobin oxygen affinity in oxygen transport at high altitude.
@@ -46,6 +47,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Hemoglobin is the dominant cytoplasmic protein of mature erythrocytes,
       constituting ~96% of dry weight. The hemoglobin complex (alpha and beta
@@ -60,6 +62,7 @@ associations:
     confidence: medium
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Erythroid cells are the major site of heme biosynthesis in the body,
       producing heme required for the hemoglobin prosthetic groups. Genes
@@ -73,6 +76,7 @@ associations:
     confidence: medium
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       The gene set captures bone marrow erythroid precursors undergoing
       terminal differentiation. Erythrocyte differentiation encompasses the
@@ -86,6 +90,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Parent term of oxygen transport; also covers carbon dioxide transport
       (CO2 carried by erythrocytes as bicarbonate and carbamino-hemoglobin).
@@ -114,6 +119,7 @@ associations:
     confidence: medium
     specificity: cell_type_specific
     seed_source: curator_added
+    insight: confirmatory
     curator_note: >-
       Broader developmental term encompassing the full progression of an
       erythrocyte from formation to mature structure, including both the

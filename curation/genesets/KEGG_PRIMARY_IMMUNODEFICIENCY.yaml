@@ -1,0 +1,233 @@
+gene_set_id: MSIGDB:KEGG_PRIMARY_IMMUNODEFICIENCY
+gene_set_name: KEGG_PRIMARY_IMMUNODEFICIENCY
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy primary immunodeficiency pathway gene set (MSigDB C2 curated gene set).
+  This is a disease pathway gene set whose members are genes whose loss-of-function
+  mutations cause inherited primary immunodeficiency disorders. The member genes span
+  the major mechanistic arms of lymphocyte development and function: B cell
+  development (BTK, RAG1/RAG2, ADA, CD40, CD40LG, AICDA), T cell development and
+  signalling (IL2RG, JAK3, RAG1/RAG2, ZAP70, CD3D/CD3E/CD3G, CD8A/CD8B1), thymic
+  central tolerance (AIRE), and cytoskeletal regulation (WAS). Because these genes
+  encode processes essential for lymphocyte development and adaptive immunity, the
+  represented biology is the NORMAL function that is lost in disease: T cell
+  differentiation, B cell differentiation, V(D)J recombination, cytokine-receptor
+  signalling, and thymic selection. The gene set is dominated by combined
+  immunodeficiency (SCID) and B cell immunodeficiency (XLA, hyper-IgM) genes,
+  reflecting the major disease categories of the KEGG primary immunodeficiency
+  pathway. Unlike expression-based gene sets, the causal disease direction (loss of
+  function) is not captured by GO annotations, so associations describe the
+  underlying normal biology rather than a disease-elevated gene signature.
+contexts:
+  - term:
+      id: MONDO:0003778
+      label: inborn error of immunity
+    context_type: disease
+associations:
+  - term:
+      id: GO:0030217
+      label: T cell differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:15660528
+        reference_title: "Gene therapy for severe combined immunodeficiency."
+        supports: SUPPORT
+        snippet: "The common characteristic of these diseases is the occurrence of a block in T cell differentiation, always associated with a direct or indirect impairment of B cell immunity."
+        explanation: >-
+          Multiple KEGG PRIMARY_IMMUNODEFICIENCY genes directly execute T cell
+          differentiation: IL2RG (common gamma chain) and JAK3 are required for
+          cytokine-driven thymic T cell development, and their loss causes X-linked
+          and autosomal SCID respectively; RAG1/RAG2 catalyse V(D)J recombination
+          of the T cell receptor locus; ZAP70 and the CD3 complex subunits (CD3D,
+          CD3E, CD3G) mediate TCR signalling required for T cell progenitor
+          maturation; AIRE is required for thymic negative selection. This Annual
+          Review of Medicine paper by Cavazzana-Calvo et al. states directly that
+          a block in T cell differentiation is the unifying hallmark across SCID
+          phenotypes. As a disease-pathway gene set, the GO association captures
+          the normal biology whose loss leads to immunodeficiency.
+    curator_note: >-
+      This is a disease pathway gene set; members are genes whose LOSS causes
+      primary immunodeficiency. The GO biological process associations therefore
+      capture the NORMAL biology that fails when these genes are mutated.
+      T cell differentiation is the most broadly disrupted process across the
+      set: IL2RG/JAK3 block early thymic progenitor expansion, RAG1/RAG2 block
+      TCR V(D)J recombination, ZAP70 deficiency causes CD8-deficient SCID, and
+      CD3 complex deficiencies impair TCR surface expression. Enrichment tools
+      should recover this term via GOA-human annotations on RAG1, RAG2, JAK3,
+      ZAP70, and the CD3 subunit genes.
+  - term:
+      id: GO:0030183
+      label: B cell differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      B cell differentiation is the second major core process of the KEGG
+      PRIMARY_IMMUNODEFICIENCY gene set. BTK is the defining gene for
+      X-linked agammaglobulinaemia (XLA): loss of BTK arrests B cell development
+      at the pro-B to pre-B transition by impairing BCR signalling. ADA
+      (adenosine deaminase) deficiency depletes lymphoid progenitors, affecting
+      both B and T lineages. RAG1/RAG2 loss prevents V(D)J recombination of
+      immunoglobulin heavy-chain gene segments, blocking B cell development at
+      the pro-B stage. CD40/CD40LG interaction and AICDA (activation-induced
+      cytidine deaminase) are required for germinal-centre B cell differentiation
+      and class-switch recombination; their loss causes hyper-IgM syndrome with
+      absent IgG/IgA responses. As with T cell differentiation, the association
+      describes normal biology lost upon mutation, not a disease-elevated
+      expression profile.
+  - term:
+      id: GO:0042101
+      label: T cell receptor complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The CD3 complex subunit genes (CD3D, CD3E, CD3G) are direct members of
+      the KEGG primary immunodeficiency pathway. These CD3 polypeptides assemble
+      together with TCR alpha/beta heterodimers into the T cell receptor complex
+      on the surface of T cells. Isolated deficiency of any single CD3 subunit
+      causes T cell immunodeficiency by preventing TCR surface expression and
+      downstream signalling. The T cell receptor complex is therefore the
+      dominant cellular component directly represented by pathway gene members.
+      Lineage_shared because the TCR complex is present on alpha-beta and
+      gamma-delta T cell lineages.
+  - term:
+      id: GO:0030098
+      label: lymphocyte differentiation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Lymphocyte differentiation is the parent GO term encompassing both T cell
+      differentiation (GO:0030217) and B cell differentiation (GO:0030183), both
+      of which are core processes of this gene set. Classified as
+      supporting_process here because the more informative and specific child
+      terms are already represented as core processes. Its recovery by enrichment
+      tools is expected via the same gene annotations that support the child
+      terms; it provides contextual breadth without additional specificity beyond
+      what the specific core-process terms already capture.
+  - term:
+      id: GO:0016447
+      label: somatic recombination of immunoglobulin gene segments
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      RAG1 and RAG2 encode the V(D)J recombinase complex that catalyses
+      assembly of immunoglobulin heavy- and light-chain gene segments during
+      B cell development. RAG1/RAG2 are also required for T cell receptor V(D)J
+      recombination (GO:0033153 is the T-cell-specific child term). Both genes
+      are well-annotated to GO:0016447 in GOA-human. RAG1/RAG2 loss-of-function
+      causes T-B-NK- SCID (the most severe combined immunodeficiency phenotype
+      in the set), making somatic recombination mechanistically central to
+      this pathway. Classified as supporting_process because it represents one
+      mechanistic arm of the pathway (the RAG1/2 genes) rather than encompassing
+      the full set; lineage_shared because the same enzyme acts at both Ig and
+      TCR loci.
+  - term:
+      id: GO:0002250
+      label: adaptive immune response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The adaptive immune response is the high-level functional outcome of the
+      processes encoded by this gene set. Genes involved in T cell and B cell
+      differentiation, TCR/BCR signalling (ZAP70, BTK, CD3 complex), V(D)J
+      recombination (RAG1/RAG2), class-switch recombination (AICDA, CD40LG),
+      and cytokine signalling (IL2RG, JAK3) all converge on enabling calibrated
+      adaptive immune responses. Classified as supporting_process because it is
+      a broad umbrella term shared across the full adaptive immune lineage and is
+      not specific to any single disease mechanism represented in the pathway.
+  - term:
+      id: GO:0006955
+      label: immune response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Generic immune response term recovered by enrichment of any immune-system
+      gene set. The KEGG primary immunodeficiency pathway is heavily annotated
+      to immunity-related GO terms, so GO:0006955 is expected to be enriched
+      regardless of the specific immunodeficiency mechanism. It provides
+      contextual support for the immunological identity of this pathway but is
+      not specific to lymphocyte development, SCID, or primary immunodeficiency
+      and is therefore classified as supporting_process with broadly_expressed
+      specificity.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment results reflects ribosomal protein subunit genes present in
+      the KEGG primary immunodeficiency gene set as background members. It does
+      not reflect any disease-specific or lymphocyte-specific function of this
+      pathway and is a non-informative enrichment hit. Its recovery illustrates
+      how large background gene counts in disease pathway sets inflate enrichment
+      of generic metabolic processes.
+  - term:
+      id: GO:0045060
+      label: negative thymic T cell selection
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Negative thymic T cell selection — elimination of self-reactive T cell
+      clones in the thymus mediated by AIRE-driven ectopic expression of
+      tissue-specific self-antigens on medullary thymic epithelial cells — is a
+      biologically core process of the KEGG primary immunodeficiency gene set.
+      Loss-of-function mutations in AIRE cause Autoimmune Polyglandular Syndrome
+      type 1 (APS-1 / APECED), characterised by failed central tolerance and
+      multi-organ autoimmunity. This is an annotation_gap: AIRE is annotated to
+      thymic T cell selection processes in GOA-human, but it is the only gene in
+      the set carrying such an annotation, so enrichment tools fail to recover
+      this term from the gene list. The shallow enrichment reflects GOA
+      incompleteness for other potential annotatable pathway genes, not absence
+      of the biology. Added by curator to ensure this cell-type-specific arm is
+      captured in the evaluation denominator and to flag the annotation gap for
+      GO curation follow-up.

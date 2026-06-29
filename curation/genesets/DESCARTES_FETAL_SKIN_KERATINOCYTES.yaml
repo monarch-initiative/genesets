@@ -1,0 +1,160 @@
+gene_set_id: MSIGDB:DESCARTES_FETAL_SKIN_KERATINOCYTES
+gene_set_name: DESCARTES_FETAL_SKIN_KERATINOCYTES
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of keratinocytes from human fetal skin (Descartes
+  atlas). Keratinocytes are the predominant cell type of the epidermis; they
+  undergo a tightly orchestrated program of terminal differentiation as they
+  migrate from the basal layer to the stratum corneum, progressively accumulating
+  keratin intermediate filaments and ultimately assembling the cornified envelope
+  that forms the physical skin barrier. This fetal signature captures early-stage
+  keratinocyte identity and differentiation in developing skin.
+contexts:
+  - term:
+      id: CL:0000312
+      label: keratinocyte
+    context_type: cell_type
+  - term:
+      id: UBERON:0002097
+      label: skin of body
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0030216
+      label: keratinocyte differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:38643989
+        reference_title: "Skin Barrier in Atopic Dermatitis."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "the stratum corneum (SC) is critically dependent on terminal differentiation of epidermal keratinocytes, which transform into protein-rich corneocytes surrounded by extracellular lamellae of unique epidermal lipids, conferring permeability barrier function"
+        explanation: >-
+          Keratinocyte differentiation is the defining biological program of
+          this cell type — the progressive transition from proliferative basal
+          cells through spinous and granular layers to terminally differentiated
+          corneocytes. This review directly links terminal differentiation of
+          epidermal keratinocytes to stratum corneum formation and barrier
+          function, establishing keratinocyte differentiation as the central
+          process captured by this marker signature.
+  - term:
+      id: GO:0031424
+      label: keratinization
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:19043850
+        reference_title: "The skin: an indispensable barrier."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Filaggrin is cross-linked to the cornified envelope and aggregates keratin filaments into macrofibrils."
+        explanation: >-
+          Keratinization — the replacement of keratinocyte cytoplasm with
+          cross-linked keratin proteins — is a hallmark of terminal epidermal
+          differentiation. The cited review describes the molecular events of
+          keratinization, including filaggrin cross-linking to the cornified
+          envelope and aggregation of keratin filaments, which are encoded by
+          highly expressed genes in keratinocyte marker signatures.
+  - term:
+      id: GO:0001533
+      label: cornified envelope
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The cornified envelope is a specialised protein/lipid polymer structure
+      assembled on the inner face of the plasma membrane during terminal
+      keratinocyte differentiation. Its component genes (loricrin, involucrin,
+      filaggrin, transglutaminases) are defining markers of keratinocytes and
+      are expected to dominate cellular-component enrichment results from this
+      signature.
+  - term:
+      id: GO:0045095
+      label: keratin filament
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Keratin intermediate filaments are the principal cytoskeletal elements of
+      keratinocytes, composed of type I (acidic) and type II (basic) keratin
+      pairs whose expression shifts across differentiation layers (KRT5/KRT14
+      in basal cells; KRT1/KRT10 in suprabasal cells). Genes encoding multiple
+      keratin isoforms are among the strongest markers in keratinocyte
+      signatures and make keratin filament the expected top cellular-component
+      enrichment hit.
+  - term:
+      id: GO:0008544
+      label: epidermis development
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Epidermis development encompasses the full programme of epidermal
+      organogenesis, including stratification and differentiation of multiple
+      epidermal cell types. It is a genuine biological process represented in
+      keratinocyte marker genes but is shared across the epidermal lineage
+      (keratinocytes, melanocytes, Merkel cells) rather than keratinocyte-
+      specific; hence supporting_process and lineage_shared.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance in
+      enrichment of this keratinocyte signature reflects high ribosomal protein
+      gene expression in metabolically active differentiating cells, not a
+      keratinocyte-specific function. Illustrates a non-informative housekeeping
+      enrichment hit common to all cell-type signatures.
+  - term:
+      id: GO:0009913
+      label: epidermal cell differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Epidermal cell differentiation is the parent term of keratinocyte
+      differentiation (GO:0030216) and captures the full spectrum of epidermal
+      cell identity acquisition. It is biologically core to this signature but
+      constitutes an annotation_gap: many keratinocyte marker genes (e.g.
+      KRT1, KRT10, LOR) carry GO annotations to keratinization or specific
+      structural terms rather than to epidermal cell differentiation directly,
+      so enrichment tools may not recover this intermediate-level term despite
+      its biological relevance. Added by curator as a GO annotation curation
+      target.

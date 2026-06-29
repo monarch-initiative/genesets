@@ -1,0 +1,198 @@
+gene_set_id: MSIGDB:KEGG_VIRAL_MYOCARDITIS
+gene_set_name: KEGG_VIRAL_MYOCARDITIS
+collection: C2:CP:KEGG_LEGACY
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  KEGG legacy viral myocarditis pathway gene set (MSigDB C2 curated gene set).
+  This is an infection-driven inflammatory heart disease pathway gene set, not a
+  cell-type signature. The member genes are drawn from three mechanistic arms:
+  (1) MHC-mediated antigen presentation and adaptive immune activation, in which
+  virus-infected cardiomyocytes display viral peptides via upregulated MHC class I
+  molecules (HLA-A/B/C, B2M, TAP1/TAP2, TAPBP) and professional antigen-presenting
+  cells engage MHC class II (HLA-DR); (2) immune-mediated cardiomyocyte killing by
+  CD8 cytotoxic T cells and NK cells using the perforin/granzyme (PRF1, GZMA,
+  GZMB) and Fas/FasL (FAS, FASLG) cytotoxic programs, amplified by inflammatory
+  cytokines (TNF, IFNG, IL1B, IL6, IL10); and (3) direct cytoskeletal disruption
+  via enteroviral protease 2A cleavage of dystrophin (DMD), uncoupling the
+  sarcomere from the sarcolemma through the dystrophin-associated glycoprotein
+  complex (DMD, SGCA/B/G/D, DAG1, SNTA1) — a mechanism shared with the KEGG
+  dilated cardiomyopathy pathway. As a KEGG legacy pathway it captures established
+  mechanistic arms known at the time of curation.
+contexts:
+  - term:
+      id: MONDO:0023161
+      label: viral myocarditis
+    context_type: disease
+  - term:
+      id: UBERON:0000948
+      label: heart
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0019882
+      label: antigen processing and presentation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Antigen processing and presentation is mechanistically central to viral
+      myocarditis: virus-infected cardiomyocytes upregulate MHC class I and present
+      viral peptides to CD8 T cells, driving immune-mediated cardiomyocyte
+      destruction. The KEGG viral myocarditis gene set includes multiple genes
+      directly annotated to GO:0019882 in GOA-human: HLA-A, HLA-B, HLA-C (MHC
+      class I heavy chains), HLA-DRA, HLA-DRB1 (MHC class II), B2M (beta-2
+      microglobulin required for MHC-I surface expression), TAP1, TAP2
+      (transporter associated with antigen processing), and TAPBP (tapasin).
+      Enrichment from this gene set is expected to recover GO:0019882 at high
+      significance. This immunological arm distinguishes viral myocarditis from
+      the genetic cardiomyopathies encoded by overlapping KEGG pathway gene sets.
+  - term:
+      id: GO:0001913
+      label: T cell mediated cytotoxicity
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      T cell mediated cytotoxicity is the primary effector mechanism by which
+      the adaptive immune response destroys virus-infected cardiomyocytes in
+      viral myocarditis. CD8 cytotoxic T lymphocytes (CTLs) recognise viral
+      peptides on cardiomyocyte MHC class I and kill them via perforin pore
+      formation and granzyme-mediated apoptosis, and via FasL/Fas engagement.
+      The KEGG viral myocarditis gene set explicitly includes GZMA, GZMB
+      (granzymes A and B), PRF1 (perforin-1), and FASLG (FasL) — the core
+      effector molecules annotated to GO:0001913 in GOA-human. NK cells
+      contribute through the same perforin/granzyme mechanism. This immune-
+      mediated cardiomyocyte killing is the defining pathological event that
+      distinguishes viral myocarditis from non-immune cardiomyopathies and
+      accounts for the persistent cardiac dysfunction that follows viral clearance.
+  - term:
+      id: GO:0042612
+      label: MHC class I protein complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The MHC class I protein complex is the cellular structure through which
+      virus-infected cardiomyocytes display viral peptides to CD8 T cells,
+      triggering their elimination. The MHC class I complex consists of an HLA
+      class I heavy chain (HLA-A, HLA-B, or HLA-C) non-covalently associated
+      with beta-2 microglobulin (B2M) and a bound peptide antigen. The KEGG
+      viral myocarditis gene set includes HLA-A, HLA-B, HLA-C, and B2M, all
+      annotated to GO:0042612 in GOA-human. Cardiomyocytes constitutively
+      express MHC class I at low levels, and this expression is dramatically
+      upregulated during viral infection, making MHC class I the molecular
+      interface between viral infection and adaptive immune injury in this disease.
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:33046850
+        reference_title: "Myocarditis and inflammatory cardiomyopathy: current evidence and future directions."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Inflammatory cardiomyopathy, characterized by inflammatory cell infiltration into the myocardium and a high risk of deteriorating cardiac function, has a heterogeneous aetiology."
+        explanation: >-
+          Viral myocarditis is the prototypical form of inflammatory
+          cardiomyopathy, pathologically defined by immune cell infiltration —
+          lymphocytes, macrophages, and neutrophils — into the myocardium.
+          This Nature Reviews Cardiology review establishes inflammatory cell
+          infiltration as the hallmark of the disease class, directly linking
+          pathology to the inflammatory response GO process. Cytokines
+          including TNF, IL-1beta, IL-6, and IFN-gamma, encoded by members of
+          the KEGG viral myocarditis gene set, drive and perpetuate this local
+          inflammatory milieu.
+    curator_note: >-
+      Inflammatory response is a biologically real but non-specific supporting
+      process in viral myocarditis. The KEGG gene set includes genes encoding
+      inflammatory cytokines (TNF, IL1B, IL6, IL10, IFNG, TNFSF10) released by
+      immune-infiltrating cells and by cardiomyocytes themselves, amplifying local
+      inflammation and contributing to bystander myocardial injury beyond direct
+      cytotoxicity. While inflammatory response is broadly shared across disease
+      contexts, its myocardial activation here is disease-specific in extent and
+      consequence.
+  - term:
+      id: GO:0016010
+      label: dystrophin-associated glycoprotein complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      The dystrophin-associated glycoprotein complex (DGC) is a direct target of
+      enteroviral cytopathic injury in viral myocarditis. Enteroviral protease
+      2A (encoded by coxsackievirus B) cleaves dystrophin (DMD) at the hinge-3
+      region, disrupting the mechanical link between the intracellular actin
+      cytoskeleton and the extracellular matrix in cardiomyocytes. This causes
+      sarcolemmal fragility and cardiomyocyte dysfunction that can progress to
+      dilated cardiomyopathy — the same DGC-disruption mechanism as in the KEGG
+      DCM pathway. The KEGG viral myocarditis gene set explicitly includes DMD
+      (dystrophin), SGCA, SGCB, SGCG, SGCD (sarcoglycans), DAG1 (dystroglycan),
+      and SNTA1 (syntrophin) — canonical DGC members annotated to GO:0016010 in
+      GOA-human. The DGC thus mechanistically links the cytopathic (viral
+      protease) and structural (cytoskeletal) arms of viral myocarditis pathogenesis.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance as an
+      enrichment hit in this gene set likely reflects ribosomal protein genes
+      or broadly expressed genes present as background members of the KEGG
+      pathway, or the high protein-synthesis demands of activated immune cells.
+      It does not reflect a viral myocarditis-specific function and is recorded
+      here to flag a non-informative enrichment result.
+  - term:
+      id: GO:0051607
+      label: defense response to virus
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Defense response to virus is biologically core to viral myocarditis — the
+      entire pathological cascade is initiated by viral infection and the host
+      immune response to it. However, this association is an annotation_gap:
+      the dominant gene members of the KEGG viral myocarditis set are annotated
+      primarily to immune effector functions (antigen presentation, cytotoxicity,
+      cytokine signalling) and to structural roles (dystrophin complex) rather
+      than to the broader GO term GO:0051607. While genes such as IFNG and
+      select HLA and TAP family members carry GOA-human annotations to defense
+      response to virus, the majority of the set's immunological effectors
+      (granzymes, perforin, sarcoglycans, cytokines) are not specifically
+      annotated to this term. The gap reflects GO's annotation depth, not the
+      biology: the viral defense context of this pathway is genuine and complete
+      annotation of these genes to GO:0051607 would be a valid GO curation target.
