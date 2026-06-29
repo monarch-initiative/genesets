@@ -39,6 +39,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:33995657
         reference_title: >-
@@ -68,6 +69,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Constitutive RAS–BRAF–MEK–ERK signaling drives uncontrolled follicular-
       cell proliferation; MAPK activation downstream of RET/PTC fusions also
@@ -85,6 +87,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       PAX8 and PPARG are RNA Pol II transcription factors whose fusion (PAX8-
       PPARG) is a driver event in follicular thyroid carcinoma. NKX2-1/TTF1
@@ -103,6 +106,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Activating mutations in CTNNB1 (beta-catenin) stabilise beta-catenin and
       constitutively activate Wnt target gene transcription; these mutations are
@@ -119,6 +123,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Loss of thyroid follicular-cell differentiation—manifested as reduced NIS
       expression, loss of thyroglobulin secretion, and TSH-receptor
@@ -152,6 +157,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       PAX8 and NKX2-1/TTF1, both present in the KEGG thyroid cancer pathway,
       are master regulators of thyroid gland development and are annotated to

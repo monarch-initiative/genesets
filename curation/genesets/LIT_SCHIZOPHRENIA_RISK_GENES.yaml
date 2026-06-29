@@ -1,0 +1,186 @@
+gene_set_id: LIT:SCHIZOPHRENIA_RISK_GENES
+gene_set_name: SCHIZOPHRENIA_RISK_GENES
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Literature-defined panel of schizophrenia risk genes assembled from human
+  genetics: common-variant GWAS loci (Trubetskoy et al., Nature 2022,
+  PMID:35396580 — 287 genome-wide-significant loci, 120 prioritised genes) and
+  rare disruptive-coding-variant studies, integrated with the landmark
+  complement-component-4 finding (Sekar et al., Nature 2016, PMID:26814963).
+  Unlike the LIT:DISEASE_ACTIVITY signatures, these are DRIVERS (risk alleles),
+  not the differentially-expressed readout of an active program, so the
+  convergent biology they enact is often an annotation_gap rather than directly
+  annotation_supported. The convergent interpretation is twofold. (1) A largely
+  EXPECTED synaptic/glutamatergic convergence: GWAS signal concentrates in
+  excitatory and inhibitory neurons and in synaptic genes — the glutamate
+  receptor subunits GRIN2A (the flagship common+rare convergence), GRIN1 and
+  GRIA1, the calcium channel CACNA1C, the postsynaptic scaffolds DLG2 and SHANK,
+  plus transcriptional/chromatin risk genes such as TCF4, SP4, ZNF804A and the
+  rare-variant gene SETD1A. (2) The NON-OBVIOUS mechanistic centrepiece:
+  complement-mediated synaptic pruning. Sekar showed that schizophrenia's
+  strongest (MHC) association is driven by structurally diverse C4 alleles whose
+  schizophrenia risk tracks C4A expression, that C4 localises to synapses, and
+  that C4 mediates synapse elimination in mice — implicating EXCESSIVE COMPLEMENT
+  ACTIVITY (an immune process one would not predict from a psychiatric phenotype)
+  in over-pruning of synapses during adolescent development. The complement genes
+  C4A and C4B carry this signal in the set.
+contexts:
+  - term:
+      id: MONDO:0005090
+      label: schizophrenia
+    context_type: disease
+    role_note: >-
+      Schizophrenia risk genes from GWAS (common-variant) plus rare-variant
+      (exome/de novo) studies; drivers of disease risk, not an activity readout.
+associations:
+  - term:
+      id: GO:0006956
+      label: complement activation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:26814963
+        reference_title: "Schizophrenia risk from complex variation of complement component 4."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "These results implicate excessive complement activity in the development of schizophrenia and may help explain the reduced numbers of synapses in the brains of individuals with schizophrenia."
+        explanation: >-
+          The landmark non-obvious mechanism for this set. Schizophrenia's
+          strongest population-level genetic association (the MHC locus) is
+          resolved by Sekar et al. to structurally diverse alleles of the
+          complement component 4 (C4) genes, with risk tracking C4A expression in
+          brain. That an innate-immune effector pathway — complement activation —
+          is causally implicated in a psychiatric disorder is exactly the kind of
+          insight one would NOT predict from the phenotype, hence mechanistic
+          rather than confirmatory. C4A and C4B are in the set and are directly
+          annotated to complement activation (classical pathway), so the term is
+          annotation_supported even though its downstream synaptic consequence is
+          not (see complement-mediated synapse pruning).
+    curator_note: >-
+      Marked broadly_expressed because complement activation is a general innate
+      immune process, not neural-specific; its specificity here is interpretive
+      (it is REPURPOSED in the brain), not expression-based. Kept core_process,
+      not supporting, because excessive C4-driven complement activity is the
+      proposed causal mechanism, not an incidental immune correlate.
+  - term:
+      id: GO:0150062
+      label: complement-mediated synapse pruning
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: mechanistic
+    evidence:
+      - reference: PMID:26814963
+        reference_title: "Schizophrenia risk from complex variation of complement component 4."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "In mice, C4 mediated synapse elimination during postnatal development."
+        explanation: >-
+          This unites the two halves of the Sekar finding — complement AND
+          synaptic biology — into the specific convergent mechanism: C4-tagged
+          synapses are eliminated via the classical complement cascade
+          (C1q/C3-microglial engulfment), and excess C4A expression is proposed
+          to drive excessive synaptic pruning during adolescence, consistent with
+          the reduced cortical synapse density seen in schizophrenia. The risk
+          gene that carries this signal (C4) IS in the set, but its GO annotation
+          captures complement activation rather than the downstream
+          synapse-pruning consequence it enacts; recorded as an annotation_gap
+          (a GO annotation curation target) per the driver-panel convention, not
+          a membership gap and not a weakening of the biological category.
+    curator_note: >-
+      The single most mechanistic term in the set. annotation_gap because the
+      effector genes most heavily annotated to complement-mediated synapse
+      pruning (C1QA/C1QB/C3) are downstream effectors, whereas the schizophrenia
+      RISK gene driving the process here is C4A/C4B, whose annotation does not
+      yet reach this specific term.
+  - term:
+      id: GO:0007268
+      label: chemical synaptic transmission
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:35396580
+        reference_title: "Mapping genomic loci implicates genes and synaptic biology in schizophrenia."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "We also implicate fundamental processes related to neuronal function, including synaptic organization, differentiation and transmission."
+        explanation: >-
+          The expected convergence: GWAS signal concentrates in excitatory and
+          inhibitory neurons and in synaptic genes, and the prioritised risk
+          genes (GRIN2A, GRIN1, GRIA1, CACNA1C, DLG2, SHANK) are bona fide
+          synaptic-transmission genes that carry this GO annotation, so it is
+          annotation_supported. Scored confirmatory rather than mechanistic
+          because synaptic dysfunction is the long-standing, almost definitional
+          hypothesis for schizophrenia — recovering it recapitulates prior
+          expectation rather than revealing a surprising mechanism.
+    curator_note: >-
+      Core process and high confidence (the dominant convergent axis of the
+      common-variant signal), but explicitly confirmatory: this is the synaptic
+      convergence everyone predicts for schizophrenia.
+  - term:
+      id: GO:0007215
+      label: glutamate receptor signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:35396580
+        reference_title: "Mapping genomic loci implicates genes and synaptic biology in schizophrenia."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "including the glutamate receptor subunit GRIN2A and transcription factor SP4"
+        explanation: >-
+          The glutamatergic facet of the synaptic convergence. GRIN2A is the
+          flagship gene where common and rare disruptive variants converge in
+          schizophrenia (and in neurodevelopmental disorders); GRIN1 and GRIA1
+          add NMDA/AMPA-receptor signal. These genes carry glutamate-receptor
+          signalling annotations, so the term is annotation_supported. Marked
+          confirmatory because the glutamate/NMDA-receptor hypofunction
+          hypothesis is a decades-old, expected model for schizophrenia, not a
+          novel mechanism surfaced by this set.
+    curator_note: >-
+      Supporting rather than core: a specific molecular sub-facet of the broader
+      chemical-synaptic-transmission convergence captured above, anchored by the
+      GRIN2A common+rare convergence.
+  - term:
+      id: GO:0048167
+      label: regulation of synaptic plasticity
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Synaptic-plasticity / postsynaptic-density risk genes (GRIN2A, DLG2,
+      CACNA1C, SHANK-family scaffolds) regulate activity-dependent synaptic
+      strength and carry plasticity/LTP-related annotations, so the term is
+      annotation_supported. Supporting and confirmatory: plasticity deficits are
+      an expected downstream consequence of the synaptic/glutamatergic
+      convergence, not an independent or surprising mechanism. No verbatim
+      evidence snippet attached (the defining papers describe synaptic
+      organisation/transmission and plasticity-relevant genes but do not state
+      "regulation of synaptic plasticity" as such); kept as a curator-asserted
+      supporting term rather than fabricating a quote.

@@ -31,6 +31,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:32317643
         reference_title: "Collagen-producing lung cell atlas identifies multiple subsets with distinct localization and relevance to fibrosis."
@@ -59,6 +60,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The extracellular matrix is the primary cellular compartment to which
       fibroblast marker genes contribute. Many signature genes encode structural
@@ -75,6 +77,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:21719092
         reference_title: "Idiopathic pulmonary fibrosis."
@@ -98,6 +101,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Fibroblasts are central effectors of the wound healing response, migrating
       to sites of injury, proliferating, and depositing provisional extracellular
@@ -130,6 +134,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Collagen biosynthesis is a defining biochemical activity of fibroblasts,
       encompassing transcription of collagen genes, intracellular hydroxylation

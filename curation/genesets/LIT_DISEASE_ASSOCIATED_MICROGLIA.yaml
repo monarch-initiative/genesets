@@ -1,0 +1,164 @@
+gene_set_id: LIT:DISEASE_ASSOCIATED_MICROGLIA
+gene_set_name: DISEASE_ASSOCIATED_MICROGLIA (DAM)
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:MICROGLIA_ACTIVATION
+series_role: activated
+description: >-
+  Literature-defined disease-activity signature of disease-associated microglia
+  (DAM), the conserved microglial cell state first described by Keren-Shaul et al.
+  (Cell 2017, PMID:28602351) in Alzheimer's-disease-transgenic mouse brain by
+  single-cell RNA-seq. Unlike the MSigDB causal/driver disease pathway sets, the
+  members here are the READOUT of an ACTIVE program, not driver mutations: they
+  are the genes UPregulated in DAM relative to homeostatic microglia. The
+  signature is dominated by a phagocytic-lysosomal and lipid-handling program
+  (e.g. TREM2, TYROBP, APOE, CST7, the cathepsins CTSB/CTSD/CTSL, LPL, ITGAX/CD11c,
+  CD9, CLEC7A) with concomitant loss of the homeostatic checkpoint genes
+  (P2RY12, TMEM119, CX3CR1, DOWN, not represented in this UP set). Because the
+  genes literally carry the GO annotations for the processes the state executes,
+  enrichment recovers those processes (annotation_supported) rather than leaving
+  them as gaps. The signature was defined in mouse; we curate the human-orthologous
+  program and keep the taxon human per corpus convention. DAM was discovered in
+  Alzheimer's disease but generalizes across neurodegeneration.
+contexts:
+  - term:
+      id: CL:0000129
+      label: microglial cell
+    context_type: cell_type
+  - term:
+      id: MONDO:0004975
+      label: Alzheimer disease
+    context_type: disease
+    role_note: >-
+      Discovery context (Tg-AD mouse model). The DAM program is not AD-exclusive:
+      the same state ("microglia associated with neurodegenerative diseases")
+      arises across multiple neurodegenerative conditions (ALS, aging, demyelination).
+associations:
+  - term:
+      id: GO:0001774
+      label: microglial cell activation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:28602351
+        reference_title: "A Unique Microglia Type Associated with Restricting Development of Alzheimer's Disease."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "Activation is initiated in a Trem2-independent manner that involves downregulation of microglia checkpoints, followed by activation of a Trem2-dependent program."
+        explanation: >-
+          DAM is, by definition, an ACTIVATED microglial state: the signature is
+          the set of genes induced as homeostatic microglia switch into the DAM
+          program. The defining paper shows the program is engaged in a two-step
+          activation, the second step of which is Trem2-dependent. Microglial
+          cell activation is therefore the central process the signature reads
+          out, and the activation/marker genes (e.g. ITGAX, CLEC7A, TYROBP) carry
+          this GO annotation, so enrichment recovers it (annotation_supported).
+    curator_note: >-
+      This is the defining ACTIVE process of the set, not a driver lesion. TREM2
+      and APOE are bona fide AD risk genes that ride along in the signature, but
+      TREM2-TYROBP and APOE signaling are mechanistically central to the DAM
+      switch itself (the Trem2-dependent second step), so the activation they
+      drive is kept core rather than demoted to marker_driven_plausible.
+  - term:
+      id: GO:0006909
+      label: phagocytosis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:28602351
+        reference_title: "A Unique Microglia Type Associated with Restricting Development of Alzheimer's Disease."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "Immunohistochemical staining of mice and human brain slices shows DAM with intracellular/phagocytic"
+        explanation: >-
+          DAM are the phagocytic, plaque-clearing microglia: immunohistochemistry
+          in both mouse and human brain shows DAM containing intracellular,
+          phagocytosed amyloid-beta particles. Phagocytic uptake and clearance of
+          debris/plaque is a core activity the signature executes, supported by
+          the phagocytic-receptor and engulfment machinery in the UP gene set
+          (e.g. TREM2, TYROBP, ITGAX, CLEC7A), so enrichment recovers it.
+    curator_note: >-
+      lineage_shared rather than cell_type_specific because phagocytosis is a
+      general myeloid/phagocyte capacity, but it is a defining ACTIVE function of
+      the DAM state here.
+  - term:
+      id: GO:0005764
+      label: lysosome
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The DAM UP signature is strongly enriched for the endolysosomal/degradative
+      compartment: cathepsins CTSB, CTSD and CTSL, plus CD68 and other lysosomal
+      genes, are characteristic DAM markers that handle phagocytosed material.
+      These genes carry the lysosome cellular-component annotation, so enrichment
+      recovers it (annotation_supported). This is the dominant cellular
+      compartment of the active DAM program, not an incidental localisation.
+  - term:
+      id: GO:0006629
+      label: lipid metabolic process
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      Lipid handling is one of the defining axes of the DAM program: LPL
+      (lipoprotein lipase), APOE, and lipid-processing genes are induced as DAM
+      take up and metabolise lipid-rich myelin debris and plaque, with
+      accumulation of lipid droplets. These members carry lipid-metabolism
+      annotations, so enrichment recovers the term. Kept core (medium confidence)
+      because the lipid program is mechanistically central to DAM biology, though
+      lipid metabolism itself is not microglia-specific (lineage_shared).
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      DAM arise in an inflamed, neurodegenerative microenvironment and the
+      signature contains immune/inflammatory effector genes, so inflammatory
+      response is recovered by enrichment (annotation_supported). It is scored as
+      supporting rather than core: the DAM state is a regulated, partly
+      protective/restrictive response (the paper frames DAM as restricting
+      neurodegeneration) rather than a generic pro-inflammatory activation, and
+      inflammatory response is broadly expressed across many immune contexts and
+      not specific to this cell state.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation appears as a non-specific enrichment hit driven by ribosomal
+      protein genes co-induced in the transcriptionally active DAM state. It is a
+      ubiquitous housekeeping process and carries no microglia- or
+      disease-specific information for this signature.

@@ -1,0 +1,139 @@
+gene_set_id: MSIGDB:TRAVAGLINI_LUNG_AIRWAY_SMOOTH_MUSCLE_CELL
+gene_set_name: TRAVAGLINI_LUNG_AIRWAY_SMOOTH_MUSCLE_CELL
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+series: SERIES:MUSCLE_TYPE
+series_role: smooth
+description: >-
+  Single-cell marker signature of airway smooth muscle cells from human lung
+  (Travaglini et al., MSigDB C8). Airway smooth muscle is the contractile
+  mesenchymal layer encircling the conducting airways; its calcium- and
+  myosin-light-chain-kinase-driven contraction sets bronchial tone and airway
+  caliber. The signature is dominated by the canonical smooth-muscle contractile
+  program (ACTA2, MYH11, CNN1, TAGLN, MYLK, DES, LMOD1, MYOCD, PLN, ACTG2).
+contexts:
+  - term:
+      id: CL:0000192
+      label: smooth muscle cell
+    context_type: cell_type
+  - term:
+      id: UBERON:0002048
+      label: lung
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0006939
+      label: smooth muscle contraction
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Smooth muscle contraction is the defining process of airway smooth muscle
+      cells: actomyosin force generation, triggered by Ca2+/calmodulin-dependent
+      phosphorylation of myosin regulatory light chain, drives bronchoconstriction
+      and sets airway caliber. The full contractile program is present and
+      directly annotated to this term in goa_human, including ACTA2, MYH11, MYLK,
+      CNN1, MYL9, TAGLN, ACTG2, LMOD1 and PLN, making it the dominant enrichment
+      recovery signal for this cell-type signature.
+  - term:
+      id: GO:0043292
+      label: contractile muscle fiber
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The actomyosin contractile fiber is the characteristic cellular structure
+      of smooth muscle cells. Unlike striated muscle, smooth muscle lacks
+      sarcomeres and myofibrils (so the striated-muscle-specific term myofilament,
+      GO:0036379, is inappropriate here); GO:0043292 is the correct component term
+      since its definition explicitly covers fibers of actin, myosin and
+      associated proteins found in smooth as well as striated muscle. Structural
+      members localising to the contractile apparatus are well represented and
+      annotation-supported, including MYH11, ACTA2, ACTG2, MYL9, TPM1, TPM2,
+      ACTN1, LMOD1, CNN1, TAGLN and DES.
+  - term:
+      id: GO:0006940
+      label: regulation of smooth muscle contraction
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Beyond the contractile motor itself, the signature carries a dense module
+      of contraction-regulating genes that tune force via the myosin
+      phosphorylation/Ca2+-sensitization axis: the activating kinase MYLK, the
+      myosin-phosphatase targeting/inhibitory subunits PPP1R12A, PPP1R12B and
+      PPP1R14A (CPI-17), the RhoA effector ROCK1, and the NO/cGMP relaxation
+      mediator IRAG1, together with PLN and calmodulin (CALM2). Categorised as
+      supporting_process because it modulates rather than constitutes the core
+      contractile act; annotation_supported via MYLK, PPP1R12A, PPP1R14A, IRAG1
+      and ROCK1.
+  - term:
+      id: GO:0015629
+      label: actin cytoskeleton
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The smooth-muscle contractile apparatus is built on an elaborated actin
+      cytoskeleton: thin-filament actins anchored at dense bodies and dense
+      plaques via actin-crosslinking and regulatory proteins. Although the term
+      itself is broadly expressed across cell types (hence lineage_shared rather
+      than cell-type-specific), it is heavily and specifically loaded here, with
+      annotation-supported members including ACTA2, ACTG2, ACTN1, TAGLN, CNN1,
+      LMOD1, FLNA, TPM1, TPM2, PFN1, DSTN, WDR1, SYNPO2 and LPP.
+  - term:
+      id: GO:0055001
+      label: muscle cell development
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The set encodes the regulators that specify and mature the smooth-muscle
+      phenotype, headed by the master coactivator MYOCD and the transcription
+      factors MEF2C and HEY2, alongside structural differentiation markers (DES,
+      ACTA2, MYH11) and the developmentally regulated kinase SPEG. Categorised as
+      supporting_process because the signature represents mature, differentiated
+      airway smooth muscle rather than an actively developing population; the
+      developmental machinery is present and annotation-supported (e.g. MYOCD,
+      MEF2C, DES) but is enabling context, not the defining function. Marked
+      curator_added as it reflects a curator reading of the regulatory members
+      rather than a top contraction-driven enrichment hit.
+  - term:
+      id: GO:0006412
+      label: translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Translation is a ubiquitous housekeeping process. Its appearance reflects
+      the large block of highly expressed ribosomal protein genes captured by the
+      signature (RPL5, RPL10A, RPL14, RPS6, RPS14, RPS27A and many more), not a
+      smooth-muscle-specific function. This is a non-informative housekeeping
+      enrichment result.

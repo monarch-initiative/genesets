@@ -1,0 +1,168 @@
+gene_set_id: MSIGDB:DESCARTES_FETAL_CEREBRUM_MICROGLIA
+gene_set_name: DESCARTES_FETAL_CEREBRUM_MICROGLIA
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of microglia from human fetal cerebrum
+  (Descartes fetal cell atlas, Cao et al. 2020 Science, PMID:33184181;
+  MSigDB C8). Microglia are the brain-resident macrophages and the principal
+  innate-immune sentinels of the CNS parenchyma; they survey the neuropil with
+  motile processes, clear apoptotic cells and debris by phagocytosis, prune
+  synapses via the classical complement cascade, and mount inflammatory,
+  chemokine and inflammasome responses to injury or infection. The signature is
+  a crisp, well-annotated myeloid/microglial profile, carrying canonical markers
+  such as AIF1 (Iba1), C1QA, C1QC, C2, C5AR1/C5AR2, CSF1R, P2RY12, CX3CR1,
+  TYROBP, TREM2, ITGAM, CD68, CD163, CD33, CD74 and the CASP1/CASP5/NLRC4/NAIP
+  inflammasome module.
+contexts:
+  - term:
+      id: CL:0000129
+      label: microglial cell
+    context_type: cell_type
+  - term:
+      id: UBERON:0000955
+      label: brain
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0001774
+      label: microglial cell activation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Microglial cell activation is the cell-identity-defining process for this
+      signature: the morphological and functional switch of microglia in
+      response to cytokine, chemokine or damage signals. It is the curator
+      anchor term for the set and is annotation_supported because canonical
+      microglial sensome/identity genes present in the signature are annotated
+      at or below it in goa_human, including AIF1 (Iba1), P2RY12, CX3CR1, TREM2,
+      TYROBP, C1QA and CSF1R. Confirmatory because microglial activation is the
+      known, defining biology entailed by a microglia marker set rather than a
+      surprising enrichment insight.
+  - term:
+      id: GO:0006958
+      label: complement activation, classical pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Microglia are the dominant source of classical-pathway complement in the
+      CNS, and complement tagging of synapses (C1q/C3) is the molecular basis of
+      microglial synaptic pruning during development - directly relevant to a
+      fetal cerebrum signature. annotation_supported by classical-pathway
+      carriers in the set: C1QA and C1QC (the C1q recognition subunits), C2 (the
+      classical/lectin-pathway C2 component), and the C5a anaphylatoxin
+      receptors C5AR1 and C5AR2. Marked cell_type_specific because, within
+      brain, C1q/complement expression is a near-exclusive microglial signature.
+      Confirmatory: complement activation is a known core microglial function,
+      not a non-obvious convergence, so it is not tagged mechanistic.
+  - term:
+      id: GO:0006909
+      label: phagocytosis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Phagocytic clearance of apoptotic cells, debris and pathogens is a
+      defining microglial activity (and the basis of synaptic engulfment).
+      annotation_supported by an abundant set of phagocytic-machinery and
+      receptor genes in the signature: CD68, CD163, MERTK, TREM2, TYROBP, AIF1,
+      MRC1, the complement receptor ITGAM (CR3), Fc receptors FCGR1A/FCGR3A, and
+      the scavenger/lectin receptors CD33 and CLEC7A. Specificity is
+      lineage_shared because phagocytosis is common to the macrophage/myeloid
+      lineage rather than unique to microglia. Confirmatory: engulfment is an
+      expected, known microglial function.
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      As resident innate-immune effectors, microglia drive CNS inflammation.
+      annotation_supported by a large inflammatory-cytokine and
+      pattern-recognition module in the set: IL1A, IL1B, IL6, IL18, the
+      Toll-like receptors TLR1/TLR2/TLR3/TLR4/TLR5/TLR7, the alarmins
+      S100A8/S100A9, and the C5a receptors C5AR1/C5AR2. specificity is
+      lineage_shared because inflammatory response is a general innate-immune
+      program shared across myeloid cells. Confirmatory rather than mechanistic
+      because mounting an inflammatory response is a known, expected microglial
+      function.
+  - term:
+      id: GO:0070098
+      label: chemokine-mediated signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Chemokine signaling governs microglial chemotaxis, recruitment and process
+      motility toward injury and chemotactic gradients. annotation_supported by
+      chemokine receptors and ligands in the set: CCR1, CCR3, the fractalkine
+      receptor CX3CR1, CXCL16, the oxysterol/chemoattractant receptor GPR183,
+      and the C5a chemoattractant receptors C5AR1/C5AR2. Categorised as
+      supporting_process because chemotactic signaling enables microglial
+      positioning and response rather than constituting the cell's primary
+      effector identity. Confirmatory: a known, expected feature of an
+      innate-immune cell signature.
+  - term:
+      id: GO:0141084
+      label: inflammasome-mediated signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Microglia are major CNS inflammasome-bearing cells, coupling
+      pattern-recognition to CASP1-driven maturation of IL-1beta/IL-18. The set
+      carries an essentially complete canonical inflammasome module:
+      CASP1 and CASP5 (inflammatory caspases), the NLRC4 sensor with its NAIP
+      co-sensor, the pyrin sensor MEFV, the adaptor-pathway gene CARD9, and the
+      substrate cytokines IL1B and IL18 - so it is annotation_supported.
+      specificity lineage_shared (myeloid). Confirmatory because inflammasome
+      activation is a known microglial innate-immune function rather than a
+      non-obvious convergence.
+  - term:
+      id: GO:0006955
+      label: immune response
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Immune response is recovered, but as the broad innate/adaptive superclass
+      it is non-informative for this signature once the specific microglial
+      immune processes above (complement activation, phagocytosis, inflammatory
+      response, chemokine signaling, inflammasome) are captured. It is carried by
+      a very large fraction of the set's leukocyte-shared genes and is broadly
+      expressed across all immune cell types, so it is recorded as nonspecific
+      rather than as cell-type-informative biology.

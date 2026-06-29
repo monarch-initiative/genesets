@@ -40,6 +40,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:31434209
         reference_title: "Cardiac Fibroblasts and the Extracellular Matrix in Regenerative and Nonregenerative Hearts."
@@ -70,6 +71,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The extracellular matrix is the primary cellular compartment to which
       cardiac fibroblast marker genes contribute. Signature genes encoding
@@ -87,6 +89,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: mechanistic
     evidence:
       - reference: PMID:33017619
         reference_title: "Fibroblast mechanosensing, SKI and Hippo signaling and the cardiac fibroblast phenotype: Looking beyond TGF-β."
@@ -120,6 +123,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Collagen fibril formation and organisation is a key downstream activity of
       cardiac fibroblasts in both homeostasis and pathological remodelling.
@@ -155,6 +159,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       The capacity to transdifferentiate into contractile myofibroblasts is a
       defining biological feature of cardiac fibroblasts and central to cardiac

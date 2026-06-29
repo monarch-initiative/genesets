@@ -1,0 +1,188 @@
+gene_set_id: LIT:QUIESCENT_HEPATIC_STELLATE_CELL
+gene_set_name: QUIESCENT_HEPATIC_STELLATE_CELL
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:HEPATIC_STELLATE_CELL_ACTIVATION
+series_role: quiescent
+description: >-
+  Literature-defined cell-state ACTIVITY signature of the QUIESCENT
+  (vitamin-A-storing, resting) hepatic stellate cell (HSC) - the baseline
+  hepatic-stellate-cell program that is LOST during liver fibrosis. This is the
+  quiescent pole of the HSC activation series, contrasted with the
+  activated/myofibroblastic pole. The quiescent program is defined by contrasting
+  quiescent versus activated HSC, e.g. by De Minicis, Seki, Brenner, Schwabe et al.
+  (Gastroenterology 2007, PMID:17484886), who profiled HSC gene expression across
+  in vitro (culture) and in vivo (CCl4, bile-duct-ligation) activation models and
+  established in vivo activation as the gold standard, and by the canonical synthesis
+  of quiescent vitamin-A-rich HSC biology in Friedman (Physiol Rev 2008,
+  PMID:18195085). Unlike MSigDB causal/driver disease pathway sets, the members here
+  are the READOUT of an ACTIVE identity program - the genes UP (high) in quiescent
+  HSC and DOWNregulated upon fibrogenic activation - not driver mutations. The
+  program is dominated by the retinoid/vitamin-A storage machinery (LRAT, which
+  esterifies retinol for storage; the retinol carrier RBP1/CRBP1; the nuclear
+  receptor RXRA and the adipogenic master regulator PPARG that maintains the
+  quiescent phenotype), the cytoskeletal and pericyte quiescence markers GFAP and
+  RGS5, the adiponectin-receptor (ADIPOR) axis, and the TGF-beta pseudoreceptor
+  BAMBI that restrains fibrogenic TGF-beta signaling. The single most characteristic
+  feature of the quiescent HSC is its cytoplasmic retinyl-ester lipid droplets, in
+  which the liver stores the majority of the body's vitamin A. Because the member
+  genes literally carry the GO annotations for the processes the quiescent state
+  executes, enrichment recovers those processes (annotation_supported) rather than
+  leaving them as gaps. DISEASE RELEVANCE: this quiescent, retinoid-storing program
+  is the baseline state LOST in liver fibrosis - upon injury, quiescent HSC
+  transdifferentiate into proliferative, contractile, extracellular-matrix-producing
+  myofibroblasts, losing their lipid droplets and retinoid stores; the disease
+  signal is therefore the LOSS of this quiescence/retinoid-storage program (and
+  conversely, its re-expression accompanies fibrosis regression). The signature was
+  defined largely in rodent HSC; we curate the human-orthologous program and keep
+  the taxon human per corpus convention.
+contexts:
+  - term:
+      id: CL:0000632
+      label: hepatic stellate cell
+    context_type: cell_type
+    role_note: >-
+      The signature reads out the quiescent, vitamin-A-storing ("resting") state of
+      the hepatic stellate cell rather than any single disease. This is the
+      perisinusoidal retinoid-storing identity that is actively maintained in the
+      healthy liver and is lost when HSC transdifferentiate into fibrogenic
+      myofibroblasts upon fibrogenic activation, so the hepatic stellate cell type
+      is the anchoring context rather than one MONDO disease.
+associations:
+  - term:
+      id: GO:0001523
+      label: retinoid metabolic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:18195085
+        reference_title: "Hepatic stellate cells: protean, multifunctional, and enigmatic cells of the liver."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "roles vital to systemic homeostasis include their storage and mobilization of retinoids"
+        explanation: >-
+          Retinoid (vitamin A) metabolism is the defining systemic-homeostatic
+          function of the quiescent hepatic stellate cell that this signature reads
+          out: the review identifies storage and mobilization of retinoids as a role
+          of stellate cells vital to systemic homeostasis. Quiescent HSC are the
+          body's principal retinoid store, and signature members such as LRAT (which
+          esterifies retinol into the retinyl esters that are stored) and the
+          retinol carrier RBP1 carry retinoid-metabolism annotations, so enrichment
+          recovers the term (annotation_supported). This is the central, identity-
+          defining active process of the quiescent state, not a driver lesion; it is
+          lost when HSC activate and discharge their retinoid stores during fibrosis.
+    curator_note: >-
+      Kept core because retinoid storage/metabolism is the single defining axis of
+      quiescent HSC identity. Marked cell_type_specific because, although retinoid
+      metabolism occurs elsewhere, the hepatic stellate cell is the dedicated
+      retinoid-storage cell of the body and this term is, in the liver, the HSC
+      quiescence program; LRAT is a signature member annotated here, so the term is
+      annotation_supported.
+  - term:
+      id: GO:0019915
+      label: lipid storage
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:18195085
+        reference_title: "Hepatic stellate cells: protean, multifunctional, and enigmatic cells of the liver."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "activation of quiescent vitamin A-rich stellate cells into proliferative, contractile, and fibrogenic myofibroblasts"
+        explanation: >-
+          The quiescent HSC is defined morphologically and functionally by its
+          cytoplasmic retinyl-ester lipid droplets: the review frames the central
+          liver-injury paradigm as the activation of quiescent vitamin A-rich
+          stellate cells into proliferative, contractile, and fibrogenic
+          myofibroblasts. The vitamin A is stored as retinyl esters within lipid
+          droplets, so lipid storage is a core active process of the quiescent
+          state, and adipogenic/lipid-droplet genes in the program (e.g. PPARG)
+          carry lipid-storage annotations, so enrichment recovers the term
+          (annotation_supported). It is scored cell-type-lineage_shared rather than
+          cell_type_specific because lipid storage as a GO process is shared with
+          adipocytes and other lipid-storing cells; the disease relevance is the LOSS
+          of these droplets when the quiescent cell converts to a myofibroblast.
+    curator_note: >-
+      Kept core because retinyl-ester lipid-droplet storage is the hallmark of the
+      quiescent HSC and the structural correlate of its retinoid store. lineage_shared
+      because lipid storage as a process is not HSC-specific (adipocytes, hepatocytes
+      also store lipid); the HSC-defining point is that the stored lipid is the
+      vitamin-A/retinyl-ester depot, which is discharged on fibrogenic activation.
+  - term:
+      id: GO:0005811
+      label: lipid droplet
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The cytoplasmic lipid droplet is the characteristic organelle of the quiescent
+      hepatic stellate cell - the retinyl-ester-laden droplet historically used to
+      identify and isolate these cells by their vitamin-A autofluorescence and
+      density. Lipid-droplet-associated proteins expressed in the quiescent program
+      carry this cellular-component annotation, so enrichment recovers it
+      (annotation_supported). Scored core_component because the droplet is the
+      defining structure of the quiescent state, whose disappearance marks
+      activation; specificity is lineage_shared because the lipid droplet as a GO
+      component is found in many lipid-storing cell types, even though the
+      retinoid-storing droplet is the HSC hallmark.
+  - term:
+      id: GO:0008285
+      label: negative regulation of cell population proliferation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Quiescence is, by definition, a non-proliferative state: the quiescent HSC is
+      held out of the cell cycle, and activation into the myofibroblast is
+      accompanied by a switch to a proliferative phenotype. Adipogenic/quiescence
+      regulators in the program (notably PPARG) restrain proliferation and carry
+      negative-regulation-of-proliferation annotations, so the term is
+      annotation_supported. Scored supporting rather than core - it is an enabling
+      property of the resting state rather than the identity-defining retinoid-storage
+      axis - and broadly_expressed because growth restraint is a general capacity, not
+      HSC-specific. seed_source is curator_added because non-proliferation is the
+      curator's framing of the quiescent state rather than an individual effector term
+      each member gene is annotated to.
+  - term:
+      id: GO:0030512
+      label: negative regulation of transforming growth factor beta receptor signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      The quiescent state is maintained in part by ACTIVE restraint of the fibrogenic
+      TGF-beta axis: the pseudoreceptor BAMBI, expressed in quiescent HSC and
+      downregulated upon activation, is a transmembrane decoy that inhibits TGF-beta
+      receptor signaling and so holds HSC in the non-fibrogenic phenotype. BAMBI is a
+      member of the quiescent program and carries the negative-regulation-of-TGF-beta
+      annotation, so enrichment recovers the term (annotation_supported). Scored
+      supporting rather than core because TGF-beta restraint is one defensive arm of
+      quiescence rather than the defining retinoid-storage activity, and lineage_shared
+      because TGF-beta pathway inhibition is a general regulatory capacity. Loss of
+      this restraint (BAMBI downregulation) is part of what licenses the fibrogenic
+      activation that defines the disease transition.

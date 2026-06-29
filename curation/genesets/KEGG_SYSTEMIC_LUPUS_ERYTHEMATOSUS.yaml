@@ -32,6 +32,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:41283475
         reference_title: >-
@@ -67,6 +68,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       MHC class II molecules (HLA-DR, HLA-DQ, HLA-DP alpha and beta subunits) and
       MHC class I molecules are prominent members of the KEGG SLE pathway. Presentation
@@ -85,6 +87,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The KEGG SLE pathway includes all four canonical core histone types (H2A, H2B,
       H3, H4) and linker histone H1 variants, which together with DNA form the
@@ -105,6 +108,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Fc-gamma receptor genes (FCGR1A, FCGR2A, FCGR2B, FCGR3A, FCGR3B) are explicit
       members of the KEGG SLE pathway, reflecting the central role of immune
@@ -124,6 +128,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The generic immune response term is recovered because the KEGG SLE pathway is
       dominated by immune effector genes spanning complement, Fc receptors, MHC
@@ -155,6 +160,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       B cell hyperactivation and loss of B cell tolerance are central to SLE
       pathogenesis, driving production of pathogenic autoantibodies including

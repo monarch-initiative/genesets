@@ -32,6 +32,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:11139609
         reference_title: "The transcriptional program of a human B cell line in response to Myc."
@@ -58,6 +59,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Translation appears here as a core MYC output, not as housekeeping nonspecific noise
       (contrast with its nonspecific classification in HALLMARK_INTERFERON_GAMMA_RESPONSE and
@@ -76,6 +78,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The nucleolus is the site of rDNA transcription, pre-rRNA processing, and ribosome
       subunit assembly — all central outputs of MYC activation. MYC directly activates RNA
@@ -92,6 +95,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       MYC induces nucleotide biosynthesis to support rapid cell growth and DNA replication.
       The Schuhmacher source paper identifies nucleotide/DNA synthesis as one of the functional
@@ -107,6 +111,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Ribonucleoprotein complex biogenesis is the parent of ribosome biogenesis in the GO
       hierarchy and encompasses the broader process of assembling RNA-protein complexes.
@@ -123,6 +128,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       MYC is a master regulator of cell growth and proliferation; induction of MYC in the
       P493-6 model drives robust cell cycle entry and proliferation. Some member genes
@@ -139,6 +145,7 @@ associations:
     specificity: broadly_expressed
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       rRNA processing is a core nucleolar function directly driven by MYC. The source paper
       (Schuhmacher 2001) explicitly names nucleolus function/RNA binding as a key functional

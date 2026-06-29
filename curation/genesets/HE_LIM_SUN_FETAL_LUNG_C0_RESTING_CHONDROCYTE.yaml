@@ -1,0 +1,143 @@
+gene_set_id: MSIGDB:HE_LIM_SUN_FETAL_LUNG_C0_RESTING_CHONDROCYTE
+gene_set_name: HE_LIM_SUN_FETAL_LUNG_C0_RESTING_CHONDROCYTE
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of resting (cluster C0) chondrocytes from the
+  He/Lim/Sun fetal human lung atlas (MSigDB C8). These cells form the airway
+  cartilage of the developing conducting airways. Chondrocytes are the
+  cartilage-resident cells that secrete and maintain the cartilage-specific
+  extracellular matrix, dominated by type II collagen and the large aggregating
+  proteoglycan aggrecan, under the control of the master chondrogenic
+  transcription factor SOX9. The signature is rich in crisp cartilage
+  effectors — COL2A1, ACAN, SOX9, the type IX and XI collagens
+  (COL9A1/A2/A3, COL11A1/A2), the matrilins (MATN1/MATN3/MATN4) and link
+  protein HAPLN1 — making it a textbook chondrocyte matrix program.
+contexts:
+  - term:
+      id: CL:0000138
+      label: chondrocyte
+    context_type: cell_type
+  - term:
+      id: UBERON:0002418
+      label: cartilage tissue
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0051216
+      label: cartilage development
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Cartilage development is the defining developmental program of the
+      chondrocyte. The master chondrogenic transcription factor SOX9, together
+      with its co-factors SOX5 and SOX6, drives the cartilage matrix program.
+      The set carries SOX9, SOX5, SOX6, SOX8, COL2A1, ACAN, COL11A1, COL11A2,
+      COL9A1/A2/A3, MATN3, GDF5, NOG, FGFR3 and TRPV4, which are directly
+      annotated to cartilage development or its children in goa_human, so
+      enrichment recovers this term cleanly (annotation_supported). Marked
+      confirmatory because a resting-chondrocyte signature is expected to
+      enrich for cartilage development by construction.
+  - term:
+      id: GO:0002062
+      label: chondrocyte differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Chondrocyte differentiation is the cell-identity acquisition process for
+      this exact cell type. Carrier genes present in the set include SOX9,
+      SOX5, SOX6, GDF5, BMPR1B, MATN3 and TRPV4, annotated at or below
+      chondrocyte differentiation in goa_human (annotation_supported).
+      Confirmatory: the term restates the cell-type definition rather than
+      revealing new mechanism.
+  - term:
+      id: GO:0030198
+      label: extracellular matrix organization
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The chondrocyte's principal effector function is secreting and organising
+      the cartilage extracellular matrix. Carriers present in the set span the
+      fibrillar and network collagens (COL2A1, COL9A1/A2/A3, COL11A1/A2,
+      COL12A1, COL27A1), the large aggregating proteoglycan ACAN, link protein
+      HAPLN1, the matrilins (MATN1/MATN3/MATN4), small leucine-rich
+      proteoglycans PRELP and EPYC, and chondroadherin CHAD — all annotated to
+      extracellular matrix organization or children (annotation_supported).
+      Categorised core_process because matrix production is the chondrocyte's
+      defining activity, but specificity is lineage_shared because ECM
+      organization is a generic property of matrix-producing connective-tissue
+      cells; here it is realised as the cartilage-specific matrix. Confirmatory.
+  - term:
+      id: GO:0030199
+      label: collagen fibril organization
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Cartilage collagen fibrils are heterotypic assemblies of type II, type XI
+      and type IX collagen, where the type XI and type IX collagens template
+      and constrain the diameter and spacing of the COL2A1 fibril core. Carrier
+      genes COL2A1, COL11A1, COL11A2 and COL9A1 (all present) are annotated to
+      collagen fibril organization in goa_human (annotation_supported).
+      Categorised supporting_process because it is a specific sub-aspect of the
+      broader matrix-building role rather than the top-level defining process.
+      Confirmatory.
+  - term:
+      id: GO:0031012
+      label: extracellular matrix
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The cartilage extracellular matrix is the defining cellular structure
+      that the chondrocyte builds and is embedded within. TERM CHOICE: the more
+      specific GO:0062023 "collagen-containing extracellular matrix" is OBSOLETE
+      in current GO, so this association uses its functional replacement
+      GO:0031012 extracellular matrix. Carrier genes localised to the
+      extracellular matrix include COL2A1, ACAN, HAPLN1, MATN1/MATN3/MATN4,
+      COL9A1/A2/A3, COL11A1/A2, PRELP, EPYC, CHAD and UCMA (annotation_supported).
+      Confirmatory: the cartilage ECM is entailed by the chondrocyte identity.
+  - term:
+      id: GO:0001501
+      label: skeletal system development
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Cartilage is the template for the endochondral skeleton, and many set
+      genes (SOX9, COL2A1, COL11A1, GDF5, NOG, FGFR3, TRPV4, MATN3, BMPR1B,
+      PRRX1) are annotated to skeletal system development or its children
+      (annotation_supported). Categorised supporting_process and lineage_shared
+      because this is the broader organ-system context rather than the
+      chondrocyte's direct molecular activity. Confirmatory.

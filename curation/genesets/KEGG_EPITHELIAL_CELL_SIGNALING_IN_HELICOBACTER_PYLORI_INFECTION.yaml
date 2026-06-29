@@ -48,6 +48,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:15044093
         reference_title: "Curcumin blocks NF-kappaB and the motogenic response in Helicobacter pylori-infected epithelial cells."
@@ -80,6 +81,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The entire KEGG H. pylori signalling pathway is configured to produce an
       acute mucosal inflammatory response. NF-kappaB and MAPK activation in
@@ -99,6 +101,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:15044093
         reference_title: "Curcumin blocks NF-kappaB and the motogenic response in Helicobacter pylori-infected epithelial cells."
@@ -131,6 +134,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:28434172
         reference_title: "Lactobacillus paracasei strain 06TCa19 suppresses inflammatory chemokine induced by Helicobacter pylori in human gastric epithelial cells."
@@ -165,6 +169,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The entire KEGG pathway models the cellular response of gastric epithelial
       cells to a bacterial pathogen, H. pylori. Response to bacterium is therefore

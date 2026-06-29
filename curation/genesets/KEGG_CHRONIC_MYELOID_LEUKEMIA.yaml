@@ -36,6 +36,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:22156549
         reference_title: "Molecular pathways: BCR-ABL."
@@ -65,6 +66,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Uncontrolled myeloid progenitor proliferation is the defining feature of CML
       chronic phase. BCR-ABL1 drives constitutive proliferative signaling through the
@@ -81,6 +83,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:22156549
         reference_title: "Molecular pathways: BCR-ABL."
@@ -108,6 +111,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       BCR-ABL1 activates STAT5 both directly through tyrosine phosphorylation and
       indirectly via JAK2 activation. STAT5 is a primary transcriptional effector in
@@ -125,6 +129,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       BCL2-family members, CASP3, CASP9, and CYCS in the KEGG CML pathway encode
       canonical apoptosis regulators. Evasion of apoptosis through BCR-ABL1-driven
@@ -141,6 +146,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       In CML chronic phase, myeloid differentiation is partially preserved but
       progressively impaired, culminating in a complete differentiation block at blast

@@ -36,6 +36,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:17158541
         reference_title: "Molecular pathways in invasive bladder cancer: new insights into mechanisms, progression, and target identification."
@@ -68,6 +69,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The RB/TP53 arm of the KEGG bladder cancer pathway includes RB1, TP53,
       CDKN2A (p16INK4a/p14ARF), CDK4, and E2F family members that directly
@@ -86,6 +88,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:17158541
         reference_title: "Molecular pathways in invasive bladder cancer: new insights into mechanisms, progression, and target identification."
@@ -116,6 +119,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       TP53, MDM2, CASP3, and BCL2-family members in the KEGG bladder cancer pathway
       encode canonical apoptosis components. Inactivation of TP53 and RB1
@@ -132,6 +136,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The KEGG bladder cancer pathway includes integrin subunits and E-cadherin
       (CDH1) whose altered expression underlies the epithelial-to-mesenchymal
@@ -164,6 +169,7 @@ associations:
     specificity: broadly_expressed
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       ECM remodelling by matrix metalloproteinases (MMP1, MMP2, MMP9) and ECM
       adhesion through integrin subunits are mechanistically central to bladder

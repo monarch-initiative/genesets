@@ -30,6 +30,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     evidence:
       - reference: PMID:42043262
         reference_title: "The Key Role of Complement Receptor CRIg in Kupffer Cell-Mediated Liver Disease Progression."
@@ -48,6 +49,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Kupffer cells are professional phagocytes that deliver engulfed material
       to lysosomes for degradation. Lysosomal activity is central to their
@@ -61,6 +63,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Kupffer cells express complement receptors (notably CRIg) and mediate
       clearance of complement-opsonized particles. Complement activation is
@@ -73,6 +76,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Kupffer cells are innate sentinels that respond to pathogen-associated
       molecular patterns via pattern-recognition receptors. Innate immune
@@ -86,6 +90,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Upon activation Kupffer cells secrete pro-inflammatory cytokines (TNF,
       IL-6, IL-1β) that drive hepatic inflammation. Inflammatory response is
@@ -98,6 +103,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Kupffer cells can present antigens to T cells and perform antigen
       cross-presentation (a role highlighted for CRIg), but this is not their
@@ -112,6 +118,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: curator_added
+    insight: confirmatory
     curator_note: >-
       Kupffer cells are the primary hepatic sensors of gut-derived LPS arriving
       via the portal vein. Their TLR4-mediated LPS response is a hallmark of

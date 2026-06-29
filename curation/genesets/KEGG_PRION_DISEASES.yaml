@@ -36,6 +36,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:30304819
         reference_title: "Attempt to Untangle the Prion-Like Misfolding Mechanism for Neurodegenerative Diseases."
@@ -65,6 +66,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: mechanistic
     evidence:
       - reference: PMID:11283678
         reference_title: "Complement facilitates early prion pathogenesis."
@@ -88,6 +90,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       CASP3, CASP9, CYCS, BAX, and BCL2-family members in the KEGG prion diseases pathway
       encode canonical intrinsic apoptosis components. Apoptotic process is shared across
@@ -103,6 +106,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Neuronal cell death by apoptosis is the central downstream outcome of the KEGG prion
       diseases pathway: accumulation of PrPSc activates the intrinsic apoptotic cascade
@@ -121,6 +125,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:39011540
         reference_title: "Post-translational modifications in prion diseases."
@@ -152,6 +157,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     evidence:
       - reference: PMID:28714865
         reference_title: "Microglia in prion diseases."

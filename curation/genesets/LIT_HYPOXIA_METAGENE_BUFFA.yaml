@@ -1,0 +1,147 @@
+gene_set_id: LIT:HYPOXIA_METAGENE_BUFFA
+gene_set_name: HYPOXIA_METAGENE
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+description: >-
+  Literature-defined disease-activity signature of the common tumour hypoxia
+  metagene of Buffa et al. (Br J Cancer 2010, PMID:20087356), derived by
+  meta-analysis of three head-and-neck and five breast cancer expression studies
+  (1136 tumours). Unlike MSigDB causal/driver disease pathway sets, the members
+  here are the READOUT of an ACTIVE cellular-stress program (tumour hypoxia), not
+  driver mutations: they are the genes consistently co-expressed with, and
+  co-induced alongside, previously validated hypoxia-regulated seed genes, and are
+  UPregulated under low oxygen tension. The signature was seeded with
+  well-characterised hypoxia-induced genes (e.g. ADM, AK4/AK3L1, BNIP3, CA9
+  (carbonic anhydrase IX), ENO1, HK2, LDHA, PGK1, SLC2A1/GLUT1) and the compact
+  hub-selected metagene is dominated by the canonical HIF-1 transcriptional
+  programme: a glycolytic metabolic shift (ENO1, HK2, LDHA, PGK1, PGAM1) and
+  VEGFA-driven angiogenesis, with VEGFA, SLC2A1 and PGAM1 the highest-connectivity,
+  most prognostic members. Because the member genes literally carry the GO
+  annotations for the hypoxic response they read out, enrichment recovers those
+  processes (annotation_supported) rather than leaving them as gaps; the authors
+  further confirmed that ~80% of metagene genes are regulated by hypoxia and/or
+  HIF1a in cell-line experiments and predicted many as direct HIF1a targets. The
+  paper's common signature comprises 51 genes (the widely used MSigDB
+  BUFFA_HYPOXIA_METAGENE lists 52); the exact membership list is not enumerated
+  here, so n_genes is omitted. Hypoxia is a cellular CONDITION rather than a cell
+  type, disease, or anatomical entity, and there is no clean ontology term for it,
+  so (as in the SenMayo senescence panel) this file intentionally carries zero
+  biological contexts; the hypoxic response is captured entirely in the
+  associations below.
+associations:
+  - term:
+      id: GO:0001666
+      label: response to hypoxia
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:20087356
+        reference_title: "Large meta-analysis of multiple cancers reveals a common, compact and highly prognostic hypoxia metagene."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "A common hypoxia signature, or metagene, was derived by selecting genes that were consistently co-expressed with the hypoxia seeds in multiple cancers."
+        explanation: >-
+          Response to hypoxia is the defining ACTIVE program this signature reads
+          out: the metagene was constructed expressly to capture the common
+          hypoxic response across head-and-neck and breast tumours, by selecting
+          genes consistently co-expressed with validated hypoxia seed genes in
+          patient cancer cohorts. The hypoxia-induced members (e.g. CA9, BNIP3,
+          ADM, VEGFA, SLC2A1) carry the response-to-hypoxia annotation, so
+          enrichment recovers this overarching process (annotation_supported).
+  - term:
+      id: GO:0071456
+      label: cellular response to hypoxia
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:20087356
+        reference_title: "Large meta-analysis of multiple cancers reveals a common, compact and highly prognostic hypoxia metagene."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Previously validated hypoxia-regulated genes (seeds) were used to generate hypoxia co-expression cancer networks."
+        explanation: >-
+          The metagene is anchored on previously (in vitro) validated
+          hypoxia-regulated seed genes, and the hub genes it recovers are the
+          cell-intrinsic HIF-1 transcriptional output engaged when a cell senses
+          low oxygen. Cellular response to hypoxia is therefore the direct,
+          cell-level readout the panel represents; its members carry this GO
+          annotation, so enrichment recovers it (annotation_supported). Marked
+          broadly_expressed because essentially all human cell types stabilise
+          HIF-1alpha and mount this response under hypoxia.
+  - term:
+      id: GO:0006096
+      label: glycolytic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      A glycolytic metabolic shift is one of the canonical, well-characterised
+      HIF-1 outputs and a dominant axis of this metagene: the glycolytic enzyme
+      members (ENO1, HK2, LDHA, PGK1, and the top-ranked hub gene PGAM1) drive
+      the switch to aerobic glycolysis under low oxygen. These genes carry
+      glycolysis annotations, so enrichment recovers the term
+      (annotation_supported); the paper independently confirmed that pathways
+      such as glycolysis, gluconeogenesis and glucose metabolism were
+      consistently over-represented in the metagene by Reactome and GO analysis.
+      Kept core because the glycolytic shift is a defining activity of the hypoxic
+      program, with broadly_expressed specificity as glycolysis operates across
+      most cell types.
+  - term:
+      id: GO:0001525
+      label: angiogenesis
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Hypoxia drives new blood vessel formation via HIF-1 transactivation of
+      VEGFA and related factors; VEGFA is the single highest-connectivity,
+      most prognostic gene in the metagene and ADM (a seed) is also angiogenic.
+      These members carry angiogenesis annotations, so enrichment recovers the
+      term (annotation_supported). Scored as supporting rather than core: it is a
+      real, mechanistically central downstream effector arm of the hypoxic
+      response but one branch rather than the defining activity, and angiogenesis
+      is shared across endothelial and many tumour-biology contexts
+      (lineage_shared).
+  - term:
+      id: GO:0097411
+      label: hypoxia-inducible factor-1alpha signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The HIF-1alpha signalling pathway is the mechanistic engine driving the
+      metagene: the paper identifies HIF1a as the main mediator of the hypoxia
+      response in cancer, validates regulation of metagene genes by HIF1a in
+      siRNA experiments, and predicts many as direct HIF1a targets with HIF1a
+      binding sites. Several members (e.g. VEGFA, CA9, SLC2A1) carry HIF-1
+      signalling / cellular-response-to-hypoxia annotations, so the term is
+      annotation_supported. Added as curator_added because enrichment tools
+      recover the downstream biological processes (glycolysis, angiogenesis) more
+      readily than the upstream signalling pathway itself; scored supporting as it
+      is the mechanism upstream of the core hypoxic-response processes asserted
+      above.

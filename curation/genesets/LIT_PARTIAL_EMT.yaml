@@ -1,0 +1,162 @@
+gene_set_id: LIT:PARTIAL_EMT
+gene_set_name: PARTIAL_EMT
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:EMT
+series_role: partial
+description: >-
+  Literature-defined disease-activity signature of the partial
+  epithelial-to-mesenchymal transition (p-EMT) program in malignant head and
+  neck squamous cell carcinoma (HNSCC) cells, defined by Puram et al. (Cell 2017,
+  PMID:29198524) from single-cell RNA-seq of ~6,000 cells across 18 HNSCC
+  patients. Unlike MSigDB causal/driver disease pathway sets, the members here
+  are the READOUT of an ACTIVE cellular program, not driver mutations: they are
+  the genes UPregulated in malignant cells that express the p-EMT state, recovered
+  as a recurrent malignant-cell expression signature (alongside cell-cycle, stress,
+  hypoxia and epithelial-differentiation programs) in patient tumours. The program
+  is dominated by extracellular-matrix / basement-membrane and cell-adhesion genes:
+  the laminins LAMC2 and LAMB3, the top-ranked member TGFBI, plus PDPN, ITGA5, MMP10
+  and the mesenchymal marker VIM are the genes the authors used to mark and validate
+  the state by immunohistochemistry. Critically, this is a PARTIAL EMT: the program
+  retains epithelial markers and LACKS the classical EMT-driving transcription
+  factors (the SNAIL, ZEB and TWIST families), with SNAIL2/SLUG the lone exception,
+  so it is a metastable, EMT-like state rather than a complete mesenchymal conversion.
+  Cells expressing the program localise to the invasive leading edge of primary
+  tumours in proximity to cancer-associated fibroblasts, and a high p-EMT score is
+  an independent predictor of nodal metastasis, higher grade, and adverse pathologic
+  features. Because the member genes literally carry the GO annotations for the ECM,
+  adhesion and migration processes the state executes, enrichment recovers those
+  processes (annotation_supported) rather than leaving them as gaps; the regulatory
+  term "positive regulation of EMT" is recorded as an annotation_gap because the
+  effector/marker genes that define p-EMT enact the program but are annotated to
+  their effector roles (ECM, adhesion) rather than to EMT regulation. This is a
+  STANDALONE signature: no contrasting epithelial-differentiation partner is curated
+  yet, so series/series_role are omitted. The defining paper is simultaneously the
+  identity, the membership, and the evidence for this set.
+contexts:
+  - term:
+      id: MONDO:0010150
+      label: head and neck squamous cell carcinoma
+    context_type: disease
+    role_note: >-
+      p-EMT program in malignant epithelial cells at the tumor leading edge;
+      partial (not complete) EMT.
+associations:
+  - term:
+      id: GO:0001837
+      label: epithelial to mesenchymal transition
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:29198524
+        reference_title: "Single-Cell Transcriptomic Analysis of Primary and Metastatic Tumor Ecosystems in Head and Neck Cancer."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "malignant cells varied within and between tumors in their expression of signatures related to cell cycle, stress, hypoxia, epithelial differentiation, and partial epithelial-to-mesenchymal transition (p-EMT)"
+        explanation: >-
+          (Partial) epithelial-to-mesenchymal transition is the defining ACTIVE
+          program this signature reads out: p-EMT was discovered as one of the
+          recurrent malignant-cell expression signatures across HNSCC patient
+          tumours by single-cell RNA-seq, and the member genes (the laminins
+          LAMC2/LAMB3, TGFBI, VIM, ITGA5) carry EMT-related GO annotations, so
+          enrichment recovers this overarching process (annotation_supported).
+          Scored lineage_shared because EMT is a process common to epithelial
+          lineages and carcinomas rather than specific to one cell type.
+          evidence_source HUMAN_CLINICAL because the program was defined directly
+          from patient tumour single-cell transcriptomes.
+  - term:
+      id: GO:0030198
+      label: extracellular matrix organization
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The p-EMT program is dominated by extracellular-matrix and basement-membrane
+      genes: the laminins LAMC2 and LAMB3, the top-ranked member TGFBI, and MMP10
+      are the genes used to mark and validate the state. These members carry
+      ECM-organization annotations, so it is a top enrichment hit over the set
+      (annotation_supported). Kept core because the production/remodelling of ECM
+      and basement-membrane components is the molecular hallmark of the p-EMT
+      readout (the paper describes the program as a partial EMT "with extracellular
+      matrix proteins"); lineage_shared because ECM organization is shared across
+      epithelial and stromal lineages rather than confined to one cell type.
+  - term:
+      id: GO:0016477
+      label: cell migration
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:29198524
+        reference_title: "Single-Cell Transcriptomic Analysis of Primary and Metastatic Tumor Ecosystems in Head and Neck Cancer."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Cells expressing the p-EMT program spatially localized to the leading edge of primary tumors."
+        explanation: >-
+          Migration/invasion is a core activity the p-EMT state confers: cells
+          expressing the program localise to the invasive leading edge of primary
+          tumours (consistent with a collective-migration model), and sorted
+          p-EMT-high cells showed increased invasiveness in the paper's functional
+          assays. The migratory/adhesion members (ITGA5, the laminins, VIM) carry
+          cell-migration annotations, so enrichment recovers the term
+          (annotation_supported). Scored medium and broadly_expressed because cell
+          migration is a generic process invoked here as the functional consequence
+          of the program rather than a p-EMT-specific term. evidence_source
+          HUMAN_CLINICAL for the patient-tumour spatial localisation.
+  - term:
+      id: GO:0031589
+      label: cell-substrate adhesion
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Cell-substrate adhesion is an enabling process of the p-EMT state: the
+      integrin ITGA5 and the laminin ligands (LAMC2, LAMB3) that dominate the
+      signature mediate attachment of malignant cells to the basement membrane and
+      ECM at the invasive front, and carry cell-substrate-adhesion annotations, so
+      enrichment recovers it (annotation_supported). Scored supporting rather than
+      core because adhesion is one mechanistic arm enabling the migratory program
+      rather than the defining EMT activity, and broadly_expressed because
+      cell-substrate adhesion operates across many cell types beyond this context.
+  - term:
+      id: GO:0010718
+      label: positive regulation of epithelial to mesenchymal transition
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      The p-EMT program actively drives an EMT-like state, so positive regulation
+      of EMT is biologically real for this set, but it is recorded as an
+      annotation_gap: the genes that define p-EMT are predominantly downstream
+      effectors/markers (laminins, TGFBI, ITGA5, MMP10) annotated to their ECM,
+      adhesion and proteolysis roles rather than to EMT regulation, and the program
+      pointedly LACKS the classical EMT-driving transcription factors (SNAIL, ZEB,
+      TWIST) except SNAIL2. Added as curator_added because enrichment recovers the
+      EMT process and its effector arms (above) more readily than the upstream
+      regulatory term; scored supporting as the mechanism that promotes the core
+      EMT activity. The gap is a GO-annotation curation target for the p-EMT
+      effector genes.

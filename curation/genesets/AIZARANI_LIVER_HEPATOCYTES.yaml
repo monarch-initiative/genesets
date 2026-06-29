@@ -36,6 +36,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:26233906
         reference_title: "Xenobiotic and Endobiotic Mediated Interactions Between the Cytochrome P450 System and the Inflammatory Response in the Liver."
@@ -59,6 +60,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Hepatocytes are the primary site of de-novo lipogenesis, fatty-acid
       beta-oxidation, cholesterol synthesis, and VLDL assembly and secretion.
@@ -74,6 +76,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The liver is the principal source of most soluble complement proteins
       (C3, C4, C5, factor B, C1q subunits). Complement component genes are
@@ -91,6 +94,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Hepatocytes contain one of the most extensively developed endoplasmic
       reticulum systems among differentiated mammalian cells. The smooth ER
@@ -107,6 +111,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The liver synthesises the majority of plasma coagulation factors
       (fibrinogen and factors II, VII, IX, X, as well as protein C and
@@ -136,6 +141,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Bile acid biosynthesis via the CYP7A1-initiated cholesterol
       7-alpha-hydroxylation pathway is a defining metabolic function of

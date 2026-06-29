@@ -32,6 +32,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:14973112
         reference_title: "Selective estrogen receptor modulators: discrimination of agonistic versus antagonistic activities by gene expression profiling in breast cancer cells."
@@ -59,6 +60,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Note: the task brief suggested "intracellular estrogen receptor signaling
       pathway" for GO:0030520, but the verified OLS label is "estrogen receptor
@@ -76,6 +78,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       This child of GO:0032355 is the ideal mechanistic descriptor for the
       individual member genes: it specifies a cellular-level response to
@@ -94,6 +97,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       17β-estradiol is the primary mitogenic hormone for ER-positive luminal
       breast cancer cells including MCF-7. The upregulated gene set includes
@@ -111,6 +115,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       ERα is a ligand-activated transcription factor that, upon 17β-estradiol
       binding, recruits co-activators and drives RNA Pol II-dependent

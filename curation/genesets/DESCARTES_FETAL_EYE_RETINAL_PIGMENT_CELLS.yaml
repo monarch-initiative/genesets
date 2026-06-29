@@ -1,0 +1,152 @@
+gene_set_id: MSIGDB:DESCARTES_FETAL_EYE_RETINAL_PIGMENT_CELLS
+gene_set_name: DESCARTES_FETAL_EYE_RETINAL_PIGMENT_CELLS
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of retinal pigment epithelial (RPE) cells from
+  human fetal eye (Descartes fetal cell atlas, Cao et al. 2020; MSigDB C8). The
+  RPE is the pigmented epithelial monolayer behind the neural retina that runs
+  the visual (retinoid) cycle, re-isomerising all-trans-retinol to 11-cis-retinal
+  to supply photoreceptor chromophore, and supports photoreceptors via subretinal
+  ion/fluid homeostasis, outer-segment phagocytosis and the outer blood-retina
+  barrier. The signature is dominated by the visual-cycle machinery (RPE65, LRAT,
+  RLBP1/CRALBP, RGR, BCO1) and RPE support genes (BEST1, SLC16A8, MFRP, TTR,
+  ITGAV, CLDN19); notably, the melanogenic effectors are not yet expressed in
+  this fetal stage.
+contexts:
+  - term:
+      id: CL:0002586
+      label: retinal pigment epithelial cell
+    context_type: cell_type
+  - term:
+      id: UBERON:0000966
+      label: retina
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0001523
+      label: retinoid metabolic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The RPE limb of the visual (retinoid) cycle is the defining molecular
+      function of this cell type and the dominant signal in the signature.
+      Carrier genes are directly present: RPE65 (the retinoid isomerohydrolase
+      converting all-trans-retinyl ester to 11-cis-retinol), LRAT (lecithin
+      retinol acyltransferase, which esterifies all-trans-retinol to feed RPE65),
+      RLBP1/CRALBP (chaperones 11-cis intermediates), RGR (RPE-retinal G-protein
+      coupled receptor / photoisomerase) and BCO1 (beta-carotene 15,15'-
+      oxygenase). These are core marker genes annotated to retinoid metabolic
+      process in goa_human, so the term is annotation_supported and recovered by
+      enrichment. Confirmatory: it recapitulates the RPE's known identity rather
+      than revealing a non-obvious process.
+  - term:
+      id: GO:0001895
+      label: retina homeostasis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Maintenance of the subretinal environment and support of photoreceptors is
+      a core RPE function distinct from the visual cycle itself. Present carriers
+      span several effector classes: BEST1 (bestrophin-1, a Ca2+-activated
+      anion channel controlling subretinal fluid/ion balance), SLC16A8 (MCT3,
+      lactate efflux across the basolateral RPE), ITGAV (integrin alpha-V,
+      diurnal phagocytosis of shed photoreceptor outer segments), CLDN19
+      (claudin-19 tight junctions of the outer blood-retina barrier), MFRP and
+      TTR. These are annotated to retina homeostasis (or its subprocesses) in
+      goa_human, so the term is annotation_supported.
+  - term:
+      id: GO:0005501
+      label: retinoid binding
+    aspect: molecular_function
+    category: supporting_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Retinoid binding is the enabling molecular activity underlying the visual
+      cycle: hydrophobic retinoid intermediates must be carried by binding
+      proteins to move between enzymes and across compartments. Present carriers
+      include RLBP1/CRALBP (binds 11-cis-retinaldehyde and 11-cis-retinol) and
+      RGR (binds all-trans-retinal). Annotated to retinoid binding / retinal
+      binding in goa_human, so annotation_supported. Categorised as
+      supporting_process because it is the molecular activity enabling the core
+      retinoid metabolic process rather than the defining process itself.
+  - term:
+      id: GO:0042438
+      label: melanin biosynthetic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: membership_gap
+    insight: confirmatory
+    curator_note: >-
+      Melanogenesis is a defining function of the mature, pigmented RPE, so the
+      term is biologically core for this cell type. However it is a membership_gap
+      in this fetal signature: the melanogenic effectors are NOT present. TYR,
+      TYRP1 and DCT (the melanin-synthesising enzymes), PMEL and MLANA (melanosome
+      structural/maturation proteins) and the master melanocyte/RPE transcription
+      factor MITF are all ABSENT. The only pigment-related gene present is SLC45A2
+      (a melanosomal solute transporter; the OCA4 locus), which modulates rather
+      than synthesises pigment. This matches incomplete fetal RPE pigmentation:
+      the pigment-cell function is named in the cluster identity but its effector
+      genes are not yet expressed at this developmental stage. The gap is the
+      gene set's (developmental-stage incompleteness), not a GO annotation gap,
+      and the term is curator_added because absent carriers cannot be enrichment-
+      recovered. The corresponding component melanosome (GO:0042470) is likewise
+      a membership_gap here.
+  - term:
+      id: GO:0043010
+      label: camera-type eye development
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      This is a fetal-eye signature, so developmental programmes are expected.
+      Present carriers include MFRP and TMEM98 (which together regulate ocular
+      axial length; nanophthalmos/myopia), the secreted Wnt antagonists FRZB and
+      SFRP5, BMP6, COL8A1 (a Bruch's-membrane collagen), ITGAV and PRDM16. These
+      are annotated to camera-type eye development or its subprocesses in
+      goa_human, so annotation_supported. Categorised as supporting_process and
+      lineage_shared because eye development is shared across ocular cell types
+      and reflects the fetal stage rather than the mature RPE's defining function.
+  - term:
+      id: GO:0007601
+      label: visual perception
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The RPE does not phototransduce, but it is indispensable to vision because
+      it regenerates the 11-cis-retinal chromophore consumed by photoreceptors
+      on each photon capture. Visual-cycle genes present here (RPE65, RLBP1, RGR)
+      are annotated to visual perception in goa_human as essential contributors
+      to the sensory cascade, so the term is annotation_supported. Categorised as
+      supporting_process because it captures the organism-level sensory outcome
+      that the RPE enables rather than a process the RPE itself executes.

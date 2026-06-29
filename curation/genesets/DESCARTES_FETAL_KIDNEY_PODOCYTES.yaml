@@ -36,6 +36,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:26084928
         reference_title: "Podocyte endocytosis in the regulation of the glomerular filtration barrier."
@@ -62,6 +63,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:16889564
         reference_title: "Role of podocyte slit diaphragm as a filtration barrier."
@@ -89,6 +91,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Podocyte foot processes are elaborate actin-supported cell projections
       that interdigitate with those of neighbouring podocytes to wrap around
@@ -107,6 +110,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Podocytes are the principal cell type driving glomerulogenesis. As the
       gene set is derived from fetal kidney, developmental terms are
@@ -138,6 +142,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Podocyte differentiation is the developmental process by which glomerular
       epithelial progenitors acquire the specialised podocyte morphology,

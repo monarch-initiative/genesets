@@ -43,6 +43,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:19198566
         reference_title: "Measles virus interaction with host cells and impact on innate immunity."
@@ -68,6 +69,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:19198566
         reference_title: "Measles virus interaction with host cells and impact on innate immunity."
@@ -92,6 +94,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:36560645
         reference_title: "Measles Virus-Induced Host Immunity and Mechanisms of Viral Evasion."
@@ -116,6 +119,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     evidence:
       - reference: PMID:19198566
         reference_title: "Measles virus interaction with host cells and impact on innate immunity."
@@ -150,6 +154,7 @@ associations:
     specificity: broadly_expressed
     seed_source: curator_added
     recovery_status: membership_gap
+    insight: mechanistic
     evidence:
       - reference: PMID:19198566
         reference_title: "Measles virus interaction with host cells and impact on innate immunity."

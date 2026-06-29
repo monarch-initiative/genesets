@@ -1,0 +1,189 @@
+gene_set_id: MSIGDB:DESCARTES_FETAL_ADRENAL_CHROMAFFIN_CELLS
+gene_set_name: DESCARTES_FETAL_ADRENAL_CHROMAFFIN_CELLS
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of chromaffin cells of the human FETAL adrenal
+  medulla (Descartes fetal cell atlas, Cao et al. 2020, PMID:33184181; MSigDB
+  C8). Chromaffin cells are the catecholamine-producing neuroendocrine cells of
+  the sympathoadrenal lineage. This is an early developmental signature: it is
+  dominated by the sympathoadrenal / autonomic-neuron specification and neuronal
+  projection program rather than by the mature catecholamine-synthesis
+  machinery. Present are the sympathoadrenal / noradrenergic specification
+  transcription factors ISL1, HAND1, TLX3, INSM2 and HMX1, the NGF receptor
+  NTRK1 (TrkA, sympathoadrenal trophic survival), neuronal cytoskeleton /
+  projection genes (PRPH, GAP43, MAP1B, STMN4, TUBB2A, TUBB2B, PLXNA4),
+  neuropeptides (NPY, GAL, GALP), ion channels (RYR2, KCNB2, CACNG2) and ADCY8.
+  The single catecholamine-handling gene present is the noradrenaline reuptake
+  transporter SLC6A2 (NET). Notably, the cell type's textbook-defining effector
+  machinery is ABSENT from this fetal signature: the catecholamine-biosynthesis
+  enzymes TH, DBH, DDC and PNMT, the chromaffin-granule chromogranins CHGA and
+  CHGB, and the vesicular monoamine transporter SLC18A1 (VMAT1) are NOT members.
+  The set therefore captures the developmental specification of the cell type far
+  more than its mature catecholamine output; those defining effector functions
+  are recorded below as membership_gap associations.
+contexts:
+  - term:
+      id: CL:0000166
+      label: chromaffin cell
+    context_type: cell_type
+  - term:
+      id: UBERON:0001236
+      label: adrenal medulla
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0003357
+      label: noradrenergic neuron differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Acquisition of noradrenergic / sympathoadrenal identity is the defining
+      differentiation program of this cell type and the dominant signal in the
+      signature. The set is built around the sympathoadrenal specification
+      transcription factors ISL1, HAND1, TLX3, INSM2 and HMX1 together with the
+      NGF receptor NTRK1 (TrkA), which mediates the NGF-dependent trophic
+      survival that is the hallmark dependence of the sympathoadrenal lineage.
+      These genes are annotated to sympathetic / noradrenergic / autonomic
+      neuron differentiation in GOA-human, making this annotation_supported.
+      Confirmatory: a sympathoadrenal chromaffin marker set recovering
+      noradrenergic neuron differentiation recapitulates the cell type's
+      identity by construction.
+  - term:
+      id: GO:0048485
+      label: sympathetic nervous system development
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Chromaffin cells of the adrenal medulla and sympathetic neurons arise from
+      a common sympathoadrenal progenitor of the neural crest, and the set's
+      specification factors (ISL1, HAND1, TLX3, INSM2, HMX1) and NTRK1 are
+      annotated to sympathetic / autonomic nervous system development. Marked
+      lineage_shared because sympathetic nervous system development as a term is
+      common to both the chromaffin and sympathetic-neuron arms of this lineage;
+      the medullary chromaffin fate that distinguishes this set is carried by the
+      specific gene complement rather than by the term itself.
+  - term:
+      id: GO:0042423
+      label: catecholamine biosynthetic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: membership_gap
+    insight: confirmatory
+    curator_note: >-
+      Synthesis of catecholamines (the conversion of tyrosine via L-DOPA and
+      dopamine to noradrenaline and adrenaline) is the textbook cell-type-defining
+      effector function of a chromaffin cell and belongs in any complete
+      description of this cell type. It is a membership_gap, not an annotation_gap:
+      the enzymes that carry this process — tyrosine hydroxylase TH, dopamine
+      beta-hydroxylase DBH, aromatic-L-amino-acid decarboxylase DDC and
+      phenylethanolamine N-methyltransferase PNMT — are NOT members of this fetal
+      signature, so enrichment cannot and does not recover it. Their absence
+      reflects that this is an early developmental (specification-stage) signature
+      in which the mature catecholamine-synthesis machinery is not yet a top
+      marker, rather than evidence against the biology. Added by curator to record
+      the defining effector function the set omits. This is the headline honest
+      call for this signature.
+  - term:
+      id: GO:0015874
+      label: norepinephrine transport
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      SLC6A2 (the noradrenaline / norepinephrine transporter, NET) is the single
+      catecholamine-handling gene present in this signature and is directly
+      annotated to norepinephrine transport in GOA-human, making this
+      annotation_supported. It mediates reuptake / recapture of noradrenaline
+      rather than its synthesis. Categorised supporting_process: handling of an
+      already-synthesised transmitter is a real enabling part of the noradrenergic
+      phenotype, but it is downstream of, and secondary to, the defining
+      catecholamine-biosynthesis function (which is itself a membership_gap here).
+      Its presence without the synthesis enzymes is consistent with the
+      developmental ordering of the noradrenergic effector program in this fetal
+      cell.
+  - term:
+      id: GO:0042583
+      label: chromaffin granule
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: membership_gap
+    insight: confirmatory
+    curator_note: >-
+      The chromaffin granule — the dense-core secretory vesicle that synthesises,
+      stores and secretes catecholamines and gives the cell its name — is the
+      defining cellular structure of a chromaffin cell. It is a membership_gap:
+      the proteins that carry this compartment's identity, principally the
+      chromogranins CHGA and CHGB (the granule matrix proteins) and the vesicular
+      monoamine transporter SLC18A1 (VMAT1) that loads catecholamines into the
+      granule, are NOT members of this fetal signature. (Some generic
+      vesicle-associated genes such as SV2C and RPH3A are present, but the
+      chromaffin-granule-defining chromogranin / VMAT cargo specifically is
+      missing.) The association is real for the underlying biology and should
+      appear in a complete set; the gap is the gene set's, mirroring the
+      catecholamine-biosynthesis gap.
+  - term:
+      id: GO:0007218
+      label: neuropeptide signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      A neuropeptide program is genuinely present and recovered: NPY (neuropeptide
+      Y, a classic sympathoadrenal co-transmitter), GAL (galanin) and GALP
+      (galanin-like peptide) are set members annotated to neuropeptide signaling.
+      These peptides provide modulatory signaling alongside the catecholaminergic
+      output of the lineage. Marked lineage_shared because these neuropeptides are
+      used broadly across autonomic / sympathoadrenal neurons rather than being
+      uniquely chromaffin. Categorised supporting_process: a real enabling program
+      of these cells rather than their defining catecholaminergic effector
+      function.
+  - term:
+      id: GO:0031175
+      label: neuron projection development
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The signature is rich in neuronal cytoskeleton and process-outgrowth genes —
+      peripherin (PRPH), GAP43, MAP1B, STMN4 (stathmin-4), the neuronal tubulins
+      TUBB2A and TUBB2B, and the axon-guidance receptor PLXNA4 — which are
+      annotated to neuron projection development / neurite outgrowth in GOA-human,
+      making this annotation_supported and readily recovered. Marked lineage_shared
+      and supporting_process because neurite / projection elaboration is the
+      characteristic developmental program shared across the autonomic-neuron and
+      sympathoadrenal lineage rather than a chromaffin-specific effector function;
+      it reinforces that this fetal cluster carries a strongly neuronal
+      developmental program.

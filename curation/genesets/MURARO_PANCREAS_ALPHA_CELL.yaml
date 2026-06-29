@@ -6,6 +6,8 @@ taxon:
   id: NCBITaxon:9606
   label: Homo sapiens
 direction: NA
+series: SERIES:PANCREATIC_ISLET
+series_role: alpha
 description: >-
   Single-cell marker signature of pancreatic alpha (A) cells from human pancreas
   (Muraro et al.). Pancreatic alpha cells are glucagon-secreting endocrine cells
@@ -30,6 +32,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:37367959
         reference_title: "100 years of glucagon and 100 more."
@@ -50,6 +53,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Peptide hormone secretion is the immediate parent term of glucagon secretion
       and is shared with pancreatic beta cells (insulin), delta cells (somatostatin),
@@ -65,6 +69,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:34659118
         reference_title: "Pathways of Glucagon Secretion and Trafficking in the Pancreatic Alpha Cell: Novel Pathways, Proteins, and Targets for Hyperglucagonemia."
@@ -86,6 +91,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:24367972
         reference_title: "Glucose regulation of glucagon secretion."
@@ -122,6 +128,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Alpha cells arise from the endocrine pancreas lineage and express key
       transcription factors (ARX, PCSK2, GCG) that drive endocrine pancreas

@@ -1,0 +1,158 @@
+gene_set_id: MSIGDB:DESCARTES_FETAL_ADRENAL_SCHWANN_CELLS
+gene_set_name: DESCARTES_FETAL_ADRENAL_SCHWANN_CELLS
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+series: SERIES:MYELINATING_GLIA
+series_role: peripheral
+description: >-
+  Single-cell marker signature of Schwann cells from human fetal adrenal gland
+  (Descartes atlas, Cao et al. 2020 Science, PMID:33184181; MSigDB C8). Schwann
+  cells are the myelinating and ensheathing glia of the peripheral nervous
+  system; in the fetal adrenal they are the Schwann cells and Schwann-cell
+  precursors of the sympathoadrenal nerves, a neural-crest-derived lineage. This
+  signature is the PERIPHERAL pole of a myelinating-glia contrast series whose
+  central pole is the Descartes fetal cerebrum oligodendrocyte set. Its marker
+  genes include the peripheral myelin structural proteins MPZ (myelin protein
+  zero / P0), PMP2 and PLP1, myelin-lipid biosynthetic enzymes (UGT8, GAL3ST1),
+  the SoxE master glial transcription factors SOX10 and SOX8 with FOXD3, the
+  glial marker S100B, and the neurotrophin/neuregulin receptors NGFR (p75) and
+  ERBB3 that drive Schwann-cell specification. The canonical CNS myelin gene MBP
+  and the PNS gene PMP22 are NOT members of this set.
+contexts:
+  - term:
+      id: CL:0002573
+      label: Schwann cell
+    context_type: cell_type
+  - term:
+      id: UBERON:0002369
+      label: adrenal gland
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0042552
+      label: myelination
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Myelination is the defining biological process of Schwann cells. Ten set
+      genes are annotated to GO:0042552 under the is_a closure in current
+      GOA-human, led by MPZ (myelin protein zero / P0; experimental IMP plus
+      IBA), the principal structural protein of compact peripheral myelin, with
+      PLP1, ERBB3, DHH, the myelin-lipid enzymes UGT8 and GAL3ST1, GPM6B, LGI4
+      and GPC1. The canonical CNS gene MBP and the PNS gene PMP22 are not in this
+      fetal-adrenal set, but the peripheral structural proteins MPZ, PMP2 and
+      PLP1 are members, making myelination the top recovered process and
+      confirmatory of Schwann-cell identity.
+  - term:
+      id: GO:0043209
+      label: myelin sheath
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The myelin sheath is the defining subcellular structure produced by
+      Schwann cells. Seven set genes localize here in GOA-human: MPZ and PMP2
+      (peripheral myelin structural proteins), PLP1, CNP (2',3'-cyclic
+      nucleotide 3'-phosphodiesterase), GJC3 (connexin-29, the paranodal
+      gap-junction protein), GPM6B and CNTN2. This is the expected top cellular
+      component in any enrichment of Schwann-cell markers.
+  - term:
+      id: GO:0008366
+      label: axon ensheathment
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Axon ensheathment is the physical wrapping and electrical insulation of
+      peripheral axons, the function Schwann cells perform in both myelinating
+      and non-myelinating (Remak-bundle) modes. Ten set genes carry this term
+      under closure (PLP1, MPZ, ERBB3, DHH, SOX10, GPC1, UGT8, GAL3ST1, LGI4,
+      GPM6B). Classified supporting_process because myelination (GO:0042552) is
+      the more precise core term and ensheathment emphasizes the ensheathing
+      interaction rather than myelin biogenesis; the broader parent ensheathment
+      of neurons (GO:0007272), which also covers non-myelinating Schwann cells,
+      is recovered by the same ten genes.
+  - term:
+      id: GO:0014037
+      label: Schwann cell differentiation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The fetal-adrenal sample captures Schwann cells and Schwann-cell
+      precursors of the sympathoadrenal nerves, so lineage-specification genes
+      are prominent. Set genes ERBB3 (the NRG1 co-receptor that drives
+      Schwann-cell fate), GPC1 and LGI4 are annotated to Schwann cell
+      differentiation directly. The master glial transcription factors SOX10 and
+      SOX8 with S100B and FOXD3 — all set members — are in current GOA-human
+      annotated to the broader parent glial cell differentiation (GO:0010001)
+      and to peripheral nervous system development (GO:0007422) rather than to
+      this Schwann-specific child, so the cell-type-specific differentiation
+      signal is real but partly sits one level up. Classified supporting_process
+      because the committed glial/myelinating identity, not the differentiation
+      step, is the set's primary signal.
+  - term:
+      id: GO:0007422
+      label: peripheral nervous system development
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Schwann cells are PNS glia and arise during peripheral nervous system
+      development from neural-crest-derived Schwann-cell precursors. Six set
+      genes are annotated here: SOX10 and SOX8 (SoxE master regulators), ERBB3,
+      LGI4, UGT8 and GPC1. This PNS-development context is the peripheral
+      counterpart of the central developmental context in the sibling
+      oligodendrocyte set and discriminates the peripheral pole of the
+      myelinating-glia series. Marked lineage_shared because the term is common
+      to peripheral neurons and glia rather than unique to Schwann cells.
+  - term:
+      id: GO:0022011
+      label: myelination in peripheral nervous system
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Myelination in the peripheral nervous system (GO:0022011) is the
+      PNS-specific child of myelination (GO:0042552) and is the biologically
+      exact process for Schwann cells, which supply all PNS myelin. It is core
+      biology but recorded annotation_gap: of the set's myelin genes only LGI4
+      is annotated to this child in current GOA-human, whereas the dominant
+      peripheral structural proteins MPZ (which carries an experimental IMP
+      annotation) and PMP2 sit at the parent GO:0042552 and at myelin sheath
+      (GO:0043209), so enrichment would not independently recover the
+      PNS-specific term. This is a GO annotation-curation target and is the
+      precise peripheral mirror of the central nervous system myelination
+      (GO:0022010) annotation_gap recorded for the sibling oligodendrocyte set;
+      together they make the CNS/PNS contrast of the SERIES:MYELINATING_GLIA
+      series explicit. Propagation from the parent term would not capture the
+      PNS specificity distinction.

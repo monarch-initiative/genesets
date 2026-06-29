@@ -36,6 +36,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:36685598
         reference_title: "Immune response following traumatic spinal cord injury: Pathophysiology and therapies."
@@ -62,6 +63,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:24816452
         reference_title: "Spinal cord regeneration."
@@ -89,6 +91,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:42274604
         reference_title: "The Role of Interleukin-18 After Spinal Cord Injury: Mechanisms and Therapeutic Potential."
@@ -113,6 +116,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:38607020
         reference_title: "NF-κB and JAK/STAT Signaling Pathways as Crucial Regulators of Neuroinflammation and Astrocyte Modulation in Spinal Cord Injury."
@@ -138,6 +142,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:17254568
         reference_title: "Matrix metalloproteinases and proteoglycans in axonal regeneration."
@@ -163,6 +168,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       The extracellular matrix is the dominant structural feature of the SCI glial scar.
       CSPG core proteins (ACAN, BCAN, NCAN, VCAN) and tenascins deposited at the injury site

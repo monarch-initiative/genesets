@@ -35,6 +35,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:36209270
         reference_title: "Signaling pathways and therapeutic interventions in gastric cancer."
@@ -66,6 +67,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Cyclin D1 (CCND1) and CDK4/CDK6 complexes included in this WikiPathways
       gastric cancer network directly regulate G1-to-S-phase cell cycle entry.
@@ -83,6 +85,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:39849657
         reference_title: "Helicobacter pylori and gastric cancer: mechanisms and new perspectives."
@@ -113,6 +116,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: mechanistic
     curator_note: >-
       CDH1 (E-cadherin), the principal determinant of gastric epithelial
       cell-cell adhesion, is a central member of this gene set. Somatic and
@@ -130,6 +134,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:39849657
         reference_title: "Helicobacter pylori and gastric cancer: mechanisms and new perspectives."

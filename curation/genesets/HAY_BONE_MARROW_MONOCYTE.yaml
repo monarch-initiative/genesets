@@ -36,6 +36,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:33275661
         reference_title: "Thyroid Hormone and Deiodination in Innate Immune Cells."
@@ -58,6 +59,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Monocytes are key innate sentinels that detect pathogen-associated
       molecular patterns via TLRs, NLRs, and CLRs and mount rapid innate immune
@@ -73,6 +75,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Activated monocytes are major producers of pro-inflammatory cytokines
       (TNF-alpha, IL-1beta, IL-6) and chemokines that drive acute inflammation.
@@ -87,6 +90,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Monocytes are among the most prolific cytokine-producing cells of the
       innate immune system, secreting TNF-alpha, IL-1beta, IL-6, IL-10, and
@@ -102,6 +106,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Phagocytic vesicles are the membrane-bounded intracellular compartments
       that arise during ingestion of particulate material. As professional
@@ -134,6 +139,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Monocyte differentiation is the developmental process by which bone marrow
       precursors (monoblasts and promonocytes) mature into circulating monocytes.

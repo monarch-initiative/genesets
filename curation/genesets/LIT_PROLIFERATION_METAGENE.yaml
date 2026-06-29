@@ -1,0 +1,161 @@
+gene_set_id: LIT:PROLIFERATION_METAGENE
+gene_set_name: PROLIFERATION_METAGENE
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+description: >-
+  Literature-defined disease-activity (tumour proliferation) signature: the genes
+  whose coordinated UP-regulation reads out an actively cycling cell population.
+  Anchored on the defining human cell-cycle transcriptome of Whitfield et al. (Mol
+  Biol Cell 2002, PMID:12058064), who used cDNA microarrays of synchronised HeLa
+  cells to identify >850 genes that vary periodically through the human
+  cell-division cycle, hierarchically clustered them into coexpressed groups for
+  essential cell-cycle processes such as DNA replication and chromosome
+  segregation, and showed that the genes previously reported to correlate with the
+  proliferative state of tumours are largely these periodically expressed
+  cell-cycle genes. Unlike MSigDB causal/driver disease pathway sets, the members
+  here are the READOUT of an ACTIVE cellular program (cell-cycle progression /
+  proliferation), not driver mutations: they are UPregulated in proliferation-high
+  (cycling) tumours simply because such tumours contain more dividing cells.
+  Representative members are canonical proliferation/cell-cycle markers - MKI67,
+  PCNA and TOP2A, the mitotic cyclins CCNB1/CCNB2 and the cyclin-dependent kinase
+  CDK1, the spindle-assembly-checkpoint, kinetochore and mitotic-kinase genes
+  BUB1, AURKA, AURKB, CDC20 and CENPA, the replicative MCM2-7 helicase complex,
+  and the nucleotide-metabolism enzymes TYMS and RRM2. Because these member genes
+  literally carry the GO annotations for the cell-cycle processes they execute,
+  enrichment recovers those processes (annotation_supported) rather than leaving
+  them as gaps. Tumour proliferation is a pan-cancer cellular program rather than a
+  cell type, disease or anatomical entity, so (as in the BUFFA hypoxia and SenMayo
+  senescence panels) this file intentionally carries zero biological contexts; the
+  program is captured entirely in the associations below. The membership of a
+  single canonical "proliferation metagene" is not enumerated here (proliferation
+  signatures range from compact clinical panels to the full >850-gene periodic
+  catalogue), so n_genes is omitted.
+associations:
+  - term:
+      id: GO:0000278
+      label: mitotic cell cycle
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:12058064
+        reference_title: "Identification of genes periodically expressed in the human cell cycle and their expression in tumors."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Transcripts of >850 genes showed periodic variation during the cell cycle."
+        explanation: >-
+          The mitotic cell cycle is the defining ACTIVE program this signature
+          reads out. The panel descends directly from the synchronised-HeLa cDNA
+          microarray experiment that identified the genes oscillating periodically
+          through the human cell-division cycle; these periodically expressed
+          genes (mitotic cyclins CCNB1/CCNB2, CDK1, MKI67, TOP2A, the
+          mitotic-kinase and kinetochore genes) carry mitotic cell-cycle
+          annotations, so enrichment recovers this overarching process
+          (annotation_supported). Marked broadly_expressed because the
+          cell-division cycle operates across essentially all proliferating human
+          cell types rather than being lineage-restricted.
+      - reference: PMID:12058064
+        reference_title: "Identification of genes periodically expressed in the human cell cycle and their expression in tumors."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Most of the genes whose expression had previously been reported to correlate with the proliferative state of tumors were found herein also to be periodically expressed during the HeLa cell cycle."
+        explanation: >-
+          This sentence establishes the identity of the proliferation metagene:
+          the genes that mark the proliferative state of tumours ARE the
+          periodically expressed cell-cycle genes. It is the evidence that the
+          signature is a tumour-proliferation readout of the active mitotic
+          cell-cycle program rather than a set of driver mutations, justifying
+          mitotic cell cycle as the core process of the whole panel.
+  - term:
+      id: GO:0006260
+      label: DNA replication
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:12058064
+        reference_title: "Identification of genes periodically expressed in the human cell cycle and their expression in tumors."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Cell cycle-regulated transcripts of genes involved in fundamental processes such as DNA replication and chromosome segregation seem to be more highly expressed in proliferative tumors simply because they contain more cycling cells."
+        explanation: >-
+          S-phase DNA replication is one of the two fundamental cell-cycle
+          processes the paper explicitly names as the basis of the
+          proliferation-tumour correlation. The replicative members of the
+          signature (the MCM2-7 helicase complex, PCNA, and the nucleotide-supply
+          enzymes RRM2 and TYMS) carry DNA-replication annotations, so enrichment
+          recovers this core process (annotation_supported). Kept core because
+          genome duplication is a defining activity of the cycling cells the panel
+          reads out; broadly_expressed because DNA replication is engaged by every
+          dividing cell type.
+  - term:
+      id: GO:0007059
+      label: chromosome segregation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Chromosome segregation is the second fundamental cell-cycle process the
+      defining paper names (alongside DNA replication) as the coexpressed module
+      whose transcripts are elevated in proliferative tumours. The
+      spindle-assembly-checkpoint, kinetochore and chromosome-passenger members of
+      the signature (BUB1, CDC20, AURKB, CENPA) carry chromosome-segregation
+      annotations, so enrichment recovers this core process (annotation_supported).
+      Kept core because faithful partitioning of the duplicated genome is a
+      defining activity of the actively dividing cells the panel reads out;
+      broadly_expressed because chromosome segregation operates across all
+      proliferating cell types.
+  - term:
+      id: GO:0051301
+      label: cell division
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Cell division is the overall outcome the proliferation metagene reports: the
+      signature is elevated specifically because proliferation-high tumours contain
+      more dividing cells. Mitotic regulators and cytokinesis effectors among the
+      members (CDK1, the mitotic cyclins CCNB1/CCNB2, AURKB, CDC20) carry
+      cell-division annotations, so enrichment recovers this core process
+      (annotation_supported). Kept core as a defining activity of the cycling-cell
+      state; broadly_expressed because cell division is shared across essentially
+      all proliferating lineages.
+  - term:
+      id: GO:0140014
+      label: mitotic nuclear division
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The M-phase mitotic-kinase and spindle members of the panel (AURKA, AURKB,
+      CCNB1, CDK1, and MKI67, an M-phase-associated antigen) carry
+      mitotic-nuclear-division annotations, so enrichment recovers the term
+      (annotation_supported). Scored as supporting rather than an additional core
+      axis: mitotic nuclear division is one phase-specific step nested within the
+      overarching mitotic cell cycle asserted above and overlaps substantially with
+      the chromosome-segregation core, so it is an enabling sub-process rather than
+      a separate defining activity; broadly_expressed because mitosis is shared
+      across all dividing cell types.

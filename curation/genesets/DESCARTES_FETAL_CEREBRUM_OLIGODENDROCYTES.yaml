@@ -6,6 +6,8 @@ taxon:
   id: NCBITaxon:9606
   label: Homo sapiens
 direction: NA
+series: SERIES:MYELINATING_GLIA
+series_role: central
 description: >-
   Single-cell marker signature of oligodendrocytes from human fetal cerebrum
   (Descartes atlas, MSigDB C8). Oligodendrocytes are the myelinating glia of
@@ -36,6 +38,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:31066630
         reference_title: "Myelin in the Central Nervous System: Structure, Function, and Pathology."
@@ -59,6 +62,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The myelin sheath is the defining subcellular structure produced by
       oligodendrocytes. Major marker genes of this signature — including MBP
@@ -76,6 +80,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Axon ensheathment is the process by which glial cell membranes close
       around neuronal axons to provide electrical insulation. In the CNS,
@@ -94,6 +99,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The Descartes fetal cerebrum sample captures oligodendrocyte lineage
       cells at various stages of differentiation, including OPCs and nascent
@@ -130,6 +136,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Central nervous system myelination (GO:0022010) is the CNS-specific
       child of myelination (GO:0042552) and precisely describes the

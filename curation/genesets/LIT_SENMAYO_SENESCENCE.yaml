@@ -1,0 +1,153 @@
+gene_set_id: LIT:SENMAYO_SENESCENCE
+gene_set_name: SENMAYO
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+n_genes: 125
+description: >-
+  Literature-defined cell-state ACTIVITY signature of cellular senescence and the
+  senescence-associated secretory phenotype (SASP), introduced as "SenMayo" by
+  Saul et al. (Nat Commun 2022, PMID:35974106). The authors curated 125 genes from
+  an in-depth literature review of factors enriched in senescent and/or
+  SASP-secreting cells and validated the panel in aged human bone biopsies, in
+  mouse and human tissues after genetic and pharmacological senescent-cell
+  clearance, and in single-cell RNA-seq. Unlike MSigDB causal/driver disease
+  pathway sets, the members here are the READOUT of an ACTIVE program, not driver
+  mutations: they are the genes UP in senescent cells relative to non-senescent
+  cells. The panel consists predominantly of SASP factors (n=83) - pro-inflammatory
+  cytokines and chemokines (e.g. IL6, IL1A, IL1B, CXCL1/2/8, CCL2/8/20), growth
+  factors and binding proteins (IGFBP3/4/5/7), matrix-degrading proteases (MMP1/3/12)
+  and protease inhibitors (SERPINE1) - plus transmembrane (n=20, e.g. TNFRSF1B)
+  and intracellular (n=22) proteins. Because the member genes literally carry the
+  GO annotations for the processes the senescent state executes, enrichment recovers
+  those processes (annotation_supported) rather than leaving them as gaps. Notably,
+  the authors INTENTIONALLY excluded the canonical cell-cycle-arrest senescence
+  markers CDKN2A (p16) and CDKN1A (p21) from SenMayo (they reserved these to
+  independently validate the panel), so cell-cycle-arrest effectors are absent and
+  cell cycle arrest is deliberately NOT asserted here. Senescence is a pan-tissue
+  CELL STATE with no single cell-type, disease, or anatomical anchor (and CL has no
+  "senescent cell" term), so this file intentionally carries zero biological
+  contexts; the state is captured entirely in the associations below.
+associations:
+  - term:
+      id: GO:0090398
+      label: cellular senescence
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:35974106
+        reference_title: "A new gene set identifies senescent cells and predicts senescence-associated pathways across tissues."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "Here, we generate a gene set (SenMayo) and validate its enrichment in bone biopsies from two aged human cohorts. We further demonstrate reductions in SenMayo in bone following genetic clearance of senescent cells in mice and in adipose tissue from humans following pharmacological senescent cell clearance."
+        explanation: >-
+          Cellular senescence is the defining cell state this signature reads out:
+          SenMayo was constructed expressly to identify senescent cells, was
+          validated by its enrichment in aged human bone biopsies, and was shown to
+          decrease following both genetic and pharmacological senescent-cell
+          clearance in mice and humans - establishing it as a bona fide senescence
+          (not merely aging) signature. It is the overarching ACTIVE program the whole
+          panel represents, asserted by the curator as core. Annotation support is
+          genuine (e.g. SERPINE1, IGFBP3/5/7 are SenMayo members carrying the cellular
+          senescence annotation), so it is annotation_supported rather than a gap;
+          seed_source is curator_added because the senescence term itself is the
+          curator's overarching judgment about the set rather than the SASP effector
+          term most member genes are individually annotated to.
+    curator_note: >-
+      lineage_shared, not cell_type_specific: senescence is a pan-tissue state
+      arising across many cell lineages (the paper validates SenMayo across bone,
+      brain, adipose and hematopoietic/mesenchymal compartments and across human and
+      mouse), so it is shared across lineages rather than tied to one cell type.
+  - term:
+      id: GO:0032635
+      label: interleukin-6 production
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:35974106
+        reference_title: "A new gene set identifies senescent cells and predicts senescence-associated pathways across tissues."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Although cellular senescence drives multiple age-related co-morbidities through the senescence-associated secretory phenotype, in vivo senescent cell identification remains challenging."
+        explanation: >-
+          The senescence-associated secretory phenotype (SASP) named here is, by
+          definition, a secretory program of pro-inflammatory cytokines. IL-6 is the
+          archetypal SASP factor and a SenMayo member, so interleukin-6 production is
+          the representative core cytokine process for the signature; the paper reports
+          that cytokines/chemokines form the most densely connected module of the
+          SenMayo network. IL6 carries the interleukin-6 production annotation, so
+          enrichment recovers this core process (annotation_supported). The broader
+          secretory program — IL1A/IL1B and the CXCL/CCL chemokines (CXCL1/2/8,
+          CCL2/8/20) — is additionally captured by the inflammatory response and
+          leukocyte chemotaxis terms in this file. Marked broadly_expressed because
+          cytokine production occurs across many inflammatory contexts and is not
+          unique to the senescent state. (This term replaces the obsolete GO:0050663
+          "cytokine secretion".)
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The SASP is a pro-inflammatory program with deleterious paracrine and systemic
+      effects; the paper notes enrichment of genes regulating inflammatory mediators
+      with aging. The interleukin and chemokine members (IL6, IL1A, IL1B, CXCL/CCL
+      factors) carry inflammatory response annotations, so enrichment recovers this
+      core process (annotation_supported). Kept core because chronic sterile
+      inflammation ("inflammaging") driven by the SASP is a defining activity of the
+      senescent state, but specificity is broadly_expressed because inflammatory
+      response is shared across countless immune contexts.
+  - term:
+      id: GO:0030198
+      label: extracellular matrix organization
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The SASP includes extracellular-matrix-degrading proteins; the
+      matrix-metalloprotease members of SenMayo (e.g. MMP1, MMP3, MMP12) and the
+      protease inhibitor SERPINE1 remodel the ECM in the senescent microenvironment.
+      These genes carry ECM-organization annotations, so enrichment recovers the term
+      (annotation_supported). Scored as supporting rather than core: ECM remodelling
+      is a real downstream consequence of the SASP but is one effector arm rather than
+      the defining activity of the signature, and it is broadly expressed across many
+      tissue-remodelling contexts.
+  - term:
+      id: GO:0030595
+      label: leukocyte chemotaxis
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      A major function of the SASP is to recruit immune cells for senescence
+      surveillance and clearance; the SenMayo chemokine members (CXCL1/2/8,
+      CCL2/8/20) are chemoattractants that drive leukocyte chemotaxis and carry the
+      corresponding GO annotation, so enrichment recovers the term
+      (annotation_supported). Scored as supporting: immune recruitment is an enabling
+      paracrine effect of the secretory program rather than the defining activity, and
+      leukocyte chemotaxis is broadly expressed across inflammatory contexts.

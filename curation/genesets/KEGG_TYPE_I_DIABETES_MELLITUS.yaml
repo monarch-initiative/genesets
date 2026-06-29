@@ -33,6 +33,7 @@ associations:
     confidence: high
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       MHC class I and II molecules (HLA-A, HLA-B, HLA-DRA, HLA-DRB1, HLA-DQA1,
       HLA-DQB1) are central members of the KEGG T1D pathway. Antigen processing
@@ -47,6 +48,7 @@ associations:
     confidence: high
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     evidence:
       - reference: PMID:28358037
         reference_title: "Type 1 diabetes mellitus."
@@ -66,6 +68,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       HLA class II alpha and beta chain gene products (HLA-DRA, HLA-DRB1,
       HLA-DQA1, HLA-DQB1, HLA-DPA1, HLA-DPB1) in the KEGG T1D pathway
@@ -81,6 +84,7 @@ associations:
     confidence: medium
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       CASP3, CASP8, CASP9, BAD, BCL2, and FAS/FASL in the KEGG T1D pathway
       encode canonical apoptosis components. Apoptotic death of pancreatic
@@ -96,6 +100,7 @@ associations:
     confidence: medium
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Generic immune response term recovered because the KEGG T1D pathway
       is dominated by immune effector genes (HLA molecules, cytokines, T-cell
@@ -123,6 +128,7 @@ associations:
     confidence: medium
     specificity: cell_type_specific
     seed_source: curator_added
+    insight: confirmatory
     curator_note: >-
       Insulin (INS) and related beta-cell function genes are included in the
       KEGG T1D pathway as representatives of the target tissue being destroyed.

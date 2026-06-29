@@ -1,0 +1,193 @@
+gene_set_id: LIT:NAIVE_PLURIPOTENCY
+gene_set_name: NAIVE_PLURIPOTENCY
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:PLURIPOTENCY_STATE
+series_role: naive
+description: >-
+  Literature-defined cell-state ACTIVITY signature of the NAIVE (ground-state,
+  pre-implantation-like) human pluripotency program, the early pole of the
+  pluripotency-state series. The naive program was defined by the two 2014
+  studies that first captured a mouse-ESC-like ground state in human cells:
+  Theunissen, Jaenisch et al. (Cell Stem Cell 2014, PMID:25090446), who
+  identified a five-kinase-inhibitor cocktail (5i/L/A: MEK, GSK3, BRAF, ROCK and
+  SRC inhibition plus LIF and Activin) that induces and maintains endogenous
+  OCT4 distal-enhancer activity, the molecular signature of ground-state
+  pluripotency; and Takashima, Smith et al. (Cell 2014, PMID:25215486), who
+  showed that transient NANOG + KLF2 expression resets human pluripotent cells
+  to a transgene-independent ground state propagated in titrated 2i + LIF + PKC
+  inhibition (t2iL+Go). Unlike MSigDB causal/driver disease pathway sets, the
+  members here are the READOUT of an ACTIVE program, not driver mutations: they
+  are the transcription factors and effectors UPregulated in naive relative to
+  conventional (primed) human pluripotent stem cells. The signature is dominated
+  by the ground-state pluripotency circuitry that is silent or low in primed
+  cells: the Kruppel-like factors KLF2, KLF4, KLF5 and KLF17, the LIF/STAT3
+  effector TFCP2L1, NANOG, the preimplantation/germline markers DPPA3 (STELLA),
+  DPPA5 and DPPA2, ZFP42 (REX1), and DNMT3L (with global DNA hypomethylation a
+  hallmark of the state). ESRRB, a potent ground-state self-renewal factor in
+  mouse, is part of the canonical circuitry but is only variably/poorly induced
+  in human naive cells (both papers note its noninduction), an example of
+  incomplete cross-species conservation of the naive program. Because the member
+  genes literally carry the GO annotations for the self-renewal program the
+  naive state executes, enrichment recovers those processes
+  (annotation_supported) rather than leaving them as gaps. This set is the NAIVE
+  pole of a state series (series SERIES:PLURIPOTENCY_STATE): it is paired with
+  the reciprocal PRIMED (post-implantation epiblast-like) human pluripotency
+  signature, against which the same shared terms resolve to contrasting
+  interpretations. The contrast is most sharply drawn in SIGNALING DEPENDENCE:
+  naive cells are responsive to leukemia inhibitory factor (LIF) via STAT3 and
+  self-renew independently of ERK/FGF, whereas primed human PSC are unresponsive
+  to LIF and depend on FGF and TGF-beta/Activin signaling.
+contexts:
+  - term:
+      id: CL:0002322
+      label: embryonic stem cell
+    context_type: cell_type
+    role_note: >-
+      Naive / ground-state / pre-implantation-like pluripotency. The signature
+      reads out the naive (ground-state) self-renewal program of the human
+      embryonic stem cell, a state that resembles the inner cell mass /
+      preimplantation epiblast and the mouse ESC ground state, in contrast to
+      the primed (post-implantation epiblast-like) state of conventional human
+      ESCs. CL:0002322 (embryonic stem cell) is the anchoring cell-state context
+      and the naive pole of this pluripotency-state series.
+associations:
+  - term:
+      id: GO:0019827
+      label: stem cell population maintenance
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:25090446
+        reference_title: "Systematic identification of culture conditions for induction and maintenance of naive human pluripotency."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "These inhibitors generate human pluripotent cells in which transcription factors associated with the ground state of pluripotency are highly upregulated and bivalent chromatin domains are depleted."
+        explanation: >-
+          The gene set is, by definition, the readout of the naive self-renewal
+          program: the defining paper shows that the optimized naive culture
+          conditions generate human pluripotent cells in which the
+          ground-state pluripotency transcription factors (KLF4, KLF5, TFCP2L1,
+          NANOG, DPPA3/5, ZFP42) are highly upregulated. Stem cell population
+          maintenance is therefore the central process the signature represents,
+          and these naive markers carry this GO annotation, so enrichment
+          recovers it (annotation_supported).
+      - reference: PMID:25215486
+        reference_title: "Resetting transcription factor control circuitry toward ground-state pluripotency in human."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Depletion of ground-state transcription factors, TFCP2L1 or KLF4, has marginal impact on conventional human pluripotent stem cells but collapses the reset state."
+        explanation: >-
+          The companion paper provides functional evidence that the naive
+          markers in this set actively MAINTAIN the state: RNAi depletion of the
+          ground-state transcription factors TFCP2L1 or KLF4 has little effect on
+          primed (conventional) human PSC but collapses the naive (reset) state.
+          Self-renewal of the naive population is thus governed by the very
+          transcription-factor circuitry this signature reads out, confirming
+          stem cell population maintenance as the defining core process.
+    curator_note: >-
+      This is the defining ACTIVE process of the naive program, not a driver
+      lesion. specificity is lineage_shared because stem cell population
+      maintenance (self-renewal) is the shared identity process of stem cells
+      across lineages rather than unique to pluripotent cells; its
+      naive-pluripotency-defining ROLE here is the point, and the pluripotency
+      circuitry members (NANOG, KLF4, TFCP2L1, ZFP42) carry the annotation, so
+      the term is annotation_supported.
+  - term:
+      id: GO:0048861
+      label: leukemia inhibitory factor signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: membership_gap
+    insight: confirmatory
+    curator_note: >-
+      LIF/STAT3 responsiveness is a defining axis that separates the naive pole
+      from the primed pole of this series: naive cells (like mouse ground-state
+      ESC) are stimulated by leukemia inhibitory factor and self-renew
+      independently of ERK/FGF, whereas primed human PSC are unresponsive to LIF
+      and depend on FGF and TGF-beta/Activin. Both defining protocols include
+      LIF in the naive medium (5i/L/A and t2iL+Go). Kept core_process because
+      this is a defining signaling dependence of the naive STATE; specificity is
+      broadly_expressed because LIF signaling itself operates in many cell types.
+      Recorded as membership_gap (curator_added) because the genes that carry
+      this annotation are the upstream pathway components (LIF, LIFR, IL6ST/gp130,
+      STAT3), which are not differentially-UP members of this naive-marker
+      readout signature, so enrichment cannot recover it from this set even
+      though the dependence is real biology. Of note, in the Theunissen 5i/L
+      system hLIF was individually dispensable for reporter maintenance, so the
+      LIF dependence is less strict in human than in mouse, hence medium
+      confidence.
+  - term:
+      id: GO:1990823
+      label: response to leukemia inhibitory factor
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      The downstream, cell-state side of the LIF/STAT3 axis: the naive state is
+      the transcriptional RESPONSE to LIF, and the LIF/STAT3 target effectors
+      TFCP2L1, KLF4 and KLF5 (induced downstream of STAT3 and required to
+      sustain the naive state) are themselves members of this signature. Scored
+      supporting rather than core because the LIF-responsiveness contrast is
+      headlined by the pathway term; recorded as annotation_gap (curator_added)
+      because these LIF/STAT3 effector genes ARE in the set but their GO
+      annotations capture them as transcription factors / stem cell maintenance
+      regulators rather than as the LIF response, so the gap is GO's.
+  - term:
+      id: GO:0045596
+      label: negative regulation of cell differentiation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The naive state is defined as much by ACTIVE restraint of lineage priming
+      as by self-renewal: the ground-state circuitry (NANOG, the KLF factors)
+      represses differentiation and lineage-specifier expression, and the naive
+      transcriptome is characterized by the absence of lineage priming relative
+      to primed cells. Naive markers such as NANOG and KLF4 carry the negative
+      regulation of cell differentiation annotation, so enrichment recovers it
+      (annotation_supported). Scored supporting rather than core, and
+      broadly_expressed, because suppression of differentiation is a generic
+      enabling property shared across many self-renewing and progenitor contexts
+      rather than the naive-identity-defining axis.
+  - term:
+      id: GO:0001825
+      label: blastocyst formation
+    aspect: biological_process
+    category: supporting_process
+    confidence: low
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: membership_gap
+    insight: confirmatory
+    curator_note: >-
+      Developmental-stage anchor: the naive program corresponds to the
+      pre-implantation epiblast / inner cell mass of the human blastocyst, the
+      in vivo source of naive pluripotency, and naive markers such as KLF4 and
+      TFCP2L1 are detected specifically in the blastocyst ICM. blastocyst
+      formation captures this preimplantation identity that distinguishes the
+      naive pole from the post-implantation-epiblast-like primed pole. Scored
+      supporting with low confidence because the term denotes the morphogenetic
+      process of blastocyst formation rather than the transcription-factor
+      program per se; recorded as membership_gap (curator_added) because the
+      genes annotated to blastocyst formation are largely not members of this
+      focused naive-marker readout signature.

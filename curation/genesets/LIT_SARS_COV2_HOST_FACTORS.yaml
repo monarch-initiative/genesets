@@ -1,0 +1,231 @@
+gene_set_id: LIT:SARS_COV2_HOST_FACTORS
+gene_set_name: SARS_COV2_HOST_FACTORS
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Literature-defined set of human host genes REQUIRED for SARS-CoV-2 infection,
+  taken from the two defining genome-wide CRISPR loss-of-function screens:
+  Daniloski et al. (Cell 2021, PMID:33147445), performed in human ACE2-expressing
+  A549 alveolar epithelial cells, and the companion screen of Wei et al. (Cell
+  2021, PMID:33147444), performed in Vero-E6 cells with orthogonal validation in
+  human cells. Critically, the members are host DEPENDENCY factors — cellular
+  genes the virus hijacks, whose knockout makes cells RESISTANT — not antiviral
+  restriction factors. The interpretive value of this set is therefore the
+  convergent host MACHINERY the virus co-opts, which is non-obvious for "viral
+  infection": top-ranked hits cluster into the vacuolar (V-)type ATPase proton
+  pump and endosomal/lysosomal acidification (e.g. ATP6V1A, ATP6AP1), the
+  endosomal protein-sorting Retromer and Commander (CCC) complexes that drive
+  retrograde endosome-to-Golgi transport (VPS35/VPS29/VPS26, CCDC22/CCDC93/COMMD
+  genes), class III PI3-kinase / VPS34 (PIK3C3) which generates the endosomal
+  PI3P that recruits this sorting machinery, the small GTPase RAB7A controlling
+  late-endosomal trafficking of the ACE2 receptor, and — in the Wei screen — the
+  SWI/SNF chromatin-remodeling complex (SMARCA4, ARID1A) that is required for
+  ACE2 expression. Single-cell RNA-seq of cells lacking top hits additionally
+  revealed a convergent up-regulation of cholesterol biosynthesis, with raised
+  intracellular cholesterol conferring resistance. Because these are
+  loss-of-function screen hits rather than an expression signature, the carrier
+  machinery (V-ATPase subunits, Retromer/Commander, PIK3C3, SWI/SNF) is itself in
+  the set and carries the relevant GO annotations (annotation_supported); the
+  cholesterol-biosynthesis arm is a downstream transcriptional convergence whose
+  enzymes are not themselves screen hits (membership_gap). taxon kept human per
+  corpus convention. msigdb_release and n_genes omitted: this is a ranked screen
+  result with no single canonical hit count.
+contexts:
+  - term:
+      id: MONDO:0100096
+      label: COVID-19
+    context_type: infection
+    role_note: >-
+      Host dependency factors from a CRISPR knockout screen — genes REQUIRED for
+      SARS-CoV-2 infection (knockout confers resistance), not antiviral genes.
+associations:
+  - term:
+      id: GO:0033176
+      label: proton-transporting V-type ATPase complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:33147445
+        reference_title: "Identification of Required Host Factors for SARS-CoV-2 Infection in Human Cells."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Top-ranked genes cluster into distinct pathways, including the vacuolar ATPase proton pump, Retromer, and Commander complexes."
+        explanation: >-
+          The single most prominent cluster of host-dependency hits in the
+          genome-wide screen is the vacuolar (V-)type ATPase proton pump (e.g.
+          ATP6V1A, ATP6AP1). These subunit genes are members of the set and carry
+          the proton-transporting V-type ATPase complex annotation directly, so
+          enrichment recovers it (annotation_supported). It is scored mechanistic
+          rather than confirmatory: a respiratory virus depending on a
+          housekeeping organellar proton pump is non-obvious, and the dependency
+          reflects the virus's need for endosomal/lysosomal acidification (see
+          vacuolar acidification) during entry, not anything entailed by the
+          set's "viral infection" framing.
+    curator_note: >-
+      The V-ATPase is the convergent core component of the set. The mechanistic
+      link is that the pump acidifies the endo-lysosomal compartment, and that low
+      pH is required for cathepsin-L-mediated priming of the spike protein and for
+      membrane fusion during endosomal entry of SARS-CoV-2.
+  - term:
+      id: GO:0007035
+      label: vacuolar acidification
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      The functional "why" behind the V-ATPase dependency: the screen-hit V-ATPase
+      subunits (ATP6V1A, ATP6AP1, and additional ATP6V/ATP6AP genes) carry the
+      vacuolar acidification annotation, so this process is recovered from the set
+      (annotation_supported). Acidification of the endosomal/lysosomal lumen is the
+      mechanistic step the virus depends on — low pH activates cathepsin L, which
+      primes the spike protein, and drives the membrane fusion that releases the
+      viral genome. This is a genuine mechanistic insight (a pH-control process),
+      not a restatement of "infection", so it is kept as a distinct core_process
+      alongside the V-ATPase complex component rather than being folded into it.
+  - term:
+      id: GO:0042147
+      label: retrograde transport, endosome to Golgi
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:33147445
+        reference_title: "Identification of Required Host Factors for SARS-CoV-2 Infection in Human Cells."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Top-ranked genes cluster into distinct pathways, including the vacuolar ATPase proton pump, Retromer, and Commander complexes."
+        explanation: >-
+          Two of the three top-ranked hit clusters are the Retromer
+          (VPS35/VPS29/VPS26) and Commander/CCC (CCDC22, CCDC93, COMMD genes)
+          complexes, the core machinery of retrograde endosome-to-Golgi sorting.
+          These subunits are members of the set and carry the retrograde-transport
+          annotation, so enrichment recovers it (annotation_supported). The screen
+          shows the virus depends on intact endosomal sorting/recycling — RAB7A
+          loss mislocalizes the ACE2 receptor — making endosome-to-Golgi
+          retrograde transport a non-obvious mechanistic dependency rather than an
+          expected "infection" term.
+    curator_note: >-
+      Retromer and Commander are scored as a single convergent retrograde-sorting
+      process. Their dependency is mechanistically tied to correct trafficking of
+      the ACE2 receptor and of the V-ATPase/endosomal-maturation machinery the
+      virus exploits.
+  - term:
+      id: GO:0036092
+      label: phosphatidylinositol-3-phosphate biosynthetic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      Class III PI3-kinase / VPS34 (PIK3C3) is among the validated top hits — the
+      authors nominate it as a promising drug target and show small-molecule VPS34
+      inhibitors block infection. PIK3C3 generates phosphatidylinositol-3-phosphate
+      (PI3P) on endosomal membranes, the lipid signal that recruits the Retromer
+      sorting machinery, so this term mechanistically links the PI3K hit to the
+      retrograde-transport arm above. PIK3C3 is a member of the set and carries the
+      PI3P-biosynthesis annotation (annotation_supported). Scored supporting rather
+      than core because it enables, rather than constitutes, the endosomal sorting
+      dependency. No verbatim evidence snippet is attached because the abstract
+      states the pathway clusters but does not name PI3K; the grounding is in the
+      full-text validation experiments.
+  - term:
+      id: GO:0006695
+      label: cholesterol biosynthetic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: membership_gap
+    insight: mechanistic
+    evidence:
+      - reference: PMID:33147445
+        reference_title: "Identification of Required Host Factors for SARS-CoV-2 Infection in Human Cells."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Using single-cell RNA-sequencing, we identify shared transcriptional changes in cholesterol biosynthesis upon loss of top-ranked genes."
+        explanation: >-
+          Single-cell RNA-seq of cells lacking the top host-factor hits revealed a
+          shared up-regulation of the cholesterol biosynthesis pathway, and the
+          authors show that raising intracellular cholesterol increases resistance
+          to SARS-CoV-2. This is a genuine convergent mechanism uncovered by the
+          screen, hence mechanistic. It is marked membership_gap and curator_added
+          because the cholesterol-biosynthesis enzymes (HMGCR, SREBF2/SCAP, MVD,
+          etc.) are not themselves the loss-of-function screen hits — they are a
+          downstream transcriptional readout — so they are not members of this
+          host-factor set even though the biology is real for it.
+  - term:
+      id: GO:0006338
+      label: chromatin remodeling
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:33147444
+        reference_title: "Genome-wide CRISPR Screens Reveal Host Factors Critical for SARS-CoV-2 Infection."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "We additionally discovered pro-viral genes and pathways, including HMGB1 and the SWI/SNF chromatin remodeling complex, that are SARS lineage and pan-coronavirus specific, respectively."
+        explanation: >-
+          The companion Wei et al. screen identified the SWI/SNF (BAF)
+          chromatin-remodeling complex (e.g. SMARCA4, ARID1A, SMARCB1) as pro-viral
+          host factors required for infection; the paper attributes this to
+          SWI/SNF being needed to maintain expression of the ACE2 receptor. The
+          SWI/SNF subunit genes are members of the set and carry the
+          chromatin-remodeling annotation (annotation_supported). A nuclear
+          epigenetic-remodeling dependency is highly non-obvious for a cytoplasmic
+          RNA virus, so it is scored mechanistic; supporting rather than core
+          because it acts upstream, by gating receptor expression, rather than in
+          the entry/trafficking machinery itself.
+    curator_note: >-
+      Grounded in the Wei et al. screen (PMID:33147444), which is the companion
+      defining screen for this set alongside Daniloski et al.
+  - term:
+      id: GO:0019065
+      label: receptor-mediated endocytosis of virus by host cell
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:33147445
+        reference_title: "Identification of Required Host Factors for SARS-CoV-2 Infection in Human Cells."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "we show that loss of RAB7A reduces viral entry by sequestering the ACE2 receptor inside cells."
+        explanation: >-
+          The obvious arm of a host-factor screen: the set contains the entry
+          machinery itself — the ACE2 receptor, the priming protease cathepsin L
+          (CTSL), and RAB7A, whose loss sequesters ACE2 intracellularly and reduces
+          viral entry. These genes carry the receptor-mediated-viral-endocytosis
+          annotation, so enrichment recovers the term (annotation_supported). It is
+          marked confirmatory because receptor-mediated viral entry is entailed by
+          the very premise of a "host factors required for infection" screen,
+          unlike the non-obvious V-ATPase, retrograde-transport, PI3K, cholesterol,
+          and chromatin-remodeling convergences.

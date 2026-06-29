@@ -38,6 +38,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:23082003
         reference_title: "The PI3K/AKT/mTOR pathway as a therapeutic target in endometrial cancer."
@@ -69,6 +70,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Uncontrolled cell proliferation is a hallmark downstream consequence of
       PI3K/AKT activation and Wnt/beta-catenin dysregulation in endometrial
@@ -85,6 +87,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       CTNNB1 (beta-catenin) mutations are found in approximately 25-40% of
       endometrioid endometrial carcinomas. KEGG pathway members APC, GSK3B,
@@ -104,6 +107,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       KRAS, BRAF, MAP2K1, and MAPK1/MAPK3 (ERK1/2) in the KEGG endometrial
       cancer pathway constitute the RAS-RAF-MEK-ERK cascade. KRAS mutations
@@ -121,6 +125,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Loss of E-cadherin (CDH1), which mediates calcium-dependent homophilic
       cell-cell adhesion, is a critical step in the transition from localised
@@ -140,6 +145,7 @@ associations:
     specificity: broadly_expressed
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       AKT-mediated phosphorylation of BAD (at Ser136) sequesters it on 14-3-3
       proteins, preventing its pro-apoptotic interaction with BCL-2 and BCL-XL,

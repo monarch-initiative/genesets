@@ -37,6 +37,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:38965396
         reference_title: "Emerging advances in defining the molecular and therapeutic landscape of small-cell lung cancer."
@@ -65,6 +66,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Uncontrolled proliferation is a defining characteristic of SCLC, which is
       a high-grade neuroendocrine carcinoma with extremely rapid doubling times.
@@ -83,6 +85,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:10371505
         reference_title: "Extracellular matrix proteins protect small cell lung cancer cells against apoptosis: a mechanism for small cell lung cancer growth and drug resistance in vivo."
@@ -114,6 +117,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: mechanistic
     evidence:
       - reference: PMID:10371505
         reference_title: "Extracellular matrix proteins protect small cell lung cancer cells against apoptosis: a mechanism for small cell lung cancer growth and drug resistance in vivo."
@@ -143,6 +147,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: mechanistic
     evidence:
       - reference: PMID:15109562
         reference_title: "Small cell lung cancer: the importance of the extracellular matrix."
@@ -186,6 +191,7 @@ associations:
     specificity: broadly_expressed
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: mechanistic
     curator_note: >-
       Integrin-mediated signaling is a mechanistically central feature of SCLC
       biology, transducing ECM-contact survival signals downstream of beta1 integrin

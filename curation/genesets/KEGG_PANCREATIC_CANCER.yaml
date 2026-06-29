@@ -35,6 +35,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:33676749
         reference_title: "KRAS mutation in pancreatic cancer."
@@ -57,6 +58,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       CDKN2A (p16INK4A/p14ARF), CDK4, CDK6, CCND1, and the RB1/E2F axis are among
       the KEGG pancreatic cancer pathway members that directly regulate cell cycle
@@ -73,6 +75,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:37356222
         reference_title: "The KRAS signaling pathway's impact on the characteristics of pancreatic cancer cells."
@@ -96,6 +99,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       CASP3, CASP9, CYCS, BAD, BAX, and BCL2-family members in the KEGG pancreatic
       cancer pathway encode canonical intrinsic and extrinsic apoptosis components.
@@ -113,6 +117,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       TP53, CDKN2A (p16/p14ARF), CDK4, CDK6, RB1, and E2F transcription factors in
       the KEGG pancreatic cancer pathway are canonical cell-cycle regulators. Loss of
@@ -130,6 +135,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       TGFB1, TGFB2, SMAD2, SMAD3, SMAD4, TGFBR1, and TGFBR2 are members of the
       KEGG pancreatic cancer pathway. SMAD4/DPC4 loss occurs in approximately 55% of

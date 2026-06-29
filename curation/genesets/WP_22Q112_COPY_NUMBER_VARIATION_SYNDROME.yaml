@@ -36,6 +36,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:40038168
         reference_title: "Review of the Pathophysiology and Clinical Manifestations of 22q11.2 Deletion and Duplication Syndromes."
@@ -70,6 +71,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:40038168
         reference_title: "Review of the Pathophysiology and Clinical Manifestations of 22q11.2 Deletion and Duplication Syndromes."
@@ -97,6 +99,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:23996541
         reference_title: "Understanding the role of Tbx1 as a candidate gene for 22q11.2 deletion syndrome."
@@ -128,6 +131,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:28057265
         reference_title: "Tbx1: Transcriptional and Developmental Functions."
@@ -158,6 +162,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:28057265
         reference_title: "Tbx1: Transcriptional and Developmental Functions."

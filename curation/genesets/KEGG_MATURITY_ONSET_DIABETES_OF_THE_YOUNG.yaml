@@ -41,6 +41,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:25581748
         reference_title: "Maturity-onset diabetes of the young (MODY): an update."
@@ -79,6 +80,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Endocrine pancreas development (GO:0031018) captures the developmental
       programme required to form the islets of Langerhans and all endocrine
@@ -99,6 +101,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Impaired glucose-stimulated insulin secretion is the immediate functional
       deficit in MODY: TF mutations reduce beta-cell mass and alter gene
@@ -119,6 +122,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Impaired maintenance of blood glucose homeostasis is the defining clinical
       phenotype of MODY, but the term itself describes a high-level integrative
@@ -139,6 +143,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The beta cell's ability to sense and respond to rising blood glucose is
       essential for glucose-stimulated insulin secretion. GCK (glucokinase)
@@ -175,6 +180,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Type B pancreatic cell differentiation (GO:0003309) captures the
       specification of insulin-secreting beta-cell identity, controlled

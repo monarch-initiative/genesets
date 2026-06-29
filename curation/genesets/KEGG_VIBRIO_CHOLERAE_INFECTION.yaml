@@ -45,6 +45,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:22850599
         reference_title: "CFTR inhibitors for treating diarrheal disease."
@@ -79,6 +80,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:14644010
         reference_title: "CFTR pharmacology and its role in intestinal fluid secretion."
@@ -113,6 +115,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Cholera toxin is a secreted bacterial toxin and the primary pathogenic
       effector in this infection pathway; the KEGG Vibrio cholerae infection
@@ -131,6 +134,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: mechanistic
     curator_note: >-
       The KEGG Vibrio cholerae infection pathway contains numerous vacuolar
       H+-ATPase (V-ATPase) subunit genes (ATP6V0A1, ATP6V0A2, ATP6V0B, ATP6V0C,
@@ -151,6 +155,7 @@ associations:
     specificity: broadly_expressed
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       The biological context of the KEGG Vibrio cholerae infection gene set is
       explicitly a bacterial infection: the pathway models host-cell events

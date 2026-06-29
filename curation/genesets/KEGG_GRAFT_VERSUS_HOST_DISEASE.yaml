@@ -36,6 +36,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:36505438
         reference_title: "Role of endothelial cells in graft-versus-host disease."
@@ -66,6 +67,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:36505438
         reference_title: "Role of endothelial cells in graft-versus-host disease."
@@ -93,6 +95,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: mechanistic
     curator_note: >-
       NK cells share the perforin-granzyme cytotoxic effector machinery (PRF1,
       GZMB) with cytotoxic T cells and are represented in the KEGG GVHD pathway
@@ -110,6 +113,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       HLA class I alpha chains (HLA-A, HLA-B, HLA-C) and beta-2 microglobulin
       (B2M) in the KEGG GVHD pathway assemble into MHC class I protein complexes
@@ -128,6 +132,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:31466596
         reference_title: "Review of Graft-Versus-Host Disease."
@@ -172,6 +177,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Adaptive immune response is the overarching biological context of GVHD:
       donor T cells — adaptive immune effectors expressing antigen-specific TCRs —

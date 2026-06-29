@@ -32,6 +32,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The Hallmark gene set is specifically defined as genes whose expression is
       elevated upon TNF-alpha stimulation; cellular response to tumor necrosis
@@ -48,6 +49,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:32958760
         reference_title: "Targeting NF-κB pathway for the therapy of diseases: mechanism and clinical study."
@@ -76,6 +78,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       TNF-alpha is a master pro-inflammatory cytokine and the inflammatory
       response is a major downstream consequence of NF-kB activation. Genes
@@ -93,6 +96,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       A defining output of NF-kB activation by TNF-alpha is the induction of
       secondary cytokine and chemokine production, including IL-6, IL-8
@@ -111,6 +115,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The Hallmark set captures the NF-kB transcriptional output: activated
       NF-kB p65/p50 dimers translocate to the nucleus and drive transcription

@@ -38,6 +38,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Progressive apoptotic death of upper and lower motor neurons is the
       defining downstream outcome of ALS pathology. GO:0097049 (motor neuron
@@ -60,6 +61,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:19715760
         reference_title: "Mitochondrial dysfunction in amyotrophic lateral sclerosis."
@@ -93,6 +95,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: mechanistic
     curator_note: >-
       Glutamate excitotoxicity via overactivation of ionotropic AMPA and NMDA
       receptors is a central mechanism of motor neuron death in ALS. Loss of
@@ -114,6 +117,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:19715760
         reference_title: "Mitochondrial dysfunction in amyotrophic lateral sclerosis."
@@ -145,6 +149,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       CASP3, CASP9, CYCS, BAX, and BCL2-family members in the WikiPathways ALS
       set are canonical intrinsic apoptosis components annotated to GO:0006915

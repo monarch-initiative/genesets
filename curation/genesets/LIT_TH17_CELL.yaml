@@ -1,0 +1,173 @@
+gene_set_id: LIT:TH17_CELL
+gene_set_name: TH17_CELL
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:CD4_THELPER
+series_role: th17
+description: >-
+  Literature-defined cell-state ACTIVITY signature of the T-helper 17 (Th17)
+  lineage, the proinflammatory IL-17-producing pole of CD4+ helper T cell
+  differentiation established by Harrington, Hatton, Weaver et al. (Nat Immunol
+  2005, PMID:16200070), who showed that IL-17-producing CD4+ effector T cells
+  develop via a lineage distinct from the Th1 and Th2 lineages, and defined
+  molecularly by Ivanov, Littman et al. (Cell 2006, PMID:16990136), who
+  identified the orphan nuclear receptor RORgammat (RORC) as the master
+  transcription factor that directs the Th17 differentiation program. Unlike
+  MSigDB causal/driver disease pathway sets, the members here are the READOUT of
+  an ACTIVE program, not driver mutations: they are the genes UP in the
+  RORgammat-driven Th17 identity/differentiation program induced from naive CD4+
+  T cells by IL-6 and TGF-beta and amplified by IL-23. The signature is
+  dominated by the canonical Th17 identity markers: the master transcription
+  factor RORC (RORgammat) and the cooperating factor RORA; the signal
+  transducer STAT3; the eponymous signature cytokines IL17A and IL17F together
+  with the Th17 effector cytokines IL22 and IL21; the IL-23 receptor IL23R that
+  stabilizes the committed state; and the lineage-defining chemokine receptor
+  CCR6. Because the member genes literally carry the GO annotations for the
+  processes the Th17 state executes (Th17 differentiation, IL-17 production,
+  Th17-type immune response, inflammation, mucosal antifungal defense),
+  enrichment recovers those processes (annotation_supported) rather than leaving
+  them as gaps. This set is one POLE of a four-member SERIES (series
+  SERIES:CD4_THELPER): it is the th17 role, contrasted with the Th1
+  (IFN-gamma/T-bet), Th2 (IL-4/GATA3), and regulatory T cell (FOXP3) poles of
+  the CD4+ helper-T-cell differentiation axis, against which the same shared
+  terms resolve to contrasting interpretations. DISEASE RELEVANCE: the Th17
+  program provides mucosal host defense against extracellular bacteria and fungi
+  (notably Candida) but, when dysregulated, is a central driver of autoimmune
+  and chronic inflammatory disease (psoriasis, multiple sclerosis, inflammatory
+  bowel disease, rheumatoid arthritis, ankylosing spondylitis), making the
+  RORgammat/IL-17/IL-23 axis a validated therapeutic target. The lineage was
+  defined in mouse models; we curate the human-orthologous program and keep the
+  taxon human per corpus convention.
+contexts:
+  - term:
+      id: CL:0000899
+      label: T-helper 17 cell
+    context_type: cell_type
+    role_note: >-
+      The signature reads out the Th17 (T-helper 17) identity/differentiation
+      state of the CD4-positive, alpha-beta T cell rather than any single
+      disease: the RORgammat-positive, IL-17-producing proinflammatory program.
+      CL:0000899 (T-helper 17 cell; RORgamma-t-positive, CCR6-positive,
+      IL-17-producing) is the anchoring cell-state context, the th17 pole of the
+      CD4+ helper-T-cell differentiation series (its contrasting poles being
+      Th1, Th2 and regulatory T cells).
+associations:
+  - term:
+      id: GO:0072539
+      label: T-helper 17 cell differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:16990136
+        reference_title: "The orphan nuclear receptor RORgammat directs the differentiation program of proinflammatory IL-17+ T helper cells."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "the orphan nuclear receptor RORgammat is the key transcription factor that orchestrates the differentiation of this effector cell lineage"
+        explanation: >-
+          The gene set is, by definition, the readout of the Th17
+          identity/differentiation program. The defining paper shows that
+          RORgammat (encoded by RORC, a dominant member of this signature) is
+          the master transcription factor that orchestrates differentiation of
+          the Th17 effector lineage. T-helper 17 cell differentiation is
+          therefore the central, cell-type-specific process the signature
+          represents, and the lineage-program members (RORC, STAT3, IL23R, IL21)
+          carry this GO annotation, so enrichment recovers it
+          (annotation_supported). This is the defining ACTIVE program of the
+          set, not a driver lesion.
+    curator_note: >-
+      This is the defining ACTIVE process of the set. It is cell_type_specific
+      because the term literally names the Th17 cell and its differentiation is,
+      by construction, the program this signature reads out.
+  - term:
+      id: GO:0032620
+      label: interleukin-17 production
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:16990136
+        reference_title: "The orphan nuclear receptor RORgammat directs the differentiation program of proinflammatory IL-17+ T helper cells."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "RORgammat induces transcription of the genes encoding IL-17 and the related cytokine IL-17F"
+        explanation: >-
+          IL-17A and IL-17F are the eponymous signature cytokines of the Th17
+          lineage (the cell is named for IL-17), and the paper shows RORgammat
+          directly induces transcription of the genes encoding IL-17 and IL-17F.
+          IL17A and IL17F are members of this UP signature and carry the
+          interleukin-17 production annotation, so enrichment recovers it
+          (annotation_supported). Used the specific cytokine-production child
+          (GO:0032620) rather than the generic cytokine-production parents.
+    curator_note: >-
+      Kept core and cell_type_specific because IL-17A/IL-17F production is the
+      eponymous, defining effector output of the Th17 program. Other innate-like
+      lymphocytes (gamma-delta T cells, ILC3) also make IL-17, but within this
+      CD4+ helper signature IL-17 production is the cell-type-defining function.
+  - term:
+      id: GO:0072538
+      label: T-helper 17 type immune response
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The Th17-type immune response (orchestrated by IL-17, IL-21 and IL-22 from
+      Th17 cells) is, alongside lineage differentiation and IL-17 production, a
+      defining function the signature reads out. The effector members (IL17A,
+      IL17F, IL22, IL23R) carry this annotation, so enrichment recovers it
+      (annotation_supported). Kept core and cell_type_specific because the term
+      explicitly names the Th17 response and is the immune-response correlate of
+      this cell state.
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Th17 cells are the proinflammatory pole of CD4+ helper differentiation,
+      and their IL-17/IL-22 effector output drives tissue inflammation
+      (psoriasis, multiple sclerosis, inflammatory bowel disease). Inflammatory
+      effectors in the signature (IL17A, IL17F, CCR6) carry this annotation, so
+      enrichment recovers it (annotation_supported). Scored supporting rather
+      than core, and broadly_expressed, because inflammatory response is shared
+      across very many immune contexts and is not Th17-defining by itself.
+  - term:
+      id: GO:0050832
+      label: defense response to fungus
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      A principal physiological purpose of the Th17 program is mucosal host
+      defense against fungi, most notably Candida albicans, executed through the
+      IL-17/IL-22 axis; loss of IL-17 immunity causes chronic mucocutaneous
+      candidiasis. Antifungal-effector members of the signature (IL17A, IL17F,
+      IL23R, IL22) carry this annotation, so enrichment recovers it
+      (annotation_supported). Scored supporting rather than core, and
+      lineage_shared, because antifungal defense is a downstream effector
+      purpose of the IL-17 output shared with other IL-17-producing cells rather
+      than the lineage-defining identity axis itself.

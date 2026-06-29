@@ -29,6 +29,7 @@ associations:
     confidence: high
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     evidence:
       - reference: PMID:20158574
         reference_title: "Inter-connection between mitochondria and HIFs."
@@ -55,6 +56,7 @@ associations:
     confidence: high
     specificity: broadly_expressed
     seed_source: curator_added
+    insight: confirmatory
     curator_note: >-
       The HIF-1α signalling pathway is the mechanistic engine driving
       the Hallmark Hypoxia gene set. The set was constructed around
@@ -71,6 +73,7 @@ associations:
     confidence: high
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       HIF-1 directly transactivates genes encoding glycolytic enzymes
       (LDHA, PFKL, ALDOA, ENO1, PKM, etc.) to shift energy metabolism
@@ -86,6 +89,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       HIF-1 drives transcription of VEGFA and related angiogenic
       factors to promote new blood vessel formation in hypoxic tissues.
@@ -101,6 +105,7 @@ associations:
     confidence: medium
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Hypoxia and oxidative stress are intimately coupled: mitochondrial
       reactive oxygen species (ROS) generated during oxygen limitation

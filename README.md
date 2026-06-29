@@ -219,9 +219,16 @@ Companion YAML metadata records the cutoff, source file digests, prep settings, 
 
 ## Curated GO Interpretations
 
-`curation/` holds expert GO-term interpretations of non-GO gene sets (MSigDB C8
-cell-type signatures first), validated with LinkML term/reference validators and
-used as a precision/recall gold standard. See `curation/README.md`.
+`curation/` holds expert GO-term interpretations of non-GO gene sets (MSigDB
+single-cell, pathway, hallmark, and phenotype sets, plus literature
+disease-activity and GWAS/CRISPR genetics sets), validated with LinkML
+term/reference validators and an OAK obsolescence gate, and used as a
+precision/recall gold standard for the enrichment tool. See `curation/README.md`
+and `evals/iba_vs_benchmark/README.md`.
 
     just curate-validate
     just curate-report
+
+**Continuing this work:** start from **`AGENTS.md`**, then the two runbook skills
+in `.claude/skills/` — `curate-geneset` (adding/reviewing an interpretation) and
+`evaluate-enrichment` (scoring a method/evidence variant against the gold).

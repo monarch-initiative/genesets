@@ -37,6 +37,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:29274272
         reference_title: "The role of the Hedgehog signaling pathway in cancer: A comprehensive review."
@@ -68,6 +69,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Constitutive GLI1/GLI2 transcriptional output drives expression of cyclin D1
       (CCND1) and other cell-cycle genes, promoting uncontrolled proliferative
@@ -85,6 +87,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Wnt/beta-catenin signaling components (CTNNB1, WNT ligands, FZD receptors,
       LRP co-receptors) are included in the KEGG BCC pathway as a co-activating
@@ -102,6 +105,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       BCC arises from aberrant differentiation of epidermal basal keratinocytes or
       hair follicle stem cells. Constitutive Hedgehog signaling blocks normal
@@ -119,6 +123,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       TP53, BCL2, CASP3, and BAX are KEGG BCC pathway members encoding canonical
       apoptosis components. TP53 mutations occur in a subset of BCCs, particularly
@@ -135,6 +140,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       annotation_gap: The constitutively active state of Smoothened — produced by
       loss-of-function PTCH1 mutations or gain-of-function SMO mutations — is the

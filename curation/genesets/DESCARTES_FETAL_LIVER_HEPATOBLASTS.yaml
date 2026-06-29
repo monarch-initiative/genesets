@@ -34,6 +34,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     evidence:
       - reference: PMID:24692138
         reference_title: Energy metabolism in the liver.
@@ -53,6 +54,7 @@ associations:
     confidence: medium
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Hepatocytes assemble and secrete VLDL and other plasma lipoprotein
       particles. The plasma lipoprotein particle CC term is expected to be
@@ -66,6 +68,7 @@ associations:
     confidence: medium
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Hepatocytes are the principal site of VLDL and HDL assembly. Marker
       genes in this signature include apolipoproteins and microsomal
@@ -79,6 +82,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Cytochrome P450 and phase II conjugation enzymes are hallmark markers
       of the hepatocyte lineage. Xenobiotic metabolism is a cell-type-specific
@@ -92,6 +96,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       The liver synthesizes the majority of plasma clotting factors
       (fibrinogen, factors II, VII, IX, X). Blood coagulation is lineage-shared
@@ -105,6 +110,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       The liver is the primary source of most complement proteins (C3, C4,
       factor B, C1q subunits). Complement component genes are hepatocyte
@@ -129,6 +135,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: curator_added
+    insight: confirmatory
     curator_note: >-
       Hepatoblasts are the principal cellular agents of liver organogenesis.
       Liver development is a biologically essential curator-added term that

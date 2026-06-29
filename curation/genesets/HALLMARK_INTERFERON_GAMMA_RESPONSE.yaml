@@ -30,6 +30,7 @@ associations:
     confidence: high
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     evidence:
       - reference: PMID:14525967
         reference_title: "Interferon-gamma: an overview of signals, mechanisms and functions."
@@ -50,6 +51,7 @@ associations:
     confidence: high
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       IFN-γ is the primary inducer of MHC class I and class II expression via
       CIITA transactivation, and numerous genes in the Hallmark set encode
@@ -65,6 +67,7 @@ associations:
     confidence: high
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       IFN-γ induces a broad antiviral state through ISGs including MX1, OAS
       family members, IFIT1/2/3, and IRF1. Defense response to virus is a
@@ -79,6 +82,7 @@ associations:
     confidence: high
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       IFN-γ strongly up-regulates the MHC class I heavy chain (HLA-A, HLA-B,
       HLA-C) and beta-2-microglobulin (B2M), the two obligate subunits of the
@@ -93,6 +97,7 @@ associations:
     confidence: medium
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       IFN-γ broadly potentiates immune responses via induction of co-stimulatory
       molecules, cytokines, and transcription factors such as IRF1. Positive

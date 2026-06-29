@@ -34,6 +34,7 @@ associations:
     confidence: high
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     evidence:
       - reference: PMID:11978510
         reference_title: "The APC gene in colorectal cancer."
@@ -53,6 +54,7 @@ associations:
     confidence: high
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       Cyclin D1 (CCND1), CDK4, CDK6, and the RB1/E2F axis are among the KEGG CRC
       pathway members that directly regulate cell cycle entry and proliferative
@@ -67,6 +69,7 @@ associations:
     confidence: medium
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       TP53, BAX, BCL2, CASP3, and FAS/FASL in the KEGG CRC pathway encode canonical
       apoptosis components. Evasion of apoptosis is a key step in colorectal tumor
@@ -80,6 +83,7 @@ associations:
     confidence: medium
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       KRAS, BRAF, MAP2K1, MAPK1, and MAPK3 (ERK1/2) in the KEGG CRC pathway
       constitute the core RAS-RAF-MEK-ERK cascade. KRAS and BRAF mutations are
@@ -95,6 +99,7 @@ associations:
     confidence: medium
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       The KEGG CRC pathway includes components associated with invasive migration,
       such as matrix metalloproteinases (MMP family) and SMAD-pathway effectors

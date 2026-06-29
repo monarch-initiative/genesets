@@ -32,6 +32,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:17979153
         reference_title: "VEGF in biological control."
@@ -60,6 +61,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Blood vessel development is the overarching developmental process that
       produces the vascular tree from which capillaries emerge. Capillary
@@ -76,6 +78,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Capillary endothelial cells are characterised by an elaborate system of
       tight junctions and adherens junctions (CLDN5, OCLN, CDH5/VE-cadherin)
@@ -94,6 +97,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:39234309
         reference_title: "Extracellular purines in lung endothelial permeability and pulmonary diseases."
@@ -136,6 +140,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Endothelial cell differentiation is a core developmental process that
       specifies the capillary endothelial lineage from mesodermal precursors

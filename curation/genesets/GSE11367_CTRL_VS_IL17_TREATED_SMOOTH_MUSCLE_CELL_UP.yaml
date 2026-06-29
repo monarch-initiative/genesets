@@ -31,6 +31,7 @@ associations:
     confidence: high
     specificity: cell_type_specific
     seed_source: enrichment_recovered
+    insight: confirmatory
     evidence:
       - reference: PMID:15982617
         reference_title: "Interleukin-17--induced interleukin-8 release in human airway smooth muscle cells: role for mitogen-activated kinases and nuclear factor-kappaB."
@@ -49,6 +50,7 @@ associations:
     confidence: high
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       IL-17 is a proinflammatory cytokine whose primary function is to
       orchestrate inflammatory responses; upregulated genes in IL-17-treated
@@ -63,6 +65,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       IL-17 strongly induces chemokine production (especially CXCL1, CXCL5,
       CXCL8) in smooth muscle cells, which mediates downstream neutrophil
@@ -75,6 +78,7 @@ associations:
     confidence: medium
     specificity: lineage_shared
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       A hallmark functional outcome of IL-17-induced chemokine production in
       smooth muscle and other stromal cells is the recruitment of neutrophils.
@@ -88,6 +92,7 @@ associations:
     confidence: medium
     specificity: broadly_expressed
     seed_source: enrichment_recovered
+    insight: confirmatory
     curator_note: >-
       The canonical NF-kappaB (IKK-dependent) cascade is a central intracellular
       signaling pathway activated by IL-17 in smooth muscle cells; NF-kappaB

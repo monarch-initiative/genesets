@@ -1,0 +1,146 @@
+gene_set_id: MSIGDB:TRAVAGLINI_LUNG_ALVEOLAR_EPITHELIAL_TYPE_1_CELL
+gene_set_name: TRAVAGLINI_LUNG_ALVEOLAR_EPITHELIAL_TYPE_1_CELL
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+series: SERIES:LUNG_ALVEOLAR_EPITHELIUM
+series_role: alveolar_type_1
+description: >-
+  Single-cell marker signature of pulmonary alveolar epithelial type I (AT1)
+  cells from human lung (Travaglini et al., MSigDB C8). AT1 cells are extremely
+  thin, squamous epithelial cells that cover the great majority of the alveolar
+  surface and form the gas-exchange interface (blood-air barrier) of the lung.
+  Together with the fused capillary endothelium and a shared thin basement
+  membrane, they minimise the diffusion distance for O2/CO2 exchange. AT1 cells
+  are exceptionally rich in caveolae and are the squamous/gas-exchange pole of
+  the alveolar epithelium, partnered with surfactant-secreting AT2 cells. The
+  signature carries the canonical AT1 markers AGER, PDPN, CAV1/CAV2, HOPX,
+  CLIC5, RTKN2, the basement-membrane collagen-IV chains COL4A1/2/3/4, and the
+  alveolar tight-junction claudin CLDN18.
+contexts:
+  - term:
+      id: CL:0002062
+      label: pulmonary alveolar type 1 cell
+    context_type: cell_type
+  - term:
+      id: UBERON:0002048
+      label: lung
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0007585
+      label: respiratory gaseous exchange by respiratory system
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Respiratory gaseous exchange is the defining physiological function of the
+      AT1 cell: its thin squamous cytoplasm forms the gas-exchange surface of the
+      blood-air barrier across which O2 and CO2 diffuse. Recorded as annotation_gap
+      because the AT1 identity/structural markers that are present (AGER, PDPN,
+      AQP4, HOPX, CLIC5, CAV1) are not directly annotated to GO:0007585 in
+      goa_human; this whole-system process term is not asserted at the granularity
+      of the individual squamous cell that physically constitutes the exchange
+      surface, so enrichment does not recover it and the curator adds it. The
+      association is biologically core regardless of the missing annotation.
+  - term:
+      id: GO:0005604
+      label: basement membrane
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The thin alveolar basement membrane is a defining structural element of the
+      AT1-side of the blood-air barrier, fusing with the capillary basement
+      membrane to give the minimal diffusion distance for gas exchange. Strongly
+      annotation_supported: the set carries the collagen-IV network chains
+      COL4A1, COL4A2, COL4A3 and COL4A4, the laminins LAMA3, LAMA4, LAMB3, LAMC1
+      and LAMC2, plus perlecan HSPG2 and agrin AGRN, all canonically annotated to
+      basement membrane. Specificity is lineage_shared because basement membranes
+      are a general feature of epithelia/endothelia; what is AT1-specialised is
+      the membrane's thinness, not the component per se.
+  - term:
+      id: GO:0005901
+      label: caveola
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      AT1 cells are among the most caveolae-rich cells in the body, their thin
+      plasma membrane densely studded with caveolae implicated in mechanoprotection,
+      transcytosis and signalling across the vast alveolar surface. annotation_supported
+      by the caveolar structural proteins CAV1 and CAV2 and the caveola-associated
+      ATPase EHD2, all present and canonically annotated to caveola. This is a
+      hallmark cellular-component signature of the AT1 identity.
+  - term:
+      id: GO:0070160
+      label: tight junction
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Tight junctions seal the alveolar epithelium and are essential to the
+      barrier function of the blood-air interface, restricting paracellular flux
+      and maintaining the dry alveolar lumen. annotation_supported by the
+      alveolar-enriched claudin CLDN18 together with CLDN4, CLDN7 and cingulin
+      (CGN), all annotated to tight junction. Specificity is lineage_shared
+      because tight junctions are a general epithelial structure, though CLDN18
+      itself is strongly lung/alveolar-enriched.
+  - term:
+      id: GO:0048286
+      label: lung alveolus development
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      AT1 cells are the squamous epithelial cells whose spreading and
+      differentiation constitute the gas-exchange surface produced during
+      alveologenesis, so lung alveolus development underpins their identity.
+      Categorised as supporting_process because the mature marker set reports
+      AT1 identity more than active morphogenesis. annotation_supported via
+      alveologenesis carriers present in the set (PDGFA, CCN2/CTGF, HOPX, EDN1)
+      that are annotated to lung alveolus development, alongside the AT1 fate
+      markers HOPX, AGER and PDPN. Curator_added because developmental terms are
+      typically under-recovered by mature-cell marker enrichment.
+  - term:
+      id: GO:0031589
+      label: cell-substrate adhesion
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Anchorage of the thin squamous AT1 cell to its underlying basement membrane
+      is the substrate-side adhesion that holds the gas-exchange epithelium against
+      the fused capillary, mechanically stabilising the blood-air barrier.
+      annotation_supported by integrin ITGA3, the tetraspanin CD151, the
+      integrin-activating adaptors FERMT2 (kindlin-2) and LIMS2 (PINCH-2), and the
+      laminins LAMA3/LAMB3/LAMC2, all present and annotated to cell-substrate
+      adhesion. Specificity is broadly_expressed because cell-substrate adhesion
+      is a general anchorage process rather than an AT1-unique one.

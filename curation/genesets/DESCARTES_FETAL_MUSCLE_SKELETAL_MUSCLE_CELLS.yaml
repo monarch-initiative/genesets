@@ -6,6 +6,8 @@ taxon:
   id: NCBITaxon:9606
   label: Homo sapiens
 direction: NA
+series: SERIES:MUSCLE_TYPE
+series_role: skeletal
 description: >-
   Single-cell marker signature of skeletal muscle cells (myocytes/myofibers)
   from human fetal skeletal muscle (Descartes atlas, MSigDB C8). Fetal skeletal
@@ -37,6 +39,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:29419405
         reference_title: "Muscle Contraction."
@@ -68,6 +71,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The sarcomere is the repeating contractile unit of the myofibril and is
       the defining ultrastructural hallmark of striated muscle cells, including
@@ -84,6 +88,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Myofibrils are the highly organized bundles of sarcomeres that fill the
       cytoplasm of skeletal muscle fibers. Formation of myofibrils is a key
@@ -100,6 +105,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Parent term of skeletal muscle contraction (GO:0003009); shared across
       skeletal, cardiac, and smooth muscle lineages. Expected to appear in
@@ -115,6 +121,7 @@ associations:
     specificity: cell_type_specific
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:31407867
         reference_title: "Skeletal muscle: A review of molecular structure and function, in health and disease."
@@ -159,6 +166,7 @@ associations:
     specificity: cell_type_specific
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       Skeletal muscle fiber development — the maturation of myotubes into
       mature, fiber-type-specified muscle fibers — is biologically core to the

@@ -38,6 +38,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:20541704
         reference_title: >-
@@ -73,6 +74,7 @@ associations:
     specificity: broadly_expressed
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       The molecular mechanism of SB216763 is direct positive regulation of
       the canonical Wnt pathway: GSK-3B inhibition prevents beta-catenin
@@ -91,6 +93,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: mechanistic
     curator_note: >-
       Wang et al. 2010 demonstrate that GSK-3 maintains the MLL leukemia
       stem cell programme, blocking differentiation. SB216763 treatment
@@ -109,6 +112,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       SB216763 is a synthetic small molecule (xenobiotic) applied
       pharmacologically to RS4;11 cells. The UP signature, derived from a
@@ -127,6 +131,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:20541704
         reference_title: >-

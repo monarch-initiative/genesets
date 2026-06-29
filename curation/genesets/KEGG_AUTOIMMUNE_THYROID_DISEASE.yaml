@@ -39,6 +39,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       MHC class I and II molecules (HLA-A, HLA-B, HLA-C, HLA-DRA, HLA-DRB1,
       HLA-DQA1, HLA-DQB1, HLA-DPA1, HLA-DPB1) are central members of the KEGG
@@ -57,6 +58,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:26836805
         reference_title: "Regulatory B and T cell responses in patients with autoimmune thyroid disease and healthy controls."
@@ -88,6 +90,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       HLA class II alpha and beta chain gene products (HLA-DRA, HLA-DRB1,
       HLA-DQA1, HLA-DQB1, HLA-DPA1, HLA-DPB1) in the KEGG autoimmune thyroid
@@ -106,6 +109,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Generic immune response term recovered because the KEGG autoimmune thyroid
       disease pathway is dominated by immune effector genes (HLA molecules,
@@ -122,6 +126,7 @@ associations:
     specificity: lineage_shared
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:37047805
         reference_title: "Characterizing the Interplay of Lymphocytes in Graves' Disease."
@@ -164,6 +169,7 @@ associations:
     specificity: lineage_shared
     seed_source: curator_added
     recovery_status: annotation_gap
+    insight: confirmatory
     curator_note: >-
       The KEGG autoimmune thyroid disease pathway is mechanistically defined by
       adaptive immunity: MHC-restricted antigen presentation activates autoreactive

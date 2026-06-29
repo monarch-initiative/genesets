@@ -1,0 +1,192 @@
+gene_set_id: LIT:WHITE_ADIPOCYTE
+gene_set_name: WHITE_ADIPOCYTE
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:ADIPOCYTE_STATE
+series_role: white
+description: >-
+  Literature-defined cell-state ACTIVITY signature of the WHITE adipocyte - the
+  energy-STORING, non-thermogenic pole of the adipocyte-state series. This is one
+  of three members of SERIES:ADIPOCYTE_STATE (white / brown / beige), the
+  energy-storage pole contrasted with the two thermogenic poles (classical brown
+  fat and the inducible beige/brite cell). The white-versus-brown-versus-beige
+  distinction was defined by Wu, Bostrom, Spiegelman et al. (Cell 2012,
+  PMID:22796012), who cloned murine clonal adipocyte cell lines from white and
+  brown depots, established their distinct gene-expression signatures, and showed
+  that white fat cells are specialized to store chemical energy and have extremely
+  low basal UCP1, whereas brown and beige cells dissipate energy as heat through
+  high UCP1 and respiration. Unlike MSigDB causal/driver disease pathway sets, the
+  members here are the READOUT of an ACTIVE identity program - the genes UP (high)
+  in the white adipocyte - not driver mutations. The program is dominated by the
+  lipid-storage and adipocyte-identity machinery: the lipid-droplet coat protein
+  perilipin-1 (PLIN1, used by Wu et al. to mark UCP1-negative white adipose
+  tissue), the fatty-acid-binding protein FABP4/aP2, the adipokines adiponectin
+  (ADIPOQ) and leptin (LEP), adipsin (CFD), and the master adipogenic nuclear
+  receptor PPARG, together with the white-selective developmental/HOX markers
+  (e.g. HOXC8/HOXC9) and the glucocorticoid receptor NR3C1 from the broader
+  white-versus-brown literature. The single most characteristic feature of the
+  white adipocyte is its scant cytoplasm surrounding one large unilocular lipid
+  (triglyceride) droplet, with few mitochondria and LOW UCP1 - the morphological
+  and molecular opposite of the multilocular, mitochondria-rich, UCP1-high
+  thermogenic brown/beige cell. Because the member genes literally carry the GO
+  annotations for the processes the white state executes (lipid/triglyceride
+  storage, white-fat differentiation), enrichment recovers those processes
+  (annotation_supported) rather than leaving them as gaps. DISEASE RELEVANCE: the
+  white adipocyte is the body's principal energy-storage cell, and pathological
+  expansion of white adipose tissue underlies obesity and its metabolic sequelae
+  (insulin resistance, type 2 diabetes, dyslipidemia); the contrast pole of this
+  series - thermogenic brown/beige activation - is the anti-obesity, energy-
+  expending program whose induction is therapeutically sought, so the white state
+  is the storage baseline against which thermogenic browning is measured. The
+  signature was defined largely in murine clonal adipocytes with confirmation in
+  human biopsies; we curate the human-orthologous program and keep the taxon human
+  per corpus convention.
+contexts:
+  - term:
+      id: CL:0000448
+      label: white adipocyte
+    context_type: cell_type
+    role_note: >-
+      Energy-storing white adipocyte (non-thermogenic). The signature reads out
+      the white / energy-storage state of the adipocyte - the cell with a scant
+      ring of cytoplasm around a single large unilocular lipid droplet, few
+      mitochondria and low UCP1 - rather than any single disease. CL:0000448
+      (white adipocyte) is the anchoring cell-state context, the storage pole
+      contrasted with the thermogenic brown and beige adipocytes in this series.
+associations:
+  - term:
+      id: GO:0019915
+      label: lipid storage
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:22796012
+        reference_title: "Beige adipocytes are a distinct type of thermogenic fat cell in mouse and human."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "While white fat cells are specialized to store chemical energy"
+        explanation: >-
+          Energy/lipid storage is the defining active function of the white
+          adipocyte that this signature reads out: the defining paper frames the
+          white-versus-brown dichotomy by stating that white fat cells are
+          specialized to store chemical energy, in explicit contrast to brown
+          adipocytes that dissipate it as heat. The chemical energy is stored as
+          triglyceride in the large unilocular lipid droplet, and storage/lipid-
+          droplet members of the program (PLIN1/perilipin-1, FABP4) carry this GO
+          annotation, so enrichment recovers it (annotation_supported). This is the
+          central, identity-defining active process of the white state - the
+          storage pole of the series - not a driver lesion.
+    curator_note: >-
+      Kept core because energy/lipid storage is the single defining axis of white
+      adipocyte identity and the function that distinguishes the white storage pole
+      from the thermogenic brown/beige poles. Marked lineage_shared rather than
+      cell_type_specific because lipid storage as a GO process is shared with other
+      lipid-storing cells (hepatocytes, quiescent hepatic stellate cells); the
+      white-adipocyte point is that it is the body's professional, dedicated
+      energy-storage cell. annotation_supported because perilipin-1 and other
+      lipid-droplet/storage genes in the program are annotated here.
+  - term:
+      id: GO:0006641
+      label: triglyceride metabolic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The chemical form of the white adipocyte's stored energy is triacylglycerol:
+      the unilocular droplet is a triglyceride depot, filled by insulin-driven
+      lipogenesis/esterification and mobilized by lipolysis. Triglyceride
+      metabolism is therefore a core active process of the white storage state, and
+      lipogenic/lipolytic enzymes and lipid-handling genes in the program carry
+      this GO annotation, so enrichment recovers it (annotation_supported). Scored
+      lineage_shared rather than cell_type_specific because triglyceride metabolism
+      occurs in many lipid-handling cell types (hepatocytes, enterocytes), even
+      though the white adipocyte is the dedicated triglyceride-storage cell.
+  - term:
+      id: GO:0050872
+      label: white fat cell differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:22796012
+        reference_title: "Beige adipocytes are a distinct type of thermogenic fat cell in mouse and human."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "All these lines are reproducibly highly adipogenic and presented similar levels of adipogenesis and expression of fat cell specific markers"
+        explanation: >-
+          The signature is the readout of the white-adipocyte differentiation
+          program: the defining paper shows the inguinal (white/beige) clonal lines
+          are reproducibly highly adipogenic and express the canonical fat-cell
+          differentiation markers (aP2/FABP4, adiponectin, adipsin and the master
+          adipogenic regulator PPARG). White fat cell differentiation is thus the
+          identity-establishing active process the signature represents, and these
+          adipogenic regulators/markers carry the GO annotation, so enrichment
+          recovers it (annotation_supported).
+    curator_note: >-
+      Kept core because acquisition of the white-adipocyte phenotype is, by
+      construction, the differentiation program this signature reads out. Scored
+      cell_type_specific because the GO term is literally white fat cell
+      differentiation - the identity of this very cell state - distinguishing it
+      from beige fat cell differentiation (GO:0160274) and the brown program.
+  - term:
+      id: GO:0005811
+      label: lipid droplet
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The single large unilocular lipid droplet is the defining organelle of the
+      white adipocyte - the scant cytoplasm surrounds one droplet that holds the
+      stored triglyceride, in contrast to the many small (multilocular) droplets of
+      the thermogenic brown/beige cell. The lipid-droplet coat protein perilipin-1
+      (PLIN1), which the defining paper used as the positive marker of UCP1-negative
+      white adipose tissue, and other droplet-associated proteins carry this
+      cellular-component annotation, so enrichment recovers it
+      (annotation_supported). Scored core_component because the droplet is the
+      characteristic structure of the white state; specificity is lineage_shared
+      because the lipid droplet as a GO component is found in many lipid-storing
+      cell types even though the large unilocular droplet is the white-fat hallmark.
+  - term:
+      id: GO:0032868
+      label: response to insulin
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The white adipocyte is the principal insulin-responsive energy-storage cell:
+      insulin drives GLUT4-mediated glucose uptake, lipogenesis and triglyceride
+      esterification into the droplet and suppresses lipolysis, so insulin
+      responsiveness is an enabling property of the storage state, and white-fat
+      insulin resistance is central to obesity-associated type 2 diabetes. Insulin-
+      pathway and lipogenic members of the program carry this annotation, so
+      enrichment recovers it (annotation_supported). Scored supporting rather than
+      core - it is an enabling/regulatory input to storage rather than the
+      identity-defining storage axis itself - and broadly_expressed because
+      responsiveness to insulin is shared across very many cell types and is not
+      adipocyte-specific. seed_source is curator_added because insulin
+      responsiveness is the curator's framing of the storage state's regulation
+      rather than an enrichment-seeded identity term.

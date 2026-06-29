@@ -44,6 +44,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:23063572
         reference_title: "Innate immunity and HCV."
@@ -71,6 +72,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     evidence:
       - reference: PMID:23063572
         reference_title: "Innate immunity and HCV."
@@ -95,6 +97,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       The HCC component of WikiPathways WP3646 includes strong regulators of
       hepatocyte proliferation: CTNNB1 (beta-catenin) drives transcription of
@@ -114,6 +117,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       TP53, BCL2, BAX, CASP3, CASP9, and CYCS in the WikiPathways HCV/HCC
       gene set encode canonical intrinsic apoptosis components. Suppression of
@@ -131,6 +135,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       Beta-catenin/CTNNB1 is activated in a majority of HCV-associated HCCs.
       CTNNB1, APC, AXIN1/2, FZD family members, and LRP5/6 in the WikiPathways
@@ -148,6 +153,7 @@ associations:
     specificity: broadly_expressed
     seed_source: enrichment_recovered
     recovery_status: annotation_supported
+    insight: confirmatory
     curator_note: >-
       KRAS, RAF1, MAP2K1, MAPK1, and MAPK3 (ERK1/2) in the WikiPathways
       HCV/HCC gene set constitute the RAS-RAF-MEK-ERK cascade, which

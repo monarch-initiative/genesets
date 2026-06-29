@@ -1,0 +1,174 @@
+gene_set_id: LIT:HOMEOSTATIC_MICROGLIA
+gene_set_name: HOMEOSTATIC_MICROGLIA
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:MICROGLIA_ACTIVATION
+series_role: baseline
+description: >-
+  Literature-defined cell-state ACTIVITY signature of homeostatic (surveillant,
+  resting) microglia, the adult microglial identity program first defined by
+  Butovsky, Weiner et al. (Nat Neurosci 2014, PMID:24316888) by gene/microRNA
+  array and quantitative proteomics of adult mouse CNS microglia versus splenic
+  monocytes and other immune and CNS cell types. The authors identified 239 genes
+  (and 8 microRNAs) uniquely or highly expressed in microglia, 106 of which were
+  enriched relative to astrocytes, oligodendrocytes and neurons, and showed the
+  same signature in human microglia. Unlike MSigDB causal/driver disease pathway
+  sets, the members here are the READOUT of an ACTIVE identity program, not driver
+  mutations: they are the genes UP (high) in homeostatic/resting microglia. The
+  panel is dominated by the canonical homeostatic markers P2RY12, TMEM119, CX3CR1,
+  HEXB, SALL1, OLFML3, GPR34, SIGLECH, FCRLS, GAS6, MERTK and TGFBR1, and the
+  whole program is TGF-β-dependent: TGF-β is required in vitro to induce the adult
+  microglial signature and microglia are lost from the CNS of TGF-β-deficient mice.
+  Because the member genes literally carry the GO annotations for the processes the
+  homeostatic state executes, enrichment recovers those processes
+  (annotation_supported) rather than leaving them as gaps. DISEASE RELEVANCE: this
+  is the UP component of the homeostatic state, and these same genes are
+  DOWNregulated when microglia transition to the disease-associated/DAM state in
+  neurodegeneration (Alzheimer's disease, ALS, aging, demyelination). The disease
+  signal is therefore the LOSS of this homeostatic surveillance program (the
+  "microglial checkpoint" P2RY12/TMEM119/CX3CR1 axis) as microglia become reactive.
+  The signature was defined in mouse; we curate the human-orthologous program and
+  keep the taxon human per corpus convention (of note, the mouse marker Fcrls has
+  no human ortholog).
+contexts:
+  - term:
+      id: CL:0000129
+      label: microglial cell
+    context_type: cell_type
+    role_note: >-
+      The signature reads out the homeostatic / surveillant ("resting") state of
+      the microglial cell rather than any single disease. This is the steady-state
+      identity program of CNS-resident microglia; it is actively maintained by
+      TGF-β and is downregulated when microglia convert to disease-associated /
+      reactive states across neurodegeneration, so the microglial cell type is the
+      anchoring context rather than one MONDO disease.
+associations:
+  - term:
+      id: GO:0007179
+      label: transforming growth factor beta receptor signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:24316888
+        reference_title: "Identification of a unique TGF-β-dependent molecular and functional signature in microglia."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "We found that TGF-β was required for the in vitro development of microglia that express the microglial molecular signature characteristic of adult microglia and that microglia were absent in the CNS of TGF-β1-deficient mice."
+        explanation: >-
+          TGF-β receptor signaling is the defining input of the homeostatic
+          microglial program this signature reads out: the paper shows TGF-β is
+          both necessary in vitro to induce the adult microglial molecular
+          signature and required in vivo, since microglia are absent from the CNS
+          of TGF-β1-deficient mice. The TGF-β receptor TGFBR1 is itself a member
+          of the signature and carries this GO annotation, so enrichment recovers
+          the term (annotation_supported). This is the central, identity-defining
+          active pathway of homeostatic microglia, not a driver lesion.
+      - reference: PMID:24316888
+        reference_title: "Identification of a unique TGF-β-dependent molecular and functional signature in microglia."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "Our results identify a unique microglial signature that is dependent on TGF-β signaling and provide insights into microglial biology and the possibility of targeting microglia for the treatment of CNS disease."
+        explanation: >-
+          The authors' summary conclusion states explicitly that the microglial
+          signature itself is dependent on TGF-β signaling, confirming that
+          TGF-β receptor signaling is the core process the whole homeostatic gene
+          set is organized around rather than an incidental enrichment hit.
+    curator_note: >-
+      Kept core because TGF-β dependence is the single defining axis of the
+      homeostatic microglial identity in the defining paper. specificity is
+      broadly_expressed because the TGF-β receptor signaling pathway as a GO term
+      operates in very many cell types and is not microglia-specific; its
+      microglia-identity-defining ROLE here is the point, and the receptor TGFBR1
+      is a signature member, so the term is annotation_supported.
+  - term:
+      id: GO:1904124
+      label: microglial cell migration
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Constant surveillance of the brain parenchyma by motile processes and
+      directed migration toward injury-associated nucleotides is the defining
+      FUNCTION of homeostatic microglia. The purinergic receptor P2RY12 (the most
+      characteristic homeostatic marker), together with GPR34, CX3CR1 and TMEM119,
+      drives this microglial process motility/chemotaxis and is downregulated in
+      the reactive/DAM transition. These genes are signature members annotated to
+      microglial cell migration, so enrichment recovers it (annotation_supported).
+      Marked cell_type_specific because the term is, by construction, the
+      microglial form of migration.
+  - term:
+      id: GO:1903979
+      label: negative regulation of microglial cell activation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      The homeostatic state is defined as much by ACTIVE restraint of reactivity
+      as by any positive function: TGF-β signaling holds microglia in a quiescent,
+      non-activated phenotype and the transcription factor SALL1 enforces microglial
+      identity by repressing the inflammatory/reactive program. Loss of this
+      restraint (downregulation of the P2RY12/TMEM119/CX3CR1 checkpoint) is exactly
+      what licenses the disease-associated/reactive transition, so negative
+      regulation of microglial cell activation is a biologically core process of
+      this set. It is recorded as an annotation_gap rather than annotation_supported
+      because the relevant genes (SALL1, TGFBR1) ARE in the set but their GO
+      annotations do not currently capture this specific active-restraint process;
+      the gap is GO's (a GO annotation curation target), so the term is
+      curator_added and not recovered by enrichment.
+  - term:
+      id: GO:0043277
+      label: apoptotic cell clearance
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Homeostatic microglia constitutively clear apoptotic cells and cellular
+      debris. The signature highlights the TAM receptor system (the paper notes
+      high microglial expression of TAM-system genes), of which the receptor MERTK
+      and its ligand GAS6 are signature members that mediate recognition and
+      engulfment (efferocytosis) of apoptotic cells. These genes carry the
+      apoptotic cell clearance annotation, so enrichment recovers it
+      (annotation_supported). Scored supporting rather than core, and
+      lineage_shared rather than cell_type_specific, because efferocytosis is a
+      general phagocyte/myeloid housekeeping capacity rather than the
+      identity-defining microglial axis.
+  - term:
+      id: GO:0098883
+      label: synapse pruning
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      Activity-dependent pruning of supernumerary synapses is a characteristic
+      homeostatic microglial function during CNS development and maintenance. The
+      fractalkine receptor CX3CR1, a core homeostatic signature member, mediates
+      microglial synapse pruning, and the gene carries this annotation, so
+      enrichment recovers the term (annotation_supported). Scored supporting rather
+      than core because synapse pruning is one downstream effector function of the
+      surveillant state rather than the defining identity axis; specificity is
+      cell_type_specific because microglia are the principal synapse-pruning cell
+      in the CNS via this pathway.

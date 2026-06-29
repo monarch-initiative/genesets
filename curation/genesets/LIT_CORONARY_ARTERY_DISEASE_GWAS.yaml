@@ -1,0 +1,177 @@
+gene_set_id: LIT:CORONARY_ARTERY_DISEASE_GWAS
+gene_set_name: CORONARY_ARTERY_DISEASE_GWAS
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 340
+description: >-
+  Literature-defined catalogue of coronary artery disease (CAD) risk genes from
+  genome-wide association studies, anchored on van der Harst & Verweij, "Identification
+  of 64 Novel Genetic Loci Provides an Expanded View on the Genetic Architecture of
+  Coronary Artery Disease" (Circ Res 2018, PMID:29212778; UK Biobank discovery +
+  CARDIoGRAMplusC4D replication, fine-mapping all 161 CAD risk loci), the successor to
+  the Nikpay et al. CARDIoGRAMplusC4D 1000-Genomes meta-analysis (Nat Genet 2015,
+  PMID:26343387). Members are the author-REPORTED candidate genes captured from the
+  GWAS Catalog for this publication (studies GCST005194/GCST005195/GCST005196),
+  HGNC-normalised and filtered to protein-coding genes (intergenic markers, antisense/
+  lncRNA, microRNA, snoRNA and pseudogene entries removed). These are DISEASE-RISK /
+  driver genes implicated by inherited common variation, so the interpretive value is
+  the CONVERGENT biology the agnostically-derived loci share, which splits into two
+  arms. The EXPECTED arm (confirmatory) is lipid/cholesterol handling: LDLR, PCSK9,
+  LPA, APOE, ABCG5/ABCG8, LPL, CETP, LIPA, SCARB1, APOA5 and the 1p13 CELSR2/PSRC1
+  locus carry cholesterol-metabolism and lipoprotein-clearance functions, recapitulating
+  the classic LDL-cholesterol model of atherosclerosis. The NON-OBVIOUS arm
+  (mechanistic) is the vascular wall itself: a large block of risk genes act on the
+  arterial extracellular matrix and smooth-muscle/vessel-wall structure (COL4A1, COL4A2,
+  COL4A4, COL6A3, FN1, LMOD1, MIA3, SVEP1, BMP1, LOXL1, SERPINH1, FNDC3B, MYH11, PALLD,
+  TNS1), and on nitric-oxide / vasomotor-tone signalling (NOS3, GUCY1A1 [reported as the
+  legacy symbol GUCY1A3], PRKG1, EDNRA, EDN1, MRAS, PHACTR1). The landmark insight is
+  that much CAD heritability acts through the artery wall — matrix remodelling, vascular
+  smooth-muscle phenotype and vasomotor signalling — rather than through plasma lipids
+  alone; the paper notes that of 155 candidate causal genes prioritised at the novel
+  loci many have no obvious connection to CAD, and argues for an expanded "omnigenic"
+  view of CAD architecture. Because this is a GWAS risk catalogue, terms are
+  curator_added; the convergent genes carry the relevant GO annotations, so terms are
+  annotation_supported.
+contexts:
+  - term:
+      id: MONDO:0005010
+      label: coronary artery disorder
+    context_type: disease
+    role_note: >-
+      CAD risk genes from GWAS (van der Harst & Verweij 2018; 161 fine-mapped
+      susceptibility loci, UK Biobank + CARDIoGRAMplusC4D). "coronary artery disorder"
+      is the MONDO primary label for coronary artery disease.
+associations:
+  - term:
+      id: GO:0030198
+      label: extracellular matrix organization
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:29212778
+        reference_title: "Identification of 64 Novel Genetic Loci Provides an Expanded View on the Genetic Architecture of Coronary Artery Disease."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "For the 64 novel loci, 155 candidate causal genes were prioritized, many without an obvious connection to CAD."
+        explanation: >-
+          The defining non-obvious convergence of agnostically-derived CAD loci is on
+          the arterial wall rather than on lipids. A large block of the captured
+          reported genes act on the extracellular matrix and vessel-wall structure —
+          COL4A1 and COL4A2 (the 13q34 basement-membrane collagen locus), COL4A4,
+          COL6A3, FN1 (fibronectin), LMOD1 (smooth-muscle leiomodin), MIA3/TANGO1
+          (collagen secretion), SVEP1, BMP1 (procollagen C-proteinase), LOXL1
+          (collagen/elastin cross-linking) and SERPINH1 (HSP47 collagen chaperone) —
+          and these genes carry extracellular-matrix-organization GO annotations, so a
+          GO analysis of the panel recovers the term (annotation_supported). That so
+          many prioritized causal genes have "no obvious connection to CAD" is exactly
+          the point: the matrix/vessel-wall mechanism is not predictable from the
+          lipid-centric clinical picture of atherosclerosis, hence mechanistic.
+      - reference: PMID:29212778
+        reference_title: "Identification of 64 Novel Genetic Loci Provides an Expanded View on the Genetic Architecture of Coronary Artery Disease."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        snippet: "The large expansion of reconstituted gene sets argues in favor of an expanded omnigenic model view on the genetic architecture of CAD."
+        explanation: >-
+          The authors frame CAD genetic architecture as broad and "omnigenic," spanning
+          many processes beyond plasma-lipid handling. The matrix/vascular-wall arm
+          (collagens, fibronectin, smooth-muscle and matrix-remodelling genes) is the
+          headline non-obvious component of that expanded view and is the mechanistic
+          insight this set is curated to surface.
+    curator_note: >-
+      Headline mechanistic insight of the set: a large fraction of CAD risk genes act on
+      the artery-wall extracellular matrix and vascular smooth muscle, not on lipids.
+      Captured member genes carrying this convergence include COL4A1, COL4A2, COL4A4,
+      COL6A3, FN1, LMOD1, MIA3, SVEP1, BMP1, LOXL1, SERPINH1, FNDC3B, MYH11, PALLD and
+      TNS1. NB: ADAMTS7 — the canonical 15q25 CAD matrix-metalloproteinase locus — is a
+      well-known member of this arm but was NOT among the author-reported genes captured
+      from the GWAS Catalog for PMID:29212778, so it is intentionally NOT padded into the
+      membership (membership is captured, not assembled from prior knowledge).
+  - term:
+      id: GO:0008203
+      label: cholesterol metabolic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The expected lipid/cholesterol arm of CAD genetics and a co-core convergence:
+      LDLR, PCSK9, APOE, ABCG5, ABCG8, LPA, APOA5, LPL, CETP and LIPA are captured
+      member genes that carry cholesterol-/sterol-metabolism GO annotations, so the term
+      is annotation_supported. Tagged confirmatory rather than mechanistic because LDL-
+      cholesterol handling is the classical, entailed model of atherosclerosis — it
+      recapitulates the known lipid hypothesis of CAD rather than revealing a non-obvious
+      mechanism. Kept core_process (not supporting) because lipid metabolism is one of
+      the two genuinely defining convergent axes of the risk-gene panel. NB: APOB and
+      SORT1 — canonical CAD lipid genes — were not in the captured reported-gene set for
+      this PMID (the 1p13/SORT1 locus is reported here as CELSR2/PSRC1, both present), so
+      they were not padded in from memory.
+  - term:
+      id: GO:0007263
+      label: nitric oxide mediated signal transduction
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      The endothelial nitric-oxide / vasomotor-tone arm of the vascular-wall mechanism.
+      Captured members NOS3 (endothelial NO synthase), GUCY1A1 (soluble guanylate
+      cyclase alpha-1; reported under the legacy symbol GUCY1A3) and PRKG1 (cGMP-
+      dependent protein kinase) constitute the NO-sGC-cGMP vasodilatory axis and carry
+      NO-mediated signal-transduction annotations (annotation_supported); EDNRA, EDN1
+      and PHACTR1 contribute the opposing vasoconstrictor/vascular-tone signal. Tagged
+      mechanistic because regulation of vascular tone via NO signalling — as opposed to
+      plasma-lipid handling — is a non-obvious, vessel-intrinsic route to CAD risk, part
+      of the same artery-wall insight as the matrix arm. Scored supporting rather than
+      core because it rests on a smaller, though biologically coherent, block of genes
+      than the matrix and lipid axes.
+  - term:
+      id: GO:0042632
+      label: cholesterol homeostasis
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The lipoprotein-clearance / sterol-balance facet of the lipid arm: LDLR and PCSK9
+      (LDL-particle uptake and receptor turnover), ABCG5/ABCG8 (sterol efflux), SCARB1
+      (HDL/SR-BI), APOE and the CELSR2/PSRC1 (SORT1) locus are captured members annotated
+      to cholesterol homeostasis and lipoprotein-particle clearance, so the term is
+      annotation_supported. Confirmatory and supporting: it is a more specific restatement
+      of the expected LDL-cholesterol mechanism captured by cholesterol metabolic process,
+      kept distinct to record the clearance/homeostasis facet without double-counting the
+      core lipid axis.
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Atherosclerosis is an inflammatory process of the arterial wall, and the captured
+      panel includes inflammatory/immune risk genes (IL6R, IL1F10, OSM, and complement
+      genes C2, C5, CFB) that carry inflammatory-response annotations
+      (annotation_supported). Tagged confirmatory and broadly_expressed: vascular
+      inflammation is an expected, generic component of CAD pathogenesis rather than a
+      non-obvious mechanism, and inflammation is a ubiquitous downstream readout across
+      many disease contexts, so it supports rather than defines the set.
