@@ -1,0 +1,151 @@
+gene_set_id: MSIGDB:GAO_LARGE_INTESTINE_ADULT_CA_ENTEROENDOCRINE_CELLS
+gene_set_name: GAO_LARGE_INTESTINE_ADULT_CA_ENTEROENDOCRINE_CELLS
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of enteroendocrine cells from adult human large
+  intestine (Gao et al. colonic atlas, MSigDB C8). Enteroendocrine cells are the
+  rare hormone-secreting epithelial cells of the intestinal lining: they sense
+  luminal and neural cues and release peptide hormones and amines from regulated
+  dense-core granules. The signature is dominated by the pan-endocrine secretory
+  apparatus (secretogranins/chromogranins, prohormone convertases, dense-core
+  vesicle exocytosis machinery), the enteroendocrine transcription-factor program
+  (NEUROD1, INSM1, NKX2-2, RFX6, PAX4), and the serotonin-producing
+  enterochromaffin signal (TPH1, SLC18A1).
+contexts:
+  - term:
+      id: CL:0000164
+      label: enteroendocrine cell
+    context_type: cell_type
+  - term:
+      id: UBERON:0000059
+      label: large intestine
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0030072
+      label: peptide hormone secretion
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Regulated secretion of peptide hormones is the defining function of
+      enteroendocrine cells. The set carries the peptide hormone ligands
+      themselves (SCT/secretin, INSL5/insulin-like peptide 5 of colonic L cells,
+      UCN3/urocortin 3) together with the prohormone-processing enzymes that
+      mature them in the secretory pathway (PCSK1/proprotein convertase 1/3,
+      CPE/carboxypeptidase E, PAM/peptidylglycine alpha-amidating monooxygenase,
+      QPCT, and the SCG5/7B2 convertase chaperone). These genes are directly
+      annotated to peptide hormone secretion / processing in goa_human, so the
+      term is annotation_supported and recovered as the primary cell-identity
+      signal.
+  - term:
+      id: GO:0031045
+      label: dense core granule
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Dense-core (regulated secretory) granules are the characteristic organelle
+      of enteroendocrine cells, storing hormones and amines for stimulated
+      release. The granule-matrix and granule-membrane markers are strongly
+      present: the granins CHGB (chromogranin B), SCG2, SCG3, SCG5 and SCGN
+      (secretagogin), the neuroendocrine granule protein VGF, the convertase
+      inhibitor PCSK1N, and the dense-core granule membrane antigen PTPRN
+      (IA-2). CHGB, SCG2 and PTPRN carry direct secretory/dense-core granule
+      localisation annotations in goa_human, making this the dominant
+      cellular-component recovery for the signature.
+  - term:
+      id: GO:0042427
+      label: serotonin biosynthetic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Enterochromaffin cells are the serotonin-producing subset of the
+      enteroendocrine lineage and make the gut the body's largest source of
+      serotonin. The signal is carried by TPH1 (tryptophan hydroxylase 1), the
+      rate-limiting and peripheral-tissue-specific enzyme of serotonin
+      biosynthesis and a defining enterochromaffin marker, directly annotated to
+      serotonin biosynthetic process in goa_human (annotation_supported).
+      Vesicular packaging for subsequent serotonin release is supported by
+      SLC18A1 (VMAT1), also present in the set. Confirmatory because serotonin
+      synthesis via TPH1 is an entailed, defining function of the enterochromaffin
+      cells captured by this colonic signature.
+  - term:
+      id: GO:0035883
+      label: enteroendocrine cell differentiation
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The enteroendocrine transcription-factor program that specifies and
+      maintains this lineage is densely represented: NEUROD1, INSM1, NKX2-2,
+      RFX6, PAX4, PAX6 and PDX1, plus the serotonergic-lineage factor FEV (Pet1).
+      NEUROD1, INSM1, NKX2-2 and RFX6 carry endocrine/enteroendocrine cell
+      differentiation annotations in goa_human (annotation_supported).
+      Categorised as supporting_process rather than core_process because it is the
+      developmental program that establishes cell identity, a prerequisite to the
+      mature executing function (peptide-hormone secretion) rather than that
+      function itself.
+  - term:
+      id: GO:0017156
+      label: calcium-ion regulated exocytosis
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Hormone and serotonin release from enteroendocrine cells occurs by
+      Ca2+-triggered exocytosis of dense-core granules, and the set carries the
+      full regulated-exocytosis apparatus: the SNAREs SNAP25 and STX1A, the Ca2+
+      sensors SYT1/SYT4/SYT5, the dense-core-vesicle priming factor CADPS, plus
+      UNC13A, RIMS2, CPLX2 and RAB3C. These are directly annotated to
+      calcium-ion regulated exocytosis in goa_human (annotation_supported).
+      Marked lineage_shared because the same machinery is used by neurons and
+      other regulated-secretory (neuroendocrine) cells; it is the mechanistic
+      execution of the cell-defining secretion, hence supporting_process and
+      confirmatory.
+  - term:
+      id: GO:0007218
+      label: neuropeptide signaling pathway
+    aspect: biological_process
+    category: marker_driven_plausible
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The set contains neuropeptide G-protein-coupled receptors NPY1R
+      (neuropeptide Y receptor Y1) and GALR1 (galanin receptor 1), the receptor
+      modifier RAMP1, and secreted peptide ligands (SCT, UCN3, INSL5), which
+      together recover neuropeptide signaling pathway. These genes are annotated
+      to GO:0007218 in goa_human (annotation_supported). Scored
+      marker_driven_plausible rather than core because the term mixes the cell's
+      paracrine/sensory receptor input with its hormone output and is shared
+      across neural and neuroendocrine cells, so it is peripheral to the
+      enteroendocrine identity captured here rather than a defining process. No
+      insight assigned (insight is reserved for core/supporting associations).

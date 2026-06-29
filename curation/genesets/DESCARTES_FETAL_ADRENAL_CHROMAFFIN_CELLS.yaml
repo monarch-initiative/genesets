@@ -8,7 +8,7 @@ taxon:
 direction: NA
 description: >-
   Single-cell marker signature of chromaffin cells of the human FETAL adrenal
-  medulla (Descartes fetal cell atlas, Cao et al. 2020, PMID:32848094; MSigDB
+  medulla (Descartes fetal cell atlas, Cao et al. 2020, PMID:33184181; MSigDB
   C8). Chromaffin cells are the catecholamine-producing neuroendocrine cells of
   the sympathoadrenal lineage. This is an early developmental signature: it is
   dominated by the sympathoadrenal / autonomic-neuron specification and neuronal

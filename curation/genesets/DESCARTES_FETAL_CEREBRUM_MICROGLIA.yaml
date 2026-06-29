@@ -8,7 +8,7 @@ taxon:
 direction: NA
 description: >-
   Single-cell marker signature of microglia from human fetal cerebrum
-  (Descartes fetal cell atlas, Cao et al. 2020 Science, PMID:32848094;
+  (Descartes fetal cell atlas, Cao et al. 2020 Science, PMID:33184181;
   MSigDB C8). Microglia are the brain-resident macrophages and the principal
   innate-immune sentinels of the CNS parenchyma; they survey the neuropil with
   motile processes, clear apoptotic cells and debris by phagocytosis, prune

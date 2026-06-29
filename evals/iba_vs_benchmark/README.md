@@ -31,8 +31,8 @@ a real evaluation.
    proliferation regulators; Manguso 2017 in-vivo melanoma immunotherapy screen),
    plus one short curated mechanism panel (Bersuker/Doll 2019 FSP1-CoQ ferroptosis
    suppressors). All HGNC-normalized into `curation/genesets/lit_members.gmt` and
-   folded into `queries.gmt`. Total evaluable: **118** (116 producing
-   enrichment) — including 36 MSigDB C8 single-cell cell-type signatures
+   folded into `queries.gmt`. Total evaluable: **126** (124 producing
+   enrichment) — including 44 MSigDB C8 single-cell cell-type signatures
    (membership fetched from mygeneset.info).
 
 2. **Annotation variants** —
@@ -78,19 +78,19 @@ output (see "Guardrail").
 - **`unique_vs_baseline`** — supported-core terms a variant recovers that `all`
   does not.
 
-## Headline result (2026, 118 evaluable / 116 scored sets, GOA `goa_human` current)
+## Headline result (2026, 126 evaluable / 124 scored sets, GOA `goa_human` current)
 
 | variant | recall_core | gap_recovered (disagreements) |
 |---|---|---|
-| all | 0.560 (201/359) | 7 |
-| no_contributes_to | 0.557 (200/359) | 7 |
-| iba_iea | 0.440 (158/359) | 4 |
-| iba | 0.345 (124/359) | 3 |
+| all | 0.561 (217/387) | 7 |
+| no_contributes_to | 0.558 (216/387) | 7 |
+| iba_iea | 0.434 (168/387) | 4 |
+| iba | 0.336 (130/387) | 3 |
 
-1. **IBA carries ~2/3 of the core biology full GOA does** (recall_core 0.35 vs
-   0.56); IEA recovers much of the difference (iba_iea 0.44).
+1. **IBA carries ~2/3 of the core biology full GOA does** (recall_core 0.34 vs
+   0.56); IEA recovers much of the difference (iba_iea 0.43).
 2. **IBA is nearly a strict subset of all-GOA — it does not fill experimental
-   gaps here.** Restricting to IBA loses 79 core terms and uniquely recovers
+   gaps here.** Restricting to IBA loses 89 core terms and uniquely recovers
    only 2, both conserved-housekeeping cellular components (ribosome
    `GO:0005840`, nucleolus `GO:0005730`).
 3. **The eval surfaces a review queue — it does not edit the gold.** 7
@@ -110,12 +110,12 @@ With the corpus-wide `insight` tags, recall splits by whether a term is
 `confirmatory` (restates the set's construction) or `mechanistic` (a non-obvious
 process — a genuine enrichment insight). Over the evaluable sets:
 
-| variant | recall_confirm (n=582) | recall_mechan (n=81) |
+| variant | recall_confirm (n=629) | recall_mechan (n=81) |
 |---|---|---|
-| all | 0.574 | 0.333 |
-| no_contributes_to | 0.572 | 0.333 |
-| iba_iea | 0.442 | 0.222 |
-| iba | 0.326 | 0.210 |
+| all | 0.568 | 0.333 |
+| no_contributes_to | 0.566 | 0.333 |
+| iba_iea | 0.432 | 0.222 |
+| iba | 0.318 | 0.210 |
 
 **Mechanistic insight is ~2x harder to recover than confirmatory biology** —
 even all-GOA recovers only ~32% of mechanistic terms vs ~62% of confirmatory
@@ -219,9 +219,24 @@ airway goblet 0/5): the carrier genes are a minority of a large signature and
 never clear Bonferroni — the calibration point that `annotation_supported` means
 "the genes carry it", not "it reaches genome-wide significance".
 
-The three new contrast pairs/series also resolve cleanly (`SERIES:` —
-alveolar_type_1↔type_2, islet alpha/beta/delta, cerebrum excitatory↔inhibitory),
-so the eval can check that opposite poles map to contrasting GO interpretations.
+A second C8 batch (smooth muscle, basophil/mast, megakaryocyte, RPE,
+enteroendocrine, Schwann, chondrocyte, placental trophoblast) widens the
+recoverability spread further. The two extremes:
+- **Megakaryocyte 6/6** — the most completely recovered set in the corpus:
+  platelet formation, aggregation, alpha granule, MK differentiation, coagulation,
+  hemostasis. Platelet biology is gene-dense *and* exhaustively GOA-annotated, so
+  every core term clears significance. Chondrocyte (5/6) and Schwann (4/6, the
+  PNS-specific myelination term an `annotation_gap`) follow.
+- **RPE 1/6, mast 1/6, enteroendocrine 1/5** — `annotation_supported` cores that
+  largely miss significance (small or dilute signatures), plus more correctly-
+  unrecovered gaps: RPE melanin biosynthesis (`membership_gap` — TYR/TYRP1/MITF
+  absent from fetal, not-yet-pigmented RPE) and trophoblast placenta-development /
+  syncytin fusion (`membership_gap` — the fusogens ERVW-1/ERVFRD-1/GCM1 absent).
+
+These five `SERIES:` contrast groups resolve cleanly — alveolar_type_1↔type_2,
+islet alpha/beta/delta, cerebrum excitatory↔inhibitory, myelinating glia
+central↔peripheral (oligodendrocyte vs Schwann), and muscle smooth/skeletal/cardiac
+— so the eval can check that the poles map to contrasting GO interpretations.
 
 ## Guardrail: the eval must not refit the gold
 

@@ -1,0 +1,168 @@
+gene_set_id: MSIGDB:TRAVAGLINI_LUNG_BASOPHIL_MAST_1_CELL
+gene_set_name: TRAVAGLINI_LUNG_BASOPHIL_MAST_1_CELL
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of the basophil / mast cell cluster of human lung
+  (Travaglini et al. 2020 Nature, PMID:33208946; MSigDB C8). This MSigDB cluster
+  combines basophils and mast cells, the granulocyte/granular immune effectors
+  that carry the high-affinity IgE receptor (FcεRI) and release preformed
+  granule mediators on activation; mast cell is treated here as the primary
+  identity, with basophil (CL:0000767) overlapping. The signature carries the
+  crisp mast cell effector program: the secretory-granule serine proteases
+  tryptase TPSAB1 and TPSB2 and carboxypeptidase A3 (CPA3), the two FcεRI
+  subunits MS4A2 (FcεRI beta) and FCER1A (FcεRI alpha), the stem-cell-factor
+  receptor KIT (CD117), the histamine-biosynthesis enzyme histidine
+  decarboxylase HDC, the vesicular monoamine transporter SLC18A2 (VMAT2), and
+  the mast/basophil master transcription factor GATA2. Also present are the
+  lipid-mediator enzymes LTC4S (leukotriene C4 synthase), HPGDS (hematopoietic
+  prostaglandin D2 synthase) and ALOX5AP (FLAP); the FcεRI signaling adaptors
+  LAT2 (NTAL), GRAP2 (GADS), BTK and RAC2; the IL-33 receptor IL1RL1 (ST2);
+  the granule components SRGN (serglycin), CTSG (cathepsin G) and CD63; the
+  basophil/mast activation marker ENPP3 (CD203c); and the negative regulator of
+  IgE-mediated degranulation RGS13.
+contexts:
+  - term:
+      id: CL:0000097
+      label: mast cell
+    context_type: cell_type
+  - term:
+      id: UBERON:0002048
+      label: lung
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0043303
+      label: mast cell degranulation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Regulated exocytosis of secretory granules loaded with preformed mediators
+      (histamine, neutral proteases, proteoglycans) is the defining effector
+      function of the mast cell/basophil and the molecular event that this
+      signature is built to capture. It is annotation_supported: the FcεRI beta
+      subunit MS4A2 and the negative regulator RGS13 are annotated in the mast
+      cell activation/degranulation branch of GOA-human, the granule-exocytosis
+      regulator RAB27B is a member, and the released cargo itself — tryptases
+      TPSAB1/TPSB2, carboxypeptidase A3 (CPA3), cathepsin G (CTSG) and the
+      proteoglycan scaffold serglycin (SRGN) — is all present. Confirmatory: a
+      mast/basophil marker set recovering mast cell degranulation recapitulates
+      the cell type's identity by construction.
+  - term:
+      id: GO:0038095
+      label: Fc-epsilon receptor signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Signaling through the high-affinity IgE receptor FcεRI is the canonical,
+      cell-type-defining activation trigger of mast cells and basophils, carried
+      by the crispest markers in the set. annotation_supported: the two receptor
+      chains FCER1A (the IgE-binding alpha subunit) and MS4A2 (the signal-
+      amplifying beta subunit) are directly annotated to the Fc-epsilon receptor
+      signaling pathway in GOA-human, together with the downstream proximal
+      machinery present here — the membrane adaptor LAT2 (NTAL), the GADS adaptor
+      GRAP2, Bruton tyrosine kinase BTK and the Rho-family GTPase RAC2.
+      Confirmatory: FcεRI signaling is the textbook activation pathway of this
+      cell type and is entailed by the presence of FCER1A and MS4A2.
+  - term:
+      id: GO:0030141
+      label: secretory granule
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The dense secretory (metachromatic) granule is the characteristic cellular
+      structure of the mast cell/basophil and the store of preformed mediators
+      released on degranulation. annotation_supported: the mast-cell-specific
+      granule cargo drives recovery — tryptases TPSAB1 and TPSB2, carboxypeptidase
+      A3 (CPA3), cathepsin G (CTSG) and the granule-matrix proteoglycan serglycin
+      (SRGN) are annotated to the secretory granule / secretory granule lumen,
+      with the granule-membrane tetraspanin CD63 also present. Marked
+      cell_type_specific because, although secretory granule as a term is generic
+      to many secretory cells, here it is recovered specifically through the
+      mast-cell tryptase/CPA3 granule complement that defines this cell type.
+  - term:
+      id: GO:0045576
+      label: mast cell activation
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Mast cell activation is the broader cell-type-specific umbrella process —
+      the change in behavior on exposure to antigen (via IgE/FcεRI), cytokines or
+      soluble factors — of which degranulation is the principal effector output.
+      annotation_supported: FCER1A, MS4A2, the stem-cell-factor receptor KIT and
+      the IL-33 receptor IL1RL1 (ST2) are members annotated in the mast cell
+      activation branch of GOA-human. Categorised supporting_process rather than
+      core because it is the broad activation-state umbrella; the specific
+      defining effector (mast cell degranulation) and the specific defining
+      trigger (Fc-epsilon receptor signaling) are recorded above as the core
+      processes. Confirmatory for a mast/basophil signature.
+  - term:
+      id: GO:0001821
+      label: histamine secretion
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Histamine release is the signature vasoactive output of mast cells and
+      basophils, and the genes for the full histamine arm are present: histidine
+      decarboxylase HDC (the rate-limiting biosynthetic enzyme, histidine →
+      histamine) and the vesicular monoamine transporter SLC18A2 (VMAT2) that
+      loads amines into granules, with the actual release occurring through the
+      FcεRI-triggered degranulation machinery above. Recorded as an annotation_gap
+      rather than annotation_supported: these genes are members but their GOA
+      annotations sit on adjacent terms — HDC on histamine biosynthetic process
+      and SLC18A2 on monoamine/amine transport — that do not roll up to the
+      unifying GO:0001821 histamine secretion, so enrichment does not recover the
+      secretion term itself. Added by curator (a GO annotation curation target) to
+      record the cell type's defining histamine effector identity, which is split
+      across biosynthesis, vesicular loading and exocytosis annotations.
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Mast cells/basophils are inflammatory effector cells, and the set carries a
+      genuine de novo lipid-mediator (eicosanoid) inflammatory arm alongside the
+      preformed mediators: LTC4S (leukotriene C4 synthase, cysteinyl-leukotriene
+      synthesis), HPGDS (hematopoietic prostaglandin D2 synthase, the major mast
+      cell prostanoid), ALOX5AP (5-lipoxygenase-activating protein/FLAP) and the
+      cyclooxygenases PTGS1/PTGS2, together with cytokine/receptor members IL18,
+      IL18R1, IL1RL1 and IL5RA — all annotated to inflammatory response in
+      GOA-human, so annotation_supported. Marked lineage_shared and
+      supporting_process because inflammatory response as a term is common to many
+      immune effector cells; the mast-cell-distinctive contribution is the
+      leukotriene/PGD2 lipid-mediator program rather than the broad term itself.

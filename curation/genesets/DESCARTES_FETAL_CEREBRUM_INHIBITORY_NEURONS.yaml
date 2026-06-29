@@ -10,7 +10,7 @@ series: SERIES:CEREBRUM_NEURON_CLASS
 series_role: inhibitory
 description: >-
   Single-cell marker signature of inhibitory (GABAergic) neurons from human fetal
-  cerebrum (Descartes fetal cell atlas, Cao et al. 2020, PMID:32848094). The
+  cerebrum (Descartes fetal cell atlas, Cao et al. 2020, PMID:33184181). The
   contrasting pole to the excitatory (glutamatergic) neuron set. This is an early
   developmental signature: it is dominated by the transcription factors that
   specify forebrain GABAergic interneuron identity in the ventral telencephalon

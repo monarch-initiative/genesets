@@ -6,6 +6,8 @@ taxon:
   id: NCBITaxon:9606
   label: Homo sapiens
 direction: NA
+series: SERIES:MYELINATING_GLIA
+series_role: central
 description: >-
   Single-cell marker signature of oligodendrocytes from human fetal cerebrum
   (Descartes atlas, MSigDB C8). Oligodendrocytes are the myelinating glia of

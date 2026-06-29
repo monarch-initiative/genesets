@@ -6,6 +6,8 @@ taxon:
   id: NCBITaxon:9606
   label: Homo sapiens
 direction: NA
+series: SERIES:MUSCLE_TYPE
+series_role: cardiac
 description: >-
   Single-cell marker signature of ventricular cardiomyocytes from human heart
   (Tucker et al.). Ventricular cardiomyocytes are striated, non-blood muscle

@@ -6,6 +6,8 @@ taxon:
   id: NCBITaxon:9606
   label: Homo sapiens
 direction: NA
+series: SERIES:MUSCLE_TYPE
+series_role: skeletal
 description: >-
   Single-cell marker signature of skeletal muscle cells (myocytes/myofibers)
   from human fetal skeletal muscle (Descartes atlas, MSigDB C8). Fetal skeletal

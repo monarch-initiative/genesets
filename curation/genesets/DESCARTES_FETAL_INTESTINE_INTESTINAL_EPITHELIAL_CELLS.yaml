@@ -8,7 +8,7 @@ taxon:
 direction: NA
 description: >-
   Single-cell marker signature of intestinal epithelial cells from human fetal
-  intestine (Descartes cell atlas, Cao et al. 2020 Science, PMID:32848094;
+  intestine (Descartes cell atlas, Cao et al. 2020 Science, PMID:33184181;
   MSigDB C8). The cluster is dominated by absorptive enterocytes and carries a
   crisp effector signature: lipoprotein/chylomicron assembly (APOA1, APOA2,
   APOA4, APOB, APOC3, MTTP), cytosolic lipid/retinol binding (FABP1, FABP2,
