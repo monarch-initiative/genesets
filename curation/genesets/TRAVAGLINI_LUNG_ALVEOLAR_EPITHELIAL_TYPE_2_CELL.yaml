@@ -6,6 +6,8 @@ taxon:
   id: NCBITaxon:9606
   label: Homo sapiens
 direction: NA
+series: SERIES:LUNG_ALVEOLAR_EPITHELIUM
+series_role: alveolar_type_2
 description: >-
   Single-cell marker signature of alveolar epithelial type II (AT2) cells from
   human lung (Travaglini et al.). AT2 cells are cuboidal secretory cells that

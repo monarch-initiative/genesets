@@ -31,7 +31,9 @@ a real evaluation.
    proliferation regulators; Manguso 2017 in-vivo melanoma immunotherapy screen),
    plus one short curated mechanism panel (Bersuker/Doll 2019 FSP1-CoQ ferroptosis
    suppressors). All HGNC-normalized into `curation/genesets/lit_members.gmt` and
-   folded into `queries.gmt`. Total evaluable: **110** (108 producing enrichment).
+   folded into `queries.gmt`. Total evaluable: **118** (116 producing
+   enrichment) — including 36 MSigDB C8 single-cell cell-type signatures
+   (membership fetched from mygeneset.info).
 
 2. **Annotation variants** —
    ```bash
@@ -76,19 +78,19 @@ output (see "Guardrail").
 - **`unique_vs_baseline`** — supported-core terms a variant recovers that `all`
   does not.
 
-## Headline result (2026, 110 evaluable / 108 scored sets, GOA `goa_human` current)
+## Headline result (2026, 118 evaluable / 116 scored sets, GOA `goa_human` current)
 
 | variant | recall_core | gap_recovered (disagreements) |
 |---|---|---|
-| all | 0.581 (193/332) | 7 |
-| no_contributes_to | 0.578 (192/332) | 7 |
-| iba_iea | 0.461 (153/332) | 4 |
-| iba | 0.367 (122/332) | 3 |
+| all | 0.560 (201/359) | 7 |
+| no_contributes_to | 0.557 (200/359) | 7 |
+| iba_iea | 0.440 (158/359) | 4 |
+| iba | 0.345 (124/359) | 3 |
 
-1. **IBA carries ~2/3 of the core biology full GOA does** (recall_core 0.37 vs
-   0.58); IEA recovers much of the difference (iba_iea 0.46).
+1. **IBA carries ~2/3 of the core biology full GOA does** (recall_core 0.35 vs
+   0.56); IEA recovers much of the difference (iba_iea 0.44).
 2. **IBA is nearly a strict subset of all-GOA — it does not fill experimental
-   gaps here.** Restricting to IBA loses 73 core terms and uniquely recovers
+   gaps here.** Restricting to IBA loses 79 core terms and uniquely recovers
    only 2, both conserved-housekeeping cellular components (ribosome
    `GO:0005840`, nucleolus `GO:0005730`).
 3. **The eval surfaces a review queue — it does not edit the gold.** 7
@@ -108,12 +110,12 @@ With the corpus-wide `insight` tags, recall splits by whether a term is
 `confirmatory` (restates the set's construction) or `mechanistic` (a non-obvious
 process — a genuine enrichment insight). Over the evaluable sets:
 
-| variant | recall_confirm (n=534) | recall_mechan (n=80) |
+| variant | recall_confirm (n=582) | recall_mechan (n=81) |
 |---|---|---|
-| all | 0.607 | 0.338 |
-| no_contributes_to | 0.605 | 0.338 |
-| iba_iea | 0.470 | 0.225 |
-| iba | 0.352 | 0.212 |
+| all | 0.574 | 0.333 |
+| no_contributes_to | 0.572 | 0.333 |
+| iba_iea | 0.442 | 0.222 |
+| iba | 0.326 | 0.210 |
 
 **Mechanistic insight is ~2x harder to recover than confirmatory biology** —
 even all-GOA recovers only ~32% of mechanistic terms vs ~62% of confirmatory
@@ -184,6 +186,42 @@ So the gold standard now records three orthogonal failure modes for mechanistic
 recall — **diffuse** (GWAS), **sign-blind** (directional regulation), and
 **under-powered** (tiny panels) — only the first of which is about annotation
 depth. The single recoverable family is the tight physical complex.
+
+### Single-cell C8 signatures — when a cell type's defining function is absent
+from its own signature
+
+The 36 MSigDB C8 single-cell cell-type signatures add a different lesson. Several
+of the fetal **Descartes** signatures are dominated by lineage-*specification*
+transcription factors and lincRNAs, with the cell type's textbook **mature
+effector machinery absent** — so its defining function is a curator-asserted
+`membership_gap`, and the eval confirms it is unrecovered, exactly as predicted:
+
+- Fetal cerebrum inhibitory neurons → **GABA biosynthesis / GABAergic
+  transmission**: `membership_gap` (GAD1/GAD2/SLC32A1 absent; the set carries the
+  DLX/ARX/LHX8 specification program instead). Unrecovered. ✓predicted
+- Fetal adrenal chromaffin cells → **catecholamine biosynthesis** and the
+  **chromaffin granule**: `membership_gap` (TH/DBH/DDC/PNMT and CHGA/CHGB absent;
+  the set carries the sympathoadrenal program SLC6A2/ISL1/HAND1/NTRK1).
+  Unrecovered. ✓predicted
+
+This is the gold doing its job in the opposite direction from the GWAS sets: not
+"a real mechanism the tool misses", but "the tool *correctly* fails to find a
+function whose genes aren't present" — a curator can only flag that by knowing
+what the signature *should* contain but doesn't.
+
+Among the adult/crisp signatures, recovery splits the usual way: effector-dense
+sets recover ~half their core (microglia 3/6 — phagocytosis, activation,
+inflammatory response; intestinal epithelium 3/6 — brush border, digestion,
+xenobiotic; photoreceptor 3/6 — the structural outer-segment/cilium terms, while
+the fetally-incomplete phototransduction cascade is not). Two crisp sets recover
+**0** core despite every term being `annotation_supported` (pancreatic delta 0/6;
+airway goblet 0/5): the carrier genes are a minority of a large signature and
+never clear Bonferroni — the calibration point that `annotation_supported` means
+"the genes carry it", not "it reaches genome-wide significance".
+
+The three new contrast pairs/series also resolve cleanly (`SERIES:` —
+alveolar_type_1↔type_2, islet alpha/beta/delta, cerebrum excitatory↔inhibitory),
+so the eval can check that opposite poles map to contrasting GO interpretations.
 
 ## Guardrail: the eval must not refit the gold
 

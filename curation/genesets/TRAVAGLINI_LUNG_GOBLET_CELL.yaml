@@ -1,0 +1,161 @@
+gene_set_id: MSIGDB:TRAVAGLINI_LUNG_GOBLET_CELL
+gene_set_name: TRAVAGLINI_LUNG_GOBLET_CELL
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of airway goblet cells from human lung
+  (Travaglini et al., MSigDB C8). Goblet cells are the mucin-secreting
+  secretory epithelial cells of the conducting airway: a narrow basal
+  nucleus and an apical theca packed with mucin-laden secretory granules.
+  They synthesise gel-forming and membrane mucins (MUC5B, MUC4, MUC16),
+  decorate them with dense mucin-type O-linked glycans, fold and oligomerise
+  them through an expanded ER (AGR2 and other protein-disulfide isomerases),
+  store them in mucin granules, and release them to form the protective
+  airway mucus gel — while also secreting a battery of antimicrobial and
+  host-defense proteins into the airway surface liquid.
+contexts:
+  - term:
+      id: CL:0000160
+      label: goblet cell
+    context_type: cell_type
+  - term:
+      id: UBERON:0002048
+      label: lung
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0016266
+      label: protein O-linked glycosylation via N-acetyl-galactosamine
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Mucin-type (GalNAc-initiated) O-linked glycosylation is the biochemical
+      hallmark of mucin biosynthesis: the tandem-repeat domains of mucin
+      apoproteins are densely decorated with O-linked glycans, which give
+      airway mucus its hydration and gel-forming properties. Directly
+      annotated set carriers under GO:0016266 are GALNT6 (a polypeptide
+      N-acetylgalactosaminyltransferase that initiates the GalNAc-O-Ser/Thr
+      linkage) and ST6GAL1 (terminal sialylation). The set additionally
+      carries the elongation, branching and donor-synthesis enzymes of the
+      same mucin O-glycan pathway — FUT2/FUT3/FUT6 (fucosylation), B3GNT3
+      (core extension), ST6GALNAC1 (sialylation), GMDS (GDP-fucose synthesis),
+      NANS (sialic acid synthesis) and UAP1 — most of which are annotated to
+      broader or sibling glycosylation terms rather than this GalNAc-specific
+      node. Core and cell-type-specific; confirmatory because dense mucin
+      O-glycosylation is entailed by the goblet-cell identity.
+  - term:
+      id: GO:0070254
+      label: mucus secretion
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Regulated release of the mucin gel is the defining function of the
+      airway goblet cell. The recovery rests on AGR2, the ER-resident
+      protein-disulfide isomerase that is directly annotated to mucus
+      secretion and is required for the disulfide-linked folding and
+      oligomerisation of gel-forming mucins. Notably the gel-forming and
+      membrane mucins themselves — MUC5B, MUC4, MUC16 — ARE present in the
+      set but are not annotated to GO:0070254 in current goa_human, so the
+      strongest carrier genes are under-annotated; this is a GO annotation
+      gap for the mucins (the term remains annotation_supported here only
+      because AGR2 carries it). Core, cell-type-specific and confirmatory.
+  - term:
+      id: GO:0098594
+      label: mucin granule
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      The mucin granule is the defining subcellular structure of the goblet
+      cell — its apical theca is packed with these mucin-laden secretory
+      granules (cf. the CL definition). Recorded as curator_added with
+      recovery_status annotation_gap because the gel-forming and membrane
+      mucins that fill these granules (MUC5B, MUC4, MUC16) ARE in the set but
+      are not annotated to GO:0098594 (mucin granule) in goa_human, so
+      enrichment cannot recover it; the gap is GO's, not the gene set's. The
+      regulated secretory phenotype is nonetheless strongly supported at the
+      parent level: many secreted cargo genes in the set — LCN2, SLPI, CST3,
+      PIGR, CTSB, CTSC, TIMP1 — are annotated to the broader secretory
+      granule (GO:0030141). Core component, cell-type-specific, confirmatory.
+  - term:
+      id: GO:0034975
+      label: protein folding in endoplasmic reticulum
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      High-volume mucin production imposes a heavy secretory protein-folding
+      load, and the signature is correspondingly enriched for ER folding and
+      oxidative-folding machinery: directly annotated carriers are AGR2, P4HB
+      and DNAJC3, with additional set members PDIA4, SDF2L1 and FKBP11
+      (foldases/chaperones), the secretory-expansion transcription factor
+      XBP1, and ER trafficking/retention factors (KDELR2, RRBP1, RER1, P4HB).
+      Marked supporting_process because the ER folding apparatus enables but
+      does not define the mucin-secretory phenotype; specificity is
+      broadly_expressed since the core ER folding machinery is general.
+      Confirmatory rather than mechanistic: AGR2's protein-disulfide-isomerase
+      activity is specifically required to fold and oligomerise gel-forming
+      mucins, so this is known goblet/secretory machinery rather than a
+      surprising convergence.
+  - term:
+      id: GO:0019730
+      label: antimicrobial humoral response
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Airway goblet/secretory cells secrete a battery of antimicrobial and
+      host-defense proteins into the airway surface liquid, contributing to
+      mucosal innate immunity alongside the mucus barrier. Directly annotated
+      set carriers include BPIFA1, SLPI, WFDC2 and LGALS3, plus the
+      antimicrobial chemokines CXCL1 and CXCL6; further host-defense products
+      in the set (BPIFB1, LCN2, MSMB, and PIGR for secretory-IgA transcytosis)
+      reinforce the theme. Categorised supporting_process with lineage_shared
+      specificity because this defensive secretory output is shared across
+      airway secretory cell types (club, serous) and enables, rather than
+      defines, the mucin-producing goblet identity. Confirmatory.
+  - term:
+      id: GO:0070098
+      label: chemokine-mediated signaling pathway
+    aspect: biological_process
+    category: marker_driven_plausible
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The set carries several secreted chemokines — CXCL1 and CXCL6 (CXCR1/2
+      ligands and neutrophil chemoattractants) and CXCL17, a mucosal chemokine
+      enriched in airway secretory epithelium — that recruit and signal to
+      immune cells at the airway surface. Directly annotated carriers under
+      GO:0070098 are CXCL6 and CXCL17. Categorised marker_driven_plausible
+      (medium confidence) because this inflammatory/recruitment output is
+      plausible given the markers but is peripheral to, and not defining of,
+      the goblet secretory identity; no insight is recorded as the category is
+      not core/supporting.

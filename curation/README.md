@@ -79,15 +79,20 @@ A corpus-wide audit (tightened rule: `mechanistic` only for a specific,
 non-obvious process not entailed by the set's construction; all generic
 downstream hallmarks — apoptosis, proliferation, generic PI3K/MAPK, disease
 OXPHOS-as-known-hallmark, expected immune terms — are `confirmatory`) tags every
-insight-bearing term: **760 confirmatory, 86 mechanistic (~90% / 10%)** of 846.
+insight-bearing term: **808 confirmatory, 87 mechanistic (~90% / 10%)** of 895.
 The mechanistic minority concentrates in causal-gene phenotype sets (the
 convergent molecular mechanisms behind a phenotype, e.g. RNA splicing / SMN-snRNP
 assembly in motor-neuron disease), CRISPR-screen convergences (flavivirus host
 factors → ER protein-biogenesis complexes; the *negative*-regulator brake modules
 in T-cell and tumor-evasion screens), the down-arm of expression contrasts
-(`JISON_SICKLE_CELL_DISEASE_DN`), and a few perturbations. This confirms the
-benchmark is predominantly an *annotation/method* test bed; its insight-testing
-power is concentrated in a minority of sets.
+(`JISON_SICKLE_CELL_DISEASE_DN`), and a few perturbations. Cell-type marker
+signatures (the C8 single-cell sets) are almost entirely confirmatory — a marker
+panel restates its own construction — so the insight value there is not the
+mechanistic tag but the `membership_gap` calls where a fetal signature lacks its
+cell type's mature effector machinery (e.g. catecholamine-synthesis enzymes
+absent from fetal adrenal chromaffin cells; GAD/VGAT absent from fetal cortical
+interneurons). This confirms the benchmark is predominantly an *annotation/method*
+test bed; its insight-testing power is concentrated in a minority of sets.
 
 ## Sources and the driver-vs-activity axis
 Most sets are MSigDB (`MSIGDB:` ids). A second source is **literature-defined**

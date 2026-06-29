@@ -1,0 +1,169 @@
+gene_set_id: MSIGDB:DESCARTES_FETAL_CEREBRUM_INHIBITORY_NEURONS
+gene_set_name: DESCARTES_FETAL_CEREBRUM_INHIBITORY_NEURONS
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+series: SERIES:CEREBRUM_NEURON_CLASS
+series_role: inhibitory
+description: >-
+  Single-cell marker signature of inhibitory (GABAergic) neurons from human fetal
+  cerebrum (Descartes fetal cell atlas, Cao et al. 2020, PMID:32848094). The
+  contrasting pole to the excitatory (glutamatergic) neuron set. This is an early
+  developmental signature: it is dominated by the transcription factors that
+  specify forebrain GABAergic interneuron identity in the ventral telencephalon
+  (DLX1, DLX2, DLX5, DLX6, ARX, LHX8, ISL1, SP8, TFAP2B, PAX2) together with
+  interneuron-subtype neuropeptides (CCK, PDYN, TAC3, CORT via CENPS-CORT, AVP)
+  and the cell-identity markers SCGN, SYNPR, RELN and SLC6A5. Notably, the mature
+  GABAergic effector machinery — the GABA-synthesizing enzymes GAD1/GAD2 and the
+  vesicular GABA transporter SLC32A1 (VGAT) — is ABSENT from this fetal signature.
+  The set therefore captures the specification/differentiation program of the cell
+  type far more than its mature neurotransmitter output.
+contexts:
+  - term:
+      id: CL:0000617
+      label: GABAergic neuron
+    context_type: cell_type
+  - term:
+      id: UBERON:0000955
+      label: brain
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0097154
+      label: GABAergic neuron differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Acquisition of GABAergic interneuron identity is the defining process of
+      this cell type and the dominant signal in the signature. The set is built
+      around the forebrain GABAergic specification transcription factors DLX1,
+      DLX2, DLX5, DLX6, ARX and LHX8 (plus ISL1, SP8, PAX2, TFAP2B), which are
+      directly annotated to GABAergic / forebrain neuron differentiation in
+      GOA-human, making this annotation_supported. Confirmatory: a GABAergic
+      interneuron marker set recovering GABAergic neuron differentiation
+      recapitulates the cell type's identity by construction.
+  - term:
+      id: GO:0021537
+      label: telencephalon development
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Cortical GABAergic interneurons are born in the ventral telencephalon
+      (the subpallial ganglionic eminences) and the set's specification factors
+      (DLX1/2/5/6, ARX, LHX8, ISL1, SP8) are annotated to telencephalon /
+      forebrain development. Marked lineage_shared because telencephalon
+      development as a term is common to both the excitatory and inhibitory
+      forebrain neuron lineages; the subpallial origin that distinguishes this
+      set is carried by the specific DLX/ARX gene complement rather than by the
+      term itself.
+  - term:
+      id: GO:0009449
+      label: GABA biosynthetic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: membership_gap
+    insight: confirmatory
+    curator_note: >-
+      Synthesis of the inhibitory neurotransmitter GABA is the cell-type-defining
+      effector function of a GABAergic neuron and belongs in any complete
+      description of this cell type. It is a membership_gap, not annotation_gap:
+      the enzymes that carry this process — glutamate decarboxylases GAD1 and
+      GAD2 — are NOT members of this fetal signature, so enrichment cannot and
+      does not recover it. Their absence reflects that this is an early
+      developmental (specification-stage) signature in which the mature
+      GABA-synthesis machinery is not yet a top marker, rather than evidence
+      against the biology. Added by curator to record the effector function the
+      set omits.
+  - term:
+      id: GO:0051932
+      label: synaptic transmission, GABAergic
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: membership_gap
+    insight: confirmatory
+    curator_note: >-
+      GABAergic synaptic transmission — vesicular release of GABA onto
+      postsynaptic GABA receptors — is the mature functional output that defines
+      this cell type physiologically. It is a membership_gap: the genes that
+      carry it, principally the vesicular GABA transporter SLC32A1 (VGAT) for
+      vesicle loading and GAD1/GAD2 for transmitter supply, are NOT in this fetal
+      signature. (The glycine transporter SLC6A5/GlyT2 is present, a related but
+      distinct inhibitory transporter, underscoring that the canonical vesicular
+      GABA machinery specifically is missing.) The association is real for the
+      underlying biology and should appear in a complete set; the gap is the gene
+      set's.
+  - term:
+      id: GO:0007218
+      label: neuropeptide signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      A neuropeptide program is genuinely present and recovered: CCK, PDYN
+      (prodynorphin), TAC3 (tachykinin/neurokinin B), CORT (cortistatin, via the
+      CENPS-CORT readthrough) and AVP are set members annotated to neuropeptide
+      signaling. These peptides mark distinct cortical interneuron subtypes and
+      provide modulatory signaling alongside fast GABAergic transmission.
+      Categorised supporting_process: it is a real enabling program of these
+      interneurons rather than the defining GABAergic effector function.
+  - term:
+      id: GO:0001764
+      label: neuron migration
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      Marked mechanistic because neuron migration is a specific, non-obvious
+      convergence that distinguishes inhibitory from excitatory cerebral neurons:
+      cortical GABAergic interneurons are born in the ventral telencephalon and
+      reach the cortex by long-range TANGENTIAL migration, whereas excitatory
+      neurons migrate radially from the local ventricular zone. The same set
+      members that specify identity — ARX and the DLX factors — are independently
+      annotated to neuron migration in GOA-human and govern this tangential
+      migration, so the term is annotation_supported and recovered by enrichment.
+      Its prominence in an interneuron signature is informative rather than
+      entailed by the GABAergic label.
+  - term:
+      id: GO:0043005
+      label: neuron projection
+    aspect: cellular_component
+    category: core_component
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Inhibitory neurons elaborate axons and dendrites through which they form
+      inhibitory synapses; projection- and synapse-associated markers in the set
+      (e.g. SYNPR, KCNA1, RELN) annotate here. Marked lineage_shared and
+      core_component because the neuron projection is the characteristic neuronal
+      structure common to excitatory and inhibitory neurons alike rather than a
+      GABAergic-specific feature.

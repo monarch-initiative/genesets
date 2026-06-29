@@ -6,6 +6,8 @@ taxon:
   id: NCBITaxon:9606
   label: Homo sapiens
 direction: NA
+series: SERIES:CEREBRUM_NEURON_CLASS
+series_role: excitatory
 description: >-
   Single-cell marker signature of excitatory (glutamatergic) neurons from human
   fetal cerebrum (Descartes atlas). These cells are of neural lineage, not

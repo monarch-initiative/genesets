@@ -6,6 +6,8 @@ taxon:
   id: NCBITaxon:9606
   label: Homo sapiens
 direction: NA
+series: SERIES:PANCREATIC_ISLET
+series_role: beta
 description: >-
   Single-cell marker signature of pancreatic beta cells (type B pancreatic
   cells) from human pancreas (Muraro et al. single-cell atlas of the human

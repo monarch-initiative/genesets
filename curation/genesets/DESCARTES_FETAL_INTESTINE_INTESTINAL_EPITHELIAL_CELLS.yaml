@@ -1,0 +1,151 @@
+gene_set_id: MSIGDB:DESCARTES_FETAL_INTESTINE_INTESTINAL_EPITHELIAL_CELLS
+gene_set_name: DESCARTES_FETAL_INTESTINE_INTESTINAL_EPITHELIAL_CELLS
+collection: C8
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Single-cell marker signature of intestinal epithelial cells from human fetal
+  intestine (Descartes cell atlas, Cao et al. 2020 Science, PMID:32848094;
+  MSigDB C8). The cluster is dominated by absorptive enterocytes and carries a
+  crisp effector signature: lipoprotein/chylomicron assembly (APOA1, APOA2,
+  APOA4, APOB, APOC3, MTTP), cytosolic lipid/retinol binding (FABP1, FABP2,
+  RBP2), brush-border hydrolases (SI, LCT, ANPEP, TREH, ALPI, MEP1A, MGAM2),
+  apical/basolateral nutrient transporters (SLC5A1/SGLT1, SLC2A2/GLUT2, CUBN,
+  ABCG5, ABCC2), and a battery of first-pass xenobiotic-metabolising enzymes
+  (CYP3A5, CYP2C9/18/19, UGT, SULT, GSTA). A minority of secretory-lineage
+  markers (MUC2, MUC13, MUC17, PIGR, ZG16) is also present, consistent with a
+  mixed absorptive-epithelial cluster annotated as intestinal epithelial cell.
+contexts:
+  - term:
+      id: CL:0002563
+      label: intestinal epithelial cell
+    context_type: cell_type
+  - term:
+      id: UBERON:0000160
+      label: intestine
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0098856
+      label: intestinal lipid absorption
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Intestinal lipid absorption is the defining physiological function of the
+      absorptive enterocyte and the strongest, most cell-type-specific signal in
+      this signature. The full effector cascade is present and annotated:
+      apical fatty-acid/monoacylglycerol uptake and re-esterification
+      (FABP1, FABP2, MOGAT2, MOGAT3, DGAT1, ACSL5), and microsomal lipid
+      loading onto apoB (APOB, MTTP). This is annotation_supported via
+      GOA-human facts on FABP1, FABP2, APOB, APOA4 and MTTP. Marked
+      confirmatory because lipid absorption is entailed by the enterocyte
+      identity of this cluster rather than being a non-obvious discovery.
+  - term:
+      id: GO:0034378
+      label: chylomicron assembly
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Chylomicron assembly is the intestine-specific packaging step that
+      exports absorbed dietary lipid into lymph; unlike hepatocyte VLDL, the
+      chylomicron is built only by enterocytes, making this term highly
+      cell-type-specific. Carriers present and annotated include the
+      exchangeable apolipoproteins APOA1, APOA2, APOA4 and APOC3, the
+      structural scaffold APOB, the lipid-transfer chaperone MTTP, and the
+      phospholipase PLA2G12B. Categorised supporting_process because it is the
+      downstream lipoprotein-packaging arm of the core intestinal lipid
+      absorption process; confirmatory for the same reason.
+  - term:
+      id: GO:0005903
+      label: brush border
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The apical brush border, a dense palisade of actin-cored microvilli, is
+      the defining cellular structure of the absorptive enterocyte and the
+      platform on which terminal digestion and nutrient uptake occur. The
+      signature is rich in resident brush-border-membrane proteins:
+      hydrolases (SI, ANPEP, ALPI, MEP1A, TREH), the apical glucose transporter
+      SLC5A1, the cobalamin-uptake receptor complex CUBN/AMN, and the apical
+      serine protease PRSS8. annotation_supported via GOA brush-border /
+      brush-border-membrane facts on SI, ANPEP, ALPI, SLC5A1, CUBN and AMN.
+  - term:
+      id: GO:0007586
+      label: digestion
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Terminal (brush-border) digestion of luminal carbohydrates and peptides
+      is a core enterocyte process executed by membrane-anchored hydrolases.
+      The signature carries the canonical disaccharidases and peptidases:
+      sucrase-isomaltase (SI), lactase (LCT), maltase-glucoamylase-like MGAM2,
+      trehalase (TREH), aminopeptidase N (ANPEP), meprin A (MEP1A), intestinal
+      alkaline phosphatase (ALPI), alkaline sphingomyelinase (ENPP7) and
+      trypsinogen PRSS3. annotation_supported (SI, LCT, ANPEP, TREH, ALPI and
+      MGAM2 are annotated to digestion or its carbohydrate-digestion child).
+      Confirmatory: terminal digestion is entailed by the enterocyte identity.
+  - term:
+      id: GO:0015749
+      label: monosaccharide transmembrane transport
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Vectorial sugar absorption couples apical Na+-glucose symport to
+      basolateral facilitated efflux. The signature carries the two textbook
+      enterocyte transporters, SGLT1 (SLC5A1, apical) and GLUT2 (SLC2A2,
+      basolateral), plus additional SLC5 sodium/sugar cotransporters (SLC5A9,
+      SLC5A12). annotation_supported through GOA glucose / monosaccharide
+      transmembrane-transport facts on SLC5A1 and SLC2A2. Categorised
+      supporting_process and lineage_shared because the individual transporter
+      activities are shared with renal absorptive epithelium, while their
+      apical/basolateral polarisation here serves the core absorptive role.
+  - term:
+      id: GO:0006805
+      label: xenobiotic metabolic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The intestinal epithelium is a major site of first-pass (presystemic)
+      xenobiotic and drug metabolism, and the signature carries a broad
+      detoxification battery: phase I cytochromes P450 (CYP3A5, CYP2C9,
+      CYP2C18, CYP2C19, CYP2W1), phase II conjugating enzymes (UGT2A3,
+      UGT2B17, UGT3A1, SULT1B1, SULT1C2, SULT1E1, SULT2A1, GSTA1, GSTA2),
+      flavin mono-oxygenase FMO1, arylamine N-acetyltransferase NAT2, and the
+      xenobiotic sensor NR1I2 (PXR). annotation_supported via GOA xenobiotic
+      metabolic-process facts on the CYP2C/CYP3A, UGT, SULT and GST genes.
+      Categorised supporting_process and lineage_shared because this
+      detoxification programme is co-expressed by hepatocytes; confirmatory as
+      a known enterocyte function rather than a novel mechanistic insight.

@@ -6,6 +6,8 @@ taxon:
   id: NCBITaxon:9606
   label: Homo sapiens
 direction: NA
+series: SERIES:PANCREATIC_ISLET
+series_role: alpha
 description: >-
   Single-cell marker signature of pancreatic alpha (A) cells from human pancreas
   (Muraro et al.). Pancreatic alpha cells are glucagon-secreting endocrine cells
