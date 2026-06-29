@@ -1,10 +1,23 @@
 # genesets-rs
 
-`genesets-rs` is a CLI-first, ontology-agnostic gene set enrichment tool. The MVP does one-sided Fisher exact enrichment with optional Bonferroni correction, using dense gene bitsets so repeated term-vs-term and sample-vs-term calculations are mostly popcount work after loading.
+This repository is a monorepo for gene set enrichment, eval exploration, and
+curated gene set interpretation.
 
-The implementation does not hardcode GO. GO is represented as ordinary term IDs, a human-readable term-name table, a precomputed child-to-ancestor closure table, and gene-to-term annotations. If no closure is supplied, the target library is treated as flat.
+- `genesets-rs`: a fast Rust CLI and library for ontology-aware and flat gene
+  set enrichment.
+- `genesets-workflows`: a Python workflow package for source preparation,
+  configured evals, reports, curation helpers, and local browser tools.
+- Web explorer: a local, not-yet-deployed UI for browsing generated eval report
+  bundles.
+- `curation/`: a LinkML-validated corpus of curated GO interpretations for
+  non-GO gene sets.
 
-## Build
+The Rust engine remains ontology-neutral. GO is represented as ordinary term
+IDs, a human-readable term-name table, a precomputed child-to-ancestor closure
+table, and gene-to-term annotations. If no closure is supplied, the target
+library is treated as flat.
+
+## Build The Rust CLI
 
 ```bash
 cargo build --release
@@ -31,16 +44,16 @@ command to refresh the installed binary.
 
 ## Documentation
 
-The repository includes an mdBook scaffold for GitHub Pages-style documentation:
+The repository includes an mdBook site for GitHub Pages-style documentation:
 
 ```bash
 cargo install mdbook
 mdbook serve
 ```
 
-The book source lives in `docs/src`. It covers the CLI, workflow layer, input
-model, statistics, performance model, eval strategy, ontology prep, and
-competitive landscape.
+The book source lives in `docs/src`. It is organized around the project
+surfaces: compute engine, reports/evals, local web explorer, curated
+interpretation corpus, and reference material.
 
 ## Workflow Layer
 
@@ -67,6 +80,8 @@ genesets-workflows go-impact evals/go_impact_5y_expression500.yaml
 genesets-workflows reactome-flat
 genesets-workflows prepare-reactome-flat --out-dir evals/reactome_flat/generated/current
 genesets-workflows fetch-mygeneset --query 'GSE*' --source-filter msigdb --limit 500 --out-dir evals/expression_like/generated/msigdb_gse_500
+genesets-workflows explore notebooks/generated/go_iba_impact_expression5000_diverse
+genesets-workflows curate --help
 ```
 
 The older script commands for these workflows remain as compatibility wrappers
@@ -78,6 +93,28 @@ The intended boundary is:
 Python workflow prep -> normalized tables/YAML plan -> Rust batch command
 -> Parquet outputs -> DuckDB/report summaries
 ```
+
+## Web Explorer
+
+The local explorer browses existing workflow report bundles. It does not run
+enrichment itself; it reads `summary.yaml`, query metadata, query genes, and
+Parquet result/diff files.
+
+Open the default local bundles:
+
+```bash
+just browser
+```
+
+Open one bundle explicitly:
+
+```bash
+uv run --project python/genesets-workflows --extra explorer \
+  genesets-workflows explore notebooks/generated/go_iba_impact_expression5000_diverse --open
+```
+
+The curated gene set browser should be built as a separate static/generated
+view over `curation/genesets/*.yaml`, not as part of the Rust compute engine.
 
 ## Input Tables
 
@@ -217,11 +254,15 @@ python3 scripts/run_disease20_go_eval.py \
 
 Companion YAML metadata records the cutoff, source file digests, prep settings, row counts, and run timing.
 
-## Curated GO Interpretations
+## Curated Gene Set Interpretations
 
-`curation/` holds expert GO-term interpretations of non-GO gene sets (MSigDB C8
-cell-type signatures first), validated with LinkML term/reference validators and
-used as a precision/recall gold standard. See `curation/README.md`.
+`curation/` holds expert GO-term interpretations of non-GO gene sets, validated
+with LinkML term/reference validators and used as a precision/recall gold
+standard. Each file records biological context, curated GO associations,
+category, confidence, specificity, recovery status, enrichment stats, and
+optional literature evidence.
+
+See `curation/README.md` and the mdBook curation section.
 
     just curate-validate
     just curate-report

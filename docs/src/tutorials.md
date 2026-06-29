@@ -1,8 +1,8 @@
 # Tutorials
 
-These tutorials are CLI-first workflows. Each one has a matching Jupyter
-notebook under the repository's `notebooks/` directory, but the commands shown
-here can also be run directly in a shell.
+These tutorials cover compute and report workflows. Each one has a matching
+Jupyter notebook under the repository's `notebooks/` directory, but the
+commands shown here can also be run directly in a shell.
 
 ## Notebook Setup
 

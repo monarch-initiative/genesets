@@ -1,44 +1,50 @@
-# Introduction
+# Overview
 
-`genesets-rs` is a fast, CLI-first enrichment engine for ontology-aware and flat gene set analysis.
+This project is a small monorepo around gene set enrichment, eval exploration,
+and curated gene set interpretation.
 
-The project is deliberately ontology-neutral. Gene Ontology is the main near-term use case, but the core data model only requires:
+The main surfaces are:
 
-- a table of term CURIEs and human-readable names,
-- a precomputed child-to-ancestor closure table,
-- gene-to-term annotations,
-- optional gene names or symbols,
+- `genesets-rs`: a fast Rust compute engine and CLI for ontology-aware and flat
+  gene set enrichment.
+- `genesets-workflows`: a Python workflow package for source preparation,
+  configured evals, reports, metadata, curation helpers, and local tools.
+- Web explorer: a local browser for generated eval report bundles.
+- Curated interpretation corpus: LinkML-validated YAML interpretations of
+  non-GO gene sets, intended both as a gold standard and as browsable content.
+
+The repository should stay together for now. The pieces share fixtures,
+schemas, eval definitions, and version history, but each has a clear boundary.
+
+## Core Model
+
+The compute engine is deliberately ontology-neutral. Gene Ontology is the main
+near-term target, but the core data model only requires:
+
+- a table of term CURIEs and human-readable names;
+- a precomputed child-to-ancestor closure table;
+- gene-to-term annotations;
+- optional gene names or symbols;
 - query sets and background sets.
 
-Flat libraries, such as MSigDB-style collections, are represented as terms with no closure. User samples are also just flat terms. This keeps the statistical engine the same for sample-vs-ontology, sample-vs-library, and arbitrary term-vs-term matrix jobs.
+Flat libraries, such as MSigDB-style collections, are represented as terms with
+no closure. User samples are also just flat terms. This keeps the statistical
+engine the same for sample-vs-ontology, sample-vs-library, and arbitrary
+term-vs-term matrix jobs.
 
-## What This Is Optimized For
+## Boundaries
 
-The initial design is aimed at repeated over-representation analysis:
+The Rust core should accept normalized tables and do one job quickly. It should
+not know about species, evidence codes, ontology release policy, identifier
+mapping, remote services, curation judgments, or web UI state.
 
-- compare thousands of disease, pathway, or experiment-derived gene sets against one ontology;
-- compare two ontology releases by running the same query set against both;
-- run ontology terms against themselves to inspect term overlap structure;
-- cache or reuse prepared annotation tables from external ontology tooling.
+Those concerns belong in the workflow and curation layers:
 
-The MVP statistic is one-sided Fisher exact enrichment with optional Bonferroni correction. The implementation leaves room for ranked-list statistics and ontology-aware model-set methods, but the first requirement is a very fast and auditable baseline.
+- GO, GOA, Reactome, MyGeneSet, and other source-specific adapters;
+- evidence-code filters and release metadata;
+- configured report runs and DuckDB summaries;
+- local or static web views over generated artifacts;
+- LinkML validation and curated interpretation pages.
 
-## Project Layers
-
-The project has two user-facing layers:
-
-- `genesets-rs`: the Rust CLI and library code for loading normalized tables,
-  building bitset indexes, computing enrichment, comparing result tables, and
-  writing TSV or Parquet.
-- `genesets-workflows`: the Python workflow package for repeatable source
-  preparation, configured reports, metadata, DuckDB summaries, notebooks, and
-  future web-facing reports.
-
-The boundary is intentional. GO, GOA, Reactome, MyGeneSet, evidence-code
-filters, release metadata, and report layouts change faster than the enrichment
-kernel. They belong in the workflow layer. The Rust core should continue to
-accept normalized ontology-neutral tables and do one job quickly.
-
-## Non-Goals For The Core Engine
-
-The core engine does not know about species, evidence codes, ontology release policy, identifier mapping, or remote services. Those concerns belong in prep and wrapper layers. This separation keeps the fast path small and makes it easier to build reproducible evals.
+Start with [Choosing A Path](choosing-a-path.md) if you are not sure which
+surface you need.
