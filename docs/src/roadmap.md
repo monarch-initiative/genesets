@@ -31,8 +31,8 @@
 ## Longer Term
 
 - Add topology-aware model families.
-- Explore gene-set-informed factor models (f-scLVM / slalom-style) as a
-  downstream consumer of curated libraries, and reuse the curated
+- Explore gene-set-informed factor models (f-scLVM / slalom and expiMap-style)
+  as downstream consumers of curated libraries, and reuse the curated
   `recovery_status` / `membership_gap` judgments as a benchmark for
   data-driven annotation refinement. See the Competitive Landscape.
 - Add richer version-diff reports for ontology release comparisons.

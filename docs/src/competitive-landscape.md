@@ -45,14 +45,37 @@ The output is interpretable per-cell factor activations attached to named
 pathways, which is why it is used to identify and annotate cell subpopulations
 rather than to rank pathways for a single contrast.
 
+expiMap (Lotfollahi et al., 2023), implemented in the **scArches** ecosystem, is
+the deep-learning successor to the same idea. It is a variational autoencoder
+whose latent nodes are gene programs: a binary mask ties the decoder so that each
+latent dimension reconstructs only the genes of its annotated set, making the
+otherwise opaque latent space directly interpretable. It carries over every move
+f-scLVM makes — it learns a per-cell activity for each program, soft-prunes
+uninformative programs (group-lasso regularization on the decoder, the relevance
+analog), and refines membership by allowing the mask to admit a few extra genes
+per program. Its headline addition is a set of **add-on de novo learnable
+nodes**: unconstrained latent dimensions that capture biology the annotations
+miss, the neural-network counterpart of f-scLVM's unannotated factors. Because it
+is built on scArches, its distinctive use case is *reference mapping* — projecting
+a new query dataset onto an existing atlas's gene-program latent space and reading
+off which programs differ, including in perturbation and disease-response
+settings.
+
+The trade-off between the two mirrors linear-vs-nonlinear generally: f-scLVM is a
+linear factor model that is fast, fully Bayesian, and easy to reason about;
+expiMap is a nonlinear VAE that scales to atlas-sized data and supports transfer
+learning, at the cost of interpretability being mediated by the architecture
+rather than read directly off loadings.
+
 This matters to a gene-set engine for two reasons. First, it is a downstream
 *consumer* of exactly the libraries this project scores and curates, so set
 quality propagates into factor interpretability. Second, the "refine the
 annotation" step is the same concern the curated corpus encodes by hand: the
 nominal membership of a named set and the genes that actually behave like the set
-are not identical. f-scLVM learns that gap from data; the curation gold standard
-records it from expert judgment (`recovery_status` / `membership_gap`). The two
-are complementary views of annotation noise, not competitors.
+are not identical. Both f-scLVM and expiMap learn that gap from data (membership
+refinement); the curation gold standard records it from expert judgment
+(`recovery_status` / `membership_gap`). The two are complementary views of
+annotation noise, not competitors.
 
 GSEA and ssGSEA (single-sample GSEA) sit between ORA and factor models: they are
 rank-based set-scoring methods that, in the ssGSEA case, also produce a per-sample
@@ -88,6 +111,7 @@ The MVP should instead make it easy to prove:
 - topGO manual: <https://bioconductor.org/packages/devel/bioc/vignettes/topGO/inst/doc/topGO_manual.html>
 - Ontologizer paper: <https://academic.oup.com/bioinformatics/article/24/14/1650/182451>
 - f-scLVM / slalom paper: <https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1334-8>
+- expiMap paper: <https://www.nature.com/articles/s41556-022-01072-x>
 - Enrichr paper: <https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-14-128>
 - GO Consortium enrichment page: <https://geneontology.org/docs/go-enrichment-analysis/>
 - MyGeneset.info docs: <https://docs.mygeneset.info/>
