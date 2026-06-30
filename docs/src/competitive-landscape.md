@@ -82,6 +82,46 @@ rank-based set-scoring methods that, in the ssGSEA case, also produce a per-samp
 per-set activity score. They share the "score named programs per sample" goal with
 f-scLVM but do not jointly model factors, switch sets off, or refine membership.
 
+### Connection To The Curated Corpus
+
+The curated gold standard in `curation/` is, structurally, a hand-built version
+of what these models estimate. A single non-GO gene set is not curated to one
+label; it is decomposed into *multiple* GO programs, each with a curator judgment.
+`HALLMARK_INTERFERON_GAMMA_RESPONSE`, for example, resolves into a response-to-
+type-II-interferon program, an antigen-processing/MHC-class-I program, an
+antiviral-defense program, and a `nonspecific` translation residual. That is a
+factor decomposition of the set, recorded with evidence rather than fit from an
+expression matrix, and the schema axes line up with the model concepts:
+
+- multiple `associations` per set ≈ the several latent program nodes one set seeds;
+- `category` (`core_process` … `nonspecific` / `false_association`) ≈ per-factor
+  relevance / group-lasso pruning — the `nonspecific` translation term is the
+  factor f-scLVM would drive toward zero relevance;
+- `recovery_status: membership_gap` ≈ data-driven **membership refinement**:
+  expiMap's reported addition of nine B-cell markers to its predefined BCR program
+  is exactly a `membership_gap` correction, learned from data instead of curated;
+- `series` / contrasting poles ≈ a program's activation contrasting across cell
+  states.
+
+Two consequences. First, the corpus is natural **supervision and a benchmark for
+the membership-refinement step specifically**: the models propose "gene X belongs
+in program P"; the gold standard holds independent, cited judgments of that same
+claim. Second, the alignment is only with `membership_gap` — the models refine set
+membership but never touch the ontology, so `annotation_gap` (GO too shallow) stays
+orthogonal, just as it does for the enrichment tools above.
+
+The overlap is concrete, not aspirational: f-scLVM seeds factors from MSigDB
+Hallmark and Reactome and headlines a G2/M-checkpoint cell-cycle factor; expiMap
+trains on Reactome plus PanglaoDB marker sets and headlines interferon programs.
+The corpus already curates that family — `HALLMARK_G2M_CHECKPOINT`,
+`HALLMARK_INTERFERON_GAMMA_RESPONSE`, and the `HAY_BONE_MARROW_*` / `DESCARTES_*`
+cell-type marker sets — so the priors these models consume are the same objects
+this project scores. Note the scope line, though: this repo curates gene sets and
+their GO interpretations, not expression matrices. The in-scope way to bring a
+*signature* from one of these papers into the corpus is the existing
+`LIT:DISEASE_ACTIVITY` pattern (a derived gene list with the paper as identity,
+membership, and evidence), not hosting the underlying single-cell data.
+
 ## Our Wedge
 
 The core differentiators should be:
