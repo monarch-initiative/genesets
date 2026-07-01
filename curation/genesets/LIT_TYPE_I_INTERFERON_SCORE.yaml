@@ -1,0 +1,151 @@
+gene_set_id: LIT:TYPE_I_INTERFERON_SCORE
+gene_set_name: TYPE_I_INTERFERON_SCORE
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+description: >-
+  Literature-defined type I interferon ACTIVITY signature: the six-gene "AGS-6"
+  interferon score of Rice, Forte, Crow et al. (Lancet Neurology 2013,
+  PMID:24183309), a validated qPCR biomarker of type I interferon pathway
+  activity in peripheral blood. The members are the six interferon-stimulated
+  genes (ISGs) whose median fold-change over healthy controls defines the score:
+  IFI27, IFI44, IFI44L, ISG15, RSAD2, and SIGLEC1. It is the clinical,
+  deliberately minimal, bulk-blood READOUT of the same type I interferon program
+  that single-cell factor models estimate per cell — f-scLVM (Buettner 2017) and
+  expiMap (Lotfollahi 2023) seed an interferon factor / latent node from pathway
+  annotations and read off its per-cell activity; this panel reads the identical
+  program's activity from a handful of downstream effector transcripts. Every
+  member is a canonical type I ISG and a downstream EFFECTOR/output, not a signal
+  transducer: ISG15 (the ubiquitin-like ISGylation modifier), RSAD2 (viperin, an
+  antiviral restriction factor), IFI27/IFI44/IFI44L (interferon-induced antiviral
+  effectors), and SIGLEC1/CD169 (the interferon-activated macrophage surface
+  sialic-acid-binding lectin). Because the panel is an intentionally minimal
+  effector readout, the machinery that DEFINES the pathway upstream — the
+  receptor/JAK-STAT/ISGF3 signal transducers (IFNAR1/2, JAK1, TYK2, STAT1, STAT2,
+  IRF9) and the interferon-induced antigen-presentation apparatus (HLA, B2M, TAP,
+  PSMB8) — is deliberately absent from the six genes and is recorded here as
+  membership_gap rather than as a false association. As a hand-curated activity
+  panel it carries no ribosomal/housekeeping genes, so it has no nonspecific
+  enrichment term at all. This set is deliberately the minimal-membership pole of
+  a three-level granularity gradient over ONE biological program in the corpus:
+  the six-gene clinical score here, the broader ~20-gene discovery-derived
+  LIT:TYPE_I_INTERFERON_SIGNATURE (Baechler 2003, SLE), and the comprehensive
+  296-gene MSIGDB:REACTOME_INTERFERON_SIGNALING pathway. Same biology, increasing
+  completeness — so where the larger two recover antigen presentation and the
+  JAK-STAT machinery as annotation_supported, this minimal panel records them as
+  membership_gap. That contrast is the point: it makes visible the
+  membership-refinement axis that single-cell factor models (f-scLVM, expiMap)
+  learn from data, curated here at three fixed granularities.
+contexts:
+  - term:
+      id: GO:0071357
+      label: cellular response to type I interferon
+    context_type: experimental_condition
+    role_note: >-
+      The panel reads out type I interferon pathway activity as a disease
+      biomarker (interferonopathies, systemic lupus, dermatomyositis) rather than
+      any single cell type or one disease; the type I interferon response is the
+      anchoring context.
+associations:
+  - term:
+      id: GO:0071357
+      label: cellular response to type I interferon
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:24183309
+        reference_title: "Assessment of interferon-related biomarkers in Aicardi-Goutieres syndrome associated with mutations in TREX1, RNASEH2A, RNASEH2B, RNASEH2C, SAMHD1, and ADAR: a case-control study."
+        supports: SUPPORT
+        evidence_source: HUMAN_CLINICAL
+        explanation: >-
+          The gene set is, by construction, the panel of six interferon-stimulated
+          genes whose expression Rice et al. measured by quantitative PCR to build
+          a type I interferon score for each patient. Cellular response to type I
+          interferon is therefore the defining process the score reads out: every
+          member is a canonical type I ISG induced through IFN-alpha/beta signalling
+          and carries the response-to-type-I-interferon annotation, so enrichment
+          recovers the term (annotation_supported). It is confirmatory because the
+          panel was assembled precisely to quantify this response.
+    curator_note: >-
+      All six members (IFI27, IFI44, IFI44L, ISG15, RSAD2, SIGLEC1) are canonical
+      interferon-stimulated genes induced by type I interferon; the term is the
+      panel's reason for existing, so it is kept core and confirmatory.
+  - term:
+      id: GO:0051607
+      label: defense response to virus
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      RSAD2 (viperin), ISG15, and IFI44L are antiviral effectors that carry the
+      defense response to virus annotation, so enrichment recovers it. Scored
+      supporting rather than core, and broadly_expressed, because antiviral defense
+      is the downstream physiological purpose the ISGs serve rather than the
+      panel-defining property (which is type I interferon responsiveness itself),
+      and it is shared with the type II interferon and broader antiviral response.
+  - term:
+      id: GO:0045071
+      label: negative regulation of viral genome replication
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      RSAD2/viperin and IFI44L restrict viral genome replication and carry this
+      more specific antiviral-effector annotation, so it is recovered from the set.
+      Kept supporting and confirmatory because antiviral restriction is an expected
+      effector function of interferon-stimulated genes rather than a non-obvious
+      insight into this panel.
+  - term:
+      id: GO:0019882
+      label: antigen processing and presentation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: membership_gap
+    insight: confirmatory
+    curator_note: >-
+      Type I interferon is a principal inducer of MHC class I antigen processing
+      and presentation (up-regulation of HLA-A/B/C, B2M, TAP1/TAP2, and the PSMB8
+      immunoproteasome subunit), so antigen presentation is a genuine part of a
+      complete type I interferon activity program and belongs in a full
+      description. It is recorded as a membership_gap, not a false association,
+      because none of those carrier genes are among the six panel members — this
+      minimal biomarker samples the ISG-effector output only. The gap is the gene
+      set's (deliberate minimality), not GO's, so the term is curator_added and is
+      not recovered by enrichment.
+  - term:
+      id: GO:0060337
+      label: type I interferon-mediated signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: membership_gap
+    insight: confirmatory
+    curator_note: >-
+      The signal-transduction machinery that defines the pathway — the receptors
+      IFNAR1/IFNAR2, the kinases JAK1/TYK2, the ISGF3 transcription factors
+      STAT1/STAT2/IRF9 — is absent from this panel; the six members are the
+      transcriptional OUTPUTS of that pathway, not its transducers. The pathway is
+      therefore real and central to the biology but is a membership_gap in this
+      readout-only set (the carrier genes are not present), recorded curator_added
+      rather than downgraded, so the honest gap between "measures pathway activity"
+      and "contains the pathway machinery" stays visible.
