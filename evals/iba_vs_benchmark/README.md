@@ -31,9 +31,14 @@ a real evaluation.
    proliferation regulators; Manguso 2017 in-vivo melanoma immunotherapy screen),
    plus one short curated mechanism panel (Bersuker/Doll 2019 FSP1-CoQ ferroptosis
    suppressors). All HGNC-normalized into `curation/genesets/lit_members.gmt` and
-   folded into `queries.gmt`. Total evaluable: **126** (124 producing
+   folded into `queries.gmt`. Total evaluable: **128** (126 producing
    enrichment) — including 44 MSigDB C8 single-cell cell-type signatures
-   (membership fetched from mygeneset.info).
+   (membership fetched from mygeneset.info). The two interferon sets added with
+   the gene-set-informed factor-model docs are here too: the MSigDB pathway set
+   `REACTOME_INTERFERON_SIGNALING` (fetched from mygeneset.info) and the six-gene
+   `TYPE_I_INTERFERON_SCORE` (AGS-6 clinical panel, captured into
+   `lit_members.gmt` — one of the few `LIT:DISEASE_ACTIVITY` sets with an explicit
+   captured membership rather than prose markers).
 
 2. **Annotation variants** —
    ```bash
@@ -78,19 +83,19 @@ output (see "Guardrail").
 - **`unique_vs_baseline`** — supported-core terms a variant recovers that `all`
   does not.
 
-## Headline result (2026, 126 evaluable / 124 scored sets, GOA `goa_human` current)
+## Headline result (2026, 128 evaluable / 126 scored sets, GOA `goa_human` current)
 
 | variant | recall_core | gap_recovered (disagreements) |
 |---|---|---|
-| all | 0.561 (217/387) | 7 |
-| no_contributes_to | 0.558 (216/387) | 7 |
-| iba_iea | 0.434 (168/387) | 4 |
-| iba | 0.336 (130/387) | 3 |
+| all | 0.561 (221/394) | 7 |
+| no_contributes_to | 0.558 (220/394) | 7 |
+| iba_iea | 0.437 (172/394) | 4 |
+| iba | 0.338 (133/394) | 3 |
 
 1. **IBA carries ~2/3 of the core biology full GOA does** (recall_core 0.34 vs
-   0.56); IEA recovers much of the difference (iba_iea 0.43).
+   0.56); IEA recovers much of the difference (iba_iea 0.44).
 2. **IBA is nearly a strict subset of all-GOA — it does not fill experimental
-   gaps here.** Restricting to IBA loses 89 core terms and uniquely recovers
+   gaps here.** Restricting to IBA loses 90 core terms and uniquely recovers
    only 2, both conserved-housekeeping cellular components (ribosome
    `GO:0005840`, nucleolus `GO:0005730`).
 3. **The eval surfaces a review queue — it does not edit the gold.** 7
@@ -110,12 +115,12 @@ With the corpus-wide `insight` tags, recall splits by whether a term is
 `confirmatory` (restates the set's construction) or `mechanistic` (a non-obvious
 process — a genuine enrichment insight). Over the evaluable sets:
 
-| variant | recall_confirm (n=629) | recall_mechan (n=81) |
+| variant | recall_confirm (n=640) | recall_mechan (n=81) |
 |---|---|---|
-| all | 0.568 | 0.333 |
-| no_contributes_to | 0.566 | 0.333 |
-| iba_iea | 0.432 | 0.222 |
-| iba | 0.318 | 0.210 |
+| all | 0.569 | 0.333 |
+| no_contributes_to | 0.567 | 0.333 |
+| iba_iea | 0.433 | 0.222 |
+| iba | 0.319 | 0.210 |
 
 **Mechanistic insight is ~2x harder to recover than confirmatory biology** —
 even all-GOA recovers only ~32% of mechanistic terms vs ~62% of confirmatory
@@ -186,6 +191,33 @@ So the gold standard now records three orthogonal failure modes for mechanistic
 recall — **diffuse** (GWAS), **sign-blind** (directional regulation), and
 **under-powered** (tiny panels) — only the first of which is about annotation
 depth. The single recoverable family is the tight physical complex.
+
+### One program at three membership granularities — the interferon gradient
+
+The corpus curates ONE biological program — the type I interferon response — at
+three deliberately different membership sizes (the 6-gene clinical score, the
+~20-gene discovery signature, and the 296-gene Reactome pathway; see the
+gene-set-informed factor-model section of the Competitive Landscape). Two of the
+three carry captured membership in `queries.gmt`, and they sit at the extremes,
+so the eval reads out the size effect cleanly:
+
+- **`REACTOME_INTERFERON_SIGNALING`** (296 genes) recovers **4/4** of its core
+  terms under all-GOA — type I and type II interferon-mediated signaling, antigen
+  processing and presentation, and the MHC protein complex — because the pathway
+  set is gene-dense and exhaustively annotated across every sub-program.
+- **`TYPE_I_INTERFERON_SCORE`** (the 6-gene AGS-6 clinical panel) recovers **0/3**
+  core terms. Two are curator-labelled `membership_gap` by construction (antigen
+  presentation and the JAK-STAT signaling machinery — carrier genes deliberately
+  absent from a minimal ISG-effector readout), so they are correctly unrecovered;
+  the third, *cellular response to type I interferon*, is `annotation_supported`
+  (all six genes carry it) yet still misses Bonferroni significance at n=6. It is
+  the interferon twin of the ferroptosis panel: a real, well-annotated program
+  that is **size-invisible** to enrichment.
+
+Same biology, opposite ends of the completeness axis — a compact demonstration
+that `annotation_supported` means "the genes carry it", not "it clears
+significance", and a curated fixture for the membership-refinement question these
+factor models address from data.
 
 ### Single-cell C8 signatures — when a cell type's defining function is absent
 from its own signature

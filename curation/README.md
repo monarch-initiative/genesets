@@ -82,7 +82,7 @@ A corpus-wide audit (tightened rule: `mechanistic` only for a specific,
 non-obvious process not entailed by the set's construction; all generic
 downstream hallmarks — apoptosis, proliferation, generic PI3K/MAPK, disease
 OXPHOS-as-known-hallmark, expected immune terms — are `confirmatory`) tags every
-insight-bearing term: **855 confirmatory, 87 mechanistic (~91% / 9%)** of 942.
+insight-bearing term: **866 confirmatory, 87 mechanistic (~91% / 9%)** of 953.
 The mechanistic minority concentrates in causal-gene phenotype sets (the
 convergent molecular mechanisms behind a phenotype, e.g. RNA splicing / SMN-snRNP
 assembly in motor-neuron disease), CRISPR-screen convergences (flavivirus host

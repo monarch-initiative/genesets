@@ -1,0 +1,157 @@
+gene_set_id: MSIGDB:REACTOME_INTERFERON_SIGNALING
+gene_set_name: REACTOME_INTERFERON_SIGNALING
+collection: C2:CP:REACTOME
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+description: >-
+  Reactome Interferon Signaling pathway gene set (MSigDB C2 curated pathway,
+  ~296 genes). This is a pathway signature, not a cell-type signature. Its
+  membership spans BOTH interferon arms: the type I ligands and receptor
+  (IFNA1-21, IFNB1, IFNAR1, IFNAR2) and the type II ligand and receptor (IFNG,
+  IFNGR1, IFNGR2); the shared JAK-STAT/ISGF3 signalling core (JAK1, JAK2, TYK2,
+  STAT1, STAT2, STAT3, IRF1, IRF9); a large interferon-stimulated gene and
+  antiviral-effector block (ISG15, MX1, MX2, OAS1/2/3, OASL, RSAD2, IFIT1/2/3/5,
+  IFI6/27/35/44/44L, IFITM1/2/3, BST2, GBP1-7, USP18, HERC5, SAMHD1, RNASEL);
+  the MHC antigen-presentation apparatus (HLA class I A/B/C/E/F/G, HLA class II
+  DR/DQ/DP, B2M, CIITA, PSMB8); TRIM-family antiviral restriction factors; and —
+  reflecting Reactome's pathway boundary — a large nuclear-pore-complex and
+  karyopherin block (NUP*, KPNA1-7, KPNB1, RANBP2, TPR) that is bundled in
+  because activated STATs are imported to the nucleus through the nuclear pore.
+  That transport block is ubiquitous machinery and makes the set enrich for
+  nucleocytoplasmic transport without that being an interferon-specific function.
+  Both single-cell factor models discussed in the competitive-landscape docs seed
+  their interferon components from Reactome pathway sets of exactly this kind:
+  f-scLVM (Buettner 2017) annotates factors from Reactome, and expiMap
+  (Lotfollahi 2023) trains latent gene-program nodes on Reactome; this is the
+  umbrella interferon program those factors/nodes derive from. Its minimal
+  clinical counterpart is the six-gene LIT:TYPE_I_INTERFERON_SCORE.
+contexts:
+  - term:
+      id: GO:0060337
+      label: type I interferon-mediated signaling pathway
+    context_type: experimental_condition
+  - term:
+      id: GO:0060333
+      label: type II interferon-mediated signaling pathway
+    context_type: experimental_condition
+associations:
+  - term:
+      id: GO:0060337
+      label: type I interferon-mediated signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The full type I axis is present — the IFN-alpha genes (IFNA1-21), IFN-beta
+      (IFNB1), the receptor (IFNAR1/IFNAR2), the kinases JAK1/TYK2, the ISGF3
+      factors STAT1/STAT2/IRF9, and the downstream ISGs — so the carrier genes are
+      annotated to the term and enrichment recovers it. Core and confirmatory: it
+      is one of the two processes the pathway set is built to represent.
+  - term:
+      id: GO:0060333
+      label: type II interferon-mediated signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The type II axis is also present — IFNG, its receptor IFNGR1/IFNGR2, JAK1,
+      JAK2, STAT1, and IRF1 — so this Reactome set explicitly covers both
+      interferon arms rather than type I alone. The carrier genes are annotated,
+      so enrichment recovers the term; core and confirmatory by construction.
+  - term:
+      id: GO:0019882
+      label: antigen processing and presentation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      A large sub-program of the set encodes antigen processing and presentation:
+      MHC class I (HLA-A/B/C/E/F/G, B2M), MHC class II (HLA-DRA/DRB, HLA-DQ, HLA-DP,
+      the class II transactivator CIITA), and the immunoproteasome subunit PSMB8.
+      Interferon is the principal physiological inducer of antigen presentation, so
+      this is a genuine core process of the set and its carrier genes are annotated,
+      so enrichment recovers it.
+  - term:
+      id: GO:0042611
+      label: MHC protein complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The class I heavy chains (HLA-A/B/C and the non-classical HLA-E/F/G), the
+      obligate light chain B2M, and the class II chains (HLA-DR/DQ/DP) encode the
+      MHC protein complex, the cell-surface structure most prominently induced by
+      interferon. It is the characteristic cellular component of the
+      antigen-presentation arm and its subunit genes carry the annotation.
+  - term:
+      id: GO:0051607
+      label: defense response to virus
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The antiviral ISG effectors carry this term (MX1/MX2, OAS1/2/3 and RNASEL,
+      RSAD2, ISG15, the IFIT and GBP families, TRIM5/TRIM22, BST2/tetherin), so it
+      is recovered. Scored supporting rather than core, and broadly_expressed,
+      because antiviral defense is a major downstream OUTPUT shared across both
+      interferon arms rather than the signalling process that defines the set.
+  - term:
+      id: GO:0060339
+      label: negative regulation of type I interferon-mediated signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The set includes the pathway's own negative-feedback machinery — SOCS1,
+      SOCS3, the deISGylase/negative regulator USP18, the phosphatases PTPN2/PTPN6,
+      the SUMO ligase PIAS1, and IRF2 — so negative regulation is a genuine and
+      recovered part of the pathway. Kept supporting and confirmatory: a curated
+      pathway set characteristically bundles its own regulators, so this is
+      expected rather than a non-obvious insight.
+  - term:
+      id: GO:0006913
+      label: nucleocytoplasmic transport
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      A large fraction of this Reactome set is nuclear-pore-complex (NUP107, NUP133,
+      NUP153, NUP160, NUP205, NUP98 and many more) and karyopherin/transport
+      (KPNA1-7, KPNB1, RANBP2, TPR, RAE1) machinery, included because activated
+      STAT dimers are imported into the nucleus through the nuclear pore. These are
+      ubiquitous nucleocytoplasmic transport genes expressed in all cells, so the
+      set enriches strongly for nucleocytoplasmic transport, but that enrichment is
+      an artefact of where Reactome draws the pathway boundary rather than an
+      interferon-specific function — the structural analogue of the housekeeping
+      "translation" hit seen in cytokine-response sets. Recorded nonspecific/
+      ubiquitous to flag it as a non-informative enrichment.
