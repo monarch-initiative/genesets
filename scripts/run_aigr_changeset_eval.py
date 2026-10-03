@@ -44,7 +44,10 @@ GENERAL_TERM_SIZE = 1000  # terms annotating >1000 genes are "general"
 
 
 # --------------------------------------------------------------------- running
-def run_genesets(binary: Path, eval_dir: Path, variant: str, queries: Path, out: Path, max_p: float | None) -> None:
+def run_genesets(
+    binary: Path, eval_dir: Path, variant: str, queries: Path, out: Path, max_p: float | None,
+    max_raw_p: float | None = None,
+) -> None:
     if out.exists():  # results are cached per run dir; delete runs/ to recompute
         return
     config_path = out.with_suffix(".config.yaml")
@@ -63,6 +66,8 @@ def run_genesets(binary: Path, eval_dir: Path, variant: str, queries: Path, out:
     }
     if max_p is not None:
         config["max_p_adjust"] = max_p
+    if max_raw_p is not None:
+        config["max_p_value"] = max_raw_p
     out.parent.mkdir(parents=True, exist_ok=True)
     with config_path.open("w") as handle:
         prepare_go_eval.write_yaml_value(handle, config)
@@ -74,7 +79,7 @@ def read_results(path: Path, keep: dict[str, set[str]] | None = None) -> dict[st
     out: dict[str, dict[str, float]] = defaultdict(dict)
     with path.open() as handle:
         for row in csv.DictReader(handle, delimiter="\t"):
-            q, t = row["query_id"], row["target_id"]
+            q, t = sys.intern(row["query_id"]), sys.intern(row["target_id"])
             if keep is not None and t not in keep.get(q, ()):
                 continue
             out[q][t] = float(row["p_value"])
@@ -340,16 +345,33 @@ def breadth_arm(args, eval_dir: Path, variants: list[str], report: Path, reviewe
     def ic(t: str) -> float:
         return -math.log2(max(size.get(t, 1), 1) / n_bg)
 
-    out: dict = {}
-    rows = []
+    # genesets-rs Bonferroni is matrix-wide (queries x terms), so a collection's
+    # stringency would depend on how many sets it holds. Breadth collections
+    # instead use a per-set Bonferroni over the baseline's non-empty GO terms,
+    # identical for every collection and variant.
+    n_terms = sum(1 for count in size.values() if count > 0)
+    raw_p_cutoff = args.max_p_adjust / n_terms
+    tiers = {"exposure_lt_10pct": (0.0, 0.10), "exposure_10_25pct": (0.10, 0.25), "exposure_ge_25pct": (0.25, 1.01)}
+
+    def lost_profile_for(sig_all, sig_v, names):
+        lost = [t for n in names for t in sig_all.get(n, set()) - sig_v.get(n, set())]
+        return {
+            "lost_hits": len(lost),
+            "lost_mean_ic": round(statistics.fmean(ic(t) for t in lost), 4) if lost else None,
+            "lost_general_frac": round(sum(size.get(t, 0) > GENERAL_TERM_SIZE for t in lost) / len(lost), 4) if lost else None,
+        }
+
+    out: dict = {"per_set_raw_p_cutoff": raw_p_cutoff, "n_terms": n_terms}
+    rows, tier_rows = [], []
+    pooled: dict[str, dict[str, dict]] = defaultdict(dict)  # variant -> "coll/set" -> metrics
     for collection in sorted(p.name for p in breadth_root.iterdir() if (p / "queries.gmt").exists()):
         queries = breadth_root / collection / "queries.gmt"
         members = read_gmt(queries)
         exposure = {n: len(m & reviewed) / len(m) for n, m in members.items()}
         per_variant, sig_sets = {}, {}
         for v in variants:
-            path = eval_dir / "runs" / f"breadth_{collection}" / v / "results.tsv"
-            run_genesets(args.binary, eval_dir, v, queries, path, args.max_p_adjust)
+            path = eval_dir / "runs" / f"breadth_{collection}" / v / "results_perset.tsv"
+            run_genesets(args.binary, eval_dir, v, queries, path, None, raw_p_cutoff)
             sig = {q: set(ts) for q, ts in read_results(path).items()}
             m = {}
             for n in members:
@@ -365,14 +387,12 @@ def breadth_arm(args, eval_dir: Path, variants: list[str], report: Path, reviewe
             per_variant[v] = m
             sig_sets[v] = sig
         base = per_variant["all"]
-        lost_profile = {}
+        lost_profile = {v: lost_profile_for(sig_sets["all"], sig_sets[v], members) for v in variants}
         for v in variants:
-            lost = [t for n in members for t in sig_sets["all"].get(n, set()) - sig_sets[v].get(n, set())]
-            lost_profile[v] = {
-                "lost_hits": len(lost),
-                "lost_mean_ic": round(statistics.fmean(ic(t) for t in lost), 4) if lost else None,
-                "lost_general_frac": round(sum(size.get(t, 0) > GENERAL_TERM_SIZE for t in lost) / len(lost), 4) if lost else None,
-            }
+            for n in members:
+                pooled[v][f"{collection}/{n}"] = {
+                    "sig": sig_sets[v].get(n, set()), "exposure": exposure[n],
+                }
         with_hits = [n for n in members if base[n]["any_hit"]]
         for v in variants:
             if v.startswith("null_"):
@@ -403,7 +423,34 @@ def breadth_arm(args, eval_dir: Path, variants: list[str], report: Path, reviewe
             }
         out.setdefault(collection, {})["exposure_median"] = round(statistics.median(exposure.values()), 3)
     write_tsv(report / "breadth_summary.tsv", rows)
-    return {"summary": rows, **out}
+
+    # Pooled over every breadth collection, split by how much of each set AIGR has reviewed.
+    nulls = [v for v in variants if v.startswith("null_")]
+    for tier, (lo, hi) in tiers.items():
+        keys = [k for k, m in pooled["all"].items() if lo <= m["exposure"] < hi]
+        sig = {v: {k: pooled[v][k]["sig"] for k in keys} for v in variants}
+        for v in variants:
+            if v.startswith("null_"):
+                continue
+            row = {"tier": tier, "variant": v, "sets": len(keys),
+                   "sets_with_hits": sum(1 for k in keys if sig[v][k]),
+                   "sig_terms": sum(len(sig[v][k]) for k in keys)}
+            if v != "all":
+                row.update(lost_profile_for(sig["all"], sig[v], keys))
+            tier_rows.append(row)
+        if nulls:
+            profiles = [lost_profile_for(sig["all"], sig[v], keys) for v in nulls]
+            sizes = [sum(len(sig[v][k]) for k in keys) for v in nulls]
+            ics = [p["lost_mean_ic"] for p in profiles if p["lost_mean_ic"] is not None]
+            gens = [p["lost_general_frac"] for p in profiles if p["lost_general_frac"] is not None]
+            tier_rows.append({
+                "tier": tier, "variant": f"null_prune (range of {len(nulls)})", "sets": len(keys),
+                "sig_terms": f"{min(sizes)}-{max(sizes)}",
+                "lost_mean_ic": f"{min(ics)}-{max(ics)}" if ics else None,
+                "lost_general_frac": f"{min(gens)}-{max(gens)}" if gens else None,
+            })
+    write_tsv(report / "breadth_by_exposure.tsv", tier_rows)
+    return {"summary": rows, "by_exposure": tier_rows, **out}
 
 
 def main() -> int:
