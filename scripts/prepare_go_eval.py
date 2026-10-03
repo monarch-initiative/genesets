@@ -24,6 +24,12 @@ from pathlib import Path
 
 DEFAULT_ONTOLOGY_URL = "https://current.geneontology.org/ontology/go-basic.obo"
 DEFAULT_GAF_URL = "https://current.geneontology.org/annotations/goa_human.gaf.gz"
+# Terms whose *direct* annotations are dropped from every variant. GO is
+# obsoleting `protein binding` as a direct annotation target; its annotations
+# carry no functional information and only add noise to enrichment. The term can
+# still be reached through informative descendants (e.g. enzyme binding) via
+# the closure. Pass --drop-direct-terms "" to keep them.
+DEFAULT_DROP_DIRECT_TERMS = ("GO:0005515",)
 VARIANTS = {
     "all": {
         "description": "NOT-filtered GOA human annotations, all evidence codes, contributes_to retained.",
@@ -60,6 +66,12 @@ def parse_args() -> argparse.Namespace:
         help="GAF column to use as the gene ID. MyGeneset query evals use symbols.",
     )
     parser.add_argument(
+        "--drop-direct-terms",
+        default=",".join(DEFAULT_DROP_DIRECT_TERMS),
+        help="Comma-separated GO ids whose direct annotations are dropped from all variants "
+        "(default: protein binding). Empty string keeps everything.",
+    )
+    parser.add_argument(
         "--relations",
         default="is_a,part_of",
         help="Comma-separated ontology relations used for closure.",
@@ -81,6 +93,10 @@ def parse_args() -> argparse.Namespace:
         help="Download inputs even if cached files already exist.",
     )
     return parser.parse_args()
+
+
+def drop_direct_terms(value: str) -> frozenset[str]:
+    return frozenset(term.strip() for term in value.split(",") if term.strip())
 
 
 def utc_now() -> str:
@@ -285,6 +301,7 @@ def write_annotations(
     selected_variants: list[str],
     gene_id_field: str,
     valid_terms: set[str],
+    drop_direct_terms: frozenset[str] = frozenset(DEFAULT_DROP_DIRECT_TERMS),
 ) -> tuple[dict, dict[str, set[str]]]:
     for name in selected_variants:
         (out_dir / name).mkdir(parents=True, exist_ok=True)
@@ -307,6 +324,7 @@ def write_annotations(
         "raw_annotation_lines": 0,
         "malformed_lines": 0,
         "unknown_go_terms": 0,
+        "dropped_direct_term_lines": 0,
         "not_qualified_lines": 0,
         "contributes_to_lines": 0,
         "variant_rows": {},
@@ -329,6 +347,9 @@ def write_annotations(
             term_id = fields[4]
             if term_id not in valid_terms:
                 stats["unknown_go_terms"] += 1
+                continue
+            if term_id in drop_direct_terms:
+                stats["dropped_direct_term_lines"] += 1
                 continue
             gene_id = fields[gene_index].strip()
             if not gene_id:
@@ -474,6 +495,7 @@ def main() -> int:
         selected_variants,
         args.gene_id_field,
         set(terms),
+        drop_direct_terms(args.drop_direct_terms),
     )
 
     queries_path = args.out_dir / "queries.gmt"
@@ -508,6 +530,7 @@ def main() -> int:
             "gene_id_field": args.gene_id_field,
             "filters": {
                 "always_exclude_qualifier": "NOT",
+                "dropped_direct_terms": sorted(drop_direct_terms(args.drop_direct_terms)),
                 "variant_definitions": {
                     name: {
                         "description": VARIANTS[name]["description"],

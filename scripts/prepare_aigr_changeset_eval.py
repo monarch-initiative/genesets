@@ -60,6 +60,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--changeset", required=True, type=Path, help="AIGR change-set TSV")
     parser.add_argument("--ontology-url", default=prepare_go_eval.DEFAULT_ONTOLOGY_URL)
     parser.add_argument("--gaf-url", default=prepare_go_eval.DEFAULT_GAF_URL)
+    parser.add_argument(
+        "--drop-direct-terms",
+        default=",".join(prepare_go_eval.DEFAULT_DROP_DIRECT_TERMS),
+        help="GO ids whose direct annotations are dropped from every variant (default: protein binding).",
+    )
     parser.add_argument("--null-seeds", type=int, default=20, help="number of null_prune replicates")
     parser.add_argument("--max-p-adjust", type=float, default=0.05)
     parser.add_argument("--force-download", action="store_true")
@@ -96,7 +101,9 @@ def read_changeset(path: Path) -> tuple[dict, list[dict], dict]:
     return index, new_rows, {"header": [h.strip() for h in header], **stats}
 
 
-def load_gaf_rows(path: Path, valid_terms: set[str]) -> list[tuple[str, str, str, str, tuple[str, ...]]]:
+def load_gaf_rows(
+    path: Path, valid_terms: set[str], drop_terms: frozenset[str] = frozenset()
+) -> list[tuple[str, str, str, str, tuple[str, ...]]]:
     """NOT-filtered GAF rows as (accession, symbol, term, evidence, refs)."""
     rows = []
     with gzip.open(path, "rt", encoding="utf-8") as handle:
@@ -105,6 +112,8 @@ def load_gaf_rows(path: Path, valid_terms: set[str]) -> list[tuple[str, str, str
                 continue
             fields = line.rstrip("\n").split("\t")
             if len(fields) < 15 or fields[4] not in valid_terms or not fields[2].strip():
+                continue
+            if fields[4] in drop_terms:
                 continue
             if "NOT" in prepare_go_eval.parse_qualifiers(fields[3]):
                 continue
@@ -154,7 +163,8 @@ def main() -> int:
     valid_terms = set(terms)
 
     index, new_rows, cs_stats = read_changeset(args.changeset)
-    gaf_rows = load_gaf_rows(downloads / "goa_human.gaf.gz", valid_terms)
+    drop_terms = prepare_go_eval.drop_direct_terms(args.drop_direct_terms)
+    gaf_rows = load_gaf_rows(downloads / "goa_human.gaf.gz", valid_terms, drop_terms)
     matched, match_stats = match_rows(gaf_rows, index)
 
     acc_to_symbol: dict[str, str] = {}
@@ -247,6 +257,7 @@ def main() -> int:
         "gaf_header": prepare_go_eval.parse_gaf_header(downloads / "goa_human.gaf.gz"),
         "changeset": {"path": str(args.changeset), **cs_stats},
         "matching": match_stats,
+        "dropped_direct_terms": sorted(drop_terms),
         "reviewed_gene_count": len(reviewed_symbols),
         "background_gene_count": len(background),
         "null_target_rows_by_evidence": dict(sorted(target.items())),
