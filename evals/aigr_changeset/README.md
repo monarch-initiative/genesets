@@ -137,7 +137,11 @@ enrichment expectation is wrong:
 
 - BAAT and HMGCS2 → *liver development*. This is DESCARTES hepatoblasts; it is lost through MARK_AS_OVER_ANNOTATED.
 - GAPDH → *neuron apoptotic process* (KEGG Alzheimer's).
-- *Lipid kinase activity* drops out of 12 KEGG cancer and diabetes sets. The cause is PIK3R1, the regulatory subunit, being removed from *phosphatidylinositol kinase activity*. That edit is correct GO semantics: the regulatory subunit is not the kinase. The PI3K signal belongs to the complex and catalytic-subunit terms.
+- *Lipid kinase activity* (`GO:0001727`) drops out of 12 KEGG cancer and diabetes sets. It is not a CORE term, and the PI3K biology is not lost. Take KEGG_GLIOMA:
+  - In baseline the term rests on 6 members: PIK3CA, PIK3CB, PIK3CD, PIK3CG, PIK3R1 and PIK3R3 (p_adj 2.9e-3).
+  - AIGR REMOVEs PIK3R1 (p85α) → *phosphatidylinositol kinase activity* (ISS). p85α is the regulatory subunit, not the kinase. With 5 members left the term misses the matrix-wide Bonferroni cutoff.
+  - Under `aigr_prune` the specific signal is unchanged: *PI3K complex, class IA* (p_adj 1e-15), *PI3K/AKT signal transduction* (1e-19), *1-phosphatidylinositol-3-kinase activity* and *…regulator activity* all stay significant.
+  - Follow-up: PIK3R3, also a regulatory subunit, still carries *1-phosphatidylinositol-3-kinase activity* (TAS, PMID:9524259, 2003). It has no AIGR review yet.
 
 ## Guardrail
 
