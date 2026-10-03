@@ -92,6 +92,13 @@ output (see "Guardrail").
 | iba_iea | 0.437 (172/394) | 4 |
 | iba | 0.338 (133/394) | 3 |
 
+These numbers were produced with direct `protein binding` (GO:0005515)
+annotations included. Since `prepare_go_eval.py` now drops those by default,
+recovered counts are unchanged (all 221, no_contributes_to 220, iba_iea 172,
+iba 133). Only 125 sets are scored (CORE total 391), because
+HP_SPINAL_MUSCULAR_ATROPHY's only significant term was `protein binding`.
+Pass `--drop-direct-terms ""` to reproduce the table exactly.
+
 1. **IBA carries ~2/3 of the core biology full GOA does** (recall_core 0.34 vs
    0.56); IEA recovers much of the difference (iba_iea 0.44).
 2. **IBA is nearly a strict subset of all-GOA — it does not fill experimental
