@@ -53,6 +53,17 @@ uv run python -m genesets_workflows.sources.mygeneset --query 'msigdb.subcategor
 uv run python -m genesets_workflows.sources.mygeneset --query 'msigdb.category.code:C6' \
   --out-dir $E/breadth/onco --source-filter msigdb --min-genes 10 --max-genes 1000
 mkdir -p $E/breadth/benchmark && cp $E/queries.gmt $E/breadth/benchmark/
+# optional: the rest of human MSigDB except C5 (GO-derived), ~16k sets
+f(){ uv run python -m genesets_workflows.sources.mygeneset --query "$2" --out-dir $E/breadth/$1 \
+       --source-filter msigdb --min-genes 10 --max-genes 1000; }
+f hallmark 'msigdb.category.code:H'
+f cgp_other 'msigdb.subcategory.code:CGP AND NOT description:PubChem'
+f cp_pathways 'msigdb.subcategory.code:("cp:biocarta" OR "cp:pid" OR "cp:wikipathways" OR "cp:kegg_legacy" OR "cp:kegg_medicus")'
+f reactome 'msigdb.subcategory.code:"cp:reactome"'
+f c3_regulatory 'msigdb.category.code:C3'
+f c4_cancer_modules 'msigdb.category.code:C4'
+f c7_immunologic 'msigdb.category.code:C7'
+f c8_celltype 'msigdb.category.code:C8'
 # 4. run genesets-rs for every variant x arm, and score
 cargo build --release
 uv run --extra curation python ../../scripts/run_aigr_changeset_eval.py --eval-dir $E
@@ -125,6 +136,57 @@ more than 1,000 genes.
 ### 3. Dropping non-core annotations hurts
 
 Under `aigr_core`, recall_core falls from 0.565 to 0.535. Per set, 14 sets get worse and 2 get better (sign test p = 0.004). The mean −log10 p of CORE terms falls by 1.27. KEEP_AS_NON_CORE annotations carry real biology for enrichment, so a "core functions only" GOA would be a worse enrichment resource.
+
+### 4. Scaled up: 16,622 MSigDB sets, split by review coverage
+
+Every human MSigDB collection on MyGeneset except C5 (C5 is built from GO).
+Sets have 10–1,000 genes. No gold: these are scored on hit counts and on how
+specific the removed hits are, against the 20 random-removal nulls.
+
+Breadth collections use a **per-set** threshold: raw p < 0.05 / 21,062 GO
+terms (2.4e-6), the same for every collection and variant. genesets-rs's own
+Bonferroni is matrix-wide (sets × terms), which would judge a 5,000-set
+collection about 40× more strictly than the 128-set benchmark. The curated
+benchmark in section 1 keeps the matrix-wide correction, so it stays
+comparable with `evals/iba_vs_benchmark`. Outputs: `breadth_summary.tsv` and
+`breadth_by_exposure.tsv`. The run takes about 80 minutes on 4 cores.
+
+**The effect grows with review coverage.** Sets are pooled across all
+collections and split by the share of their genes that AIGR has reviewed:
+
+| reviewed share of set | sets | hits removed by `aigr_prune` (net) | by random removal (20 runs) | lost-hit mean IC: prune vs null | lost hits general: prune vs null |
+|---|---|---|---|---|---|
+| < 10% | 3,398 | 852 (0.25%) | 454–827 (0.13–0.24%) | **5.56** vs 5.85–6.26 | **51%** vs 38–46% |
+| 10–25% | 11,374 | 37,148 (2.2%) | 14,605–18,313 (0.9–1.1%) | **5.67** vs 5.82–6.17 | **47%** vs 40–47% |
+| ≥ 25% | 1,810 | 14,257 (**4.9%**) | 5,107–6,841 (1.7–2.3%) | **6.59** vs 7.07–7.63 | **37%** vs 22–30% |
+
+Where AIGR has reviewed at least a quarter of a set's genes, pruning removes
+about 5% of significant hits, 2–3× what random removal of the same rows does.
+The removed hits are more general than in every null run. Below 10% coverage
+the effect almost disappears. This supports the conclusion that the overall
+effect is limited by coverage, not by the quality of the edits.
+
+**By collection** (`aigr_prune` net hits lost vs the null range; specificity of the lost hits vs the null):
+
+| collection | sets | median reviewed share | hits lost: prune vs null | lost-hit mean IC: prune vs null | lost hits general: prune vs null |
+|---|---|---|---|---|---|
+| Reactome | 1,497 | 16% | 5,658 vs 2,529–3,321 | **6.79** vs 7.38–7.88 | **34%** vs 18–26% |
+| C2 pathways (BioCarta, PID, WikiPathways, KEGG) | 1,863 | 22% | 12,668 vs 4,497–6,413 | **6.81** vs 7.17–7.96 | **32%** vs 15–27% |
+| C8 cell type | 829 | 11% | 1,955 vs 774–1,217 | **6.24** vs 6.56–6.94 | **35%** vs 25–32% |
+| C3 TF/miRNA targets | 3,454 | 12% | 5,341 vs 2,183–3,133 | **5.12** vs 5.31–5.63 | **54%** vs 42–51% |
+| C2 CGP (non-chemical) | 2,148 | 15% | 5,784 vs 2,223–3,045 | **5.99** vs 6.05–6.46 | 40% vs 31–40% |
+| Hallmark | 50 | 20% | 444 vs 143–245 | 6.88 vs 6.73–7.70 | 27% vs 16–28% |
+| benchmark (per-set threshold) | 128 | 17% | 1,269 vs 456–629 | 7.12 vs 7.05–7.80 | 24% vs 15–25% |
+| C2 chemical exposure | 270 | 16% | 656 vs 216–361 | 5.69 vs 5.56–6.37 | 49% vs 36–50% |
+| C4 cancer modules | 1,006 | 14% | 2,959 vs 941–1,327 | 6.16 vs 6.07–6.57 | 39% vs 32–42% |
+| C7 immunologic | 5,148 | 14% | 15,322 vs 5,091–6,511 | 5.07 vs 5.04–5.37 | 59% vs 55–64% |
+| C6 oncogenic | 189 | 12% | 201 vs 102–209 | 5.26 vs 5.04–5.72 | 52% vs 43–59% |
+
+- **Volume:** in 10 of 11 collections pruning removes 2–3× more hits than random removal. C6, the smallest and least reviewed, is the exception.
+- **Specificity:** the removed hits are more general than in every null run in Reactome, the C2 pathway databases, C8 and C3. C2 CGP passes on IC only. Hallmark, the benchmark and C2 chemical exposure sit at the edge of the null range on the per-set threshold (the chemical-exposure result in section 2 used the matrix-wide threshold). C4, C7 and C6 fall inside the null range.
+- **Reactome caveat:** GOA carries Reactome-derived annotations, so the Reactome collection is not fully independent of GOA.
+- **`aigr_full`** loses slightly more hits than `aigr_prune`, and the hits it loses are more specific. MODIFY swaps general terms for specific ones, which moves significance down the ontology.
+- **`aigr_core`** removes 15–20% of all hits. Combined with its loss of CORE recall (section 3), that is too aggressive.
 
 ### With protein binding kept (`--drop-direct-terms ""`)
 
