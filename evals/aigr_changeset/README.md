@@ -205,9 +205,11 @@ Applying AIGR's over-annotation removals to GOA makes enrichment results
 uninformative hits (broad response, regulation and compartment terms), well
 beyond what random removal of the same number of annotations does. It does
 **not** recover more CORE biology, and it loses about as much as random
-removal does (3 of 391 terms). The effect is modest because only about 15% of
-the genes in a typical external set have been reviewed, and because most
-removed rows are backed by other rows asserting the same term.
+removal does (3 of 391 terms). Across 16.6k MSigDB sets the effect scales
+with coverage: about 5% of hits are removed where AIGR has reviewed a quarter
+or more of a set's genes, and almost none below 10%. The overall effect is
+modest because the median set has only about 15% of its genes reviewed, and
+because most removed rows are backed by other rows asserting the same term.
 
 ## Review queue (not auto-applied)
 
