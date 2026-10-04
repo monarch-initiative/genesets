@@ -188,6 +188,64 @@ effect is limited by coverage, not by the quality of the edits.
 - **`aigr_full`** loses slightly more hits than `aigr_prune`, and the hits it loses are more specific. MODIFY swaps general terms for specific ones, which moves significance down the ontology.
 - **`aigr_core`** removes 15–20% of all hits. Combined with its loss of CORE recall (section 3), that is too aggressive.
 
+### 5. Recent single-cell marker sets
+
+Recent single-cell atlases come from Enrichr (`scripts/fetch_enrichr_library.py`),
+with the same per-set threshold and 20 nulls as section 4:
+
+- Tabula Sapiens: 469 sets.
+- CellMarker 2024: 551 human sets.
+- Allen Brain 10x 2021: 104 human, up-regulated sets.
+- HuBMAP ASCT+B 2022: 777 sets, extended by co-expression.
+- Azimuth 2023 is excluded: it gives only about 9 markers per cell type.
+
+```bash
+F="python3 scripts/fetch_enrichr_library.py"
+$F Tabula_Sapiens --out $E/breadth/sc_tabula_sapiens/queries.gmt
+$F CellMarker_2024 --include 'Human$' --out $E/breadth/sc_cellmarker2024/queries.gmt
+$F Allen_Brain_Atlas_10x_scRNA_2021 --include '^Human .* up$' --out $E/breadth/sc_allen_brain_human/queries.gmt
+$F HuBMAP_ASCTplusB_augmented_2022 --out $E/breadth/sc_hubmap_augmented/queries.gmt
+```
+
+| collection | sets | median reviewed share | hits lost: prune vs null | lost-hit mean IC: prune vs null | lost hits general: prune vs null |
+|---|---|---|---|---|---|
+| MSigDB C8 cell type | 829 | 11% | 1,955 (1.3%) vs 774–1,217 | **6.24** vs 6.56–6.94 | **35%** vs 25–32% |
+| Allen Brain human | 104 | 11% | **236 (5.1%)** vs 36–111 | 5.38 vs 5.00–5.93 | 45% vs 41–63% |
+| CellMarker 2024 | 551 | 12% | 166 (0.3%) vs 109–417 | **5.80** vs 6.16–6.87 | 40% vs 25–41% |
+| HuBMAP (augmented) | 777 | 8% | 385 (0.4%) vs 130–453 | 5.57 vs 5.39–6.34 | 49% vs 36–55% |
+| Tabula Sapiens | 469 | **7%** | −66 (net gain) vs −291–103 | within null | within null |
+
+Pooled over these five collections and split by review coverage:
+- **≥ 25% reviewed (81 sets):** 3.5% of hits are removed, against 1.2–2.5% for random removal. The removed hits are more general than in every null (IC 5.72 vs 6.37–7.64).
+- **10–25% reviewed (1,111 sets):** 1.5% removed against 0.7–1.0%, again more general than every null.
+- **Under 10% reviewed (1,538 sets):** no effect.
+
+**Single-cell sets are not a better test yet, because coverage is lower.**
+Their markers are cell-type-specific genes (surface receptors, chemokines,
+ECM, keratins), which AIGR has rarely reviewed. Tabula Sapiens has a median
+reviewed share of 7%, and only 108 of the 2,730 sets reach 25% coverage.
+Where coverage is there, the pattern matches section 4: in C8 and Allen Brain
+the removals are larger, and more targeted at general terms, than random
+removal.
+
+The most frequent unreviewed marker genes are ribosomal proteins, EEF1A1,
+TPT1, B2M and similar housekeeping genes. These are a known contaminant of
+single-cell marker lists, and reviewing them would add coverage without adding
+information. Excluding the 202 genes that are housekeeping-like or appear in
+more than 5% of sets, reviewing the most frequent unreviewed markers would
+lift the number of sets with ≥ 25% coverage from 269 to:
+
+| extra reviews | sets ≥ 25% reviewed |
+|---|---|
+| 100 | 918 |
+| 250 | 1,406 |
+| 500 | 1,769 |
+| 1,000 | 2,159 |
+
+The top of that list is S100A10, KRT19, CD86, CD5, COL1A2, CD52, CCL4, VSIG4,
+FCER1G, SLPI, HLA-DPA1, ANXA1, IGFBP5, VWF, MS4A1, CSF1R, C7, CD63, CYBB and
+CD93.
+
 ### With protein binding kept (`--drop-direct-terms ""`)
 
 The first run of this eval kept `protein binding`. Dropping it matters a great deal for GOA and very little for the conclusions:
