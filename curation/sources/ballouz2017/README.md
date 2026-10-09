@@ -69,7 +69,7 @@ All quotes below were checked verbatim against the Europe PMC full text.
 - **Artefact:** GO enrichment results "related to stress and inflammation".
   Quote: a multifunctionality-corrected analysis "results in no gene sets
   meeting the significance criterion".
-- **Meaningful:** none reaches significance. The paper's point is that "it is
+- **Meaningful:** none reaches significance. The paper's point is that "it is often
   possible to construct a variety of narratives".
 
 **Pardo Oct4 interactors**
