@@ -371,3 +371,35 @@ fn command_exists(command: &str) -> bool {
 fn sql_string_literal(path: &Path) -> String {
     path.to_string_lossy().replace('\'', "''")
 }
+
+#[test]
+fn mgsa_prefers_the_specific_term() {
+    let summary = std::env::temp_dir().join("genesets_rs_mgsa_summary.yaml");
+    let stdout = run(&[
+        "mgsa",
+        "--annotations",
+        "examples/gene_terms.tsv",
+        "--terms",
+        "examples/terms.tsv",
+        "--closure",
+        "examples/closure.tsv",
+        "--sample",
+        "examples/sample.txt",
+        "--background",
+        "examples/background.txt",
+        "--samples-per-term",
+        "20000",
+        "--summary-output",
+        summary.to_str().unwrap(),
+    ]);
+
+    let lines: Vec<&str> = stdout.lines().collect();
+    assert_eq!(lines.len(), 3);
+    assert!(lines[0].starts_with("query_id\tquery_name\ttarget_id\ttarget_name\tposterior"));
+    assert!(lines[1].starts_with("sample\t\tT:child\tChild process\t"));
+    assert!(lines[2].starts_with("sample\t\tT:parent\tParent process\t"));
+
+    let summary = fs::read_to_string(&summary).unwrap();
+    assert!(summary.contains("modeled_terms: 2"));
+    assert!(summary.contains("samples: 40000"));
+}

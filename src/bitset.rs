@@ -1,4 +1,4 @@
-#[derive(Clone, Debug, Eq, PartialEq)]
+#[derive(Clone, Debug, Eq, Hash, PartialEq)]
 pub struct DenseBitSet {
     words: Vec<u64>,
     len: usize,
@@ -53,6 +53,32 @@ impl DenseBitSet {
             .zip(&other.words)
             .map(|(left, right)| (*left & *right).count_ones())
             .sum()
+    }
+
+    pub fn and(&self, other: &Self) -> Self {
+        self.assert_same_len(other);
+        Self {
+            words: self
+                .words
+                .iter()
+                .zip(&other.words)
+                .map(|(left, right)| left & right)
+                .collect(),
+            len: self.len,
+        }
+    }
+
+    pub fn ones(&self) -> Vec<usize> {
+        let mut indices = Vec::new();
+        for (word_index, word) in self.words.iter().enumerate() {
+            let mut word = *word;
+            while word != 0 {
+                let bit = word.trailing_zeros() as usize;
+                indices.push(word_index * 64 + bit);
+                word &= word - 1;
+            }
+        }
+        indices
     }
 
     pub fn and3_count(&self, other: &Self, third: &Self) -> u32 {
