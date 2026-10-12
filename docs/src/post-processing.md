@@ -26,7 +26,7 @@ GO Trimming-style approaches remove redundant parent terms based on graph paths 
 
 REVIGO-style approaches cluster terms by semantic similarity and keep representatives. This is more flexible than strict ancestor-descendant pruning because related terms need not sit on the same direct path.
 
-Topology-aware scoring methods such as topGO `elim`, `weight`, `weight01`, and `parentchild`, or Ontologizer-style parent-child/model-set methods, are not just post-processing. They change the p-values by accounting for the GO graph during scoring. We should support them later as alternate statistical models, not as TSV filters.
+Topology-aware scoring methods such as topGO `elim`, `weight`, `weight01`, and `parentchild`, or Ontologizer-style parent-child/model-set methods, are not just post-processing. They change the p-values by accounting for the GO graph during scoring. We should support them as alternate statistical models, not as TSV filters. Model-set MGSA is available as `genesets-rs mgsa`.
 
 ## Proposed Composable Reducers
 
