@@ -30,6 +30,13 @@ def test_seed_makes_runs_reproducible():
     assert first == second
 
 
+def test_result_does_not_depend_on_input_order():
+    study = ["g1", "g2", "g9"]
+    forward = genesets.mgsa(ANNOTATIONS, study, closure=CLOSURE)
+    backward = genesets.mgsa(ANNOTATIONS[::-1], study[::-1], closure=CLOSURE[::-1])
+    assert forward == backward
+
+
 def test_background_limits_the_universe():
     result = genesets.mgsa(ANNOTATIONS, ["g1", "g2"], background=[f"g{i}" for i in range(1, 9)])
     assert result["background_size"] == 8

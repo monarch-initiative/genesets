@@ -12,6 +12,9 @@ use pyo3::{exceptions::PyValueError, prelude::*, types::PyDict};
 /// Runs MGSA for one study set and returns a dict with `terms` (highest
 /// posterior first), `stats`, `study_size`, and `background_size`.
 ///
+/// Results do not depend on the order of the inputs; `genes` lists are
+/// sorted.
+///
 /// `annotations` are (gene, term) pairs that are already propagated to
 /// ancestor terms. `closure` is optional (child, ancestor) pairs; it lets the
 /// sampler propose moves between related terms and picks the most specific
@@ -138,15 +141,15 @@ fn mgsa<'py>(
                     .map(|index| targets[*index].id.as_str())
                     .collect::<Vec<_>>(),
             )?;
-            row.set_item(
-                "genes",
-                term.overlap_indices
-                    .as_deref()
-                    .unwrap_or(&[])
-                    .iter()
-                    .map(|index| universe.gene_id(*index))
-                    .collect::<Vec<_>>(),
-            )?;
+            let mut genes: Vec<&str> = term
+                .overlap_indices
+                .as_deref()
+                .unwrap_or(&[])
+                .iter()
+                .map(|index| universe.gene_id(*index))
+                .collect();
+            genes.sort_unstable();
+            row.set_item("genes", genes)?;
             Ok(row)
         })
         .collect::<PyResult<Vec<_>>>()?;
