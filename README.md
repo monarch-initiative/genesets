@@ -184,6 +184,9 @@ genesets-rs mgsa \
   --background examples/background.txt
 ```
 
+The same MGSA sampler is available in Python as `genesets.mgsa(...)` from
+`python/genesets-py` (PyO3 bindings; see its README for install).
+
 YAML configuration:
 
 ```bash

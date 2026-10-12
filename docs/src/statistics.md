@@ -85,6 +85,9 @@ multi-set sample file is analyzed independently and in parallel. Posteriors
 are Monte Carlo estimates. If a term's posterior changes noticeably between
 seeds, raise `--samples-per-term`.
 
+From Python, `genesets.mgsa(...)` in `python/genesets-py` runs the same
+sampler in-process; see that package's README.
+
 Run times and a comparison with wtfgenes are in
 [Performance Model](performance.md#mgsa).
 
