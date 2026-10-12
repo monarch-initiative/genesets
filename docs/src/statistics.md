@@ -85,6 +85,9 @@ multi-set sample file is analyzed independently and in parallel. Posteriors
 are Monte Carlo estimates. If a term's posterior changes noticeably between
 seeds, raise `--samples-per-term`.
 
+Run times and a comparison with wtfgenes are in
+[Performance Model](performance.md#mgsa).
+
 Differences from Ontologizer's MGSA: Ontologizer samples `alpha`, `beta`, and
 `p` over a discrete grid alongside the term states, while this implementation
 integrates them out against Beta priors. Expect similar rankings rather than
