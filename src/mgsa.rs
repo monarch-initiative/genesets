@@ -319,7 +319,9 @@ fn group_relevant_targets(
             }
         })
         .collect();
-    groups.sort_by_key(|group| group.exemplar);
+    // Order by id, not input position, so results do not depend on the order
+    // in which annotations were supplied.
+    groups.sort_by(|left, right| targets[left.exemplar].id.cmp(&targets[right.exemplar].id));
     groups
 }
 
