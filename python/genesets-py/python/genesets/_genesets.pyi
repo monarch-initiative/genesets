@@ -1,13 +1,13 @@
-from collections.abc import Iterable
+from collections.abc import Sequence
 from typing import Any
 
 __version__: str
 
 def mgsa(
-    annotations: Iterable[tuple[str, str]],
-    study: Iterable[str],
-    background: Iterable[str] | None = None,
-    closure: Iterable[tuple[str, str]] | None = None,
+    annotations: Sequence[tuple[str, str]],
+    study: Sequence[str],
+    background: Sequence[str] | None = None,
+    closure: Sequence[tuple[str, str]] | None = None,
     *,
     samples_per_term: int = 100,
     burn_per_term: int = 10,
