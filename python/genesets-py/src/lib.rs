@@ -72,9 +72,15 @@ fn mgsa<'py>(
         }
     }
     let rates = [flip_rate, step_rate, jump_rate];
-    if rates.iter().any(|rate| *rate < 0.0) || rates.iter().all(|rate| *rate == 0.0) {
+    let has_graph = closure.as_ref().is_some_and(|pairs| !pairs.is_empty());
+    let effective_rates = [flip_rate, if has_graph { step_rate } else { 0.0 }, jump_rate];
+    let total_rate: f64 = effective_rates.iter().sum();
+    if rates.iter().any(|rate| !rate.is_finite() || *rate < 0.0)
+        || !total_rate.is_finite()
+        || total_rate == 0.0
+    {
         return Err(PyValueError::new_err(
-            "move rates must be non-negative and not all zero",
+            "move rates must be finite and non-negative, with at least one usable rate",
         ));
     }
 
