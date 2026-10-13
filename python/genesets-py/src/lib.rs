@@ -65,9 +65,9 @@ fn mgsa<'py>(
         }
     }
     for count in [term_count, false_pos_count, false_neg_count] {
-        if count < 0.0 {
+        if !count.is_finite() || count < 0.0 {
             return Err(PyValueError::new_err(
-                "prior pseudocounts must be non-negative",
+                "prior pseudocounts must be finite and non-negative",
             ));
         }
     }
