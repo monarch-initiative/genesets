@@ -44,7 +44,8 @@ jobs:
             target: aarch64
           - os: macos-14
             target: aarch64
-          - os: macos-13
+          # Intel macOS is cross-compiled; GitHub has retired the macos-13 runners.
+          - os: macos-14
             target: x86_64
           - os: windows-latest
             target: x64
