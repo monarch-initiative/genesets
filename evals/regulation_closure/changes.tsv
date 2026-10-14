@@ -1,0 +1,86 @@
+variant	gene_set	change	term_id	term_name	is_regulation
+drop_regulation	BENPORATH_PRC2_TARGETS	lost	GO:0006357	regulation of transcription by RNA polymerase II	yes
+drop_regulation	DANG_MYC_TARGETS_DN	lost	GO:0008285	negative regulation of cell population proliferation	yes
+drop_regulation	KEGG_ACUTE_MYELOID_LEUKEMIA	lost	GO:0006357	regulation of transcription by RNA polymerase II	yes
+drop_regulation	KEGG_BASAL_CELL_CARCINOMA	lost	GO:0042127	regulation of cell population proliferation	yes
+drop_regulation	KEGG_BLADDER_CANCER	lost	GO:0042127	regulation of cell population proliferation	yes
+drop_regulation	KEGG_CHRONIC_MYELOID_LEUKEMIA	lost	GO:0042127	regulation of cell population proliferation	yes
+drop_regulation	KEGG_COLORECTAL_CANCER	lost	GO:0042127	regulation of cell population proliferation	yes
+drop_regulation	KEGG_ENDOMETRIAL_CANCER	lost	GO:0042127	regulation of cell population proliferation	yes
+drop_regulation	KEGG_GLIOMA	lost	GO:0042127	regulation of cell population proliferation	yes
+drop_regulation	KEGG_MATURITY_ONSET_DIABETES_OF_THE_YOUNG	lost	GO:0006357	regulation of transcription by RNA polymerase II	yes
+drop_regulation	KEGG_MELANOMA	lost	GO:0042127	regulation of cell population proliferation	yes
+drop_regulation	KEGG_PANCREATIC_CANCER	lost	GO:0042127	regulation of cell population proliferation	yes
+drop_regulation	KEGG_PROSTATE_CANCER	lost	GO:0042127	regulation of cell population proliferation	yes
+drop_regulation	KEGG_RENAL_CELL_CARCINOMA	lost	GO:0045766	positive regulation of angiogenesis	yes
+drop_regulation	KEGG_SMALL_CELL_LUNG_CANCER	lost	GO:0042127	regulation of cell population proliferation	yes
+drop_regulation	KEGG_THYROID_CANCER	lost	GO:0042127	regulation of cell population proliferation	yes
+drop_regulation	KEGG_TYPE_II_DIABETES_MELLITUS	lost	GO:0046627	negative regulation of insulin receptor signaling pathway	yes
+drop_regulation	AUTISM_RISK_GENES	lost	GO:0006357	regulation of transcription by RNA polymerase II	yes
+drop_regulation	WP_HEAD_AND_NECK_SQUAMOUS_CELL_CARCINOMA	lost	GO:0042127	regulation of cell population proliferation	yes
+regulates_closure	DANG_MYC_TARGETS_DN	gained	GO:0007155	cell adhesion	no
+regulates_closure	GAO_LARGE_INTESTINE_ADULT_CA_ENTEROENDOCRINE_CELLS	gained	GO:0030072	peptide hormone secretion	no
+regulates_closure	HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION	gained	GO:0001837	epithelial to mesenchymal transition	no
+regulates_closure	HAY_BONE_MARROW_CD8_T_CELL	gained	GO:0042110	T cell activation	no
+regulates_closure	HAY_BONE_MARROW_NK_CELLS	gained	GO:0042267	natural killer cell mediated cytotoxicity	no
+regulates_closure	JISON_SICKLE_CELL_DISEASE_UP	gained	GO:0006954	inflammatory response	no
+regulates_closure	KEGG_ALLOGRAFT_REJECTION	gained	GO:0001913	T cell mediated cytotoxicity	no
+regulates_closure	KEGG_AUTOIMMUNE_THYROID_DISEASE	gained	GO:0001913	T cell mediated cytotoxicity	no
+regulates_closure	KEGG_EPITHELIAL_CELL_SIGNALING_IN_HELICOBACTER_PYLORI_INFECTION	lost	GO:0007249	canonical NF-kappaB signal transduction	no
+regulates_closure	KEGG_GRAFT_VERSUS_HOST_DISEASE	gained	GO:0001913	T cell mediated cytotoxicity	no
+regulates_closure	KEGG_TYPE_I_DIABETES_MELLITUS	gained	GO:0001913	T cell mediated cytotoxicity	no
+regulates_closure	KEGG_VIRAL_MYOCARDITIS	gained	GO:0001913	T cell mediated cytotoxicity	no
+regulates_closure	ALZHEIMERS_GWAS_GENES	gained	GO:0042987	amyloid precursor protein catabolic process	no
+regulates_closure	AUTISM_RISK_GENES	gained	GO:0007268	chemical synaptic transmission	no
+regulates_closure	FERROPTOSIS_SUPPRESSORS	gained	GO:0097707	ferroptosis	no
+regulates_closure	SCHIZOPHRENIA_RISK_GENES	gained	GO:0007268	chemical synaptic transmission	no
+regulates_closure	MURARO_PANCREAS_BETA_CELL	gained	GO:0030073	insulin secretion	no
+regulates_closure	MURARO_PANCREAS_BETA_CELL	gained	GO:0071333	cellular response to glucose stimulus	no
+regulates_closure	TRAVAGLINI_LUNG_AIRWAY_SMOOTH_MUSCLE_CELL	gained	GO:0006939	smooth muscle contraction	no
+regulates_closure	WP_ALZHEIMERS_DISEASE	gained	GO:0007268	chemical synaptic transmission	no
+regulates_closure	WP_FAMILIAL_HYPERLIPIDEMIA_TYPE_2	gained	GO:0034383	low-density lipoprotein particle clearance	no
+regulates_closure	WP_NONALCOHOLIC_FATTY_LIVER_DISEASE	gained	GO:0006631	fatty acid metabolic process	no
+regulates_closure	WP_PARKINSONS_DISEASE_PATHWAY	gained	GO:0006511	ubiquitin-dependent protein catabolic process	no
+regulates_closure	WP_PARKINSONS_DISEASE_PATHWAY	gained	GO:0051402	neuron apoptotic process	no
+collapse_to_target	BENPORATH_PRC2_TARGETS	lost	GO:0006357	regulation of transcription by RNA polymerase II	yes
+collapse_to_target	DANG_MYC_TARGETS_DN	gained	GO:0007155	cell adhesion	no
+collapse_to_target	DANG_MYC_TARGETS_DN	lost	GO:0008285	negative regulation of cell population proliferation	yes
+collapse_to_target	GAO_LARGE_INTESTINE_ADULT_CA_ENTEROENDOCRINE_CELLS	gained	GO:0030072	peptide hormone secretion	no
+collapse_to_target	HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION	gained	GO:0001837	epithelial to mesenchymal transition	no
+collapse_to_target	HAY_BONE_MARROW_CD8_T_CELL	gained	GO:0042110	T cell activation	no
+collapse_to_target	HAY_BONE_MARROW_NK_CELLS	gained	GO:0042267	natural killer cell mediated cytotoxicity	no
+collapse_to_target	JISON_SICKLE_CELL_DISEASE_UP	gained	GO:0006954	inflammatory response	no
+collapse_to_target	KEGG_ACUTE_MYELOID_LEUKEMIA	lost	GO:0006357	regulation of transcription by RNA polymerase II	yes
+collapse_to_target	KEGG_ALLOGRAFT_REJECTION	gained	GO:0001913	T cell mediated cytotoxicity	no
+collapse_to_target	KEGG_AUTOIMMUNE_THYROID_DISEASE	gained	GO:0001913	T cell mediated cytotoxicity	no
+collapse_to_target	KEGG_BASAL_CELL_CARCINOMA	lost	GO:0042127	regulation of cell population proliferation	yes
+collapse_to_target	KEGG_BLADDER_CANCER	lost	GO:0042127	regulation of cell population proliferation	yes
+collapse_to_target	KEGG_CHRONIC_MYELOID_LEUKEMIA	lost	GO:0042127	regulation of cell population proliferation	yes
+collapse_to_target	KEGG_COLORECTAL_CANCER	lost	GO:0042127	regulation of cell population proliferation	yes
+collapse_to_target	KEGG_ENDOMETRIAL_CANCER	lost	GO:0042127	regulation of cell population proliferation	yes
+collapse_to_target	KEGG_EPITHELIAL_CELL_SIGNALING_IN_HELICOBACTER_PYLORI_INFECTION	lost	GO:0007249	canonical NF-kappaB signal transduction	no
+collapse_to_target	KEGG_GLIOMA	lost	GO:0042127	regulation of cell population proliferation	yes
+collapse_to_target	KEGG_GRAFT_VERSUS_HOST_DISEASE	gained	GO:0001913	T cell mediated cytotoxicity	no
+collapse_to_target	KEGG_MATURITY_ONSET_DIABETES_OF_THE_YOUNG	lost	GO:0006357	regulation of transcription by RNA polymerase II	yes
+collapse_to_target	KEGG_MELANOMA	lost	GO:0042127	regulation of cell population proliferation	yes
+collapse_to_target	KEGG_PANCREATIC_CANCER	lost	GO:0042127	regulation of cell population proliferation	yes
+collapse_to_target	KEGG_PROSTATE_CANCER	lost	GO:0042127	regulation of cell population proliferation	yes
+collapse_to_target	KEGG_RENAL_CELL_CARCINOMA	lost	GO:0045766	positive regulation of angiogenesis	yes
+collapse_to_target	KEGG_SMALL_CELL_LUNG_CANCER	lost	GO:0042127	regulation of cell population proliferation	yes
+collapse_to_target	KEGG_THYROID_CANCER	lost	GO:0042127	regulation of cell population proliferation	yes
+collapse_to_target	KEGG_TYPE_II_DIABETES_MELLITUS	lost	GO:0046627	negative regulation of insulin receptor signaling pathway	yes
+collapse_to_target	KEGG_TYPE_I_DIABETES_MELLITUS	gained	GO:0001913	T cell mediated cytotoxicity	no
+collapse_to_target	KEGG_VIRAL_MYOCARDITIS	gained	GO:0001913	T cell mediated cytotoxicity	no
+collapse_to_target	ALZHEIMERS_GWAS_GENES	gained	GO:0042987	amyloid precursor protein catabolic process	no
+collapse_to_target	AUTISM_RISK_GENES	gained	GO:0007268	chemical synaptic transmission	no
+collapse_to_target	AUTISM_RISK_GENES	lost	GO:0006357	regulation of transcription by RNA polymerase II	yes
+collapse_to_target	FERROPTOSIS_SUPPRESSORS	gained	GO:0097707	ferroptosis	no
+collapse_to_target	MURARO_PANCREAS_BETA_CELL	gained	GO:0030073	insulin secretion	no
+collapse_to_target	MURARO_PANCREAS_BETA_CELL	gained	GO:0071333	cellular response to glucose stimulus	no
+collapse_to_target	TRAVAGLINI_LUNG_AIRWAY_SMOOTH_MUSCLE_CELL	gained	GO:0006939	smooth muscle contraction	no
+collapse_to_target	WP_ALZHEIMERS_DISEASE	gained	GO:0007268	chemical synaptic transmission	no
+collapse_to_target	WP_FAMILIAL_HYPERLIPIDEMIA_TYPE_2	gained	GO:0034383	low-density lipoprotein particle clearance	no
+collapse_to_target	WP_HEAD_AND_NECK_SQUAMOUS_CELL_CARCINOMA	lost	GO:0042127	regulation of cell population proliferation	yes
+collapse_to_target	WP_NONALCOHOLIC_FATTY_LIVER_DISEASE	gained	GO:0006631	fatty acid metabolic process	no
+collapse_to_target	WP_PARKINSONS_DISEASE_PATHWAY	gained	GO:0006511	ubiquitin-dependent protein catabolic process	no
+collapse_to_target	WP_PARKINSONS_DISEASE_PATHWAY	gained	GO:0051402	neuron apoptotic process	no

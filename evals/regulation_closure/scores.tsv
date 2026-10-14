@@ -1,0 +1,5 @@
+variant	sets	hits	median_hits_per_set	reg_hit_frac	core_terms	recall_core	core_reg_terms	recall_core_reg	recall_core_part	recall_core_lenient	recall_confirm	recall_mechan	neg_hits
+current	126	29068	191.5	0.311	394	0.561	28	0.679	0.552	0.569	0.569	0.333	3
+drop_regulation	126	20224	142.0	0.0	394	0.513	28	0.0	0.552	0.538	0.511	0.309	3
+regulates_closure	126	33046	212.5	0.273	394	0.617	28	0.679	0.612	0.627	0.633	0.358	4
+collapse_to_target	126	24292	169.5	0.0	394	0.566	28	0.0	0.609	0.624	0.575	0.333	4
