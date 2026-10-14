@@ -32,9 +32,9 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "python" / "genesets-workflows" / "src"))
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from genesets_workflows.curation import model  # noqa: E402
-from prepare_regulation_variants import parse_obo, regulated_targets, regulation_terms  # noqa: E402
-from score_method_vs_benchmark import evaluable_sets, load_hits  # noqa: E402
+from genesets_workflows.curation import model
+from prepare_regulation_variants import parse_obo, regulated_targets, regulation_terms
+from score_method_vs_benchmark import evaluable_sets, load_hits
 
 CORE = {"core_process", "core_component"}
 NEGATIVE = {"nonspecific", "false_association"}

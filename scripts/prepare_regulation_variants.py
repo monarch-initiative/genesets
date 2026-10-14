@@ -40,7 +40,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 
-from prepare_go_eval import file_metadata, write_yaml_value  # noqa: E402
+from prepare_go_eval import file_metadata, write_yaml_value
 
 DEFAULT_ONTOLOGY_URL = "https://current.geneontology.org/ontology/go.obo"
 DEFAULT_GAF_URL = "https://current.geneontology.org/annotations/goa_human.gaf.gz"
@@ -123,12 +123,12 @@ def parse_obo(path: Path) -> tuple[dict[str, str], dict[str, str], dict[str, dic
                     cur["rels"].append((parts[0], parts[1]))
         commit(cur)
     bp = {t for t, ns in namespace.items() if ns == "biological_process"}
-    for rel in edges:
-        for child in list(edges[rel]):
-            keep = {p for p in edges[rel][child] if p in names}
+    for rel, rel_edges in edges.items():
+        for child, parents in list(rel_edges.items()):
+            keep = {p for p in parents if p in names}
             if rel in REG_RELS:
                 keep = keep & bp if child in bp else set()
-            edges[rel][child] = keep
+            rel_edges[child] = keep
     return names, alts, edges
 
 
@@ -299,8 +299,8 @@ def main() -> int:
         write_pairs(vdir / "gene_terms.tsv", vpairs)
         stats["variants"][v] = {"closure_rows": rows, "gene_term_pairs": len(vpairs)}
 
-        def rel(p: Path) -> str:
-            return os.path.relpath(p, start=vdir)
+        def rel(p: Path, base: Path = vdir) -> str:
+            return os.path.relpath(p, start=base)
 
         config = {
             "mode": "matrix",
