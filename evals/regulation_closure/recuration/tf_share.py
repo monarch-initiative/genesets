@@ -27,7 +27,7 @@ from pathlib import Path
 import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "scripts"))
-from prepare_regulation_variants import REG_RELS, parse_obo, regulation_terms  # noqa: E402
+from prepare_regulation_variants import REG_RELS, parse_obo, regulation_terms
 
 POS = {"core_process", "core_component", "supporting_process"}
 

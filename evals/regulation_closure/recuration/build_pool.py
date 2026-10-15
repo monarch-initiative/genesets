@@ -1,36 +1,49 @@
+#!/usr/bin/env python3
 """Build blinded pooled-judgment packets for the regulation-closure recuration."""
-import csv, glob, json, sys, collections, yaml
+import collections
+import csv
+import glob
+import json
+import sys
 from pathlib import Path
+
+import yaml
+
+
+def rd(path):
+    return Path(path).read_text().splitlines(keepends=True)
+
+
 E = Path(sys.argv[1]); OUT = Path(sys.argv[2]); NAGENTS = int(sys.argv[3])
 K, MAXSIZE = 3, 1000
 VS = ["current", "drop_regulation", "regulates_closure", "collapse_to_target"]
 docs = {}
 for p in sorted(glob.glob("curation/genesets/*.yaml")):
-    d = yaml.safe_load(open(p)); docs[d["gene_set_name"]] = (p, d)
-gold = {n: {a["term"]["id"] for a in d.get("associations", [])} for n, (p, d) in docs.items()}
-members = {l.split("\t")[0]: l.rstrip("\n").split("\t")[2:] for l in open(E / "queries.gmt")}
+    d = yaml.safe_load(Path(p).read_text()); docs[d["gene_set_name"]] = (p, d)
+gold = {n: {a["term"]["id"] for a in d.get("associations", [])} for n, (_p, d) in docs.items()}
+members = {l.split("\t")[0]: l.rstrip("\n").split("\t")[2:] for l in rd(E / "queries.gmt")}
 res = {v: collections.defaultdict(dict) for v in VS}
 for v in VS:
-    for r in csv.DictReader(open(E / v / "results.tsv"), delimiter="\t"):
+    for r in csv.DictReader(rd(E / v / "results.tsv"), delimiter="\t"):
         res[v][r["query_id"]][r["target_id"]] = r
-names = {r["term_id"]: r["name"] for r in csv.DictReader(open(E / "terms.tsv"), delimiter="\t")}
+names = {r["term_id"]: r["name"] for r in csv.DictReader(rd(E / "terms.tsv"), delimiter="\t")}
 def term_genes(v):
     clos = collections.defaultdict(set)
-    for r in csv.DictReader(open(E / v / "closure.tsv"), delimiter="\t"): clos[r["child"]].add(r["ancestor"])
+    for r in csv.DictReader(rd(E / v / "closure.tsv"), delimiter="\t"): clos[r["child"]].add(r["ancestor"])
     tg = collections.defaultdict(set)
-    for r in csv.DictReader(open(E / v / "gene_terms.tsv"), delimiter="\t"):
+    for r in csv.DictReader(rd(E / v / "gene_terms.tsv"), delimiter="\t"):
         for a in clos.get(r["term_id"], ()): tg[a].add(r["gene_id"])
     return tg
 std, regc = term_genes("current"), term_genes("regulates_closure")
 pool = {}
-for q in gold:
+for q, gold_terms in gold.items():
     if q not in members: continue
     sig = [set(res[v].get(q, {})) for v in VS]
     allv = set.intersection(*sig)
     cands = set()
     for v in VS:
         rows = [r for t, r in res[v].get(q, {}).items()
-                if t not in allv and int(r["target_size"]) <= MAXSIZE and t not in gold[q]]
+                if t not in allv and int(r["target_size"]) <= MAXSIZE and t not in gold_terms]
         rows.sort(key=lambda r: float(r["p_value"]))
         cands |= {r["target_id"] for r in rows[:K]}
     if cands: pool[q] = sorted(cands)
@@ -56,5 +69,5 @@ for pk in sorted(packets, key=lambda x: -len(x["candidates"])):
     i = load.index(min(load)); batches[i].append(pk); load[i] += len(pk["candidates"])
 for i, b in enumerate(batches):
     (OUT / f"batch_{i}.json").write_text(json.dumps(b, indent=1))
-json.dump({q: c for q, c in pool.items()}, open(OUT / "pool.json", "w"), indent=1)
+(OUT / "pool.json").write_text(json.dumps(pool, indent=1))
 print(len(pool), sum(map(len, pool.values())), load)
