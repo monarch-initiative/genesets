@@ -1,0 +1,3 @@
+positive: 149 regulation terms; transcriptional 4 (3%); contributing gene instances 3651, TF 310 (8%)
+  most common: [('positive regulation of cell population proliferation', 12), ('negative regulation of programmed cell death', 10), ('positive regulation of immune response', 7), ('negative regulation of apoptotic process', 7), ('positive regulation of programmed cell death', 5), ('regulation of MAPK cascade', 5), ('regulation of plasma lipoprotein particle levels', 4), ('regulation of muscle contraction', 4), ('regulation of muscle system process', 4), ('modulation of chemical synaptic transmission', 3)]
+other: 151 regulation terms; transcriptional 7 (5%); contributing gene instances 4464, TF 392 (9%)

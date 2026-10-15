@@ -162,6 +162,20 @@ Of the judged candidates each variant hits ([`pooled_precision.tsv`](pooled_prec
    participant and lenient recall with 27% less output, but it cannot report
    the 60 core regulation terms, and its contested-region precision is lower.
 
+4. **The valid regulation signal is not transcription factors**
+   ([`recuration/tf_share.py`](recuration/tf_share.py),
+   [`recuration/tf_share.txt`](recuration/tf_share.txt)). Of the 149
+   regulation terms judged positive, only 4 regulate transcription or gene
+   expression. Only 8% of the contributing gene instances are DNA-binding TFs,
+   the same rate as in the rejected regulation terms (9%). The valid terms are
+   signaling and cell-fate processes: *positive regulation of cell population
+   proliferation*, *negative regulation of programmed cell death*,
+   *positive regulation of immune response*, *regulation of MAPK cascade*,
+   *regulation of muscle contraction*. Caveat: the pool excluded terms with
+   more than 1,000 genes, which removes the large transcription-regulation
+   terms. Those are usually significant under every variant anyway, so they
+   are not contested.
+
 The recommendation therefore changes from "collapse or drop" to "regulates
 closure, or collapse if you need one answer per process".
 
