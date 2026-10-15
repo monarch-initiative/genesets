@@ -1,0 +1,5 @@
+variant	judged_hits	core	pos	plausible	neg	pos_rate	neg_rate	reg_term_hits	reg_pos	reg_neg
+current	498	43	228	93	177	0.458	0.355	300	149	95
+drop_regulation	264	19	94	55	115	0.356	0.436	0	0	0
+regulates_closure	643	71	297	135	211	0.462	0.328	298	148	95
+collapse_to_target	408	44	163	100	145	0.400	0.355	0	0	0

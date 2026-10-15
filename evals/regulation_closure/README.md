@@ -97,16 +97,91 @@ regulation terms.
    answer per process and a shorter list, collapse. Dropping is never better
    than collapsing on these metrics.
 
+## Recuration: pooled, blinded judgments
+
+The gold above leans towards `current`. 880 of its 1,063 associations were
+seeded from enrichment results, presumably under the default is_a/part_of
+closure, so terms reachable only through `regulates` were less likely to be
+proposed. To remove that bias without refitting the gold to any one variant,
+the contested region was recurated the way IR benchmarks fix pooling bias.
+
+1. **Pool symmetrically.** For each set, take the top 3 hits by p-value from
+   *each* variant, restricted to terms the variants disagree on (significant
+   in some but not all) with at most 1,000 annotated genes, minus terms
+   already curated. This gives 884 candidates over 115 sets
+   ([`recuration/build_pool.py`](recuration/build_pool.py),
+   [`recuration/pool.json`](recuration/pool.json)).
+2. **Judge blind.** Each candidate was shown with the set's full membership,
+   the member genes annotated to it via is_a/part_of, and the members reaching
+   it only via `regulates`, but **not** which variant proposed it. Judges
+   assigned `category`, `recovery_status` and `insight` under the
+   `curate-geneset` rules, negatives included. The 884 judgments are in
+   [`recuration/judgments.yaml`](recuration/judgments.yaml): 83 core_process,
+   4 core_component, 297 supporting, 185 marker-driven, 232 nonspecific, 83
+   false_association.
+3. **Rescore** with the judgments added to a copy of the gold
+   (`scripts/merge_pooled_judgments.py --genesets-dir <copy>`). The judgments
+   are **not yet merged into `curation/genesets/`**; that is a curator decision.
+
+### Recall against the recurated gold (481 CORE terms, 60 of them regulation terms)
+
+[`scores_recurated.tsv`](scores_recurated.tsv)
+
+| variant | recall_core | participant CORE | regulation CORE | lenient | recall_confirm | curated-negative hits |
+|---|---|---|---|---|---|---|
+| current | 0.549 | 0.506 | 0.850 | 0.555 | 0.578 | 180 |
+| drop_regulation | 0.459 | 0.525 | 0 | 0.516 | 0.408 | 118 |
+| regulates_closure | **0.653** | 0.625 | 0.850 | **0.661** | **0.687** | 215 |
+| collapse_to_target | 0.555 | **0.634** | 0 | **0.661** | 0.518 | 149 |
+
+### Precision in the contested region
+
+Of the judged candidates each variant hits ([`pooled_precision.tsv`](pooled_precision.tsv),
+[`recuration/score_pooled_precision.py`](recuration/score_pooled_precision.py)):
+
+| variant | judged hits | core | core + supporting | nonspecific / false | positive rate |
+|---|---|---|---|---|---|
+| current | 498 | 43 | 228 | 177 | 0.458 |
+| drop_regulation | 264 | 19 | 94 | 115 | 0.356 |
+| regulates_closure | 643 | 71 | 297 | 211 | **0.462** |
+| collapse_to_target | 408 | 44 | 163 | 145 | 0.400 |
+
+### What changed
+
+1. **Regulation terms are not the noise.** In the contested region, judges
+   called 50% of regulation-term candidates core or supporting (149/300),
+   against 40% of participant-term candidates (235/584). The first-pass result
+   that dropping regulation was free came from a gold that had rarely been
+   offered regulation terms. Against the recurated gold, dropping costs 9
+   points of recall and has the lowest contested-region precision.
+2. **Regulates closure wins outright.** It has the best strict and lenient
+   recall, and the most positive hits (297 vs 228 for `current`) at the same
+   positive rate. Its extra output is as good as the output it already had,
+   though in absolute terms it also adds the most curated negatives.
+3. **Collapse is the compact alternative.** It ties regulates closure on
+   participant and lenient recall with 27% less output, but it cannot report
+   the 60 core regulation terms, and its contested-region precision is lower.
+
+The recommendation therefore changes from "collapse or drop" to "regulates
+closure, or collapse if you need one answer per process".
+
 ## Caveats
 
-- **The gold leans towards `current`.** 880 of 1,063 curated associations were
-  seeded from enrichment results (`seed_source: enrichment_recovered`). If that
-  seeding used the standard is_a/part_of closure (the repo default), terms
-  reachable only through `regulates` were less likely to be proposed, and the
-  regulates-closure gains are an underestimate. Per the benchmark guardrail, the gold is not
-  edited to suit any variant here.
+- **Pool depth.** Only the top 3 contested hits per variant per set were
+  judged, so recall on pool-added terms reflects that depth. The pool is
+  symmetric, so no variant gets more nominations than another.
+- **The judges were LLM curators** working under the `curate-geneset` rules,
+  one judge per candidate. There is no inter-annotator agreement yet. A
+  spot-check by a human curator should precede merging into the gold.
+- **Validation of the merged copy was partial.** LinkML schema validation
+  passed, and all 884 GO ids were checked against `go.obo` 2026-07-26 for
+  exact label and non-obsolescence. The full `curate validate` could not run
+  in the authoring environment because its OAK step failed to download
+  `mondo.db`. Run `just curate-validate` before merging.
+- **The original gold is unchanged.** The first-pass table above still scores
+  against it.
 - **Curated-negative hits are a floor, not a false-positive rate.** Most hits
-  were never curated either way.
+  outside the pool were never curated either way.
 - **Regulates closure inherits annotation noise.** It also propagates the
   sign-conflicting and participant-misfiled regulation annotations that the
   ai-gene-review audit flags. A cleaner GOA would change the closure results
