@@ -121,8 +121,6 @@ def ranking_errors(interp: GeneSetInterpretation, base_dir: Path) -> list[str]:
         return errors + [str(error)]
     if len(scores) != ranking.n_ranked:
         errors.append(f"n_ranked is {ranking.n_ranked} but the file ranks {len(scores)} genes")
-    if not ranking.signed and any(score < 0 for score in scores.values()):
-        errors.append("ranking is declared unsigned but has negative scores")
 
     for association in interp.associations:
         term = association.term.id

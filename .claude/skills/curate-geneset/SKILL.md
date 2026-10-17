@@ -69,7 +69,10 @@ thresholded list (full detail: "Ranked signatures" in `curation/README.md`).
    trust weighted KS (`--weight 1`): use Wilcoxon or `--weight 0`.
    Biologically core terms that whole-term tests miss (a strong gene diluted in
    a big term) still go in, as curator-added CORE terms with their nominal
-   stats, so the ranked benchmark measures the miss.
+   stats, so the ranked benchmark measures the miss. For CRISPR screens, score
+   small complexes with `--min-size 5`, and record fitness, non-expression and
+   shared-guide artefacts as `nonspecific`/`false_association` (see "Ranked
+   signatures" in `curation/README.md`); they are useful negative controls.
 6. `universe_gap` replaces `membership_gap` (genes not measured). Measured but
    unmoved is a result: put it in the description, not in a gap.
 

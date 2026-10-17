@@ -63,6 +63,7 @@ def assemble_ranked_draft(
     rows: Iterable[GseaRow],
     method: str,
     algorithm: str = "classic",
+    ks_weight: float = 1.0,
     contexts: list[model.BiologicalContext] | None = None,
     aspect_lookup: Callable[[str], str | None] | None = None,
 ) -> model.GeneSetInterpretation:
@@ -85,6 +86,7 @@ def assemble_ranked_draft(
                 enrichment_stats=model.EnrichmentStats(
                     method=method,
                     algorithm=algorithm,
+                    ks_weight=ks_weight if method == "gsea_ks" else None,
                     p_adjust_method=P_ADJUST_METHOD[method],
                     p_value=row.p_value,
                     p_adjust=row.p_adjust,

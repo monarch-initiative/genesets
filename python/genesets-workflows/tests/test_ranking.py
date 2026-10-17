@@ -109,9 +109,6 @@ def test_unsigned_ranking_has_no_low_pole(tmp_path):
     errors = ranking_errors(interp, tmp_path)
     assert any("no low pole" in error for error in errors)
 
-    negative = ranked(tmp_path, signed=False)
-    assert any("negative scores" in error for error in ranking_errors(negative, tmp_path))
-
 
 def test_missing_ranking_file_is_reported(tmp_path):
     interp = ranked(tmp_path)

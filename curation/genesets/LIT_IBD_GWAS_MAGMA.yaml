@@ -57,6 +57,7 @@ associations:
   enrichment_stats:
     method: gsea_ks
     algorithm: classic
+    ks_weight: 1.0
     p_adjust_method: gsea_fdr
     p_value: 0.0004033885
     p_adjust: 0.03519896
@@ -90,6 +91,7 @@ associations:
   enrichment_stats:
     method: gsea_ks
     algorithm: classic
+    ks_weight: 1.0
     p_adjust_method: gsea_fdr
     p_value: 0.0003043214
     p_adjust: 0.03151205
@@ -119,6 +121,7 @@ associations:
   enrichment_stats:
     method: gsea_ks
     algorithm: classic
+    ks_weight: 1.0
     p_adjust_method: gsea_fdr
     p_value: 0.0001014405
     p_adjust: 0.0

@@ -20,6 +20,7 @@ class Term:
 class EnrichmentStats:
     method: str | None = None
     algorithm: str | None = None
+    ks_weight: float | None = None
     p_adjust_method: str | None = None
     p_value: float | None = None
     p_adjust: float | None = None

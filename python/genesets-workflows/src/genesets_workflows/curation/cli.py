@@ -83,6 +83,7 @@ def draft_ranked(
     signed: bool = typer.Option(..., "--signed/--unsigned", help="Whether negative scores are meaningful."),
     method: str = typer.Option("gsea_ks", "--method", help="gsea_ks or wilcoxon, as run."),
     algorithm: str = typer.Option("classic", "--algorithm", help="classic, elim or weight01, as run."),
+    weight: float = typer.Option(1.0, "--weight", help="The gsea --weight the run used (gsea_ks only)."),
     gene_id_type: str = typer.Option("HGNC symbol", "--gene-id-type"),
     output: Path = typer.Option(..., "--output", "-o"),
 ) -> None:
@@ -112,6 +113,7 @@ def draft_ranked(
         rows=parse_gsea_tsv(Path(gsea_tsv).read_text()),
         method=method,
         algorithm=algorithm,
+        ks_weight=weight,
     )
     model.dump_interpretation(interp, output)
     typer.echo(f"wrote {output} ({len(interp.associations)} associations)")

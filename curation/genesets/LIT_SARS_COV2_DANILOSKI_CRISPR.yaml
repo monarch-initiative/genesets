@@ -1,0 +1,354 @@
+gene_set_id: LIT:SARS_COV2_DANILOSKI_CRISPR
+gene_set_name: SARS_COV2_DANILOSKI_CRISPR
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+ranking:
+  source: PMID:33147445
+  score_type: neg_log10_p
+  signed: false
+  gene_id_type: HGNC symbol
+  n_ranked: 18779
+  file: ../rankings/SARS_COV2_DANILOSKI_CRISPR.rnk.gz
+  sha256: f918670f3393197bf350f4729afd6595bd7dc58a56b56efe1f664ffd6609630c
+  source_detail: Table S1 (mmc1.xlsx), columns gene_id and score_MOI1
+  download_url: https://ars.els-cdn.com/content/image/1-s2.0-S0092867420313945-mmc1.xlsx
+  score_description: '-log10 of the MAGeCK RRA positive-selection score in the low-MOI
+    (0.01) screen; high = the knockout survives SARS-CoV-2 = proviral host factor.
+    Built by `curate build-ranking` from rankings/SARS_COV2_DANILOSKI_CRISPR.recipe.yaml:
+    of 19,049 source rows, 163 have no approved HGNC symbol and 107 collide on one
+    symbol (rows named by the approved symbol win over previous or alias names); 18,779
+    genes ranked.'
+description: 'Genome-wide CRISPR knockout ranking of human host factors for SARS-CoV-2
+  from Daniloski et al. 2021 (GeCKOv2 in A549-ACE2 lung cells, low-MOI screen; PMID:33147445),
+  scored by MAGeCK positive selection. The ranked counterpart of the Daniloski half
+  of LIT:SARS_COV2_HOST_FACTORS. The top is the paper''s: VPS35, ATP6V0C, ATP6AP1,
+  SNX27, with ACE2 11th and CTSL 35th. The interpretation is endolysosomal entry:
+  the vacuolar ATPase that acidifies endosomes, and the retromer/commander recycling
+  machinery. Weighted KS suits this concentrated top (29 terms at q < 0.05); Wilcoxon
+  finds only the V-ATPase. Cholesterol biosynthesis, supporting in the gene-set entry,
+  is flat here (KS p = 0.47): the paper found it through single-cell transcriptional
+  changes after knockout, not through the screen.'
+contexts:
+- term:
+    id: MONDO:0100096
+    label: COVID-19
+  context_type: infection
+  role_note: Survival of SARS-CoV-2 infection in A549-ACE2 cells after gene knockout.
+associations:
+- term:
+    id: GO:0033176
+    label: proton-transporting V-type ATPase complex
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: ubiquitous
+  direction: UP
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 0.00010007
+    p_adjust: 0.0
+    target_size: 28
+    es: 0.928863
+    nes: 2.250698
+    set_size: 27
+    leading_edge_size: 16
+    leading_edge_genes:
+    - ATP6V0C
+    - ATP6AP1
+    - ATP6V1B2
+    - ATP6V0B
+    - ATP6V1G1
+    - ATP6V0D1
+    - ATP6V1H
+    - VMA12
+    - ATP6AP2
+    - ATP6V1E1
+    - ATP6V1C1
+    - ATP6V1A
+    - RNASEK
+    - VMA22
+    - ATP6V1D
+    - ATP6V1F
+    peak_rank: 368
+  evidence:
+  - reference: PMID:33147445
+    reference_title: Identification of Required Host Factors for SARS-CoV-2 Infection
+      in Human Cells.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Top-ranked genes cluster into distinct pathways, including the vacuolar
+      ATPase proton pump, Retromer, and Commander complexes.
+    explanation: 'The single most prominent cluster of host-dependency hits in the
+      genome-wide screen is the vacuolar (V-)type ATPase proton pump (e.g. ATP6V1A,
+      ATP6AP1). These subunit genes are members of the set and carry the proton-transporting
+      V-type ATPase complex annotation directly, so enrichment recovers it (annotation_supported).
+      It is scored mechanistic rather than confirmatory: a respiratory virus depending
+      on a housekeeping organellar proton pump is non-obvious, and the dependency
+      reflects the virus''s need for endosomal/lysosomal acidification (see vacuolar
+      acidification) during entry, not anything entailed by the set''s "viral infection"
+      framing.'
+  curator_note: 16 of 27 V-ATPase subunits in the leading edge (ATP6V0C, ATP6AP1,
+    ATP6V1B2, ATP6V0B, ATP6V1G1, ATP6V0D1, ATP6V1H, VMA12).
+- term:
+    id: GO:0007035
+    label: vacuolar acidification
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: ubiquitous
+  direction: UP
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 0.0001
+    p_adjust: 0.0
+    target_size: 40
+    es: 0.869019
+    nes: 2.151841
+    set_size: 36
+    leading_edge_size: 15
+    leading_edge_genes:
+    - ATP6V0C
+    - ATP6AP1
+    - ATP6V1B2
+    - ATP6V0B
+    - ATP6V0D1
+    - ATP6V1H
+    - VMA12
+    - ATP6AP2
+    - ATP6V1A
+    - RNASEK
+    - WDR7
+    - VMA22
+    - ATP6V1D
+    - VMA21
+    - ATP6V1F
+    peak_rank: 368
+  curator_note: The V-ATPase's function, endosome and lysosome acidification, which
+    cathepsin L-dependent spike cleavage needs in ACE2 cells lacking TMPRSS2.
+- term:
+    id: GO:0032456
+    label: endocytic recycling
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: ubiquitous
+  direction: UP
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 9.999e-05
+    p_adjust: 0.01589962
+    target_size: 101
+    es: 0.660226
+    nes: 1.736439
+    set_size: 92
+    leading_edge_size: 30
+    leading_edge_genes:
+    - VPS35
+    - ATP6AP1
+    - SNX27
+    - COMMD2
+    - RAB7A
+    - VPS29
+    - CCDC22
+    - COMMD3
+    - VPS26A
+    - COMMD4
+    - COMMD10
+    - CCDC93
+    - COMMD8
+    - VPS35L
+    - SNX12
+    - COMMD5
+    - WASHC2C
+    - COMMD7
+    - VTI1A
+    - VAMP4
+    - SNF8
+    - ANKRD50
+    - VPS53
+    - STX16
+    - RAB17
+    - VPS26C
+    - LMTK2
+    - RAB35
+    - EHD3
+    - SNX4
+    peak_rank: 2302
+  evidence:
+  - reference: PMID:33147445
+    reference_title: Identification of Required Host Factors for SARS-CoV-2 Infection
+      in Human Cells.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Top-ranked genes cluster into distinct pathways, including the vacuolar
+      ATPase proton pump, Retromer, and Commander complexes.
+    explanation: 'The single most prominent cluster of host-dependency hits in the
+      genome-wide screen is the vacuolar (V-)type ATPase proton pump (e.g. ATP6V1A,
+      ATP6AP1). These subunit genes are members of the set and carry the proton-transporting
+      V-type ATPase complex annotation directly, so enrichment recovers it (annotation_supported).
+      It is scored mechanistic rather than confirmatory: a respiratory virus depending
+      on a housekeeping organellar proton pump is non-obvious, and the dependency
+      reflects the virus''s need for endosomal/lysosomal acidification (see vacuolar
+      acidification) during entry, not anything entailed by the set''s "viral infection"
+      framing.'
+  curator_note: 'VPS35, SNX27, VPS29 (retromer), COMMD2, COMMD3, CCDC22 (commander)
+    and RAB7A: recycling machinery that keeps ACE2 at the surface.'
+- term:
+    id: GO:0042147
+    label: retrograde transport, endosome to Golgi
+  seed_source: curator_added
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: ubiquitous
+  direction: UP
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 0.00039996
+    p_adjust: 0.5406589
+    target_size: 101
+    es: 0.528059
+    nes: 1.394877
+    set_size: 93
+    leading_edge_size: 34
+    leading_edge_genes:
+    - VPS35
+    - RAB7A
+    - VPS29
+    - VPS26A
+    - HEATR5B
+    - WASHC2A
+    - BLTP3B
+    - ARL8B
+    - DENND5A
+    - SNX12
+    - WASHC2C
+    - VTI1B
+    - VPS54
+    - VTI1A
+    - ARFRP1
+    - UBE2O
+    - VPS53
+    - STX16
+    - STX5
+    - DCTN1
+    - TBC1D10B
+    - EHD3
+    - TRAPPC10
+    - SORL1
+    - VAMP3
+    - ERC1
+    - SGSM2
+    - RAB29
+    - SNX1
+    - RNF126
+    - GOSR1
+    - VPS51
+    - TBC1D23
+    - WIPF3
+    peak_rank: 4156
+  curator_note: 'CORE in LIT:SARS_COV2_HOST_FACTORS. VPS35, RAB7A, VPS29, VPS26A lead,
+    but the 93-gene term stops at p = 4e-4 (FDR q = 0.54): retromer is a handful of
+    genes inside a broad trafficking term.'
+- term:
+    id: GO:0036092
+    label: phosphatidylinositol-3-phosphate biosynthetic process
+  seed_source: curator_added
+  aspect: biological_process
+  category: supporting_process
+  confidence: medium
+  specificity: ubiquitous
+  direction: UP
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 0.006409614
+    p_adjust: 0.3099657
+    target_size: 26
+    es: 0.62247
+    nes: 1.484864
+    set_size: 23
+    leading_edge_size: 9
+    leading_edge_genes:
+    - PIK3C3
+    - PIK3R4
+    - BECN1
+    - UVRAG
+    - ATG14
+    - FIG4
+    - INPP4B
+    - PIK3CG
+    - PIK3CA
+    peak_rank: 2956
+  curator_note: 'PIK3C3, PIK3R4, BECN1, UVRAG, ATG14: the class III PI3K complex (supporting
+    in the gene-set entry); nominal here (p = 0.006, q = 0.31).'
+- term:
+    id: GO:1904263
+    label: positive regulation of TORC1 signaling
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: marker_driven_plausible
+  confidence: low
+  specificity: ubiquitous
+  direction: UP
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 9.999e-05
+    p_adjust: 0.004449845
+    target_size: 66
+    es: 0.696458
+    nes: 1.79445
+    set_size: 60
+    leading_edge_size: 14
+    leading_edge_genes:
+    - ATP6V0C
+    - ATP6AP1
+    - ATP6V0D1
+    - ATP6V1E1
+    - ATP6V1A
+    - RRAGC
+    - ATP6V1D
+    - CLEC16A
+    - CUL3
+    - PIM1
+    - PIP4P1
+    - OTUD5
+    - RRAGA
+    - RRAGB
+    peak_rank: 1330
+  curator_note: Significant (q = 0.004) because V-ATPase subunits are annotated to
+    lysosomal amino-acid sensing for TORC1, alongside RRAGC. The same genes as the
+    acidification term, read through another of their annotations.

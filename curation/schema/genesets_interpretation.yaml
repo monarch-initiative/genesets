@@ -136,7 +136,10 @@ classes:
           Whether negative scores are meaningful. True for a fold change or a
           t-statistic, whose two poles are two programs; false for one-sided
           association strengths such as a MAGMA Z or -log10 p, where only the
-          high end is signal and associations may only be UP.
+          high end is signal and associations may only be UP. An unsigned score
+          may dip below zero (e.g. -log of an enrichment statistic that can
+          exceed 1); prefer a transform whose low end stays near zero, since
+          GSEA's weighted KS weights steps by |score|.
       gene_id_type:
         required: true
         description: >-
@@ -270,6 +273,12 @@ classes:
       algorithm:
         range: GraphAlgorithmEnum
         description: How the ontology graph was used; classic when unset.
+      ks_weight:
+        range: float
+        minimum_value: 0.0
+        description: >-
+          gsea_ks only: the exponent on |score| in the running sum (`--weight`);
+          1 is the GSEA default, 0 the unweighted Kolmogorov-Smirnov statistic.
       p_adjust_method:
         range: PAdjustMethodEnum
         description: How p_adjust was computed.

@@ -25,8 +25,13 @@ Recipe keys::
     score_column: P meta
     transform: identity | neg_log10 | negate
     missing: ["", "NA"]                   # score values that mean no measurement
-    duplicates: max | min | drop           # several source rows for one symbol;
-                                         # drop discards every row of that symbol
+    duplicates: max | min | drop | prefer_exact
+                                         # several source rows for one symbol:
+                                         # keep the max/min score, discard them
+                                         # all, or (prefer_exact) let a row whose
+                                         # source name is the approved symbol win
+                                         # over rows reached through a previous or
+                                         # alias name, keeping the max among equals
     store: false                           # commit the built file? Only when the
                                          # source has no stable URL to rebuild from
     hgnc:
@@ -241,8 +246,8 @@ def build(recipe_path: Path, cache_dir: Path) -> BuildReport:
     recipe = Recipe.load(recipe_path)
     if recipe.transform not in TRANSFORMS:
         raise ValueError(f"transform must be one of {sorted(TRANSFORMS)}")
-    if recipe.duplicates not in ("max", "min", "drop"):
-        raise ValueError("duplicates must be max, min or drop")
+    if recipe.duplicates not in ("max", "min", "drop", "prefer_exact"):
+        raise ValueError("duplicates must be max, min, drop or prefer_exact")
     hgnc = HgncMapper(fetch(recipe.hgnc["url"], recipe.hgnc["sha256"], cache_dir).decode())
     if recipe.source.get("kind") == "ctg_atlas":
         data = fetch_atlas_magma(recipe.source["atlas_id"], recipe.source["sha256"], cache_dir)
@@ -253,8 +258,9 @@ def build(recipe_path: Path, cache_dir: Path) -> BuildReport:
             data = archive.read(recipe.source["member"])
 
     transform = TRANSFORMS[recipe.transform]
-    keep = max if recipe.duplicates == "max" else min
+    keep = min if recipe.duplicates == "min" else max
     ambiguous: set[str] = set()
+    exact: dict[str, bool] = {}
     missing = set(recipe.missing)
     report = BuildReport()
     scores: dict[str, float] = {}
@@ -272,11 +278,19 @@ def build(recipe_path: Path, cache_dir: Path) -> BuildReport:
             report.unmapped += 1
             continue
         score = transform(float(raw))
+        is_exact = row[recipe.gene_column] == symbol
         if symbol in scores:
             report.collapsed += 1
             if recipe.duplicates == "drop":
                 ambiguous.add(symbol)
+            elif recipe.duplicates == "prefer_exact" and is_exact != exact[symbol]:
+                if not is_exact:
+                    continue
+                exact[symbol] = True
+                scores[symbol] = score
+                continue
             score = keep(score, scores[symbol])
+        exact[symbol] = exact.get(symbol, False) or is_exact
         scores[symbol] = score
     for symbol in ambiguous:
         del scores[symbol]

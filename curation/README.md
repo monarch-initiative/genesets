@@ -193,7 +193,25 @@ BMD MAGMA ranking, where -log10 p reaches 150, weighted KS finds no term and
 unweighted KS (`--weight 0`) finds 181. Use Wilcoxon or `--weight 0` there.
 For GWAS gene scores, also count independent loci in a leading edge: MAGMA
 p-values of neighbouring genes are correlated through LD, so an HLA or APOE
-block lights up whole terms as one finding. Draft from a run with:
+block lights up whole terms as one finding.
+
+CRISPR screens have their own traps, all visible in the curated screens:
+
+- **Small complexes fall under the size floor.** The OST, signal peptidase
+  and EMC complexes that define the flavivirus screens have 5-13 members, below
+  `gsea`'s default `--min-size 15`; score them with `--min-size 5`.
+- **Fitness.** Essential genes drop out of any survival or proliferation
+  screen, and growth suppressors gain, whatever the selection. Record those
+  terms as `nonspecific` (essential genes) or `false_association` (growth
+  suppressors read as host factors).
+- **Non-expression.** Genes the cells do not express escape the fitness cost,
+  so whole-ranking tests shift olfactory receptors or heart genes. Record them
+  as `false_association`.
+- **Shared guides.** Clustered genes that share exons (PCDHA, UGT1A) are hit
+  by the same guides and score as one: one finding, like an LD block.
+- **Symbol hygiene.** Supplementary tables carry old symbols and Excel
+  damage. `duplicates: prefer_exact` lets the row named by the approved symbol
+  win; use `drop` when a collision may hide two genes (Excel-mangled MARCH/SEPT). Draft from a run with:
 
 ```bash
 genesets-rs gsea --annotations gene_terms.tsv --terms terms.tsv --closure closure.tsv \
@@ -210,7 +228,7 @@ an unsigned ranking it drops the meaningless low pole.
 
 `curate validate` adds a ranking gate: the file exists and matches its
 checksum and `n_ranked`, scores are well formed, an unsigned ranking has no
-negative scores and no DN associations, every leading-edge gene is in the
+DN associations, every leading-edge gene is in the
 ranking, `direction` agrees with the sign of NES, and ranked methods appear
 only on ranked interpretations. `LIT:SCHIZOPHRENIA_SCHEMA_EXOME` is the first
 example.

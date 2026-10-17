@@ -55,6 +55,7 @@ associations:
   enrichment_stats:
     method: gsea_ks
     algorithm: classic
+    ks_weight: 1.0
     p_adjust_method: gsea_fdr
     p_value: 0.0002001601
     p_adjust: 0.01521755
@@ -88,6 +89,7 @@ associations:
   enrichment_stats:
     method: gsea_ks
     algorithm: classic
+    ks_weight: 1.0
     p_adjust_method: gsea_fdr
     p_value: 0.0001001603
     p_adjust: 0.01521755
@@ -118,6 +120,7 @@ associations:
   enrichment_stats:
     method: gsea_ks
     algorithm: classic
+    ks_weight: 1.0
     p_adjust_method: gsea_fdr
     p_value: 0.00169983
     p_adjust: 0.3583411
@@ -167,6 +170,7 @@ associations:
   enrichment_stats:
     method: gsea_ks
     algorithm: classic
+    ks_weight: 1.0
     p_adjust_method: gsea_fdr
     p_value: 0.00049995
     p_adjust: 0.2317054
@@ -242,6 +246,7 @@ associations:
   enrichment_stats:
     method: gsea_ks
     algorithm: classic
+    ks_weight: 1.0
     p_adjust_method: gsea_fdr
     p_value: 0.0002015926
     p_adjust: 0.02088374

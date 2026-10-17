@@ -123,3 +123,12 @@ def test_every_ranked_interpretation_has_a_recipe():
             continue
         built = (path.parent / interp.ranking.file).resolve()
         assert built.with_name(built.name.removesuffix(".rnk.gz") + ".recipe.yaml").exists(), path
+
+
+def test_prefer_exact_lets_the_approved_symbol_row_win(tmp_path):
+    # TCEB2 is ELOB's previous symbol: the exact ELOB row wins though weaker.
+    table = b"gene\tp\nTCEB2\t1e-9\nELOB\t0.1\nGRIN2A\t1e-3\nGRIN2A\t1e-6\n"
+    path = recipe(tmp_path, table, duplicates="prefer_exact")
+    build(path, tmp_path / "cache")
+    scores = read_ranking(path.parent / "TEST.rnk.gz")
+    assert scores == pytest.approx({"ELOB": 1.0, "GRIN2A": 6.0})
