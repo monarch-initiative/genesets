@@ -31,7 +31,8 @@
 
 ## Longer Term
 
-- Add more topology-aware model families (parent-child, elim, weight). MGSA is
+- Add more topology-aware model families (parent-child; elim, weight and
+  weight01 for Fisher; `gsea` has elim and weight01). MGSA is
   available as `genesets-rs mgsa`.
 - Explore gene-set-informed factor models (f-scLVM / slalom and expiMap-style)
   as downstream consumers of curated libraries, and reuse the curated

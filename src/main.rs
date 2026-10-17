@@ -14,7 +14,7 @@ use genesets_rs::{
         resolve_format, summarize_diff,
     },
     enrichment::{enrich_matrix, enrich_one},
-    gsea::{GseaOptions, Ranking, gsea_matrix},
+    gsea::{Algorithm, GseaOptions, Ranking, Statistic, gsea_matrix},
     index::{
         TermGraph, build_flat_sets, build_gene_list_bitset, build_ontology_sets, build_term_graph,
         union_sets,
@@ -333,12 +333,28 @@ struct GseaArgs {
     #[arg(long)]
     ranks_set: Option<String>,
 
+    /// How each target is scored against the ranking.
+    #[arg(long, value_enum, default_value_t = Statistic::Ks)]
+    statistic: Statistic,
+
+    /// How the ontology graph is used: score terms independently (classic),
+    /// drop genes of significant descendants (elim), or drop a child's genes
+    /// from its parent when the child is at least as significant (weight01).
+    /// elim and weight01 need --closure.
+    #[arg(long, value_enum, default_value_t = Algorithm::Classic)]
+    algorithm: Algorithm,
+
+    /// Raw p-value at or below which elim removes a term's genes from its
+    /// ancestors.
+    #[arg(long, default_value_t = 0.01, value_parser = parse_probability)]
+    elim_cutoff: f64,
+
     /// Exponent on |score| for the running-sum step at set members.
     /// 0 is the unweighted Kolmogorov-Smirnov statistic; 1 is the GSEA default.
     #[arg(long, default_value_t = 1.0)]
     weight: f64,
 
-    /// Random gene sets drawn per distinct set size for the null.
+    /// Random gene sets drawn for each KS null.
     #[arg(long, default_value_t = 1000)]
     permutations: u32,
 
@@ -1020,12 +1036,19 @@ fn execute_gsea(args: GseaArgs) -> Result<()> {
 
     let target_sets = target_source.build_sets(&universe);
     ensure_non_empty_targets(&target_sets)?;
+    let graph = target_source.build_graph(&target_sets);
+    if args.algorithm != Algorithm::Classic && graph.is_none() {
+        bail!("--algorithm elim and weight01 need --annotations with --closure");
+    }
     let rankings = ranked_lists
         .iter()
         .map(|list| Ranking::new(list, &universe))
         .collect::<Result<Vec<_>>>()?;
 
     let options = GseaOptions {
+        statistic: args.statistic,
+        algorithm: args.algorithm,
+        elim_cutoff: args.elim_cutoff,
         weight: args.weight,
         permutations: args.permutations,
         min_size: args.min_size,
@@ -1035,7 +1058,7 @@ fn execute_gsea(args: GseaArgs) -> Result<()> {
         max_p_value: args.max_p_value,
         max_p_adjust: args.max_p_adjust,
     };
-    let rows = gsea_matrix(&rankings, &target_sets, &options);
+    let rows = gsea_matrix(&rankings, &target_sets, graph.as_ref(), &options)?;
     if args.output_format == OutputFormat::Null {
         return Ok(());
     }

@@ -204,6 +204,9 @@ genesets-rs gsea \
 
 `--ranks` is a two-column `gene, score` table (a GSEA `.rnk` file) or a
 three-column `ranking_id, gene, score` table for many contrasts in one run.
+`--statistic wilcoxon` swaps the GSEA running sum for a Wilcoxon rank-sum test,
+and `--algorithm elim` or `weight01` uses the ontology graph so that ancestors
+do not ride on a child's signal (see `docs/src/statistics.md`).
 
 YAML configuration:
 
@@ -227,8 +230,9 @@ With `--overlap-genes`, the CLI also emits `overlap_genes` and `overlap_gene_nam
 that the term is active), keeps the term-for-term `p_value` for comparison, and
 adds `equivalent_ids` for terms with identical genes in the background.
 
-`gsea` output has `es`, `nes`, `p_value`, and `p_adjust` (Benjamini-Hochberg),
-plus `set_size` (members in the ranking), `target_size`, `ranked_size`,
+`gsea` output has `es`, `nes`, `p_value`, and `p_adjust` (GSEA FDR q-value for
+KS, Benjamini-Hochberg for Wilcoxon), plus `set_size` (members scored),
+`eliminated` (members removed by `elim` or `weight01`), `target_size`, `ranked_size`,
 `leading_edge_size`, and `peak_rank`; `--leading-edge-genes` adds the
 leading-edge gene ids and names.
 

@@ -8,8 +8,8 @@
 Builds a synthetic ranking (3,000 genes, Gaussian scores) and 60 gene sets, a
 third biased toward the top of the ranking, a third toward the bottom, and a
 third random. Runs both tools with weight 1 and gene-set permutation, then
-reports how closely ES, NES and nominal p-values agree. ES is deterministic
-and should match to output rounding; NES and p-values are Monte Carlo
+reports how closely ES, NES, nominal p-values and FDR q-values agree. ES is
+deterministic and should match to output rounding; the others are Monte Carlo
 estimates and should agree closely but not exactly.
 
 Usage (from the repo root, after ``cargo build --release``)::
@@ -85,7 +85,7 @@ def main() -> None:
             no_plot=True,
             verbose=False,
         ).res2d
-    theirs = theirs.set_index("Term")[["ES", "NES", "NOM p-val"]].astype(float)
+    theirs = theirs.set_index("Term")[["ES", "NES", "NOM p-val", "FDR q-val"]].astype(float)
     joined = theirs.join(ours, how="inner")
 
     significant_theirs = joined["NOM p-val"] < 0.05
@@ -105,6 +105,17 @@ def main() -> None:
         f"{significant_theirs.sum()} / {significant_ours.sum()} / "
         f"{(significant_theirs & significant_ours).sum()}"
     )
+    print(
+        "FDR q-value Spearman rho: "
+        f"{joined['FDR q-val'].corr(joined.p_adjust, method='spearman'):.3f}"
+    )
+    for cutoff in (0.05, 0.25):
+        theirs_q = joined["FDR q-val"] < cutoff
+        ours_q = joined["p_adjust"] < cutoff
+        print(
+            f"q < {cutoff} (gseapy / genesets-rs / both): "
+            f"{theirs_q.sum()} / {ours_q.sum()} / {(theirs_q & ours_q).sum()}"
+        )
 
 
 if __name__ == "__main__":

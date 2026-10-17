@@ -428,7 +428,7 @@ fn gsea_ranks_the_top_term_first() {
     let child: Vec<&str> = lines[1].split('\t').collect();
     assert_eq!(&child[..4], ["ranks", "", "T:child", "Child process"]);
     assert_eq!(child[4], "1.000000");
-    assert_eq!(&child[8..], ["2", "2", "10", "2", "2", "g1;g2", ""]);
+    assert_eq!(&child[8..], ["2", "0", "2", "10", "2", "2", "g1;g2", ""]);
     let other = lines
         .iter()
         .find(|line| line.contains("\tT:other\t"))
@@ -468,4 +468,62 @@ fn gsea_reads_several_rankings_from_one_file() {
     };
     assert!(es("up") > 0.0);
     assert!(es("down") < 0.0);
+}
+
+#[test]
+fn gsea_weight01_removes_a_child_only_when_it_is_stronger() {
+    let parent_counts = |statistic: &str| -> (String, String) {
+        let stdout = run(&[
+            "gsea",
+            "--annotations",
+            "examples/gene_terms.tsv",
+            "--closure",
+            "examples/closure.tsv",
+            "--ranks",
+            "examples/ranks.rnk",
+            "--min-size",
+            "1",
+            "--permutations",
+            "5000",
+            "--statistic",
+            statistic,
+            "--algorithm",
+            "weight01",
+        ]);
+        let rows: Vec<Vec<&str>> = stdout
+            .lines()
+            .map(|line| line.split('\t').collect())
+            .collect();
+        let column = |name: &str| rows[0].iter().position(|field| *field == name).unwrap();
+        let parent = rows
+            .iter()
+            .find(|row| row[column("target_id")] == "T:parent")
+            .expect("T:parent row");
+        (
+            parent[column("eliminated")].to_owned(),
+            parent[column("set_size")].to_owned(),
+        )
+    };
+    // KS: the child (ES 1) beats the parent, so its two genes leave the parent.
+    assert_eq!(parent_counts("ks"), ("2".to_owned(), "1".to_owned()));
+    // Wilcoxon: the parent's three genes beat the child's two; nothing leaves.
+    assert_eq!(parent_counts("wilcoxon"), ("0".to_owned(), "3".to_owned()));
+}
+
+#[test]
+fn gsea_graph_algorithms_need_a_closure() {
+    let output = Command::new(bin())
+        .args([
+            "gsea",
+            "--annotations",
+            "examples/gene_terms.tsv",
+            "--ranks",
+            "examples/ranks.rnk",
+            "--algorithm",
+            "elim",
+        ])
+        .output()
+        .expect("failed to run genesets-rs");
+    assert!(!output.status.success());
+    assert!(String::from_utf8_lossy(&output.stderr).contains("--closure"));
 }

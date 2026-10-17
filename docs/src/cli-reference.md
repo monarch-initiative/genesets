@@ -157,20 +157,39 @@ three (`ranking_id`, `gene`, `score`) to run several rankings at once; each is
 analyzed and adjusted independently. A first row with a non-numeric score is
 treated as a header. Duplicate genes and non-finite scores are errors.
 
+`--statistic ks` (the default) is the GSEA running sum; `--statistic wilcoxon`
+is a Wilcoxon rank-sum (Mann-Whitney U) test of members against non-members.
+`--algorithm elim` and `--algorithm weight01` use the ontology graph to keep
+redundant ancestors from riding on a child's signal; both need `--closure`.
+
 Output columns: `query_id` (the ranking), `query_name`, `target_id`,
-`target_name`, `es`, `nes`, `p_value`, `p_adjust` (Benjamini-Hochberg within a
-ranking), `set_size` (members in the ranking), `target_size`, `ranked_size`,
-`leading_edge_size`, `peak_rank` (1-based rank where the running sum peaks), and
-with `--leading-edge-genes`, `leading_edge_genes` and
-`leading_edge_gene_names`. Rows are sorted by p-value, then by |NES|. The
-`p_adjust` column means `compare` can diff two GSEA runs directly.
+`target_name`, `es`, `nes`, `p_value`, `p_adjust`, `set_size` (members
+scored), `eliminated` (ranked members removed by `elim` or `weight01`),
+`target_size`, `ranked_size`, `leading_edge_size`, `peak_rank`, and with
+`--leading-edge-genes`, `leading_edge_genes` and `leading_edge_gene_names`.
+
+| Column | `--statistic ks` | `--statistic wilcoxon` |
+| --- | --- | --- |
+| `es` | enrichment score | rank-biserial correlation |
+| `nes` | ES over the mean same-sign null ES | z-score |
+| `p_value` | permutation p-value | normal approximation, two-sided |
+| `p_adjust` | GSEA FDR q-value | Benjamini-Hochberg |
+
+Both `es` columns run from -1 to 1 and are positive toward high scores.
+`peak_rank` is the 1-based rank of the leading edge's boundary gene: its last
+gene for positive scores, its first for negative ones. Rows are sorted by
+p-value, then by |NES|. The `p_adjust` column means `compare` can diff two
+GSEA runs directly.
 
 | Option | Default | Meaning |
 | --- | --- | --- |
 | `--ranks-name` | file stem | ranking id for a two-column file |
 | `--ranks-set` | all | analyze one ranking from a three-column file |
-| `--weight` | 1 | exponent on \|score\|; 0 is the unweighted KS statistic |
-| `--permutations` | 1000 | random gene sets per distinct set size |
+| `--statistic` | `ks` | `ks` or `wilcoxon` |
+| `--algorithm` | `classic` | `classic`, `elim`, or `weight01`; the last two need `--closure` |
+| `--elim-cutoff` | 0.01 | raw p-value at which `elim` removes a term's genes from its ancestors |
+| `--weight` | 1 | KS exponent on \|score\|; 0 is the unweighted KS statistic |
+| `--permutations` | 1000 | random gene sets per KS null |
 | `--min-size`, `--max-size` | 15, 500 | ranked-member size limits for tested targets |
 | `--seed` | 123456789 | random seed |
 | `--max-p-value`, `--max-p-adjust` | none | drop rows above these cutoffs |
