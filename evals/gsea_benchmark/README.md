@@ -42,10 +42,15 @@ From [RESULTS.md](RESULTS.md), 126 scored sets with 394 CORE terms:
   (mean 60 to 19 and 37). Curators often place CORE biology at levels these
   algorithms strip as redundant. weight01 keeps more than elim throughout.
 - **Curated real rankings.** Entries with a `ranking` block are also scored on
-  their real scores, in a separate table. So far that is one entry,
-  `LIT:SCHIZOPHRENIA_SCHEMA_EXOME` (rare-variant burden, unsigned). Its CORE
-  terms were seeded by Wilcoxon classic, so that row's recall of 1.0 is not an
-  independent test. The informative rows: KS recovers none of them (the signal
-  is diffuse, not a concentrated top), Wilcoxon weight01 keeps half, and
-  Wilcoxon elim none. One entry is an illustration, not a result; the table
-  becomes a benchmark as ranked entries accumulate.
+  their real scores, in a separate table: ten so far (SCHEMA exome, four GWAS
+  MAGMA rankings, five CRISPR screens), 27 CORE terms. Read it with care. The
+  classic KS and Wilcoxon runs seeded most of these CORE terms, so their rows
+  are partly circular, and what keeps them below 1.0 (0.41 and 0.37) is the
+  curator-added CORE biology that whole-term tests miss: IBD autophagy, small
+  CRISPR complexes under the 15-gene floor, diluted brake genes. The
+  graph-aware rows are not seeded and are the informative comparison:
+  elim and weight01 cut recall well below classic (KS 0.26 for both; Wilcoxon
+  elim 0.11, weight01 0.30), elim again the most. KS recovers more mechanistic
+  terms than Wilcoxon (0.38 vs 0.19), Wilcoxon more confirmatory ones (0.71 vs
+  0.29), in line with KS favouring a concentrated top and Wilcoxon a broad
+  shift.
