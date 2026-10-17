@@ -15,9 +15,10 @@ ranking:
   source_detail: SCHEMA browser gene-results download (SCHEMA_gene_results.tsv.bgz),
     column P meta
   download_url: https://atgu-exome-browser-data.s3.amazonaws.com/SCHEMA/SCHEMA_gene_results.tsv.bgz
-  score_description: -log10 of P meta, the SCHEMA meta-analysis of case-control and
-    de novo ultra-rare coding variant burden. Ensembl ids mapped to approved HGNC
-    symbols; built by scripts/build_schema_scz_ranking.py.
+  score_description: '-log10 of P meta, the SCHEMA meta-analysis of case-control and
+    de novo ultra-rare coding variant burden. Built by `curate build-ranking` from
+    rankings/SCHIZOPHRENIA_SCHEMA_EXOME.recipe.yaml: of 18,321 SCHEMA genes, 178 lack
+    P meta and 276 lack an approved HGNC symbol for their Ensembl id.'
 description: 'Genome-wide ranking of 17,867 genes by rare coding variant burden in
   schizophrenia, from the SCHEMA exome meta-analysis of 24,248 cases and 97,322 controls
   (Singh et al., Nature 2022, PMID:35396579). It is the scored, rare-variant counterpart

@@ -117,6 +117,19 @@ def draft_ranked(
     typer.echo(f"wrote {output} ({len(interp.associations)} associations)")
 
 
+@app.command("build-ranking")
+def build_ranking(
+    recipe: Path = typer.Argument(..., help="curation/rankings/<NAME>.recipe.yaml"),
+    cache_dir: Path = typer.Option(Path(".cache/rankings"), "--cache-dir", help="Download cache."),
+) -> None:
+    """Build <NAME>.rnk.gz beside a ranking recipe, from its pinned downloads."""
+    from genesets_workflows.curation.build_ranking import build
+
+    report = build(recipe, cache_dir)
+    typer.echo(report.summary())
+    typer.echo(f"sha256 {report.sha256}")
+
+
 def main(argv: list[str] | None = None) -> int:
     """argv bridge so the existing argparse dispatcher can invoke this Typer app."""
     from typer.main import get_command

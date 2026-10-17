@@ -28,5 +28,5 @@ evals/cgsa/data/_workbooks/
 curation/cgsa/drafts/
 python/*/target/
 
-# Downloads cached by curation build scripts (e.g. scripts/build_schema_scz_ranking.py).
+# Downloads cached by `genesets-workflows curate build-ranking`.
 .cache/

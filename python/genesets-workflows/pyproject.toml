@@ -52,6 +52,7 @@ curation = [
   # oaklib's eutils import chain still imports pkg_resources, which setuptools
   # >= 81 removed; keep it available so `curate validate` doesn't hard-fail.
   "setuptools<81",
+  "openpyxl>=3.1",
 ]
 
 [project.scripts]

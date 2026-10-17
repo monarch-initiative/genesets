@@ -46,11 +46,11 @@ How to get the membership:
 When the source scores every measured gene, curate the ranking rather than a
 thresholded list (full detail: "Ranked signatures" in `curation/README.md`).
 
-1. Build the ranking with a committed script that downloads the source and
-   writes `curation/rankings/<NAME>.rnk.gz` through
-   `genesets_workflows.curation.ranking.write_ranking` (reproducible gzip, so
-   the checksum is stable). Map ids to the annotation namespace (HGNC symbols)
-   and report how many genes were dropped and why.
+1. Write `curation/rankings/<NAME>.recipe.yaml` (copy an existing one: source
+   URL + SHA-256, table format, gene/score columns, id type, transform, pinned
+   HGNC release) and run `genesets-workflows curate build-ranking` on it. It
+   writes `<NAME>.rnk.gz` reproducibly and reports rows dropped for a missing
+   score or symbol; put those counts in `score_description`.
 2. Decide `signed`: is the low end a second program (fold change, t) or just
    "not associated" (p-values, MAGMA Z)? Unsigned rankings get UP associations
    only.

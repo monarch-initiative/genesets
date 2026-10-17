@@ -157,10 +157,15 @@ same: per-GO-term judgments on the same axes. Four things differ.
   scores are `signed`, the `gene_id_type`, `n_ranked`, and the `file` and its
   `sha256`. The scores live in `rankings/<NAME>.rnk.gz`, a gzipped two-column
   TSV with a `gene`/`score` header that `genesets-rs gsea --ranks` reads as
-  is. Store a ranking here when it cannot be fetched from a stable source, and
-  commit the script that built it (e.g. `scripts/build_schema_scz_ranking.py`).
-  The ranking is also the analysis universe: genes absent from it were not
-  measured.
+  is. Store a ranking here when it cannot be fetched from a stable source.
+  Each ranking is built from a recipe beside it, `rankings/<NAME>.recipe.yaml`:
+  the source URL and its SHA-256, the table format, the gene and score columns,
+  the id type, a transform (`identity`, `neg_log10`, `negate`), and a pinned
+  HGNC release for mapping ids to approved symbols (previous and alias symbols
+  are used only when unambiguous). `genesets-workflows curate build-ranking
+  rankings/<NAME>.recipe.yaml` rebuilds the file byte for byte and reports how
+  many source rows lacked a score or a symbol. The ranking is also the analysis
+  universe: genes absent from it were not measured.
 - **Direction is per association.** A signed ranking carries two programs, one
   at each pole, so each association records `direction` (UP toward high
   scores, DN toward low). An unsigned ranking, such as a -log10 p or a MAGMA Z,
