@@ -403,3 +403,69 @@ fn mgsa_prefers_the_specific_term() {
     assert!(summary.contains("modeled_terms: 2"));
     assert!(summary.contains("samples: 40000"));
 }
+
+#[test]
+fn gsea_ranks_the_top_term_first() {
+    let stdout = run(&[
+        "gsea",
+        "--annotations",
+        "examples/gene_terms.tsv",
+        "--terms",
+        "examples/terms.tsv",
+        "--closure",
+        "examples/closure.tsv",
+        "--ranks",
+        "examples/ranks.rnk",
+        "--min-size",
+        "1",
+        "--leading-edge-genes",
+    ]);
+
+    let lines: Vec<&str> = stdout.lines().collect();
+    assert_eq!(lines.len(), 4);
+    assert!(lines[0].starts_with("query_id\tquery_name\ttarget_id\ttarget_name\tes\tnes"));
+    assert!(lines[0].ends_with("leading_edge_genes\tleading_edge_gene_names"));
+    let child: Vec<&str> = lines[1].split('\t').collect();
+    assert_eq!(&child[..4], ["ranks", "", "T:child", "Child process"]);
+    assert_eq!(child[4], "1.000000");
+    assert_eq!(&child[8..], ["2", "2", "10", "2", "2", "g1;g2", ""]);
+    let other = lines
+        .iter()
+        .find(|line| line.contains("\tT:other\t"))
+        .expect("T:other row");
+    assert!(other.split('\t').nth(4).unwrap().starts_with('-'));
+}
+
+#[test]
+fn gsea_reads_several_rankings_from_one_file() {
+    let input = std::env::temp_dir().join(format!("genesets_rs_gsea_{}.tsv", std::process::id()));
+    fs::write(
+        &input,
+        "ranking\tgene\tscore\nup\tg1\t2\nup\tg2\t1\nup\tg4\t-1\ndown\tg1\t-2\ndown\tg2\t-1\ndown\tg4\t1\n",
+    )
+    .unwrap();
+    let stdout = run(&[
+        "gsea",
+        "--annotations",
+        "examples/gene_terms.tsv",
+        "--ranks",
+        input.to_str().unwrap(),
+        "--min-size",
+        "1",
+        "--permutations",
+        "50",
+    ]);
+    let _ = fs::remove_file(&input);
+
+    let es = |query: &str| -> f64 {
+        stdout
+            .lines()
+            .map(|line| line.split('\t').collect::<Vec<_>>())
+            .find(|fields| fields[0] == query && fields[2] == "T:child")
+            .expect("T:child row")[4]
+            .parse()
+            .unwrap()
+    };
+    assert!(es("up") > 0.0);
+    assert!(es("down") < 0.0);
+}

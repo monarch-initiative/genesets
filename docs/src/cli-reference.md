@@ -135,6 +135,49 @@ posterior, highest first.
 Only TSV (or `null`) output is supported. See [Statistics](statistics.md) for
 the model.
 
+## `gsea`
+
+Preranked gene set enrichment analysis. It takes the same target options as
+`enrich`, but a scored gene list instead of a sample set and background: the
+ranking is the universe, so every ranked gene counts whether or not it is
+annotated, and target sets are restricted to ranked genes.
+
+```bash
+genesets-rs gsea \
+  --annotations gene_terms.tsv \
+  --terms terms.tsv \
+  --closure closure.tsv \
+  --ranks contrast.rnk \
+  --max-p-adjust 0.05 \
+  --leading-edge-genes
+```
+
+`--ranks` accepts two columns (`gene`, `score`), as in a GSEA `.rnk` file, or
+three (`ranking_id`, `gene`, `score`) to run several rankings at once; each is
+analyzed and adjusted independently. A first row with a non-numeric score is
+treated as a header. Duplicate genes and non-finite scores are errors.
+
+Output columns: `query_id` (the ranking), `query_name`, `target_id`,
+`target_name`, `es`, `nes`, `p_value`, `p_adjust` (Benjamini-Hochberg within a
+ranking), `set_size` (members in the ranking), `target_size`, `ranked_size`,
+`leading_edge_size`, `peak_rank` (1-based rank where the running sum peaks), and
+with `--leading-edge-genes`, `leading_edge_genes` and
+`leading_edge_gene_names`. Rows are sorted by p-value, then by |NES|. The
+`p_adjust` column means `compare` can diff two GSEA runs directly.
+
+| Option | Default | Meaning |
+| --- | --- | --- |
+| `--ranks-name` | file stem | ranking id for a two-column file |
+| `--ranks-set` | all | analyze one ranking from a three-column file |
+| `--weight` | 1 | exponent on \|score\|; 0 is the unweighted KS statistic |
+| `--permutations` | 1000 | random gene sets per distinct set size |
+| `--min-size`, `--max-size` | 15, 500 | ranked-member size limits for tested targets |
+| `--seed` | 123456789 | random seed |
+| `--max-p-value`, `--max-p-adjust` | none | drop rows above these cutoffs |
+
+Only TSV (or `null`) output is supported. See [Statistics](statistics.md#preranked-gsea)
+for the method.
+
 ## `compare`
 
 Compare two enrichment result tables by `(query_id, target_id)` and classify

@@ -187,6 +187,24 @@ genesets-rs mgsa \
 The same MGSA sampler is available in Python as `genesets.mgsa(...)` from
 `python/genesets-py` (PyO3 bindings; see its README for install).
 
+Preranked gene set enrichment analysis (GSEA) over a scored gene list instead
+of a thresholded set. Every measured gene keeps its score (fold change, signed
+-log10 p-value, t-statistic), and each term gets an enrichment score for
+sitting at the top or bottom of the ranking:
+
+```bash
+genesets-rs gsea \
+  --annotations examples/gene_terms.tsv \
+  --terms examples/terms.tsv \
+  --closure examples/closure.tsv \
+  --ranks examples/ranks.rnk \
+  --min-size 1 \
+  --leading-edge-genes
+```
+
+`--ranks` is a two-column `gene, score` table (a GSEA `.rnk` file) or a
+three-column `ranking_id, gene, score` table for many contrasts in one run.
+
 YAML configuration:
 
 ```bash
@@ -209,6 +227,11 @@ With `--overlap-genes`, the CLI also emits `overlap_genes` and `overlap_gene_nam
 that the term is active), keeps the term-for-term `p_value` for comparison, and
 adds `equivalent_ids` for terms with identical genes in the background.
 
+`gsea` output has `es`, `nes`, `p_value`, and `p_adjust` (Benjamini-Hochberg),
+plus `set_size` (members in the ranking), `target_size`, `ranked_size`,
+`leading_edge_size`, and `peak_rank`; `--leading-edge-genes` adds the
+leading-edge gene ids and names.
+
 ## Design Notes
 
 - Terms and query sets are represented as dense `Vec<u64>` bitsets over a shared gene universe.
@@ -219,7 +242,6 @@ adds `equivalent_ids` for terms with identical genes in the background.
 ## Planned Extensions
 
 - Serialized reusable indexes for repeated GO version comparisons.
-- Ranked-list methods alongside Fisher exact.
 - Ontologizer-style parent-child, elim, and weight approaches (model-set MGSA is available as `genesets-rs mgsa`).
 - Convenience wrappers for species/build metadata without baking those concerns into the core model.
 - Test-data adapters around mygeneset.info and other public gene set sources.

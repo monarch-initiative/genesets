@@ -19,8 +19,9 @@
 
 - Add OAK-based ontology prep examples.
 - Add native Horned-OWL graph-walk prep as an optional crate or feature.
-- Add ranked-list input schema.
-- Add ranked-list enrichment statistics.
+- Add ranked-list input to YAML `run` configs and the Python bindings
+  (`genesets-rs gsea` covers the CLI).
+- Add fgsea-style multilevel p-values for terms below the permutation floor.
 - Add richer benchmark reports for GitHub Pages.
 - Add DuckDB notebooks over Parquet result and diff tables.
 - Add hierarchy-aware Reactome prep and compare it with the flat baseline.

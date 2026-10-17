@@ -2,7 +2,9 @@
 
 `enrich` and `matrix` perform standard one-sided over-representation analysis.
 `mgsa` fits a Bayesian model over all terms jointly; see
-[Model-Based Gene Set Analysis](#model-based-gene-set-analysis).
+[Model-Based Gene Set Analysis](#model-based-gene-set-analysis). `gsea` scores
+terms against a ranked, scored gene list instead of a set; see
+[Preranked GSEA](#preranked-gsea).
 
 For each query and target term, the engine computes:
 
@@ -98,11 +100,53 @@ identical posteriors. On the `examples/ontologizer-ui` study and population
 lists with current human GOA, all nine terms that the Ontologizer UI reports as
 high-scoring rank in the top 12 here.
 
+## Preranked GSEA
+
+`genesets-rs gsea` implements the preranked statistic of Subramanian et al.,
+[Gene set enrichment analysis: a knowledge-based approach for interpreting
+genome-wide expression profiles](https://doi.org/10.1073/pnas.0506580102)
+(2005). It is the right tool when the input is a quantity for every measured
+gene (a fold change, a signed -log10 p-value, a t-statistic) rather than a list
+chosen by a cutoff: no threshold is needed, and genes with larger scores count
+for more.
+
+Genes are sorted by score, highest first. For a target with `k` members among
+`N` ranked genes, a running sum walks down the list, stepping up by
+`|score|^weight / NR` at each member (`NR` sums that quantity over members) and
+down by `1 / (N - k)` at every other gene. The enrichment score (ES) is the
+running sum's largest deviation from zero: positive when members gather at the
+top, negative at the bottom. `--weight 0` is the classic Kolmogorov-Smirnov
+statistic, `--weight 1` (the default) is GSEA's weighted statistic. The leading
+edge is the members up to the peak (positive ES) or from the trough on
+(negative ES).
+
+Significance uses gene-set permutation, as in GSEA preranked and fgsea's simple
+mode. The null for size `k` is the ES of `--permutations` random `k`-gene
+subsets of the same ranking, and every target with the same in-ranking size
+shares that null, so cost scales with the number of distinct sizes. The
+p-value is `(b + 1) / (m + 1)`, where `m` is the number of null draws with the
+same sign as the observed ES and `b` the number at least as extreme. Its floor
+is therefore about `2 / permutations`; raise `--permutations` when many terms
+sit at the floor. NES divides ES by the mean of the same-sign null. `p_adjust`
+is Benjamini-Hochberg over the targets tested against one ranking.
+
+Each ranking and set size draws from its own seeded stream, so results do not
+depend on `--threads`. Gene-set permutation does not preserve gene-gene
+correlation, unlike GSEA's phenotype permutation, which needs the expression
+matrix; this is the usual caveat for every preranked tool.
+
+Checked against gseapy 1.3.1 `prerank` on a synthetic 3,000-gene ranking and 60
+sets: ES agrees to within gseapy's output rounding (5e-7), NES correlates at
+0.99998, and both flag the same 40 sets at nominal p < 0.05. On a random
+20,000-gene ranking against 15,000 random sets, 4.9% of tested sets have
+nominal p < 0.05 and none pass BH at 0.05. Rerun the gseapy check with
+`uv run scripts/check_gsea_against_gseapy.py` after `cargo build --release`.
+
 ## Future Statistics
 
 The code is structured so additional test families can be added without changing the data model:
 
-- Benjamini-Hochberg FDR;
-- ranked-list methods;
+- Benjamini-Hochberg FDR for `enrich` and `matrix` (`gsea` already reports it);
+- multilevel (fgsea-style) p-values below the permutation floor;
 - topology-aware parent-child methods;
 - elim and weight-style algorithms.
