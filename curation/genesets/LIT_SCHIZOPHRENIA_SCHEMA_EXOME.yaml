@@ -1,0 +1,600 @@
+gene_set_id: LIT:SCHIZOPHRENIA_SCHEMA_EXOME
+gene_set_name: SCHIZOPHRENIA_SCHEMA_EXOME
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+ranking:
+  source: PMID:35396579
+  score_type: neg_log10_p
+  signed: false
+  gene_id_type: HGNC symbol
+  n_ranked: 17867
+  file: ../rankings/SCHIZOPHRENIA_SCHEMA_EXOME.rnk.gz
+  sha256: fa7ad40903b6d667bf4b37dff0783d59e7e55c43d71f86502670ae91b45785ae
+  source_detail: SCHEMA browser gene-results download (SCHEMA_gene_results.tsv.bgz),
+    column P meta
+  download_url: https://atgu-exome-browser-data.s3.amazonaws.com/SCHEMA/SCHEMA_gene_results.tsv.bgz
+  score_description: -log10 of P meta, the SCHEMA meta-analysis of case-control and
+    de novo ultra-rare coding variant burden. Ensembl ids mapped to approved HGNC
+    symbols; built by scripts/build_schema_scz_ranking.py.
+description: 'Genome-wide ranking of 17,867 genes by rare coding variant burden in
+  schizophrenia, from the SCHEMA exome meta-analysis of 24,248 cases and 97,322 controls
+  (Singh et al., Nature 2022, PMID:35396579). It is the scored, rare-variant counterpart
+  of LIT:SCHIZOPHRENIA_RISK_GENES, whose membership includes the SCHEMA genes alongside
+  common-variant GWAS loci and C4. The ten exome-wide significant genes (SETD1A, CUL1,
+  XPO7, TRIO, CACNA1G, SP4, GRIA3, GRIN2A, HERC1, RB1CC1) head the ranking. Analyzed
+  with the Wilcoxon rank-sum, because the signal is a modest shift across many genes
+  rather than a concentrated top: GSEA''s weighted KS reached no term at FDR q < 0.05.
+  The interpretation is the expected glutamatergic, postsynaptic convergence. Two
+  results are recorded here rather than as associations. Complement activation, the
+  mechanistic centrepiece of the GWAS set, is measured but flat in this ranking (Wilcoxon
+  z = 0.22, q = 0.98; C4A ranks 10,184th): C4 risk acts through structural variation
+  and expression, which exome burden does not capture, so this is a result about the
+  data type, not a gap. And burden power tracks gene length and constraint, so whole-term
+  shifts among long neuronal genes need a matched null before they are read as biology.'
+contexts:
+- term:
+    id: MONDO:0005090
+    label: schizophrenia
+  context_type: disease
+  role_note: Rare coding variant burden in cases versus controls and de novo variants
+    in trios.
+associations:
+- term:
+    id: GO:0014069
+    label: postsynaptic density
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: core_component
+  confidence: medium
+  specificity: lineage_shared
+  direction: UP
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: wilcoxon
+    algorithm: classic
+    p_adjust_method: benjamini_hochberg
+    p_value: 5.599107e-05
+    p_adjust: 0.01889534
+    target_size: 356
+    es: 0.130007
+    nes: 4.029099
+    set_size: 325
+    leading_edge_size: 120
+    leading_edge_genes:
+    - GRIA3
+    - GRIN2A
+    - DNM3
+    - MAGI2
+    - DAGLA
+    - PCLO
+    - FYN
+    - SLITRK5
+    - BSN
+    - LIN7A
+    - CACNA1C
+    - NLGN4X
+    - GRIK3
+    - LRFN4
+    - EPHA4
+    - SLC30A1
+    - BMPR2
+    - SHANK3
+    - HNRNPD
+    - ANP32E
+    - GRM1
+    - DLGAP1
+    - ATP2B2
+    - LRRC4
+    - CAMK2A
+    - CLSTN2
+    - RTN4
+    - LRRC7
+    - DGKI
+    - ITPR1
+    - ADGRB3
+    - IQSEC1
+    - PSD3
+    - CAMK2B
+    - TNIK
+    - GPR50
+    - INPP4A
+    - PRKCG
+    - SEMA4F
+    - ARHGEF2
+    - PKP4
+    - CTNND2
+    - BCR
+    - PPFIA2
+    - SLITRK3
+    - ADAM10
+    - EPHA7
+    - NEURL1
+    - GRIN2B
+    - DROSHA
+    - GRM5
+    - ADAM22
+    - GRIP1
+    - BAIAP2
+    - EEF2K
+    - EPS8
+    - DNM2
+    - BRSK1
+    - SH3KBP1
+    - NTM
+    - ADCY1
+    - PPP1CA
+    - NETO1
+    - PTK2B
+    - LRFN3
+    - SEMA4C
+    - SHANK1
+    - PAK6
+    - GRIN2C
+    - PRRT1
+    - FMR1
+    - RUSC1
+    - EIF3E
+    - PPP1R9A
+    - KCNK2
+    - PRR12
+    - DVL1
+    - PRRT2
+    - FGF22
+    - SEMA4B
+    - RNF112
+    - GIT1
+    - IGSF9
+    - LRRC4C
+    - MAP2
+    - PAK2
+    - GRID1
+    - GRIN1
+    - LRP4
+    - STAT3
+    - ERBB4
+    - MPDZ
+    - SYT1
+    - SYNPO
+    - ZDHHC2
+    - CAP2
+    - GPHN
+    - RGS14
+    - P2RY1
+    - ABHD17B
+    - KALRN
+    - KCNH1
+    - ATP1A1
+    - NEFH
+    - DTNBP1
+    - ABHD17C
+    - DLG1
+    - ASIC2
+    - NPTN
+    - MAP1A
+    - SIGMAR1
+    - KCNT1
+    - ARHGAP32
+    - SIPA1L1
+    - GRIA1
+    - RPL10A
+    - IQSEC3
+    - GRIA2
+    - GSK3B
+    - KPNA1
+    peak_rank: 4368
+  evidence:
+  - reference: PMID:35396579
+    reference_title: Rare coding variants in ten genes confer substantial risk for
+      schizophrenia.
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: formation, structure and function of the synapse
+    explanation: The paper reports that the implicated genes are most expressed in
+      CNS neurons and have functions including the formation, structure and function
+      of the synapse.
+  curator_note: Leading edge headed by GRIA3 and GRIN2A, with BSN, PCLO, MAGI2, the
+    scaffolds SHANK1, SHANK3, DLGAP1 and DLG1, and CACNA1C. The expected synaptic
+    convergence of schizophrenia genetics, here from rare coding variation. Exome
+    burden tests have more power in long, highly expressed, mutation-intolerant genes,
+    and synaptic genes are typically long, so a modest whole-term shift like this
+    one can partly reflect gene length or constraint rather than biology; confidence
+    is medium until tested against a length- or constraint-matched null.
+- term:
+    id: GO:0060291
+    label: long-term synaptic potentiation
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: core_process
+  confidence: medium
+  specificity: lineage_shared
+  direction: UP
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: wilcoxon
+    algorithm: classic
+    p_adjust_method: benjamini_hochberg
+    p_value: 4.690554e-05
+    p_adjust: 0.01888052
+    target_size: 75
+    es: 0.39143
+    nes: 4.070534
+    set_size: 36
+    leading_edge_size: 22
+    leading_edge_genes:
+    - GRIA3
+    - GRIN2A
+    - CAMK2A
+    - STX4
+    - CAMK2B
+    - PRKCG
+    - RELN
+    - GRIN2B
+    - PLK2
+    - PTK2B
+    - GRIN2C
+    - CRHR2
+    - VAMP2
+    - NOG
+    - SLC24A1
+    - RGS14
+    - NPTN
+    - TSHZ3
+    - GRIA1
+    - SLC24A2
+    - NTRK2
+    - CALM3
+    peak_rank: 4882
+  evidence:
+  - reference: PMID:35396579
+    reference_title: Rare coding variants in ten genes confer substantial risk for
+      schizophrenia.
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: dysfunction of the glutamatergic system
+    explanation: Singh et al. single out the exome-wide significant NMDA (GRIN2A)
+      and AMPA (GRIA3) receptor subunits as support for glutamatergic dysfunction
+      in schizophrenia; both lead this term's leading edge.
+  curator_note: 'The strongest effect among the significant process terms (rank-biserial
+    0.39 over 36 genes): GRIA3, GRIN2A, GRIN2B, GRIN2C, CAMK2A/B and PRKCG, the glutamatergic
+    plasticity machinery. Confirmatory because glutamatergic dysfunction is the paper''s
+    own headline hypothesis. Exome burden tests have more power in long, highly expressed,
+    mutation-intolerant genes, and synaptic genes are typically long, so a modest
+    whole-term shift like this one can partly reflect gene length or constraint rather
+    than biology; confidence is medium until tested against a length- or constraint-matched
+    null.'
+- term:
+    id: GO:0015085
+    label: calcium ion transmembrane transporter activity
+  seed_source: enrichment_recovered
+  aspect: molecular_function
+  category: supporting_process
+  confidence: medium
+  specificity: broadly_expressed
+  direction: UP
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: wilcoxon
+    algorithm: classic
+    p_adjust_method: benjamini_hochberg
+    p_value: 8.36902e-05
+    p_adjust: 0.02667393
+    target_size: 162
+    es: 0.196601
+    nes: 3.933579
+    set_size: 134
+    leading_edge_size: 84
+    leading_edge_genes:
+    - CACNA1G
+    - GRIA3
+    - GRIN2A
+    - CACNA2D1
+    - RYR2
+    - TRPV1
+    - ATP2B1
+    - CACNA1C
+    - GRIK3
+    - SLC30A1
+    - CACNA1E
+    - ATP2B2
+    - CACNA1B
+    - CACNB4
+    - ITPR1
+    - CATSPER4
+    - BNIP1
+    - CACNA1D
+    - NALF1
+    - CACNB1
+    - TRPV4
+    - TMBIM6
+    - GRIN2B
+    - TSPOAP1
+    - ATP2A3
+    - CACNA1I
+    - TPCN2
+    - TMBIM4
+    - CACNG1
+    - PKD1L2
+    - ANO9
+    - SLC24A1
+    - ATP2B4
+    - GRIN1
+    - RYR1
+    - CATSPER1
+    - TRPM3
+    - CUL5
+    - SEC61A1
+    - RYR3
+    - TMEM37
+    - TMC2
+    - SLC24A4
+    - TRPV5
+    - ATP2C2
+    - GRIA1
+    - SLC8B1
+    - TRPM4
+    - CATSPER3
+    - OPRM1
+    - PANX1
+    - TRPA1
+    - SLC24A2
+    - CACNA2D4
+    - PANX3
+    - PKDREJ
+    - GRIK1
+    - CALHM1
+    - CATSPER2
+    - ATP2B3
+    - ATP2C1
+    - GPM6A
+    - TRPC4
+    - CACNA1H
+    - TRPC6
+    - PKD2L1
+    - SLC8A2
+    - ATP2A1
+    - CACHD1
+    - TRPM6
+    - P2RX4
+    - GRIN3A
+    - ITPR3
+    - CACNA2D3
+    - GRIK2
+    - STIM2
+    - ITPR2
+    - TMC1
+    - LETM1
+    - CACNA1F
+    - NCS1
+    - GRM7
+    - TMBIM1
+    - SLC8A3
+    peak_rank: 8534
+  curator_note: 'Carried by CACNA1G (exome-wide significant), the glutamate receptors
+    (which conduct calcium) and CACNA1C, a common-variant risk gene. Kept supporting:
+    calcium entry serves the synaptic program above rather than defining a separate
+    one.'
+- term:
+    id: GO:0140658
+    label: ATP-dependent chromatin remodeler activity
+  seed_source: enrichment_recovered
+  aspect: molecular_function
+  category: marker_driven_plausible
+  confidence: low
+  specificity: broadly_expressed
+  direction: UP
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: wilcoxon
+    algorithm: classic
+    p_adjust_method: benjamini_hochberg
+    p_value: 4.936513e-05
+    p_adjust: 0.01888052
+    target_size: 85
+    es: 0.395808
+    nes: 4.058613
+    set_size: 35
+    leading_edge_size: 20
+    leading_edge_genes:
+    - SMARCA1
+    - CHD5
+    - SMARCAD1
+    - SRCAP
+    - CHD2
+    - CHD4
+    - HELLS
+    - RSF1
+    - CHD1
+    - SMARCB1
+    - CHD3
+    - SMARCE1
+    - SMARCA2
+    - SMARCC2
+    - CECR2
+    - SMARCA5
+    - HLTF
+    - MORC2
+    - INO80
+    - CHD7
+    peak_rank: 4982
+  curator_note: CHD and SMARC remodelers (CHD2, CHD4, CHD5, SMARCA1, SMARCB1, SRCAP).
+    Consistent with the rare-variant overlap with neurodevelopmental disorders the
+    paper reports, where chromatin remodelers are prominent, but none of these genes
+    is exome-wide significant here, and large constrained genes are exactly where
+    a burden-power confound would land. Low confidence; a lead, not a finding.
+- term:
+    id: GO:0016310
+    label: phosphorylation
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: medium
+  specificity: ubiquitous
+  direction: UP
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: wilcoxon
+    algorithm: classic
+    p_adjust_method: benjamini_hochberg
+    p_value: 2.785294e-05
+    p_adjust: 0.01888052
+    target_size: 338
+    es: 0.134804
+    nes: 4.190346
+    set_size: 327
+    leading_edge_size: 145
+    leading_edge_genes:
+    - FYN
+    - SRPK1
+    - JAK3
+    - ATF2
+    - EPHB2
+    - TLK2
+    - PIK3R4
+    - CILK1
+    - AKT1
+    - CSNK1A1
+    - BRSK2
+    - MAPK4
+    - CTBP1
+    - PKN2
+    - LIMK1
+    - TXK
+    - MAP3K6
+    - MEX3B
+    - ULK1
+    - STK25
+    - CSNK2A1
+    - DGKH
+    - CSNK1G2
+    - MAP3K3
+    - NADK
+    - ROS1
+    - MAPK9
+    - DGKI
+    - ERBB2
+    - STK17A
+    - CDK2
+    - MARK2
+    - CLK3
+    - DGKQ
+    - MORC3
+    - PRKCA
+    - CAMK2B
+    - HASPIN
+    - MYO3A
+    - CDK11A
+    - TNIK
+    - BLK
+    - PIK3CD
+    - YWHAZ
+    - SMG1
+    - PPP4R1
+    - BCR
+    - DCLK1
+    - EPHA7
+    - PIKFYVE
+    - IRAK2
+    - MATK
+    - EEF2K
+    - PLK2
+    - BRSK1
+    - COPS8
+    - PASK
+    - LYN
+    - HIPK1
+    - PTK2B
+    - TAOK3
+    - RARA
+    - PDGFRB
+    - PRRT1
+    - AAK1
+    - ABL2
+    - NLK
+    - DMPK
+    - JAK2
+    - CSNK1D
+    - DGKA
+    - HK1
+    - WNK2
+    - ROCK1
+    - JAK1
+    - DGKB
+    - MERTK
+    - MAPK1
+    - NEK11
+    - PAK2
+    - PEAK1
+    - PRKCI
+    - DDR1
+    - MAP3K8
+    - ERBB4
+    - FGFR2
+    - TNKS
+    - TKFC
+    - STK38
+    - AURKA
+    - BIRC6
+    - HCK
+    - KALRN
+    - CDKL1
+    - GLYCTK
+    - DAPK2
+    - FLT4
+    - ZAP70
+    - DAPK3
+    - MAST3
+    - VRK2
+    - PCK1
+    - PRKD3
+    - CCNE1
+    - CCL11
+    - GALK1
+    - STK38L
+    - ERN1
+    - SRC
+    - STK4
+    - CAMK4
+    - LIMK2
+    - GSK3B
+    - ALK
+    - ULK3
+    - RBKS
+    - CDC42BPB
+    - STK24
+    - SYK
+    - CSNK1E
+    - GNPTAB
+    - CDC42BPG
+    - NTRK2
+    - MYLK
+    - FGFR4
+    - FGFR1
+    - EIF2AK1
+    - TBK1
+    - MAP4K1
+    - PKN1
+    - LMTK2
+    - NUAK2
+    - MKNK1
+    - IKBKB
+    - PLK3
+    - TSSK6
+    - MAP4K4
+    - MAP2K2
+    - EPM2A
+    - OXSR1
+    - LRRK2
+    - INSR
+    - MELK
+    - PDGFA
+    - PRLR
+    peak_rank: 5960
+  curator_note: A broad kinase term (FYN, SRPK1, AKT1, CSNK1A1 lead) whose modest
+    shift is what the gene-length and constraint confound predicts for any large class
+    of long, conserved genes. Uninformative for schizophrenia biology.

@@ -527,3 +527,44 @@ fn gsea_graph_algorithms_need_a_closure() {
     assert!(!output.status.success());
     assert!(String::from_utf8_lossy(&output.stderr).contains("--closure"));
 }
+
+#[test]
+fn gsea_reads_gzipped_rankings() {
+    let plain = run(&[
+        "gsea",
+        "--annotations",
+        "examples/gene_terms.tsv",
+        "--ranks",
+        "examples/ranks.rnk",
+        "--min-size",
+        "1",
+        "--statistic",
+        "wilcoxon",
+    ]);
+    let gzipped =
+        std::env::temp_dir().join(format!("genesets_rs_ranks_{}.rnk.gz", std::process::id()));
+    let status = Command::new("sh")
+        .arg("-c")
+        .arg(format!(
+            "gzip -c examples/ranks.rnk > {}",
+            gzipped.display()
+        ))
+        .status()
+        .expect("failed to run gzip");
+    assert!(status.success());
+    let from_gzip = run(&[
+        "gsea",
+        "--annotations",
+        "examples/gene_terms.tsv",
+        "--ranks",
+        gzipped.to_str().unwrap(),
+        "--ranks-name",
+        "ranks",
+        "--min-size",
+        "1",
+        "--statistic",
+        "wilcoxon",
+    ]);
+    let _ = fs::remove_file(&gzipped);
+    assert_eq!(plain, from_gzip);
+}

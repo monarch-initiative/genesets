@@ -40,6 +40,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "python" / "genesets-workflows" / "src"))
 
 from genesets_workflows.curation import model  # noqa: E402
+from genesets_workflows.curation.ranking import read_ranking  # noqa: E402
 from genesets_workflows.sources.mygeneset import (  # noqa: E402
     normalize_gene_values,
     request_json,
@@ -88,10 +89,19 @@ def load_gold(genesets_dir: Path) -> dict[str, dict]:
         for association in interp.associations:
             if association.insight:
                 insight[str(association.insight)].add(association.term.id)
+        seeded_by = sorted(
+            {
+                a.enrichment_stats.method
+                for a in interp.associations
+                if a.enrichment_stats is not None and a.enrichment_stats.method
+            }
+        )
         gold[interp.gene_set_name] = {
             "id": interp.gene_set_id,
             "core": core,
             "insight": insight,
+            "ranking": (path.parent / interp.ranking.file) if interp.ranking else None,
+            "seeded_by": seeded_by,
         }
     return gold
 
@@ -237,7 +247,45 @@ def main() -> None:
             )
             hits[name] = significant(output, "p_adjust")
         tables.append((shift, table(gold, scored, hits, seconds, term_sizes)))
-    write_report(args, gold, members, scored, term_sizes, tables)
+    real_rows = real_rankings(args, gold, target_args, term_sizes)
+    write_report(args, gold, members, scored, term_sizes, tables, real_rows)
+
+
+def real_rankings(args, gold, target_args, term_sizes) -> list[str]:
+    """Score the GSEA methods on curated entries that carry real rankings."""
+    ranked = sorted(name for name, entry in gold.items() if entry["ranking"] is not None)
+    if not ranked:
+        return []
+    ranks_path = args.work_dir / "real_rankings.tsv"
+    with open(ranks_path, "w") as handle:
+        handle.write("ranking_id\tgene\tscore\n")
+        for name in ranked:
+            for gene, score in read_ranking(gold[name]["ranking"]).items():
+                handle.write(f"{name}\t{gene}\t{score!r}\n")
+    hits: dict[str, dict[str, set[str]]] = {}
+    seconds: dict[str, float] = {}
+    for name, method_args in GSEA_METHODS:
+        output = args.work_dir / ("real_" + name.replace(" ", "_").lower() + ".tsv")
+        seconds[name] = run(
+            [args.binary, "gsea", *target_args, *method_args, "--ranks", str(ranks_path)]
+            + ["--permutations", str(args.permutations), "--max-p-adjust", str(ALPHA)]
+            + ["-o", str(output)]
+        )
+        hits[name] = significant(output, "p_adjust")
+    seeded = "; ".join(
+        f"{name} seeded by {', '.join(gold[name]['seeded_by']) or 'curators only'}"
+        for name in ranked
+    )
+    return [
+        "",
+        "## Curated real rankings",
+        "",
+        f"Entries with a `ranking` block, scored on their real scores: {', '.join(ranked)}.",
+        f"Their CORE terms were seeded from enrichment runs ({seeded}), so the row for the",
+        "seeding method is not an independent test; the other rows are.",
+        "",
+        *table(gold, ranked, hits, seconds, term_sizes),
+    ]
 
 
 def table(gold, scored, hits, seconds, term_sizes) -> list[str]:
@@ -257,8 +305,8 @@ def table(gold, scored, hits, seconds, term_sizes) -> list[str]:
             for n in scored
         )
         cells = [
-            f"{recovered / core_total:.3f}",
-            f"{recovered_testable / testable_total:.3f}",
+            f"{recovered / core_total:.3f}" if core_total else "-",
+            f"{recovered_testable / testable_total:.3f}" if testable_total else "-",
         ]
         for kind in ("confirmatory", "mechanistic"):
             total = sum(len(gold[n]["insight"].get(kind, ())) for n in scored)
@@ -274,7 +322,7 @@ def table(gold, scored, hits, seconds, term_sizes) -> list[str]:
     return lines
 
 
-def write_report(args, gold, members, scored, term_sizes, tables) -> None:
+def write_report(args, gold, members, scored, term_sizes, tables, real_rows) -> None:
     core_total = sum(len(gold[n]["core"]) for n in scored)
     testable_total = sum(
         sum(1 for t in gold[n]["core"] if MIN_SIZE <= term_sizes.get(t, 0) <= MAX_SIZE)
@@ -303,6 +351,7 @@ def write_report(args, gold, members, scored, term_sizes, tables) -> None:
     ]
     for shift, rows in tables:
         lines += ["", f"## Member shift {shift} SD", "", *rows]
+    lines += real_rows
     args.out.write_text("\n".join(lines) + "\n")
     print("\n".join(lines))
 

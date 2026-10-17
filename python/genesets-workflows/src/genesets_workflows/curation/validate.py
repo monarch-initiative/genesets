@@ -1,4 +1,4 @@
-"""Build and run the three validators over an interpretation file."""
+"""Build and run the validators over an interpretation file."""
 
 from __future__ import annotations
 
@@ -145,4 +145,12 @@ def validate_file(
         for tid in obsolete:
             print(f"  ERROR: obsolete term id in use: {tid}")
         return 1
-    return 0
+
+    print("$ ranking check (file, checksum, leading edges, directions)")
+    from genesets_workflows.curation import model
+    from genesets_workflows.curation.ranking import ranking_errors
+
+    errors = ranking_errors(model.load_interpretation(path), Path(path).parent)
+    for error in errors:
+        print(f"  ERROR: {error}")
+    return 1 if errors else 0

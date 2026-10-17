@@ -155,7 +155,9 @@ genesets-rs gsea \
 `--ranks` accepts two columns (`gene`, `score`), as in a GSEA `.rnk` file, or
 three (`ranking_id`, `gene`, `score`) to run several rankings at once; each is
 analyzed and adjusted independently. A first row with a non-numeric score is
-treated as a header. Duplicate genes and non-finite scores are errors.
+treated as a header. Duplicate genes and non-finite scores are errors. Like
+every table input, it may be gzip-compressed (detected from the file's
+contents, not its extension), as the curated `curation/rankings/*.rnk.gz` are.
 
 `--statistic ks` (the default) is the GSEA running sum; `--statistic wilcoxon`
 is a Wilcoxon rank-sum (Mann-Whitney U) test of members against non-members.

@@ -3,9 +3,10 @@ name: genesets_interpretation
 title: Gene Set GO Interpretation Schema
 description: >-
   Curated, validated GO-term interpretations of non-GO gene sets (e.g. MSigDB
-  C8 cell-type signatures). Each interpretation records, per GO term, a curator
-  judgment (role category, confidence, specificity), and optional literature
-  evidence.
+  C8 cell-type signatures) and of ranked gene signatures (a score for every
+  measured gene, e.g. a differential-expression contrast or GWAS gene-level
+  statistics). Each interpretation records, per GO term, a curator judgment
+  (role category, confidence, specificity), and optional literature evidence.
 license: MIT
 prefixes:
   linkml: https://w3id.org/linkml/
@@ -53,7 +54,24 @@ classes:
         description: Species the gene set is defined in (an NCBITaxon term).
       direction:
         range: DirectionEnum
-        description: Whether the signature is the up, down, or undirected component.
+        description: >-
+          Whether the signature is the up, down, or undirected component. For a
+          ranked signature, which carries both poles, direction is recorded on
+          each association instead.
+      ranking:
+        range: RankedSignature
+        inlined: true
+        description: >-
+          Present when the interpretation is of a ranked signature rather than
+          a gene set. The scores themselves live in the file it points to; the
+          leading edge of each association plays the role a set's membership
+          plays for a gene set.
+      derived_from:
+        range: uriorcurie
+        description: >-
+          For a gene set made by thresholding a ranking (e.g. an MSigDB _UP/_DN
+          pair cut from one contrast), the gene_set_id of the ranked
+          interpretation it was cut from, when one is curated here.
       series:
         range: uriorcurie
         description: >-
@@ -83,6 +101,62 @@ classes:
         inlined_as_list: true
         recommended: true
         description: Per-GO-term curator judgments.
+
+  RankedSignature:
+    description: >-
+      Provenance and storage of a ranked signature: one score for every gene
+      the source measured. The ranking is also the universe of a ranked
+      analysis, so genes absent from it were not measured, not unchanged.
+    attributes:
+      source:
+        range: uriorcurie
+        required: true
+        description: >-
+          Where the scores come from: the paper (PMID/DOI), dataset accession,
+          or resource the curator downloaded them from.
+      source_detail:
+        description: >-
+          The exact table, file or contrast within the source, e.g.
+          "Supplementary Table 3, sheet MAGMA" or "GSE12345, treated vs vehicle".
+      download_url:
+        range: uri
+        description: URL the scores were downloaded from, when there is one.
+      score_type:
+        range: ScoreTypeEnum
+        required: true
+        description: What the scores measure.
+      score_description:
+        description: >-
+          What the score means and how it was derived from the source columns,
+          e.g. "MAGMA gene-level Z (column ZSTAT), SNP-wise mean model".
+      signed:
+        range: boolean
+        required: true
+        description: >-
+          Whether negative scores are meaningful. True for a fold change or a
+          t-statistic, whose two poles are two programs; false for one-sided
+          association strengths such as a MAGMA Z or -log10 p, where only the
+          high end is signal and associations may only be UP.
+      gene_id_type:
+        required: true
+        description: >-
+          Identifier namespace of the ranked genes as stored in the file, e.g.
+          "HGNC symbol". Must match the annotations it is analyzed against.
+      n_ranked:
+        range: integer
+        required: true
+        minimum_value: 1
+        description: Number of genes in the ranking file.
+      file:
+        required: true
+        description: >-
+          Path to the ranking, relative to the interpretation file: a
+          gzip-compressed two-column TSV of gene and score with a header row
+          (`gene`, `score`), as `genesets-rs gsea --ranks` reads it.
+      sha256:
+        required: true
+        pattern: "^[0-9a-f]{64}$"
+        description: SHA-256 of the ranking file as stored, compressed.
 
   BiologicalContext:
     description: An ontology term describing what the gene set is about.
@@ -131,6 +205,12 @@ classes:
         range: SeedSourceEnum
         required: true
         description: Whether the term was recovered by enrichment or added by a curator.
+      direction:
+        range: DirectionEnum
+        description: >-
+          For a ranked signature, the pole the term is enriched at: UP toward
+          high scores (positive NES), DN toward low scores. Unused for gene
+          sets, whose direction is the set's.
       recovery_status:
         range: RecoveryStatusEnum
         recommended: true
@@ -178,12 +258,51 @@ classes:
           - This is automatically validated by the linkml-term-validator tool.
 
   EnrichmentStats:
-    description: Enrichment numbers that seeded an association.
+    description: >-
+      Enrichment numbers that seeded an association. `overlap` and the size
+      slots describe a Fisher test of a gene set; `es`, `nes`, `set_size` and
+      the leading-edge slots describe a ranked test.
     attributes:
+      method:
+        range: EnrichmentMethodEnum
+        recommended: true
+        description: The test that produced these numbers.
+      algorithm:
+        range: GraphAlgorithmEnum
+        description: How the ontology graph was used; classic when unset.
+      p_adjust_method:
+        range: PAdjustMethodEnum
+        description: How p_adjust was computed.
       p_value:
         range: float
       p_adjust:
         range: float
+      es:
+        range: float
+        description: >-
+          Ranked tests: the GSEA enrichment score (gsea_ks) or rank-biserial
+          correlation (wilcoxon); positive toward high scores.
+      nes:
+        range: float
+        description: >-
+          Ranked tests: the normalized enrichment score (gsea_ks) or z-score
+          (wilcoxon).
+      set_size:
+        range: integer
+        description: "Ranked tests: term genes present in the ranking and scored."
+      leading_edge_size:
+        range: integer
+        description: Number of genes in the leading edge.
+      leading_edge_genes:
+        multivalued: true
+        description: >-
+          Ranked tests: the term genes that drive the score, from the top of
+          the ranking to the running-sum peak (UP) or from the trough to the
+          bottom (DN). The ranked analogue of overlap_genes; ground judgments
+          in these.
+      peak_rank:
+        range: integer
+        description: "Ranked tests: 1-based rank of the leading edge's boundary gene."
       overlap:
         range: integer
       query_size:
@@ -239,6 +358,63 @@ enums:
       UP:
       DN:
       NA:
+
+  ScoreTypeEnum:
+    description: What a ranked signature's scores measure.
+    permissible_values:
+      log2_fold_change:
+      signed_neg_log10_p:
+        description: -log10(p) times the sign of the effect.
+      t_statistic:
+      wald_statistic:
+      z_score:
+        description: A signed standardized effect not covered by a more specific value.
+      magma_gene_z:
+        description: >-
+          MAGMA gene-level association Z (one-sided; higher is stronger
+          association).
+      neg_log10_p:
+        description: Unsigned -log10(p); association strength only.
+      correlation:
+      crispr_gene_effect:
+        description: CRISPR screen gene-level effect (e.g. log fold change, beta, CERES/Chronos).
+      other:
+        description: Explain in score_description.
+
+  EnrichmentMethodEnum:
+    description: The enrichment test behind an association's statistics.
+    permissible_values:
+      fisher:
+        description: One-sided Fisher exact / hypergeometric test of a gene set.
+      gsea_ks:
+        description: >-
+          Preranked GSEA weighted Kolmogorov-Smirnov running sum with
+          gene-set permutation (`genesets-rs gsea --statistic ks`).
+      wilcoxon:
+        description: >-
+          Wilcoxon rank-sum of term members against non-members
+          (`genesets-rs gsea --statistic wilcoxon`).
+
+  GraphAlgorithmEnum:
+    description: How the ontology graph was used while scoring terms.
+    permissible_values:
+      classic:
+        description: Every term tested on its own.
+      elim:
+        description: Genes of significant descendants removed (Alexa et al. 2006).
+      weight01:
+        description: >-
+          A child's genes removed from its parent when the child is at least as
+          significant.
+
+  PAdjustMethodEnum:
+    description: Multiple-testing adjustment behind p_adjust.
+    permissible_values:
+      bonferroni:
+      benjamini_hochberg:
+      gsea_fdr:
+        description: GSEA's pooled-null FDR q-value (Subramanian et al. 2005).
+      none:
 
   GOAspectEnum:
     permissible_values:
@@ -311,6 +487,12 @@ enums:
           The genes that would carry this term are NOT in the gene set (the set
           is core/legacy/incomplete). The association is real for the underlying
           biology and SHOULD be in a complete set; the gap is the gene set's.
+      universe_gap:
+        description: >-
+          Ranked signatures: the genes that would carry this term were not
+          measured, so they are absent from the ranking. The ranked analogue of
+          membership_gap. Genes that were measured but did not move are not a
+          gap; that is a result, recorded in the category and curator_note.
       false_association:
         description: >-
           Not a gap: the term is biologically wrong for the set (mirrors the

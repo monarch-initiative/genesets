@@ -27,3 +27,6 @@ evals/cgsa/data/_workbooks/
 # Semi-automated drafts (regenerable via evals/cgsa/draft/draft_cgsa.py)
 curation/cgsa/drafts/
 python/*/target/
+
+# Downloads cached by curation build scripts (e.g. scripts/build_schema_scz_ranking.py).
+.cache/

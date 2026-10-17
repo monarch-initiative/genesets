@@ -339,8 +339,7 @@ fn read_records(path: &Path) -> Result<Vec<Vec<String>>> {
         .flexible(true)
         .comment(Some(b'#'))
         .trim(Trim::All)
-        .from_path(path)
-        .with_context(|| format!("failed to open {}", path.display()))?;
+        .from_reader(open_text(path)?);
 
     let mut records = Vec::new();
     for record in reader.records() {
@@ -354,6 +353,23 @@ fn read_records(path: &Path) -> Result<Vec<Vec<String>>> {
     Ok(records)
 }
 
+/// Opens a text input, decompressing it if it is gzip (detected by its magic
+/// bytes, so the extension does not matter).
+fn open_text(path: &Path) -> Result<Box<dyn BufRead>> {
+    let mut file = BufReader::new(
+        File::open(path).with_context(|| format!("failed to open {}", path.display()))?,
+    );
+    let gzipped = file
+        .fill_buf()
+        .with_context(|| format!("failed to read {}", path.display()))?
+        .starts_with(&[0x1f, 0x8b]);
+    Ok(if gzipped {
+        Box::new(BufReader::new(flate2::bufread::MultiGzDecoder::new(file)))
+    } else {
+        Box::new(file)
+    })
+}
+
 fn detect_delimiter(path: &Path) -> Result<u8> {
     if path
         .extension()
@@ -363,8 +379,7 @@ fn detect_delimiter(path: &Path) -> Result<u8> {
         return Ok(b',');
     }
 
-    let file = File::open(path).with_context(|| format!("failed to open {}", path.display()))?;
-    for line in BufReader::new(file).lines() {
+    for line in open_text(path)?.lines() {
         let line = line.with_context(|| format!("failed to read {}", path.display()))?;
         let line = line.trim();
         if line.is_empty() || line.starts_with('#') {

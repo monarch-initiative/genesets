@@ -2,10 +2,12 @@
 name: curate-geneset
 description: >-
   Use when curating or reviewing a GO-term interpretation of a non-GO gene set
-  (MSigDB C8/C2/H, literature disease-activity, or GWAS/CRISPR genetics) for the
-  curation/ gold standard in this repo. Covers grounding in the real membership,
-  OLS term verification, the category / recovery_status / insight axes, evidence,
-  series, the 4-gate validator, and folding the set into the eval.
+  (MSigDB C8/C2/H, literature disease-activity, or GWAS/CRISPR genetics), or of
+  a ranked signature (a score per gene: DE contrast, gene-level GWAS/exome
+  statistics, CRISPR screen), for the curation/ gold standard in this repo.
+  Covers grounding in the real membership or leading edge, OLS term
+  verification, the category / recovery_status / insight axes, evidence,
+  series, the 5-gate validator, and folding the set into the eval.
 ---
 
 # Curating a GO interpretation of a gene set
@@ -38,6 +40,32 @@ How to get the membership:
   HGNC-normalize, and append to `curation/genesets/lit_members.gmt` (tab-sep:
   `<gene_set_name>\tcurated_literature_membership\tGENE1\tGENE2…`). The GMT
   `set_id` MUST equal the YAML `gene_set_name`.
+
+## Ranked signatures: ground in the leading edge
+
+When the source scores every measured gene, curate the ranking rather than a
+thresholded list (full detail: "Ranked signatures" in `curation/README.md`).
+
+1. Build the ranking with a committed script that downloads the source and
+   writes `curation/rankings/<NAME>.rnk.gz` through
+   `genesets_workflows.curation.ranking.write_ranking` (reproducible gzip, so
+   the checksum is stable). Map ids to the annotation namespace (HGNC symbols)
+   and report how many genes were dropped and why.
+2. Decide `signed`: is the low end a second program (fold change, t) or just
+   "not associated" (p-values, MAGMA Z)? Unsigned rankings get UP associations
+   only.
+3. Run `genesets-rs gsea ... --leading-edge-genes`, with both `--statistic ks`
+   and `--statistic wilcoxon`. KS suits a concentrated top, Wilcoxon a broad
+   shift. If KS finds nothing and Wilcoxon does, the signal is diffuse: use
+   Wilcoxon and say so in the description.
+4. `genesets-workflows curate draft-ranked` from the significant rows, then
+   adjudicate as below. The leading edge plays the membership's role: read it
+   and name its genes in `curator_note`.
+5. Watch for score confounds. Burden and GWAS gene scores track gene length
+   and constraint, so a modest shift across long neuronal genes is not yet
+   biology; keep confidence at medium or below and say why.
+6. `universe_gap` replaces `membership_gap` (genes not measured). Measured but
+   unmoved is a result: put it in the description, not in a gap.
 
 ## Per-term: the three orthogonal axes
 
@@ -99,7 +127,8 @@ contrasting GO interpretations — e.g. `SERIES:PANCREATIC_ISLET` alpha/beta/del
 ## Validate, then regenerate the manifest
 
 ```bash
-# 4 gates: linkml structural, term id+label, reference snippet, obsolescence
+# 5 gates: linkml structural, term id+label, reference snippet, obsolescence,
+# ranking (file, checksum, leading edges, directions; ranked entries only)
 uv run --project python/genesets-workflows --extra curation \
   genesets-workflows curate validate curation/genesets/<SET>.yaml   # exit 0 = pass
 ```
@@ -108,13 +137,15 @@ Iterate until exit 0. Validate the whole corpus before a PR with `just curate-va
 Regenerate `curation/genesets/manifest.tsv` after a batch (columns:
 `gene_set_id, collection, context_term, context_type, context_label, series,
 series_role`) by looping every YAML through `model.load_interpretation`. Run
-`just curate-test` (29 unit + 5 doctest).
+`just curate-test` (40 unit + 7 doctest).
 
 ## Fold the set into the eval (so it becomes scoreable)
 
 A set is only evaluable if its membership is in the eval's `queries.gmt`. MSigDB
 sets come from the mygeneset base; `LIT:` sets come from `lit_members.gmt`. After
 adding sets, rebuild `queries.gmt` and re-run the **evaluate-enrichment** skill.
+Ranked signatures need no membership: `evals/gsea_benchmark` scores every entry
+with a `ranking` block on its real scores.
 
 ## The guardrail (read `evals/iba_vs_benchmark/README.md`)
 

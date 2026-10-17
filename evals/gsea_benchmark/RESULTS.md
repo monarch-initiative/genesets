@@ -18,24 +18,39 @@ set.
 
 | Method | recall | recall (testable) | confirm | mechan | terms/set | seconds |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Fisher on the set | 0.561 | 0.605 | 0.569 (n=640) | 0.333 (n=81) | 191.5 / 230 | 3 |
-| Fisher on top 5% | 0.048 | 0.058 | 0.033 (n=640) | 0.000 (n=81) | 0 / 3 | 3 |
-| KS classic | 0.076 | 0.116 | 0.048 (n=640) | 0.025 (n=81) | 0 / 7 | 79 |
-| KS elim | 0.036 | 0.054 | 0.025 (n=640) | 0.000 (n=81) | 0 / 2 | 97 |
-| KS weight01 | 0.043 | 0.066 | 0.030 (n=640) | 0.000 (n=81) | 0 / 4 | 238 |
-| Wilcoxon classic | 0.063 | 0.097 | 0.044 (n=640) | 0.025 (n=81) | 0 / 6 | 14 |
-| Wilcoxon elim | 0.020 | 0.031 | 0.016 (n=640) | 0.000 (n=81) | 0 / 1 | 15 |
-| Wilcoxon weight01 | 0.033 | 0.050 | 0.025 (n=640) | 0.012 (n=81) | 0 / 3 | 42 |
+| Fisher on the set | 0.561 | 0.605 | 0.569 (n=640) | 0.333 (n=81) | 191.5 / 230 | 4 |
+| Fisher on top 5% | 0.048 | 0.058 | 0.033 (n=640) | 0.000 (n=81) | 0 / 3 | 5 |
+| KS classic | 0.076 | 0.116 | 0.048 (n=640) | 0.025 (n=81) | 0 / 7 | 90 |
+| KS elim | 0.036 | 0.054 | 0.025 (n=640) | 0.000 (n=81) | 0 / 2 | 94 |
+| KS weight01 | 0.043 | 0.066 | 0.030 (n=640) | 0.000 (n=81) | 0 / 4 | 230 |
+| Wilcoxon classic | 0.063 | 0.097 | 0.044 (n=640) | 0.025 (n=81) | 0 / 6 | 18 |
+| Wilcoxon elim | 0.020 | 0.031 | 0.016 (n=640) | 0.000 (n=81) | 0 / 1 | 19 |
+| Wilcoxon weight01 | 0.033 | 0.050 | 0.025 (n=640) | 0.012 (n=81) | 0 / 3 | 43 |
 
 ## Member shift 3.0 SD
 
 | Method | recall | recall (testable) | confirm | mechan | terms/set | seconds |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Fisher on the set | 0.561 | 0.605 | 0.569 (n=640) | 0.333 (n=81) | 191.5 / 230 | 3 |
+| Fisher on the set | 0.561 | 0.605 | 0.569 (n=640) | 0.333 (n=81) | 191.5 / 230 | 4 |
 | Fisher on top 5% | 0.152 | 0.186 | 0.130 (n=640) | 0.025 (n=81) | 3 / 28 | 3 |
-| KS classic | 0.226 | 0.345 | 0.189 (n=640) | 0.086 (n=81) | 9 / 60 | 80 |
-| KS elim | 0.114 | 0.174 | 0.102 (n=640) | 0.025 (n=81) | 4.5 / 19 | 101 |
-| KS weight01 | 0.147 | 0.225 | 0.133 (n=640) | 0.037 (n=81) | 6 / 37 | 230 |
-| Wilcoxon classic | 0.102 | 0.155 | 0.087 (n=640) | 0.025 (n=81) | 0 / 16 | 13 |
-| Wilcoxon elim | 0.043 | 0.066 | 0.034 (n=640) | 0.000 (n=81) | 0 / 4 | 15 |
-| Wilcoxon weight01 | 0.058 | 0.089 | 0.050 (n=640) | 0.012 (n=81) | 0 / 7 | 41 |
+| KS classic | 0.226 | 0.345 | 0.189 (n=640) | 0.086 (n=81) | 9 / 60 | 86 |
+| KS elim | 0.114 | 0.174 | 0.102 (n=640) | 0.025 (n=81) | 4.5 / 19 | 103 |
+| KS weight01 | 0.147 | 0.225 | 0.133 (n=640) | 0.037 (n=81) | 6 / 37 | 237 |
+| Wilcoxon classic | 0.102 | 0.155 | 0.087 (n=640) | 0.025 (n=81) | 0 / 16 | 17 |
+| Wilcoxon elim | 0.043 | 0.066 | 0.034 (n=640) | 0.000 (n=81) | 0 / 4 | 16 |
+| Wilcoxon weight01 | 0.058 | 0.089 | 0.050 (n=640) | 0.012 (n=81) | 0 / 7 | 40 |
+
+## Curated real rankings
+
+Entries with a `ranking` block, scored on their real scores: SCHIZOPHRENIA_SCHEMA_EXOME.
+Their CORE terms were seeded from enrichment runs (SCHIZOPHRENIA_SCHEMA_EXOME seeded by wilcoxon), so the row for the
+seeding method is not an independent test; the other rows are.
+
+| Method | recall | recall (testable) | confirm | mechan | terms/set | seconds |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| KS classic | 0.000 | 0.000 | 0.000 (n=3) | 0.000 (n=1) | 4 / 4 | 2 |
+| KS elim | 0.000 | 0.000 | 0.000 (n=3) | 0.000 (n=1) | 3 / 3 | 2 |
+| KS weight01 | 0.000 | 0.000 | 0.000 (n=3) | 0.000 (n=1) | 0 / 0 | 3 |
+| Wilcoxon classic | 1.000 | 1.000 | 1.000 (n=3) | 1.000 (n=1) | 28 / 28 | 1 |
+| Wilcoxon elim | 0.000 | 0.000 | 0.000 (n=3) | 0.000 (n=1) | 0 / 0 | 2 |
+| Wilcoxon weight01 | 0.500 | 0.500 | 0.667 (n=3) | 1.000 (n=1) | 10 / 10 | 2 |

@@ -203,7 +203,8 @@ genesets-rs gsea \
 ```
 
 `--ranks` is a two-column `gene, score` table (a GSEA `.rnk` file) or a
-three-column `ranking_id, gene, score` table for many contrasts in one run.
+three-column `ranking_id, gene, score` table for many contrasts in one run;
+like every table input, it may be gzip-compressed.
 `--statistic wilcoxon` swaps the GSEA running sum for a Wilcoxon rank-sum test,
 and `--algorithm elim` or `weight01` uses the ontology graph so that ancestors
 do not ride on a child's signal (see `docs/src/statistics.md`).

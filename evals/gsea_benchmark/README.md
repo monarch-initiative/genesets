@@ -41,3 +41,11 @@ From [RESULTS.md](RESULTS.md), 126 scored sets with 394 CORE terms:
   3 SD: 0.226 to 0.114 and 0.147) while cutting the terms reported per set
   (mean 60 to 19 and 37). Curators often place CORE biology at levels these
   algorithms strip as redundant. weight01 keeps more than elim throughout.
+- **Curated real rankings.** Entries with a `ranking` block are also scored on
+  their real scores, in a separate table. So far that is one entry,
+  `LIT:SCHIZOPHRENIA_SCHEMA_EXOME` (rare-variant burden, unsigned). Its CORE
+  terms were seeded by Wilcoxon classic, so that row's recall of 1.0 is not an
+  independent test. The informative rows: KS recovers none of them (the signal
+  is diffuse, not a concentrated top), Wilcoxon weight01 keeps half, and
+  Wilcoxon elim none. One entry is an illustration, not a result; the table
+  becomes a benchmark as ranked entries accumulate.

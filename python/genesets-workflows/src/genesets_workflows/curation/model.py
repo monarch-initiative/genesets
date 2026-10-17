@@ -18,12 +18,21 @@ class Term:
 
 @dataclass
 class EnrichmentStats:
+    method: str | None = None
+    algorithm: str | None = None
+    p_adjust_method: str | None = None
     p_value: float | None = None
     p_adjust: float | None = None
     overlap: int | None = None
     query_size: int | None = None
     target_size: int | None = None
     overlap_genes: list[str] = field(default_factory=list)
+    es: float | None = None
+    nes: float | None = None
+    set_size: int | None = None
+    leading_edge_size: int | None = None
+    leading_edge_genes: list[str] = field(default_factory=list)
+    peak_rank: int | None = None
 
 
 @dataclass
@@ -46,11 +55,26 @@ class TermAssociation:
     confidence_score: float | None = None
     specificity: str | None = None
     specificity_score: float | None = None
+    direction: str | None = None
     recovery_status: str | None = None
     insight: str | None = None
     enrichment_stats: EnrichmentStats | None = None
     evidence: list[EvidenceItem] = field(default_factory=list)
     curator_note: str | None = None
+
+
+@dataclass
+class RankedSignature:
+    source: str
+    score_type: str
+    signed: bool
+    gene_id_type: str
+    n_ranked: int
+    file: str
+    sha256: str
+    source_detail: str | None = None
+    download_url: str | None = None
+    score_description: str | None = None
 
 
 @dataclass
@@ -68,6 +92,8 @@ class GeneSetInterpretation:
     msigdb_release: str | None = None
     taxon: Term | None = None
     direction: str | None = None
+    ranking: RankedSignature | None = None
+    derived_from: str | None = None
     series: str | None = None
     series_role: str | None = None
     n_genes: int | None = None
@@ -119,6 +145,8 @@ def _context(value: dict[str, Any]) -> BiologicalContext:
 def from_dict(data: dict[str, Any]) -> GeneSetInterpretation:
     data = dict(data)
     data["taxon"] = _term(data.get("taxon"))
+    if data.get("ranking") is not None:
+        data["ranking"] = RankedSignature(**data["ranking"])
     data["contexts"] = [_context(c) for c in data.get("contexts", [])]
     data["associations"] = [_association(a) for a in data.get("associations", [])]
     return GeneSetInterpretation(**data)
