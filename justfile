@@ -57,8 +57,14 @@ curate-test:
     {{gw}} --with pytest python -m pytest --doctest-modules \
       python/genesets-workflows/src/genesets_workflows/curation -v
 
+# Build every curated ranking from its recipe (committed ones are checked to rebuild unchanged).
+curate-build-rankings:
+    for r in curation/rankings/*.recipe.yaml; do \
+      {{gw}} genesets-workflows curate build-ranking "$r" || exit 1; \
+    done
+
 # Validate every interpretation YAML under curation/genesets.
-curate-validate:
+curate-validate: curate-build-rankings
     for f in curation/genesets/*.yaml; do \
       echo "== $f =="; \
       {{gw}} genesets-workflows curate validate "$f" || exit 1; \

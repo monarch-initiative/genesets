@@ -73,3 +73,53 @@ def test_build_refuses_a_changed_download(tmp_path):
     path.write_text(yaml.safe_dump(body))
     with pytest.raises(ValueError, match="sha256"):
         build(path, tmp_path / "cache")
+
+
+def test_fallback_symbol_column_accepts_only_approved_symbols(tmp_path):
+    table = (
+        b"gene\tsym\tp\n"
+        b"ENSG00000183454\tGRIN2A\t0.01\n"
+        b"ENSG00000999999\tELOB\t0.1\n"
+        b"ENSG00000999998\tTCEB2\t0.5\n"
+    )
+    path = recipe(
+        tmp_path, table, gene_column="gene", gene_id_type="ensembl",
+        fallback_symbol_column="sym",
+    )
+    report = build(path, tmp_path / "cache")
+    assert (report.fallback, report.unmapped, report.ranked) == (1, 1, 2)
+
+
+def test_drop_discards_every_row_of_a_duplicated_symbol(tmp_path):
+    table = b"gene\tp\nTCEB2\t0.01\nELOB\t0.1\nGRIN2A\t1e-6\n"
+    report = build(recipe(tmp_path, table, duplicates="drop"), tmp_path / "cache")
+    assert (report.collapsed, report.ranked) == (1, 1)
+
+
+ROOT = Path(__file__).resolve().parents[3]
+
+
+def test_committed_rankings_match_store_flags():
+    """Every ranking has a recipe; exactly the `store: true` ones are committed."""
+    rankings = ROOT / "curation" / "rankings"
+    recipes = {p.name.removesuffix(".recipe.yaml"): yaml.safe_load(p.read_text())
+               for p in rankings.glob("*.recipe.yaml")}
+    whitelisted = {
+        line.strip().removeprefix("!curation/rankings/").removesuffix(".rnk.gz")
+        for line in (ROOT / ".gitignore").read_text().splitlines()
+        if line.strip().startswith("!curation/rankings/")
+    }
+    assert whitelisted == {name for name, body in recipes.items() if body.get("store")}
+    for name in whitelisted:
+        assert (rankings / f"{name}.rnk.gz").exists(), name
+
+
+def test_every_ranked_interpretation_has_a_recipe():
+    from genesets_workflows.curation import model
+
+    for path in (ROOT / "curation" / "genesets").glob("*.yaml"):
+        interp = model.load_interpretation(path)
+        if interp.ranking is None:
+            continue
+        built = (path.parent / interp.ranking.file).resolve()
+        assert built.with_name(built.name.removesuffix(".rnk.gz") + ".recipe.yaml").exists(), path

@@ -1,0 +1,23 @@
+# Parkinson's disease GWAS, Nalls et al. 2019 (PMID:31701892), IPDGC public release without 23andMe: 33,674 cases, 449,056 controls.
+# MAGMA gene-based results (snp-wise mean model, 1 kb windows, protein-coding
+# genes) as computed by the GWAS ATLAS (Watanabe et al. 2019, PMID:31427789),
+# atlas study 4167. Score: -log10 of the MAGMA gene p-value (one-sided, unsigned).
+name: PARKINSONS_GWAS_MAGMA
+source:
+  kind: ctg_atlas
+  atlas_id: 4167
+  sha256: fb1e4e47edfeee3f83dbecb121d569bfa7df41d3a7ce70d5c83024427e249cb5
+table:
+  format: atlas_json
+gene_column: GENE
+gene_id_type: ensembl
+fallback_symbol_column: SYMBOL
+score_column: P
+transform: neg_log10
+duplicates: max
+# The atlas serves this table only through its web page, so the built ranking
+# is committed rather than rebuilt on demand.
+store: true
+hgnc:
+  url: https://storage.googleapis.com/public-download-files/hgnc/archive/archive/monthly/tsv/hgnc_complete_set_2026-10-06.txt
+  sha256: 8bf6f686e640dbc864a346484626953621b0500d900d26cd085a35c2782d725d

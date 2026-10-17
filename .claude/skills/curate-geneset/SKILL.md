@@ -63,7 +63,13 @@ thresholded list (full detail: "Ranked signatures" in `curation/README.md`).
    and name its genes in `curator_note`.
 5. Watch for score confounds. Burden and GWAS gene scores track gene length
    and constraint, so a modest shift across long neuronal genes is not yet
-   biology; keep confidence at medium or below and say why.
+   biology; keep confidence at medium or below and say why. For GWAS gene
+   scores count independent loci in each leading edge (an HLA or APOE block is
+   one finding, however many genes), and for p-value-derived scores do not
+   trust weighted KS (`--weight 1`): use Wilcoxon or `--weight 0`.
+   Biologically core terms that whole-term tests miss (a strong gene diluted in
+   a big term) still go in, as curator-added CORE terms with their nominal
+   stats, so the ranked benchmark measures the miss.
 6. `universe_gap` replaces `membership_gap` (genes not measured). Measured but
    unmoved is a result: put it in the description, not in a gap.
 

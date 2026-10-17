@@ -105,7 +105,13 @@ def ranking_errors(interp: GeneSetInterpretation, base_dir: Path) -> list[str]:
         )
     path = base_dir / ranking.file
     if not path.exists():
-        return errors + [f"ranking file not found: {path}"]
+        recipe = path.with_name(path.name.removesuffix(".rnk.gz") + ".recipe.yaml")
+        hint = (
+            f"; build it with `genesets-workflows curate build-ranking {recipe}`"
+            if recipe.exists()
+            else ""
+        )
+        return errors + [f"ranking file not found: {path}{hint}"]
     actual = sha256_file(path)
     if actual != ranking.sha256:
         errors.append(f"ranking sha256 mismatch: recorded {ranking.sha256}, file has {actual}")

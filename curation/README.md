@@ -157,15 +157,20 @@ same: per-GO-term judgments on the same axes. Four things differ.
   scores are `signed`, the `gene_id_type`, `n_ranked`, and the `file` and its
   `sha256`. The scores live in `rankings/<NAME>.rnk.gz`, a gzipped two-column
   TSV with a `gene`/`score` header that `genesets-rs gsea --ranks` reads as
-  is. Store a ranking here when it cannot be fetched from a stable source.
-  Each ranking is built from a recipe beside it, `rankings/<NAME>.recipe.yaml`:
+  is. Each ranking is built from a recipe beside it, `rankings/<NAME>.recipe.yaml`:
   the source URL and its SHA-256, the table format, the gene and score columns,
   the id type, a transform (`identity`, `neg_log10`, `negate`), and a pinned
   HGNC release for mapping ids to approved symbols (previous and alias symbols
   are used only when unambiguous). `genesets-workflows curate build-ranking
   rankings/<NAME>.recipe.yaml` rebuilds the file byte for byte and reports how
-  many source rows lacked a score or a symbol. The ranking is also the analysis
-  universe: genes absent from it were not measured.
+  many source rows lacked a score or a symbol. Built files are committed only
+  when the recipe sets `store: true`, because the source has no stable URL to
+  rebuild from (the GWAS ATLAS MAGMA tables, served only through its web
+  page); the rest are gitignored and rebuilt by `just curate-build-rankings`,
+  which `just curate-validate` runs first. That also keeps publisher
+  supplementary tables, often all-rights-reserved, out of the repository. The
+  ranking is also the analysis universe: genes absent from it were not
+  measured.
 - **Direction is per association.** A signed ranking carries two programs, one
   at each pole, so each association records `direction` (UP toward high
   scores, DN toward low). An unsigned ranking, such as a -log10 p or a MAGMA Z,
@@ -182,7 +187,13 @@ same: per-GO-term judgments on the same axes. Four things differ.
 `set_size`, the leading edge and `peak_rank` for ranked tests. Choose the
 statistic to suit the signal: GSEA's weighted KS for a concentrated top,
 Wilcoxon for a modest shift across many genes, and say which in the
-description. Draft from a run with:
+description. For scores derived from p-values (-log10 p, MAGMA), GSEA's
+default `--weight 1` lets a few extreme genes swamp every running sum: on the
+BMD MAGMA ranking, where -log10 p reaches 150, weighted KS finds no term and
+unweighted KS (`--weight 0`) finds 181. Use Wilcoxon or `--weight 0` there.
+For GWAS gene scores, also count independent loci in a leading edge: MAGMA
+p-values of neighbouring genes are correlated through LD, so an HLA or APOE
+block lights up whole terms as one finding. Draft from a run with:
 
 ```bash
 genesets-rs gsea --annotations gene_terms.tsv --terms terms.tsv --closure closure.tsv \

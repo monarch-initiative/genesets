@@ -1,0 +1,671 @@
+gene_set_id: LIT:IBD_GWAS_MAGMA
+gene_set_name: IBD_GWAS_MAGMA
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+ranking:
+  source: PMID:28067908
+  score_type: neg_log10_p
+  signed: false
+  gene_id_type: HGNC symbol
+  n_ranked: 18153
+  file: ../rankings/IBD_GWAS_MAGMA.rnk.gz
+  sha256: f57e44e7981430b128aaf46e36b6860cf225cd11ac8670f49250d90322606e6d
+  source_detail: GWAS ATLAS (Watanabe et al. 2019, PMID:31427789) MAGMA gene-based
+    results (magma.genes.out), atlas study 2031
+  download_url: https://atlas.ctglab.nl/traitDB/2031
+  score_description: '-log10 of the MAGMA gene-based p-value (snp-wise mean model,
+    1 kb windows, protein-coding genes; one-sided). Built by `curate build-ranking`
+    from rankings/IBD_GWAS_MAGMA.recipe.yaml: of 19,094 atlas rows, 257 mapped by
+    their approved symbol after their Ensembl v92 id failed, 876 have no approved
+    HGNC symbol, and 65 duplicate symbols kept the stronger score; 18,153 genes ranked.
+    Scored on -log10 p rather than ZSTAT because the KS running sum weights by |score|,
+    which would treat strongly negative Z as signal.'
+description: 'Genome-wide MAGMA gene ranking for inflammatory bowel disease from the
+  de Lange et al. 2017 European-ancestry GWAS meta-analysis (25,042 cases, 34,915
+  controls; PMID:28067908), as computed by the GWAS ATLAS. The scored counterpart
+  of LIT:IBD_RISK_GENES (anchored on Jostins et al. 2012). The ranking is led by IL23R,
+  NOD2 and CARD9, and is polygenic enough that both statistics find many terms (KS
+  30, Wilcoxon 332 at q < 0.05): the IL-23/Th17 axis, NOD2-CARD9 innate sensing, MHC
+  class II, and broad leukocyte activation and adhesion. Two results sit below FDR
+  significance and are kept as curator-added CORE terms. Autophagy is flat as a term
+  (Wilcoxon q = 0.82) although ATG16L1 ranks 7th and IRGM 106th: the 242-gene term
+  dilutes them. The integrin signalling that de Lange et al. highlight has ITGAL,
+  ITGA4 and ITGB8 at the head of its leading edge but q = 0.15. MAGMA gene p-values
+  of neighbouring genes share SNPs and LD, and the gene-set tests here do not model
+  that correlation, so a term carried by one locus is one finding, not many.'
+contexts:
+- term:
+    id: MONDO:0005265
+    label: inflammatory bowel disease
+  context_type: disease
+  role_note: Common-variant association strength per gene, Crohn's disease and ulcerative
+    colitis combined.
+associations:
+- term:
+    id: GO:2000318
+    label: positive regulation of T-helper 17 type immune response
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: lineage_shared
+  direction: UP
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    p_adjust_method: gsea_fdr
+    p_value: 0.0004033885
+    p_adjust: 0.03519896
+    target_size: 20
+    es: 0.895979
+    nes: 1.745533
+    set_size: 17
+    leading_edge_size: 6
+    leading_edge_genes:
+    - IL23R
+    - CARD9
+    - BRD2
+    - IL12B
+    - BRD4
+    - NFKBIZ
+    peak_rank: 777
+  curator_note: 'IL23R, CARD9, BRD2, IL12B, BRD4, NFKBIZ: the IL-23/IL-12 receptor-ligand
+    pair and its downstream regulators, independent loci. The defining IBD genetic
+    axis.'
+- term:
+    id: GO:0050700
+    label: CARD domain binding
+  seed_source: enrichment_recovered
+  aspect: molecular_function
+  category: supporting_process
+  confidence: medium
+  specificity: lineage_shared
+  direction: UP
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    p_adjust_method: gsea_fdr
+    p_value: 0.0003043214
+    p_adjust: 0.03151205
+    target_size: 15
+    es: 0.914425
+    nes: 1.769531
+    set_size: 15
+    leading_edge_size: 3
+    leading_edge_genes:
+    - NOD2
+    - CARD9
+    - IRGM
+    peak_rank: 106
+  curator_note: 'NOD2, CARD9 and IRGM: the bacterial-sensing CARD module of Crohn''s
+    disease, three of the strongest IBD loci. Supporting the defense-response core.'
+- term:
+    id: GO:0042613
+    label: MHC class II protein complex
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: supporting_process
+  confidence: medium
+  specificity: lineage_shared
+  direction: UP
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    p_adjust_method: gsea_fdr
+    p_value: 0.0001014405
+    p_adjust: 0.0
+    target_size: 17
+    es: 0.963332
+    nes: 1.864173
+    set_size: 15
+    leading_edge_size: 12
+    leading_edge_genes:
+    - HLA-DQB1
+    - HLA-DRB1
+    - HLA-DQA1
+    - HLA-DRA
+    - HLA-DOB
+    - HLA-DRB5
+    - HLA-DQB2
+    - HLA-DQA2
+    - HLA-DMA
+    - HLA-DOA
+    - HLA-DPB1
+    - HLA-DMB
+    peak_rank: 387
+  curator_note: 'All HLA class II genes (HLA-DRB1, -DQA1, -DQB1, -DRA, -DMA): one
+    LD block, but the HLA-DRB1 association is among IBD''s strongest, chiefly for
+    ulcerative colitis. MAGMA gene p-values of neighbouring genes share SNPs and LD,
+    and the gene-set tests here do not model that correlation, so a term carried by
+    one locus is one finding, not many.'
+- term:
+    id: GO:1903039
+    label: positive regulation of leukocyte cell-cell adhesion
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: medium
+  specificity: lineage_shared
+  direction: UP
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: wilcoxon
+    algorithm: classic
+    p_adjust_method: benjamini_hochberg
+    p_value: 2.331413e-16
+    p_adjust: 6.686494e-13
+    target_size: 265
+    es: 0.309056
+    nes: 8.203678
+    set_size: 238
+    leading_edge_size: 116
+    leading_edge_genes:
+    - IL23R
+    - NOD2
+    - HLA-DQB1
+    - JAK2
+    - HLA-DRB1
+    - RHOA
+    - HLA-DQA1
+    - HLA-DRA
+    - HLA-DOB
+    - MAP3K8
+    - BRD7
+    - IL12RB2
+    - CCL2
+    - BRD2
+    - IL21
+    - HLA-DRB5
+    - IL2
+    - IL12B
+    - SOCS1
+    - HLA-DQB2
+    - AGER
+    - ZMIZ1
+    - PRKAA1
+    - HLA-DQA2
+    - IL2RA
+    - AIF1
+    - HLA-DMA
+    - ICOSLG
+    - HLA-DOA
+    - TNFRSF14
+    - GPR65
+    - HLA-DPB1
+    - HLA-DMB
+    - DOCK8
+    - CD274
+    - PPP3CA
+    - ZBTB16
+    - IL4
+    - GATA3
+    - ITGA4
+    - CCDC88B
+    - TNFSF4
+    - TNF
+    - CLECL1
+    - ETS1
+    - PTPRC
+    - TGFBR2
+    - BRD4
+    - SMARCE1
+    - ACTL6B
+    - HLA-G
+    - SELP
+    - SELE
+    - NR5A2
+    - RARA
+    - CD160
+    - CD6
+    - NFKBIZ
+    - CCR2
+    - CCR7
+    - SKAP1
+    - CD28
+    - ELANE
+    - VAV1
+    - RELA
+    - HSPD1
+    - LEF1
+    - NFAT5
+    - KLHL25
+    - IL6
+    - VSIR
+    - SMARCB1
+    - RUNX3
+    - CD44
+    - ABL2
+    - PTPN11
+    - ZBTB7B
+    - KAT5
+    - EPO
+    - TYK2
+    - OPA1
+    - ALOX5
+    - FCHO1
+    - NCK1
+    - LYN
+    - CARD11
+    - HLA-A
+    - TNFSF11
+    - CHST2
+    - ICOS
+    - LGALS9
+    - TRAF6
+    - IL18
+    - NR4A3
+    - RAG1
+    - AKT1
+    - MDK
+    - B2M
+    - SMARCD1
+    - CD1D
+    - PDCD1LG2
+    - CD5
+    - CD3E
+    - NFKBID
+    - PRKCZ
+    - SART1
+    - SMARCA4
+    - DUSP10
+    - VCAM1
+    - PRKCQ
+    - ITGB2
+    - PIK3R6
+    - HHLA2
+    - PDPK1
+    - IGF1
+    - ZAP70
+    peak_rank: 4238
+  curator_note: 'The strongest Wilcoxon term (q = 7e-13). A broad shift: IL23R, NOD2,
+    JAK2 and the HLA block lead, with ITGA4 and VCAM1 further down. Real but general;
+    the specific programs are the IL-23 and integrin terms.'
+- term:
+    id: GO:0006954
+    label: inflammatory response
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: medium
+  specificity: broadly_expressed
+  direction: UP
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: wilcoxon
+    algorithm: classic
+    p_adjust_method: benjamini_hochberg
+    p_value: 7.764687e-09
+    p_adjust: 1.484608e-06
+    target_size: 447
+    es: 0.170852
+    nes: 5.773489
+    set_size: 389
+    leading_edge_size: 218
+    leading_edge_genes:
+    - JAK2
+    - HLA-DRB1
+    - STAT3
+    - GSDMB
+    - GSDMA
+    - REL
+    - NCR3
+    - FCGR2A
+    - CCL2
+    - IL18RAP
+    - CXCR2
+    - AGER
+    - IL2RA
+    - AIF1
+    - CCR6
+    - CCL11
+    - PTGIR
+    - CCL1
+    - IFNG
+    - ITGAL
+    - LAT
+    - CCL13
+    - FADS2
+    - PTGER4
+    - TAB2
+    - IL4
+    - GATA3
+    - TNFSF4
+    - TRAF3IP2
+    - TNF
+    - LYZ
+    - MAPKAPK2
+    - CD40
+    - FCER1G
+    - PLA2G2E
+    - ADCY8
+    - SELE
+    - RAC1
+    - CCL7
+    - CD6
+    - NFKBIZ
+    - TLR5
+    - CCR2
+    - CCR7
+    - AOC3
+    - TNFRSF1A
+    - NOS2
+    - HPSE
+    - FCGR3A
+    - HYAL1
+    - PRDX5
+    - CXCL5
+    - TNFRSF4
+    - FCGR2B
+    - ELANE
+    - RELA
+    - ADAM17
+    - KLRG1
+    - ABCF1
+    - WNK4
+    - IL6
+    - IL1R1
+    - CD44
+    - USP14
+    - PTGFR
+    - TBX21
+    - IL22RA1
+    - TLR4
+    - LY75
+    - NLRC4
+    - EPO
+    - MAPT
+    - ALOX15
+    - IFNGR2
+    - CCR3
+    - ITGB1
+    - FOS
+    - KLKB1
+    - ALOX5
+    - TUSC2
+    - F11R
+    - IL5
+    - LYN
+    - NINJ1
+    - IL13
+    - TLR3
+    - NRROS
+    - MMP25
+    - CHST2
+    - ITIH4
+    - HP
+    - HYAL3
+    - LGALS9
+    - STK39
+    - CCRL2
+    - TLR1
+    - BMP6
+    - ZBP1
+    - CXCL11
+    - SIGLEC1
+    - ACER3
+    - FOLR2
+    - IL18
+    - IL17A
+    - LRP1
+    - CCL24
+    - TLR2
+    - HMOX1
+    - CXCR6
+    - TRIM14
+    - IL26
+    - CCR1
+    - FBN1
+    - NFATC4
+    - CXCL10
+    - MAPK9
+    - MDK
+    - CXCL8
+    - TLR6
+    - LIAS
+    - NAIP
+    - GGT5
+    - TLR10
+    - CHIA
+    - TAC4
+    - KDM4D
+    - CAMP
+    - ADORA1
+    - VCAM1
+    - NPFF
+    - XCR1
+    - SLAMF8
+    - THBS1
+    - IL22
+    - APCS
+    - ITGB2
+    - TREM2
+    - CCL8
+    - IL17F
+    - IL6R
+    - CD36
+    - BMP2
+    - PLSCR1
+    - CCL22
+    - WNT5A
+    - CUL3
+    - SCUBE1
+    - IFNGR1
+    - SIGIRR
+    - PF4
+    - S100A8
+    - APOL3
+    - ACKR1
+    - SLC11A1
+    - CNTF
+    - MAP3K20
+    - CCL21
+    - CXCL9
+    - AGR2
+    - TFRC
+    - LBP
+    - NLRP6
+    - TYROBP
+    - CCR5
+    - APIP
+    - PROK2
+    - FCGR3B
+    - IL36A
+    - IL1A
+    - CD68
+    - DPP9
+    - FCGR1BP
+    - RIPK2
+    - CHI3L1
+    - NR3C1
+    - IL10RB
+    - XCL2
+    - IRAK2
+    - TRIM21
+    - PLA2G4B
+    - APP
+    - XCL1
+    - HSPG2
+    - CARD8
+    - CXCL1
+    - CRP
+    - MAP3K7
+    - IL25
+    - ITGAM
+    - ANXA1
+    - NFAM1
+    - NLRP3
+    - CCL28
+    - CTNNBIP1
+    - CCL5
+    - IL36G
+    - PSEN1
+    - IFNA2
+    - HBA1
+    - CASP3
+    - TRAF5
+    - IRAK4
+    - BLNK
+    - MTOR
+    - CCL20
+    - BDKRB2
+    - CSF1R
+    - GPR32
+    - CCL25
+    - NOD1
+    - CFH
+    - EPX
+    - PTAFR
+    - IL36RN
+    - KDM6B
+    - DHX9
+    - IL1B
+    - ELF3
+    peak_rank: 7506
+  curator_note: Supporting in LIT:IBD_RISK_GENES; significant here (q = 1.5e-6) with
+    JAK2, STAT3, GSDMB, REL, PTPN2 and SMAD3 among the leading edge.
+- term:
+    id: GO:0006914
+    label: autophagy
+  seed_source: curator_added
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: broadly_expressed
+  direction: UP
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: wilcoxon
+    algorithm: classic
+    p_adjust_method: benjamini_hochberg
+    p_value: 0.5113403
+    p_adjust: 0.8177366
+    target_size: 270
+    es: 0.024539
+    nes: 0.656752
+    set_size: 242
+    leading_edge_size: 24
+    leading_edge_genes:
+    - ATG16L1
+    - CLN3
+    - IRGM
+    - MTMR3
+    - SMURF1
+    - TOM1
+    - GBA1
+    - CTSK
+    - UBAC2
+    - VMP1
+    - RUFY4
+    - ATG4D
+    - TMEM74
+    - ATG4B
+    - NCOA4
+    - SYT11
+    - RETREG3
+    - ATG4C
+    - RB1CC1
+    - RAB19
+    - RTN3
+    - BAG3
+    - MAP1S
+    - FBXL4
+    peak_rank: 1055
+  evidence:
+  - reference: PMID:23128233
+    reference_title: Host-microbe interactions have shaped the genetic architecture
+      of inflammatory bowel disease.
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: previously unsuspected mechanisms, such as autophagy, in
+    explanation: Jostins et al. name autophagy as a mechanism IBD genetics revealed.
+  curator_note: CORE in LIT:IBD_RISK_GENES and one of IBD genetics' landmark findings,
+    but flat here (Wilcoxon p = 0.51; KS q = 0.61). ATG16L1 ranks 7th and IRGM 106th,
+    yet they are 2 of 242 genes in the term. A miss of whole-term testing, not of
+    the biology.
+- term:
+    id: GO:0007229
+    label: integrin-mediated signaling pathway
+  seed_source: curator_added
+  aspect: biological_process
+  category: core_process
+  confidence: medium
+  specificity: lineage_shared
+  direction: UP
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: wilcoxon
+    algorithm: classic
+    p_adjust_method: benjamini_hochberg
+    p_value: 0.01578821
+    p_adjust: 0.1502788
+    target_size: 109
+    es: 0.148924
+    nes: 2.413775
+    set_size: 88
+    leading_edge_size: 39
+    leading_edge_genes:
+    - FERMT1
+    - ADAM15
+    - MPIG6B
+    - ITGAL
+    - LAT
+    - ITGA4
+    - FYB1
+    - FCER1G
+    - ITGAV
+    - ITGB8
+    - HCK
+    - ITGB1BP1
+    - PTK2B
+    - PLPP3
+    - ITGB1
+    - FERMT3
+    - PRKD1
+    - ITGB3
+    - ADAMTS13
+    - PTK2
+    - CDC42
+    - ITGB6
+    - PLEK
+    - TEC
+    - ITGA3
+    - FN1
+    - ITGB2
+    - ITGA10
+    - APOA1
+    - ITGAX
+    - ITGA8
+    - VTN
+    - ITGB5
+    - CUL3
+    - SEMA7A
+    - NEDD9
+    - SRC
+    - CDH17
+    - ITGBL1
+    peak_rank: 5091
+  evidence:
+  - reference: PMID:28067908
+    reference_title: Genome-wide association study implicates immune activation of
+      multiple integrin genes in inflammatory bowel disease.
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: integrin genes that encode proteins in pathways that have been identified
+      as
+    explanation: 'de Lange et al.''s headline: three new loci contain integrin genes,
+      therapeutic-target pathways in IBD.'
+  curator_note: 'de Lange et al.''s new finding: ITGAL, ITGA4 and ITGB8 head the leading
+    edge (with ITGAV, ITGB1, ITGB2), but the 88-gene term stops at q = 0.15. Mechanistic:
+    leukocyte homing integrins are therapeutic targets (vedolizumab targets ITGA4/ITGB7).'
