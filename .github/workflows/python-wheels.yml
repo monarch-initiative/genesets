@@ -1,9 +1,9 @@
 name: Python wheels
 
 # Builds abi3 wheels (one per platform, any Python >= 3.10) for the `genesets`
-# bindings in python/genesets-py. Tags named py-v* publish to PyPI through
-# trusted publishing; configure the `pypi` environment and the PyPI trusted
-# publisher for this repository and workflow before the first release.
+# bindings in python/genesets-py. Publishing a GitHub release uploads them to
+# PyPI through trusted publishing (environment `pypi`). The package version is
+# the release tag (`v0.2.0` or `0.2.0`), so nothing needs bumping beforehand.
 on:
   pull_request:
     paths:
@@ -12,15 +12,32 @@ on:
       - "Cargo.lock"
       - "python/genesets-py/**"
       - ".github/workflows/python-wheels.yml"
-  push:
-    tags:
-      - "py-v*"
+  release:
+    types: [published]
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
+  version:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - id: version
+        name: Version from the release tag
+        if: github.event_name == 'release'
+        env:
+          TAG: ${{ github.event.release.tag_name }}
+        run: |
+          version="${TAG#v}"
+          if ! [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-(alpha|beta|rc)\.?[0-9]+)?$ ]]; then
+            echo "::error::Release tag '$TAG' is not a version like v0.2.0 or v0.2.0-rc.1"
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
   test:
     runs-on: ubuntu-latest
     steps:
@@ -34,7 +51,7 @@ jobs:
           uv run --no-project pytest tests
 
   wheels:
-    needs: test
+    needs: [version, test]
     strategy:
       matrix:
         include:
@@ -52,6 +69,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+      - name: Set the package version
+        if: needs.version.outputs.version != ''
+        shell: bash
+        # Only the first `version =` line, the [package] one, is rewritten; the
+        # backup is removed so the sdist does not ship it.
+        run: perl -pi.bak -e '$done ||= s/^version = "[^"]*"/version = "${{ needs.version.outputs.version }}"/' python/genesets-py/Cargo.toml && rm python/genesets-py/Cargo.toml.bak
       - uses: PyO3/maturin-action@v1
         with:
           working-directory: python/genesets-py
@@ -64,9 +87,16 @@ jobs:
           path: python/genesets-py/dist
 
   sdist:
+    needs: version
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Set the package version
+        if: needs.version.outputs.version != ''
+        shell: bash
+        # Only the first `version =` line, the [package] one, is rewritten; the
+        # backup is removed so the sdist does not ship it.
+        run: perl -pi.bak -e '$done ||= s/^version = "[^"]*"/version = "${{ needs.version.outputs.version }}"/' python/genesets-py/Cargo.toml && rm python/genesets-py/Cargo.toml.bak
       - uses: PyO3/maturin-action@v1
         with:
           working-directory: python/genesets-py
@@ -78,10 +108,12 @@ jobs:
           path: python/genesets-py/dist
 
   publish:
-    if: startsWith(github.ref, 'refs/tags/py-v')
+    if: github.event_name == 'release'
     needs: [wheels, sdist]
     runs-on: ubuntu-latest
-    environment: pypi
+    environment:
+      name: pypi
+      url: https://pypi.org/p/genesets
     permissions:
       id-token: write
     steps:

@@ -38,3 +38,13 @@ cd python/genesets-py
 uv run --with maturin --with pytest maturin develop --release
 uv run --with pytest pytest tests
 ```
+
+## Release
+
+Publish a GitHub release whose tag is the version, such as `v0.2.0` (or
+`v0.2.0-rc.1` for a pre-release, which PyPI lists as `0.2.0rc1`). The
+`Python wheels` workflow builds wheels for Linux, macOS and Windows plus an
+sdist, sets the package version from the tag, and uploads to PyPI through
+trusted publishing in the `pypi` environment. No version bump is committed
+first; the version in `Cargo.toml` here only matters for local builds.
+
