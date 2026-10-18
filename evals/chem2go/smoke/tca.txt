@@ -1,0 +1,10 @@
+# TCA cycle intermediates, deliberately in mixed id schemes and neutral forms.
+id
+HMDB0000094
+KEGG:C00311
+CHEBI:30915
+C00042
+HMDB00134
+CHEBI:30797
+C00036
+CHEBI:15380
