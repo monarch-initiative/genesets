@@ -14,17 +14,21 @@ use genesets_rs::{
         resolve_format, summarize_diff,
     },
     enrichment::{enrich_matrix, enrich_one},
-    index::{build_flat_sets, build_gene_list_bitset, build_ontology_sets, union_sets},
+    index::{
+        TermGraph, build_flat_sets, build_gene_list_bitset, build_ontology_sets, build_term_graph,
+        union_sets,
+    },
     io::{
         default_set_name, read_annotation_pairs, read_closure_pairs, read_gene_list, read_name_map,
         read_name_pairs, read_sets,
     },
+    mgsa::{BetaPrior, MgsaOptions, MgsaResult, mgsa_matrix},
     output::{
-        OutputFormat, OutputOptions, write_diff_rows, write_parquet_diff_rows, write_parquet_rows,
-        write_rows,
+        OutputFormat, OutputOptions, write_diff_rows, write_mgsa_rows, write_parquet_diff_rows,
+        write_parquet_rows, write_rows,
     },
 };
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
 #[derive(Parser, Debug)]
 #[command(
@@ -47,6 +51,8 @@ enum Commands {
     Run(RunArgs),
     /// Compare two result tables by significance crossing.
     Compare(CompareArgs),
+    /// Bayesian model-based gene set analysis (MGSA), as in Ontologizer and wtfgenes.
+    Mgsa(MgsaArgs),
 }
 
 #[derive(Args, Clone, Debug)]
@@ -197,6 +203,111 @@ struct MatrixArgs {
 }
 
 #[derive(Args, Clone, Debug)]
+struct MgsaArgs {
+    #[command(flatten)]
+    targets: TargetArgs,
+
+    /// Optional gene CURIE/name or symbol table.
+    #[arg(long)]
+    gene_names: Option<PathBuf>,
+
+    /// Query gene set file. Every set in a multi-set file is analyzed
+    /// independently unless --sample-set picks one.
+    #[arg(long)]
+    sample: PathBuf,
+
+    /// Format for --sample.
+    #[arg(long, value_enum, default_value_t = SetFormat::Auto)]
+    sample_format: SetFormat,
+
+    /// Select one set from a multi-set sample file.
+    #[arg(long)]
+    sample_set: Option<String>,
+
+    /// Name to use when --sample is a one-column list.
+    #[arg(long, default_value = "sample")]
+    sample_name: String,
+
+    /// Optional background gene list. Defaults to all genes in target sets.
+    #[arg(long)]
+    background: Option<PathBuf>,
+
+    /// Recorded MCMC samples per modeled term.
+    #[arg(long, default_value_t = 100)]
+    samples_per_term: u32,
+
+    /// Burn-in MCMC samples per modeled term.
+    #[arg(long, default_value_t = 10)]
+    burn_per_term: u32,
+
+    /// Mode of the Beta prior on the probability that a term is active.
+    #[arg(long, default_value_t = 0.5, value_parser = parse_probability)]
+    term_prob: f64,
+
+    /// Pseudocounts of the term prior. 0 gives a uniform prior.
+    #[arg(long, default_value_t = 0.0)]
+    term_count: f64,
+
+    /// Mode of the Beta prior on the false-positive rate.
+    #[arg(long, default_value_t = 0.5, value_parser = parse_probability)]
+    false_pos_prob: f64,
+
+    /// Pseudocounts of the false-positive prior.
+    #[arg(long, default_value_t = 0.0)]
+    false_pos_count: f64,
+
+    /// Mode of the Beta prior on the false-negative rate.
+    #[arg(long, default_value_t = 0.5, value_parser = parse_probability)]
+    false_neg_prob: f64,
+
+    /// Pseudocounts of the false-negative prior.
+    #[arg(long, default_value_t = 0.0)]
+    false_neg_count: f64,
+
+    /// Relative rate of moves that toggle one term.
+    #[arg(long, default_value_t = 1.0)]
+    flip_rate: f64,
+
+    /// Relative rate of moves that swap an active term for a parent, child,
+    /// or sibling. Needs --closure; ignored for flat target sets.
+    #[arg(long, default_value_t = 1.0)]
+    step_rate: f64,
+
+    /// Relative rate of moves that swap an active term for any other term.
+    #[arg(long, default_value_t = 1.0)]
+    jump_rate: f64,
+
+    /// Random seed. Each query derives its own stream from it.
+    #[arg(long, default_value_t = 123_456_789)]
+    seed: u64,
+
+    /// Suppress rows with posterior below this cutoff.
+    #[arg(long, default_value_t = 0.0, value_parser = parse_probability)]
+    min_posterior: f64,
+
+    /// Write output here instead of stdout.
+    #[arg(short, long)]
+    output: Option<PathBuf>,
+
+    /// Output serialization format. Parquet is not supported for MGSA yet.
+    #[arg(long, value_enum, default_value_t = OutputFormat::Tsv)]
+    output_format: OutputFormat,
+
+    /// Include semicolon-separated overlapping gene ids and names.
+    #[arg(long)]
+    overlap_genes: bool,
+
+    /// Optional YAML file with per-query sampler diagnostics and posterior
+    /// rate estimates.
+    #[arg(long)]
+    summary_output: Option<PathBuf>,
+
+    /// Rayon worker threads. Defaults to Rayon auto-detection.
+    #[arg(long)]
+    threads: Option<usize>,
+}
+
+#[derive(Args, Clone, Debug)]
 struct RunArgs {
     /// YAML configuration file. Relative paths inside it resolve from its directory.
     config: PathBuf,
@@ -298,6 +409,15 @@ impl TargetSource {
                     universe.add_genes(&set.genes);
                 }
             }
+        }
+    }
+
+    fn build_graph(&self, sets: &[NamedSet]) -> Option<TermGraph> {
+        match self {
+            Self::Ontology { closure, .. } if !closure.is_empty() => {
+                Some(build_term_graph(sets, closure))
+            }
+            _ => None,
         }
     }
 
@@ -431,6 +551,7 @@ fn main() -> Result<()> {
         Commands::Matrix(args) => run_with_thread_pool(args.threads, || execute_matrix(args)),
         Commands::Run(args) => execute_run(args),
         Commands::Compare(args) => execute_compare(args),
+        Commands::Mgsa(args) => run_with_thread_pool(args.threads, || execute_mgsa(args)),
     }
 }
 
@@ -654,6 +775,138 @@ fn execute_matrix(args: MatrixArgs) -> Result<()> {
             correction: args.correction,
         },
     )
+}
+
+#[derive(Serialize)]
+struct MgsaSummary {
+    query_id: String,
+    query_size: u32,
+    background_size: u32,
+    modeled_terms: usize,
+    samples: u64,
+    burn: u64,
+    acceptance_rate: f64,
+    mean_active_terms: f64,
+    term_rate: f64,
+    false_pos_rate: f64,
+    false_neg_rate: f64,
+}
+
+fn execute_mgsa(args: MgsaArgs) -> Result<()> {
+    if args.output_format == OutputFormat::Parquet {
+        bail!("mgsa supports --output-format tsv or null");
+    }
+    let rates = [args.flip_rate, args.step_rate, args.jump_rate];
+    if rates.iter().any(|rate| *rate < 0.0) || rates.iter().all(|rate| *rate == 0.0) {
+        bail!("move rates must be non-negative and not all zero");
+    }
+    for count in [args.term_count, args.false_pos_count, args.false_neg_count] {
+        if count < 0.0 {
+            bail!("prior pseudocounts must be non-negative");
+        }
+    }
+
+    let target_source = TargetSource::load(&args.targets)?;
+    let query_sets = read_sets(&args.sample, args.sample_format, &args.sample_name)
+        .with_context(|| format!("failed to read sample sets from {}", args.sample.display()))?;
+    let query_sets = filter_raw_sets(query_sets, args.sample_set.as_deref(), "sample")?;
+    if query_sets.is_empty() {
+        bail!("no sample set was loaded");
+    }
+
+    let background_genes = read_optional_gene_list(args.background.as_deref())?;
+    let gene_names = read_optional_name_map(args.gene_names.as_deref())?;
+
+    let mut universe = GeneUniverse::new();
+    target_source.add_genes_to_universe(&mut universe);
+    for query_set in &query_sets {
+        universe.add_genes(&query_set.genes);
+    }
+    if let Some(background_genes) = &background_genes {
+        universe.add_genes(background_genes);
+    }
+    universe.apply_gene_names(&gene_names);
+
+    let target_sets = target_source.build_sets(&universe);
+    ensure_non_empty_targets(&target_sets)?;
+    let graph = target_source.build_graph(&target_sets);
+    let queries = build_flat_sets(&query_sets, &universe);
+    let background = build_background(background_genes.as_deref(), &target_sets, &universe);
+
+    let options = MgsaOptions {
+        term_prior: BetaPrior {
+            mode: args.term_prob,
+            count: args.term_count,
+        },
+        false_pos_prior: BetaPrior {
+            mode: args.false_pos_prob,
+            count: args.false_pos_count,
+        },
+        false_neg_prior: BetaPrior {
+            mode: args.false_neg_prob,
+            count: args.false_neg_count,
+        },
+        samples_per_term: args.samples_per_term,
+        burn_per_term: args.burn_per_term,
+        flip_rate: args.flip_rate,
+        step_rate: args.step_rate,
+        jump_rate: args.jump_rate,
+        seed: args.seed,
+        include_overlap_genes: args.overlap_genes,
+    };
+    let results = mgsa_matrix(
+        &queries,
+        &target_sets,
+        &background,
+        graph.as_ref(),
+        &options,
+    );
+
+    if let Some(path) = &args.summary_output {
+        let summaries: Vec<MgsaSummary> = results
+            .iter()
+            .map(|result| mgsa_summary(result, &queries))
+            .collect();
+        let file = File::create(path)
+            .with_context(|| format!("failed to create summary {}", path.display()))?;
+        serde_yaml::to_writer(file, &summaries)
+            .with_context(|| format!("failed to write summary {}", path.display()))?;
+    }
+    if args.output_format == OutputFormat::Null {
+        return Ok(());
+    }
+    write_output(args.output.as_deref(), |writer| {
+        write_mgsa_rows(
+            writer,
+            &results,
+            &queries,
+            &target_sets,
+            &universe,
+            args.min_posterior,
+            args.overlap_genes,
+        )
+    })
+}
+
+fn mgsa_summary(result: &MgsaResult, queries: &[NamedSet]) -> MgsaSummary {
+    let stats = &result.stats;
+    MgsaSummary {
+        query_id: queries[result.query_index].id.clone(),
+        query_size: result.query_size,
+        background_size: result.background_size,
+        modeled_terms: stats.modeled_terms,
+        samples: stats.samples,
+        burn: stats.burn,
+        acceptance_rate: if stats.samples > 0 {
+            stats.accepted_moves as f64 / stats.samples as f64
+        } else {
+            0.0
+        },
+        mean_active_terms: stats.mean_active_terms,
+        term_rate: stats.term_rate,
+        false_pos_rate: stats.false_pos_rate,
+        false_neg_rate: stats.false_neg_rate,
+    }
 }
 
 fn execute_compare(args: CompareArgs) -> Result<()> {

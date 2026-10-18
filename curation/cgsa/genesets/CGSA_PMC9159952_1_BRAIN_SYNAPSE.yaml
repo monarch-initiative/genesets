@@ -1,0 +1,64 @@
+gene_set_id: CGSA:PMC9159952_1_BRAIN_SYNAPSE
+gene_set_name: CGSA_PMC9159952_1_BRAIN_SYNAPSE
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: NA
+n_genes: 1208
+description: >-
+  DEG module PMC9159952-1 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), a mouse brain (sex-differences) study. genesets-rs enrichment
+  against mouse MGI GOA recovers a coherent postsynaptic / synaptic-organization
+  program — the postsynaptic scaffold and receptor machinery Anks1b, Cbln1/Cbln2,
+  Chrm3, Ctnna2, Add2, the voltage-gated Ca channels Cacna1e/Cacna1h and the
+  adhesion-GPCR Adgrl2 — the excitatory synapse biology expected of a
+  neuronal DEG signature.
+contexts:
+  - term:
+      id: UBERON:0000955
+      label: brain
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0045211
+      label: postsynaptic membrane
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Carried by the postsynaptic receptor/channel machinery present: Cacna1e,
+      Cacna1h, Chrm3, Cbln1, Adgrl2 and Abhd17b are annotated to the
+      postsynaptic membrane — the receptive face of the excitatory synapse.
+  - term:
+      id: GO:0014069
+      label: postsynaptic density
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The postsynaptic scaffold: Anks1b, Add2, Caln1, Chrm3 and Abr are present
+      and annotated to the postsynaptic density, the signaling platform beneath
+      the postsynaptic membrane.
+  - term:
+      id: GO:0050807
+      label: regulation of synapse organization
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The synaptogenic organizers Cbln1/Cbln2 (with App, Ctnna2, Adgrl2) are
+      present and annotated to regulation of synapse organization — the process
+      shaping the synaptic structures above.

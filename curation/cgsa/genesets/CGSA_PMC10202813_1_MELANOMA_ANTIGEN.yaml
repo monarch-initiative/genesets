@@ -1,0 +1,68 @@
+gene_set_id: CGSA:PMC10202813_1_MELANOMA_ANTIGEN
+gene_set_name: CGSA_PMC10202813_1_MELANOMA_ANTIGEN
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+series: SERIES:CGSA_PMC10202813_MODULES
+series_role: antigen_presentation
+n_genes: 491
+description: >-
+  DEG module PMC10202813-1 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), a fifth module of the same human melanoma study as the
+  interferon/pigment/senescence modules in SERIES:CGSA_PMC10202813_MODULES.
+  genesets-rs enrichment against human GOA recovers a very tight, highly specific
+  antigen-presentation program: the set contains a near-complete HLA locus
+  (HLA-A/B/C class I and HLA-DMA/DMB/DOA/DOB/DPA1/DPB1 class II), so the MHC and
+  antigen-processing terms enrich with overlap approaching the full term size.
+  In melanoma this is the tumor's antigen-presentation status — a key axis of
+  immune recognition and checkpoint-therapy response.
+contexts:
+  - term:
+      id: MONDO:0005105
+      label: melanoma
+    context_type: disease
+associations:
+  - term:
+      id: GO:0042611
+      label: MHC protein complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Carried by the HLA class I (HLA-A, HLA-B, HLA-C) and class II
+      (HLA-DMA/DMB/DOA/DOB/DPA1/DPB1) members present — 19 of the 23 genes
+      annotated to the MHC protein complex are in the set, an unusually complete
+      recovery of this cellular component.
+  - term:
+      id: GO:0048002
+      label: antigen processing and presentation of peptide antigen
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The same HLA class I/II genes carry antigen processing and presentation of
+      peptide antigen — the functional process the MHC complex executes.
+  - term:
+      id: GO:0042605
+      label: peptide antigen binding
+    aspect: molecular_function
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The molecular function of the MHC molecules (HLA-A/B/C and the HLA-D class
+      II chains) — binding the peptide antigen for display. Recorded as a
+      core molecular activity of the antigen-presentation module.

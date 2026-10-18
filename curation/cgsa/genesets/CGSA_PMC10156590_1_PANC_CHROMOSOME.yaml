@@ -1,0 +1,63 @@
+gene_set_id: CGSA:PMC10156590_1_PANC_CHROMOSOME
+gene_set_name: CGSA_PMC10156590_1_PANC_CHROMOSOME
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 678
+description: >-
+  DEG module PMC10156590-1 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), a human pancreatic cancer study (Reactome ground truth "Mitotic
+  Prometaphase"; siblings PMC10156590-2 Golgi and -4 Rho-actin). genesets-rs
+  enrichment against human GOA recovers the mitotic chromosome-segregation
+  machinery — the centromere/kinetochore proteins CENPC/CENPE, BUB3, the spindle
+  and centrosome components AURKA, CDK5RAP2, BORA, and the anaphase-promoting
+  complex (ANAPC7/ANAPC16, CDC23/CDC27) — the proliferation program of the tumor.
+contexts:
+  - term:
+      id: MONDO:0009831
+      label: malignant pancreatic neoplasm
+    context_type: disease
+associations:
+  - term:
+      id: GO:0000775
+      label: chromosome, centromeric region
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Carried by the centromere/kinetochore proteins CENPC, CENPE, BUB3, AURKA
+      and AHCTF1 (ELYS) — present and annotated to the centromeric chromosome
+      region where the spindle attaches during mitosis.
+  - term:
+      id: GO:0005819
+      label: spindle
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The mitotic spindle apparatus: AURKA, BORA, CDK5RAP2, ARHGEF7 and the APC/C
+      subunits ANAPC7/CDC27 are present and annotated to the spindle — the
+      chromosome-segregation machine of the proliferating tumor.
+  - term:
+      id: GO:0000793
+      label: condensed chromosome
+    aspect: cellular_component
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The mitotic condensed chromosome (CENPC, BUB3, AURKA, ATRX, AHCTF1
+      present); supporting the centromere/spindle core.

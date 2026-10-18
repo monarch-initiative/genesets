@@ -1,0 +1,64 @@
+gene_set_id: CGSA:PMID30017245_MELANOMA_MITOSIS
+gene_set_name: CGSA_PMID30017245_MELANOMA_MITOSIS
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 629
+description: >-
+  DEG set PMID30017245 from the cGSA benchmark (Wang et al., Bioinformatics 2026,
+  btag214), a human melanoma transcriptional-state study — the same set the
+  authors use in their published results table. The dominant, cleanly supported
+  signal is a mitotic cell-cycle / proliferation program: every canonical mitotic
+  marker is present (CDK1, CCNB1, AURKB, BUB1, PLK1, TOP2A, CENPA, KIF11, CDC20,
+  MKI67, MELK, TTK). The benchmark ground truth for this set also lists
+  melanocyte/pigmentation and interferon terms reflecting the melanoma context;
+  those are secondary arms, and the proliferation program is the defining core.
+contexts:
+  - term:
+      id: MONDO:0005105
+      label: melanoma
+    context_type: disease
+associations:
+  - term:
+      id: GO:0000278
+      label: mitotic cell cycle
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Densely carried: CDK1, CCNB1, BUB1, PLK1, CDC20, MELK, TTK, MKI67 are all
+      present and annotated to the mitotic cell cycle. Uncontrolled proliferation
+      is the expected hallmark of the proliferative melanoma state — confirmatory.
+  - term:
+      id: GO:0140014
+      label: mitotic nuclear division
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      AURKB, BUB1, PLK1, CDC20, KIF11 and CENPA drive mitotic nuclear division /
+      chromosome segregation; all present and annotated.
+  - term:
+      id: GO:0000819
+      label: sister chromatid segregation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      A specific sub-process carried by the spindle-assembly-checkpoint and
+      kinetochore members present (BUB1, CDC20, CENPA, TOP2A). Supporting
+      relative to the broad mitotic-cell-cycle term.

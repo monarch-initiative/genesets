@@ -1,0 +1,51 @@
+gene_set_id: CGSA:PMC10851453_1_ALZHEIMER_SYNAPSE
+gene_set_name: CGSA_PMC10851453_1_ALZHEIMER_SYNAPSE
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 1917
+description: >-
+  DEG module PMC10851453-1 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), a human Alzheimer disease study. genesets-rs enrichment against
+  human GOA recovers a neuronal synapse-organization / neurite-morphogenesis
+  program — the synaptic and axon-guidance genes ARC, ABI3, APBB1/APBB2, ADGRB1,
+  AUTS2, BAIAP2, the contactins CNTN4/CNTNAP1/CNTNAP2 and AKAP5 — the synaptic
+  machinery whose loss is central to Alzheimer pathophysiology.
+contexts:
+  - term:
+      id: MONDO:0004975
+      label: Alzheimer disease
+    context_type: disease
+associations:
+  - term:
+      id: GO:0050808
+      label: synapse organization
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Carried by ARC (activity-regulated synaptic gene), ABI3, APBB2, AKAP5,
+      CACNB2, CDH1 and the contactins — all present and annotated to synapse
+      organization. Synaptic dysfunction/loss is the core neuropathology this
+      module reflects.
+  - term:
+      id: GO:0048812
+      label: neuron projection morphogenesis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The neurite-outgrowth/guidance arm: ADGRB1, ARC, AUTS2, BAIAP2, BRSK2 and
+      the contactins CNTN4/CNTNAP1/CNTNAP2 are present and annotated to neuron
+      projection morphogenesis — the axon/dendrite remodeling that accompanies
+      the synaptic program.

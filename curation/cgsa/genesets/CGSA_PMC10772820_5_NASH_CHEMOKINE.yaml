@@ -1,0 +1,58 @@
+gene_set_id: CGSA:PMC10772820_5_NASH_CHEMOKINE
+gene_set_name: CGSA_PMC10772820_5_NASH_CHEMOKINE
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: NA
+series: SERIES:CGSA_PMC10772820_MODULES
+series_role: chemokine_inflammation
+n_genes: 535
+description: >-
+  DEG module PMC10772820-5 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), mouse NASH liver, KEGG-annotated (top ground truth: "Chemokine
+  signaling pathway", plus infection/phagosome/osteoclast terms that share the
+  same chemokine and myeloid genes). The membership carries a
+  chemokine-driven inflammatory-recruitment program — the CC chemokines Ccl2,
+  Ccl4, Ccl5, the CXC chemokine Cxcl9 and the receptor Ccr2 — the monocyte/
+  macrophage recruitment that drives hepatic inflammation in steatohepatitis.
+contexts:
+  - term:
+      id: MONDO:0007027
+      label: metabolic dysfunction-associated steatohepatitis
+    context_type: disease
+    role_note: the MONDO term for NASH (renamed MASH)
+  - term:
+      id: UBERON:0002107
+      label: liver
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0070098
+      label: chemokine-mediated signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Carried by Ccl2 (MCP-1), Ccl4, Ccl5 (RANTES), Cxcl9 and the receptor Ccr2,
+      all present and annotated to chemokine signaling. This is the coherent
+      biology under the KEGG "Chemokine signaling pathway" ground-truth term;
+      the infection/phagosome ground-truth terms re-list the same myeloid genes.
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The same chemokines (Ccl2/Ccl4/Ccl5/Cxcl9) carry the broader inflammatory
+      response — the leukocyte recruitment underlying NASH lobular inflammation.
+      Supporting relative to the specific chemokine-signaling call.

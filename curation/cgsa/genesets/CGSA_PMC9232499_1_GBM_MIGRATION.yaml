@@ -1,0 +1,69 @@
+gene_set_id: CGSA:PMC9232499_1_GBM_MIGRATION
+gene_set_name: CGSA_PMC9232499_1_GBM_MIGRATION
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: NA
+series: SERIES:CGSA_PMC9232499_MODULES
+series_role: migration_ecm
+n_genes: 43
+description: >-
+  DEG module PMC9232499-1 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), a mouse glioblastoma study, GO-BP annotated. Small (43-gene)
+  and unusually clean: the membership genuinely carries a cell-migration /
+  extracellular-matrix-remodeling program — the matrix metalloproteinases Mmp9
+  and Mmp10, collagen Col1a1, the procollagen processing metalloproteinases
+  Adamts2 and Tll1, the matricellular signal Cyr61/Ccn1, the smooth-muscle actin
+  Acta2, the autotaxin Enpp2, the ephrin receptor Epha4, Amigo2 and the
+  endothelial cadherin Cdh5. This is the pro-invasive/ECM arm of the study
+  contrast; its paired module (PMC9232499-2) carries the stress/defense arm.
+contexts:
+  - term:
+      id: MONDO:0018177
+      label: glioblastoma
+    context_type: disease
+associations:
+  - term:
+      id: GO:0030335
+      label: positive regulation of cell migration
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Carried by Mmp9, Cyr61/Ccn1, Enpp2 (autotaxin/lysophosphatidate),
+      Epha4 and Amigo2 — all present and annotated to promotion of cell
+      migration/motility. Glioblastoma invasiveness is the module's defining
+      theme and the benchmark ground truth leads with this term.
+  - term:
+      id: GO:0030198
+      label: extracellular matrix organization
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Col1a1 (fibrillar collagen), Mmp9/Mmp10 (matrix-degrading), Adamts2 and
+      Tll1 (procollagen processing) and Cyr61 are present and annotated to ECM
+      organization — the remodeling that accompanies invasion.
+  - term:
+      id: GO:0030574
+      label: collagen catabolic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      A specific effector arm of the ECM remodeling: the collagenolytic MMPs
+      Mmp9 and Mmp10 act on the Col1a1 substrate present in the same module.
+      Supporting rather than defining relative to the broad migration/ECM terms.

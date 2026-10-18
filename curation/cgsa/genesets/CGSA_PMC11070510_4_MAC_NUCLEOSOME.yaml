@@ -1,0 +1,61 @@
+gene_set_id: CGSA:PMC11070510_4_MAC_NUCLEOSOME
+gene_set_name: CGSA_PMC11070510_4_MAC_NUCLEOSOME
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: NA
+n_genes: 92
+description: >-
+  DEG module PMC11070510-4 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), a mouse Mycobacterium avium complex infection study. Small and
+  clean: genesets-rs enrichment against mouse MGI GOA recovers a nucleosome /
+  chromatin-structure program built almost entirely from core and linker histone
+  genes (H1f1/H1f3/H1f4/H1f5, the H2ac cluster) plus the centromeric histone
+  variant Cenpa — the histone-gene block that dominates this DEG module.
+contexts:
+  - term:
+      id: MONDO:0005866
+      label: Mycobacterium avium complex disease
+    context_type: infection
+associations:
+  - term:
+      id: GO:0000786
+      label: nucleosome
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Carried by the linker histones H1f1/H1f3/H1f4/H1f5, the H2ac core-histone
+      cluster and the centromeric variant Cenpa — all present and annotated to
+      the nucleosome, the fundamental histone–DNA packaging unit.
+  - term:
+      id: GO:0030527
+      label: structural constituent of chromatin
+    aspect: molecular_function
+    category: core_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The same histone members carry the structural-constituent-of-chromatin
+      molecular function — the architectural role histones play in packaging DNA.
+  - term:
+      id: GO:0032993
+      label: protein-DNA complex
+    aspect: cellular_component
+    category: supporting_process
+    confidence: medium
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The broader protein–DNA complex umbrella over the nucleosome (same histone
+      carriers plus Birc5); supporting relative to the specific nucleosome call.

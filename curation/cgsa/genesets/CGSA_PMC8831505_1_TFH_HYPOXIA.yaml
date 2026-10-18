@@ -1,0 +1,70 @@
+gene_set_id: CGSA:PMC8831505_1_TFH_HYPOXIA
+gene_set_name: CGSA_PMC8831505_1_TFH_HYPOXIA
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: NA
+n_genes: 289
+description: >-
+  DEG module PMC8831505-1 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), a mouse study of hypoxia-driven regulation of T follicular
+  helper (Tfh) cells, annotated against MSigDB Hallmark. The membership carries a
+  coherent hypoxia / glycolytic-metabolism program — the glucose transporter
+  Slc2a1/Glut1 and the glycolytic enzymes Ldha, Pgk1, Hk2, Aldoa, Eno1, Pfkl,
+  plus the hypoxia effectors Pdk1 and Bnip3. This is the immunometabolic
+  signature by which hypoxia reprograms Tfh differentiation.
+contexts:
+  - term:
+      id: CL:0002038
+      label: T follicular helper cell
+    context_type: cell_type
+  - term:
+      id: GO:0001666
+      label: response to hypoxia
+    context_type: experimental_condition
+    role_note: hypoxic condition driving the differential expression
+associations:
+  - term:
+      id: GO:0001666
+      label: response to hypoxia
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Carried by the HIF-target effectors present — Slc2a1/Glut1, Ldha, Pdk1,
+      Bnip3, Hk2 — the canonical transcriptional response to low oxygen. The
+      module is defined by the hypoxic condition, so this is core and confirmatory.
+  - term:
+      id: GO:0006096
+      label: glycolytic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      A dense glycolytic-enzyme block is present: Hk2, Pfkl, Aldoa, Pgk1, Eno1,
+      Ldha, plus the pyruvate-dehydrogenase brake Pdk1 that diverts pyruvate from
+      oxidative metabolism. This is the metabolic effector arm of the hypoxic
+      program.
+  - term:
+      id: GO:0061621
+      label: canonical glycolysis
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The specific ATP-yielding glucose->pyruvate pathway carried by the same
+      enzymes (Hk2, Pfkl, Aldoa, Pgk1, Eno1, Ldha); supporting sub-term of the
+      broader glycolytic-process call.

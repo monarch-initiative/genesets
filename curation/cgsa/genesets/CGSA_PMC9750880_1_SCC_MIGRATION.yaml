@@ -1,0 +1,86 @@
+gene_set_id: CGSA:PMC9750880_1_SCC_MIGRATION
+gene_set_name: CGSA_PMC9750880_1_SCC_MIGRATION
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: NA
+n_genes: 730
+description: >-
+  DEG module PMC9750880-1 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), a mouse squamous cell carcinoma study. Curated
+  semi-automatically: genesets-rs enrichment against mouse MGI GOA surfaced a
+  coherent actin-cytoskeleton / cell-migration / focal-adhesion program with an
+  angiogenesis arm — matching the benchmark's own ground truth (Angiogenesis,
+  Cell migration). Carriers include the Rho/actin regulators Abl2, Arhgef2,
+  Arpc1b and Bcar1, the adhesion components Fermt2 and Fblim1, and the
+  angiogenic genes Col4a1, Ackr3 and Ephb1 — the invasive/vascular program of
+  carcinoma progression.
+contexts:
+  - term:
+      id: MONDO:0005096
+      label: squamous cell carcinoma
+    context_type: disease
+  - term:
+      id: UBERON:0002097
+      label: skin of body
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0030334
+      label: regulation of cell migration
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Densely carried (ov=79): the Rho/motility regulators Abl2, Arhgef2, Bcar1,
+      Acta2 and Akt1/Akt3 are present and annotated to regulation of cell
+      migration — the invasive phenotype the benchmark ground truth names.
+  - term:
+      id: GO:0030036
+      label: actin cytoskeleton organization
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The cytoskeletal machinery driving migration: Arpc1b (Arp2/3 complex),
+      Abl2, Arhgef2, Cnn2/Cnn3, Dbn1 and Bcar1 carry actin-cytoskeleton
+      organization — the effector arm of the motility program.
+  - term:
+      id: GO:0005925
+      label: focal adhesion
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The cell-substrate adhesion structures coupling actin to migration:
+      Bcar1/p130Cas, Fermt2 (kindlin-2), Fblim1, Afap1 and Flnb are present and
+      annotated to the focal adhesion — the cellular component of the invasive
+      program.
+  - term:
+      id: GO:0001525
+      label: angiogenesis
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The benchmark's top ground-truth term for this set: the angiogenic genes
+      Col4a1, Ackr3, Ephb1, Ccl2, Clic4 and Elk3 are present and annotated to
+      angiogenesis — tumor vascularization accompanying SCC invasion. Supporting
+      relative to the dominant migration/cytoskeleton core.

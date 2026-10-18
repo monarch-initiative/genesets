@@ -1,0 +1,87 @@
+gene_set_id: CGSA:PMC10202813_2_SENESCENCE
+gene_set_name: CGSA_PMC10202813_2_SENESCENCE
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+series: SERIES:CGSA_PMC10202813_MODULES
+series_role: senescence_and_immune
+n_genes: 62
+description: >-
+  DEG module PMC10202813-2 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), human melanoma, GO-BP annotated (benchmark ground truth leads
+  with cellular senescence and T-cell activation). Grounded in the 62-gene
+  membership, the module carries two coherent signals plus the study's melanoma
+  drivers: (1) a senescence/cell-aging arm anchored by CDKN2A (p16INK4A) and
+  TP53; (2) an adaptive-immune arm (PTPRC/CD45, TIGIT, SELL/CD62L, LY9, B2M,
+  IL1RL1); and the canonical melanoma driver genes BRAF, NRAS, TP53 and CDKN2A
+  themselves, which co-occur here as differentially expressed transcripts rather
+  than as a mutation panel. Apoptotic regulators (TP53, BCL2L11/BIM, BFAR) form
+  a supporting arm. Included to represent a mixed disease-context module in the
+  curation demonstration.
+contexts:
+  - term:
+      id: MONDO:0005105
+      label: melanoma
+    context_type: disease
+associations:
+  - term:
+      id: GO:0090398
+      label: cellular senescence
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Anchored by CDKN2A (p16INK4A) and TP53, both present and directly annotated
+      to cellular senescence. In melanoma the CDKN2A/p16-RB and TP53 axes are the
+      central senescence brakes, so this is the module's defining process.
+  - term:
+      id: GO:0090399
+      label: replicative senescence
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      A specific sub-form of the senescence signal (CDKN2A, TP53 carriers);
+      supporting rather than defining relative to the general cellular
+      senescence term.
+  - term:
+      id: GO:0042110
+      label: T cell activation
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The second coherent arm of the module: PTPRC/CD45, TIGIT (T-cell
+      inhibitory receptor), SELL/CD62L (lymphocyte homing), LY9 and B2M are
+      present and annotated to T-cell activation/immune function, reflecting
+      immune infiltrate captured in the melanoma DEG contrast. Core to this
+      module (a listed ground-truth theme) alongside senescence.
+  - term:
+      id: GO:0042981
+      label: regulation of apoptotic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      TP53, BCL2L11 (BIM) and BFAR are present and annotated to apoptotic
+      regulation. A generic downstream hallmark that accompanies the senescence/
+      stress program rather than defining the module — hence supporting and
+      confirmatory.

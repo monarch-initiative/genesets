@@ -1,0 +1,79 @@
+gene_set_id: CGSA:PMC10202813_6_PIGMENT
+gene_set_name: CGSA_PMC10202813_6_PIGMENT
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+series: SERIES:CGSA_PMC10202813_MODULES
+series_role: pigmentation_and_proliferation
+n_genes: 50
+description: >-
+  DEG module PMC10202813-6 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), a human melanoma study, GO-BP annotated. The benchmark ground
+  truth leads with pigment/melanin biosynthesis, and the module is indeed the
+  melanoma-relevant pigment cluster — but grounding in the actual 50-gene
+  membership shows the pigment signal is THIN (chiefly OCA2, with ATOX1 as a
+  copper-chaperone supporter of tyrosinase-family enzymes) and is co-mixed with
+  a distinct proliferation signal (the mitotic genes CDC45, AURKB, PBK, plus
+  TERT) and a large melanoma-derived tail of ion-channel (GABRP, GABRB2,
+  CACNA1S) and sensory (OTOG, OTOGL, OTOF) genes. This set is included precisely
+  because it exercises the membership-grounding discipline: the paper's top
+  ground-truth term (melanin biosynthesis) is real but carried by very few set
+  members, illustrating the noisy-cluster behaviour cGSA's community detection
+  is designed to mitigate.
+contexts:
+  - term:
+      id: MONDO:0005105
+      label: melanoma
+    context_type: disease
+associations:
+  - term:
+      id: GO:0042438
+      label: melanin biosynthetic process
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Melanin biosynthesis is the melanoma-relevant identity term for this
+      module, but it is THIN in the membership: OCA2 is the principal annotated
+      carrier (a melanosomal solute transporter required for melanin synthesis),
+      with ATOX1 supporting copper delivery to the tyrosinase family. It is
+      biologically core (hence core_process) yet driven by ~1-2 set members, so
+      confidence is medium rather than high. annotation_supported because OCA2
+      is in the set and annotated.
+  - term:
+      id: GO:0042470
+      label: melanosome
+    aspect: cellular_component
+    category: core_component
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The melanosome is the defining organelle of the pigment program; OCA2 is a
+      melanosomal membrane protein present in the set. Like melanin biosynthesis
+      it is core to the module's melanoma identity but carried by few members.
+  - term:
+      id: GO:0000278
+      label: mitotic cell cycle
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      A SECOND, distinct signal co-mixed into this DEG cluster: CDC45 (replisome
+      loading), AURKB (mitotic kinase), PBK/TOPK (mitotic), and TERT. Uncontrolled
+      proliferation is an expected melanoma hallmark, so this is confirmatory and
+      supporting rather than the module's defining identity. Its presence
+      alongside the pigment term is the concrete illustration of within-cluster
+      heterogeneity noted in the description.

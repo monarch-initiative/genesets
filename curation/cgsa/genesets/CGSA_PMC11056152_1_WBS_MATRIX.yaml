@@ -1,0 +1,70 @@
+gene_set_id: CGSA:PMC11056152_1_WBS_MATRIX
+gene_set_name: CGSA_PMC11056152_1_WBS_MATRIX
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 914
+description: >-
+  DEG module PMC11056152-1 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), a human Williams-Beuren syndrome study. genesets-rs enrichment
+  against human GOA recovers an extracellular-matrix / basement-membrane program
+  that includes ELN (elastin) — the 7q11.23 gene whose loss drives the WBS
+  elastin arteriopathy and connective-tissue phenotype — alongside COL4A3,
+  COL9A3, ACAN, the ADAMTS proteases (ADAMTS5/7/18), CCN4, COCH and DMP1. This is
+  the disease-relevant signal (matched by the -3 module's "NABA matrisome"
+  ground truth). The membership also enriches olfactory-receptor genes, but that
+  is a gene-family artifact of a large DEG list, not WBS biology (recorded as
+  nonspecific below).
+contexts:
+  - term:
+      id: MONDO:0008678
+      label: Williams syndrome
+    context_type: disease
+associations:
+  - term:
+      id: GO:0005604
+      label: basement membrane
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Carried by ELN (elastin — the WBS gene), COL4A3, COL9A3, ACAN, DMP1 and
+      COCH, present and annotated to the basement membrane. Elastin/basement-
+      membrane matrix is the connective-tissue biology central to Williams-Beuren
+      arteriopathy.
+  - term:
+      id: GO:0031012
+      label: extracellular matrix
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The broader ECM compartment (ELN, ACAN, the ADAMTS5/7/18 matrix proteases,
+      CCN4, COCH) — the matrisome signal that matches the paired module's
+      ground truth.
+  - term:
+      id: GO:0007608
+      label: sensory perception of smell
+    aspect: biological_process
+    category: nonspecific
+    confidence: low
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      A block of olfactory-receptor genes (OR10D3, OR10S1, OR13C2/C5/C9, OR1B1,
+      OR2C1 …) enriches strongly, but the olfactory-receptor family is large and
+      frequently over-represented in big DEG lists; there is no WBS-specific
+      olfactory phenotype implied here. Recorded as nonspecific — a gene-family
+      artifact, not disease biology.

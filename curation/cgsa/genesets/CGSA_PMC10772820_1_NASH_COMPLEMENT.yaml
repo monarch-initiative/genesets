@@ -1,0 +1,72 @@
+gene_set_id: CGSA:PMC10772820_1_NASH_COMPLEMENT
+gene_set_name: CGSA_PMC10772820_1_NASH_COMPLEMENT
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: NA
+series: SERIES:CGSA_PMC10772820_MODULES
+series_role: complement_coagulation
+n_genes: 838
+description: >-
+  DEG module PMC10772820-1 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), a mouse non-alcoholic steatohepatitis (NASH) liver study,
+  KEGG-annotated (top ground truth: "Complement and coagulation cascades"). The
+  membership carries a coherent hepatic complement + coagulation program — the
+  complement components C3 and Cfb and the coagulation/fibrinolysis factors F2
+  (prothrombin), Serpinc1 (antithrombin), the fibrinogen chains Fga/Fgb/Fgg and
+  Plg (plasminogen) — reflecting the liver's role as the source of plasma
+  complement and clotting factors and their dysregulation in steatohepatitis.
+contexts:
+  - term:
+      id: MONDO:0007027
+      label: metabolic dysfunction-associated steatohepatitis
+    context_type: disease
+    role_note: the MONDO term for NASH (renamed MASH)
+  - term:
+      id: UBERON:0002107
+      label: liver
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0006956
+      label: complement activation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Carried by C3 (central complement component) and Cfb (complement factor B,
+      alternative pathway), both present and annotated to complement activation.
+      The liver is the principal source of circulating complement.
+  - term:
+      id: GO:0007596
+      label: blood coagulation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The coagulation/fibrinolysis arm of the KEGG "complement and coagulation
+      cascades" term: F2 (prothrombin), Serpinc1 (antithrombin III), the
+      fibrinogen chains Fga/Fgb/Fgg and Plg (plasminogen) are present and
+      annotated to blood coagulation — hepatic clotting-factor synthesis.
+  - term:
+      id: GO:0006959
+      label: humoral immune response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The complement components (C3, Cfb) also carry the broader humoral immune
+      response; supporting relative to the specific complement-activation call.

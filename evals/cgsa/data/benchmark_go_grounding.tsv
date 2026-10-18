@@ -1,0 +1,226 @@
+set_id	pathway_name	go_id	go_label	match
+PMC9810534-3	Regulation Of Cell Activation	GO:0050865	regulation of cell activation	exact
+PMC9810534-3	Regulation Of Leukocyte Activation	GO:0002694	regulation of leukocyte activation	exact
+PMC9810534-3	Response To Bacterium	GO:0009617	response to bacterium	exact
+PMC9810534-3	Taxis	GO:0042330	taxis	exact
+PMC9810534-3	Chemotaxis			unmapped
+PMC9810534-3	Leukocyte Migration	GO:0050900	leukocyte migration	exact
+PMC9810534-3	Positive Regulation Of Cytokine Production	GO:0001819	positive regulation of cytokine production	exact
+PMC9810534-3	Cell Chemotaxis			unmapped
+PMC9810534-3	Regulation Of Inflammatory Response	GO:0050727	regulation of inflammatory response	exact
+PMC9810534-3	Response To Molecule Of Bacterial Origin	GO:0002237	response to molecule of bacterial origin	exact
+PMC9810534-3	"""Positive Regulation Of Response To External Stimulus"""	GO:0032103	positive regulation of response to external stimulus	exact
+PMC9810534-3	Myeloid Leukocyte Migration	GO:0097529	myeloid leukocyte migration	exact
+PMC9810534-3	Leukocyte Chemotaxis	GO:0030595	leukocyte chemotaxis	exact
+PMC9810534-3	Myeloid Leukocyte Activation	GO:0002274	myeloid leukocyte activation	exact
+PMC9810534-3	Granulocyte Migration	GO:0097530	granulocyte migration	exact
+PMC9810534-3	"""Tumor Necrosis Factor Superfamily Cytokine Production"""	GO:0071706	tumor necrosis factor superfamily cytokine production	exact
+PMC9810534-3	"""Regulation Of Tumor Necrosis Factor Superfamily Cytokine Production"""	GO:1903555	regulation of tumor necrosis factor superfamily cytokine production	exact
+PMC9810534-3	Interleukin-6 Production	GO:0032635	interleukin-6 production	exact
+PMC9810534-3	Neutrophil Migration	GO:1990266	neutrophil migration	exact
+PMC9810534-3	Granulocyte Chemotaxis	GO:0071621	granulocyte chemotaxis	exact
+PMC9750880-1	Angiogenesis			unmapped
+PMC9750880-1	Cell migration			unmapped
+PMC9750880-1	Wound healing			unmapped
+PMC9750880-1	Protein phoshorylation			unmapped
+PMC9750880-1	Intracellular signaling transduction			unmapped
+PMC9750880-1	Negative regulation of cell proliferation			unmapped
+PMC9750880-1	Actin cytoskeleton organization	GO:0030036	actin cytoskeleton organization	exact
+PMC9750880-1	Cell-cell adhension			unmapped
+PMC9750880-1	Phosphorylation			unmapped
+PMC9750880-1	Dendritic spine development	GO:0060996	dendritic spine development	exact
+PMC9232499-2	response to stress	GO:0006950	response to stress	exact
+PMC9232499-2	positive regulation of multicellular organismal process	GO:0051240	positive regulation of multicellular organismal process	exact
+PMC9232499-2	response to extremal stimulus			unmapped
+PMC9232499-2	defense response	GO:0006952	defense response	exact
+PMC9232499-1	positive regulation of cell migration	GO:0030335	positive regulation of cell migration	exact
+PMC9232499-1	positive regulation of cell motility	GO:2000147	positive regulation of cell motility	exact
+PMC9232499-1	positive regulation of locomotion	GO:0040017	positive regulation of locomotion	exact
+PMC9232499-1	positive regulation of cellular component movement			unmapped
+PMC9232499-1	regulation of cell migration	GO:0030334	regulation of cell migration	exact
+PMC9232499-1	regulation of cell motility	GO:2000145	regulation of cell motility	exact
+PMC9232499-1	regulation of locomotion	GO:0040012	regulation of locomotion	exact
+PMC9232499-1	regulation of cellular component movement			unmapped
+PMC9232499-1	collagen metabolic process	GO:0032963	collagen metabolic process	exact
+PMC9232499-1	cell migration	GO:0016477	cell migration	exact
+PMC9232499-1	locomotion	GO:0040011	locomotion	exact
+PMC9232499-1	cell motility	GO:0048870	cell motility	exact
+PMC9232499-1	localization of cell	GO:0051674	localization of cell	exact
+PMC9232499-1	extracellular matrix organization	GO:0030198	extracellular matrix organization	exact
+PMC9232499-1	extracellular structure organization	GO:0043062	extracellular structure organization	exact
+PMC9159952-5	Regulation of membrane potential	GO:0042391	regulation of membrane potential	exact
+PMC9159952-5	Synapse organization	GO:0050808	synapse organization	exact
+PMC9159952-5	Regulation of synapse structure or activity	GO:0050803	regulation of synapse structure or activity	exact
+PMC9159952-5	Regulation of ion transmembrane transport			unmapped
+PMC9159952-5	Regulation of synapse organiztion			unmapped
+PMC9159952-5	Axon development	GO:0061564	axon development	exact
+PMC9159952-4	Peptidyl-lysine trimethylation	GO:0018023	peptidyl-lysine trimethylation	exact
+PMC9159952-4	Methylation			unmapped
+PMC9159952-4	Ovulation cycle process	GO:0022602	ovulation cycle process	exact
+PMC9159952-4	Positive regulation of inflammatory response	GO:0050729	positive regulation of inflammatory response	exact
+PMC9159952-4	Lipid storage	GO:0019915	lipid storage	exact
+PMC9159952-1	Synapse organization	GO:0050808	synapse organization	exact
+PMC9159952-1	Regulation of synapse structure or activity	GO:0050803	regulation of synapse structure or activity	exact
+PMC9159952-1	Startle response	GO:0001964	startle response	exact
+PMC9159952-1	Synaptic vesicle cycle	GO:0099504	synaptic vesicle cycle	exact
+PMC9159952-1	Regulation of ion transmembrane transport			unmapped
+PMC10202813-8	regulation of postsynaptic membrane potential	GO:0060078	regulation of postsynaptic membrane potential	exact
+PMC10202813-8	central nervous system neuron differentiation	GO:0021953	central nervous system neuron differentiation	exact
+PMC10202813-8	glutamate receptor signaling pathway	GO:0007215	glutamate receptor signaling pathway	exact
+PMC10202813-8	modulation of chemical synaptic transmission	GO:0050804	modulation of chemical synaptic transmission	exact
+PMC10202813-8	regulation of trans-synaptic signaling	GO:0099177	regulation of trans-synaptic signaling	exact
+PMC10202813-8	RNA splicing	GO:0008380	RNA splicing	exact
+PMC10202813-8	regulation of chromosome organization	GO:0033044	regulation of chromosome organization	exact
+PMC10202813-8	mitotic nuclear division	GO:0140014	mitotic nuclear division	exact
+PMC10202813-8	proteasomal protein catabolic process	GO:0010498	proteasomal protein catabolic process	exact
+PMC10202813-8	cell cycle checkpoint			unmapped
+PMC10202813-7	keratinization	GO:0031424	keratinization	exact
+PMC10202813-7	keratinocyte differentiation	GO:0030216	keratinocyte differentiation	exact
+PMC10202813-7	epidermal cell differentiation	GO:0009913	epidermal cell differentiation	exact
+PMC10202813-7	epidermis development	GO:0008544	epidermis development	exact
+PMC10202813-7	cornification	GO:0070268	cornification	exact
+PMC10202813-7	histone modification	SO:0001700	histone_modification	exact
+PMC10202813-7	mRNA catabolic process	GO:0006402	mRNA catabolic process	exact
+PMC10202813-7	Golgi vesicle transport	GO:0048193	Golgi vesicle transport	exact
+PMC10202813-7	proteasomal protein catabolic process	GO:0010498	proteasomal protein catabolic process	exact
+PMC10202813-7	protein polyubiquitination	GO:0000209	protein polyubiquitination	exact
+PMC10202813-6	pigment biosynthetic process	GO:0046148	pigment biosynthetic process	exact
+PMC10202813-6	melanin biosynthetic process	GO:0042438	melanin biosynthetic process	exact
+PMC10202813-6	melanin metabolic process	GO:0006582	melanin metabolic process	exact
+PMC10202813-6	secondary metabolic process	GO:0019748	secondary metabolic process	exact
+PMC10202813-6	pigment metabolic process	GO:0042440	pigment metabolic process	exact
+PMC10202813-6	regulation of ion transmembrane transport			unmapped
+PMC10202813-6	regulation of membrane potential	GO:0042391	regulation of membrane potential	exact
+PMC10202813-6	synapse assembly	GO:0007416	synapse assembly	exact
+PMC10202813-6	glutamate receptor signaling pathway	GO:0007215	glutamate receptor signaling pathway	exact
+PMC10202813-6	muscle contraction	GO:0006936	muscle contraction	exact
+PMC10202813-5	regulation of membrane potential	GO:0042391	regulation of membrane potential	exact
+PMC10202813-5	chloride transmembrane transport	GO:1902476	chloride transmembrane transport	exact
+PMC10202813-5	gamma-aminobutyric acid signaling pathway	GO:0007214	gamma-aminobutyric acid signaling pathway	exact
+PMC10202813-5	regulation of postsynaptic membrane potential	GO:0060078	regulation of postsynaptic membrane potential	exact
+PMC10202813-5	inorganic anion transport	GO:0015698	inorganic anion transport	exact
+PMC10202813-5	organic acid catabolic process			unmapped
+PMC10202813-5	fatty acid metabolic process	GO:0006631	fatty acid metabolic process	exact
+PMC10202813-5	positive regulation of NF-kappaB transcription factor activity			unmapped
+PMC10202813-5	response to type I interferon	GO:0034340	response to type I interferon	exact
+PMC10202813-5	interferon-gamma-mediated signaling pathway			unmapped
+PMC10202813-4	response to hydrogen peroxide	GO:0042542	response to hydrogen peroxide	exact
+PMC10202813-4	response to reactive oxygen species	GO:0000302	response to reactive oxygen species	exact
+PMC10202813-4	response to antibiotic	GO:0046677	response to antibiotic	exact
+PMC10202813-4	cell-substrate adhesion	GO:0031589	cell-substrate adhesion	exact
+PMC10202813-4	Rho protein signal transduction	GO:0007266	Rho protein signal transduction	exact
+PMC10202813-4	modulation of chemical synaptic transmission	GO:0050804	modulation of chemical synaptic transmission	exact
+PMC10202813-4	regulation of trans-synaptic signaling	GO:0099177	regulation of trans-synaptic signaling	exact
+PMC10202813-4	regulation of membrane potential	GO:0042391	regulation of membrane potential	exact
+PMC10202813-4	glutamate receptor signaling pathway	GO:0007215	glutamate receptor signaling pathway	exact
+PMC10202813-4	regulation of ion transmembrane transport			unmapped
+PMC10202813-3	response to interferon-gamma			unmapped
+PMC10202813-3	cellular response to interferon-gamma			unmapped
+PMC10202813-3	interferon-gamma-mediated signaling pathway			unmapped
+PMC10202813-3	response to type I interferon	GO:0034340	response to type I interferon	exact
+PMC10202813-3	type I interferon signaling pathway			unmapped
+PMC10202813-3	nuclear division	GO:0000280	nuclear division	exact
+PMC10202813-3	muscle contraction	GO:0006936	muscle contraction	exact
+PMC10202813-3	extracellular matrix organization	GO:0030198	extracellular matrix organization	exact
+PMC10202813-3	cell fate commitment	GO:0045165	cell fate commitment	exact
+PMC10202813-3	extracellular structure organization	GO:0043062	extracellular structure organization	exact
+PMC10202813-2	positive regulation of cell aging			unmapped
+PMC10202813-2	negative regulation of adaptive immune response	GO:0002820	negative regulation of adaptive immune response	exact
+PMC10202813-2	DNA geometric change	GO:0032392	DNA geometric change	exact
+PMC10202813-2	regulation of cellular senescence	GO:2000772	regulation of cellular senescence	exact
+PMC10202813-2	T cell activation	GO:0042110	T cell activation	exact
+PMC10202813-2	ER overload response	GO:0006983	ER overload response	exact
+PMC10202813-2	replicative senescence	GO:0090399	replicative senescence	exact
+PMC10202813-2	neutrophil activation involved in immune response	GO:0002283	neutrophil activation involved in immune response	exact
+PMC10202813-2	regulation of cell aging			unmapped
+PMC10202813-2	regulation of antigen receptor-mediated signaling pathway	GO:0050854	regulation of antigen receptor-mediated signaling pathway	exact
+PMC10202813-2	positive regulation of cell killing	GO:0031343	positive regulation of cell killing	exact
+PMC10202813-2	negative regulation of kinase activity	GO:0033673	negative regulation of kinase activity	exact
+PMC10202813-2	regulation of T cell mediated immunity	GO:0002709	regulation of T cell mediated immunity	exact
+PMC10202813-2	T cell differentiation in thymus	GO:0033077	T cell differentiation in thymus	exact
+PMC10202813-2	negative regulation of T cell mediated immunity	GO:0002710	negative regulation of T cell mediated immunity	exact
+PMC10202813-2	regulation of adaptive immune response	GO:0002819	regulation of adaptive immune response	exact
+PMC10202813-2	positive regulation of cellular senescence	GO:2000774	positive regulation of cellular senescence	exact
+PMC10202813-2	cellular senescence	GO:0090398	cellular senescence	exact
+PMC10202813-2	nucleotide-excision repair, DNA damage recognition	GO:0000715	nucleotide-excision repair, DNA damage recognition	exact
+PMC10202813-2	negative regulation of cytokine production	GO:0001818	negative regulation of cytokine production	exact
+PMC11378909-1	Cytoskeleton organization	GO:0007010	cytoskeleton organization	exact
+PMC11378909-1	Cell projection organization	GO:0030030	cell projection organization	exact
+PMC11378909-1	Plasma membrane bounded cell projection organization	GO:0120036	plasma membrane bounded cell projection organization	exact
+PMC11378909-1	Cell morphogenesis	GO:0000902	cell morphogenesis	exact
+PMC11378909-1	Embryo development	GO:0009790	embryo development	exact
+PMC11378909-1	Positive regulation of transcription, DNA-templated			unmapped
+PMC11378909-1	Positive regulation of transcription by RNA polymerase II	GO:0045944	positive regulation of transcription by RNA polymerase II	exact
+PMC11378909-1	Positive regulation of RNA metabolic process	GO:0051254	positive regulation of RNA metabolic process	exact
+PMC11378909-1	Positive regulation of RNA biosynthetic process	GO:1902680	positive regulation of RNA biosynthetic process	exact
+PMC11378909-1	Positive regulation of nucleic acid-templated transcription			unmapped
+PMC11378909-2	cell cycle	GO:0007049	cell cycle	exact
+PMC11378909-2	DNA metabolic process	GO:0006259	DNA metabolic process	exact
+PMC11378909-2	cell cycle process	GO:0022402	cell cycle process	exact
+PMC11378909-2	DNA repair	GO:0006281	DNA repair	exact
+PMC11378909-2	cellular response to DNA damage stimulus			unmapped
+PMC11378909-2	organelle assembly	GO:0070925	organelle assembly	exact
+PMC11378909-2	chromosome organization	GO:0051276	chromosome organization	exact
+PMC11378909-2	double-strand break repair	GO:0006302	double-strand break repair	exact
+PMC11378909-2	regulation of cell cycle process	GO:0010564	regulation of cell cycle process	exact
+PMC11378909-2	mitotic cell cycle process	GO:1903047	mitotic cell cycle process	exact
+PMC11434218-1	Cytokine-cytokine receptor interaction			unmapped
+PMC11434218-1	PI3K-Akt signaling pathway			unmapped
+PMC11434218-1	MAPK signaling pathway			unmapped
+PMC11434218-1	AGE-RAGE signaling pathway in diabetic complications			unmapped
+PMC11434218-1	Pathways in cancer			unmapped
+PMC11434218-1	ErbB signaling pathway	GO:0038127	ERBB signaling pathway	exact
+PMC11434218-1	Inflammatory mediator regulation of TRP channels			unmapped
+PMC11434218-1	Calcium signaling pathway			unmapped
+PMC11434218-1	ECM-receptor interaction			unmapped
+PMC11434218-1	Axon guidance			unmapped
+PMC11434218-1	Amoebiasis			unmapped
+PMC11434218-1	Rheumatoid arthritis			unmapped
+PMC11434218-1	Lipid and atherosclerosis			unmapped
+PMC11434218-1	TNF signaling pathway			unmapped
+PMC11434218-1	Proteoglycans in cancer			unmapped
+PMC11434218-1	Focal adhesion	GO:0005925	focal adhesion	exact
+PMC11434218-1	Ras signaling pathway			unmapped
+PMC11434218-1	Fluid shear stress and atherosclerosis			unmapped
+PMC11434218-1	Chagas disease			unmapped
+PMC11434218-1	Cell adhesion molecules			unmapped
+PMC11434218-2	Cytokine-cytokine receptor interaction			unmapped
+PMC11434218-2	Amoebiasis			unmapped
+PMC11434218-2	PI3K-Akt signaling pathway			unmapped
+PMC11434218-2	Viral protein interaction with cytokine and cytokine receptor			unmapped
+PMC11434218-2	Arachidonic acid metabolism			unmapped
+PMC11434218-2	Complment and coagulation cascades			unmapped
+PMC11434218-2	Histidine metabolism			unmapped
+PMC11434218-2	cAMP signaling pathway			unmapped
+PMC11434218-2	Malaria			unmapped
+PMC11434218-2	AGE-RAGE signaling pathway in diabetic complications			unmapped
+PMC11434218-2	Pertussis			unmapped
+PMC11434218-2	Rheumatoid arthritis			unmapped
+PMC11434218-2	Estrogen signaling pathway			unmapped
+PMC11434218-2	Phospholipase D signaling pathway			unmapped
+PMC11434218-2	Steroid biosynthesis			unmapped
+PMC11434218-2	Fluid shear stress and atherosclerosis			unmapped
+PMC11434218-2	Amphotamine addiction			unmapped
+PMC11434218-2	Calcium signaling pathway			unmapped
+PMC11434218-2	ECM-receptor interaction			unmapped
+PMC11434218-2	Axon guidance			unmapped
+PMC10851453-1	negative regulation of amyloid-beta formation	GO:1902430	negative regulation of amyloid-beta formation	exact
+PMC10851453-1	regulation of amyloid-beta formation	GO:1902003	regulation of amyloid-beta formation	exact
+PMC10851453-1	positive regulation of cGMP biosynthetic process			unmapped
+PMC10851453-1	neuron projection fasciculation	GO:0106030	neuron projection fasciculation	exact
+PMC10851453-1	negative regulation of amyloid precursor protein catabolic process	GO:1902992	negative regulation of amyloid precursor protein catabolic process	exact
+PMC10851453-1	axonal fasciculation	GO:0007413	axonal fasciculation	exact
+PMC10851453-1	neuron cell-cell adhesion	GO:0007158	neuron cell-cell adhesion	exact
+PMC10851453-1	glial cell development	GO:0021782	glial cell development	exact
+PMC10851453-1	chondroitin sulfate biosynthetic process			unmapped
+PMC10851453-1	modulation of excitatory postsynaptic potential	GO:0098815	modulation of excitatory postsynaptic potential	exact
+PMC10851453-2	neuron cell-cell adhesion	GO:0007158	neuron cell-cell adhesion	exact
+PMC10851453-2	positive regulation of glutamate receptor signaling pathway	GO:1900451	positive regulation of glutamate receptor signaling pathway	exact
+PMC10851453-2	postsynaptic membrane organization	GO:0001941	postsynaptic membrane organization	exact
+PMC10851453-2	mammary gland epithelial cell differentiation	GO:0060644	mammary gland epithelial cell differentiation	exact
+PMC10851453-2	regulation of cellular localization	GO:0060341	regulation of cellular localization	exact
+PMC10851453-2	positive regulation of kinase activity	GO:0033674	positive regulation of kinase activity	exact
+PMC10851453-2	positive regulation of endothelial cell migration	GO:0010595	positive regulation of endothelial cell migration	exact
+PMC10851453-2	postsynaptic membrane assembly	GO:0097104	postsynaptic membrane assembly	exact
+PMC10851453-2	negative regulation of cell communication	GO:0010648	negative regulation of cell communication	exact
+PMC10851453-2	regulation of AMPA receptor activiey			unmapped

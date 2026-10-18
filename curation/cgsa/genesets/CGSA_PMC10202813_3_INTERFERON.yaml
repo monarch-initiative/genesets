@@ -1,0 +1,109 @@
+gene_set_id: CGSA:PMC10202813_3_INTERFERON
+gene_set_name: CGSA_PMC10202813_3_INTERFERON
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+series: SERIES:CGSA_PMC10202813_MODULES
+series_role: interferon_response
+n_genes: 50
+description: >-
+  One of the differentially-expressed-gene (DEG) modules from the cGSA benchmark
+  (Wang et al., Bioinformatics 2026, btag214), gene set PMC10202813-3, derived
+  from a human melanoma study and annotated in the benchmark against GO
+  Biological Process. This module is a textbook interferon-stimulated gene (ISG)
+  signature: its 50 members are dominated by canonical type I/II interferon
+  effectors — the 2'-5'-oligoadenylate synthetases (OAS1, OAS3, OASL), the MX
+  GTPase MX1, the IFIT family (IFIT1, IFIT2, IFIT3), the ISG15 conjugation/
+  effector arm (ISG15, HERC5), the IFI/IFI44 family (IFI6, IFI44, IFI44L),
+  DDX60, CMPK2, EPSTI1, SAMD9L, and the IFN-gamma-associated GBP1/C1QB/CD86. The
+  remaining members are a melanoma-derived tail of non-immune genes (ion
+  channels, developmental TFs) that ride along in the DEG contrast. Because the
+  ISG members literally carry the GO annotations for the processes an engaged
+  interferon program executes, enrichment recovers those processes
+  (annotation_supported). This is a confirmatory signature — an ISG panel
+  restates its own construction — included to exercise the curation workflow on
+  a third-party DEG benchmark rather than to surface novel mechanism.
+contexts:
+  - term:
+      id: MONDO:0005105
+      label: melanoma
+    context_type: disease
+    role_note: >-
+      Anchoring disease context of the source study; the module itself is a
+      generic antiviral/interferon program, not melanoma-specific biology.
+associations:
+  - term:
+      id: GO:0034340
+      label: response to type I interferon
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Carried by the canonical type I ISG block present in the set: OAS1, OAS3,
+      OASL, MX1, IFIT1, IFIT2, IFIT3, ISG15, IFI6, IFI44, IFI44L, HERC5, DDX60,
+      CMPK2, EPSTI1, SAMD9L. These genes are directly annotated to the type I
+      interferon response, so enrichment recovers it without any annotation gap.
+  - term:
+      id: GO:0060337
+      label: type I interferon-mediated signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The same ISG effectors (MX1, OAS1/OAS3, IFIT1/2/3, ISG15, IFI6) transduce
+      and execute type I IFN signaling; this term is essentially a more specific
+      restatement of response to type I interferon for this panel.
+  - term:
+      id: GO:0071346
+      label: cellular response to type II interferon
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The benchmark ground truth for this module leads with interferon-gamma
+      (type II) response. Carriers present include GBP1, C1QB, CD86 and the
+      dual-induced IFI/OAS genes. GO renamed the interferon-gamma response class
+      to "cellular response to type II interferon" (GO:0071346); the current
+      label is used here.
+  - term:
+      id: GO:0051607
+      label: defense response to virus
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The antiviral effector arm — MX1, OAS1, OAS3, IFIT1/2/3, ISG15, HERC5,
+      DDX60, IFI6, RSAD2-like effectors — is annotated to antiviral defense.
+      This is the effector face of the same interferon program.
+  - term:
+      id: GO:0045071
+      label: negative regulation of viral genome replication
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      A specific downstream effector process of the OAS/MX/ISG15 arm (OAS1,
+      OAS3, MX1, ISG15 present). Supporting rather than defining: it is one
+      mechanism by which the ISG panel acts, not the identity of the module.

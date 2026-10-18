@@ -21,6 +21,7 @@ prefixes:
   EFO: http://www.ebi.ac.uk/efo/EFO_
   MSIGDB: https://www.gsea-msigdb.org/gsea/msigdb/cards/
   LIT: https://w3id.org/genesets-rs/lit/
+  CGSA: https://w3id.org/genesets-rs/cgsa/
   PMID: http://identifiers.org/pubmed/
   DOI: https://doi.org/
 default_prefix: genesets

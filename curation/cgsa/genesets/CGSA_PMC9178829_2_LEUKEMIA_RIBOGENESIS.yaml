@@ -1,0 +1,65 @@
+gene_set_id: CGSA:PMC9178829_2_LEUKEMIA_RIBOGENESIS
+gene_set_name: CGSA_PMC9178829_2_LEUKEMIA_RIBOGENESIS
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 334
+description: >-
+  DEG module PMC9178829-2 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), a human leukemia study. genesets-rs enrichment against human
+  GOA recovers a clean nucleolar ribosome-biogenesis program — the rRNA
+  processing helicases and assembly factors BMS1, BYSL, DDX10, DDX54, DHX37,
+  EBNA1BP2, ESF1, LAS1L, MAK16, PES1, UTP14A/UTP3. This is the elevated ribosome
+  production characteristic of proliferating leukemic blasts, and is distinct
+  from the cytoplasmic-translation signature (ribosomal-protein genes) seen in
+  other benchmark sets — here the signal is nucleolar rRNA maturation.
+contexts:
+  - term:
+      id: MONDO:0005059
+      label: leukemia
+    context_type: disease
+associations:
+  - term:
+      id: GO:0042254
+      label: ribosome biogenesis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Carried by the nucleolar assembly factors BMS1, BYSL, DDX10, DHX37,
+      EBNA1BP2, ESF1, LAS1L, MAK16, PES1, UTP14A — all present and annotated to
+      ribosome biogenesis, the defining process of this module.
+  - term:
+      id: GO:0006364
+      label: rRNA processing
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The specific rRNA-maturation arm carried by the same helicases/nucleases
+      (BMS1, DDX10, DDX54, DHX37, METTL16) — the nucleolar processing step of
+      ribosome biogenesis.
+  - term:
+      id: GO:0030684
+      label: preribosome
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The preribosomal particles on which these factors act — BMS1, BYSL, DHX37,
+      MAK16, PES1, RIOK1, UTP14A, UTP3 are present and annotated to the
+      preribosome.

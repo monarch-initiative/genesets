@@ -1,0 +1,65 @@
+gene_set_id: CGSA:PMC11352921_NSC_NEURODEV
+gene_set_name: CGSA_PMC11352921_NSC_NEURODEV
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: NA
+n_genes: 2328
+description: >-
+  DEG module PMC11352921 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), from a mouse study of ten-eleven translocation (TET) loss and
+  gliogenic competence in neural stem cells. genesets-rs enrichment against mouse
+  MGI GOA recovers a neurodevelopmental program — axon outgrowth and guidance
+  (Ablim1, Ank3, Chl1, Cntn1, Cxcl12, Boc), and neuronal cell-fate commitment
+  (Arx, Casz1, Dbx1, Dmrt3, Ebf2, Cdon) — the differentiation and wiring biology
+  a TET-loss neural-stem-cell perturbation would disturb.
+contexts:
+  - term:
+      id: CL:0000047
+      label: neural stem cell
+    context_type: cell_type
+    role_note: TET loss / gliogenic competence perturbation
+associations:
+  - term:
+      id: GO:0045165
+      label: cell fate commitment
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Carried by the neuronal fate-determining transcription factors Arx, Casz1,
+      Dbx1, Dmrt3, Ebf2 and the receptor Cdon — present and annotated to cell
+      fate commitment, the differentiation decision perturbed by TET loss.
+  - term:
+      id: GO:0007409
+      label: axonogenesis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The axon-outgrowth arm: Ablim1, Ank3, Adcy1, Arx, Atp8a2 and Auts2 are
+      present and annotated to axonogenesis — the wiring program of differentiating
+      neurons.
+  - term:
+      id: GO:0097485
+      label: neuron projection guidance
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The axon-guidance cues Chl1, Cntn1, Cxcl12, Bmp7, Boc and Cdh4 are present
+      and annotated to neuron projection guidance — the pathfinding that
+      accompanies axonogenesis.

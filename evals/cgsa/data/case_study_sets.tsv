@@ -1,0 +1,10 @@
+set_id	type	taxon	research_objective	keys	experimental_conditions	n_genes
+Scaled C11_15_18_16_up	disease	NCBITaxon:10090	melanoma	melanoma	enrichment analysis for up-regulated genes of the biomarkers of melanoma resistance to immunotherapy	571
+Scaled C11_15_18_16_down	disease	NCBITaxon:10090	melanoma	melanoma	enrichment analysis for down-regulated genes of the biomarkers of melanoma resistance to immunotherapy	346
+Scaled 1_4_22_up	disease	NCBITaxon:10090	melanoma	melanoma	enrichment analysis for up-regulated genes of the biomarkers of melanoma sensitivity to immunotherapy	168
+Scaled 1_4_22_down	disease	NCBITaxon:10090	melanoma	melanoma	enrichment analysis for down-regulated genes of the biomarkers of melanoma sensitivity to immunotherapy	1151
+DESeq2_results.log2FoldChangeLargerThan0	disease	NCBITaxon:10090	melanoma	melanoma	enrichment analysis for genes of melanoma	1
+DESeq2_results.log2FoldChangeLowerThan0	disease	NCBITaxon:10090	melanoma	melanoma	enrichment analysis for genes of melanoma	1
+BreastCancer_T cells	mechanism	NCBITaxon:9606	anti-PD-1 treatment for breast cancer	treatment for breast cancer	These genes are regulated in T cells after anti-PD-1 treatment for a breast cancer patient	78
+BreastCancer_myeloid cells	mechanism	NCBITaxon:9606	anti-PD-1 treatment for breast cancer	treatment for breast cancer	These genes are regulated in myeloid cells after anti-PD-1 treatment for a breast cancer patient	96
+BreastCancer_endothelial cells	mechanism	NCBITaxon:9606	anti-PD-1 treatment for breast cancer	treatment for breast cancer	These genes are regulated in endothelial cells after anti-PD-1 treatment for a breast cancer patient	148

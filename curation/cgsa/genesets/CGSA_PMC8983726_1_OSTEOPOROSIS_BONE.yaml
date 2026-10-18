@@ -1,0 +1,86 @@
+gene_set_id: CGSA:PMC8983726_1_OSTEOPOROSIS_BONE
+gene_set_name: CGSA_PMC8983726_1_OSTEOPOROSIS_BONE
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: NA
+n_genes: 266
+description: >-
+  DEG module PMC8983726-1 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), a mouse osteoporosis study. Curated semi-automatically:
+  genesets-rs enrichment against mouse MGI GOA surfaced an ossification /
+  osteoblast-differentiation program grounded in real carriers — the
+  bone-mineralization enzyme Alpl, the osteogenic BMPs Bmp2/Bmp4/Bmp5 and their
+  antagonist Nog, the transcription factors Msx2 and Satb2, and matrix proteins
+  Dmp1 and Ibsp. The benchmark's own top ground-truth term ("Morphogenesis of a
+  branching epithelium") is a BMP/morphogen side-annotation, not the osteoporosis
+  biology; the bone program is the real core.
+contexts:
+  - term:
+      id: MONDO:0005298
+      label: osteoporosis
+    context_type: disease
+  - term:
+      id: UBERON:0001474
+      label: bone element
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0001503
+      label: ossification
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Carried by Alpl (tissue-nonspecific alkaline phosphatase), Bmp2/Bmp4, the
+      matrix proteins Dmp1 and Ibsp (bone sialoprotein), Galnt3 and Gdf10 — all
+      present and annotated to ossification. This is the defining bone-formation
+      program of the osteoporosis DEG contrast.
+  - term:
+      id: GO:0001649
+      label: osteoblast differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The osteoblast-lineage arm: Bmp2/Bmp4 and the BMP antagonist Nog, the
+      osteogenic transcription factors Msx2 and Satb2, Dlk1, Rspo2 and Panx3 are
+      present and annotated to osteoblast differentiation — the cell-fate program
+      whose imbalance underlies osteoporotic bone loss.
+  - term:
+      id: GO:0001501
+      label: skeletal system development
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The broader skeletal-development umbrella over the ossification/osteoblast
+      core (Alpl, Bmp2/4/5, Fgfr3, Eya1, Edn1 present); supporting relative to
+      the two specific bone-formation terms.
+  - term:
+      id: GO:0070848
+      label: response to growth factor
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The osteogenic signaling inputs: the BMPs (Bmp2/4/5), Fgf7/Fgf10/Fgfr3 and
+      Bdnf carry response-to-growth-factor. Supporting — it is the upstream
+      signaling that drives the ossification core, not the identity itself.

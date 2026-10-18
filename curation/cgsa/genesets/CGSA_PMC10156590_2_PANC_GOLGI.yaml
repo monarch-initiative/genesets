@@ -1,0 +1,52 @@
+gene_set_id: CGSA:PMC10156590_2_PANC_GOLGI
+gene_set_name: CGSA_PMC10156590_2_PANC_GOLGI
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 776
+description: >-
+  DEG module PMC10156590-2 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), a human pancreatic cancer study, Reactome-annotated (top ground
+  truth: "Transport to the Golgi and subsequent modification", "Intra-Golgi and
+  retrograde Golgi-to-ER traffic"). The membership carries a coherent
+  ER–Golgi vesicular-transport program built on the COPI coatomer — Copb1,
+  Copb2, Copg1 — together with the small GTPase Arf1 (COPI recruitment) and
+  Rab1a (ER-to-Golgi tethering). The Reactome ground truth also mixes in mitotic
+  terms (this large DEG set spans more than one program); the trafficking arm is
+  the one grounded here.
+contexts:
+  - term:
+      id: MONDO:0009831
+      label: malignant pancreatic neoplasm
+    context_type: disease
+associations:
+  - term:
+      id: GO:0048193
+      label: Golgi vesicle transport
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Carried by the COPI coatomer subunits Copb1, Copb2, Copg1 plus Arf1 and
+      Rab1a, all present and annotated to Golgi vesicle transport — the
+      biosynthetic/secretory trafficking the Reactome ground-truth terms name.
+  - term:
+      id: GO:0006890
+      label: retrograde vesicle-mediated transport, Golgi to endoplasmic reticulum
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The COPI coat (Copb1, Copb2, Copg1) mediates specifically retrograde
+      Golgi-to-ER traffic, matching the Reactome "Intra-Golgi and retrograde
+      Golgi-to-ER traffic" ground-truth term; Arf1 recruits the coat.

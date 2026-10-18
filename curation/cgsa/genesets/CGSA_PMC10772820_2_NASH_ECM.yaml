@@ -1,0 +1,57 @@
+gene_set_id: CGSA:PMC10772820_2_NASH_ECM
+gene_set_name: CGSA_PMC10772820_2_NASH_ECM
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: NA
+series: SERIES:CGSA_PMC10772820_MODULES
+series_role: ecm_fibrosis
+n_genes: 768
+description: >-
+  DEG module PMC10772820-2 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), mouse NASH liver, KEGG-annotated (top ground truth:
+  "ECM-receptor interaction", "Focal adhesion", "Protein digestion and
+  absorption"). The membership carries a fibrotic extracellular-matrix program —
+  the fibrillar/basement-membrane collagens Col1a1, Col4a1 and Col6a1 and the
+  laminins Lama2 and Lamb1 — consistent with the hepatic fibrosis that
+  characterizes steatohepatitis progression.
+contexts:
+  - term:
+      id: MONDO:0007027
+      label: metabolic dysfunction-associated steatohepatitis
+    context_type: disease
+    role_note: the MONDO term for NASH (renamed MASH)
+  - term:
+      id: UBERON:0002107
+      label: liver
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0030198
+      label: extracellular matrix organization
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Carried by Col1a1, Col4a1, Col6a1 (collagens) and Lama2, Lamb1 (laminins),
+      all present and annotated to ECM organization. In the NASH context this is
+      the fibrotic matrix-deposition program of activated hepatic stellate cells.
+  - term:
+      id: GO:0031012
+      label: extracellular matrix
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The collagens and laminins present are structural constituents of the
+      extracellular matrix — the compartment the KEGG "ECM-receptor interaction"
+      ground-truth term describes.

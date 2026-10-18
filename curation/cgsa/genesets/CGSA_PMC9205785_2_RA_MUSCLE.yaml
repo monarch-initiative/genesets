@@ -1,0 +1,71 @@
+gene_set_id: CGSA:PMC9205785_2_RA_MUSCLE
+gene_set_name: CGSA_PMC9205785_2_RA_MUSCLE
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 320
+description: >-
+  DEG module PMC9205785-2 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), from a rheumatoid arthritis study. NOTE: the benchmark labels
+  this set's ground truth "T cell receptor complex / lymphocyte chemotaxis", but
+  genesets-rs enrichment against human GOA shows the actual membership is
+  dominated by a striated-muscle program — the sarcomeric/contractile genes
+  ACTC1, ANKRD1, ANKRD23, CSRP3, CAV3, DTNA, CKMT2 — with a secondary epidermal
+  arm (CASP14, CDSN, DSG1, FLG2, IVL). This is a documented ground-truth /
+  membership mismatch (the drafter's mismatch screen flagged it): the immune
+  ground truth is not carried by these genes, so the set is curated to the
+  muscle biology the membership actually supports, not to the benchmark label.
+contexts:
+  - term:
+      id: MONDO:0008383
+      label: rheumatoid arthritis
+    context_type: disease
+    role_note: study context; the DEG membership itself is a striated-muscle signature
+  - term:
+      id: UBERON:0001134
+      label: skeletal muscle tissue
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0030017
+      label: sarcomere
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Carried by ACTC1 (cardiac/striated actin), ANKRD1, ANKRD23, CSRP3
+      (muscle LIM protein), ASB2 and ABRA — all present and annotated to the
+      sarcomere, the contractile apparatus of striated muscle.
+  - term:
+      id: GO:0030016
+      label: myofibril
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The same sarcomeric members (ACTC1, ANKRD1/23, CSRP3, ABRA) constitute the
+      myofibril — the higher-order contractile assembly.
+  - term:
+      id: GO:0006936
+      label: muscle contraction
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      ACTA2, CAV3 (caveolin-3), CKMT2, CSRP3 and DTNA are present and annotated
+      to muscle contraction — the physiological process of the contractile
+      apparatus above. This is the module's defining biology.

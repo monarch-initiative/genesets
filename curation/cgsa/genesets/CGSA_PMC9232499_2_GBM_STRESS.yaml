@@ -1,0 +1,70 @@
+gene_set_id: CGSA:PMC9232499_2_GBM_STRESS
+gene_set_name: CGSA_PMC9232499_2_GBM_STRESS
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: NA
+series: SERIES:CGSA_PMC9232499_MODULES
+series_role: stress_defense
+n_genes: 43
+description: >-
+  DEG module PMC9232499-2 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), mouse glioblastoma, GO-BP annotated — the paired stress/immune
+  arm of PMC9232499-1's migration/ECM module. The benchmark ground truth leads
+  with the very broad "response to stress" and "defense response"; grounded in
+  the membership, the coherent signal is an innate-immune / interferon-inducible
+  defense arm: the interferon-gamma-induced GTPase Gbp1, the MHC class II
+  transactivator Ciita, the coagulation/immune effector Fgl2, the acute-phase
+  Lcn2 and Serpina1a, and the IL-33 receptor Il1rl1. The generic stress term is
+  retained but flagged as broad/nonspecific relative to this defense signal.
+contexts:
+  - term:
+      id: MONDO:0018177
+      label: glioblastoma
+    context_type: disease
+associations:
+  - term:
+      id: GO:0006952
+      label: defense response
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The coherent arm of this module: Gbp1 (IFN-gamma-induced antimicrobial
+      GTPase), Ciita (MHC class II transactivator), Fgl2, Lcn2, Serpina1a and
+      Il1rl1 are present and annotated to innate/defense responses. More
+      informative than the raw "response to stress" ground-truth term.
+  - term:
+      id: GO:0019882
+      label: antigen processing and presentation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Ciita is the master transactivator of MHC class II genes; its presence
+      marks an antigen-presentation component of the defense arm. Supporting
+      because it rests on a single but highly specific carrier.
+  - term:
+      id: GO:0006950
+      label: response to stress
+    aspect: biological_process
+    category: nonspecific
+    confidence: low
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The benchmark's top ground-truth term for this module, but it is a very
+      high-level umbrella (response to stress) that many members touch; recorded
+      as nonspecific rather than core because the informative signal is the
+      defense/interferon arm captured above, not generic stress.

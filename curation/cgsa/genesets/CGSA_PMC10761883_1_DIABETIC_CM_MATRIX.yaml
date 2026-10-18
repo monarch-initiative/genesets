@@ -1,0 +1,74 @@
+gene_set_id: CGSA:PMC10761883_1_DIABETIC_CM_MATRIX
+gene_set_name: CGSA_PMC10761883_1_DIABETIC_CM_MATRIX
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+series: SERIES:CGSA_PMC10761883_MODULES
+series_role: matrix_hypoxia
+n_genes: 299
+description: >-
+  DEG module PMC10761883-1 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), the matrix/remodeling arm of the human diabetic-cardiomyopathy
+  study whose HIF/glycolysis arm is PMC10761883-2
+  (SERIES:CGSA_PMC10761883_MODULES). genesets-rs enrichment against human GOA
+  recovers a heparin / glycosaminoglycan-binding extracellular-matrix program —
+  CCN3, CCDC80, MDK (midkine), NELL2, PCOLCE2, SERPINA5, SPOCK2, TGFBR3 and the
+  collagen COL25A1 — alongside the shared hypoxia response (ANGPTL4, BNIP3,
+  NDRG1, HILPDA), the fibrotic/hypoxic remodeling of the diabetic heart.
+contexts:
+  - term:
+      id: MONDO:0004994
+      label: cardiomyopathy
+    context_type: disease
+  - term:
+      id: MONDO:0005015
+      label: diabetes mellitus
+    context_type: disease
+    role_note: diabetic context of the cardiomyopathy signature
+associations:
+  - term:
+      id: GO:0008201
+      label: heparin binding
+    aspect: molecular_function
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The distinctive matrix signal of this module: the matricellular/ECM
+      proteins CCN3, CCDC80, MDK, NELL2, PCOLCE2, SERPINA5, TGFBR3 and COL25A1
+      are present and annotated to heparin binding — the glycosaminoglycan-linked
+      matrix remodeling of diabetic fibrosis.
+  - term:
+      id: GO:0005539
+      label: glycosaminoglycan binding
+    aspect: molecular_function
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The broader glycosaminoglycan-binding class over heparin binding, carried
+      by the same matricellular proteins plus SPOCK2 — the matrix-interaction
+      program of the remodeling heart.
+  - term:
+      id: GO:0001666
+      label: response to hypoxia
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The hypoxia response shared with the paired HIF module (PMC10761883-2):
+      ANGPTL4, BNIP3, NDRG1, HILPDA, PGF and FAM162A are present and annotated to
+      response to hypoxia. Supporting here — the distinguishing signal of this
+      module is the matrix/heparin-binding arm above.

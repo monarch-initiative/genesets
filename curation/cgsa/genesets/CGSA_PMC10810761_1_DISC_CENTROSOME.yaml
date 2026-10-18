@@ -1,0 +1,65 @@
+gene_set_id: CGSA:PMC10810761_1_DISC_CENTROSOME
+gene_set_name: CGSA_PMC10810761_1_DISC_CENTROSOME
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: NA
+n_genes: 802
+description: >-
+  DEG module PMC10810761-1 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), from a mouse study of N6-methyladenosine (m6A) modification in
+  nucleus pulposus (intervertebral disc) cells. genesets-rs enrichment against
+  mouse MGI GOA recovers a centrosome / microtubule-organizing-center program —
+  a dense block of centriolar/pericentriolar proteins (Cep131, Cep135, Cep162,
+  Cep192, Cep350, C2cd3, Bbs9, Haus6) and the microtubule regulators Akap9,
+  Bicd2 and Gas2l1. The centriole here doubles as the ciliary basal body,
+  consistent with primary-cilium mechanosensing in disc cells.
+contexts:
+  - term:
+      id: UBERON:0002242
+      label: nucleus pulposus
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0005814
+      label: centriole
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Carried by the centriolar/pericentriolar proteins Cep131, Cep135, Cep162,
+      Cep192, Cep350, C2cd3 and Bbs9 — all present and annotated to the
+      centriole, the core of the microtubule-organizing center.
+  - term:
+      id: GO:0036064
+      label: ciliary basal body
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The same centriolar proteins (Cep131/Cep162/Cep192/Cep350, C2cd3, Bbs9)
+      template the ciliary basal body — the primary-cilium docking structure
+      relevant to disc-cell mechanosensing.
+  - term:
+      id: GO:0015631
+      label: tubulin binding
+    aspect: molecular_function
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The microtubule-interaction activity of the module: Cep135, Cep350,
+      Gas2l1, Haus6, Akap9 and Fyn are present and annotated to tubulin binding —
+      the molecular function organizing the centrosomal microtubules.

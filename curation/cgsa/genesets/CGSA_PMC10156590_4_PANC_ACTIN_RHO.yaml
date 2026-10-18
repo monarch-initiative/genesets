@@ -1,0 +1,65 @@
+gene_set_id: CGSA:PMC10156590_4_PANC_ACTIN_RHO
+gene_set_name: CGSA_PMC10156590_4_PANC_ACTIN_RHO
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 274
+description: >-
+  DEG module PMC10156590-4 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), a human pancreatic cancer study (the Golgi-transport module
+  PMC10156590-2 is its sibling). The benchmark ground truth names "Signaling by
+  Rho GTPases"; genesets-rs enrichment against human GOA grounds this in an
+  actin-cytoskeleton program regulated by a large block of Rho-family GAP/GEF
+  genes — ARHGAP21, ARHGEF12, ARAP1, ASAP2, AGAP3, ARFGAP1 — together with the
+  actin regulators ABI1/ABI2, ADD1, ABLIM1 and DIAPH1.
+contexts:
+  - term:
+      id: MONDO:0009831
+      label: malignant pancreatic neoplasm
+    context_type: disease
+associations:
+  - term:
+      id: GO:0030036
+      label: actin cytoskeleton organization
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Carried by ABI1/ABI2 (WAVE-complex actin nucleation-promoting factors),
+      ADD1 (adducin), ARAP1, ARHGEF12 and DIAPH1 — the actin-remodeling program
+      the Rho-GTPase ground-truth term drives.
+  - term:
+      id: GO:0015629
+      label: actin cytoskeleton
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The actin cytoskeleton cellular component (ABI1/ABI2, ABLIM1, ADD1, ARAP1
+      and other members present) — the structure the organization process above
+      builds and remodels.
+  - term:
+      id: GO:0030695
+      label: GTPase regulator activity
+    aspect: molecular_function
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The Rho-GTPase control machinery itself: the GAP/GEF block ARHGAP21,
+      ARHGEF12, ARAP1, ASAP2, AGAP3 and ARFGAP1 carries GTPase regulator
+      activity — the molecular function underlying the actin remodeling and the
+      benchmark's "Signaling by Rho GTPases" ground-truth term.

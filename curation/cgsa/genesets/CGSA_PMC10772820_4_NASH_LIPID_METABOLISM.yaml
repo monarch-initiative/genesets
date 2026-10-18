@@ -1,0 +1,71 @@
+gene_set_id: CGSA:PMC10772820_4_NASH_LIPID_METABOLISM
+gene_set_name: CGSA_PMC10772820_4_NASH_LIPID_METABOLISM
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: NA
+series: SERIES:CGSA_PMC10772820_MODULES
+series_role: lipid_steroid_metabolism
+n_genes: 568
+description: >-
+  DEG module PMC10772820-4 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), the hepatic lipid/steroid-metabolism arm of the mouse NASH
+  study (its complement, ribosome, ECM and chemokine arms are the other
+  SERIES:CGSA_PMC10772820_MODULES members). genesets-rs enrichment against mouse
+  MGI GOA recovers a dense metabolic program — the lipoprotein/cholesterol genes
+  Apoa1/Apoa2/Apoc3/Abca1, the sterol/fatty-acid enzymes Acat2, Acaa1a, Acox1,
+  Acsl1, and the xenobiotic cytochromes Cyp2a12/Cyp2b10 — the hepatocyte
+  lipid-handling and detoxification biology deranged in steatohepatitis.
+contexts:
+  - term:
+      id: MONDO:0007027
+      label: metabolic dysfunction-associated steatohepatitis
+    context_type: disease
+    role_note: the MONDO term for NASH (renamed MASH)
+  - term:
+      id: UBERON:0002107
+      label: liver
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0008202
+      label: steroid metabolic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Carried by the cholesterol/lipoprotein handlers Abca1, Apoa1, Apoa2,
+      Apoc3 and the acetyl-CoA acetyltransferase Acat2 — hepatic steroid/sterol
+      metabolism, a central function of the NASH liver.
+  - term:
+      id: GO:0016125
+      label: sterol metabolic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The specific cholesterol/sterol arm (Abca1, Acat2, Apoa1/Apoa2/Apoc3,
+      Ces1e) — the cholesterol-handling program disrupted in steatohepatitis.
+  - term:
+      id: GO:0006805
+      label: xenobiotic metabolic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The hepatic detoxification arm: the cytochromes Cyp2a12/Cyp2b10 and Abcc2,
+      Aox3, Aldh1a1 carry xenobiotic metabolism — a supporting liver function
+      alongside the dominant lipid/steroid core.

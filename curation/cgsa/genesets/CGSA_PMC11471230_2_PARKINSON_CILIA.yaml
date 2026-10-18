@@ -1,0 +1,65 @@
+gene_set_id: CGSA:PMC11471230_2_PARKINSON_CILIA
+gene_set_name: CGSA_PMC11471230_2_PARKINSON_CILIA
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: NA
+n_genes: 687
+description: >-
+  DEG module PMC11471230-2 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), a mouse Parkinson disease study (a second module of the
+  PMC11471230 study whose -1 module is the synaptic signature). genesets-rs
+  enrichment against mouse MGI GOA recovers a striking ciliary-axoneme program —
+  a dense block of cilia-and-flagella-associated proteins (Cfap43, Cfap45,
+  Cfap57, Cfap65, Cfap100, Cfap126), Ccdc103, Ak8 and Ccsap — plus a neuronal
+  arm at the axon/neuron-projection terminus (Chrm1/2/4, Drd1, Cck/Cckar). The
+  ciliary signal is notable given the growing links between primary-cilium
+  function and Parkinsonian neurodegeneration.
+contexts:
+  - term:
+      id: MONDO:0005180
+      label: Parkinson disease
+    context_type: disease
+associations:
+  - term:
+      id: GO:0005930
+      label: axoneme
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Carried by the cilia-and-flagella-associated proteins Cfap43, Cfap45,
+      Cfap57, Cfap65, Cfap100, Cfap126 with Ccdc103, Ak8 and Ccsap — all present
+      and annotated to the ciliary axoneme, the microtubule core of the cilium.
+  - term:
+      id: GO:0097014
+      label: ciliary plasm
+    aspect: cellular_component
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The same CFAP/Ccdc103 axonemal members occupy the ciliary plasm; a broader
+      compartment term over the axoneme core.
+  - term:
+      id: GO:0044306
+      label: neuron projection terminus
+    aspect: cellular_component
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The neuronal arm of the module: the muscarinic receptors Chrm1/Chrm2/Chrm4,
+      Drd1, Adra2c and Cck/Cckar are present and annotated to the neuron
+      projection terminus — the neurotransmission component alongside the cilium.

@@ -1,0 +1,74 @@
+set_id	species	n_genes	n_specific_terms	n_terms	status	top_terms
+PMC8831505-2	mouse	289	30	30	curatable	glycolytic process through glucose-6-phosphate | glycolytic process through fructose-6-phosphate | canonical glycolysis
+PMC11070510-6	mouse	121	24	30	curatable	structural constituent of chromatin | nucleosome | protein-DNA complex
+PMC10772820-7	mouse	2829	24	30	curatable	ribosomal subunit | mitochondrial inner membrane | organelle inner membrane
+PMC9810534-1	mouse	1128	23	30	curatable	cell cycle process | cell cycle | mitotic cell cycle
+PMC10772820-9	mouse	179	21	24	curatable	carboxylic acid metabolic process | oxoacid metabolic process | steroid metabolic process
+PMC10156590-3	human	776	20	30	curatable	cytosolic ribosome | cytoplasmic translation | ribosomal subunit
+CGSA_PMC8983726_1		0	19	30	curatable	ossification | animal organ morphogenesis | signaling receptor regulator activity
+PMC10761883-1	human	299	19	30	curatable	extracellular matrix | external encapsulating structure | response to endogenous stimulus
+PMC11056152-1	human	914	18	30	curatable	nervous system process | sensory perception | extracellular matrix
+PMC11070510-2	mouse	253	18	30	curatable	structural constituent of chromatin | nucleosome | protein-DNA complex
+PMC10772820-8	mouse	2889	17	30	curatable	oxoacid metabolic process | carboxylic acid metabolic process | mitochondrial envelope
+PMC11285963-1	human	234	16	30	curatable	epidermis development | extracellular matrix | external encapsulating structure
+PMC11285963-2	human	234	16	30	curatable	epidermis development | extracellular matrix | external encapsulating structure
+PMC9178829-2	human	334	15	30	curatable	rRNA metabolic process | ribosome biogenesis | rRNA processing
+PMC9159952-2	mouse	1208	15	30	curatable	postsynapse | synaptic membrane | asymmetric synapse
+PMC9159952-3	mouse	1208	15	30	curatable	postsynapse | synaptic membrane | asymmetric synapse
+PMC10772820-6	mouse	229	15	30	curatable	apical part of cell | tube development | apical plasma membrane
+PMC11471230-1	mouse	737	14	30	curatable	neuron development | neuron projection development | glutamatergic synapse
+PMC11471230-3	mouse	446	14	30	curatable	monoatomic cation channel activity | behavior | gated channel activity
+PMC9810534-3	mouse	500	14	30	curatable	cell surface | regulation of immune response | regulation of cytokine production
+PMC11056152-3	human	816	14	30	curatable	calcium ion binding | cytoskeletal protein binding | cell adhesion
+PMC11070510-3	mouse	203	14	30	curatable	response to cytokine | response to bacterium | regulation of cytokine production
+PMC11070510-5	mouse	279	14	30	curatable	response to bacterium | regulation of defense response | response to cytokine
+PMC10772820-10	mouse	2396	14	30	curatable	cytoplasmic translation | ribosomal subunit | translation
+PMC9159952-5	mouse	4420	13	30	curatable	postsynapse | glutamatergic synapse | synaptic membrane
+PMC9159952-6	mouse	4420	13	30	curatable	postsynapse | glutamatergic synapse | synaptic membrane
+PMC8967900	human	2639	13	30	curatable	intracellular protein-containing complex | transferase complex | transcription regulator complex
+PMC9159952-7	mouse	4420	13	30	curatable	postsynapse | glutamatergic synapse | synaptic membrane
+PMC10156590-1	human	678	13	30	curatable	cell cycle | cell cycle process | mitotic cell cycle
+PMC11056152-2	human	995	12	30	curatable	cell projection organization | plasma membrane bounded cell projection organization | cytoskeletal protein binding
+CGSA_PMC9750880_1		0	12	30	curatable	actin cytoskeleton | anchoring junction | regulation of cell motility
+PMC9205785-1	human	351	12	15	curatable	immunoglobulin complex | cornified envelope | epidermis development
+PMC10851453-1	human	1917	12	30	curatable	neurogenesis | generation of neurons | neuron differentiation
+PMC11471230-2	mouse	687	12	30	curatable	axoneme | ciliary plasm | cell migration
+PMC10264249-2	human	472	12	29	curatable	regulation of cell development | transcription regulator complex | positive regulation of cell differentiation
+PMC8983726-2	mouse	600	11	30	curatable	regulation of immune response | positive regulation of response to external stimulus | regulation of cytokine production
+PMC11378909-1	human	964	10	30	curatable	anchoring junction | cytoskeletal protein binding | protein modification by small protein conjugation or removal
+PMC11352921	mouse	2328	10	30	curatable	animal organ morphogenesis | cell morphogenesis | central nervous system development
+PMC10851453-2	human	2068	9	30	curatable	neurogenesis | generation of neurons | neuron differentiation
+PMC11070510-1	mouse	303	9	30	curatable	response to cytokine | response to lipid | regulation of cytokine production
+PMC9810534-4	mouse	500	9	30	curatable	cell surface | regulation of cell migration | regulation of cell motility
+PMC11434218-1	human	1704	9	30	curatable	epithelium development | regulation of cell migration | regulation of cell motility
+PMC9178829-1	human	223	9	30	curatable	negative regulation of programmed cell death | negative regulation of apoptotic process | negative regulation of cell population proliferation
+PMC11434218-2	human	1499	7	30	curatable	epithelium development | cell adhesion | signaling receptor regulator activity
+PMC10810761-3	mouse	802	7	24	curatable	microtubule organizing center | microtubule cytoskeleton organization | tubulin binding
+PMC10810761-1	mouse	802	7	24	curatable	microtubule organizing center | microtubule cytoskeleton organization | tubulin binding
+PMC9203705	human	110	5	9	curatable	cell adhesion | cell junction organization | cell junction assembly
+PMC9279158-1	human	1900	5	30	curatable	positive regulation of intracellular signal transduction | positive regulation of cellular component organization | negative regulation of programmed cell death
+PMC11378909-2	human	4423	5	30	curatable	DNA damage response | cell cycle process | cell cycle
+PMC10810761-7	mouse	359	5	10	curatable	extracellular matrix | external encapsulating structure | nuclear ribonucleoprotein granule
+PMC10810761-5	mouse	359	5	10	curatable	extracellular matrix | external encapsulating structure | nuclear ribonucleoprotein granule
+PMC9279158-2	human	1020	3	30	curatable	intracellular signaling cassette | regulation of cell adhesion | regulation of cell migration
+PMC9810534-2	mouse	5151	3	30	curatable	regulation of immune response | endosome | regulation of defense response
+PMC9205785-2	human	320	27	30	curated	contractile muscle fiber | myofibril | sarcomere
+PMC10772820-4	mouse	568	25	30	curated	oxoacid metabolic process | steroid metabolic process | carboxylic acid metabolic process
+PMC10202813-1	human	491	24	30	curated	MHC protein complex | peptide antigen binding | antigen processing and presentation of exogenous peptide antigen
+PMC11070510-4	mouse	92	23	30	curated	structural constituent of chromatin | nucleosome | protein-DNA complex
+PMC10156590-4	human	274	16	30	curated	cytoskeletal protein binding | actin cytoskeleton | actin filament-based process
+PMC9159952-1	mouse	1208	15	30	curated	postsynapse | synaptic membrane | asymmetric synapse
+PMC10772820-11	mouse	2766	2	30	thin	negative regulation of immune system process | regulation of cell motility | regulation of immune response
+PMC10202813-8	human	50	1	1	thin	animal organ morphogenesis
+PMC9750880-2	mouse	835	0	0	skip_empty	
+PMC10810761-2	mouse	127	0	0	skip_empty	
+PMC10202813-4	human	50	0	0	skip_empty	
+PMC10202813-5	human	50	0	0	skip_empty	
+PMC10202813-7	human	50	0	0	skip_empty	
+PMC10810761-8	mouse	712	0	3	thin	positive regulation of cell differentiation | axon | negative regulation of cellular component organization
+PMC10810761-6	mouse	712	0	3	thin	positive regulation of cell differentiation | axon | negative regulation of cellular component organization
+PMC10810761-4	mouse	127	0	0	skip_empty	
+PMC9205785-3	human	124	0	0	skip_empty	
+PMC9750880-3	mouse	1284	0	0	skip_empty	
+PMC10264249-1	human	115	0	0	skip_empty	
+PMC9159952-4	mouse	78	0	0	skip_empty	

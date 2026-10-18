@@ -98,6 +98,43 @@ genesets-rs matrix ... --output-format parquet --output results.parquet
 duckdb -c "SELECT * FROM 'results.parquet' WHERE p_adjust_bonferroni <= 0.05"
 ```
 
+## `mgsa`
+
+Bayesian model-based gene set analysis. It takes the same target and sample
+options as `enrich`. Every set in a multi-set sample file is analyzed
+independently unless `--sample-set` picks one.
+
+```bash
+genesets-rs mgsa \
+  --annotations gene_terms.tsv \
+  --terms terms.tsv \
+  --closure closure.tsv \
+  --sample study_genes.txt \
+  --background population_genes.txt \
+  --min-posterior 0.5 \
+  --summary-output mgsa-summary.yaml
+```
+
+Output columns: `query_id`, `query_name`, `target_id`, `target_name`,
+`posterior`, `overlap`, `query_size`, `target_size`, `background_size`,
+`p_value` (term-for-term, for comparison), `equivalent_ids`, and with
+`--overlap-genes`, `overlap_genes` and `overlap_gene_names`. Rows are sorted by
+posterior, highest first.
+
+| Option | Default | Meaning |
+| --- | --- | --- |
+| `--samples-per-term` | 100 | recorded samples per modeled term |
+| `--burn-per-term` | 10 | burn-in samples per modeled term |
+| `--term-prob`, `--term-count` | 0.5, 0 | Beta prior on a term being active |
+| `--false-pos-prob`, `--false-pos-count` | 0.5, 0 | Beta prior on the false-positive rate |
+| `--false-neg-prob`, `--false-neg-count` | 0.5, 0 | Beta prior on the false-negative rate |
+| `--flip-rate`, `--step-rate`, `--jump-rate` | 1, 1, 1 | relative move rates; `step` needs `--closure` |
+| `--seed` | 123456789 | random seed |
+| `--min-posterior` | 0 | drop rows below this posterior |
+
+Only TSV (or `null`) output is supported. See [Statistics](statistics.md) for
+the model.
+
 ## `compare`
 
 Compare two enrichment result tables by `(query_id, target_id)` and classify

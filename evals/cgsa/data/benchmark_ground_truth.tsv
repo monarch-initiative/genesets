@@ -1,0 +1,1672 @@
+set_id	ground_truth_pathway	rank
+PMC9810534-4	Cytokine Activity	1
+PMC9810534-4	Chemokine Activity	2
+PMC9810534-4	Scavenger Receptor Activity	3
+PMC9810534-4	Response To Bacterium	4
+PMC9810534-4	Chemotaxis	5
+PMC9810534-4	Regulation Of Cell Activation	6
+PMC9810534-4	Protein Secretion	7
+PMC9810534-4	Regulation Of Inflammatory Response	8
+PMC9810534-4	Wound Healing	9
+PMC9810534-4	Regulation Of Leukocyte Activation	10
+PMC9810534-4	Activation Of Immune Response	11
+PMC9810534-4	Myeloid Cell Differentiation	12
+PMC9810534-4	Leukocyte Mediated Immunity	13
+PMC9810534-4	Regulation Of Macrophage Activation	14
+PMC9810534-4	Phagocytosis	15
+PMC9810534-4	Dendritic Cell Differentiation	16
+PMC9810534-4	Cell Killing	17
+PMC9810534-4	Response To Interferon-Alpha	18
+PMC9810534-4	Response To Interferon-Beta	19
+PMC9810534-4	Dendritic Cell Maturation	20
+PMC9810534-4	Macrophages Classical M1 vs Alternative M2	21
+PMC9810534-4	Leukocyte Migration	22
+PMC9810534-4	Phospholipase Activity	23
+PMC9810534-4	Transmembrane Receptor Protein Tyrosine Kinase Activity	24
+PMC9810534-4	ERK1 and ERK2 Cascade	25
+PMC9810534-4	Positive Regulation Of MAPK Cascade	26
+PMC9810534-4	Positive Regulation Of Protein Kinase Activity	27
+PMC9810534-4	Rho Protein Signal Transduction	28
+PMC9810534-4	Second-Messenger-Mediated Signaling	29
+PMC9810534-4	Protein Kinase B Signaling	30
+PMC9810534-4	G Protein-Coupled Receptor Signaling Pathway	31
+PMC9810534-4	Positive Regulation Of STAT Cascade	32
+PMC9810534-4	Regulation Of Calcium Ion Transport	33
+PMC9810534-4	Stress-Activated Protein Kinase Signaling Cascade	34
+PMC9810534-4	Ras Protein Signal Transduction	35
+PMC9810534-4	Regulation Of Calcium Ion Transmembrane Transport	36
+PMC9810534-4	Cellular Calcium Ion Homeostasis	37
+PMC9810534-4	Regulation Of JNK Cascade	38
+PMC9810534-4	Small GTPase Mediated Signal Transduction	39
+PMC9810534-4	Phosphatidylinositol 3-Kinase Signaling	40
+PMC9810534-4	Regulation Of Nitric-Oxide Synthase Activity	41
+PMC9810534-4	NF-kB Signaling	42
+PMC9810534-4	Nucleotide Receptor Activity	43
+PMC9810534-4	Lipoprotein Particle Binding	44
+PMC9810534-4	Protein-Lipid Complex Binding	45
+PMC9810534-4	Amide Binding	46
+PMC9810534-4	Phospholipid Binding	47
+PMC9810534-4	Cellular Amino Acid Metabolic Process	48
+PMC9810534-4	Icosanoid Metabolic Process	49
+PMC9810534-4	Fatty Acid Derivative Metabolic Process	50
+PMC9810534-4	Positive Regulation Of Lipid Metabolic Process	51
+PMC9810534-4	Lipid Transport	52
+PMC9810534-4	Fatty Acid Derivative Biosynthetic Process	53
+PMC9810534-4	Response To Oxidative Stress	54
+PMC9810534-4	Glucose Homeostasis	55
+PMC9810534-3	Regulation Of Cell Activation	1
+PMC9810534-3	Regulation Of Leukocyte Activation	2
+PMC9810534-3	Response To Bacterium	3
+PMC9810534-3	Taxis	4
+PMC9810534-3	Chemotaxis	5
+PMC9810534-3	Leukocyte Migration	6
+PMC9810534-3	Positive Regulation Of Cytokine Production	7
+PMC9810534-3	Cell Chemotaxis	8
+PMC9810534-3	Regulation Of Inflammatory Response	9
+PMC9810534-3	Response To Molecule Of Bacterial Origin	10
+PMC9810534-3	"""Positive Regulation Of Response To External Stimulus"""	11
+PMC9810534-3	Myeloid Leukocyte Migration	12
+PMC9810534-3	Leukocyte Chemotaxis	13
+PMC9810534-3	Myeloid Leukocyte Activation	14
+PMC9810534-3	Granulocyte Migration	15
+PMC9810534-3	"""Tumor Necrosis Factor Superfamily Cytokine Production"""	16
+PMC9810534-3	"""Regulation Of Tumor Necrosis Factor Superfamily Cytokine Production"""	17
+PMC9810534-3	Interleukin-6 Production	18
+PMC9810534-3	Neutrophil Migration	19
+PMC9810534-3	Granulocyte Chemotaxis	20
+PMC9810534-2	Macrophage Migration	1
+PMC9810534-2	Autophagy	2
+PMC9810534-2	Myeloid Cell Differentiation	3
+PMC9810534-2	TLR Signaling	4
+PMC9810534-2	NFkB Targets	5
+PMC9810534-2	Activation	6
+PMC9810534-2	Antigen Presentation	7
+PMC9810534-2	Phagocytosis	8
+PMC9810534-2	Chemokine Activity	9
+PMC9810534-2	Cytokine Activity	10
+PMC9810534-2	Cell Killing	11
+PMC9810534-2	Cellular Response to IL-1	12
+PMC9810534-2	Classical M1 vs. Alternative M2Macrophage Activation (UP-regulation)	13
+PMC9810534-2	myeloid leukocyte differentiation	14
+PMC9810534-2	myeloid cell differentiation	15
+PMC9810534-2	leukocyte differentiation	16
+PMC9810534-2	regulation of leukocyte activation	17
+PMC9810534-2	myeloid leukocyte activation	18
+PMC9810534-2	phagocytosis	19
+PMC9810534-2	regulation of phagocytosis	20
+PMC9810534-2	phagocytosis, engulfment	21
+PMC9810534-2	negative regulation of phagocytosis	22
+PMC9810534-2	toll-like receptor signaling pathway	23
+PMC9810534-2	regulation oftoll-like receptor signaling pathway	24
+PMC9810534-2	Toll-like receptor signaling pathway	25
+PMC9810534-2	Interleukin-6 Production	26
+PMC9810534-2	Interleukin-1 Production	27
+PMC9810534-2	Interleukin-10 Production	28
+PMC9810534-2	Regulation of interleukin-10 production	29
+PMC9810534-2	Positive Regulation Of Interferon-Gamma Production	30
+PMC9810534-2	Interleukin-17 Production	31
+PMC9810534-2	Type I Interferon Production	32
+PMC9810534-2	L-Amino Acid Transmembrane Transporter Activity	33
+PMC9810534-2	Phospholipid Binding	34
+PMC9810534-2	Amino Acid Transmembrane Transporter Activity	35
+PMC9810534-2	Iron Ion Transmembrane Transporter Activity	36
+PMC9810534-2	Neutral Amino Acid Transmembrane Transporter Activity	37
+PMC9810534-2	Ferrous Iron Binding	38
+PMC9810534-2	Lipid Transport	39
+PMC9810534-2	Regulation Of Lipid Transport	40
+PMC9810534-2	Lipid Storage	41
+PMC9810534-2	Response To Nutrient Levels	42
+PMC9810534-2	Positive Regulation Of Lipid Storage	43
+PMC9810534-2	Fatty Acid Transport	44
+PMC9810534-2	Hexose Transmembrane Transport	45
+PMC9810534-2	Glucose Transmembrane Transport	46
+PMC9810534-2	Regulation Of Glucose Transmembrane Transport	47
+PMC9810534-2	Monosaccharide Transmembrane Transport	48
+PMC9810534-2	Regulation Of Purine Nucleotide Metabolic Process	49
+PMC9810534-2	Monocarboxylic Acid Transport	50
+PMC9810534-2	Carbohydrate Transmembrane Transport	51
+PMC9810534-2	Regulation Of ATP Metabolic Process	52
+PMC9810534-2	Regulation Of ATP Biosynthetic Process	53
+PMC9810534-2	Amino Acid Transport	54
+PMC9810534-2	Regulation Of Glucose Import	55
+PMC9810534-2	Arginine Catabolic Process	56
+PMC9810534-2	Arginine Transport	57
+PMC9810534-2	Positive Regulation Of Glucose Import	58
+PMC9810534-2	Regulation Of Glycogen Biosynthetic Process	59
+PMC9810534-2	Positive Regulation Of Cholesterol Storage	60
+PMC9810534-2	Cholesterol Metabolism	61
+PMC9810534-1	Myeloid Leukocyte Migration	1
+PMC9810534-1	Neutrophil-Mediated Immunity	2
+PMC9810534-1	NOTCH Signaling	3
+PMC9810534-1	Phagosome	4
+PMC9810534-1	Myeloid Cell Differentiation	5
+PMC9810534-1	Autophagy	6
+PMC9810534-1	Antigen Processing and Presentation	7
+PMC9810534-1	Mitosis	8
+PMC9810534-1	HOXA Signaling	9
+PMC9810534-1	PRC2-EZH2 Targets	10
+PMC9810534-1	myeloid cell differentiation	11
+PMC9810534-1	leukocyte differentiation	12
+PMC9810534-1	developmental maturation	13
+PMC9810534-1	myeloid leukocyte differentiation	14
+PMC9810534-1	regulation of leukocyte differentiation	15
+PMC9810534-1	granulocyte differentiation	16
+PMC9810534-1	GO_MYELOID_LEUKOCYTE_DIFFERENTIATION	17
+PMC9810534-1	GO_MYELOID_CELL_DEVELOPMENT	18
+PMC9810534-1	GO_LEUKOCYTE_DIFFERENTIATION	19
+PMC9810534-1	GO_DEVELOPMENTAL_MATURATION	20
+PMC9810534-1	response to bacterium	21
+PMC9810534-1	defense response to other organism	22
+PMC9810534-1	defense response to bacterium	23
+PMC9810534-1	defense response to Gram-negative bacterium	24
+PMC9810534-1	defense response to Gram-positive bacterium	25
+PMC9810534-1	Antimicrobial peptides	26
+PMC9810534-1	GO_NEUTROPHIL_MEDIATED_IMMUNITY	27
+PMC9810534-1	GO_CELL_KILLING	28
+PMC9750880-3	PI3K-Akt signaling pathway	1
+PMC9750880-3	Pathways in cancer	2
+PMC9750880-3	Focal adhesion	3
+PMC9750880-3	Amoebiasis	4
+PMC9750880-3	Rap1 signaling pathway	5
+PMC9750880-3	Staphylococcus aureus infection	6
+PMC9750880-3	Ras signaling pathway	7
+PMC9750880-3	ECM-receptor interaction	8
+PMC9750880-3	Cytokine-cytokine receptor interaction	9
+PMC9750880-3	MAPK signaling pathway	10
+PMC9750880-2	Small cell lung cancer	1
+PMC9750880-2	Pathways in cancer	2
+PMC9750880-2	PI3K-Akt signaling pathway	3
+PMC9750880-2	Focal adhesion	4
+PMC9750880-2	ECM-receptor interaction	5
+PMC9750880-2	Proteoglycans in cancer	6
+PMC9750880-2	Gap junction	7
+PMC9750880-2	Rap1 signaling pathway	8
+PMC9750880-2	Amoebiasis	9
+PMC9750880-2	Rheumatoid arthritis	10
+PMC9750880-1	Angiogenesis	1
+PMC9750880-1	Cell migration	2
+PMC9750880-1	Wound healing	3
+PMC9750880-1	Protein phoshorylation	4
+PMC9750880-1	Intracellular signaling transduction	5
+PMC9750880-1	Negative regulation of cell proliferation	6
+PMC9750880-1	Actin cytoskeleton organization	7
+PMC9750880-1	Cell-cell adhension	8
+PMC9750880-1	Phosphorylation	9
+PMC9750880-1	Dendritic spine development	10
+PMC9279158-2	KEGG_SPLICEOSOME	1
+PMC9279158-2	KEGG_PROTEASOME	2
+PMC9279158-2	KEGG_RNA_POLYMERASE	3
+PMC9279158-2	KEGG_CELL_CYCLE	4
+PMC9279158-2	KEGG_BASAL_TRANSCRIPTION_FACTORS	5
+PMC9279158-2	KEGG_RNA_DEGRADATION	6
+PMC9279158-2	KEGG_AMINOACYL_TRNA_BIOSYNTHESIS	7
+PMC9279158-2	KEGG_DNA_REPLICATION	8
+PMC9279158-2	KEGG_NUCLEOTIDE_EXCISION_REPAIR	9
+PMC9279158-2	KEGG_FOCAL_ADHESION	10
+PMC9279158-2	KEGG_ECM_RECEPTOR_INTERACTION	11
+PMC9279158-2	KEGG_MAPK_SIGNALING_PATHWAY	12
+PMC9279158-2	KEGG_ARRHYTHMOGENIC_RIGHT_VENTRICULAR_CARDIOMYOPATHY_ARVC	13
+PMC9279158-2	KEGG_GNRH_SIGNALING_PATHWAY	14
+PMC9279158-2	KEGG_HYPERTROPHIC_CARDIOMYOPATHY_HCM	15
+PMC9279158-2	KEGG_AXON_GUIDANCE	16
+PMC9279158-2	KEGG_REGULATION_OF_ACTIN_CYTOSKELETON	17
+PMC9279158-2	KEGG_PANCREATIC_CANCER	18
+PMC9279158-2	KEGG_HEMATOPOIETIC_CELL_LINEAGE	19
+PMC9279158-2	KEGG_VEGF_SIGNALING_PATHWAY	20
+PMC9279158-2	KEGG_LEUKOCYTE_TRANSENDOTHELIAL_MIGRATION	21
+PMC9279158-2	KEGG_PHOSPHATIDYLINOSITOL_SIGNALING_SYSTEM	22
+PMC9279158-2	KEGG_PATHWAYS_IN_CANCER	23
+PMC9279158-2	KEGG_DILATED_CARDIOMYOPATHY	24
+PMC9279158-2	KEGG_ADHERENS_JUNCTION	25
+PMC9279158-2	KEGG_GAP_JUNCTION	26
+PMC9279158-2	KEGG_CALCIUM_SIGNALING_PATHWAY	27
+PMC9279158-2	KEGG_COMPLEMENT_AND_COAGULATION_CASCADES	28
+PMC9279158-2	KEGG_MELANOGENESIS	29
+PMC9279158-2	KEGG_CELL_ADHESION_MOLECULES_CAMS	30
+PMC9279158-2	KEGG_GLIOMA	31
+PMC9279158-2	KEGG_LONG_TERM_DEPRESSION	32
+PMC9279158-2	KEGG_TYPE_II_DIABETES_MELLITUS	33
+PMC9279158-2	KEGG_INTESTINAL_IMMUNE_NETWORK_FOR_IGA_PRODUCTION	34
+PMC9279158-1	HALLMARK_MYC_TARGETS_V1	1
+PMC9279158-1	HALLMARK_MYC_TARGETS_V2	2
+PMC9279158-1	HALLMARK_E2F_TARGETS	3
+PMC9279158-1	HALLMARK_OXIDATIVE_PHOSPHORYLATION	4
+PMC9279158-1	HALLMARK_UNFOLDED_PROTEIN_RESPONSE	5
+PMC9279158-1	HALLMARK_DNA_REPAIR	6
+PMC9279158-1	HALLMARK_WNT_BETA_CATENIN_SIGNALING	7
+PMC9279158-1	HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION	8
+PMC9279158-1	HALLMARK_INTERFERON_GAMMA_RESPONSE	9
+PMC9279158-1	HALLMARK_GLYCOLYSIS	10
+PMC9279158-1	HALLMARK_APICAL_JUNCTION	11
+PMC9279158-1	HALLMARK_INFLAMMATORY_RESPONSE	12
+PMC9279158-1	HALLMARK_MITOTIC_SPINDLE	13
+PMC9279158-1	HALLMARK_UV_RESPONSE_DN	14
+PMC9279158-1	HALLMARK_ESTROGEN_RESPONSE_EARLY	15
+PMC9279158-1	HALLMARK_COMPLEMENT	16
+PMC9279158-1	HALLMARK_INTERFERON_ALPHA_RESPONSE	17
+PMC9279158-1	HALLMARK_COAGULATION	18
+PMC9279158-1	HALLMARK_ESTROGEN_RESPONSE_LATE	19
+PMC9279158-1	HALLMARK_PANCREAS_BETA_CELLS	20
+PMC9279158-1	HALLMARK_MYOGENESIS	21
+PMC9279158-1	HALLMARK_HEME_METABOLISM	22
+PMC9279158-1	HALLMARK_HYPOXIA	23
+PMC9279158-1	HALLMARK_APOPTOSIS	24
+PMC9279158-1	HALLMARK_ANDROGEN_RESPONSE	25
+PMC9279158-1	HALLMARK_TNFA_SIGNALING_VIA_NFKB	26
+PMC9279158-1	HALLMARK_PROTEIN_SECRETION	27
+PMC9279158-1	HALLMARK_IL2_STAT5_SIGNALING	28
+PMC9279158-1	HALLMARK_KRAS_SIGNALING_DN	29
+PMC9279158-1	HALLMARK_FATTY_ACID_METABOLISM	30
+PMC9279158-1	HALLMARK_P53_PATHWAY	31
+PMC9232499-2	response to stress	1
+PMC9232499-2	positive regulation of multicellular organismal process	2
+PMC9232499-2	response to extremal stimulus	3
+PMC9232499-2	defense response	4
+PMC9232499-1	positive regulation of cell migration	1
+PMC9232499-1	positive regulation of cell motility	2
+PMC9232499-1	positive regulation of locomotion	3
+PMC9232499-1	positive regulation of cellular component movement	4
+PMC9232499-1	regulation of cell migration	5
+PMC9232499-1	regulation of cell motility	6
+PMC9232499-1	regulation of locomotion	7
+PMC9232499-1	regulation of cellular component movement	8
+PMC9232499-1	collagen metabolic process	9
+PMC9232499-1	cell migration	10
+PMC9232499-1	locomotion	11
+PMC9232499-1	cell motility	12
+PMC9232499-1	localization of cell	13
+PMC9232499-1	extracellular matrix organization	14
+PMC9232499-1	extracellular structure organization	15
+PMC9205785-3	Regulation of humoral immune response	1
+PMC9205785-3	Immunoglobulin production	2
+PMC9205785-3	B cell mediated immunity	3
+PMC9205785-3	Regulation of complement activation	4
+PMC9205785-3	Regulation of blood pressure	5
+PMC9205785-3	Immunoglobulin-mediated immune response	6
+PMC9205785-3	Complement activation	7
+PMC9205785-3	Terapyrrole binding	8
+PMC9205785-3	Heme binding	9
+PMC9205785-2	T cell receptor complex	1
+PMC9205785-2	Lymphocyte chemotaxis	2
+PMC9205785-2	Lymphocyte migration	3
+PMC9205785-2	Meutrophil chemotaxis	4
+PMC9205785-2	Endocytic vesicle lumen	5
+PMC9205785-2	Chemokine activity	6
+PMC9205785-2	Chemokine receptor binding	7
+PMC9205785-2	Positive regulation of interleukin-1 secretion	8
+PMC9205785-2	B cell receptor signaling pathway	9
+PMC9205785-2	pPhagocytosis recognition	10
+PMC9205785-2	Immunoglobulin complex, circulating	11
+PMC9205785-2	Immunoglobulin receptor binding	12
+PMC9205785-1	B cell receptor signaling pathway	1
+PMC9205785-1	Complement activation pathway	2
+PMC9205785-1	Regulation of humoral immune response	3
+PMC9205785-1	Immunoglobulin complex, circulating	4
+PMC9205785-1	Immunoglobulin receptor binding	5
+PMC9205785-1	Phagocytosis recognition	6
+PMC9205785-1	Positive regulation of bone resorption	7
+PMC9205785-1	Positive regulation of bone remodeling	8
+PMC9205785-1	Positive regulation of tissue remodeling	9
+PMC9203705	BENPORATH_PRC2_TARGETS	1
+PMC9203705	JAATINEN_HEMATOPOIETIC_STEM_CELLS	2
+PMC9203705	MANNO_MIDBRAIN_NEUROTYPES_HDA2	3
+PMC9203705	GOBP_HOMOPHILIC_CELL_ADHESION_VIA_PLASMA_MEMBRANE_ADHESION_MOLECULES	4
+PMC9203705	HALLMARK_MTORC1_SIGNALING	5
+PMC9203705	HALLMARK_E2F_TARGETS	6
+PMC9178829-2	GO_CHROMOSOME_ORGANIZATION	1
+PMC9178829-2	GO_RNA_PROCESSING	2
+PMC9178829-2	GO_RIBONUCLEOPROTEIN_COMPLEX_BIOGENESIS	3
+PMC9178829-2	GO_RIBOSOME_BIOGENESIS	4
+PMC9178829-2	GO_RRNA_METABOLIC_PROCESS	5
+PMC9178829-2	GO_CELL_CYCLE	6
+PMC9178829-2	GO_REGULATION_OF_ORGANELLE_ORGANIZATION	7
+PMC9178829-2	GO_NEGATIVE_REGULATION_OF_NUCLEOBASE_CONTAINING_COMPOUND_METABOLIC_PROCESS	8
+PMC9178829-2	GO_RNA_SPLICING	9
+PMC9178829-2	GO_MRNA_METABOLIC_PROCESS	10
+PMC9178829-2	GO_PROTEIN_CONTAINING_COMPLEX_SUBUNIT_ORGANIZATION	11
+PMC9178829-2	GO_MITOTIC_CELL_CYCLE	12
+PMC9178829-2	GO_MRNA_PROCESSING	13
+PMC9178829-2	GO_NEGATIVE_REGULATION_OF_RNA_BIOSYNTHETIC_PROCESS	14
+PMC9178829-2	GO_NEGATIVE_REGULATION_OF_BIOSYNTHETIC_PROCESS	15
+PMC9178829-2	GO_NCRNA_PROCESSING	16
+PMC9178829-2	GO_CHROMATIN_ORGANIZATION	17
+PMC9178829-2	GO_NCRNA_METABOLIC_PROCESS	18
+PMC9178829-2	GO_ACTIN_FILAMENT_BASED_PROCESS	19
+PMC9178829-2	GO_RNA_SPLICING_VIA_TRANSESTERIFICATION_REACTIONS	20
+PMC9178829-2	GO_RNA_BINDING	21
+PMC9178829-2	GO_RIBONUCLEOTIDE_BINDING	22
+PMC9178829-2	GO_HYDROLASE_ACTIVITY_ACTING_ON_ACID_ANHYDRIDES	23
+PMC9178829-2	GO_ADENYL_NUCLEOTIDE_BINDING	24
+PMC9178829-2	GO_PROTEIN_CONTAINING_COMPLEX_BINDING	25
+PMC9178829-2	GO_IDENTICAL_PROTEIN_BINDING	26
+PMC9178829-2	GO_CYTOSKELETAL_PROTEIN_BINDING	27
+PMC9178829-2	GO_OXIDOREDUCTASE_ACTIVITY	28
+PMC9178829-2	GO_PROTEIN_DOMAIN_SPECIFIC_BINDING	29
+PMC9178829-2	GO_HISTONE_BINDING	30
+PMC9178829-2	GO_CHROMATIN_BINDING	31
+PMC9178829-2	GO_GUANYL_NUCLEOTIDE_BINDING	32
+PMC9178829-2	GO_SINGLE_STRANDED_DNA_BINDING	33
+PMC9178829-2	GO_GTPASE_ACTIVITY	34
+PMC9178829-2	GO_ACTIN_BINDING	35
+PMC9178829-2	GO_CATALYTIC_ACTIVITY_ACTING_ON_RNA	36
+PMC9178829-2	GO_CATALYTIC_ACTIVITY_ACTING_ON_DNA	37
+PMC9178829-2	GO_HELICASE_ACTIVITY	38
+PMC9178829-2	GO_ENZYME_REGULATOR_ACTIVITY	39
+PMC9178829-2	GO_OXIDOREDUCTASE_ACTIVITY_ACTING_ON_THE_CH_NH_GROUP_OF_DONORS_NAD_OR_NADP_AS_ACCEPTOR	40
+PMC9178829-2	KEGG_NEUROTROPHIN_SIGNALING_PATHWAY	41
+PMC9178829-2	KEGG_SPLICEOSOME	42
+PMC9178829-2	KEGG_REGULATION_OF_ACTIN_CYTOSKELETON	43
+PMC9178829-2	KEGG_FC_GAMMA_R_MEDIATED_PHAGOCYTOSIS	44
+PMC9178829-2	KEGG_P53_SIGNALING_PATHWAY	45
+PMC9178829-2	KEGG_RENAL_CELL_CARCINOMA	46
+PMC9178829-2	KEGG_FOCAL_ADHESION	47
+PMC9178829-2	KEGG_LEUKOCYTE_TRANSENDOTHELIAL_MIGRATION	48
+PMC9178829-2	KEGG_PATHOGENIC_ESCHERICHIA_COLI_INFECTION	49
+PMC9178829-2	KEGG_COLORECTAL_CANCER	50
+PMC9178829-2	KEGG_PYRIMIDINE_METABOLISM	51
+PMC9178829-2	KEGG_PANCREATIC_CANCER	52
+PMC9178829-2	KEGG_ALDOSTERONE_REGULATED_SODIUM_REABSORPTION	53
+PMC9178829-2	KEGG_FC_EPSILON_RI_SIGNALING_PATHWAY	54
+PMC9178829-2	KEGG_TYPE_II_DIABETES_MELLITUS	55
+PMC9178829-2	KEGG_CELL_CYCLE	56
+PMC9178829-2	KEGG_CHEMOKINE_SIGNALING_PATHWAY	57
+PMC9178829-2	KEGG_HOMOLOGOUS_RECOMBINATION	58
+PMC9178829-2	KEGG_PATHWAYS_IN_CANCER	59
+PMC9178829-2	KEGG_CYSTEINE_AND_METHIONINE_METABOLISM	60
+PMC9178829-1	GO_CELL_ACTIVATION	1
+PMC9178829-1	GO_REGULATION_OF_CELL_DEATH	2
+PMC9178829-1	GO_NEGATIVE_REGULATION_OF_RESPONSE_TO_STIMULUS	3
+PMC9178829-1	GO_APOPTOTIC_PROCESS	4
+PMC9178829-1	GO_REGULATION_OF_INTRACELLULAR_SIGNAL_TRANSDUCTION	5
+PMC9178829-1	GO_REGULATION_OF_CELL_POPULATION_PROLIFERATION	6
+PMC9178829-1	GO_NEGATIVE_REGULATION_OF_SIGNALING	7
+PMC9178829-1	GO_POSITIVE_REGULATION_OF_MOLECULAR_FUNCTION	8
+PMC9178829-1	GO_REGULATION_OF_PHOSPHORYLATION	9
+PMC9178829-1	GO_REGULATION_OF_IMMUNE_SYSTEM_PROCESS	10
+PMC9178829-1	GO_POSITIVE_REGULATION_OF_SIGNALING	11
+PMC9178829-1	GO_NEGATIVE_REGULATION_OF_CELL_DEATH	12
+PMC9178829-1	GO_IMMUNE_EFFECTOR	13
+PMC9178829-1	GO_REGULATION_OF_PHOSPHORUS_METABOLIC_PROCESS	14
+PMC9178829-1	GO_RESPONSE_TO_ENDOGENOUS_STIMULUS	15
+PMC9178829-1	GO_POSITIVE_REGULATION_OF_MULTICELLULAR_ORGANISMAL_PROCESS	16
+PMC9178829-1	GO_POSITIVE_REGULATION_OF_PROTEIN_METABOLIC_PROCESS	17
+PMC9178829-1	GO_REGULATION_OF_PROTEIN_MODIFICATION_PROCESS	18
+PMC9178829-1	GO_T_CELL_ACTIVATION	19
+PMC9178829-1	GO_EXOCYTOSIS	20
+PMC9178829-1	GO_KINASE_BINDING	21
+PMC9178829-1	GO_DNA_BINDING_TRANSCRIPTION_FACTOR_ACTIVITY	22
+PMC9178829-1	GO_TRANSCRIPTION_REGULATOR_ACTIVITY	23
+PMC9178829-1	GO_CIS_REGULATORY_REGION_SEQUENCE_SPECIFIC_DNA_BINDING	24
+PMC9178829-1	GO_REGULATORY_REGION_NUCLEIC_ACID_BINDING	25
+PMC9178829-1	GO_SIGNALING_RECEPTOR_BINDING	26
+PMC9178829-1	GO_HISTONE_DEACETYLASE_BINDING	27
+PMC9178829-1	GO_PROTEIN_DOMAIN_SPECIFIC_BINDING	28
+PMC9178829-1	GO_TRANSCRIPTION_FACTOR_BINDING	29
+PMC9178829-1	GO_SEQUENCE_SPECIFIC_DNA_BINDING	30
+PMC9178829-1	GO_PROTEIN_CONTAINING_COMPLEX_BINDING	31
+PMC9178829-1	GO_ENZYME_REGULATOR_ACTIVITY	32
+PMC9178829-1	GO_IDENTICAL_PROTEIN_BINDING	33
+PMC9178829-1	GO_ENZYME_ACTIVATOR_ACTIVITY	34
+PMC9178829-1	GO_DNA_BINDING_TRANSCRIPTION_REPRESSOR_ACTIVITY	35
+PMC9178829-1	GO_GUANYL_NUCLEOTIDE_EXCHANGE_FACTOR_ACTIVITY	36
+PMC9178829-1	GO_PROTEIN_TYROSINE_SERINE_THREONINE_PHOSPHATASE_ACTIVITY	37
+PMC9178829-1	GO_DNA_BINDING_RANSCRIPTION_ACTIVATOR_ACTIVITY	38
+PMC9178829-1	GO_RIBONUCLEOTIDE_BINDING	39
+PMC9178829-1	GO_UBIQUITIN_LIKE_PROTEIN_LIGASE_BINDINDING	40
+PMC9178829-1	KEGG_ANTIGEN_PROCESS_AND_PRESENTATIATION	41
+PMC9178829-1	KEGG_PATHWAYS_IN_CANCER	42
+PMC9178829-1	KEGG_MAPK_SIGNALING_PATHWAY	43
+PMC9178829-1	KEGG_LYSOSOME	44
+PMC9159952-7	Mood disorder	1
+PMC9159952-7	Developmental disorder of mental health	2
+PMC9159952-7	Pervasive developmental disorder	3
+PMC9159952-7	Bipolar disorder	4
+PMC9159952-7	Autism spectrum disorder	5
+PMC9159952-7	Autistic disorder	6
+PMC9159952-6	I-set domain containing	1
+PMC9159952-6	Fibronection type III domain containing	2
+PMC9159952-6	Ligand gated ion channels	3
+PMC9159952-6	PDZ domain containing	4
+PMC9159952-6	Voltage-gated ion channels	5
+PMC9159952-6	Peptide receptors	6
+PMC9159952-5	Regulation of membrane potential	1
+PMC9159952-5	Synapse organization	2
+PMC9159952-5	Regulation of synapse structure or activity	3
+PMC9159952-5	Regulation of ion transmembrane transport	4
+PMC9159952-5	Regulation of synapse organiztion	5
+PMC9159952-5	Axon development	6
+PMC9159952-4	Peptidyl-lysine trimethylation	1
+PMC9159952-4	Methylation	2
+PMC9159952-4	Ovulation cycle process	3
+PMC9159952-4	Positive regulation of inflammatory response	4
+PMC9159952-4	Lipid storage	5
+PMC9159952-3	Epilepsy syndrome	1
+PMC9159952-3	Pervasive developmental disorder	2
+PMC9159952-3	Focal epilepsy	3
+PMC9159952-3	Autism spectrum disorder	4
+PMC9159952-3	autistic disorder	5
+PMC9159952-3	Temporal lobe epilepsy	6
+PMC9159952-2	I-set domain containing	1
+PMC9159952-2	Voltage-gated ion channels	2
+PMC9159952-2	Ligand gated ion channels	3
+PMC9159952-2	Glutamate receptors	4
+PMC9159952-2	IgLON cell adhesion molecules	5
+PMC9159952-1	Synapse organization	1
+PMC9159952-1	Regulation of synapse structure or activity	2
+PMC9159952-1	Startle response	3
+PMC9159952-1	Synaptic vesicle cycle	4
+PMC9159952-1	Regulation of ion transmembrane transport	5
+PMC8983726-2	Regulation of cell adhesion	1
+PMC8983726-2	Glycolysis	2
+PMC8983726-2	Inflammatory response	3
+PMC8983726-2	Leukocyte migration	4
+PMC8983726-2	Regulation of cytokine production	5
+PMC8983726-2	Adaptive immune response	6
+PMC8983726-2	Leukocyte activation involved in immune response	7
+PMC8983726-2	Positive regulation of immune response	8
+PMC8983726-2	Neutrophil degranulation	9
+PMC8983726-2	Myeloid leukocyte activation	10
+PMC8983726-1	Morphogenesis of a branching epithelium	1
+PMC8983726-1	Response to growth factor	2
+PMC8983726-1	Pattern specification process	3
+PMC8983726-1	Ossification	4
+PMC8983726-1	Regulation of ERK1 and ERK2 cascade	5
+PMC8983726-1	Positive regulation of epithelial cell prliferation	6
+PMC8983726-1	Cell-substrate adhesion	7
+PMC8983726-1	Muscle tissue development	8
+PMC8983726-1	Thermogenesis	9
+PMC8983726-1	Odontogenesis of dentincontaining tooth	10
+PMC8967900	Cytokine-cytokine receptor interaction	1
+PMC8967900	Calucium signaling pathway	2
+PMC8967900	Leukocyte transendothelial migration	3
+PMC8967900	B cell receptor singaling pathway	4
+PMC8967900	FC epsilon RI signaling pathway	5
+PMC8967900	Phosphatidylinositol signaling system	6
+PMC8967900	P53 signaling pathway	7
+PMC8967900	T cell receptor signaling pathway	8
+PMC8967900	Notch signaling pathway	9
+PMC8967900	MTOR signaling pathway	10
+PMC8967900	Basal transcription factors	11
+PMC8967900	Spliceosome	12
+PMC8967900	Oxidative phosphorylation	13
+PMC8967900	Proteasome	14
+PMC8967900	Ribosome	15
+PMC8831505-2	Glycolysis gluconeogenesis	1
+PMC8831505-2	Fructose and mannose metabolism	2
+PMC8831505-2	Pentose phosphate pathway	3
+PMC8831505-2	Metabolism of xenobiotics by cytochrome p450	4
+PMC8831505-2	Drug metabolism cytochrome p450	5
+PMC8831505-2	Starch and sucrose metabolism	6
+PMC8831505-2	Pyruvate metabolism	7
+PMC8831505-2	Glyoxylate and dicarboxylate metabolism	8
+PMC8831505-2	Retinol metabolism	9
+PMC8831505-2	Galactose metabolism	10
+PMC8831505-2	Long term depression	11
+PMC8831505-2	Inositol phosphate metabolism	12
+PMC8831505-2	Cytokine/cytokine receptor interaction	13
+PMC8831505-2	TGF-beta signaling pathway	14
+PMC8831505-2	Homologous recombination	15
+PMC8831505-2	Base excision repair	16
+PMC8831505-2	Systemic lupus erythematosus	17
+PMC8831505-2	DNA replication	18
+PMC8831505-2	Cell cycle	19
+PMC8831505-1	Hypoxia	1
+PMC8831505-1	Glycolysis	2
+PMC8831505-1	mTORC1 signaling	3
+PMC8831505-1	HemeMetabolism	4
+PMC8831505-1	Cholesterol homeostasis	5
+PMC8831505-1	Fatty acid metabolism	6
+PMC8831505-1	IL2 stat5 signaling	7
+PMC8831505-1	Myogenesis	8
+PMC8831505-1	Oxidative phosphorylation	9
+PMC8831505-1	KRAS signaling up	10
+PMC8831505-1	Estrogen response early	11
+PMC8831505-1	Unfolded protein response	12
+PMC8831505-1	Apical junction	13
+PMC8831505-1	Inflammatory response	14
+PMC8831505-1	TGF-beta signaling	15
+PMC8831505-1	MYC targets V2	16
+PMC8831505-1	Mitotic spindle	17
+PMC8831505-1	Interferon gamma response	18
+PMC8831505-1	Interferon alpha response	19
+PMC8831505-1	G2M checkpoint	20
+PMC8831505-1	E2F targets	21
+PMC10264249-2	cell proliferation	1
+PMC10264249-2	membrane fusion	2
+PMC10264249-2	retrograde vesicle-mediated transport, Golgi to ER	3
+PMC10264249-2	response to oxidative stress	4
+PMC10264249-2	DNA replication	5
+PMC10264249-2	mRNA splicing, via spliceosome	6
+PMC10264249-2	WNT signaling pathway	7
+PMC10264249-2	positive regulation of transcription from RNA pol II promoter	8
+PMC10264249-2	double-strand break repair via homologous recombination	9
+PMC10264249-2	Hippo signaling pathway	10
+PMC10264249-2	cell cycle	11
+PMC10264249-1	WNT signaling pathway	1
+PMC10264249-1	c-Met signaling pathway	2
+PMC10264249-1	B cell receptor (BCR) signaling pathway	3
+PMC10264249-1	phosphatidylinositol (3,4,5)-trisphosphate (PIP3) signaling in B lymphocytes	4
+PMC10264249-1	CREB pathway	5
+PMC10202813-8	regulation of postsynaptic membrane potential	1
+PMC10202813-8	central nervous system neuron differentiation	2
+PMC10202813-8	glutamate receptor signaling pathway	3
+PMC10202813-8	modulation of chemical synaptic transmission	4
+PMC10202813-8	regulation of trans-synaptic signaling	5
+PMC10202813-8	RNA splicing	6
+PMC10202813-8	regulation of chromosome organization	7
+PMC10202813-8	mitotic nuclear division	8
+PMC10202813-8	proteasomal protein catabolic process	9
+PMC10202813-8	cell cycle checkpoint	10
+PMC10202813-7	keratinization	1
+PMC10202813-7	keratinocyte differentiation	2
+PMC10202813-7	epidermal cell differentiation	3
+PMC10202813-7	epidermis development	4
+PMC10202813-7	cornification	5
+PMC10202813-7	histone modification	6
+PMC10202813-7	mRNA catabolic process	7
+PMC10202813-7	Golgi vesicle transport	8
+PMC10202813-7	proteasomal protein catabolic process	9
+PMC10202813-7	protein polyubiquitination	10
+PMC10202813-6	pigment biosynthetic process	1
+PMC10202813-6	melanin biosynthetic process	2
+PMC10202813-6	melanin metabolic process	3
+PMC10202813-6	secondary metabolic process	4
+PMC10202813-6	pigment metabolic process	5
+PMC10202813-6	regulation of ion transmembrane transport	6
+PMC10202813-6	regulation of membrane potential	7
+PMC10202813-6	synapse assembly	8
+PMC10202813-6	glutamate receptor signaling pathway	9
+PMC10202813-6	muscle contraction	10
+PMC10202813-5	regulation of membrane potential	1
+PMC10202813-5	chloride transmembrane transport	2
+PMC10202813-5	gamma-aminobutyric acid signaling pathway	3
+PMC10202813-5	regulation of postsynaptic membrane potential	4
+PMC10202813-5	inorganic anion transport	5
+PMC10202813-5	organic acid catabolic process	6
+PMC10202813-5	fatty acid metabolic process	7
+PMC10202813-5	positive regulation of NF-kappaB transcription factor activity	8
+PMC10202813-5	response to type I interferon	9
+PMC10202813-5	interferon-gamma-mediated signaling pathway	10
+PMC10202813-4	response to hydrogen peroxide	1
+PMC10202813-4	response to reactive oxygen species	2
+PMC10202813-4	response to antibiotic	3
+PMC10202813-4	cell-substrate adhesion	4
+PMC10202813-4	Rho protein signal transduction	5
+PMC10202813-4	modulation of chemical synaptic transmission	6
+PMC10202813-4	regulation of trans-synaptic signaling	7
+PMC10202813-4	regulation of membrane potential	8
+PMC10202813-4	glutamate receptor signaling pathway	9
+PMC10202813-4	regulation of ion transmembrane transport	10
+PMC10202813-3	response to interferon-gamma	1
+PMC10202813-3	cellular response to interferon-gamma	2
+PMC10202813-3	interferon-gamma-mediated signaling pathway	3
+PMC10202813-3	response to type I interferon	4
+PMC10202813-3	type I interferon signaling pathway	5
+PMC10202813-3	nuclear division	6
+PMC10202813-3	muscle contraction	7
+PMC10202813-3	extracellular matrix organization	8
+PMC10202813-3	cell fate commitment	9
+PMC10202813-3	extracellular structure organization	10
+PMC10202813-2	positive regulation of cell aging	1
+PMC10202813-2	negative regulation of adaptive immune response	2
+PMC10202813-2	DNA geometric change	3
+PMC10202813-2	regulation of cellular senescence	4
+PMC10202813-2	T cell activation	5
+PMC10202813-2	ER overload response	6
+PMC10202813-2	replicative senescence	7
+PMC10202813-2	neutrophil activation involved in immune response	8
+PMC10202813-2	regulation of cell aging	9
+PMC10202813-2	regulation of antigen receptor-mediated signaling pathway	10
+PMC10202813-2	positive regulation of cell killing	11
+PMC10202813-2	negative regulation of kinase activity	12
+PMC10202813-2	regulation of T cell mediated immunity	13
+PMC10202813-2	T cell differentiation in thymus	14
+PMC10202813-2	negative regulation of T cell mediated immunity	15
+PMC10202813-2	regulation of adaptive immune response	16
+PMC10202813-2	positive regulation of cellular senescence	17
+PMC10202813-2	cellular senescence	18
+PMC10202813-2	nucleotide-excision repair, DNA damage recognition	19
+PMC10202813-2	negative regulation of cytokine production	20
+PMC10202813-1	Antigen processing and presentation	1
+PMC10202813-1	Interferon gamma signaling	2
+PMC10202813-1	cell adhesion molecules	3
+PMC10202813-1	RNA polymerase II	4
+PMC10202813-1	Butyrophilin family interactions	5
+PMC10202813-1	Complement pathway	6
+PMC10202813-1	Th1 and Th2 differentiation	7
+PMC10202813-1	IL6 JAK-STAT3 signaling	8
+PMC10156590-4	Signaling by Rho GTPases	1
+PMC10156590-4	Signaling by Rho GTPases, Miro GTPases and RHOBTB3	2
+PMC10156590-4	RHO GTPase cycle	3
+PMC10156590-4	Oxidative Stress Induced Senescence	4
+PMC10156590-4	RHO GTPase Effectors	5
+PMC10156590-4	CDC42 GTPase cycle	6
+PMC10156590-4	Cellular Senescence	7
+PMC10156590-4	RHO GTPases Activate Formins	8
+PMC10156590-4	RAC1 GTPase cycle	9
+PMC10156590-4	Membrane Trafficking	10
+PMC10156590-3	M Phase	1
+PMC10156590-3	Signaling by Nuclear Receptors	2
+PMC10156590-3	Signaling by WNT	3
+PMC10156590-3	RHO GTPase Effectors	4
+PMC10156590-3	Transcriptional regulation by RUNX1	5
+PMC10156590-3	Signaling by NOTCH	6
+PMC10156590-3	Chromatin organization	7
+PMC10156590-3	Chromatin modifying enzymes	8
+PMC10156590-3	ESR-mediated signaling	9
+PMC10156590-3	TCF dependent signaling in response to WNT	10
+PMC10156590-3	Cellular Senescence	11
+PMC10156590-3	Factors involved in megakaryocyte development and platelet production	12
+PMC10156590-3	DNA Replication	13
+PMC10156590-3	Estrogen-dependent gene expression	14
+PMC10156590-3	Epigenetic regulation of gene expression	15
+PMC10156590-3	Mitotic Prophase	16
+PMC10156590-3	Cellular response to heat stress	17
+PMC10156590-3	DNA Replication Pre-Initiation	18
+PMC10156590-3	Reproduction	19
+PMC10156590-3	Gene Silencing by RNA	20
+PMC10156590-3	Activation of anterior HOX genes in hindbrain development during early embryogenesis	21
+PMC10156590-3	Activation of HOX genes during differentiation	22
+PMC10156590-3	Pre-NOTCH Expression and Processing	23
+PMC10156590-3	Oxidative Stress Induced Senescence	24
+PMC10156590-3	Assembly of the pre-replicative complex	25
+PMC10156590-3	Regulation of HSF1-mediated heat shock response	26
+PMC10156590-3	MAPK6/MAPK4 signaling	27
+PMC10156590-3	RUNX1 regulates transcription of genes involved in differentiation of HSCs	28
+PMC10156590-3	XBP1(S) activates chaperone genes	29
+PMC10156590-3	Regulation of mRNA stability by proteins that bind AU-rich elements	30
+PMC10156590-3	Meiosis	31
+PMC10156590-3	Cytoprotection by HMOX1	32
+PMC10156590-3	Senescence-Associated Secretory Phenotype (SASP)	33
+PMC10156590-3	Diseases of programmed cell death	34
+PMC10156590-3	Negative epigenetic regulation of rRNA expression	35
+PMC10156590-3	Amyloid fiber formation	36
+PMC10156590-3	Pre-NOTCH Transcription and Translation	37
+PMC10156590-3	Transcriptional activation of mitochondrial biogenesis	38
+PMC10156590-3	RNA Polymerase I Transcription	39
+PMC10156590-3	Regulation of cholesterol biosynthesis by SREBP (SREBF)	40
+PMC10156590-3	RNA Polymerase I Promoter Clearance	41
+PMC10156590-3	Transcriptional regulation by small RNAs	42
+PMC10156590-3	Positive epigenetic regulation of rRNA expression	43
+PMC10156590-3	NoRC negatively regulates rRNA expression	44
+PMC10156590-3	RHO GTPases activate PKNs	45
+PMC10156590-3	RUNX1 regulates genes involved in megakaryocyte differentiation and platelet function	46
+PMC10156590-3	HSP90 chaperone cycle for steroid hormone receptors (SHR) in the presence of ligand	47
+PMC10156590-2	Transport to the Golgi and subsequent modification	1
+PMC10156590-2	Mitotic Anaphase	2
+PMC10156590-2	Mitotic Metaphase and Anaphase	3
+PMC10156590-2	RHO GTPase Effectors	4
+PMC10156590-2	Intra-Golgi and retrograde Golgi-to-ER traffic	5
+PMC10156590-2	MAPK family signaling cascades	6
+PMC10156590-2	Translation	7
+PMC10156590-2	Cell Cycle Checkpoints	8
+PMC10156590-2	G2/M Transition	9
+PMC10156590-2	Mitotic G2-G2/M phases	10
+PMC10156590-2	Signaling by ROBO receptors	11
+PMC10156590-2	MAPK1/MAPK3 signaling	12
+PMC10156590-2	Organelle biogenesis and maintenance	13
+PMC10156590-2	HCMV Early Events	14
+PMC10156590-2	RAF/MAP kinase cascade	15
+PMC10156590-1	Mitotic prometaphase	1
+PMC10156590-1	Interferon signaling	2
+PMC10156590-1	Signaling by RHO GTPases, Miro GPTases and RHOBTB3	3
+PMC10156590-1	M phase	4
+PMC10156590-1	Interferon gamma signaling	5
+PMC10156590-1	Signaling by RHO GPTases	6
+PMC10156590-1	RHO GTPase cycle	7
+PMC10156590-1	Chromatin organization	8
+PMC10156590-1	Organelle biogenesis and maintence	9
+PMC10156590-1	Cell cycle	10
+PMC11378909-1	Cytoskeleton organization	1
+PMC11378909-1	Cell projection organization	2
+PMC11378909-1	Plasma membrane bounded cell projection organization	3
+PMC11378909-1	Cell morphogenesis	4
+PMC11378909-1	Embryo development	5
+PMC11378909-1	Positive regulation of transcription, DNA-templated	6
+PMC11378909-1	Positive regulation of transcription by RNA polymerase II	7
+PMC11378909-1	Positive regulation of RNA metabolic process	8
+PMC11378909-1	Positive regulation of RNA biosynthetic process	9
+PMC11378909-1	Positive regulation of nucleic acid-templated transcription	10
+PMC11378909-2	cell cycle	1
+PMC11378909-2	DNA metabolic process	2
+PMC11378909-2	cell cycle process	3
+PMC11378909-2	DNA repair	4
+PMC11378909-2	cellular response to DNA damage stimulus	5
+PMC11378909-2	organelle assembly	6
+PMC11378909-2	chromosome organization	7
+PMC11378909-2	double-strand break repair	8
+PMC11378909-2	regulation of cell cycle process	9
+PMC11378909-2	mitotic cell cycle process	10
+PMC11529425	Focal adhesion	1
+PMC11529425	Metabolic pathways	2
+PMC11529425	Cell adhesion molecules (CAMs)	3
+PMC11529425	Salmonella infection	4
+PMC11529425	ECM-receptor interaction	5
+PMC11529425	PI3K-Akt signaling pathway	6
+PMC11529425	Arachidonic acid metabolism	7
+PMC11529425	Transcriptional misregulation in cancer	8
+PMC11529425	Malaria	9
+PMC11529425	Platelet activation	10
+PMC11529425	Linoleic acid metabolism	11
+PMC11529425	Steroid hormone biosynthesis	12
+PMC11529425	Amoebiasis	13
+PMC11529425	Hematopoietic cell lineage	14
+PMC11529425	Fluid shear stress and atherosclerosis	15
+PMC11529425	Pathways in cancer	16
+PMC11529425	Cytokine-cytokine receptor interaction	17
+PMC11529425	Epithelial cell signaling in Helicobacter pylori infection	18
+PMC11529425	B cell receptor signaling pathway	19
+PMC11529425	Cholesterol metabolism	20
+PMC11529425	Arginine and proline metabolism	21
+PMC11529425	Ras signaling pathway	22
+PMC11529425	Vascular smooth muscle contraction	23
+PMC11529425	IL-17 signaling pathway	24
+PMC11529425	TGF-beta signaling pathway	25
+PMC11529425	AGE-RAGE signaling pathway in diabetic complications	26
+PMC11529425	Mitophagy - animal	27
+PMC11529425	Apoptosis - multiple species	28
+PMC11529425	Tight junction	29
+PMC11529425	African trypanosomiasis	30
+PMC11528003-1	Calcium signaling pathway	1
+PMC11528003-1	Phospholipase D signaling pathway	2
+PMC11528003-1	Serotonergic synapse	3
+PMC11528003-1	Amoebiasis	4
+PMC11528003-1	Wnt signaling pathway	5
+PMC11528003-1	Vascular smooth muscle contraction	6
+PMC11528003-1	Glycerolipid metabolism	7
+PMC11528003-1	Ras signaling pathway	8
+PMC11528003-1	Regulation of actin cytoskeleton	9
+PMC11528003-1	Gap junction	10
+PMC11528003-1	Axon guidance	11
+PMC11528003-1	Tight junction	12
+PMC11528003-1	Platelet activation	13
+PMC11528003-1	GnRH secretion	14
+PMC11528003-1	Oxytocin signaling pathway	15
+PMC11528003-1	Lysine degradation	16
+PMC11528003-1	Circadian entrainment	17
+PMC11528003-1	Circadian rhythm	18
+PMC11528003-1	Adherens junction	19
+PMC11528003-1	Long-term depression	20
+PMC11528003-1	Glutamatergic synapse	21
+PMC11528003-1	Rap1 signaling pathway	22
+PMC11528003-2	Stem cell pluripotency related	1
+PMC11528003-2	Notch signaling pathway	2
+PMC11528003-2	Thiamine metabolism	3
+PMC11528003-2	Pantothenate and CoA biosynthesis	4
+PMC11528003-2	Inflammatory regulation of TRP channels	5
+PMC11528003-2	Cortisol synthesis and secretion	6
+PMC11528003-2	Focal adhesion	7
+PMC11528003-2	Fc gamma R-mediated phagocytosis	8
+PMC11528003-2	Adipocytokine signaling pathway	9
+PMC11528003-2	Hepatocellular carcinoma	10
+PMC11528003-2	Wnt signaling pathway	11
+PMC11528003-2	Morphine addiction	12
+PMC11528003-2	Cushing syndrome	13
+PMC11528003-2	Oxytocin signaling pathway	14
+PMC11528003-2	AMPK signaling pathway	15
+PMC11528003-2	MAPK signaling pathway	16
+PMC11528003-2	Tight junction	17
+PMC11528003-2	Ventricular cardiomyopathy related	18
+PMC11528003-2	Rap1 signaling pathway	19
+PMC11528003-2	Aldosterone synthesis and secretion	20
+PMC11528003-2	Hypertrophic cardiomyopathy	21
+PMC11528003-2	Circadian entrainment	22
+PMC11528003-2	ECM-receptor interaction	23
+PMC11528003-2	Longevity regulating pathway	24
+PMC11528003-2	Glutamatergic synapse	25
+PMC11528003-2	Adherens junction	26
+PMC11528003-2	Dilated cardiomyopathy	27
+PMC11528003-3	Circadian rhythm	1
+PMC11528003-3	Notch signaling pathway	2
+PMC11528003-3	Parathyroid hormone production and action	3
+PMC11528003-3	Aldosterone synthesis and secretion	4
+PMC11528003-3	Thyroid hormone signaling pathway	5
+PMC11528003-3	Hippo signaling pathway	6
+PMC11528003-3	Adrenergic signaling in cardiomyocytes	7
+PMC11528003-3	PI3K-Akt signaling pathway	8
+PMC11528003-3	Insulin secretion	9
+PMC11528003-3	Oxytocin signaling pathway	10
+PMC11528003-3	GnRH secretion	11
+PMC11528003-3	Alanine, aspartate & glutamate metabolism	12
+PMC11528003-3	Hypertrophic cardiomyopathy	13
+PMC11528003-3	Dilated cardiomyopathy	14
+PMC11528003-3	Regulating of Ca²⁺ reabsorption	15
+PMC11528003-3	Fatty acid elongation	16
+PMC11528003-3	MAPK signaling pathway	17
+PMC11528003-3	Circadian entrainment	18
+PMC11528003-3	Ventricular cardiomyopathy related	19
+PMC11528003-3	Rap1 signaling pathway	20
+PMC11500312-1	Cell cycle	1
+PMC11500312-1	Progesterone-mediated oocyte maturation	2
+PMC11500312-1	Oocyte meiosis	3
+PMC11500312-2	Focal adhesion	1
+PMC11500312-2	Calcium signaling pathway	2
+PMC11500312-2	Hypertrophic cardiomyopathy	3
+PMC11500312-2	Axon guidance	4
+PMC11500312-2	Arrhythmogenic right ventricular cardiomyopathy	5
+PMC11500312-3	Fatty acid degradation	1
+PMC11500312-3	Glycolysis / Gluconeogenesis	2
+PMC11500312-3	Glioma	3
+PMC11500312-3	Tryptophan metabolism	4
+PMC11500312-3	Pyruvate metabolism	5
+PMC11500312-3	Glycerolipid metabolism	6
+PMC11500312-3	Pantothenate and CoA biosynthesis	7
+PMC11500312-3	Histidine metabolism	8
+PMC11500312-3	Alcoholic liver disease	9
+PMC11500312-3	Melanoma	10
+PMC11500312-3	p53 signaling pathway	11
+PMC11500312-4	Mineral absorption	1
+PMC11500312-4	Glutathione metabolism	2
+PMC11500312-4	Taurine and hypotaurine metabolism	3
+PMC11500312-5	Adrenergic signaling in cardiomyocytes	1
+PMC11500312-5	Gap junction	2
+PMC11500312-5	Protein digestion and absorption	3
+PMC11500312-5	Serotonergic synapse	4
+PMC11500312-5	Thyroid hormone synthesis	5
+PMC11500312-6	Adrenergic signaling in cardiomyocytes	1
+PMC11500312-6	cGMP-PKG signaling pathway	2
+PMC11500312-6	Arrhythmogenic right ventricular cardiomyopathy	3
+PMC11500312-6	Dilated cardiomyopathy	4
+PMC11500312-6	Hypertrophic cardiomyopathy	5
+PMC11500312-6	Focal adhesion	6
+PMC11500312-6	Aldosterone synthesis and secretion	7
+PMC11500312-6	Regulation of actin cytoskeleton	8
+PMC11500312-6	Oxytocin signaling pathway	9
+PMC11500312-6	Dopaminergic synapse	10
+PMC11500312-6	Vascular smooth muscle contraction	11
+PMC11500312-6	Adherens junction	12
+PMC11500312-6	Apelin signaling pathway	13
+PMC11500312-6	Hedgehog signaling pathway	14
+PMC11500312-6	Wnt signaling pathway	15
+PMC11500312-6	cAMP signaling pathway	16
+PMC11500312-6	Proteoglycans in cancer	17
+PMC11500312-6	Cardiac muscle contraction	18
+PMC11500312-6	Hippo signaling pathway - multiple species	19
+PMC11500312-6	Long-term potentiation	20
+PMC11500312-6	Calcium signaling pathway	21
+PMC11500312-6	Salivary secretion	22
+PMC11500312-6	Propanoate metabolism	23
+PMC11500312-6	Circadian entrainment	24
+PMC11500312-6	Endocrine and other factor-regulated calcium reabsorption	25
+PMC11500312-6	Gastric acid secretion	26
+PMC11500312-6	Melanogenesis	27
+PMC11500312-6	Rap1 signaling pathway	28
+PMC11500312-6	Axon guidance	29
+PMC11500312-6	Pancreatic secretion	30
+PMC11500312-6	MAPK signaling pathway	31
+PMC11500312-6	Hippo signaling pathway	32
+PMC11500312-7	Amphetamine addiction	1
+PMC11500312-7	Maturity onset diabetes of the young	2
+PMC11500312-7	Glutamatergic synapse	3
+PMC11500312-7	Calcium signaling pathway	4
+PMC11500312-8	Arrhythmogenic right ventricular cardiomyopathy	1
+PMC11500312-8	Dilated cardiomyopathy	2
+PMC11500312-8	Axon guidance	3
+PMC11500312-8	Hypertrophic cardiomyopathy	4
+PMC11500312-8	ECM-receptor interaction	5
+PMC11500312-8	PPAR signaling pathway	6
+PMC11500312-8	Insulin resistance	7
+PMC11500312-8	Insulin signaling pathway	8
+PMC11500312-8	Adipocytokine signaling pathway	9
+PMC11500312-8	cAMP signaling pathway	10
+PMC11500312-8	Mucin type O-glycan biosynthesis	11
+PMC11500312-9	Focal adhesion	1
+PMC11500312-9	Proteoglycans in cancer	2
+PMC11500312-9	Oxytocin signaling pathway	3
+PMC11500312-9	Calcium signaling pathway	4
+PMC11500312-9	cGMP-PKG signaling pathway	5
+PMC11500312-9	Regulation of actin cytoskeleton	6
+PMC11500312-9	MAPK signaling pathway	7
+PMC11500312-9	Ras signaling pathway	8
+PMC11500312-9	Circadian entrainment	9
+PMC11500312-9	Adrenergic signaling in cardiomyocytes	10
+PMC11500312-9	PI3K-Akt signaling pathway	11
+PMC11500312-9	Arrhythmogenic right ventricular cardiomyopathy	12
+PMC11500312-9	Apelin signaling pathway	13
+PMC11500312-9	Rap1 signaling pathway	14
+PMC11500312-9	EGFR tyrosine kinase inhibitor resistance	15
+PMC11500312-9	Vascular smooth muscle contraction	16
+PMC11500312-9	Melanogenesis	17
+PMC11500312-9	Dopaminergic synapse	18
+PMC11500312-9	Axon guidance	19
+PMC11500312-9	Glutamatergic synapse	20
+PMC11500312-9	Hypertrophic cardiomyopathy	21
+PMC11500312-9	AGE-RAGE signaling pathway in diabetic complications	22
+PMC11500312-9	Phospholipase D signaling pathway	23
+PMC11500312-9	Cholinergic synapse	24
+PMC11500312-9	Dilated cardiomyopathy	25
+PMC11500312-9	Serotonergic synapse	26
+PMC11500312-9	Morphine addiction	27
+PMC11500312-9	Gastric acid secretion	28
+PMC11500312-9	Platelet activation	29
+PMC11500312-9	Renin secretion	30
+PMC11500312-9	Hippo signaling pathway - multiple species	31
+PMC11500312-9	Gap junction	32
+PMC11500312-9	Aldosterone synthesis and secretion	33
+PMC11500312-9	Gastric cancer	34
+PMC11500312-9	GABAergic synapse	35
+PMC11500312-9	Wnt signaling pathway	36
+PMC11500312-9	Adherens junction	37
+PMC11500312-9	Hippo signaling pathway	38
+PMC11500312-9	Bacterial invasion of epithelial cells	39
+PMC11500312-9	Phosphatidylinositol signaling system	40
+PMC11500312-9	Relaxin signaling pathway	41
+PMC11500312-9	Signaling pathways regulating pluripotency of stem cells	42
+PMC11500312-9	JAK-STAT signaling pathway	43
+PMC11500312-9	Cushing syndrome	44
+PMC11500312-9	cAMP signaling pathway	45
+PMC11500312-9	Human cytomegalovirus infection	46
+PMC11500312-9	Salivary secretion	47
+PMC11500312-9	Kaposi sarcoma-associated herpesvirus infection	48
+PMC11500312-9	Parathyroid hormone synthesis, secretion and action	49
+PMC11500312-9	Long-term potentiation	50
+PMC11500312-9	Acute myeloid leukemia	51
+PMC11500312-9	Choline metabolism in cancer	52
+PMC11500312-9	Hepatocellular carcinoma	53
+PMC11500312-9	Chagas disease	54
+PMC11500312-9	Melanoma	55
+PMC11500312-9	Non-small cell lung cancer	56
+PMC11500312-9	GnRH signaling pathway	57
+PMC11500312-9	Hepatitis B	58
+PMC11500312-9	GnRH secretion	59
+PMC11500312-9	Glioma	60
+PMC11500312-9	Neurotrophin signaling pathway	61
+PMC11500312-9	Fc gamma R-mediated phagocytosis	62
+PMC11500312-9	Prostate cancer	63
+PMC11500312-9	Th17 cell differentiation	64
+PMC11500312-9	Growth hormone synthesis, secretion and action	65
+PMC11500312-9	Regulation of lipolysis in adipocytes	66
+PMC11500312-9	Necroptosis	67
+PMC11500312-9	Shigellosis	68
+PMC11500312-10	Focal adhesion	1
+PMC11500312-10	Arrhythmogenic right ventricular cardiomyopathy	2
+PMC11500312-10	Dilated cardiomyopathy	3
+PMC11500312-10	Hypertrophic cardiomyopathy	4
+PMC11500312-10	Axon guidance	5
+PMC11500312-10	MAPK signaling pathway	6
+PMC11500312-10	Ras signaling pathway	7
+PMC11500312-10	Regulation of actin cytoskeleton	8
+PMC11500312-10	cGMP-PKG signaling pathway	9
+PMC11500312-10	Calcium signaling pathway	10
+PMC11500312-10	PI3K-Akt signaling pathway	11
+PMC11500312-10	Proteoglycans in cancer	12
+PMC11500312-10	Rap1 signaling pathway	13
+PMC11500312-10	Adrenergic signaling in cardiomyocytes	14
+PMC11500312-10	Oxytocin signaling pathway	15
+PMC11500312-10	EGFR tyrosine kinase inhibitor resistance	16
+PMC11500312-10	Vascular smooth muscle contraction	17
+PMC11500312-10	Wnt signaling pathway	18
+PMC11500312-10	Hippo signaling pathway	19
+PMC11500312-10	Prostate cancer	20
+PMC11500312-10	Insulin resistance	21
+PMC11500312-10	Melanogenesis	22
+PMC11500312-10	Hepatocellular carcinoma	23
+PMC11500312-10	Phosphatidylinositol signaling system	24
+PMC11500312-10	Circadian entrainment	25
+PMC11500312-10	ECM-receptor interaction	26
+PMC11500312-10	Phospholipase D signaling pathway	27
+PMC11500312-10	Morphine addiction	28
+PMC11500312-10	Hippo signaling pathway - multiple species	29
+PMC11500312-10	Aldosterone synthesis and secretion	30
+PMC11500312-10	Gastric cancer	31
+PMC11500312-10	Apelin signaling pathway	32
+PMC11500312-10	Human papillomavirus infection	33
+PMC11500312-10	Adherens junction	34
+PMC11500312-10	Glutamatergic synapse	35
+PMC11500312-10	Cardiac muscle contraction	36
+PMC11500312-10	Gap junction	37
+PMC11500312-10	cAMP signaling pathway	38
+PMC11500312-10	AGE-RAGE signaling pathway in diabetic complications	39
+PMC11500312-10	Thyroid hormone signaling pathway	40
+PMC11500312-10	Melanoma	41
+PMC11500312-10	Basal cell carcinoma	42
+PMC11500312-10	Dopaminergic synapse	43
+PMC11500312-10	Cholinergic synapse	44
+PMC11500312-10	Platelet activation	45
+PMC11500312-10	Breast cancer	46
+PMC11500312-10	Gastric acid secretion	47
+PMC11500312-10	Kaposi sarcoma-associated herpesvirus infection	48
+PMC11500312-10	Choline metabolism in cancer	49
+PMC11500312-10	Adipocytokine signaling pathway	50
+PMC11500312-10	GABAergic synapse	51
+PMC11500312-10	Alcoholic liver disease	52
+PMC11500312-10	JAK-STAT signaling pathway	53
+PMC11500312-10	Cushing syndrome	54
+PMC11500312-10	Chagas disease	55
+PMC11500312-10	Endocrine and other factor-regulated calcium reabsorption	56
+PMC11500312-10	Tight junction	57
+PMC11500312-10	Necroptosis	58
+PMC11500312-10	Leukocyte transendothelial migration	59
+PMC11500312-10	Parathyroid hormone synthesis, secretion and action	60
+PMC11500312-10	Hepatitis B	61
+PMID30017245	Mitosis	1
+PMID30017245	Disorder of pigmentation	2
+PMID30017245	Differentiation of melanocytes	3
+PMID30017245	Abnormal morphology of melanocytes	4
+PMID30017245	Antiviral response	5
+PMID30017245	Interferon signaling	6
+PMID30017245	Antigen presentation pathway	7
+PMID30017245	Morphology of nervous system	8
+PMID30017245	Development of neurous	9
+PMID30017245	Morphology of head	10
+PMID30017245	Migration of cells	11
+PMID30017245	Angiogenesis	12
+PMID30017245	Metastasis	13
+PMID30017245	Invasionof tumor cells	14
+PMID30017245	KEGG_metabolic pathways	15
+PMC11370013	prostate gland development	1
+PMC11370013	embryonic skeletal system morphogenesis	2
+PMC11370013	pattern specification process	3
+PMC11370013	embryonic skeletal system development	4
+PMC11370013	response to testosterone	5
+PMC11370013	regionalization	6
+PMC11370013	anterior/posterior pattern specification	7
+PMC11370013	regulation of systemic arterial blood pressure	8
+PMC11370013	skeletal system morphogenesis	9
+PMC11370013	regulation of blood pressure	10
+PMC11370013	gland development	11
+PMC11370013	response to ketone	12
+PMC11370013	urogenital system development	13
+PMC11370013	proximal/distal pattern formation	14
+PMC11370013	positive regulation of animal organ morphogenesis	15
+PMC11370013	hormone receptor binding	16
+PMC11370013	DNA-binding transcription activator activity, RNA polymerase II-specific	17
+PMC11370013	DNA-binding transcription activator activity	18
+PMC11370013	iron ion binding	19
+PMC11370013	acetylcholine receptor binding	20
+PMC11370013	monooxygenase activity	21
+PMC11370013	serine-type endopeptidase activity	22
+PMC11370013	Prolactin signaling pathway	23
+PMC11370013	Growth hormone synthesis, secretion and action	24
+PMC11370013	IL-17 signaling pathway	25
+PMC11350455	HALLMARK_HYPOXIA	1
+PMC11350455	HALLMARK_INTERFERON_ALPHA_RESPONSE	2
+PMC11350455	HALLMARK_INTERFERON_GAMMA_RESPONSE	3
+PMC11350455	HALLMARK_EPITHELIAL_MESENCHYMAL_TRANSITION	4
+PMC11350455	HALLMARK_ALLOGRAFT_REJECTION	5
+PMC11350455	HALLMARK_MTORC1_SIGNALING	6
+PMC11350455	HALLMARK_GLYCOLYSIS	7
+PMC11350455	HALLMARK_OXIDATIVE_PHOSPHORYLATION	8
+PMC11350455	HALLMARK_FATTY_ACID_METABOLISM	9
+PMC11352921	Nervous system development	1
+PMC11352921	Forebrain development	2
+PMC11352921	Regulation of signal transduction	3
+PMC11352921	Synaptic signaling	4
+PMC11352921	Gliogenesis	5
+PMC11352921	Animal organ development	6
+PMC11352921	Skeletal system development	7
+PMC11352921	Cardiovascular system development	8
+PMC11352921	Anterior-posterior pattern specification	9
+PMC11352921	Cell motility	10
+PMC11285963-1	T cell activation	1
+PMC11285963-1	neutrophil degranulation	2
+PMC11285963-1	neutrophil activation	3
+PMC11285963-1	lymphocyte differentiation	4
+PMC11285963-1	leukocyte proliferation	5
+PMC11285963-1	leukocyte cell-cell adhesion	6
+PMC11285963-1	regulation of T cell activation	7
+PMC11285963-1	lymphocyte proliferation	8
+PMC11285963-1	regulation of leukocyte proliferation	9
+PMC11285963-1	regulation of chemotaxis	10
+PMC11285963-1	regulation of lymphocyte proliferation	11
+PMC11285963-1	regulation of T cell proliferation	12
+PMC11285963-1	positive regulation of leukocyte migration	13
+PMC11285963-2	PI3K-Akt signaling pathway	1
+PMC11285963-2	Cytokine-cytokine receptor interaction	2
+PMC11285963-2	MAPK signaling pathway	3
+PMC11285963-2	Human T-cell leukemia virus 1 infection	4
+PMC11285963-2	Leukocyte transendothelial migration	5
+PMC11285963-2	Cytokine and cytokine receptor	6
+PMC11285963-2	Complement and coagulation cascades	7
+PMC11285963-2	HIF-1 signaling pathway	8
+PMC11285963-2	Primary immunodeficiency	9
+PMC11434218-1	Cytokine-cytokine receptor interaction	1
+PMC11434218-1	PI3K-Akt signaling pathway	2
+PMC11434218-1	MAPK signaling pathway	3
+PMC11434218-1	AGE-RAGE signaling pathway in diabetic complications	4
+PMC11434218-1	Pathways in cancer	5
+PMC11434218-1	ErbB signaling pathway	6
+PMC11434218-1	Inflammatory mediator regulation of TRP channels	7
+PMC11434218-1	Calcium signaling pathway	8
+PMC11434218-1	ECM-receptor interaction	9
+PMC11434218-1	Axon guidance	10
+PMC11434218-1	Amoebiasis	11
+PMC11434218-1	Rheumatoid arthritis	12
+PMC11434218-1	Lipid and atherosclerosis	13
+PMC11434218-1	TNF signaling pathway	14
+PMC11434218-1	Proteoglycans in cancer	15
+PMC11434218-1	Focal adhesion	16
+PMC11434218-1	Ras signaling pathway	17
+PMC11434218-1	Fluid shear stress and atherosclerosis	18
+PMC11434218-1	Chagas disease	19
+PMC11434218-1	Cell adhesion molecules	20
+PMC11434218-2	Cytokine-cytokine receptor interaction	1
+PMC11434218-2	Amoebiasis	2
+PMC11434218-2	PI3K-Akt signaling pathway	3
+PMC11434218-2	Viral protein interaction with cytokine and cytokine receptor	4
+PMC11434218-2	Arachidonic acid metabolism	5
+PMC11434218-2	Complment and coagulation cascades	6
+PMC11434218-2	Histidine metabolism	7
+PMC11434218-2	cAMP signaling pathway	8
+PMC11434218-2	Malaria	9
+PMC11434218-2	AGE-RAGE signaling pathway in diabetic complications	10
+PMC11434218-2	Pertussis	11
+PMC11434218-2	Rheumatoid arthritis	12
+PMC11434218-2	Estrogen signaling pathway	13
+PMC11434218-2	Phospholipase D signaling pathway	14
+PMC11434218-2	Steroid biosynthesis	15
+PMC11434218-2	Fluid shear stress and atherosclerosis	16
+PMC11434218-2	Amphotamine addiction	17
+PMC11434218-2	Calcium signaling pathway	18
+PMC11434218-2	ECM-receptor interaction	19
+PMC11434218-2	Axon guidance	20
+PMC10761883-1	response to xenobiotic stimulus	1
+PMC10761883-1	positive regulation of angiogenesis	2
+PMC10761883-1	response to hypoxia	3
+PMC10761883-1	cellular response to extracellular stimulus	4
+PMC10761883-1	extracellular region	5
+PMC10761883-1	Z disc	6
+PMC10761883-1	extracellular matrix	7
+PMC10761883-1	extracellular space	8
+PMC10761883-1	heparin binding	9
+PMC10761883-1	steroid hormone receptor activity	10
+PMC10761883-1	growth factor activity	11
+PMC10761883-1	calcium ion binding	12
+PMC10761883-2	HIF-1 signaling pathway	1
+PMC10761883-2	PPAR signaling pathway	2
+PMC10761883-2	Glycolysis / Gluconeogenesis	3
+PMC10761883-2	Steroid biosynthesis	4
+PMC10772820-1	Complement and coagulation cascades	1
+PMC10772820-1	Arginine biosynthesis	2
+PMC10772820-1	Valine,leucine and isoleucine degradation	3
+PMC10772820-1	Arginine and proline metabolism	4
+PMC10772820-1	Chemical carcinogenesis - reactive oxygen species	5
+PMC10772820-1	Chemical carcinogenesis - DNA adducts	6
+PMC10772820-1	Steroid hormone biosynthesis	7
+PMC10772820-1	Tyrosine metabolism	8
+PMC10772820-1	Oxidative phosphorylation	9
+PMC10772820-1	Parkinson disease	10
+PMC10772820-1	Retinol metabolism	11
+PMC10772820-1	Staphylococcus aureus infection	12
+PMC10772820-2	ECM-receptor interaction	1
+PMC10772820-2	Focal adhesion	2
+PMC10772820-2	Human papillomavirus infection	3
+PMC10772820-2	Protein digestion and absorption	4
+PMC10772820-2	PI3K-Akt signaling pathway	5
+PMC10772820-3	Ribosome	1
+PMC10772820-3	Oxidative phosphorylation	2
+PMC10772820-3	Coronavirus disease - COVID-19	3
+PMC10772820-3	Parkinson disease	4
+PMC10772820-3	Huntington disease	5
+PMC10772820-3	Diabetic cardiomyopathy	6
+PMC10772820-3	Chemical carcinogenesis - reactive oxygen species	7
+PMC10772820-3	Amyotrophic lateral sclerosis	8
+PMC10772820-3	Non-alcoholic fatty liver disease	9
+PMC10772820-4	Retinol metabolism	1
+PMC10772820-4	Steroid hormone biosynthesis	2
+PMC10772820-4	Linoleic acid metabolism	3
+PMC10772820-4	Bile secretion	4
+PMC10772820-4	Chemical carcinogenesis - DNA adducts	5
+PMC10772820-4	Arachidonic acid metabolism	6
+PMC10772820-4	Steroid biosynthesis	7
+PMC10772820-5	Chemokine signaling pathway	1
+PMC10772820-5	Staphylococcus aureus infection	2
+PMC10772820-5	Osteoclast differentiation	3
+PMC10772820-5	Leishmaniasis	4
+PMC10772820-5	Phagosome	5
+PMC10772820-5	Tuberculosis	6
+PMC10772820-5	Cytokine-cytokine receptor interaction	7
+PMC10772820-5	Cell adhesion molecules	8
+PMC10772820-5	Viral myocarditis	9
+PMC10772820-5	Influenza A	10
+PMC10772820-5	Graft-versus-host disease	11
+PMC10772820-5	Type I diabetes mellitus	12
+PMC10772820-5	Focal adhesion	13
+PMC10772820-5	Complement and coagulation cascades	14
+PMC10772820-5	Coronavirus disease - COVID-19	15
+PMC10772820-6	Cell adhesion molecules	1
+PMC10772820-6	Tight junction	2
+PMC10772820-6	Focal adhesion	3
+PMC10772820-6	ECM-receptor interaction	4
+PMC10772820-6	Sphingolipid metabolism	5
+PMC10772820-6	PI3K-Akt signaling pathway	6
+PMC10772820-7	Ribosome	1
+PMC10772820-7	Oxidative phosphorylation	2
+PMC10772820-7	Parkinson disease	3
+PMC10772820-7	Huntington disease	4
+PMC10772820-7	Chemical carcinogenesis - reactive oxygen species	5
+PMC10772820-7	Diabetic cardiomyopathy	6
+PMC10772820-7	Coronavirus disease - COVID-19	7
+PMC10772820-7	Non-alcoholic fatty liver disease	8
+PMC10772820-7	Amyotrophic lateral sclerosis	9
+PMC10772820-7	Complement and coagulation cascades	10
+PMC10772820-7	Arginine biosynthesis	11
+PMC10772820-7	Valine,leucine and isoleucine degradation	12
+PMC10772820-7	Tryptophan metabolism	13
+PMC10772820-7	Arginine and proline metabolism	14
+PMC10772820-8	Chemical carcinogenesis - reactive oxygen species	1
+PMC10772820-8	Oxidative phosphorylation	2
+PMC10772820-8	Parkinson disease	3
+PMC10772820-8	Non-alcoholic fatty liver disease	4
+PMC10772820-8	Amyotrophic lateral sclerosis	5
+PMC10772820-8	Huntington disease	6
+PMC10772820-8	Diabetic cardiomyopathy	7
+PMC10772820-8	Steroid hormone biosynthesis	8
+PMC10772820-8	Chemical carcinogenesis - DNA adducts	9
+PMC10772820-8	Tryptophan metabolism	10
+PMC10772820-8	Complement and coagulation cascades	11
+PMC10772820-8	Steroid biosynthesis	12
+PMC10772820-8	Ribosome	13
+PMC10772820-8	Retinol metabolism	14
+PMC10772820-8	Valine,leucine and isoleucine degradation	15
+PMC10772820-8	Coronavirus disease - COVID-19	16
+PMC10772820-8	Linoleic acid metabolism	17
+PMC10772820-8	Arginine and proline metabolism	18
+PMC10772820-8	Bile secretion	19
+PMC10772820-8	Arginine biosynthesis	20
+PMC10772820-9	Retinol metabolism	1
+PMC10772820-9	Steroid hormone biosynthesis	2
+PMC10772820-9	Chemical carcinogenesis - DNA adducts	3
+PMC10772820-9	Linoleic acid metabolism	4
+PMC10772820-9	Bile secretion	5
+PMC10772820-9	Arachidonic acid metabolism	6
+PMC10772820-10	Ribosome	1
+PMC10772820-10	Coronavirus disease - COVID-19	2
+PMC10772820-11	Steroid biosynthesis	1
+PMC10772820-11	Pancreatic secretion	2
+PMC10772820-11	Dilated cardiomyopathy	3
+PMC10810761-1	negative regulation of microtubule depolymerization	1
+PMC10810761-1	cardiac muscle cell development	2
+PMC10810761-1	central nervous system neuron development	3
+PMC10810761-1	neuron migration	4
+PMC10810761-1	cognition	5
+PMC10810761-1	regulation of transcription, DNA-templated	6
+PMC10810761-1	cardiac atrium morphogenesis	7
+PMC10810761-1	detection of lipopolysaccharide	8
+PMC10810761-1	anterograde neuronal dense core vesicle transport	9
+PMC10810761-1	distal tubule development	10
+PMC10810761-1	regulation of mast cell activation	11
+PMC10810761-1	negative regulation of osteoclast development	12
+PMC10810761-1	regulation of fatty acid beta-oxidation	13
+PMC10810761-1	central nervous system projection neuron	14
+PMC10810761-1	protein processing	15
+PMC10810761-1	phosphatidylinositol 3-kinase signaling	16
+PMC10810761-1	neuron projection guidance	17
+PMC10810761-1	action potential	18
+PMC10810761-1	microtubule-based movement	19
+PMC10810761-1	pericardium morphogenesis	20
+PMC10810761-2	molybdopterin cofactor biosynthetic process	1
+PMC10810761-2	sinoatrial valve morphogenesis	2
+PMC10810761-2	olfactory nerve structural organization	3
+PMC10810761-2	trophectodermal cellular morphogenesis	4
+PMC10810761-2	osteoblast development	5
+PMC10810761-2	DNA duplex unwinding	6
+PMC10810761-2	oogenesis	7
+PMC10810761-2	negative regulation of catalytic activity	8
+PMC10810761-2	embryonic skeletal system morphogenesis	9
+PMC10810761-2	negative regulation of blood vessel endothelial cell proliferation	10
+PMC10810761-2	protein targeting to vacuole	11
+PMC10810761-2	response to denervation involved in regulation of muscle atrophy	12
+PMC10810761-2	anaphase-promoting complex-dependent catabolism	13
+PMC10810761-2	DNA methylation involved in gamete generation	14
+PMC10810761-2	cellular response to parathyroid hormone	15
+PMC10810761-2	cytoskeleton-dependent intracellular transport	16
+PMC10810761-2	Positive regulation of DNA-directed DNA polymerase activity	17
+PMC10810761-2	peptide metabolic process	18
+PMC10810761-2	negative regulation of peptidyl-cysteine	19
+PMC10810761-2	protein retention in Golgi apparatus	20
+PMC10810761-3	Insulin resistance	1
+PMC10810761-3	Fatty acid degradation	2
+PMC10810761-3	Glycosylphosphatidylinositol (GPI)-anchor biosynthesis	3
+PMC10810761-3	Calcium signaling pathway	4
+PMC10810761-3	mTOR signaling pathway	5
+PMC10810761-3	Autophagy - animal	6
+PMC10810761-3	EGFR tyrosine kinase inhibitor resistance	7
+PMC10810761-3	Nicotine addiction	8
+PMC10810761-3	Endocrine resistance	9
+PMC10810761-3	Phosphatidylinositol signaling system	10
+PMC10810761-3	AMPK signaling pathway	11
+PMC10810761-3	Fatty acid biosynthesis	12
+PMC10810761-3	Glioma	13
+PMC10810761-3	Inositol phosphate metabolism	14
+PMC10810761-3	Endometrial cancer	15
+PMC10810761-3	Axon guidance	16
+PMC10810761-3	Gastric cancer	17
+PMC10810761-3	Non-small cell lung cancer	18
+PMC10810761-3	Breast cancer	19
+PMC10810761-3	Herpes simplex virus 1 infection	20
+PMC10810761-4	Circadian entrainment	1
+PMC10810761-4	Alzheimer disease	2
+PMC10810761-4	Ribosome	3
+PMC10810761-4	RNA degraddation	4
+PMC10810761-4	Vitamin digestion and absorption	5
+PMC10810761-4	Protein digestion and absorption	6
+PMC10810761-4	Fatty acid biosynthesis	7
+PMC10810761-4	Hematopoietic cell lineage	8
+PMC10810761-4	Oxytocin signaling pathway	9
+PMC10810761-4	Ubiquitin mediated proteolysis	10
+PMC10810761-4	Spliceosome	11
+PMC10810761-4	Salivary secretion	12
+PMC10810761-4	Apelin signaling pathway	13
+PMC10810761-4	Phosphonate and phosphinate metabolism	14
+PMC10810761-4	TNF signaling pathway	15
+PMC10810761-4	Pyruvate metabolism	16
+PMC10810761-4	Valine, leucine and isoleucine biosynthesis	17
+PMC10810761-4	Apoptosis - multiple species	18
+PMC10810761-4	Propanoate metabolism	19
+PMC10810761-4	Cysteine and methionine metabolism	20
+PMC10810761-5	I-kappaB kinase/NF-kappaB signaling	1
+PMC10810761-5	Reactive oxygen species metabolic process	2
+PMC10810761-5	negative regulation of endopeptidase activity	3
+PMC10810761-5	intrinsic apoptotic signaling pathway in response to stress	4
+PMC10810761-5	pyrimidine nucleotide transport	5
+PMC10810761-5	mitochondria-nucleus signaling pathway	6
+PMC10810761-5	neuron projection retraction	7
+PMC10810761-5	regulation of angiotensin-activated signaling pathway	8
+PMC10810761-5	glycerol biosynthetic process from pyruvate	9
+PMC10810761-5	propionate catabolic process	10
+PMC10810761-5	Signal transduction by p53 class mediator	11
+PMC10810761-5	response to anoxia	12
+PMC10810761-5	establishment of left/right asymmetry	13
+PMC10810761-5	negative regulation of angiogenesis	14
+PMC10810761-5	response to arsenic-containing substance	15
+PMC10810761-5	G1/S transition of mitotic cell cycle	16
+PMC10810761-5	regulation of centriole replication	17
+PMC10810761-5	Regulation of transcription, DNA-templated	18
+PMC10810761-6	positive regulation of vasoconstriction	1
+PMC10810761-6	sphingosine-1-phosphate receptor signaling	2
+PMC10810761-6	chemical synaptic transmission	3
+PMC10810761-6	histone lysine methylation	4
+PMC10810761-6	ATP synthesis coupled electron transport	5
+PMC10810761-6	heme transport	6
+PMC10810761-6	Positive regulation of inflammatory response	7
+PMC10810761-6	neuromuscular synaptic transmission	8
+PMC10810761-6	pyrimidine dimer repair	9
+PMC10810761-6	protien localization to centrosome	10
+PMC10810761-6	electron transport coupled proton transport	11
+PMC10810761-6	secretion of lysosomal enzymes	12
+PMC10810761-6	regulation of RNA polymerase II regulation	13
+PMC10810761-6	response to nutrient	14
+PMC10810761-6	lipid glycosylation	15
+PMC10810761-6	acrosomal vesicle exocytosis	16
+PMC10810761-6	maintenance of presynaptic active zone structure	17
+PMC10810761-6	response to nicotine	18
+PMC10810761-6	response to ethanol	19
+PMC10810761-7	Glycolysis / Gluconeogenesis	1
+PMC10810761-7	Basal cell carcinoma	2
+PMC10810761-7	Proteoglycans in cancer	3
+PMC10810761-7	Glycerolipid metabolism	4
+PMC10810761-7	Regulation of actin cytoskeleton	5
+PMC10810761-7	MicroRNAs in cancer	6
+PMC10810761-7	Axon guidance	7
+PMC10810761-7	Ribosome	8
+PMC10810761-7	Bladder cancer	9
+PMC10810761-7	Staphylococcus aureus infection	10
+PMC10810761-7	PI3K-Akt signaling pathway	11
+PMC10810761-7	Thyroid cancer	12
+PMC10810761-7	Pyruvate metabolism	13
+PMC10810761-7	Oxytocin signaling pathway	14
+PMC10810761-7	Citrate cycle (TCA cycle)	15
+PMC10810761-7	Apelin signaling pathway	16
+PMC10810761-7	Vascular smooth muscle contraction	17
+PMC10810761-7	Proximal tuble bicarbonate reclamation	18
+PMC10810761-7	FoxO signaling pathway	19
+PMC10810761-7	Herpes simplex virus 1 infection	20
+PMC10810761-8	Thermogenesis	1
+PMC10810761-8	Insulin secretion	2
+PMC10810761-8	Ascorbate and aldarate metabolism	3
+PMC10810761-8	Taurine and hypotaurine metabolism	4
+PMC10810761-8	Insulin resistance	5
+PMC10810761-8	NOD-like receptor signaling pathway	6
+PMC10810761-8	Parkinson disease	7
+PMC10810761-8	Fat digestion and absorption	8
+PMC10810761-8	Circadian rhythm	9
+PMC10810761-8	Oxidative phosphorylation	10
+PMC10810761-8	Glygcosphingolipid biosynthesis - lacto and neolacto series	11
+PMC10810761-8	RIG-I-Like receptor signaling pathway	12
+PMC10810761-8	Porphyrin and chlorophll metabolism	13
+PMC10810761-8	Axon guidance	14
+PMC10810761-8	Neuroactive ligand-receptor interaction	15
+PMC10810761-8	Glycosphingolipid biosynthesis - globo and isoglobo series	16
+PMC10810761-8	Lysine degradation	17
+PMC10810761-8	Vitamin digestion and absorption	18
+PMC10810761-8	Herpes simplex virus 1 infection	19
+PMC10810761-8	Biotin metablism	20
+PMC10851453-1	negative regulation of amyloid-beta formation	1
+PMC10851453-1	regulation of amyloid-beta formation	2
+PMC10851453-1	positive regulation of cGMP biosynthetic process	3
+PMC10851453-1	neuron projection fasciculation	4
+PMC10851453-1	negative regulation of amyloid precursor protein catabolic process	5
+PMC10851453-1	axonal fasciculation	6
+PMC10851453-1	neuron cell-cell adhesion	7
+PMC10851453-1	glial cell development	8
+PMC10851453-1	chondroitin sulfate biosynthetic process	9
+PMC10851453-1	modulation of excitatory postsynaptic potential	10
+PMC10851453-2	neuron cell-cell adhesion	1
+PMC10851453-2	positive regulation of glutamate receptor signaling pathway	2
+PMC10851453-2	postsynaptic membrane organization	3
+PMC10851453-2	mammary gland epithelial cell differentiation	4
+PMC10851453-2	regulation of cellular localization	5
+PMC10851453-2	positive regulation of kinase activity	6
+PMC10851453-2	positive regulation of endothelial cell migration	7
+PMC10851453-2	postsynaptic membrane assembly	8
+PMC10851453-2	negative regulation of cell communication	9
+PMC10851453-2	regulation of AMPA receptor activiey	10
+PMC11056152-1	NABA matrisome	1
+PMC11056152-1	Sensory perception	2
+PMC11056152-1	NABA core matrisome	3
+PMC11056152-1	Innate immune system	4
+PMC11056152-1	Developmetal biology	5
+PMC11056152-1	RNA poly II transcription	6
+PMC11056152-1	Metabolism of lipids	7
+PMC11056152-1	Transport of small molecules	8
+PMC11056152-1	WP ciliopathies	9
+PMC11056152-1	Adaptive immune system	10
+PMC11056152-1	WP PI3K-Akt signaling pathway	11
+PMC11056152-1	Diseases of metabolism	12
+PMC11056152-1	KEGG_endocytosis	13
+PMC11056152-2	NABA core matrisome	1
+PMC11056152-2	NABA matrisome	2
+PMC11056152-2	WP ciliopathies	3
+PMC11056152-2	Developmental biology	4
+PMC11056152-2	Signaling by RHO GTPases	5
+PMC11056152-2	Transport of small molecules	6
+PMC11056152-2	Mitotic spindle	7
+PMC11056152-2	Cell cycle	8
+PMC11056152-2	post-translational protein modification	9
+PMC11056152-2	Sensory perception	10
+PMC11056152-2	WP PI3K-Akt signaling pathway	11
+PMC11056152-2	Estrogen response early	12
+PMC11056152-2	Membrane trafficking	13
+PMC11056152-2	Adaptive immune system	14
+PMC11056152-2	Metabolism of lipids	15
+PMC11056152-2	Innate immue system	16
+PMC11056152-3	NABA matrisome	1
+PMC11056152-3	post-translational protein modification	2
+PMC11056152-3	NABA core martisome	3
+PMC11056152-3	Transport of small molecules	4
+PMC11056152-3	Estrogen response early	5
+PMC11056152-3	Sensory perception	6
+PMC11056152-3	Cell cycle	7
+PMC11056152-3	Developmetal biology	8
+PMC11056152-3	RNA ploy II transcription	9
+PMC11056152-3	Innate immune system	10
+PMC11056152-3	Mitotic spindle	11
+PMC11070510-1	response to stress	1
+PMC11070510-1	cellular process	2
+PMC11070510-1	response to stimulus	3
+PMC11070510-1	biological regulation	4
+PMC11070510-1	regulation of biological process	5
+PMC11070510-1	positive regulation of biological process	6
+PMC11070510-1	regulation of cellular process	7
+PMC11070510-1	response to chemical	8
+PMC11070510-1	immune system process	9
+PMC11070510-1	biological_process	10
+PMC11070510-1	cellular response to chemical stimulus	11
+PMC11070510-1	defense response	12
+PMC11070510-1	positive regulation of cellular process	13
+PMC11070510-1	response to organic substance	14
+PMC11070510-1	cellular response to stimulus	15
+PMC11070510-1	inflammatory response	16
+PMC11070510-1	regulation of response to stimulus	17
+PMC11070510-1	regulation of metabolic process	18
+PMC11070510-1	cell death	19
+PMC11070510-1	localization	20
+PMC11070510-2	cellular process	1
+PMC11070510-2	biological_process	2
+PMC11070510-2	nucleosome assembly	3
+PMC11070510-2	nucleosome organization	4
+PMC11070510-2	protein-DNA complex assembly	5
+PMC11070510-2	immune system process	6
+PMC11070510-2	protein-DNA complex subunit organization	7
+PMC11070510-2	chromatin assembly	8
+PMC11070510-2	regulation of biological process	9
+PMC11070510-2	biological regulation	10
+PMC11070510-2	chromatin assembly or disassembly	11
+PMC11070510-2	cellular component organization	12
+PMC11070510-2	DNA replication-dependent nucleosome assembly	13
+PMC11070510-2	DNA replication-dependent nucleosome organization	14
+PMC11070510-2	DNA packaging	15
+PMC11070510-2	metabolic process	16
+PMC11070510-2	cellular component organization or biogenesis	17
+PMC11070510-2	regulation of cellular process	18
+PMC11070510-2	organic substance metabolic process	19
+PMC11070510-2	DNA conformation change	20
+PMC11070510-3	immune system process	1
+PMC11070510-3	defense response	2
+PMC11070510-3	response to stress	3
+PMC11070510-3	response to other organism	4
+PMC11070510-3	response to external biotic stimulus	5
+PMC11070510-3	response to biotic stimulus	6
+PMC11070510-3	interspecies interaction between organisms	7
+PMC11070510-3	immune response	8
+PMC11070510-3	response to external stimulus	9
+PMC11070510-3	response to stimulus	10
+PMC11070510-3	regulation of biological process	11
+PMC11070510-3	biological regulation	12
+PMC11070510-3	defense response to other organism	13
+PMC11070510-3	cytokine production	14
+PMC11070510-3	response to chemical	15
+PMC11070510-3	regulation of cellular process	16
+PMC11070510-3	regulation of cytokine production	17
+PMC11070510-3	cellular process	18
+PMC11070510-3	positive regulation of biological process	19
+PMC11070510-3	regulation of response to stimulus	20
+PMC11070510-4	nucleosome assembly	1
+PMC11070510-4	protein-DNA complex assembly	2
+PMC11070510-4	nucleosome organization	3
+PMC11070510-4	chromatin assembly	4
+PMC11070510-4	protein-DNA complex subunit organization	5
+PMC11070510-4	chromatin assembly or disassembly	6
+PMC11070510-4	DNA packaging	7
+PMC11070510-4	DNA conformation change	8
+PMC11070510-4	DNA replication-dependent nucleosome assembly	9
+PMC11070510-4	DNA replication-dependent nucleosome organization	10
+PMC11070510-4	chromatin organization	11
+PMC11070510-4	chromosome organization	12
+PMC11070510-4	cellular protein-containing complex assembly	13
+PMC11070510-4	protein heterotetramerization	14
+PMC11070510-4	protein-containing complex assembly	15
+PMC11070510-4	protein-containing complex subunit organization	16
+PMC11070510-4	organelle organization	17
+PMC11070510-4	protein heterooligomerization	18
+PMC11070510-4	cellular component organization	19
+PMC11070510-4	protein tetramerization	20
+PMC11070510-5	response to stress	1
+PMC11070510-5	defense response	2
+PMC11070510-5	immune system process	3
+PMC11070510-5	response to biotic stimulus	4
+PMC11070510-5	response to other organism	5
+PMC11070510-5	response to external biotic stimulus	6
+PMC11070510-5	interspecies interaction between organisms	7
+PMC11070510-5	response to external stimulus	8
+PMC11070510-5	immune response	9
+PMC11070510-5	response to stimulus	10
+PMC11070510-5	cellular anatomical entity	11
+PMC11070510-5	regulation of biological process	12
+PMC11070510-5	biological regulation	13
+PMC11070510-5	defense response to other organism	14
+PMC11070510-5	cellular process	15
+PMC11070510-5	biological_process	16
+PMC11070510-5	response to chemical	17
+PMC11070510-5	cellular_component	18
+PMC11070510-5	regulation of response to stimulus	19
+PMC11070510-5	response to bacterium	20
+PMC11070510-6	nucleosome assembly	1
+PMC11070510-6	nucleosome organization	2
+PMC11070510-6	protein-DNA complex assembly	3
+PMC11070510-6	protein-DNA complex subunit organization	4
+PMC11070510-6	chromatin assembly	5
+PMC11070510-6	chromatin assembly or disassembly	6
+PMC11070510-6	DNA packaging	7
+PMC11070510-6	DNA conformation change	8
+PMC11070510-6	chromatin organization	9
+PMC11070510-6	chromosome organization	10
+PMC11070510-6	DNA replication-dependent nucleosome assembly	11
+PMC11070510-6	DNA replication-dependent nucleosome organization	12
+PMC11070510-6	cellular protein-containing complex assembly	13
+PMC11070510-6	protein-containing complex subunit organization	14
+PMC11070510-6	protein-containing complex assembly	15
+PMC11070510-6	cellular component organization or biogenesis	16
+PMC11070510-6	protein heterotetramerization	17
+PMC11070510-6	organelle organization	18
+PMC11070510-6	cellular component organization	19
+PMC11070510-6	cellular component biogenesis	20
+PMC11471230-1	KEGG_FOLATE_BIOSYNTHESIS	1
+PMC11471230-1	KEGG_ALDOSTERONE_REGULATED_SODIUM_REABSORPTION	2
+PMC11471230-1	KEGG_LONG_TERM_POTENTIATION	3
+PMC11471230-1	KEGG_HYPERTROPHIC_CARDIOMYOPATHY_HCM	4
+PMC11471230-1	KEGG_AMYOTROPHIC_LATERAL_SCLEROSIS_ALS	5
+PMC11471230-1	KEGG_ARRHYTHMOGENIC_RIGHT_VENTRICULAR_CARDIOMYOPATHY_ARVC	6
+PMC11471230-1	KEGG_DILATED_CARDIOMYOPATHY	7
+PMC11471230-1	KEGG_LEUKOCYTE_TRANSENDOTHELIAL_MIGRATION	8
+PMC11471230-1	KEGG_AXON_GUIDANCE	9
+PMC11471230-1	KEGG_VASCULAR_SMOOTH_MUSCLE_CONTRACTION	10
+PMC11471230-1	KEGG_ECM_RECEPTOR_INTERACTION	11
+PMC11471230-1	KEGG_FERROPTOSIS	12
+PMC11471230-1	KEGG_MAPK_SIGNALING_PATHWAY	13
+PMC11471230-1	KEGG_CALCIUM_SIGNALING_PATHWAY	14
+PMC11471230-1	KEGG_FOCAL_ADHESION	15
+PMC11471230-1	KEGG_NEUROACTIVE_LIGAND_RECEPTOR_INTERACTION	16
+PMC11471230-2	Systemic_lupus_erythematosus	1
+PMC11471230-2	Ribosome	2
+PMC11471230-2	Parkinsons_disease	3
+PMC11471230-2	Pathogenic_escherichia_coli_infection	4
+PMC11471230-2	Arachidonic_acid_metabolism	5
+PMC11471230-2	Proteasome	6
+PMC11471230-2	Leukocyte_transendothelial_migration	7
+PMC11471230-2	Glycerolipid_metabolism	8
+PMC11471230-2	Intestinal_immune_network_for_iga_production	9
+PMC11471230-2	Leishmania_infection	10
+PMC11471230-2	Oxidative_phosphorylation	11
+PMC11471230-2	Huntingtons_disease	12
+PMC11471230-2	Propanoate_metabolism	13
+PMC11471230-2	Autoimmune_thyroid_disease	14
+PMC11471230-2	Fatty_acid_metabolism	15
+PMC11471230-2	Valine_leucine_and_isoleucine_degradation	16
+PMC11471230-2	Renin_angiotensin_system	17
+PMC11471230-2	Tight_junction	18
+PMC11471230-2	Peroxisome	19
+PMC11471230-2	Cell_adhesion_molecules_cams	20
+PMC11471230-2	Complement_and_coagulation_cascades	21
+PMC11471230-2	Glycine_serine_and_threonine_metabolism	22
+PMC11471230-2	Alzheimers_disease	23
+PMC11471230-2	Rna_polymerase	24
+PMC11471230-2	Hematopoietic_cell_lineage	25
+PMC11471230-2	Toll_like_receptor_signaling_pathway	26
+PMC11471230-2	Retinol_metabolism	27
+PMC11471230-2	Tyrosine_metabolism	28
+PMC11471230-2	Histidine_metabolism	29
+PMC11471230-2	Glutathione_metabolism	30
+PMC11471230-2	Nod_like_receptor_signaling_pathway	31
+PMC11471230-2	Riboflavin_metabolism	32
+PMC11471230-2	Regulation_of_actin_cytoskeleton	33
+PMC11471230-3	KEGG_CIRCADIAN_RHYTHM_MAMMAL	1
+PMC11471230-3	KEGG_GLYCINE_SERINE_AND_THREONINE_METABOLISM	2
+PMC11471230-3	KEGG_LONG_TERM_DEPRESSION	3
+PMC11471230-3	KEGG_PHOSPHATIDYLINOSITOL_SIGNALING_SYSTEM	4
+PMC11471230-3	KEGG_ECM_RECEPTOR_INTERACTION	5
+PMC11471230-3	KEGG_LEUKOCYTE_TRANSENDOTHELIAL_MIGRATION	6
+PMC11471230-3	KEGG_CALCIUM_SIGNALING_PATHWAY	7
+PMC11471230-3	KEGG_FOCAL_ADHESION	8
+PMC11471230-3	KEGG_NEUROACTIVE_LIGAND_RECEPTOR_INTERACTION	9

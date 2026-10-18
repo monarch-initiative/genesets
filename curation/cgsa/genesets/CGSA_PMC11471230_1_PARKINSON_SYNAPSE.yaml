@@ -1,0 +1,62 @@
+gene_set_id: CGSA:PMC11471230_1_PARKINSON_SYNAPSE
+gene_set_name: CGSA_PMC11471230_1_PARKINSON_SYNAPSE
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: NA
+n_genes: 737
+description: >-
+  DEG module PMC11471230-1 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), a mouse Parkinson disease study. genesets-rs enrichment against
+  mouse MGI GOA recovers a synaptic-signaling / axonogenesis program — the
+  trans-synaptic and channel genes C1ql1/C1ql3, Cacna1e, Cacna2d1, Cacng8,
+  Chrna6, Abcc8 and the axon-guidance genes Celsr3, Bhlhe22, Chn1 — the neuronal
+  connectivity biology relevant to the neurodegeneration studied here.
+contexts:
+  - term:
+      id: MONDO:0005180
+      label: Parkinson disease
+    context_type: disease
+associations:
+  - term:
+      id: GO:0099537
+      label: trans-synaptic signaling
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Carried by C1ql1/C1ql3 (synaptic organizers), the voltage-gated Ca channels
+      Cacna1e/Cacna2d1/Cacng8, Chrna6 and Abcc8 — present and annotated to
+      trans-synaptic signaling, the neuronal communication program.
+  - term:
+      id: GO:0007409
+      label: axonogenesis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The axon-outgrowth/guidance arm: Celsr3, Bhlhe22, Chn1, Arhgef25 and
+      B3gnt2 are present and annotated to axonogenesis — the wiring counterpart
+      of the synaptic program.
+  - term:
+      id: GO:0045211
+      label: postsynaptic membrane
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The postsynaptic compartment carried by the channel/receptor members
+      Cacna1e, Cacna2d1, Cacng8, Ank1 and Celsr3 present in the set.

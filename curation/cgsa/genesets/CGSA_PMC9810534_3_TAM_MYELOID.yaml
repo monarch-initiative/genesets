@@ -1,0 +1,72 @@
+gene_set_id: CGSA:PMC9810534_3_TAM_MYELOID
+gene_set_name: CGSA_PMC9810534_3_TAM_MYELOID
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: NA
+n_genes: 500
+description: >-
+  DEG module PMC9810534-3 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), a mouse study of tumor-associated macrophages (TAMs) under
+  myeloid PD-1 ablation. genesets-rs enrichment against mouse MGI GOA recovers a
+  coherent myeloid chemotaxis / inflammatory program — the CC chemokines
+  Ccl3/Ccl4/Ccl6/Ccl7/Ccl8, the receptors Ccr5/C3ar1/Cnr2, Csf3r, and the
+  IL-6-regulating genes Arid5a, Cd36, Cd200r1 — the macrophage recruitment and
+  cytokine program of the tumor immune microenvironment. This module also has
+  strong ground-truth agreement (the benchmark GT names chemokine/cytokine and
+  immune-cell activation, which the membership recovers).
+contexts:
+  - term:
+      id: CL:0000235
+      label: macrophage
+    context_type: cell_type
+    role_note: tumor-associated macrophages
+  - term:
+      id: MONDO:0005070
+      label: neoplasm
+    context_type: disease
+    role_note: tumor immune microenvironment context
+associations:
+  - term:
+      id: GO:0030595
+      label: leukocyte chemotaxis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Carried by the CC chemokines Ccl3, Ccl4, Ccl7, Ccl8 and Cnr2, present and
+      annotated to leukocyte chemotaxis — the myeloid recruitment that defines
+      the TAM program.
+  - term:
+      id: GO:0032675
+      label: regulation of interleukin-6 production
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The inflammatory-cytokine arm: Arid5a (an IL-6 mRNA stabilizer), Ccr5,
+      Cd200r1, Cd300ld and Cd36 are present and annotated to regulation of IL-6
+      production — the macrophage cytokine output modulated by PD-1 ablation.
+  - term:
+      id: GO:0097529
+      label: myeloid leukocyte migration
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The specifically myeloid migration sub-term carried by the same chemokines
+      (Ccl3/Ccl4/Ccl7/Ccl8) plus Csf3r; supporting relative to the broader
+      leukocyte-chemotaxis call.

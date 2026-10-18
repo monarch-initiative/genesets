@@ -1,0 +1,74 @@
+gene_set_id: CGSA:PMC10761883_2_DIABETIC_CM_HIF
+gene_set_name: CGSA_PMC10761883_2_DIABETIC_CM_HIF
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+series: SERIES:CGSA_PMC10761883_MODULES
+series_role: hif_glycolysis
+n_genes: 299
+description: >-
+  DEG module PMC10761883-2 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), a human study of shared targets in diabetic cardiomyopathy,
+  annotated against KEGG (top ground-truth terms: HIF-1 signaling, PPAR
+  signaling, glycolysis/gluconeogenesis). Grounded in the membership, the
+  coherent core is a hypoxia/HIF program — the HIF targets Bnip3, Adm, Angptl4,
+  Bhlhe40, Vegfa and the glycolytic effectors Slc2a1/Glut1, Ldha, Hk2 — with a
+  PPAR/lipid arm (Angptl4 and fatty-acid-handling members). Cdkn1a (p21) rides
+  along as a HIF/stress-responsive cell-cycle brake.
+contexts:
+  - term:
+      id: MONDO:0004994
+      label: cardiomyopathy
+    context_type: disease
+  - term:
+      id: MONDO:0005015
+      label: diabetes mellitus
+    context_type: disease
+    role_note: diabetic context of the cardiomyopathy signature
+associations:
+  - term:
+      id: GO:0001666
+      label: response to hypoxia
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Carried by the HIF-target block present in the set: Bnip3, Adm
+      (adrenomedullin), Angptl4, Bhlhe40 and Vegfa are canonical hypoxia-induced
+      genes annotated to the hypoxic response. KEGG names this "HIF-1 signaling";
+      the GO-BP equivalent is response to hypoxia.
+  - term:
+      id: GO:0006096
+      label: glycolytic process
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The metabolic effector arm of the hypoxic program: Slc2a1/Glut1 (glucose
+      uptake), Hk2 and Ldha are present and annotated to glycolysis — the shift
+      to glycolytic metabolism characteristic of the diabetic/hypoxic heart.
+  - term:
+      id: GO:0006631
+      label: fatty acid metabolic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The PPAR-signaling ground-truth arm: Angptl4 (a PPAR target regulating
+      lipoprotein lipase) and other lipid-handling members carry fatty-acid
+      metabolism, reflecting the lipid/energy substrate shift in diabetic
+      cardiomyopathy. Supporting relative to the dominant hypoxia core.

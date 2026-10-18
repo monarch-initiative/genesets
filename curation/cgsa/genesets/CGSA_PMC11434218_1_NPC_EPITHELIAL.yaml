@@ -1,0 +1,50 @@
+gene_set_id: CGSA:PMC11434218_1_NPC_EPITHELIAL
+gene_set_name: CGSA_PMC11434218_1_NPC_EPITHELIAL
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 1704
+description: >-
+  DEG module PMC11434218-1 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), a human nasopharyngeal carcinoma study. genesets-rs enrichment
+  against human GOA recovers an epithelial-differentiation / tube-morphogenesis
+  program — the epithelial and morphogen genes AGR2, ACTA2, the AKR1C aldo-keto
+  reductases, the BMP ligands BMP2/BMP4/BMP5/BMP6, CASP14 and CAV1 — the
+  epithelial-tissue program of this carcinoma of the nasopharyngeal epithelium.
+contexts:
+  - term:
+      id: MONDO:0015459
+      label: nasopharyngeal carcinoma
+    context_type: disease
+associations:
+  - term:
+      id: GO:0030855
+      label: epithelial cell differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Carried by AGR2 (anterior gradient 2), the AKR1C1/AKR1C2 reductases, the
+      BMP ligands BMP2/BMP4/BMP5/BMP6, CASP14 and ACTA2 — present and annotated
+      to epithelial cell differentiation, the tissue identity of this
+      epithelial carcinoma.
+  - term:
+      id: GO:0035239
+      label: tube morphogenesis
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The epithelial-tube/branching morphogenesis arm (ADGRG1, ANGPT4, APOD,
+      BMP2/BMP4/BMP5, BMPER, CAV1) — the morphogenetic context of the epithelial
+      program. Supporting relative to the epithelial-differentiation core.

@@ -1,0 +1,78 @@
+gene_set_id: CGSA:PMC10772820_3_NASH_RIBOSOME
+gene_set_name: CGSA_PMC10772820_3_NASH_RIBOSOME
+collection: CGSA:BENCHMARK
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: NA
+series: SERIES:CGSA_PMC10772820_MODULES
+series_role: ribosome_translation
+n_genes: 581
+description: >-
+  DEG module PMC10772820-3 from the cGSA benchmark (Wang et al., Bioinformatics
+  2026, btag214), mouse NASH liver, KEGG-annotated. The membership is a dense
+  block of cytoplasmic ribosomal-protein genes (Rpl3, Rpl4, Rpl7, Rpl11, Rpl13,
+  Rpl23, Rplp0, Rps3, Rps6, Rps8, Rps15, Rps19 …), so the real biology is
+  translation / ribosome biogenesis. This set is a useful benchmark stress-test:
+  the ground truth lists "Ribosome" (correct) but also "Oxidative
+  phosphorylation", "Parkinson disease", "Huntington disease" and "Coronavirus
+  disease" — these are KEGG DISEASE pathways that merely re-list ribosomal (and
+  mitochondrial) genes, so they are annotation artifacts of the ribosomal-protein
+  membership, not disease biology present in a NASH liver DEG set. They are
+  recorded as false associations below, not curated as real processes.
+contexts:
+  - term:
+      id: MONDO:0007027
+      label: metabolic dysfunction-associated steatohepatitis
+    context_type: disease
+    role_note: the MONDO term for NASH (renamed MASH)
+  - term:
+      id: UBERON:0002107
+      label: liver
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0002181
+      label: cytoplasmic translation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The dominant, densely-carried signal: dozens of large- and small-subunit
+      cytoplasmic ribosomal-protein genes (Rpl*, Rps*, Rplp0) are present and
+      annotated to cytoplasmic translation. This is the true identity of the
+      module regardless of the disease-pathway names in the ground truth.
+  - term:
+      id: GO:0022626
+      label: cytosolic ribosome
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The same Rpl*/Rps* members are structural constituents of the cytosolic
+      ribosome — the cellular component underlying the translation process.
+  - term:
+      id: GO:0006119
+      label: oxidative phosphorylation
+    aspect: biological_process
+    category: false_association
+    confidence: medium
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Appears in the ground truth (via KEGG's OXPHOS/neurodegeneration disease
+      pathways, which share mitochondrial and ribosomal genes) but is NOT the
+      biology of this ribosomal-protein-dominated module. Recorded as a
+      false_association to document the KEGG disease-pathway artifact — the same
+      artifact that puts "Parkinson disease" and "Huntington disease" in the
+      ground truth for a NASH liver gene set.
