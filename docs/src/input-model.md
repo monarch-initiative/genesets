@@ -2,6 +2,11 @@
 
 The engine has one central abstraction: a named set of genes. Ontology terms, flat database entries, user samples, and backgrounds can all be represented this way.
 
+`gsea` adds a second input kind, the ranking: a score for every measured gene,
+as `gene, score` (a GSEA `.rnk` file) or `ranking_id, gene, score` for several
+rankings. The ranking is that analysis's universe. Any table input may be
+gzip-compressed; it is detected from the file's contents.
+
 ## Ontology Targets
 
 Ontology enrichment targets are built from three tables:

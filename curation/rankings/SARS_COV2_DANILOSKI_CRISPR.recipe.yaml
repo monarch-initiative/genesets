@@ -1,0 +1,19 @@
+# Daniloski et al. 2021 (PMID:33147445), genome-wide GeCKOv2 knockout screen for
+# SARS-CoV-2-induced death in A549-ACE2 cells, Table S1. Score: -log10 of the
+# MAGeCK RRA positive-selection score in the low-MOI (0.01) screen; high = the
+# knockout survives infection = proviral host factor. One-sided, unsigned.
+name: SARS_COV2_DANILOSKI_CRISPR
+source:
+  url: https://ars.els-cdn.com/content/image/1-s2.0-S0092867420313945-mmc1.xlsx
+  sha256: fb4cb67685d373e878828b676a24dfb5fced0d783fe4de677ee001c34943b0d0
+table:
+  format: xlsx
+  sheet: Sheet1
+gene_column: gene_id
+gene_id_type: symbol
+score_column: score_MOI1
+transform: neg_log10
+duplicates: prefer_exact
+hgnc:
+  url: https://storage.googleapis.com/public-download-files/hgnc/archive/archive/monthly/tsv/hgnc_complete_set_2026-10-06.txt
+  sha256: 8bf6f686e640dbc864a346484626953621b0500d900d26cd085a35c2782d725d

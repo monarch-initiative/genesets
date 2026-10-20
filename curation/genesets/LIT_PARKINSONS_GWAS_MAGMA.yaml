@@ -1,0 +1,263 @@
+gene_set_id: LIT:PARKINSONS_GWAS_MAGMA
+gene_set_name: PARKINSONS_GWAS_MAGMA
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+ranking:
+  source: PMID:31701892
+  score_type: neg_log10_p
+  signed: false
+  gene_id_type: HGNC symbol
+  n_ranked: 18127
+  file: ../rankings/PARKINSONS_GWAS_MAGMA.rnk.gz
+  sha256: 92c318b730f2b43a892c8ff46219c281b99f50abf82462d81a1a361bc94fa3e2
+  source_detail: GWAS ATLAS (Watanabe et al. 2019, PMID:31427789) MAGMA gene-based
+    results (magma.genes.out), atlas study 4167
+  download_url: https://atlas.ctglab.nl/traitDB/4167
+  score_description: '-log10 of the MAGMA gene-based p-value (snp-wise mean model,
+    1 kb windows, protein-coding genes; one-sided). Built by `curate build-ranking`
+    from rankings/PARKINSONS_GWAS_MAGMA.recipe.yaml: of 19,062 atlas rows, 249 mapped
+    by their approved symbol after their Ensembl v92 id failed, 870 have no approved
+    HGNC symbol, and 65 duplicate symbols kept the stronger score; 18,127 genes ranked.
+    Scored on -log10 p rather than ZSTAT because the KS running sum weights by |score|,
+    which would treat strongly negative Z as signal.'
+description: Genome-wide MAGMA gene ranking for Parkinson's disease from the Nalls
+  et al. 2019 meta-analysis (PMID:31701892), in its public IPDGC release without 23andMe
+  (33,674 cases, 449,056 controls), as computed by the GWAS ATLAS. The scored counterpart
+  of LIT:PARKINSONS_GWAS_GENES, from the same study. SNCA dominates (P = 3e-33), and
+  GSEA's weighted KS, which concentrates on the top of the ranking, returns nine significant
+  terms that SNCA alone can carry; only those with several independent loci in the
+  leading edge are read as biology. Wilcoxon finds only the HLA class II block. The
+  interpretation is synaptic-vesicle trafficking and alpha-synuclein aggregation,
+  with the lysosomal and endocytic CORE of the gene-set entry present at nominal significance
+  (TMEM175, LRRK2, GBA1, VPS35; GAK, SH3GL2). MAGMA gene p-values of neighbouring
+  genes share SNPs and LD, and the gene-set tests here do not model that correlation,
+  so a term carried by one locus is one finding, not many.
+contexts:
+- term:
+    id: MONDO:0005180
+    label: Parkinson disease
+  context_type: disease
+  role_note: Common-variant association strength per gene, PD meta-analysis.
+associations:
+- term:
+    id: GO:1903421
+    label: regulation of synaptic vesicle recycling
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: core_process
+  confidence: medium
+  specificity: lineage_shared
+  direction: UP
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 0.0002001601
+    p_adjust: 0.01521755
+    target_size: 28
+    es: 0.849513
+    nes: 1.804201
+    set_size: 26
+    leading_edge_size: 6
+    leading_edge_genes:
+    - SNCA
+    - DGKQ
+    - LRRK2
+    - STX1B
+    - PPP3CC
+    - ROCK1
+    peak_rank: 776
+  curator_note: 'Leading edge SNCA, DGKQ, LRRK2, STX1B, PPP3CC, ROCK1: SNCA, LRRK2,
+    the GAK/DGKQ locus and STX1B are separate PD loci, so not SNCA alone. Synaptic
+    vesicle cycling is where alpha-synuclein and LRRK2 act.'
+- term:
+    id: GO:1990000
+    label: amyloid fibril formation
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: core_process
+  confidence: medium
+  specificity: broadly_expressed
+  direction: UP
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 0.0001001603
+    p_adjust: 0.01521755
+    target_size: 28
+    es: 0.858761
+    nes: 1.808017
+    set_size: 24
+    leading_edge_size: 3
+    leading_edge_genes:
+    - SNCA
+    - MAPT
+    - SIAH2
+    peak_rank: 475
+  curator_note: 'Leading edge SNCA, MAPT, SIAH2: the two aggregation-prone proteins
+    of PD and related tauopathy, at two independent loci (SNCA; the 17q21 MAPT inversion).
+    Confidence medium: two loci, one of them a large LD block.'
+- term:
+    id: GO:0007040
+    label: lysosome organization
+  seed_source: curator_added
+  aspect: biological_process
+  category: core_process
+  confidence: medium
+  specificity: broadly_expressed
+  direction: UP
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 0.00169983
+    p_adjust: 0.3583411
+    target_size: 84
+    es: 0.649955
+    nes: 1.44788
+    set_size: 75
+    leading_edge_size: 22
+    leading_edge_genes:
+    - TMEM175
+    - LRRK2
+    - GBA1
+    - VPS35
+    - GNPTAB
+    - RUFY4
+    - CLVS1
+    - ZFYVE26
+    - CLN5
+    - TPP1
+    - ARF5
+    - CHMP1B
+    - CLVS2
+    - CLN3
+    - RAB7A
+    - PIKFYVE
+    - TMEM106B
+    - OSBPL9
+    - PDZD8
+    - RAB39A
+    - VIPAS39
+    - CHMP5
+    peak_rank: 2793
+  curator_note: Supporting in LIT:PARKINSONS_GWAS_GENES, whose lysosome terms are
+    its mechanistic core. TMEM175, LRRK2, GBA1, VPS35 and GNPTAB lead the KS leading
+    edge, separate loci, but the term stops at p = 0.0017 (FDR q = 0.36).
+- term:
+    id: GO:0048488
+    label: synaptic vesicle endocytosis
+  seed_source: curator_added
+  aspect: biological_process
+  category: supporting_process
+  confidence: medium
+  specificity: lineage_shared
+  direction: UP
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 0.00049995
+    p_adjust: 0.2317054
+    target_size: 54
+    es: 0.711816
+    nes: 1.56081
+    set_size: 50
+    leading_edge_size: 6
+    leading_edge_genes:
+    - SNCA
+    - GAK
+    - SH3GL2
+    - ITSN1
+    - AP2A1
+    - STON1
+    peak_rank: 1057
+  curator_note: 'SNCA, GAK, SH3GL2, ITSN1, AP2A1, STON1 lead (p = 5e-4, q = 0.23):
+    clathrin-mediated synaptic vesicle endocytosis, with GAK a GWAS locus in its own
+    right.'
+- term:
+    id: GO:0019886
+    label: antigen processing and presentation of exogenous peptide antigen via MHC
+      class II
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: low
+  specificity: lineage_shared
+  direction: UP
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: wilcoxon
+    algorithm: classic
+    p_adjust_method: benjamini_hochberg
+    p_value: 1.184241e-05
+    p_adjust: 0.04454975
+    target_size: 27
+    es: 0.506178
+    nes: 4.380469
+    set_size: 25
+    leading_edge_size: 13
+    leading_edge_genes:
+    - HLA-DQA1
+    - HLA-DQB1
+    - HLA-DRB1
+    - HLA-DQA2
+    - CTSS
+    - CTSD
+    - LGMN
+    - HLA-DOB
+    - FCGR2B
+    - HLA-DRA
+    - B2M
+    - PIKFYVE
+    - HLA-DQB2
+    peak_rank: 2438
+  curator_note: HLA-DQA1, HLA-DQB1, HLA-DRB1 and HLA-DQA2 (one locus, the known PD
+    HLA-DR association) plus the lysosomal proteases CTSS, CTSD and LGMN. Low confidence
+    because the HLA block carries most of it. MAGMA gene p-values of neighbouring
+    genes share SNPs and LD, and the gene-set tests here do not model that correlation,
+    so a term carried by one locus is one finding, not many.
+- term:
+    id: GO:0098810
+    label: neurotransmitter reuptake
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: marker_driven_plausible
+  confidence: low
+  specificity: lineage_shared
+  direction: UP
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 0.0002015926
+    p_adjust: 0.02088374
+    target_size: 17
+    es: 0.87333
+    nes: 1.793789
+    set_size: 17
+    leading_edge_size: 1
+    leading_edge_genes:
+    - SNCA
+    peak_rank: 1
+  curator_note: 'Significant (q = 0.021) with a leading edge of SNCA alone: an example
+    of the weighted KS crediting a term with its single top gene. Kept to record the
+    artefact; read nothing into it beyond SNCA.'

@@ -14,18 +14,19 @@ use genesets_rs::{
         resolve_format, summarize_diff,
     },
     enrichment::{enrich_matrix, enrich_one},
+    gsea::{Algorithm, GseaOptions, Ranking, Statistic, gsea_matrix},
     index::{
         TermGraph, build_flat_sets, build_gene_list_bitset, build_ontology_sets, build_term_graph,
         union_sets,
     },
     io::{
         default_set_name, read_annotation_pairs, read_closure_pairs, read_gene_list, read_name_map,
-        read_name_pairs, read_sets,
+        read_name_pairs, read_rankings, read_sets,
     },
     mgsa::{BetaPrior, MgsaOptions, MgsaResult, mgsa_matrix},
     output::{
-        OutputFormat, OutputOptions, write_diff_rows, write_mgsa_rows, write_parquet_diff_rows,
-        write_parquet_rows, write_rows,
+        OutputFormat, OutputOptions, write_diff_rows, write_gsea_rows, write_mgsa_rows,
+        write_parquet_diff_rows, write_parquet_rows, write_rows,
     },
 };
 use serde::{Deserialize, Serialize};
@@ -53,6 +54,8 @@ enum Commands {
     Compare(CompareArgs),
     /// Bayesian model-based gene set analysis (MGSA), as in Ontologizer and wtfgenes.
     Mgsa(MgsaArgs),
+    /// Preranked gene set enrichment analysis (GSEA) over scored gene lists.
+    Gsea(GseaArgs),
 }
 
 #[derive(Args, Clone, Debug)]
@@ -308,6 +311,91 @@ struct MgsaArgs {
 }
 
 #[derive(Args, Clone, Debug)]
+struct GseaArgs {
+    #[command(flatten)]
+    targets: TargetArgs,
+
+    /// Optional gene CURIE/name or symbol table.
+    #[arg(long)]
+    gene_names: Option<PathBuf>,
+
+    /// Scored gene list: two columns (gene, score), as in a GSEA .rnk file,
+    /// or three (ranking_id, gene, score) for several rankings at once.
+    /// Every ranked gene counts toward the ranking, annotated or not.
+    #[arg(long)]
+    ranks: PathBuf,
+
+    /// Name for a two-column ranking. Defaults to the file stem.
+    #[arg(long)]
+    ranks_name: Option<String>,
+
+    /// Select one ranking from a three-column file.
+    #[arg(long)]
+    ranks_set: Option<String>,
+
+    /// How each target is scored against the ranking.
+    #[arg(long, value_enum, default_value_t = Statistic::Ks)]
+    statistic: Statistic,
+
+    /// How the ontology graph is used: score terms independently (classic),
+    /// drop genes of significant descendants (elim), or drop a child's genes
+    /// from its parent when the child is at least as significant (weight01).
+    /// elim and weight01 need --closure.
+    #[arg(long, value_enum, default_value_t = Algorithm::Classic)]
+    algorithm: Algorithm,
+
+    /// Raw p-value at or below which elim removes a term's genes from its
+    /// ancestors.
+    #[arg(long, default_value_t = 0.01, value_parser = parse_probability)]
+    elim_cutoff: f64,
+
+    /// Exponent on |score| for the running-sum step at set members.
+    /// 0 is the unweighted Kolmogorov-Smirnov statistic; 1 is the GSEA default.
+    #[arg(long, default_value_t = 1.0)]
+    weight: f64,
+
+    /// Random gene sets drawn for each KS null.
+    #[arg(long, default_value_t = 1000)]
+    permutations: u32,
+
+    /// Skip targets with fewer ranked members.
+    #[arg(long, default_value_t = 15)]
+    min_size: u32,
+
+    /// Skip targets with more ranked members.
+    #[arg(long, default_value_t = 500)]
+    max_size: u32,
+
+    /// Random seed. Each ranking and set size derives its own stream from it.
+    #[arg(long, default_value_t = 123_456_789)]
+    seed: u64,
+
+    /// Suppress rows with raw p-value above this cutoff.
+    #[arg(long, value_parser = parse_probability)]
+    max_p_value: Option<f64>,
+
+    /// Suppress rows with Benjamini-Hochberg adjusted p-value above this cutoff.
+    #[arg(long, value_parser = parse_probability)]
+    max_p_adjust: Option<f64>,
+
+    /// Write output here instead of stdout.
+    #[arg(short, long)]
+    output: Option<PathBuf>,
+
+    /// Output serialization format. Parquet is not supported for GSEA yet.
+    #[arg(long, value_enum, default_value_t = OutputFormat::Tsv)]
+    output_format: OutputFormat,
+
+    /// Include semicolon-separated leading-edge gene ids and names.
+    #[arg(long)]
+    leading_edge_genes: bool,
+
+    /// Rayon worker threads. Defaults to Rayon auto-detection.
+    #[arg(long)]
+    threads: Option<usize>,
+}
+
+#[derive(Args, Clone, Debug)]
 struct RunArgs {
     /// YAML configuration file. Relative paths inside it resolve from its directory.
     config: PathBuf,
@@ -552,6 +640,7 @@ fn main() -> Result<()> {
         Commands::Run(args) => execute_run(args),
         Commands::Compare(args) => execute_compare(args),
         Commands::Mgsa(args) => run_with_thread_pool(args.threads, || execute_mgsa(args)),
+        Commands::Gsea(args) => run_with_thread_pool(args.threads, || execute_gsea(args)),
     }
 }
 
@@ -907,6 +996,82 @@ fn mgsa_summary(result: &MgsaResult, queries: &[NamedSet]) -> MgsaSummary {
         false_pos_rate: stats.false_pos_rate,
         false_neg_rate: stats.false_neg_rate,
     }
+}
+
+fn execute_gsea(args: GseaArgs) -> Result<()> {
+    if args.output_format == OutputFormat::Parquet {
+        bail!("gsea supports --output-format tsv or null");
+    }
+    if !args.weight.is_finite() || args.weight < 0.0 {
+        bail!("--weight must be finite and non-negative");
+    }
+    if args.permutations == 0 {
+        bail!("--permutations must be positive");
+    }
+    if args.min_size > args.max_size {
+        bail!("--min-size must not exceed --max-size");
+    }
+
+    let target_source = TargetSource::load(&args.targets)?;
+    let ranks_name = args
+        .ranks_name
+        .clone()
+        .unwrap_or_else(|| default_set_name(&args.ranks));
+    let mut ranked_lists = read_rankings(&args.ranks, &ranks_name)
+        .with_context(|| format!("failed to read rankings from {}", args.ranks.display()))?;
+    if let Some(wanted) = args.ranks_set.as_deref() {
+        ranked_lists.retain(|list| list.id == wanted);
+        if ranked_lists.is_empty() {
+            bail!("no ranking named {wanted:?} was found");
+        }
+    }
+    let gene_names = read_optional_name_map(args.gene_names.as_deref())?;
+
+    let mut universe = GeneUniverse::new();
+    target_source.add_genes_to_universe(&mut universe);
+    for list in &ranked_lists {
+        universe.add_genes(&list.genes);
+    }
+    universe.apply_gene_names(&gene_names);
+
+    let target_sets = target_source.build_sets(&universe);
+    ensure_non_empty_targets(&target_sets)?;
+    let graph = target_source.build_graph(&target_sets);
+    if args.algorithm != Algorithm::Classic && graph.is_none() {
+        bail!("--algorithm elim and weight01 need --annotations with --closure");
+    }
+    let rankings = ranked_lists
+        .iter()
+        .map(|list| Ranking::new(list, &universe))
+        .collect::<Result<Vec<_>>>()?;
+
+    let options = GseaOptions {
+        statistic: args.statistic,
+        algorithm: args.algorithm,
+        elim_cutoff: args.elim_cutoff,
+        weight: args.weight,
+        permutations: args.permutations,
+        min_size: args.min_size,
+        max_size: args.max_size,
+        seed: args.seed,
+        include_leading_edge: args.leading_edge_genes,
+        max_p_value: args.max_p_value,
+        max_p_adjust: args.max_p_adjust,
+    };
+    let rows = gsea_matrix(&rankings, &target_sets, graph.as_ref(), &options)?;
+    if args.output_format == OutputFormat::Null {
+        return Ok(());
+    }
+    write_output(args.output.as_deref(), |writer| {
+        write_gsea_rows(
+            writer,
+            &rows,
+            &rankings,
+            &target_sets,
+            &universe,
+            args.leading_edge_genes,
+        )
+    })
 }
 
 fn execute_compare(args: CompareArgs) -> Result<()> {

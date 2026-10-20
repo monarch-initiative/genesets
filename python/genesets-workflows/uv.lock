@@ -756,6 +756,7 @@ curation = [
     { name = "linkml-reference-validator" },
     { name = "linkml-term-validator" },
     { name = "oaklib" },
+    { name = "openpyxl" },
     { name = "typer" },
 ]
 explorer = [
@@ -788,6 +789,7 @@ requires-dist = [
     { name = "linkml-term-validator", marker = "extra == 'curation'", specifier = ">=0.4.5" },
     { name = "nbconvert", marker = "extra == 'notebooks'", specifier = ">=7.0" },
     { name = "oaklib", marker = "extra == 'curation'", specifier = ">=0.7.4" },
+    { name = "openpyxl", marker = "extra == 'curation'", specifier = ">=3.1" },
     { name = "pandas", marker = "extra == 'notebooks'", specifier = ">=2.0" },
     { name = "pandas", marker = "extra == 'reports'", specifier = ">=2.0" },
     { name = "pyyaml", specifier = ">=6.0" },

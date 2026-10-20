@@ -6,6 +6,10 @@ legacy disease and pathway sets, Reactome and Hallmark sets, and a C7 cytokine
 perturbation contrast. These exercise ontology-grounded `contexts` such as cell
 type, tissue, disease, phenotype, experimental condition, and perturbagen.
 
+The corpus also holds ranked signatures: a score for every measured gene,
+such as rare-variant burden or a differential-expression contrast. See
+[Ranked signatures](#ranked-signatures).
+
 Each `genesets/<SET>.yaml` records, per GO term, a curator judgment
 (role category, confidence, specificity), recovery status, enrichment stats,
 and optional verbatim literature evidence. The data doubles as a
@@ -16,7 +20,8 @@ future curated gene set browser.
 - `schema/genesets_interpretation.yaml` - LinkML schema (source of truth).
 - `conf/` - OAK adapters and reference-validator config.
 - `genesets/manifest.tsv` - index of curated sets (id, collection, biological context term, series, series_role).
-- `genesets/<SET>.yaml` - one interpretation per gene set.
+- `genesets/<SET>.yaml` - one interpretation per gene set or ranked signature.
+- `rankings/<NAME>.rnk.gz` - scores of ranked signatures (gzipped `gene`/`score` TSV).
 - `cache/` - committed ontology label cache (written by linkml-term-validator).
 - `references_cache/` - cited-paper cache (gitignored; rebuilt on demand).
 
@@ -26,7 +31,8 @@ future curated gene set browser.
    `genesets-workflows curate draft MSIGDB:<SET> --enrichment-tsv <tsv> -o genesets/<SET>.yaml`
 3. Adjudicate: set each association's `category`, `confidence`, `specificity`;
    add `curator_added` core terms the tool missed; add `evidence`.
-4. `just curate-validate` - structural + term + reference + obsolescence validation.
+4. `just curate-validate` - structural + term + reference + obsolescence +
+   ranking validation.
 5. `just curate-report` - precision/recall/F1.
 
 ## Categories (biology)
@@ -149,6 +155,95 @@ Each `evidence` item carries a `reference` (PMID/DOI), a verbatim `snippet`
 OTHER — mirrors dismech for interoperability). A schema rule enforces that any
 item with a `snippet` also has a `reference`, so a quote can never bypass
 reference validation.
+
+## Ranked signatures
+
+Some sources give a score for every measured gene rather than a list: a
+differential-expression contrast, GWAS or exome gene-level statistics, a CRISPR
+screen. Thresholding them throws information away, so they are curated as
+ranked signatures, analyzed with `genesets-rs gsea`. What gets curated is the
+same: per-GO-term judgments on the same axes. Four things differ.
+
+- **The `ranking` block replaces membership.** It records the `source`, the
+  exact `source_detail` and `download_url`, the `score_type`, whether the
+  scores are `signed`, the `gene_id_type`, `n_ranked`, and the `file` and its
+  `sha256`. The scores live in `rankings/<NAME>.rnk.gz`, a gzipped two-column
+  TSV with a `gene`/`score` header that `genesets-rs gsea --ranks` reads as
+  is. Each ranking is built from a recipe beside it, `rankings/<NAME>.recipe.yaml`:
+  the source URL and its SHA-256, the table format, the gene and score columns,
+  the id type, a transform (`identity`, `neg_log10`, `negate`), and a pinned
+  HGNC release for mapping ids to approved symbols (previous and alias symbols
+  are used only when unambiguous). `genesets-workflows curate build-ranking
+  rankings/<NAME>.recipe.yaml` rebuilds the file byte for byte and reports how
+  many source rows lacked a score or a symbol. Built files are committed only
+  when the recipe sets `store: true`, because the source has no stable URL to
+  rebuild from (the GWAS ATLAS MAGMA tables, served only through its web
+  page); the rest are gitignored and rebuilt by `just curate-build-rankings`,
+  which `just curate-validate` runs first. That also keeps publisher
+  supplementary tables, often all-rights-reserved, out of the repository. The
+  ranking is also the analysis universe: genes absent from it were not
+  measured.
+- **Direction is per association.** A signed ranking carries two programs, one
+  at each pole, so each association records `direction` (UP toward high
+  scores, DN toward low). An unsigned ranking, such as a -log10 p or a MAGMA Z,
+  has only a high pole: its associations are all UP.
+- **Ground judgments in the leading edge.** The leading edge (the genes that
+  drive the score) is the ranked analogue of a set's membership. Read it, and
+  name its genes in `curator_note`, as you would a set's genes.
+- **`universe_gap` is the ranked `membership_gap`**: the genes that would carry
+  a term were not measured. Genes that were measured but did not move are not a
+  gap. That is a result, recorded in the description or a curator note.
+
+`enrichment_stats` records which test produced it (`method`: `fisher`,
+`gsea_ks` or `wilcoxon`; `algorithm`; `p_adjust_method`), with `es`, `nes`,
+`set_size`, the leading edge and `peak_rank` for ranked tests. Choose the
+statistic to suit the signal: GSEA's weighted KS for a concentrated top,
+Wilcoxon for a modest shift across many genes, and say which in the
+description. For scores derived from p-values (-log10 p, MAGMA), GSEA's
+default `--weight 1` lets a few extreme genes swamp every running sum: on the
+BMD MAGMA ranking, where -log10 p reaches 150, weighted KS finds no term and
+unweighted KS (`--weight 0`) finds 181. Use Wilcoxon or `--weight 0` there.
+For GWAS gene scores, also count independent loci in a leading edge: MAGMA
+p-values of neighbouring genes are correlated through LD, so an HLA or APOE
+block lights up whole terms as one finding.
+
+CRISPR screens have their own traps, all visible in the curated screens:
+
+- **Small complexes fall under the size floor.** The OST, signal peptidase
+  and EMC complexes that define the flavivirus screens have 5-13 members, below
+  `gsea`'s default `--min-size 15`; score them with `--min-size 5`.
+- **Fitness.** Essential genes drop out of any survival or proliferation
+  screen, and growth suppressors gain, whatever the selection. Record those
+  terms as `nonspecific` (essential genes) or `false_association` (growth
+  suppressors read as host factors).
+- **Non-expression.** Genes the cells do not express escape the fitness cost,
+  so whole-ranking tests shift olfactory receptors or heart genes. Record them
+  as `false_association`.
+- **Shared guides.** Clustered genes that share exons (PCDHA, UGT1A) are hit
+  by the same guides and score as one: one finding, like an LD block.
+- **Symbol hygiene.** Supplementary tables carry old symbols and Excel
+  damage. `duplicates: prefer_exact` lets the row named by the approved symbol
+  win; use `drop` when a collision may hide two genes (Excel-mangled MARCH/SEPT). Draft from a run with:
+
+```bash
+genesets-rs gsea --annotations gene_terms.tsv --terms terms.tsv --closure closure.tsv \
+  --ranks rankings/<NAME>.rnk.gz --statistic wilcoxon --leading-edge-genes \
+  --max-p-adjust 0.05 -o run.tsv
+genesets-workflows curate draft-ranked LIT:<NAME> --gsea-tsv run.tsv \
+  --ranks rankings/<NAME>.rnk.gz --source PMID:<id> --score-type <type> \
+  --unsigned --method wilcoxon -o genesets/LIT_<NAME>.yaml
+```
+
+The draft fills the `ranking` block (count, path, checksum) and one
+association per significant term, with `direction` from the sign of NES; for
+an unsigned ranking it drops the meaningless low pole.
+
+`curate validate` adds a ranking gate: the file exists and matches its
+checksum and `n_ranked`, scores are well formed, an unsigned ranking has no
+DN associations, every leading-edge gene is in the
+ranking, `direction` agrees with the sign of NES, and ranked methods appear
+only on ranked interpretations. `LIT:SCHIZOPHRENIA_SCHEMA_EXOME` is the first
+example.
 
 ## Term obsolescence
 `curate validate` adds a fourth gate: every ontology term id is swept against
