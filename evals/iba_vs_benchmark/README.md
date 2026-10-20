@@ -31,14 +31,24 @@ a real evaluation.
    proliferation regulators; Manguso 2017 in-vivo melanoma immunotherapy screen),
    plus one short curated mechanism panel (Bersuker/Doll 2019 FSP1-CoQ ferroptosis
    suppressors). All HGNC-normalized into `curation/genesets/lit_members.gmt` and
-   folded into `queries.gmt`. Total evaluable: **128** (126 producing
+   folded into `queries.gmt`. Total evaluable: **133** (131 producing
    enrichment) — including 44 MSigDB C8 single-cell cell-type signatures
    (membership fetched from mygeneset.info). The two interferon sets added with
    the gene-set-informed factor-model docs are here too: the MSigDB pathway set
    `REACTOME_INTERFERON_SIGNALING` (fetched from mygeneset.info) and the six-gene
    `TYPE_I_INTERFERON_SCORE` (AGS-6 clinical panel, captured into
    `lit_members.gmt` — one of the few `LIT:DISEASE_ACTIVITY` sets with an explicit
-   captured membership rather than prose markers).
+   captured membership rather than prose markers). The five `LIT:PERTURBATION` RFX6-knockdown
+   sets are likewise captured into `lit_members.gmt`: the Walker et al. (Nature
+   2023) beta cell pair `RFX6_KNOCKDOWN_BETA_CELL_UP` / `_DN` (1,272 and 1,397
+   members — the two largest queries in the eval, from Supplementary Data 2a),
+   the 220-gene SCENIC regulon core of the same experiment
+   (`RFX6_KNOCKDOWN_BETA_REGULON`, Supplementary Data 2c), and the Coykendall et
+   al. (Diabetes 2024) alpha cell pair `RFX6_KNOCKDOWN_ALPHA_CELL_UP` / `_DN`
+   (357 and 558 members, captured from the Supplementary Table S3/S4 PDFs; the
+   parsed counts reproduce the paper's stated 357/558/915 exactly). Four of the
+   five form `SERIES:RFX6_KNOCKDOWN_ISLET_CELL` with roles `beta_up`,
+   `beta_down`, `alpha_up`, `alpha_down`.
 
 2. **Annotation variants** —
    ```bash
@@ -83,14 +93,24 @@ output (see "Guardrail").
 - **`unique_vs_baseline`** — supported-core terms a variant recovers that `all`
   does not.
 
-## Headline result (2026, 128 evaluable / 126 scored sets, GOA `goa_human` current)
+## Headline result (2026, 133 evaluable / 131 scored sets, GOA `goa_human` current)
 
 | variant | recall_core | gap_recovered (disagreements) |
 |---|---|---|
-| all | 0.561 (221/394) | 7 |
-| no_contributes_to | 0.558 (220/394) | 7 |
-| iba_iea | 0.437 (172/394) | 4 |
-| iba | 0.338 (133/394) | 3 |
+| all | 0.559 (229/410) | 7 |
+| no_contributes_to | 0.556 (228/410) | 7 |
+| iba_iea | 0.437 (179/410) | 4 |
+| iba | 0.334 (137/410) | 3 |
+
+Refreshed as the five RFX6-knockdown sets were added. Each refresh re-scored the
+same enrichment run against the previous gold to separate the new sets from GOA
+drift, and both times the earlier figures reproduced exactly: 0.561 / 0.558 /
+0.437 / 0.338 on 221, 220, 172, 133 of 394 core terms for the 128-set gold, and
+0.565 / 0.562 / 0.440 / 0.341 on 227, 226, 177, 137 of 402 for the 130-set gold,
+with identical gap_recovered counts throughout. The movement is therefore the
+new core terms, not drift. Note the direction: recall_core *fell* from 0.565 to
+0.559 because the RFX6 sets are hard — of their 16 core terms, all-GOA recovers
+8.
 
 1. **IBA carries ~2/3 of the core biology full GOA does** (recall_core 0.34 vs
    0.56); IEA recovers much of the difference (iba_iea 0.44).
@@ -115,15 +135,15 @@ With the corpus-wide `insight` tags, recall splits by whether a term is
 `confirmatory` (restates the set's construction) or `mechanistic` (a non-obvious
 process — a genuine enrichment insight). Over the evaluable sets:
 
-| variant | recall_confirm (n=640) | recall_mechan (n=81) |
+| variant | recall_confirm (n=659) | recall_mechan (n=86) |
 |---|---|---|
-| all | 0.569 | 0.333 |
-| no_contributes_to | 0.567 | 0.333 |
-| iba_iea | 0.433 | 0.222 |
-| iba | 0.319 | 0.210 |
+| all | 0.563 | 0.349 |
+| no_contributes_to | 0.561 | 0.349 |
+| iba_iea | 0.431 | 0.244 |
+| iba | 0.316 | 0.221 |
 
 **Mechanistic insight is ~2x harder to recover than confirmatory biology** —
-even all-GOA recovers only ~32% of mechanistic terms vs ~62% of confirmatory
+even all-GOA recovers only ~35% of mechanistic terms vs ~56% of confirmatory
 ones. Standard enrichment surfaces the obvious and largely misses the
 non-obvious convergent mechanisms the curators flagged (often the
 `annotation_gap` ones).
@@ -191,6 +211,63 @@ So the gold standard now records three orthogonal failure modes for mechanistic
 recall — **diffuse** (GWAS), **sign-blind** (directional regulation), and
 **under-powered** (tiny panels) — only the first of which is about annotation
 depth. The single recoverable family is the tight physical complex.
+
+### A fourth failure mode — direction-of-change, from the RFX6 knockdown series
+
+The five `LIT:PERTURBATION` RFX6 sets add a case the screens do not cover: the
+arms of one perturbation disagree with the phenotype, and enrichment can only see
+one of them. Four form `SERIES:RFX6_KNOCKDOWN_ISLET_CELL` (beta up/down from
+Walker et al.; alpha up/down from Coykendall et al.), plus a regulon-level
+granularity variant. Under all-GOA:
+
+- **Beta DN — 5/5 core recovered.** Proteasome-mediated ubiquitin-dependent
+  catabolism (`GO:0043161`), proteasome complex (`GO:0000502`), macroautophagy
+  (`GO:0016236`), vesicle-mediated transport (`GO:0016192`) and cilium
+  (`GO:0005929`) all clear Bonferroni — the tight-complex pattern again, with 25
+  proteasome subunits, 10 ATG genes and 13 cilium/IFT genes literally in the set.
+  The strongest of these (the ubiquitin-proteasome arm, LogP -39 in the paper's
+  own Metascape output) is *not discussed anywhere in the paper*.
+- **Beta UP — 1/3 core recovered.** The synaptic module (`GO:0099536`) is
+  recovered; **insulin secretion** (`GO:0030073`) and **secretory granule**
+  (`GO:0030141`) are missed, though ABCC8, SLC30A8, SLC2A2, G6PC2, CACNA1D,
+  PCSK1/2, CPE, IAPP and MAFA are all members. Thirteen well-annotated genes in a
+  1,272-gene query do not clear Bonferroni — and here the missed term is the
+  whole point, since those transcripts go **up** while secretion is blunted.
+- **Alpha DN — 1/4 core recovered, and the interesting miss is granularity, not
+  power.** `GO:0030141` secretory granule is recovered at padj 9e-13 (55
+  members), and the arm is thick with `regulation of secretion`, `regulation of
+  insulin secretion` and `regulation of peptide hormone secretion` — yet the
+  curated `peptide hormone secretion` (`GO:0030072`), `endocrine pancreas
+  development` (`GO:0031018`) and `glucagon secretion` (`GO:0070091`) are all
+  missed. The last was curated as an `annotation_gap` in advance and behaves
+  exactly as predicted: SSTR2, RAPGEF4, KCNA5, CACNA1A, KCNMA1 and UCN3 are
+  present but annotated only to generic hormone-secretion and ion-transport
+  parents.
+- **Alpha UP — 1/2 core recovered, and the same specificity effect.** `cellular
+  response to stress` is recovered; `type I interferon-mediated signaling
+  pathway` (`GO:0060337`) is not, even though MX1, IFIT1/2/3, ISG15, IRF7, STAT1
+  and RIGI are members — the run instead returns the generic parents `innate
+  immune response` (padj 4e-7) and `response to virus` (padj 5e-3). Specific,
+  well-annotated terms lose to Bonferroni while their vague ancestors survive.
+- **The precision items all fire.** `cell cycle` (`nonspecific` on beta DN,
+  driven by proteasome subunits inside Reactome's APC/C steps), `brain
+  development` (`marker_driven_plausible` on both beta UP and the regulon set)
+  and `negative regulation of apoptotic process` (the corpus's first
+  `false_association`, curated on alpha UP because that arm is a growth-arrest
+  and pro-apoptotic-stress combination) are every one of them returned by
+  all-GOA — four flagged-in-advance over-calls, four hits.
+
+**A prediction this eval refuted.** The regulon set was added as a power control:
+the 220-gene SCENIC core of the *same* beta cell experiment whose 1,272-gene UP
+arm misses the secretory program. The authors' own analysis does recover it
+there — KEGG Insulin secretion (LogP -7.9) and MODY (-9.2) via Metascape. The
+expectation was that a smaller query would let GO-based enrichment find it too.
+It does not: the regulon set returns 96 significant terms, all of them neuronal
+(synapse padj 1e-18, presynapse, synapse assembly) and **not one secretory term
+at all**. The gap is not query size but ontology — NKX6-1, SLC30A8, INS, PCLO,
+CACNA1C/D, KCNB2 and KCNMB2 sit inside KEGG's channel-centric insulin-secretion
+pathway while being thinly annotated to GO's insulin secretion. A GO-only
+benchmark cannot see a pathway that KEGG draws and GO does not.
 
 ### One program at three membership granularities — the interferon gradient
 
