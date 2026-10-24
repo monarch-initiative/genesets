@@ -7,8 +7,10 @@ from typing import Callable
 from genesets_workflows import __version__
 from genesets_workflows.reports import go_impact, reactome_flat
 from genesets_workflows.runtime import version_output, which
+from genesets_workflows.sources import chem2go
 from genesets_workflows.sources import mygeneset
 from genesets_workflows.sources import mygeneset_stratified
+from genesets_workflows.sources import normalize_chemicals
 from genesets_workflows.sources import reactome_flat as reactome_source
 
 
@@ -37,6 +39,16 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     subparsers.add_parser(
         "prepare-reactome-flat",
         help="Prepare official Reactome GMT as a flat genesets-rs target library.",
+        add_help=False,
+    )
+    subparsers.add_parser(
+        "prepare-chem2go",
+        help="Prepare chemical-to-GO annotation tables for metabolite enrichment.",
+        add_help=False,
+    )
+    subparsers.add_parser(
+        "normalize-chemicals",
+        help="Map metabolite ids to the canonical ChEBI ids used by prepare-chem2go.",
         add_help=False,
     )
     subparsers.add_parser(
@@ -119,6 +131,8 @@ def dispatch(command: str) -> Command:
         "go-impact": go_impact.main,
         "reactome-flat": reactome_flat.main,
         "prepare-reactome-flat": reactome_source.main,
+        "prepare-chem2go": chem2go.main,
+        "normalize-chemicals": normalize_chemicals.main,
         "fetch-mygeneset": mygeneset.main,
         "fetch-mygeneset-stratified": mygeneset_stratified.main,
         "explore": explore,
