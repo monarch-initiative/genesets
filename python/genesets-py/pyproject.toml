@@ -1,0 +1,26 @@
+[build-system]
+requires = ["maturin>=1.7,<2"]
+build-backend = "maturin"
+
+[project]
+name = "genesets"
+# Taken from Cargo.toml, which the release workflow sets from the release tag.
+dynamic = ["version"]
+description = "Python bindings for genesets-rs: fast GO enrichment and Bayesian model-based gene set analysis (MGSA)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Rust",
+  "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+
+[project.urls]
+Repository = "https://github.com/monarch-initiative/genesets"
+
+[tool.maturin]
+python-source = "python"
+module-name = "genesets._genesets"
+features = ["pyo3/extension-module"]

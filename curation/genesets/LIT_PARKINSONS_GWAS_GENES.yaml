@@ -65,7 +65,7 @@ associations:
         reference_title: "Identification of novel risk loci, causal insights, and heritable risk for Parkinson's disease: a meta-analysis of genome-wide association studies."
         supports: SUPPORT
         evidence_source: HUMAN_CLINICAL
-        snippet: "At least three candidate genes within novel loci are involved in lysosomal storage disorders (GUSB, GRN, and NEU1), a pathway of keen interest in PD."
+        snippet: "At least three candidate genes within novel loci are involved in lysosomal storage disorders (GUSB, GRN, and NEU1)"
         explanation: >-
           The headline non-obvious convergence of the agnostically derived PD
           GWAS panel is on the lysosome. Multiple members carry direct lysosomal
@@ -150,7 +150,7 @@ associations:
         reference_title: "Identification of novel risk loci, causal insights, and heritable risk for Parkinson's disease: a meta-analysis of genome-wide association studies."
         supports: SUPPORT
         evidence_source: HUMAN_CLINICAL
-        snippet: "Our GWAS results also include candidate genes VAMP4 and NOD2 from the endocytic pathway."
+        snippet: "Our GWAS results also include candidate genes VAMP4 and NOD2 from the endocytic pathway"
         explanation: >-
           A real, well-annotated arm of the panel is synaptic-vesicle
           endocytosis/recycling: SH3GL2 (endophilin A1), NSF, VAMP4, SYT17,

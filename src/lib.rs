@@ -7,6 +7,8 @@
 //! - [`NamedSet`] stores a term, sample, or library entry as a dense bitset.
 //! - [`enrichment`] scores query sets against target sets with Fisher exact
 //!   enrichment.
+//! - [`mgsa`] scores terms jointly with Bayesian model-based gene set
+//!   analysis, so redundant ancestors of an enriched term are explained away.
 //! - [`io`] loads simple TSV/CSV, GMT, and GMX input formats.
 //!
 //! The binary crate provides the supported CLI. The library surface is kept
@@ -18,6 +20,7 @@ pub mod enrichment;
 pub mod fisher;
 pub mod index;
 pub mod io;
+pub mod mgsa;
 pub mod output;
 
 pub use enrichment::{Correction, EnrichmentOptions, EnrichmentRow};

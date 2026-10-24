@@ -7,7 +7,7 @@ name = "genesets-workflows"
 version = "0.1.0"
 description = "Convenience workflows, source preparation, and reports for genesets-rs."
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 license = { text = "MIT" }
 authors = [
   { name = "genesets-rs contributors" },
@@ -20,9 +20,8 @@ classifiers = [
   "Environment :: Console",
   "Intended Audience :: Science/Research",
   "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
   "Topic :: Scientific/Engineering :: Bio-Informatics",
 ]
 
@@ -46,12 +45,12 @@ notebooks = [
 curation = [
   "typer>=0.12",
   "linkml>=1.8",
-  "linkml-term-validator>=0.4.0",
-  "linkml-reference-validator>=0.2",
-  "oaklib>=0.6",
-  # oaklib's eutils import chain still imports pkg_resources, which setuptools
-  # >= 81 removed; keep it available so `curate validate` doesn't hard-fail.
-  "setuptools<81",
+  "linkml-term-validator>=0.4.5",
+  "linkml-reference-validator>=0.2.1",
+  # oaklib eagerly imports eutils; only eutils >= 0.6.1 dropped pkg_resources
+  # (removed in setuptools 81), and that release requires Python >= 3.12 —
+  # which is why requires-python is >= 3.12 rather than a setuptools pin.
+  "oaklib>=0.7.4",
 ]
 
 [project.scripts]

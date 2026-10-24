@@ -176,6 +176,21 @@ genesets-rs matrix \
   --output enrichments.tsv
 ```
 
+Bayesian model-based gene set analysis (MGSA), which explains the query with a
+few jointly active terms instead of testing each term on its own:
+
+```bash
+genesets-rs mgsa \
+  --annotations examples/gene_terms.tsv \
+  --terms examples/terms.tsv \
+  --closure examples/closure.tsv \
+  --sample examples/sample.txt \
+  --background examples/background.txt
+```
+
+The same MGSA sampler is available in Python as `genesets.mgsa(...)` from
+`python/genesets-py` (PyO3 bindings; see its README for install).
+
 YAML configuration:
 
 ```bash
@@ -194,6 +209,10 @@ Output is TSV with:
 
 With `--overlap-genes`, the CLI also emits `overlap_genes` and `overlap_gene_names`.
 
+`mgsa` output replaces the adjusted p-value with `posterior` (the probability
+that the term is active), keeps the term-for-term `p_value` for comparison, and
+adds `equivalent_ids` for terms with identical genes in the background.
+
 ## Design Notes
 
 - Terms and query sets are represented as dense `Vec<u64>` bitsets over a shared gene universe.
@@ -205,7 +224,7 @@ With `--overlap-genes`, the CLI also emits `overlap_genes` and `overlap_gene_nam
 
 - Serialized reusable indexes for repeated GO version comparisons.
 - Ranked-list methods alongside Fisher exact.
-- Ontologizer-style parent-child, elim, weight, and model-set approaches.
+- Ontologizer-style parent-child, elim, and weight approaches (model-set MGSA is available as `genesets-rs mgsa`).
 - Convenience wrappers for species/build metadata without baking those concerns into the core model.
 - Test-data adapters around mygeneset.info and other public gene set sources.
 

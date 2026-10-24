@@ -27,3 +27,14 @@ When run in Bayesian/MGSA mode, expected high-scoring terms include:
 
 Exact labels, study-hit lists, and posterior probabilities can drift with the
 GO and GOA release used by the UI.
+
+To run the same lists through genesets-rs MGSA, prepare `gene_terms.tsv`,
+`terms.tsv`, and `closure.tsv` from the GAF and ontology (see the Ontology Prep
+docs), then:
+
+```bash
+genesets-rs mgsa \
+  --annotations gene_terms.tsv --terms terms.tsv --closure closure.tsv \
+  --sample examples/ontologizer-ui/study_genes_human.txt --sample-format list \
+  --background examples/ontologizer-ui/population_genes_human.txt
+```

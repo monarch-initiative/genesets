@@ -118,6 +118,18 @@ carry no `nonspecific` housekeeping term at all — e.g. SenMayo contains no
 ribosomal-protein genes, so `translation` is not even an enrichment artefact
 for it.
 
+A third literature collection, `LIT:PERTURBATION`, is the `LIT:` analogue of
+MSigDB's `C2:CGP`: the transcriptional **readout of a deliberate perturbation**
+of one gene, captured from the defining paper. It is neither driver nor disease
+activity — the perturbed gene is the *context* (a `genetic_perturbation`
+`BiologicalContext`, typically a `PR:` protein term), and the members are the
+downstream response. Recovery-status defaults follow the activity pattern
+(`annotation_supported`), since the differentially-expressed members carry the
+annotations for the processes they read out. The RFX6-knockdown pair
+(`LIT:RFX6_KNOCKDOWN_BETA_CELL_UP` / `_DN`, Walker et al. Nature 2023) is the
+worked example, and it shows why the perturbed gene must not be confused with
+the membership: RFX6 itself is not a member of either arm.
+
 ## Pairs and series
 Related signatures are linked with two optional fields: `series` (a shared id,
 e.g. `SERIES:MICROGLIA_ACTIVATION`) and `series_role` (this set's pole or
