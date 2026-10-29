@@ -28,5 +28,6 @@
   - [Static Browser Plan](curation/browser-plan.md)
 - [Reference](reference.md)
   - [Ontology Prep](ontology-prep.md)
+  - [Metabolite Enrichment](metabolite-enrichment.md)
   - [Competitive Landscape](competitive-landscape.md)
   - [Roadmap](roadmap.md)

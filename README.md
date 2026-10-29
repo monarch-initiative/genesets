@@ -11,6 +11,10 @@ curated gene set interpretation.
   bundles.
 - `curation/`: a LinkML-validated corpus of curated GO interpretations for
   non-GO gene sets.
+- Metabolite enrichment: `genesets-workflows prepare-chem2go` turns GO-plus
+  chemical axioms, Rhea and (optionally) enzyme annotations into
+  chemical-to-GO tables the Rust engine runs unchanged; see
+  `docs/src/metabolite-enrichment.md`.
 
 The Rust engine remains ontology-neutral. GO is represented as ordinary term
 IDs, a human-readable term-name table, a precomputed child-to-ancestor closure
