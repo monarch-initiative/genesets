@@ -19,8 +19,9 @@
 
 - Add OAK-based ontology prep examples.
 - Add native Horned-OWL graph-walk prep as an optional crate or feature.
-- Add ranked-list input schema.
-- Add ranked-list enrichment statistics.
+- Add ranked-list input to YAML `run` configs and the Python bindings
+  (`genesets-rs gsea` covers the CLI).
+- Add fgsea-style multilevel p-values for terms below the permutation floor.
 - Add richer benchmark reports for GitHub Pages.
 - Add DuckDB notebooks over Parquet result and diff tables.
 - Add hierarchy-aware Reactome prep and compare it with the flat baseline.
@@ -30,7 +31,8 @@
 
 ## Longer Term
 
-- Add more topology-aware model families (parent-child, elim, weight). MGSA is
+- Add more topology-aware model families (parent-child; elim, weight and
+  weight01 for Fisher; `gsea` has elim and weight01). MGSA is
   available as `genesets-rs mgsa`.
 - Explore gene-set-informed factor models (f-scLVM / slalom and expiMap-style)
   as downstream consumers of curated libraries, and reuse the curated

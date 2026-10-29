@@ -1,0 +1,287 @@
+gene_set_id: LIT:WEST_NILE_ZHANG_CRISPR
+gene_set_name: WEST_NILE_ZHANG_CRISPR
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+ranking:
+  source: PMID:27383988
+  score_type: neg_log10_p
+  signed: false
+  gene_id_type: HGNC symbol
+  n_ranked: 18703
+  file: ../rankings/WEST_NILE_ZHANG_CRISPR.rnk.gz
+  sha256: 7576dcba891008e557736192e59f536c51dab8a235bdc4ca23b3d2aba8e399cf
+  source_detail: Supplementary Table 2 (MOESM104), sheet WNV AB3, column low.positive
+  download_url: https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fnature18625/MediaObjects/41586_2016_BFnature18625_MOESM104_ESM.xlsx
+  score_description: '-log10 of the MAGeCK RRA positive-selection score; high = the
+    knockout survives West Nile virus = proviral host factor. Built by `curate build-ranking`
+    from rankings/WEST_NILE_ZHANG_CRISPR.recipe.yaml: of 18,981 source rows, 177 have
+    no approved HGNC symbol and 101 collide on one symbol (rows named by the approved
+    symbol win over previous or alias names); 18,703 genes ranked.'
+description: 'Genome-wide CRISPR knockout ranking of human host factors for West Nile
+  virus-induced death from Zhang et al. 2016 (GeCKOv2 in HEK293FT cells; PMID:27383988),
+  scored by MAGeCK positive selection. The ranked counterpart of the Zhang half of
+  LIT:FLAVIVIRUS_HOST_FACTORS. The signal is a few genes at the very top (STT3A, SEC63,
+  OSTC, SPCS1, EMC6, SEC61B; SEL1L 9th), so only the weighted KS finds terms (six
+  at q < 0.05), and the complexes the paper is about are too small for the default
+  15-gene minimum: they were scored with --min-size 5 and stay nominal. The interpretation
+  is ER translocation and signal-peptide processing of the viral polyprotein, with
+  OST and EMC alongside.'
+contexts:
+- term:
+    id: MONDO:0002282
+    label: West Nile fever
+  context_type: infection
+  role_note: Survival of West Nile virus infection in HEK293FT cells after gene knockout.
+associations:
+- term:
+    id: GO:0045047
+    label: protein targeting to ER
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: ubiquitous
+  direction: UP
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 9.999e-05
+    p_adjust: 0.02989298
+    target_size: 2009
+    es: 0.750312
+    nes: 1.729356
+    set_size: 38
+    leading_edge_size: 14
+    leading_edge_genes:
+    - SEC63
+    - SPCS1
+    - SEC61B
+    - SPCS3
+    - SSR2
+    - ZFAND2A
+    - SSR3
+    - SEC61G
+    - SRP54
+    - EDEM1
+    - SSR1
+    - TRAM1L1
+    - SRPRB
+    - SEC61A1
+    peak_rank: 2079
+  evidence:
+  - reference: PMID:27383988
+    reference_title: A CRISPR screen defines a signal peptide processing pathway required
+      by flaviviruses.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: a subset of endoplasmic reticulum-associated signal peptidase complex
+      (SPCS) proteins was necessary for proper cleavage of the flavivirus structural
+      proteins (prM and E) and secretion of viral particles.
+    explanation: 'The Zhang et al. screen converges on the ER signal peptidase complex:
+      SPCS1 and SPCS3 (two of the five SPCS components) were validated as required
+      host factors, and loss of SPCS1 markedly reduced the yield of every Flaviviridae
+      member tested (WNV, DENV, Zika, yellow fever, Japanese encephalitis, hepatitis
+      C) while sparing al/bunya/rhabdoviruses. SPCS1 and SPCS3 are members of the
+      set and carry the signal peptidase complex annotation (annotation_supported).
+      Scored mechanistic because a virus-specific dependence on host signal-peptide
+      cleavage of its structural proteins (prM/E) is a non-obvious processing requirement,
+      not an expected consequence of "infection". Note SEC11A/SEC11C — the other SPCS
+      components — were tested but had minimal effect, so they are deliberately not
+      members.'
+  curator_note: 'SEC63, SPCS1, SEC61B, SPCS3, SSR2, SSR3, SEC61G: translocon and signal
+    peptidase, the route of the flavivirus polyprotein into the ER.'
+- term:
+    id: GO:0006614
+    label: SRP-dependent cotranslational protein targeting to membrane
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: ubiquitous
+  direction: UP
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 0.0001005429
+    p_adjust: 0.02989298
+    target_size: 1987
+    es: 0.806648
+    nes: 1.743256
+    set_size: 18
+    leading_edge_size: 8
+    leading_edge_genes:
+    - SEC63
+    - SEC61B
+    - SSR3
+    - SEC61G
+    - SRP54
+    - TRAM1L1
+    - SRPRB
+    - SEC61A1
+    peak_rank: 2079
+  curator_note: 'SEC63, SEC61B, SSR3, SEC61G, SRP54, SRPRB: the SRP-dependent arm.'
+- term:
+    id: GO:0005787
+    label: signal peptidase complex
+  seed_source: curator_added
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: ubiquitous
+  direction: UP
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 0.01056911
+    p_adjust: 0.8111629
+    target_size: 6
+    es: 0.867676
+    nes: 1.551493
+    set_size: 5
+    leading_edge_size: 2
+    leading_edge_genes:
+    - SPCS1
+    - SPCS3
+    peak_rank: 10
+  evidence:
+  - reference: PMID:27383988
+    reference_title: A CRISPR screen defines a signal peptide processing pathway required
+      by flaviviruses.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: a subset of endoplasmic reticulum-associated signal peptidase complex
+      (SPCS) proteins was necessary for proper cleavage of the flavivirus structural
+      proteins (prM and E) and secretion of viral particles.
+    explanation: 'The Zhang et al. screen converges on the ER signal peptidase complex:
+      SPCS1 and SPCS3 (two of the five SPCS components) were validated as required
+      host factors, and loss of SPCS1 markedly reduced the yield of every Flaviviridae
+      member tested (WNV, DENV, Zika, yellow fever, Japanese encephalitis, hepatitis
+      C) while sparing al/bunya/rhabdoviruses. SPCS1 and SPCS3 are members of the
+      set and carry the signal peptidase complex annotation (annotation_supported).
+      Scored mechanistic because a virus-specific dependence on host signal-peptide
+      cleavage of its structural proteins (prM/E) is a non-obvious processing requirement,
+      not an expected consequence of "infection". Note SEC11A/SEC11C — the other SPCS
+      components — were tested but had minimal effect, so they are deliberately not
+      members.'
+  curator_note: 'The paper''s namesake: SPCS1 and SPCS3 lead the 5-gene complex, but
+    five genes give a whole-term test little to work with (p = 0.011, q = 0.81).'
+- term:
+    id: GO:0008250
+    label: oligosaccharyltransferase complex
+  seed_source: curator_added
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: ubiquitous
+  direction: UP
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 0.0002037697
+    p_adjust: 0.1664897
+    target_size: 13
+    es: 0.836237
+    nes: 1.745767
+    set_size: 13
+    leading_edge_size: 4
+    leading_edge_genes:
+    - STT3A
+    - OSTC
+    - OST4
+    - STT3B
+    peak_rank: 261
+  curator_note: 'STT3A (rank 1), OSTC, OST4, STT3B: p = 2e-4 but q = 0.17 in the min-size
+    5 run. CORE in the gene-set entry from both flavivirus papers.'
+- term:
+    id: GO:0032977
+    label: membrane insertase activity
+  seed_source: enrichment_recovered
+  aspect: molecular_function
+  category: supporting_process
+  confidence: medium
+  specificity: ubiquitous
+  direction: UP
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 0.0003029997
+    p_adjust: 0.02989298
+    target_size: 19
+    es: 0.819376
+    nes: 1.74388
+    set_size: 16
+    leading_edge_size: 5
+    leading_edge_genes:
+    - EMC6
+    - EMC4
+    - MMGT1
+    - EMC3
+    - EMC2
+    peak_rank: 227
+  curator_note: 'EMC6, EMC4, MMGT1, EMC3, EMC2: the ER membrane complex, through its
+    insertase annotation (q = 0.03).'
+- term:
+    id: GO:0036503
+    label: ERAD pathway
+  seed_source: curator_added
+  aspect: biological_process
+  category: supporting_process
+  confidence: medium
+  specificity: ubiquitous
+  direction: UP
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 0.00119988
+    p_adjust: 0.6740605
+    target_size: 102
+    es: 0.551659
+    nes: 1.332105
+    set_size: 94
+    leading_edge_size: 16
+    leading_edge_genes:
+    - SEC61B
+    - SEL1L
+    - UBE2J1
+    - MAN1A2
+    - FBXO6
+    - XBP1
+    - STT3B
+    - DERL2
+    - AUP1
+    - EDEM2
+    - FBXO17
+    - ANKZF1
+    - USP19
+    - UFD1
+    - DERL1
+    - EDEM1
+    peak_rank: 1000
+  curator_note: 'SEC61B, SEL1L (rank 9), UBE2J1, XBP1: ERAD, supporting in the gene-set
+    entry; nominal here (p = 0.001, q = 0.67).'

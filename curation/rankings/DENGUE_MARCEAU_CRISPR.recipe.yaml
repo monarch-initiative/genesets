@@ -1,0 +1,19 @@
+# Marceau et al. 2016 (PMID:27383987), genome-wide knockout screen for dengue
+# virus infection in Huh7.5.1 cells, Supplementary Table 2. Score: the
+# "- log RIGER score" over three replicates; high = proviral host factor. One-
+# sided, unsigned (it dips slightly below zero where mean NES exceeds 1).
+name: DENGUE_MARCEAU_CRISPR
+source:
+  url: https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fnature18631/MediaObjects/41586_2016_BFnature18631_MOESM124_ESM.xlsx
+  sha256: 808e3060b67673f87f1abd44fbf4ab0775362d656c066096ce5abcbf1ffa96d9
+table:
+  format: xlsx
+  sheet: DENV mean RIGER
+gene_column: Gene ID
+gene_id_type: symbol
+score_column: "- log RIGER score"
+transform: identity
+duplicates: prefer_exact
+hgnc:
+  url: https://storage.googleapis.com/public-download-files/hgnc/archive/archive/monthly/tsv/hgnc_complete_set_2026-10-06.txt
+  sha256: 8bf6f686e640dbc864a346484626953621b0500d900d26cd085a35c2782d725d

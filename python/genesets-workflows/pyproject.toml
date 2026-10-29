@@ -51,6 +51,7 @@ curation = [
   # (removed in setuptools 81), and that release requires Python >= 3.12 —
   # which is why requires-python is >= 3.12 rather than a setuptools pin.
   "oaklib>=0.7.4",
+  "openpyxl>=3.1",
 ]
 
 [project.scripts]

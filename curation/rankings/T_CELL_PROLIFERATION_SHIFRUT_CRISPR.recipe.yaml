@@ -1,0 +1,22 @@
+# Shifrut et al. 2018 (PMID:30449619), genome-wide knockout screen in primary
+# human T cells sorted on proliferation after TCR stimulation, Table S4
+# (MAGeCK, two donors' replicates integrated). Score: the MAGeCK gene log2 fold
+# change; positive = knockout enhances proliferation (negative regulator),
+# negative = knockout impairs it (positive regulator or essential). Signed.
+name: T_CELL_PROLIFERATION_SHIFRUT_CRISPR
+source:
+  url: https://ars.els-cdn.com/content/image/1-s2.0-S0092867418313333-mmc4.xlsx
+  sha256: ba238488244cf93a12bda3473cb9b5d1764eb588b54a9ed22103f2e9f4314d8c
+table:
+  format: xlsx
+  sheet: MAGeCK_Gene_GWscreen_rep1and2
+gene_column: id
+gene_id_type: symbol
+score_column: pos|lfc
+transform: identity
+# Excel turned MARCH*/SEPT* (and their near-namesakes) into dates; rows that
+# collide on one symbol may be different genes, so every collision is dropped.
+duplicates: drop
+hgnc:
+  url: https://storage.googleapis.com/public-download-files/hgnc/archive/archive/monthly/tsv/hgnc_complete_set_2026-10-06.txt
+  sha256: 8bf6f686e640dbc864a346484626953621b0500d900d26cd085a35c2782d725d

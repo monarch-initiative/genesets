@@ -403,3 +403,168 @@ fn mgsa_prefers_the_specific_term() {
     assert!(summary.contains("modeled_terms: 2"));
     assert!(summary.contains("samples: 40000"));
 }
+
+#[test]
+fn gsea_ranks_the_top_term_first() {
+    let stdout = run(&[
+        "gsea",
+        "--annotations",
+        "examples/gene_terms.tsv",
+        "--terms",
+        "examples/terms.tsv",
+        "--closure",
+        "examples/closure.tsv",
+        "--ranks",
+        "examples/ranks.rnk",
+        "--min-size",
+        "1",
+        "--leading-edge-genes",
+    ]);
+
+    let lines: Vec<&str> = stdout.lines().collect();
+    assert_eq!(lines.len(), 4);
+    assert!(lines[0].starts_with("query_id\tquery_name\ttarget_id\ttarget_name\tes\tnes"));
+    assert!(lines[0].ends_with("leading_edge_genes\tleading_edge_gene_names"));
+    let child: Vec<&str> = lines[1].split('\t').collect();
+    assert_eq!(&child[..4], ["ranks", "", "T:child", "Child process"]);
+    assert_eq!(child[4], "1.000000");
+    assert_eq!(&child[8..], ["2", "0", "2", "10", "2", "2", "g1;g2", ""]);
+    let other = lines
+        .iter()
+        .find(|line| line.contains("\tT:other\t"))
+        .expect("T:other row");
+    assert!(other.split('\t').nth(4).unwrap().starts_with('-'));
+}
+
+#[test]
+fn gsea_reads_several_rankings_from_one_file() {
+    let input = std::env::temp_dir().join(format!("genesets_rs_gsea_{}.tsv", std::process::id()));
+    fs::write(
+        &input,
+        "ranking\tgene\tscore\nup\tg1\t2\nup\tg2\t1\nup\tg4\t-1\ndown\tg1\t-2\ndown\tg2\t-1\ndown\tg4\t1\n",
+    )
+    .unwrap();
+    let stdout = run(&[
+        "gsea",
+        "--annotations",
+        "examples/gene_terms.tsv",
+        "--ranks",
+        input.to_str().unwrap(),
+        "--min-size",
+        "1",
+        "--permutations",
+        "50",
+    ]);
+    let _ = fs::remove_file(&input);
+
+    let es = |query: &str| -> f64 {
+        stdout
+            .lines()
+            .map(|line| line.split('\t').collect::<Vec<_>>())
+            .find(|fields| fields[0] == query && fields[2] == "T:child")
+            .expect("T:child row")[4]
+            .parse()
+            .unwrap()
+    };
+    assert!(es("up") > 0.0);
+    assert!(es("down") < 0.0);
+}
+
+#[test]
+fn gsea_weight01_removes_a_child_only_when_it_is_stronger() {
+    let parent_counts = |statistic: &str| -> (String, String) {
+        let stdout = run(&[
+            "gsea",
+            "--annotations",
+            "examples/gene_terms.tsv",
+            "--closure",
+            "examples/closure.tsv",
+            "--ranks",
+            "examples/ranks.rnk",
+            "--min-size",
+            "1",
+            "--permutations",
+            "5000",
+            "--statistic",
+            statistic,
+            "--algorithm",
+            "weight01",
+        ]);
+        let rows: Vec<Vec<&str>> = stdout
+            .lines()
+            .map(|line| line.split('\t').collect())
+            .collect();
+        let column = |name: &str| rows[0].iter().position(|field| *field == name).unwrap();
+        let parent = rows
+            .iter()
+            .find(|row| row[column("target_id")] == "T:parent")
+            .expect("T:parent row");
+        (
+            parent[column("eliminated")].to_owned(),
+            parent[column("set_size")].to_owned(),
+        )
+    };
+    // KS: the child (ES 1) beats the parent, so its two genes leave the parent.
+    assert_eq!(parent_counts("ks"), ("2".to_owned(), "1".to_owned()));
+    // Wilcoxon: the parent's three genes beat the child's two; nothing leaves.
+    assert_eq!(parent_counts("wilcoxon"), ("0".to_owned(), "3".to_owned()));
+}
+
+#[test]
+fn gsea_graph_algorithms_need_a_closure() {
+    let output = Command::new(bin())
+        .args([
+            "gsea",
+            "--annotations",
+            "examples/gene_terms.tsv",
+            "--ranks",
+            "examples/ranks.rnk",
+            "--algorithm",
+            "elim",
+        ])
+        .output()
+        .expect("failed to run genesets-rs");
+    assert!(!output.status.success());
+    assert!(String::from_utf8_lossy(&output.stderr).contains("--closure"));
+}
+
+#[test]
+fn gsea_reads_gzipped_rankings() {
+    let plain = run(&[
+        "gsea",
+        "--annotations",
+        "examples/gene_terms.tsv",
+        "--ranks",
+        "examples/ranks.rnk",
+        "--min-size",
+        "1",
+        "--statistic",
+        "wilcoxon",
+    ]);
+    let gzipped =
+        std::env::temp_dir().join(format!("genesets_rs_ranks_{}.rnk.gz", std::process::id()));
+    let status = Command::new("sh")
+        .arg("-c")
+        .arg(format!(
+            "gzip -c examples/ranks.rnk > {}",
+            gzipped.display()
+        ))
+        .status()
+        .expect("failed to run gzip");
+    assert!(status.success());
+    let from_gzip = run(&[
+        "gsea",
+        "--annotations",
+        "examples/gene_terms.tsv",
+        "--ranks",
+        gzipped.to_str().unwrap(),
+        "--ranks-name",
+        "ranks",
+        "--min-size",
+        "1",
+        "--statistic",
+        "wilcoxon",
+    ]);
+    let _ = fs::remove_file(&gzipped);
+    assert_eq!(plain, from_gzip);
+}
