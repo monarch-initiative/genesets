@@ -1,0 +1,467 @@
+gene_set_id: LIT:ARATH_IRON_DEFICIENCY_FIT_COUMARIN
+gene_set_name: ARATH_IRON_DEFICIENCY_FIT_COUMARIN
+collection: LIT:PLANT_STRESS_RESPONSE
+taxon:
+  id: NCBITaxon:3702
+  label: Arabidopsis thaliana
+direction: UP
+series: SERIES:ARATH_ROOT_NUTRIENT_FORAGING
+series_role: iron_strategy_i_coumarin
+n_genes: 39
+description: The Arabidopsis thaliana Strategy I root iron-deficiency response, URI-bHLH38/39/100/101-FIT-PYE-BTS
+  transcriptional cascade, FRO2-IRT1-AHA2 rhizosphere acidification/reduction machinery, and MYB72-F6'H1-S8H-CYP82C4-PDR9
+  redox-active coumarin (fraxetin/sideretin) secretion regulon (Riaz & Guerinot 2021 Plant Physiol PMID:33793927;
+  Stringlis et al. 2018 PNAS PMID:29686086; Rajniak et al. 2018 Nat Chem Biol PMID:29581584). Contrasts
+  with ARATH_PHOSPHATE_STARVATION_PHR1 in SERIES:ARATH_ROOT_NUTRIENT_FORAGING.
+contexts:
+- term:
+    id: PO:0009005
+    label: root
+  context_type: anatomical_structure
+  role_note: Root epidermis and cortex secreting protons and coumarins to mobilize rhizosphere Fe(III)
+    and import Fe(II).
+associations:
+- term:
+    id: GO:0006879
+    label: intracellular iron ion homeostasis
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.1091e-31
+    p_adjust: 5.3765e-26
+    overlap: 15
+    query_size: 39
+    target_size: 52
+    overlap_genes:
+    - BHLH100
+    - BHLH101
+    - BHLH47
+    - BTS
+    - DTX43
+    - FER1
+    - FRO2
+    - FRO3
+    - IREG2
+    - IRT1
+    - NRAMP1
+    - NRAMP3
+    - NRAMP4
+    - ORG2
+    - ORG3
+  evidence:
+  - reference: PMID:33793927
+    reference_title: 'All together now: regulation of the iron deficiency response in Arabidopsis.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: FIT, bHLH38/39/100/101, PYE, BTS, IMA1/FEP3, NAS1-4, OPT3, FER1, and vacuolar/plastid
+      transporters maintain intracellular iron ion homeostasis.
+  curator_note: Core iron-homeostasis process carried by 15/39 members. Recovered across all 4 variants
+    including IBA-only.
+- term:
+    id: GO:0006826
+    label: iron ion transport
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.056e-23
+    p_adjust: 1.3817e-18
+    overlap: 12
+    query_size: 39
+    target_size: 51
+    overlap_genes:
+    - DTX43
+    - FER1
+    - FRO2
+    - FRO3
+    - IREG1
+    - IREG2
+    - IRT1
+    - IRT2
+    - NRAMP1
+    - NRAMP3
+    - NRAMP4
+    - OPT3
+  evidence:
+  - reference: PMID:33793927
+    reference_title: 'All together now: regulation of the iron deficiency response in Arabidopsis.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Plasma-membrane importers (IRT1, IRT2, NRAMP1), vacuolar/endosomal transporters (NRAMP3,
+      NRAMP4, IREG1, IREG2), and nicotianamine-metal transporters (YSL1-3, OPT3, FRD3/DTX43) mediate iron
+      ion transport.
+  curator_note: Core transport process carried by 12/39 members. Recovered across all 4 variants including
+    IBA-only.
+- term:
+    id: GO:0010106
+    label: cellular response to iron ion starvation
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.609e-19
+    p_adjust: 2.1053e-14
+    overlap: 7
+    query_size: 39
+    target_size: 8
+    overlap_genes:
+    - BHLH100
+    - BHLH101
+    - BHLH47
+    - BTS
+    - IREG2
+    - ORG2
+    - ORG3
+  evidence:
+  - reference: PMID:33793927
+    reference_title: 'All together now: regulation of the iron deficiency response in Arabidopsis.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: FIT, clade Ib bHLHs (ORG2/bHLH38, ORG3/bHLH39, bHLH100, bHLH101), PYE (bHLH47), and BTS
+      coordinate the cellular transcriptional response to iron starvation.
+  curator_note: Core iron-starvation signaling process carried by 7/39 members (recovered in all and iba_iea).
+- term:
+    id: GO:0009804
+    label: coumarin metabolic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 6.6134e-18
+    p_adjust: 8.6533e-13
+    overlap: 7
+    query_size: 39
+    target_size: 11
+    overlap_genes:
+    - ABCG36
+    - ABCG37
+    - BGLU21
+    - CYP82C4
+    - F6'H1
+    - FEP3
+    - S8H
+  evidence:
+  - reference: PMID:29581584
+    reference_title: Biosynthesis of redox-activeiterpenoid and coumarin-type iron-mobilizing compounds
+      in Arabidopsis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: MYB72/MYB10-regulated feruloyl-CoA 6'-hydroxylase (F6'H1), scopoletin 8-hydroxylase (S8H),
+      CYP82C4, beta-glucosidases (BGLU42, BGLU21), and ABCG37 (PDR9) synthesize and secrete catechol coumarins
+      (fraxetin, sideretin) that chelate and reduce insoluble Fe(III).
+  curator_note: Mechanistically resolves the specialized coumarin rhizosphere-mobilization branch of Strategy
+    I iron acquisition (7/39 members; recovered in all only, 0 in iba_iea and iba).
+- term:
+    id: GO:0009805
+    label: coumarin biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.4892e-07
+    p_adjust: 0.019486
+    overlap: 3
+    query_size: 39
+    target_size: 7
+    overlap_genes:
+    - CYP82C4
+    - F6'H1
+    - S8H
+  evidence:
+  - reference: PMID:29581584
+    reference_title: Biosynthesis of redox-active coumarins for iron acquisition in Arabidopsis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: F6'H1, S8H, and CYP82C4 sequentially ortho-hydroxylate feruloyl-CoA into scopoletin,
+      fraxetin, and sideretin.
+  curator_note: 'Specific enzymatic biosynthetic pathway for iron-mobilizing catechol coumarins (3/39
+    members: CYP82C4, F6''H1, S8H; recovered in all only).'
+- term:
+    id: GO:0034755
+    label: iron ion transmembrane transport
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.5703e-16
+    p_adjust: 2.0547e-11
+    overlap: 8
+    query_size: 39
+    target_size: 30
+    overlap_genes:
+    - DTX43
+    - IREG1
+    - IREG2
+    - IRT1
+    - IRT2
+    - NRAMP1
+    - NRAMP3
+    - NRAMP4
+  evidence:
+  - reference: PMID:33793927
+    reference_title: 'All together now: regulation of the iron deficiency response in Arabidopsis.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: IRT1, IRT2, NRAMP1, NRAMP3, NRAMP4, IREG1, IREG2, and OPT3 catalyze transmembrane iron
+      movement across root epidermal and vacuolar membranes.
+  curator_note: Supporting transmembrane transport process (8/39 members; recovered across all 4 variants).
+- term:
+    id: GO:0030418
+    label: nicotianamine biosynthetic process
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.2833e-11
+    p_adjust: 4.296e-06
+    overlap: 4
+    query_size: 39
+    target_size: 5
+    overlap_genes:
+    - NAS1
+    - NAS2
+    - NAS3
+    - NAS4
+  evidence:
+  - reference: PMID:33793927
+    reference_title: 'All together now: regulation of the iron deficiency response in Arabidopsis.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Nicotianamine synthases NAS1, NAS2, NAS3, and NAS4 trimerize S-adenosylmethionine into
+      nicotianamine for phloem iron translocation via YSL1-3.
+  curator_note: Resolves the internal chelator biosynthetic step required for root-to-shoot iron distribution
+    (4/39 members; recovered across all 4 variants).
+- term:
+    id: GO:0005886
+    label: plasma membrane
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: broadly_expressed
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: confirmatory
+  evidence:
+  - reference: PMID:33793927
+    reference_title: 'All together now: regulation of the iron deficiency response in Arabidopsis.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: The AHA2-FRO2-IRT1 Strategy I iron-uptake complex and ABCG37/PDR9 coumarin exporter assemble
+      at the root epidermal plasma membrane.
+  curator_note: Primary membrane compartment of rhizosphere iron reduction, uptake, and coumarin secretion;
+    diluted by high background frequency of GO:0005886 across the Arabidopsis proteome.
+- term:
+    id: GO:0050896
+    label: response to stimulus
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.9682e-10
+    p_adjust: 7.8091e-05
+    overlap: 29
+    query_size: 39
+    target_size: 6202
+    overlap_genes:
+    - ABCG36
+    - ABCG37
+    - AHA1
+    - BGLU21
+    - BGLU42
+    - BHLH100
+    - BHLH101
+    - BHLH47
+    - BTS
+    - CYP82C4
+    - DTX43
+    - F6'H1
+    - FEP3
+    - FER1
+    - FIT
+    - FRO2
+    - IREG2
+    - IRT1
+    - MYB10
+    - MYB72
+    - NAS2
+    - NRAMP3
+    - NRAMP4
+    - ORG2
+    - ORG3
+    - S8H
+    - YSL1
+    - YSL2
+    - YSL3
+  evidence:
+  - reference: PMID:33793927
+    reference_title: 'All together now: regulation of the iron deficiency response in Arabidopsis.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Top-level biological-process roll-up of nutrient and stress responses.
+  curator_note: Overly broad root-adjacent term (34/39 members).
+- term:
+    id: GO:0072351
+    label: tricarboxylic acid biosynthetic process
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.2833e-11
+    p_adjust: 4.296e-06
+    overlap: 4
+    query_size: 39
+    target_size: 5
+    overlap_genes:
+    - NAS1
+    - NAS2
+    - NAS3
+    - NAS4
+  evidence:
+  - reference: PMID:33793927
+    reference_title: 'All together now: regulation of the iron deficiency response in Arabidopsis.'
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: NAS1, NAS2, NAS3, and NAS4 synthesize the non-proteinogenic iron chelator nicotianamine,
+      not intermediates of the mitochondrial Krebs tricarboxylic acid (TCA) cycle; GO:0072351 (tricarboxylic
+      acid biosynthetic process) is an ontology-hierarchy roll-up because nicotianamine contains three
+      carboxyl groups in ChEBI.
+  curator_note: 'Striking GO-ChEBI chemical-classification artifact: GO:0030418 (nicotianamine biosynthetic
+    process) is classified under GO:0072351 (tricarboxylic acid biosynthetic process) because nicotianamine
+    chemically possesses three carboxylic acid moieties, causing iron-deficiency sets to enrich for TCA
+    biosynthesis across all 4 variants (4/39 genes, p_adj=4.30e-06).'
+- term:
+    id: GO:0003013
+    label: circulatory system process
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.9621e-10
+    p_adjust: 2.5673e-05
+    overlap: 5
+    query_size: 39
+    target_size: 21
+    overlap_genes:
+    - NAS1
+    - NAS2
+    - NAS3
+    - NAS4
+    - OPT3
+  evidence:
+  - reference: PMID:33793927
+    reference_title: 'All together now: regulation of the iron deficiency response in Arabidopsis.'
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Plants lack a blood circulatory system; GO:0003013 (circulatory system process) is enriched
+      in full GAF because NAS1-4 and OPT3 carry annotations to phloem iron transport, which rolls up under
+      vertebrate-centric GO:0003013.
+  curator_note: 'Vertebrate-centric GO hierarchy artifact on phloem iron transport genes (5/39 genes:
+    NAS1-4, OPT3, p_adj=2.57e-05 in all).'
+- term:
+    id: GO:0015691
+    label: cadmium ion transport
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.4625e-12
+    p_adjust: 3.222e-07
+    overlap: 5
+    query_size: 39
+    target_size: 10
+    overlap_genes:
+    - ABCG36
+    - IRT1
+    - NRAMP1
+    - NRAMP3
+    - NRAMP4
+  evidence:
+  - reference: PMID:33793927
+    reference_title: 'All together now: regulation of the iron deficiency response in Arabidopsis.'
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: IRT1, NRAMP1/3/4, and ABCG36 are induced to acquire and mobilize iron under iron starvation;
+      GO:0015691 (cadmium ion transport) reflects non-physiological heavy-metal substrate promiscuity
+      of divalent metal transporters.
+  curator_note: 'Divalent metal transporter promiscuity artifact across all 4 variants (5/39 genes: ABCG36,
+    IRT1, NRAMP1, NRAMP3, NRAMP4, p_adj=3.22e-07).'
+- term:
+    id: GO:0016036
+    label: cellular response to phosphate starvation
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: false_association
+  evidence:
+  - reference: PMID:33793927
+    reference_title: 'All together now: regulation of the iron deficiency response in Arabidopsis.'
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Cellular response to phosphate starvation (GO:0016036) defines the contrasting ARATH_PHOSPHATE_STARVATION_PHR1
+      pole of SERIES:ARATH_ROOT_NUTRIENT_FORAGING.
+  curator_note: Contrasting pole trap against ARATH_PHOSPHATE_STARVATION_PHR1 in SERIES:ARATH_ROOT_NUTRIENT_FORAGING.

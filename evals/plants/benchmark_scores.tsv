@@ -1,0 +1,5 @@
+variant	sets	recall_core	confirmatory	recall_confirm	mechanistic	recall_mechan	gap_recovered
+all	30	0.867	133	0.887	116	0.931	0
+no_contributes_to	30	0.867	133	0.887	116	0.931	0
+iba_iea	30	0.705	133	0.782	116	0.698	0
+iba	30	0.353	133	0.398	116	0.302	0

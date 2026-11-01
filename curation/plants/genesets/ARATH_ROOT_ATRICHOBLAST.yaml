@@ -1,0 +1,396 @@
+gene_set_id: LIT:ARATH_ROOT_ATRICHOBLAST
+gene_set_name: ARATH_ROOT_ATRICHOBLAST
+collection: LIT:PLANT_CELL_TYPE
+taxon:
+  id: NCBITaxon:3702
+  label: Arabidopsis thaliana
+direction: UP
+series: SERIES:ARATH_ROOT_EPIDERMIS
+series_role: atrichoblast
+n_genes: 26
+description: Transcriptional and epidermal barrier program of the Arabidopsis thaliana non-hair (atrichoblast,
+  N-position) root epidermal cell lineage (Bruex et al. 2012 PLoS Genet PMID:22291601; Ryu et al. 2019
+  Plant Physiol PMID:30842268; Denyer et al. 2019 Dev Cell PMID:30910786). Contrasts with ARATH_ROOT_HAIR_TRICHOBLAST
+  in SERIES:ARATH_ROOT_EPIDERMIS. Comprises the WER-GL3/EGL3-TTG1-GL2 regulatory complex, lateral-inhibition
+  R3 MYBs (CPC, TRY, ETC1), receptor kinase SCM, and the GL2-regulated root surface lipid/cutin/wax biosynthetic
+  enzymes (FDH/KCS10, KCS1, KCS6, CER1, CER2, CER3, CER4, LACS1, LACS2, GPAT4, GPAT8, DCR, Mah1).
+contexts:
+- term:
+    id: PO:0000263
+    label: non-hair root epidermal cell
+  context_type: cell_type
+  role_note: Root epidermal atrichoblast cell (N-position) overlying a single cortical cell file.
+- term:
+    id: PO:0009005
+    label: root
+  context_type: anatomical_structure
+  role_note: Primary root epidermis where positional signaling specifies N- vs H-cell files.
+associations:
+- term:
+    id: GO:0090627
+    label: plant epidermal cell differentiation
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.0643e-18
+    p_adjust: 1.3926e-13
+    overlap: 12
+    query_size: 26
+    target_size: 202
+    overlap_genes:
+    - ATML1
+    - BHLH2
+    - CPC
+    - ETC1
+    - FDH
+    - GL2
+    - GL3
+    - MYB23
+    - PDF2
+    - TRY
+    - TTG1
+    - WER
+  evidence:
+  - reference: PMID:22291601
+    reference_title: A gene regulatory network for root epidermis cell differentiation in Arabidopsis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: The WER-GL3/EGL3-TTG1 transcriptional complex activates GL2 in N-position cells to drive
+      non-hair root epidermal cell differentiation.
+  curator_note: Core epidermal fate specification process carried by 11/26 set members (CPC, EGL3, ETC1,
+    GL2, GL3, MYB23, SCM, TRY, TTG1, TTG2, WER). Recovered across all 4 variants including IBA-only.
+- term:
+    id: GO:0001708
+    label: cell fate specification
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.4181e-08
+    p_adjust: 0.0070893
+    overlap: 4
+    query_size: 26
+    target_size: 34
+    overlap_genes:
+    - BHLH2
+    - GL2
+    - GL3
+    - TTG1
+  evidence:
+  - reference: PMID:22291601
+    reference_title: A gene regulatory network for root epidermis cell differentiation in Arabidopsis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Positional signaling through SCM and the WER-GL3/EGL3-TTG1-GL2 network specifies non-hair
+      vs hair cell fate in the root epidermis.
+  curator_note: Core positional cell-fate specification process carried by 9/26 set members. Recovered
+    in all, iba_iea, and iba.
+- term:
+    id: GO:0042659
+    label: regulation of cell fate specification
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.9948e-07
+    p_adjust: 0.026101
+    overlap: 3
+    query_size: 26
+    target_size: 11
+    overlap_genes:
+    - CPC
+    - GL2
+    - SUB
+  evidence:
+  - reference: PMID:22291601
+    reference_title: A gene regulatory network for root epidermis cell differentiation in Arabidopsis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Positive feedback by MYB23 and lateral inhibition by mobile R3 MYBs (CPC, TRY, ETC1)
+      regulate epidermal cell fate specification.
+  curator_note: 'Mechanistic regulatory circuit coupling N- and H-files (5/26 members: CPC, EGL3, GL3,
+    MYB23, WER).'
+- term:
+    id: GO:0160062
+    label: cutin-based cuticle development
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.3467e-19
+    p_adjust: 3.0705e-14
+    overlap: 9
+    query_size: 26
+    target_size: 42
+    overlap_genes:
+    - CER1
+    - CER3
+    - CUT1
+    - FDH
+    - GPAT4
+    - GPAT8
+    - KCS1
+    - LACS1
+    - LACS2
+  evidence:
+  - reference: PMID:30842268
+    reference_title: Single-Cell RNA Sequencing Resolves Molecular Relationships Among Individual Plant
+      Cells.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Atrichoblasts express cutin and surface-lipid biosynthetic enzymes (DCR, FDH, GPAT4,
+      GPAT8, LACS1, LACS2) to form the protective root epidermal surface barrier.
+  curator_note: Captures the specialized surface barrier program of non-hair root epidermal cells (6/26
+    members; recovered across all variants including IBA).
+- term:
+    id: GO:0010025
+    label: wax biosynthetic process
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.0874e-16
+    p_adjust: 2.7313e-11
+    overlap: 7
+    query_size: 26
+    target_size: 23
+    overlap_genes:
+    - ABCG12
+    - CER1
+    - CER2
+    - CER3
+    - CUT1
+    - KCS1
+    - LACS1
+  evidence:
+  - reference: PMID:30910786
+    reference_title: Spatiotemporal Developmental Trajectories in the Arabidopsis Root Revealed Using
+      High-Throughput Single-Cell RNA Sequencing.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: GL2 and epidermal surface regulators coordinate very-long-chain fatty acid elongation
+      and wax biosynthesis (CER1-4, KCS1, KCS6, LACS1, LACS2, MAH1) in non-hair epidermal cells.
+  curator_note: Supporting surface-lipid pathway carried by 11/26 set members.
+- term:
+    id: GO:0000038
+    label: very long-chain fatty acid metabolic process
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.3725e-07
+    p_adjust: 0.044128
+    overlap: 4
+    query_size: 26
+    target_size: 53
+    overlap_genes:
+    - CER2
+    - CUT1
+    - FDH
+    - KCS1
+  evidence:
+  - reference: PMID:30910786
+    reference_title: Spatiotemporal Developmental Trajectories in the Arabidopsis Root Revealed Using
+      High-Throughput Single-Cell RNA Sequencing.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: β-ketoacyl-CoA synthases (FDH, KCS1, KCS6) and long-chain acyl-CoA synthetases (LACS1,
+      LACS2) synthesize VLCFA precursors in atrichoblasts.
+  curator_note: Supporting metabolic pathway supplying epidermal surface lipids (8/26 members).
+- term:
+    id: GO:0005783
+    label: endoplasmic reticulum
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.8761e-08
+    p_adjust: 0.0037633
+    overlap: 11
+    query_size: 26
+    target_size: 1225
+    overlap_genes:
+    - ABCG12
+    - CER1
+    - CER2
+    - CER3
+    - CUT1
+    - CYP86A8
+    - FDH
+    - GPAT8
+    - KCS1
+    - LACS1
+    - LACS2
+  evidence:
+  - reference: PMID:30842268
+    reference_title: Single-Cell RNA Sequencing Resolves Molecular Relationships Among Individual Plant
+      Cells.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: The VLCFA elongase complex (KCS1, KCS6, FDH) and alkane/wax synthesis enzymes (CER1-4,
+      LACS1, LACS2, MAH1) localize to the endoplasmic reticulum membrane of epidermal cells.
+  curator_note: Endomembrane compartment housing the epidermal VLCFA/cutin/wax biosynthetic machinery
+    (14/26 members; recovered in all and iba_iea).
+- term:
+    id: GO:0010055
+    label: atrichoblast differentiation
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: confirmatory
+  evidence:
+  - reference: PMID:22291601
+    reference_title: A gene regulatory network for root epidermis cell differentiation in Arabidopsis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: WER, GL2, TTG1, GL3, EGL3, and MYB23 are the textbook master regulators of atrichoblast
+      differentiation in the Arabidopsis root epidermis.
+  curator_note: Although GO:0010055 (atrichoblast differentiation) is the exact ontology term for this
+    cell fate, TAIR GAF annotates most WER/GL2/TTG1 complex genes to GO:0090627 or GO:0010053, leaving
+    GO:0010055 below the Bonferroni threshold.
+- term:
+    id: GO:0032502
+    label: developmental process
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 9.4081e-22
+    p_adjust: 1.231e-16
+    overlap: 25
+    query_size: 26
+    target_size: 2989
+    overlap_genes:
+    - ABCG11
+    - ATML1
+    - BHLH2
+    - CER1
+    - CER2
+    - CER3
+    - CPC
+    - CUT1
+    - CYP86A8
+    - ETC1
+    - FDH
+    - GL2
+    - GL3
+    - GPAT4
+    - GPAT8
+    - HDG11
+    - KCS1
+    - LACS1
+    - LACS2
+    - MYB23
+    - PDF2
+    - SUB
+    - TRY
+    - TTG1
+    - WER
+  evidence:
+  - reference: PMID:22291601
+    reference_title: A gene regulatory network for root epidermis cell differentiation in Arabidopsis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: High-level ancestor roll-up of epidermal differentiation terms.
+  curator_note: Broad developmental roll-up (18/26 members).
+- term:
+    id: GO:0010091
+    label: trichome branching
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.6844e-08
+    p_adjust: 0.0048208
+    overlap: 4
+    query_size: 26
+    target_size: 31
+    overlap_genes:
+    - GL3
+    - HDG11
+    - MYB23
+    - TRY
+  evidence:
+  - reference: PMID:22291601
+    reference_title: A gene regulatory network for root epidermis cell differentiation in Arabidopsis.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Root atrichoblasts do not form branched aerial trichomes; GO:0010091 (trichome branching)
+      is enriched in full GAF because GL2, GL3, EGL3, TTG1, TTG2, TRY, CPC, ETC1, and MYB23 are pleiotropically
+      reused in shoot leaf trichome development.
+  curator_note: 'Classic pleiotropic organ-reuse trap in plants: the same MBW (MYB-bHLH-WD40) module specifies
+    non-hair cells in roots and branched trichomes in leaves. Enriched in all (p_adj=2.66e-12), avoided
+    by iba_iea and iba.'
+- term:
+    id: GO:0048765
+    label: root hair cell differentiation
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: false_association
+  evidence:
+  - reference: PMID:22291601
+    reference_title: A gene regulatory network for root epidermis cell differentiation in Arabidopsis.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: GO:0048765 (root hair cell differentiation) is the opposite pole of SERIES:ARATH_ROOT_EPIDERMIS,
+      repressed in N-position atrichoblasts by GL2.
+  curator_note: Contrasting pole trap against ARATH_ROOT_HAIR_TRICHOBLAST in SERIES:ARATH_ROOT_EPIDERMIS.

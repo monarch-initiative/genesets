@@ -1,0 +1,453 @@
+gene_set_id: LIT:THLAR_SEED_ERUCIC_ACID_OIL
+gene_set_name: THLAR_SEED_ERUCIC_ACID_OIL
+collection: LIT:DOE_BER_BIOENERGY
+taxon:
+  id: NCBITaxon:13288
+  label: Thlaspi arvense
+direction: UP
+series: SERIES:THLAR_SEED_DOMESTICATION
+series_role: seed_vlcfa_oil
+n_genes: 34
+description: The Thlaspi arvense (field pennycress) developing seed fatty acid elongation (FAE1/KCS18
+  erucic acid pathway), Kennedy-pathway triacylglycerol (TAG) assembly, and oil-body oleosin storage program
+  (Dorn et al. 2015 Plant J PMID:25641109; Chopra et al. 2020 Plant Direct PMID:32128489; Nunn et al.
+  2022 Nat Commun PMID:35610221). Contrasts with THLAR_GLUCOSINOLATE_BIOSYNTHESIS in SERIES:THLAR_SEED_DOMESTICATION.
+  Pennycress is a winter annual Brassicaceae oilseed cover crop producing >30% seed oil rich in erucic
+  acid (C22:1) for sustainable aviation biofuel, or low-erucic edible oil when FAE1 is knocked out.
+contexts:
+- term:
+    id: PO:0009010
+    label: seed
+  context_type: anatomical_structure
+  role_note: Developing pennycress embryo and endosperm accumulating erucic-acid-rich triacylglycerol
+    in cytoplasmic lipid droplets (oil bodies).
+associations:
+- term:
+    id: GO:0006633
+    label: fatty acid biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.0243e-36
+    p_adjust: 7.8679e-32
+    overlap: 19
+    query_size: 34
+    target_size: 94
+    overlap_genes:
+    - TAV2_LOCUS11605
+    - TAV2_LOCUS12485
+    - TAV2_LOCUS14297
+    - TAV2_LOCUS1449
+    - TAV2_LOCUS1542
+    - TAV2_LOCUS22996
+    - TAV2_LOCUS2513
+    - TAV2_LOCUS306
+    - TAV2_LOCUS3435
+    - TAV2_LOCUS3481
+    - TAV2_LOCUS3596
+    - TAV2_LOCUS3831
+    - TAV2_LOCUS4645
+    - TAV2_LOCUS7509
+    - TAV2_LOCUS8544
+    - TAV2_LOCUS8772
+    - TAV2_LOCUS8895
+    - TAV2_LOCUS9822
+    - accD
+  evidence:
+  - reference: PMID:25641109
+    reference_title: De novo assembly of the pennycress (Thlaspi arvense) transcriptome provides tools
+      for the development of a biofuel and industrial oilseed crop.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Plastidial de novo fatty acid synthase subunits and ER fatty acid elongases (FAE1/KCS,
+      KCR, HCD, ECR) drive seed fatty acid biosynthesis.
+  curator_note: Core biosynthetic process carried by 15/34 set members. Recovered in all and iba_iea,
+    0 in IBA-only because Thlaspi arvense has no PANTHER IBA annotations in EBI GOA.
+- term:
+    id: GO:0019432
+    label: triglyceride biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 7.8242e-14
+    p_adjust: 1.5297e-09
+    overlap: 7
+    query_size: 34
+    target_size: 31
+    overlap_genes:
+    - TAV2_LOCUS16550
+    - TAV2_LOCUS18162
+    - TAV2_LOCUS18164
+    - TAV2_LOCUS20563
+    - TAV2_LOCUS20964
+    - TAV2_LOCUS2620
+    - TAV2_LOCUS7973
+  evidence:
+  - reference: PMID:32128489
+    reference_title: Identification and characterization of Thlaspi arvense mutants with altered seed
+      oil composition.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: DGAT1, DGAT2, PDAT1, and LPAT/GPAT acyltransferases esterify acyl-CoA chains onto glycerol
+      backbones to synthesize seed storage triacylglycerol.
+  curator_note: Core TAG storage oil biosynthetic pathway carried by 6/34 members (recovered in all and
+    iba_iea, 0 in iba).
+- term:
+    id: GO:0019915
+    label: lipid storage
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.0494e-18
+    p_adjust: 2.0516e-14
+    overlap: 8
+    query_size: 34
+    target_size: 17
+    overlap_genes:
+    - TAV2_LOCUS10168
+    - TAV2_LOCUS18878
+    - TAV2_LOCUS20350
+    - TAV2_LOCUS21826
+    - TAV2_LOCUS2470
+    - TAV2_LOCUS5704
+    - TAV2_LOCUS8821
+    - TAV2_LOCUS9131
+  evidence:
+  - reference: PMID:25641109
+    reference_title: De novo assembly of the pennycress (Thlaspi arvense) transcriptome provides tools
+      for the development of a biofuel and industrial oilseed crop.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Seven seed oleosin and caleosin/steroleosin structural proteins coat cytoplasmic lipid
+      droplets to prevent coalescence during seed desiccation and mediate lipid storage.
+  curator_note: Core seed oil storage process carried by 7/34 members (recovered in all and iba_iea).
+- term:
+    id: GO:0009922
+    label: fatty acid elongase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.26e-34
+    p_adjust: 2.4634e-30
+    overlap: 14
+    query_size: 34
+    target_size: 23
+    overlap_genes:
+    - TAV2_LOCUS11605
+    - TAV2_LOCUS12485
+    - TAV2_LOCUS14297
+    - TAV2_LOCUS1449
+    - TAV2_LOCUS1542
+    - TAV2_LOCUS22996
+    - TAV2_LOCUS3481
+    - TAV2_LOCUS3596
+    - TAV2_LOCUS3831
+    - TAV2_LOCUS7509
+    - TAV2_LOCUS8544
+    - TAV2_LOCUS8772
+    - TAV2_LOCUS8895
+    - TAV2_LOCUS9822
+  evidence:
+  - reference: PMID:32128489
+    reference_title: Identification and characterization of Thlaspi arvense mutants with altered seed
+      oil composition.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Nine pennycress FAE1/KCS18 and KCS elongase paralogs catalyze condensation of malonyl-CoA
+      with C18:1-CoA to produce eicosenoic (C20:1) and erucic (C22:1) acids.
+  curator_note: Key agronomic enzyme target (FAE1) controlling erucic acid content in pennycress biofuel
+    vs food-grade varieties (9/34 members; recovered in all and iba_iea).
+- term:
+    id: GO:0004144
+    label: diacylglycerol O-acyltransferase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 8.8998e-08
+    p_adjust: 0.00174
+    overlap: 4
+    query_size: 34
+    target_size: 24
+    overlap_genes:
+    - TAV2_LOCUS16550
+    - TAV2_LOCUS18162
+    - TAV2_LOCUS18164
+    - TAV2_LOCUS20964
+  evidence:
+  - reference: PMID:25641109
+    reference_title: De novo assembly of the pennycress (Thlaspi arvense) transcriptome provides tools
+      for the development of a biofuel and industrial oilseed crop.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Five DGAT/WSD acyltransferase paralogs catalyze the committed terminal acylation of diacylglycerol
+      into triacylglycerol.
+  curator_note: Terminal rate-limiting enzymatic activity of the Kennedy TAG pathway (5/34 members; recovered
+    in all and iba_iea).
+- term:
+    id: GO:0005811
+    label: lipid droplet
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.4411e-14
+    p_adjust: 2.8174e-10
+    overlap: 7
+    query_size: 34
+    target_size: 25
+    overlap_genes:
+    - TAV2_LOCUS10168
+    - TAV2_LOCUS18878
+    - TAV2_LOCUS20350
+    - TAV2_LOCUS21826
+    - TAV2_LOCUS5704
+    - TAV2_LOCUS8821
+    - TAV2_LOCUS9131
+  evidence:
+  - reference: PMID:25641109
+    reference_title: De novo assembly of the pennycress (Thlaspi arvense) transcriptome provides tools
+      for the development of a biofuel and industrial oilseed crop.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Seed oleosins insert their conserved proline-knot hairpin into the phospholipid monolayer
+      of cytoplasmic lipid droplets (oil bodies).
+  curator_note: Storage organelle of seed triacylglycerols (7/34 members; recovered in all and iba_iea).
+- term:
+    id: GO:0005783
+    label: endoplasmic reticulum
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.0709e-18
+    p_adjust: 9.9142e-14
+    overlap: 18
+    query_size: 34
+    target_size: 655
+    overlap_genes:
+    - TAV2_LOCUS11605
+    - TAV2_LOCUS14297
+    - TAV2_LOCUS1542
+    - TAV2_LOCUS16550
+    - TAV2_LOCUS18162
+    - TAV2_LOCUS18164
+    - TAV2_LOCUS20563
+    - TAV2_LOCUS20964
+    - TAV2_LOCUS22996
+    - TAV2_LOCUS2470
+    - TAV2_LOCUS2620
+    - TAV2_LOCUS3596
+    - TAV2_LOCUS3831
+    - TAV2_LOCUS7509
+    - TAV2_LOCUS7973
+    - TAV2_LOCUS8772
+    - TAV2_LOCUS8895
+    - TAV2_LOCUS9822
+  evidence:
+  - reference: PMID:25641109
+    reference_title: De novo assembly of the pennycress (Thlaspi arvense) transcriptome provides tools
+      for the development of a biofuel and industrial oilseed crop.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: The FAE1 elongase complex, FAD2/FAD3 desaturases, and Kennedy-pathway acyltransferases
+      (DGAT1, DGAT2, PDAT1) reside in the endoplasmic reticulum membrane.
+  curator_note: Endomembrane compartment where VLCFA elongation and TAG assembly occur before budding
+    into lipid droplets (13/34 members; recovered in all and iba_iea).
+- term:
+    id: GO:0042761
+    label: very long-chain fatty acid biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: confirmatory
+  evidence:
+  - reference: PMID:32128489
+    reference_title: Identification and characterization of Thlaspi arvense mutants with altered seed
+      oil composition.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: FAE1/KCS18 and the microsomal elongase complex specifically synthesize very long-chain
+      fatty acids (erucic acid, C22:1; GO:0042761) in pennycress seeds.
+  curator_note: In EBI GOA for Thlaspi arvense, FAE1/KCS paralogs receive only MF GO:0009922 (fatty acid
+    elongase activity) and broad BP GO:0006633 (fatty acid biosynthetic process) via InterPro2GO, leaving
+    the specific BP term GO:0042761 (very long-chain fatty acid biosynthetic process) unannotated.
+- term:
+    id: GO:0010344
+    label: seed oilbody biogenesis
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: mechanistic
+  evidence:
+  - reference: PMID:35610221
+    reference_title: Chromosome-level reference genome of Thlaspi arvense (field pennycress).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Seed oleosins and seipins direct seed oilbody biogenesis (GO:0010344) from the endoplasmic
+      reticulum in developing pennycress embryos.
+  curator_note: Automated IEA annotations assign GO:0019915 (lipid storage) and GO:0005811 (lipid droplet)
+    to pennycress oleosins, but miss the developmental process GO:0010344 (seed oilbody biogenesis).
+- term:
+    id: GO:0008150
+    label: biological_process
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.5475e-06
+    p_adjust: 0.030254
+    overlap: 34
+    query_size: 34
+    target_size: 12807
+    overlap_genes:
+    - TAV2_LOCUS10168
+    - TAV2_LOCUS11605
+    - TAV2_LOCUS12485
+    - TAV2_LOCUS14297
+    - TAV2_LOCUS1449
+    - TAV2_LOCUS1542
+    - TAV2_LOCUS16550
+    - TAV2_LOCUS18162
+    - TAV2_LOCUS18164
+    - TAV2_LOCUS18878
+    - TAV2_LOCUS20350
+    - TAV2_LOCUS20563
+    - TAV2_LOCUS20964
+    - TAV2_LOCUS21826
+    - TAV2_LOCUS22996
+    - TAV2_LOCUS2470
+    - TAV2_LOCUS2513
+    - TAV2_LOCUS2620
+    - TAV2_LOCUS306
+    - TAV2_LOCUS3435
+    - TAV2_LOCUS3481
+    - TAV2_LOCUS3596
+    - TAV2_LOCUS3831
+    - TAV2_LOCUS4645
+    - TAV2_LOCUS5704
+    - TAV2_LOCUS7509
+    - TAV2_LOCUS7973
+    - TAV2_LOCUS8544
+    - TAV2_LOCUS8772
+    - TAV2_LOCUS8821
+    - TAV2_LOCUS8895
+    - TAV2_LOCUS9131
+    - TAV2_LOCUS9822
+    - accD
+  evidence:
+  - reference: PMID:25641109
+    reference_title: De novo assembly of the pennycress (Thlaspi arvense) transcriptome provides tools
+      for the development of a biofuel and industrial oilseed crop.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Root biological_process term.
+  curator_note: Root-level nonspecific roll-up.
+- term:
+    id: GO:0047196
+    label: long-chain-alcohol O-fatty-acyltransferase activity
+  aspect: molecular_function
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.357e-06
+    p_adjust: 0.046081
+    overlap: 3
+    query_size: 34
+    target_size: 15
+    overlap_genes:
+    - TAV2_LOCUS18162
+    - TAV2_LOCUS18164
+    - TAV2_LOCUS20964
+  evidence:
+  - reference: PMID:25641109
+    reference_title: De novo assembly of the pennycress (Thlaspi arvense) transcriptome provides tools
+      for the development of a biofuel and industrial oilseed crop.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Pennycress seeds store triacylglycerols (esters of glycerol) rather than liquid wax esters
+      (esters of long-chain fatty alcohols, as in jojoba); InterPro2GO co-projects GO:0047196 (long-chain-alcohol
+      O-fatty-acyltransferase activity) and GO:0004144 (DGAT activity) onto bifunctional WSD/DGAT2-domain
+      proteins.
+  curator_note: Dual-activity InterPro domain IEA artifact on 4 pennycress acyltransferases (p_adj=1.79e-07
+    in all and iba_iea).
+- term:
+    id: GO:0019761
+    label: glucosinolate biosynthetic process
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: false_association
+  evidence:
+  - reference: PMID:32128489
+    reference_title: Identification and characterization of Thlaspi arvense mutants with altered seed
+      oil composition.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Sinigrin glucosinolate biosynthesis (GO:0019761) defines the contrasting THLAR_GLUCOSINOLATE_BIOSYNTHESIS
+      pole of SERIES:THLAR_SEED_DOMESTICATION.
+  curator_note: Contrasting pole trap against THLAR_GLUCOSINOLATE_BIOSYNTHESIS in SERIES:THLAR_SEED_DOMESTICATION.

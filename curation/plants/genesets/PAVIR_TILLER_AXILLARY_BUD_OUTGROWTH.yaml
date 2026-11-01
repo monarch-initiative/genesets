@@ -1,0 +1,399 @@
+gene_set_id: LIT:PAVIR_TILLER_AXILLARY_BUD_OUTGROWTH
+gene_set_name: PAVIR_TILLER_AXILLARY_BUD_OUTGROWTH
+collection: LIT:DOE_BER_BIOENERGY
+taxon:
+  id: NCBITaxon:38727
+  label: Panicum virgatum
+direction: UP
+series: SERIES:PAVIR_PERENNIAL_BIOMASS_ARCHITECTURE
+series_role: spring_tiller_bud_outgrowth
+n_genes: 34
+description: The Panicum virgatum (switchgrass) axillary tiller bud outgrowth, strigolactone/apocarotenoid
+  (D27/CCD7/CCD8-TB1) branching control, and PIN/ABCB polar auxin canalization program (benchmarked against
+  Lovell et al. 2021 Nature PMID:33505029; Palmer et al. 2017 BMC Plant Biol PMID:28851290). Contrasts
+  with PAVIR_RHIZOME_OVERWINTERING_SENESCENCE in SERIES:PAVIR_PERENNIAL_BIOMASS_ARCHITECTURE. Tiller number
+  and crown bud activation are primary determinants of aerial biomass yield across upland and lowland
+  switchgrass ecotypes.
+contexts:
+- term:
+    id: PO:0009047
+    label: stem
+  context_type: anatomical_structure
+  role_note: Crown and basal culm nodes of switchgrass where axillary tiller buds initiate and elongate
+    into aerial shoots.
+associations:
+- term:
+    id: GO:0009926
+    label: auxin polar transport
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 8.6974e-30
+    p_adjust: 2.2645e-25
+    overlap: 12
+    query_size: 34
+    target_size: 37
+    overlap_genes:
+    - PVAP13_6KG414801
+    - PVAP13_6KG414900
+    - PVAP13_6NG016229
+    - PVAP13_6NG364900
+    - PVAP13_7KG186800
+    - PVAP13_7KG239100
+    - PVAP13_7KG412000
+    - PVAP13_7NG178700
+    - PVAP13_7NG354400
+    - PVAP13_7NG371700
+    - PVAP13_8KG036314
+    - PVAP13_8NG022600
+  evidence:
+  - reference: PMID:33505029
+    reference_title: Genomic mechanisms of climate adaptation in polyploid bioenergy switchgrass.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: 12 switchgrass PIN and ABCB auxin efflux transporter paralogs mediate polar auxin canalization
+      from activated axillary tiller buds into the main stem vasculature.
+  curator_note: Core auxin-canalization mechanism required for tiller bud outgrowth (12/34 members; recovered
+    in all and iba_iea, 0 in IBA-only because Panicum virgatum lacks PANTHER IBA in EBI GOA).
+- term:
+    id: GO:0009733
+    label: response to auxin
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 7.1047e-29
+    p_adjust: 1.8498e-24
+    overlap: 17
+    query_size: 34
+    target_size: 284
+    overlap_genes:
+    - PVAP13_6KG414801
+    - PVAP13_6KG414900
+    - PVAP13_6NG364900
+    - PVAP13_7KG186800
+    - PVAP13_7KG412000
+    - PVAP13_7NG178700
+    - PVAP13_7NG371700
+    - PVAP13_9NG070445
+    - PVAP13_9NG083700
+    - PVAP13_9NG106800
+    - PVAP13_9NG176800
+    - PVAP13_9NG176900
+    - PVAP13_9NG193400
+    - PVAP13_9NG193500
+    - PVAP13_9NG237100
+    - PVAP13_9NG296900
+    - PVAP13_9NG410000
+  evidence:
+  - reference: PMID:33505029
+    reference_title: Genomic mechanisms of climate adaptation in polyploid bioenergy switchgrass.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: 17 switchgrass auxin transport and Aux/IAA-ARF signaling paralogs mediate the response
+      to auxin during tiller bud activation.
+  curator_note: Core phytohormone response carried by 17/34 members (recovered in all and iba_iea, 0 in
+    iba).
+- term:
+    id: GO:0010315
+    label: auxin export across the plasma membrane
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.1672e-23
+    p_adjust: 8.246e-19
+    overlap: 10
+    query_size: 34
+    target_size: 43
+    overlap_genes:
+    - PVAP13_6KG414801
+    - PVAP13_6KG414900
+    - PVAP13_6NG016229
+    - PVAP13_6NG364900
+    - PVAP13_7KG186800
+    - PVAP13_7KG412000
+    - PVAP13_7NG178700
+    - PVAP13_7NG371700
+    - PVAP13_8KG036314
+    - PVAP13_8NG022600
+  evidence:
+  - reference: PMID:33505029
+    reference_title: Genomic mechanisms of climate adaptation in polyploid bioenergy switchgrass.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: 10 switchgrass PIN/ABCB plasma-membrane exporters catalyze cellular auxin export to establish
+      polar vascular connectivity.
+  curator_note: Resolves cellular auxin efflux from the activating axillary bud (10/34 members; recovered
+    in all and iba_iea).
+- term:
+    id: GO:1901601
+    label: strigolactone biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.7469e-07
+    p_adjust: 0.014963
+    overlap: 2
+    query_size: 34
+    target_size: 2
+    overlap_genes:
+    - PVAP13_8KG302700
+    - PVAP13_8NG268500
+  evidence:
+  - reference: PMID:33505029
+    reference_title: Genomic mechanisms of climate adaptation in polyploid bioenergy switchgrass.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Two switchgrass DWARF27 (D27) beta-carotene isomerase homeologs catalyze the committed
+      9-cis-beta-carotene step of strigolactone biosynthesis, which regulates tillering and axillary bud
+      dormancy.
+  curator_note: Directly captures the strigolactone branching-hormone biosynthetic pathway (2/34 members;
+    recovered in all and iba_iea).
+- term:
+    id: GO:0016117
+    label: carotenoid biosynthetic process
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.6003e-20
+    p_adjust: 4.1665e-16
+    overlap: 8
+    query_size: 34
+    target_size: 22
+    overlap_genes:
+    - PVAP13_7KG386900
+    - PVAP13_7NG431400
+    - PVAP13_8KG287700
+    - PVAP13_8NG115400
+    - PVAP13_9KG321400
+    - PVAP13_9KG650900
+    - PVAP13_9NG463900
+    - PVAP13_9NG487000
+  evidence:
+  - reference: PMID:33505029
+    reference_title: Genomic mechanisms of climate adaptation in polyploid bioenergy switchgrass.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Eight switchgrass plastidial carotenoid biosynthetic paralogs supply the all-trans-beta-carotene
+      precursor pool cleaved into strigolactones.
+  curator_note: Upstream plastidial precursor pathway feeding strigolactone synthesis (8/34 members; recovered
+    in all and iba_iea).
+- term:
+    id: GO:0010016
+    label: shoot system morphogenesis
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.4135e-14
+    p_adjust: 6.2837e-10
+    overlap: 7
+    query_size: 34
+    target_size: 58
+    overlap_genes:
+    - PVAP13_6KG414801
+    - PVAP13_6KG414900
+    - PVAP13_6NG364900
+    - PVAP13_7KG186800
+    - PVAP13_7KG412000
+    - PVAP13_7NG178700
+    - PVAP13_7NG371700
+  evidence:
+  - reference: PMID:33505029
+    reference_title: Genomic mechanisms of climate adaptation in polyploid bioenergy switchgrass.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Seven switchgrass auxin transport and meristem regulators govern shoot system morphogenesis
+      and tiller architecture.
+  curator_note: Supporting developmental morphogenesis term (7/34 members; recovered in all and iba_iea).
+- term:
+    id: GO:0005886
+    label: plasma membrane
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: broadly_expressed
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: confirmatory
+  evidence:
+  - reference: PMID:33505029
+    reference_title: Genomic mechanisms of climate adaptation in polyploid bioenergy switchgrass.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: PIN and ABCB auxin efflux carriers localize asymmetrically at the plasma membrane.
+  curator_note: In Panicum virgatum EBI GOA, PIN and ABCB auxin transporters are annotated only to generic
+    GO:0016020 (membrane) via InterPro2GO rather than GO:0005886 (plasma membrane).
+- term:
+    id: GO:0050896
+    label: response to stimulus
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.1437e-08
+    p_adjust: 0.00029777
+    overlap: 19
+    query_size: 34
+    target_size: 6142
+    overlap_genes:
+    - PVAP13_6KG414801
+    - PVAP13_6KG414900
+    - PVAP13_6NG364900
+    - PVAP13_7KG186800
+    - PVAP13_7KG239100
+    - PVAP13_7KG412000
+    - PVAP13_7NG178700
+    - PVAP13_7NG354400
+    - PVAP13_7NG371700
+    - PVAP13_9NG070445
+    - PVAP13_9NG083700
+    - PVAP13_9NG106800
+    - PVAP13_9NG176800
+    - PVAP13_9NG176900
+    - PVAP13_9NG193400
+    - PVAP13_9NG193500
+    - PVAP13_9NG237100
+    - PVAP13_9NG296900
+    - PVAP13_9NG410000
+  evidence:
+  - reference: PMID:33505029
+    reference_title: Genomic mechanisms of climate adaptation in polyploid bioenergy switchgrass.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Top-level biological-process roll-up.
+  curator_note: Overly broad root-adjacent term (21/34 members).
+- term:
+    id: GO:0043481
+    label: anthocyanin accumulation in tissues in response to UV light
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 8.2489e-23
+    p_adjust: 2.1477e-18
+    overlap: 7
+    query_size: 34
+    target_size: 7
+    overlap_genes:
+    - PVAP13_6KG414801
+    - PVAP13_6KG414900
+    - PVAP13_6NG364900
+    - PVAP13_7KG186800
+    - PVAP13_7KG412000
+    - PVAP13_7NG178700
+    - PVAP13_7NG371700
+  evidence:
+  - reference: PMID:33505029
+    reference_title: Genomic mechanisms of climate adaptation in polyploid bioenergy switchgrass.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Switchgrass crown/axillary-bud ABCB auxin efflux transporters drive polar auxin canalization
+      rather than foliar UV-light anthocyanin accumulation; UniRule IEA projects every pleiotropic Arabidopsis
+      ABCB19 mutant phenotype — including GO:0043481 (anthocyanin accumulation in tissues in response
+      to UV light) and GO:0048439 (flower morphogenesis) — onto all 7 switchgrass ABCB paralogs.
+  curator_note: 'Extreme UniRule IEA pleiotropy projection artifact: 7 switchgrass ABCB auxin transporters
+    inherit GO:0043481 (p_adj=2.15e-18 in all and iba_iea) from a single Arabidopsis abcb19 hypocotyl/flavonoid
+    paper.'
+- term:
+    id: GO:0090374
+    label: oligopeptide export from mitochondrion
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.8211e-15
+    p_adjust: 4.7414e-11
+    overlap: 7
+    query_size: 34
+    target_size: 41
+    overlap_genes:
+    - PVAP13_6KG414801
+    - PVAP13_6KG414900
+    - PVAP13_6NG364900
+    - PVAP13_7KG186800
+    - PVAP13_7KG412000
+    - PVAP13_7NG178700
+    - PVAP13_7NG371700
+  evidence:
+  - reference: PMID:33505029
+    reference_title: Genomic mechanisms of climate adaptation in polyploid bioenergy switchgrass.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: These plasma-membrane ABCB1/ABCB19-clade proteins export auxin across the plasma membrane
+      (GO:0010315) rather than exporting iron-sulfur cluster peptides from the mitochondrial matrix (GO:0090374,
+      ATM-clade ABCBs).
+  curator_note: ABC-transporter subfamily IEA domain conflation across 7 switchgrass ABCB genes (p_adj=4.74e-11
+    in all and iba_iea).
+- term:
+    id: GO:0010150
+    label: leaf senescence
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: false_association
+  evidence:
+  - reference: PMID:28851290
+    reference_title: Transcriptome analysis of senescing leaves and overwintering rhizomes in switchgrass.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Autumnal leaf senescence and nitrogen remobilization (GO:0010150) define the contrasting
+      PAVIR_RHIZOME_OVERWINTERING_SENESCENCE pole of SERIES:PAVIR_PERENNIAL_BIOMASS_ARCHITECTURE.
+  curator_note: Contrasting pole trap against PAVIR_RHIZOME_OVERWINTERING_SENESCENCE in SERIES:PAVIR_PERENNIAL_BIOMASS_ARCHITECTURE.

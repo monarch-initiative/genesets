@@ -1,0 +1,466 @@
+gene_set_id: LIT:SORBI_STAY_GREEN_DROUGHT_TOLERANCE
+gene_set_name: SORBI_STAY_GREEN_DROUGHT_TOLERANCE
+collection: LIT:DOE_BER_BIOENERGY
+taxon:
+  id: NCBITaxon:4558
+  label: Sorghum bicolor
+direction: UP
+n_genes: 33
+description: The Sorghum bicolor post-flowering drought tolerance ('stay-green' Stg1-Stg4 canopy maintenance),
+  ABA-SnRK2-ABF/DREB2osmotic/dehydrin stress protection, and cuticular wax / cutin ('bloom' glaucousness)
+  water-conservation program (Borrell et al. 2014 New Phytol PMID:25041086; Varoquaux et al. 2019 PNAS
+  PMID:31740602; Busta et al. 2021 New Phytol PMID:33421161). Sorghum is a premier dryland C4 bioenergy
+  and grain crop whose ability to maintain photosynthetically active green leaves during terminal post-anthesis
+  drought combines root/canopy water sparing, thick epicuticular wax crystals on leaf sheaths and culms,
+  and cellular dehydrin/ABA osmoprotection.
+contexts:
+- term:
+    id: PO:0025034
+    label: leaf
+  context_type: anatomical_structure
+  role_note: Sorghum leaf blades and sheaths maintaining photosynthetic capacity and depositing epicuticular
+    bloom wax under water deficit.
+- term:
+    id: TO:0000276
+    label: drought tolerance
+  context_type: phenotype
+  role_note: Agronomic stay-green and cuticular water-retention drought adaptation of Sorghum bicolor.
+associations:
+- term:
+    id: GO:0009414
+    label: response to water deprivation
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 6.9138e-33
+    p_adjust: 1.5546e-28
+    overlap: 16
+    query_size: 33
+    target_size: 67
+    overlap_genes:
+    - SORBI_3001G367900
+    - SORBI_3001G410100
+    - SORBI_3001G517700
+    - SORBI_3003G107000
+    - SORBI_3003G270200
+    - SORBI_3003G324700
+    - SORBI_3003G363400
+    - SORBI_3004G064000
+    - SORBI_3004G286600
+    - SORBI_3009G116700
+    - SORBI_3009G121900
+    - SORBI_3009G255900
+    - SORBI_3010G009300
+    - SORBI_3010G041900
+    - SORBI_3010G081800
+    - SORBI_3010G090500
+  evidence:
+  - reference: PMID:31740602
+    reference_title: Transcriptomic analysis of field-droughted sorghum from seedling to post-anthesis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: 16 of 33 sorghum genes in the module directly mediate the transcriptional and physiological
+      response to water deprivation.
+  curator_note: Core abiotic stress process carried by 16/33 set members. Recovered across all 4 variants
+    including IBA-only (p_adj=1.55e-28).
+- term:
+    id: GO:0009737
+    label: response to abscisic acid
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.4019e-32
+    p_adjust: 9.8977e-28
+    overlap: 17
+    query_size: 33
+    target_size: 102
+    overlap_genes:
+    - SORBI_3001G222700
+    - SORBI_3001G294400
+    - SORBI_3001G400700
+    - SORBI_3001G517700
+    - SORBI_3003G270200
+    - SORBI_3003G363400
+    - SORBI_3004G064000
+    - SORBI_3004G133000
+    - SORBI_3004G254500
+    - SORBI_3004G286600
+    - SORBI_3004G317600
+    - SORBI_3009G116700
+    - SORBI_3009G126300
+    - SORBI_3009G182400
+    - SORBI_3010G009300
+    - SORBI_3010G041900
+    - SORBI_3010G119200
+  evidence:
+  - reference: PMID:31740602
+    reference_title: Transcriptomic analysis of field-droughted sorghum from seedling to post-anthesis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: 17 sorghum PYR/PYL, PP2C, SnRK2, ABF, and LEA/dehydrin paralogs mediate the response
+      to abscisic acid during water deficit.
+  curator_note: Core drought phytohormone response (17/33 members; recovered across all 4 variants including
+    IBA-only).
+- term:
+    id: GO:0009738
+    label: abscisic acid-activated signaling pathway
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.4364e-17
+    p_adjust: 5.4782e-13
+    overlap: 9
+    query_size: 33
+    target_size: 50
+    overlap_genes:
+    - SORBI_3001G294400
+    - SORBI_3001G400700
+    - SORBI_3003G363400
+    - SORBI_3004G133000
+    - SORBI_3004G254500
+    - SORBI_3004G317600
+    - SORBI_3009G126300
+    - SORBI_3009G182400
+    - SORBI_3010G119200
+  evidence:
+  - reference: PMID:31740602
+    reference_title: Transcriptomic analysis of field-droughted sorghum from seedling to post-anthesis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Nine sorghum PYR/PYL-PP2C-SnRK2 core signaling components transduce the drought ABA signal.
+  curator_note: Core ABA signal transduction pathway (9/33 members; recovered in all and iba_iea).
+- term:
+    id: GO:0010143
+    label: cutin biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 9.257e-22
+    p_adjust: 2.0814e-17
+    overlap: 9
+    query_size: 33
+    target_size: 19
+    overlap_genes:
+    - SORBI_3001G026100
+    - SORBI_3001G222700
+    - SORBI_3001G316500
+    - SORBI_3001G493300
+    - SORBI_3003G114200
+    - SORBI_3005G156100
+    - SORBI_3008G130800
+    - SORBI_3009G031400
+    - SORBI_3009G157000
+  evidence:
+  - reference: PMID:33421161
+    reference_title: Cuticular wax and cutin biosynthesis in Sorghum bicolor.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Nine sorghum GPAT, CYP86A, LACS, and GDSL-lipase/cutin synthase paralogs synthesize the
+      polyester cutin matrix of the epidermal cuticle to restrict non-stomatal water loss.
+  curator_note: Mechanistically resolves cuticular barrier synthesis as a key physical water-conservation
+    strategy in sorghum (9/33 members; recovered across all 4 variants including IBA-only).
+- term:
+    id: GO:0160062
+    label: cutin-based cuticle development
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 9.257e-22
+    p_adjust: 2.0814e-17
+    overlap: 9
+    query_size: 33
+    target_size: 19
+    overlap_genes:
+    - SORBI_3001G026100
+    - SORBI_3001G222700
+    - SORBI_3001G316500
+    - SORBI_3001G493300
+    - SORBI_3003G114200
+    - SORBI_3005G156100
+    - SORBI_3008G130800
+    - SORBI_3009G031400
+    - SORBI_3009G157000
+  evidence:
+  - reference: PMID:33421161
+    reference_title: Cuticular wax and cutin biosynthesis in Sorghum bicolor.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Nine sorghum cutin/cuticle assembly genes drive cutin-based cuticle development on aerial
+      surfaces.
+  curator_note: Captures epidermal cuticle morphogenesis (9/33 members; recovered across all 4 variants).
+- term:
+    id: GO:0010025
+    label: wax biosynthetic process
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.9447e-12
+    p_adjust: 8.8695e-08
+    overlap: 4
+    query_size: 33
+    target_size: 4
+    overlap_genes:
+    - SORBI_3001G222700
+    - SORBI_3004G064000
+    - SORBI_3005G156100
+    - SORBI_3009G031400
+  evidence:
+  - reference: PMID:33421161
+    reference_title: Cuticular wax and cutin biosynthesis in Sorghum bicolor.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Four sorghum CER1/CER3 alkane-forming and fatty acyl reductase paralogs synthesize the
+      glaucous epicuticular 'bloom' wax crystals that reflect solar radiation and reduce cuticular transpiration.
+  curator_note: Resolves the sorghum epicuticular wax ('bloom') biosynthetic branch (4/33 members; recovered
+    in all and iba_iea).
+- term:
+    id: GO:0006970
+    label: response to osmotic stress
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.9526e-10
+    p_adjust: 4.3904e-06
+    overlap: 7
+    query_size: 33
+    target_size: 108
+    overlap_genes:
+    - SORBI_3001G222700
+    - SORBI_3001G367900
+    - SORBI_3003G324700
+    - SORBI_3003G363400
+    - SORBI_3009G121900
+    - SORBI_3010G009300
+    - SORBI_3010G081800
+  evidence:
+  - reference: PMID:31740602
+    reference_title: Transcriptomic analysis of field-droughted sorghum from seedling to post-anthesis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Seven sorghum dehydrin/LEA and SnRK2 genes protect cellular membranes and proteins against
+      drought-induced osmotic stress.
+  curator_note: Supporting cellular osmoprotection mechanism (7/33 members; recovered across all 4 variants).
+- term:
+    id: GO:0050896
+    label: response to stimulus
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.9905e-13
+    p_adjust: 6.7242e-09
+    overlap: 25
+    query_size: 33
+    target_size: 3879
+    overlap_genes:
+    - SORBI_3001G222700
+    - SORBI_3001G294400
+    - SORBI_3001G367900
+    - SORBI_3001G400700
+    - SORBI_3001G410100
+    - SORBI_3001G517700
+    - SORBI_3003G107000
+    - SORBI_3003G270200
+    - SORBI_3003G324700
+    - SORBI_3003G363400
+    - SORBI_3004G064000
+    - SORBI_3004G133000
+    - SORBI_3004G254500
+    - SORBI_3004G286600
+    - SORBI_3004G317600
+    - SORBI_3009G116700
+    - SORBI_3009G121900
+    - SORBI_3009G126300
+    - SORBI_3009G182400
+    - SORBI_3009G255900
+    - SORBI_3010G009300
+    - SORBI_3010G041900
+    - SORBI_3010G081800
+    - SORBI_3010G090500
+    - SORBI_3010G119200
+  evidence:
+  - reference: PMID:31740602
+    reference_title: Transcriptomic analysis of field-droughted sorghum from seedling to post-anthesis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Top-level biological-process roll-up.
+  curator_note: Overly broad root-adjacent term (25/33 members).
+- term:
+    id: GO:0097305
+    label: response to alcohol
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.2685e-32
+    p_adjust: 1.1846e-27
+    overlap: 17
+    query_size: 33
+    target_size: 103
+    overlap_genes:
+    - SORBI_3001G222700
+    - SORBI_3001G294400
+    - SORBI_3001G400700
+    - SORBI_3001G517700
+    - SORBI_3003G270200
+    - SORBI_3003G363400
+    - SORBI_3004G064000
+    - SORBI_3004G133000
+    - SORBI_3004G254500
+    - SORBI_3004G286600
+    - SORBI_3004G317600
+    - SORBI_3009G116700
+    - SORBI_3009G126300
+    - SORBI_3009G182400
+    - SORBI_3010G009300
+    - SORBI_3010G041900
+    - SORBI_3010G119200
+  evidence:
+  - reference: PMID:31740602
+    reference_title: Transcriptomic analysis of field-droughted sorghum from seedling to post-anthesis.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: GO:0097305 (response to alcohol) is a GO-ChEBI logical-definition roll-up artifact classifying
+      (+)-abscisic acid as an alcohol.
+  curator_note: Propagates to all 17 ABA-annotated sorghum genes across all 4 variants including IBA-only
+    (p_adj=1.18e-27).
+- term:
+    id: GO:0033993
+    label: response to lipid
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.4258e-25
+    p_adjust: 3.2059e-21
+    overlap: 17
+    query_size: 33
+    target_size: 236
+    overlap_genes:
+    - SORBI_3001G222700
+    - SORBI_3001G294400
+    - SORBI_3001G400700
+    - SORBI_3001G517700
+    - SORBI_3003G270200
+    - SORBI_3003G363400
+    - SORBI_3004G064000
+    - SORBI_3004G133000
+    - SORBI_3004G254500
+    - SORBI_3004G286600
+    - SORBI_3004G317600
+    - SORBI_3009G116700
+    - SORBI_3009G126300
+    - SORBI_3009G182400
+    - SORBI_3010G009300
+    - SORBI_3010G041900
+    - SORBI_3010G119200
+  evidence:
+  - reference: PMID:31740602
+    reference_title: Transcriptomic analysis of field-droughted sorghum from seedling to post-anthesis.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: GO:0033993 (response to lipid) is a companion GO-ChEBI roll-up artifact classifying (+)-abscisic
+      acid as a sesquiterpenoid lipid.
+  curator_note: Propagates to all 17 ABA-annotated sorghum genes across all 4 variants (p_adj=3.21e-21).
+- term:
+    id: GO:0009409
+    label: response to cold
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.4024e-16
+    p_adjust: 3.1533e-12
+    overlap: 10
+    query_size: 33
+    target_size: 98
+    overlap_genes:
+    - SORBI_3001G367900
+    - SORBI_3001G410100
+    - SORBI_3003G107000
+    - SORBI_3003G270200
+    - SORBI_3003G363400
+    - SORBI_3004G286600
+    - SORBI_3009G116700
+    - SORBI_3009G121900
+    - SORBI_3010G009300
+    - SORBI_3010G041900
+  evidence:
+  - reference: PMID:31740602
+    reference_title: Transcriptomic analysis of field-droughted sorghum from seedling to post-anthesis.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Sorghum bicolor is a chilling-sensitive semi-arid tropical C4 grass experiencing heat
+      and water deficit rather than freezing acclimation; GO:0009409 (response to cold) is projected onto
+      10 sorghum drought dehydrin/ABA homologs from temperate Arabidopsis COR/RD29A annotations.
+  curator_note: Temperate-to-tropical cross-climate annotation projection artifact across all 4 variants
+    (10/33 genes, p_adj=3.15e-12).
