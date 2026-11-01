@@ -1,0 +1,511 @@
+gene_set_id: LIT:POPTR_TENSION_WOOD_G_LAYER
+gene_set_name: POPTR_TENSION_WOOD_G_LAYER
+collection: LIT:DOE_BER_BIOENERGY
+taxon:
+  id: NCBITaxon:3694
+  label: Populus trichocarpa
+direction: UP
+series: SERIES:POPTR_WOOD_FORMATION
+series_role: tension_wood_g_layer
+n_genes: 32
+description: The Populus trichocarpa tension wood gelatinous-layer (G-layer) crystalline cellulose, xyloglucan
+  endotransglucosylase, fasciclin arabinogalactan protein, and UDP-glucose supply program induced in xylem
+  fibers under gravitational/mechanical bending stress (Mizrachi et al. 2015 New Phytol PMID:25329758;
+  Andersson-Gunneras et al. 2006 Plant J PMID:16412089). Contrasts with POPTR_SECONDARY_XYLEM_LIGNIN in
+  SERIES:POPTR_WOOD_FORMATION. Tension wood suppresses monolignol/lignin synthesis and instead deposits
+  a thick, non-lignified, highly crystalline cellulose G-layer via secondary-wall CESA4/7/8 paralogs,
+  KORRIGAN endoglucanases, sucrose synthases (SUS) channeling carbon into UDP-glucose, xyloglucan endotransglucosylase/hydrolases
+  (XTHs) stitching the G-layer to the S2 wall, and fasciclin-like AGPs (FLAs).
+contexts:
+- term:
+    id: PO:0000274
+    label: xylem fiber cell
+  context_type: cell_type
+  role_note: Gelatinous xylem fiber depositing the contractile cellulose-rich G-layer on the upper side
+    of leaning Populus stems.
+- term:
+    id: PO:0005848
+    label: secondary xylem
+  context_type: anatomical_structure
+  role_note: Tension-wood reaction xylem engineered by DOE/BER bioenergy programs for high saccharification
+    yield and low lignin recalcitrance.
+associations:
+- term:
+    id: GO:0009834
+    label: plant-type secondary cell wall biogenesis
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 8.0142e-26
+    p_adjust: 2.4071e-21
+    overlap: 13
+    query_size: 32
+    target_size: 111
+    overlap_genes:
+    - POPTR_003G159700
+    - POPTR_005G007200
+    - POPTR_005G201200
+    - POPTR_009G083800
+    - POPTR_011G077300
+    - POPTR_013G151300
+    - POPTR_015G013300
+    - POPTR_016G088700
+    - POPTR_019G120900
+    - POPTR_019G121200
+    - POPTR_019G121300
+    - POPTR_019G123000
+    - POPTR_019G123100
+  evidence:
+  - reference: PMID:16412089
+    reference_title: 'Biosynthesis of cellulose-enriched tension wood in Populus: global analysis of transcripts
+      and metabolites identifies biochemical and developmental regulators in the G-layer.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Secondary-wall CESA4/7/8 paralogs, KORRIGAN endoglucanases, and fasciclin-like AGPs drive
+      gelatinous secondary cell wall biogenesis in tension wood fibers.
+  curator_note: Core structural process carried by 11/32 members. Recovered across all 4 variants including
+    IBA-only.
+- term:
+    id: GO:0030244
+    label: cellulose biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.4475e-14
+    p_adjust: 4.3478e-10
+    overlap: 8
+    query_size: 32
+    target_size: 104
+    overlap_genes:
+    - POPTR_006G052600
+    - POPTR_008G163700
+    - POPTR_009G060800
+    - POPTR_010G074700
+    - POPTR_010G074800
+    - POPTR_013G019800
+    - POPTR_014G125100
+    - POPTR_014G155300
+  evidence:
+  - reference: PMID:16412089
+    reference_title: 'Biosynthesis of cellulose-enriched tension wood in Populus: global analysis of transcripts
+      and metabolites identifies biochemical and developmental regulators in the G-layer.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Ten Populus CESA and KORRIGAN paralogs synthesize and crystallize the ~90% cellulose
+      microfibril matrix of the tension wood G-layer.
+  curator_note: Defining biosynthetic pathway of the cellulose-enriched G-layer (12/32 members; recovered
+    across all 4 variants).
+- term:
+    id: GO:0010411
+    label: xyloglucan metabolic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.3528e-13
+    p_adjust: 1.6078e-08
+    overlap: 7
+    query_size: 32
+    target_size: 87
+    overlap_genes:
+    - POPTR_003G159700
+    - POPTR_005G007200
+    - POPTR_005G201200
+    - POPTR_009G083800
+    - POPTR_011G077300
+    - POPTR_013G152400
+    - POPTR_019G125000
+  evidence:
+  - reference: PMID:16412089
+    reference_title: 'Biosynthesis of cellulose-enriched tension wood in Populus: global analysis of transcripts
+      and metabolites identifies biochemical and developmental regulators in the G-layer.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Six tension-wood-upregulated xyloglucan endotransglucosylase/hydrolases (XTHs) remodel
+      xyloglucan cross-links between the G-layer and adjacent S2 wall to generate tensile maturation stress.
+  curator_note: Mechanistically captures how XTH-mediated xyloglucan remodeling transmits contractile
+    tension in G-fibers (6/32 members; recovered across all 4 variants).
+- term:
+    id: GO:0016759
+    label: cellulose synthase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 6.841e-16
+    p_adjust: 2.0548e-11
+    overlap: 8
+    query_size: 32
+    target_size: 72
+    overlap_genes:
+    - POPTR_006G052600
+    - POPTR_008G163700
+    - POPTR_009G060800
+    - POPTR_010G074700
+    - POPTR_010G074800
+    - POPTR_013G019800
+    - POPTR_014G125100
+    - POPTR_014G155300
+  evidence:
+  - reference: PMID:16412089
+    reference_title: 'Biosynthesis of cellulose-enriched tension wood in Populus: global analysis of transcripts
+      and metabolites identifies biochemical and developmental regulators in the G-layer.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Nine CESA/CSL paralogs provide UDP-glucose:cellulose beta-1,4-glucosyltransferase catalytic
+      activity.
+  curator_note: Core enzymatic activity of the rosette complexes (9/32 members; recovered across all 4
+    variants).
+- term:
+    id: GO:0016762
+    label: xyloglucan:xyloglucosyl transferase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.8914e-14
+    p_adjust: 5.681e-10
+    overlap: 7
+    query_size: 32
+    target_size: 55
+    overlap_genes:
+    - POPTR_003G159700
+    - POPTR_005G007200
+    - POPTR_005G201200
+    - POPTR_009G083800
+    - POPTR_011G077300
+    - POPTR_013G152400
+    - POPTR_019G125000
+  evidence:
+  - reference: PMID:16412089
+    reference_title: 'Biosynthesis of cellulose-enriched tension wood in Populus: global analysis of transcripts
+      and metabolites identifies biochemical and developmental regulators in the G-layer.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Six XTH paralogs catalyze xyloglucan:xyloglucosyl transferase activity in the developing
+      G-layer.
+  curator_note: Enzymatic activity underlying G-layer xyloglucan cross-linking (6/32 members; recovered
+    across all 4 variants).
+- term:
+    id: GO:0005985
+    label: sucrose metabolic process
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.8228e-09
+    p_adjust: 0.00014486
+    overlap: 5
+    query_size: 32
+    target_size: 79
+    overlap_genes:
+    - POPTR_002G202300
+    - POPTR_004G081300
+    - POPTR_015G029100
+    - POPTR_017G139100
+    - POPTR_018G063500
+  evidence:
+  - reference: PMID:16412089
+    reference_title: 'Biosynthesis of cellulose-enriched tension wood in Populus: global analysis of transcripts
+      and metabolites identifies biochemical and developmental regulators in the G-layer.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Six xylem-expressed sucrose synthase (SUS) paralogs cleave imported sucrose into UDP-glucose
+      to fuel massive cellulose synthesis in the G-layer.
+  curator_note: Captures metabolic carbon partitioning from sucrose into UDP-glucose for G-layer cellulose
+    deposition (6/32 members; recovered across all 4 variants).
+- term:
+    id: GO:0009505
+    label: plant-type cell wall
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.3476e-13
+    p_adjust: 7.0512e-09
+    overlap: 9
+    query_size: 32
+    target_size: 245
+    overlap_genes:
+    - POPTR_003G159700
+    - POPTR_005G007200
+    - POPTR_005G201200
+    - POPTR_007G018100
+    - POPTR_009G012400
+    - POPTR_009G083800
+    - POPTR_011G077300
+    - POPTR_013G105100
+    - POPTR_018G062800
+  evidence:
+  - reference: PMID:25329758
+    reference_title: Systems genetics of wood formation in Populus.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: XTHs, KORRIGAN endoglucanases, and FLA glycoproteins localize to the plant-type cell
+      wall during G-layer deposition.
+  curator_note: Extracellular matrix compartment of the tension wood fiber wall (14/32 members; recovered
+    across all 4 variants).
+- term:
+    id: GO:0009531
+    label: secondary cell wall
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: confirmatory
+  evidence:
+  - reference: PMID:16412089
+    reference_title: 'Biosynthesis of cellulose-enriched tension wood in Populus: global analysis of transcripts
+      and metabolites identifies biochemical and developmental regulators in the G-layer.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: The tension wood gelatinous layer is a specialized inner layer of the xylem fiber secondary
+      cell wall (GO:0009531).
+  curator_note: EBI GOA for Populus trichocarpa annotates these proteins to the parent term GO:0009505
+    (plant-type cell wall) or plasma membrane/apoplast rather than GO:0009531 (secondary cell wall).
+- term:
+    id: GO:0009987
+    label: cellular process
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.364e-07
+    p_adjust: 0.004097
+    overlap: 32
+    query_size: 32
+    target_size: 24693
+    overlap_genes:
+    - POPTR_002G202300
+    - POPTR_003G159700
+    - POPTR_004G081300
+    - POPTR_005G007200
+    - POPTR_005G201200
+    - POPTR_006G052600
+    - POPTR_007G018100
+    - POPTR_008G163700
+    - POPTR_009G012400
+    - POPTR_009G060800
+    - POPTR_009G083800
+    - POPTR_010G074700
+    - POPTR_010G074800
+    - POPTR_011G077300
+    - POPTR_013G019800
+    - POPTR_013G105100
+    - POPTR_013G151300
+    - POPTR_013G152400
+    - POPTR_014G125100
+    - POPTR_014G155300
+    - POPTR_015G013300
+    - POPTR_015G029100
+    - POPTR_016G088700
+    - POPTR_017G139100
+    - POPTR_018G062800
+    - POPTR_018G063500
+    - POPTR_019G120900
+    - POPTR_019G121200
+    - POPTR_019G121300
+    - POPTR_019G123000
+    - POPTR_019G123100
+    - POPTR_019G125000
+  evidence:
+  - reference: PMID:16412089
+    reference_title: 'Biosynthesis of cellulose-enriched tension wood in Populus: global analysis of transcripts
+      and metabolites identifies biochemical and developmental regulators in the G-layer.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Top-level biological-process roll-up.
+  curator_note: Generic root-adjacent cellular process roll-up (29/32 members).
+- term:
+    id: GO:0009833
+    label: plant-type primary cell wall biogenesis
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 7.8609e-16
+    p_adjust: 2.3611e-11
+    overlap: 7
+    query_size: 32
+    target_size: 36
+    overlap_genes:
+    - POPTR_006G052600
+    - POPTR_009G060800
+    - POPTR_010G074700
+    - POPTR_010G074800
+    - POPTR_013G019800
+    - POPTR_014G125100
+    - POPTR_014G155300
+  evidence:
+  - reference: PMID:16412089
+    reference_title: 'Biosynthesis of cellulose-enriched tension wood in Populus: global analysis of transcripts
+      and metabolites identifies biochemical and developmental regulators in the G-layer.'
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Tension wood G-fibers deposit a post-mitotic gelatinous secondary cell wall layer, not
+      a primary cell wall; GO:0009833 (plant-type primary cell wall biogenesis) is enriched because PANTHER
+      IBA projects primary-wall CESA1/3/6 annotations across the entire CESA family tree.
+  curator_note: 'PANTHER family-wide IBA over-projection trap in polyploid trees: PANTHER tree PTN000188811
+    transfers both primary cell wall biogenesis (GO:0009833) and secondary cell wall biogenesis (GO:0009834)
+    to all 9 Populus CESA/CSL paralogs across all 4 variants (p_adj=2.66e-12).'
+- term:
+    id: GO:0000281
+    label: mitotic cytokinesis
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.5323e-15
+    p_adjust: 7.606e-11
+    overlap: 7
+    query_size: 32
+    target_size: 42
+    overlap_genes:
+    - POPTR_006G052600
+    - POPTR_009G060800
+    - POPTR_010G074700
+    - POPTR_010G074800
+    - POPTR_013G019800
+    - POPTR_014G125100
+    - POPTR_014G155300
+  evidence:
+  - reference: PMID:16412089
+    reference_title: 'Biosynthesis of cellulose-enriched tension wood in Populus: global analysis of transcripts
+      and metabolites identifies biochemical and developmental regulators in the G-layer.'
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Differentiating tension wood G-fibers are non-dividing post-cambial cells; GO:0000281
+      (mitotic cytokinesis) is over-projected by PANTHER IBA from Arabidopsis cell-plate CESA/CSLD paralogs
+      onto all 9 Populus CESA/CSL genes.
+  curator_note: 'Second PANTHER IBA over-projection on the CESA family tree: all 9 CESA/CSL genes receive
+    GO:0000281 (mitotic cytokinesis, p_adj=1.78e-10) across all variants including IBA-only.'
+- term:
+    id: GO:0051301
+    label: cell division
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.4343e-11
+    p_adjust: 1.0315e-06
+    overlap: 7
+    query_size: 32
+    target_size: 156
+    overlap_genes:
+    - POPTR_006G052600
+    - POPTR_009G060800
+    - POPTR_010G074700
+    - POPTR_010G074800
+    - POPTR_013G019800
+    - POPTR_014G125100
+    - POPTR_014G155300
+  evidence:
+  - reference: PMID:16412089
+    reference_title: 'Biosynthesis of cellulose-enriched tension wood in Populus: global analysis of transcripts
+      and metabolites identifies biochemical and developmental regulators in the G-layer.'
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: GO:0051301 (cell division) is the parent roll-up of the erroneous PANTHER IBA mitotic
+      cytokinesis annotation on the 9 post-mitotic xylem CESA/CSL paralogs.
+  curator_note: Parent roll-up of the PANTHER IBA cytokinesis over-projection (9/32 genes across all 4
+    variants).
+- term:
+    id: GO:0080165
+    label: callose deposition in phloem sieve plate
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.7967e-09
+    p_adjust: 5.3966e-05
+    overlap: 3
+    query_size: 32
+    target_size: 4
+    overlap_genes:
+    - POPTR_004G081300
+    - POPTR_015G029100
+    - POPTR_017G139100
+  evidence:
+  - reference: PMID:16412089
+    reference_title: 'Biosynthesis of cellulose-enriched tension wood in Populus: global analysis of transcripts
+      and metabolites identifies biochemical and developmental regulators in the G-layer.'
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Xylem sucrose synthases (PtSUS1/PtSUS2 orthologs) supply UDP-glucose for xylem secondary
+      wall cellulose rather than phloem sieve-plate callose plugs; PANTHER IBA projects Arabidopsis phloem-specific
+      SUS5/SUS6 annotations (GO:0080165, callose deposition in phloem sieve plate) onto all 6 Populus
+      SUS paralogs.
+  curator_note: 'Subfamily-blind PANTHER IBA over-projection: Arabidopsis SUS5/SUS6 are phloem sieve-plate
+    callose partners, whereas SUS1-4 are general/xylem isoforms, yet PANTHER projects GO:0080165 to all
+    6 Populus SUS genes across all variants (p_adj=6.88e-13).'

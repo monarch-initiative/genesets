@@ -1,0 +1,435 @@
+gene_set_id: LIT:ARATH_PHLOEM_SIEVE_ELEMENT_COMPANION
+gene_set_name: ARATH_PHLOEM_SIEVE_ELEMENT_COMPANION
+collection: LIT:PLANT_CELL_TYPE
+taxon:
+  id: NCBITaxon:3702
+  label: Arabidopsis thaliana
+direction: UP
+series: SERIES:ARATH_VASCULAR_TISSUES
+series_role: phloem_sieve_companion
+n_genes: 34
+description: The Arabidopsis thaliana phloem sieve-element differentiation, enucleation, sieve-plate callose/P-protein
+  assembly, and companion-cell sucrose/florigen loading program (Furuta et al. 2014 Science PMID:25378460;
+  Wallner et al. 2017 Curr Biol PMID:28392111; Kim et al. 2021 Plant Cell PMID:33793811). Contrasts with
+  ARATH_SECONDARY_CELL_WALL_REGULON (xylem vessels and fibers) in SERIES:ARATH_VASCULAR_TISSUES. Includes
+  protophloem/metaphloem specification factors (APL, SMXL3, SMXL4, SMXL5, OPS, BRX, CVP2/IP5P6, CVL1/IP5P7),
+  CLE45-BAM3/RPK2/CRN/CLV2 autocrine peptide signaling, NAC45/86-NEN1/2/3/4 sieve-element enucleation
+  nucleases, sieve-plate callose synthases and P-proteins (CALS7, CALS3, CALS10, SEOA, SEOB, CHER1), and
+  companion-cell apoplastic sucrose/florigen loaders (SUC2, SUC1, SWEET11, SWEET12, SWEET13, AHA3, FT,
+  TSF, FTIP1).
+contexts:
+- term:
+    id: PO:0025034
+    label: leaf
+  context_type: anatomical_structure
+  role_note: Source leaf vascular bundles where companion cells load photoassimilates and florigen into
+    enucleated sieve elements.
+- term:
+    id: PO:0009005
+    label: root
+  context_type: anatomical_structure
+  role_note: Root protophloem differentiation zone where APL, SMXL3/4/5, OPS, BRX, and NAC45/86-NEN1-4
+    direct sieve element morphogenesis.
+associations:
+- term:
+    id: GO:0010088
+    label: phloem development
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.3927e-21
+    p_adjust: 3.1308e-16
+    overlap: 10
+    query_size: 34
+    target_size: 36
+    overlap_genes:
+    - APL
+    - BAM3
+    - BRX
+    - CHER1
+    - CLE45
+    - CLV2
+    - CRN
+    - OPS
+    - SEOA
+    - SEOB
+  evidence:
+  - reference: PMID:25378460
+    reference_title: Arabidopsis NAC45/86-dependentonne-endonuclease-mediated enucleation during phloem
+      sieve element differentiation.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: APL, SMXL3, SMXL4, SMXL5, OPS, BRX, BAM3, CLE45, CVP2, and CVL1 control protophloem and
+      metaphloem specification and differentiation.
+  curator_note: Core developmental process of the vascular phloem pole (10/34 members; recovered in all,
+    iba_iea, and iba).
+- term:
+    id: GO:0090603
+    label: sieve element differentiation
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.7069e-12
+    p_adjust: 4.8502e-07
+    overlap: 4
+    query_size: 34
+    target_size: 4
+    overlap_genes:
+    - BRX
+    - CHER1
+    - NAC045
+    - NAC086
+  evidence:
+  - reference: PMID:25378460
+    reference_title: Arabidopsis NAC45/86-dependent exoribonuclease-mediated enucleation during phloem
+      sieve element differentiation.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: NAC045, NAC086, NEN1, and NEN4 execute the terminal differentiation and enucleation of
+      conducting phloem sieve elements.
+  curator_note: Mechanistically resolves sieve-element differentiation within the phloem lineage (4/34
+    members; recovered in all only, 0 in iba_iea and iba).
+- term:
+    id: GO:0015770
+    label: sucrose transport
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.2294e-10
+    p_adjust: 1.6086e-05
+    overlap: 5
+    query_size: 34
+    target_size: 22
+    overlap_genes:
+    - SUC1
+    - SUC2
+    - SWEET11
+    - SWEET12
+    - SWEET13
+  evidence:
+  - reference: PMID:33793811
+    reference_title: Single-cell RNA-seq analysis in Arabidopsis leaf tissues reveals distinct cell-type
+      programs.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Phloem parenchyma effluxers (SWEET11, SWEET12, SWEET13) and companion-cell H+-symporters
+      (SUC2, SUC1) energized by AHA3 drive apoplastic phloem sucrose loading.
+  curator_note: Core physiological function of the companion-cell/sieve-element complex (5/34 members;
+    recovered in all only).
+- term:
+    id: GO:0010233
+    label: phloem transport
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.1802e-08
+    p_adjust: 0.0028527
+    overlap: 4
+    query_size: 34
+    target_size: 21
+    overlap_genes:
+    - CALS7
+    - OPS
+    - SMXL4
+    - SMXL5
+  evidence:
+  - reference: PMID:28392111
+    reference_title: SMXL3, SMXL4 and SMXL5 are required for phloem formation.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: CALS7 sieve-plate callose pores and SMXL4/SMXL5/OPS-specified sieve tubes mediate long-distance
+      symplastic phloem transport from source leaves to sinks.
+  curator_note: Core long-distance vascular transport process (4/34 members; recovered in all only).
+- term:
+    id: GO:0008515
+    label: sucrose transmembrane transporter activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.0165e-11
+    p_adjust: 5.2554e-06
+    overlap: 5
+    query_size: 34
+    target_size: 18
+    overlap_genes:
+    - SUC1
+    - SUC2
+    - SWEET11
+    - SWEET12
+    - SWEET13
+  evidence:
+  - reference: PMID:33793811
+    reference_title: Single-cell RNA-seq analysis in Arabidopsis leaf tissues reveals distinct cell-type
+      programs.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: SUC2, SUC1, SWEET11, SWEET12, and SWEET13 catalyze sucrose transmembrane transport across
+      phloem parenchyma and companion cell plasma membranes.
+  curator_note: Molecular transporter activity powering phloem loading (5/34 members; recovered in all
+    and iba_iea).
+- term:
+    id: GO:0097218
+    label: sieve plate
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.7989e-09
+    p_adjust: 0.00036623
+    overlap: 3
+    query_size: 34
+    target_size: 3
+    overlap_genes:
+    - CHER1
+    - SEOA
+    - SEOB
+  evidence:
+  - reference: PMID:25378460
+    reference_title: Arabidopsis NAC45/86-dependent exoribonuclease-mediated enucleation during phloem
+      sieve element differentiation.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Choline transporter-like CHER1 and sieve-element occlusion forisomes SEOA and SEOB localize
+      to the perforated phloem sieve plate.
+  curator_note: 'Signature anatomical structure connecting adjacent enucleated sieve elements (3/34 members:
+    CHER1, SEOA, SEOB; recovered in all only).'
+- term:
+    id: GO:0005886
+    label: plasma membrane
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.682e-07
+    p_adjust: 0.022008
+    overlap: 18
+    query_size: 34
+    target_size: 3401
+    overlap_genes:
+    - AHA3
+    - BAM3
+    - BRX
+    - CALS10
+    - CALS3
+    - CALS7
+    - CHER1
+    - CLV2
+    - CRN
+    - FTIP1
+    - IP5P7
+    - OPS
+    - RPK2
+    - SUC1
+    - SUC2
+    - SWEET11
+    - SWEET12
+    - SWEET13
+  evidence:
+  - reference: PMID:33793811
+    reference_title: Single-cell RNA-seq analysis in Arabidopsis leaf tissues reveals distinct cell-type
+      programs.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: SUC2, SWEET11/12/13, AHA3, BAM3, RPK2, CRN, CLV2, OPS, BRX, and CALS7/3/10 localize to
+      the plasma membrane of companion cells and sieve elements.
+  curator_note: Membrane compartment housing phloem sucrose loaders and peptide receptors (18/34 members).
+- term:
+    id: GO:0090602
+    label: sieve element enucleation
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: mechanistic
+  evidence:
+  - reference: PMID:25378460
+    reference_title: Arabidopsis NAC45/86-dependent exoribonuclease-mediated enucleation during phloem
+      sieve element differentiation.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: NAC045 and NAC086 directly induce NEN1, NEN2, NEN3, and NEN4 to degrade the nucleus during
+      sieve element enucleation (GO:0090602).
+  curator_note: GO:0090602 (sieve element enucleation) is the exact biological process discovered for
+    NAC45/86 and NEN1-4 (Furuta et al. 2014 Science), but TAIR GAF only annotates NAC45/86 and NEN1/4
+    to parent GO:0090603 (sieve element differentiation) or generic nuclease terms.
+- term:
+    id: GO:0032502
+    label: developmental process
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.3506e-12
+    p_adjust: 3.0756e-07
+    overlap: 22
+    query_size: 34
+    target_size: 2989
+    overlap_genes:
+    - APL
+    - BAM3
+    - BRX
+    - CALS10
+    - CHER1
+    - CLE45
+    - CLV2
+    - CRN
+    - FT
+    - FTIP1
+    - IP5P6
+    - IP5P7
+    - NAC045
+    - NAC086
+    - OPS
+    - RPK2
+    - SEOA
+    - SEOB
+    - SWEET11
+    - SWEET12
+    - SWEET13
+    - TSF
+  evidence:
+  - reference: PMID:25378460
+    reference_title: Arabidopsis NAC45/86-dependent exoribonuclease-mediated enucleation during phloem
+      sieve element differentiation.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Top-level developmental process roll-up.
+  curator_note: Root-adjacent nonspecific developmental term (22/34 members).
+- term:
+    id: GO:0003013
+    label: circulatory system process
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.1802e-08
+    p_adjust: 0.0028527
+    overlap: 4
+    query_size: 34
+    target_size: 21
+    overlap_genes:
+    - CALS7
+    - OPS
+    - SMXL4
+    - SMXL5
+  evidence:
+  - reference: PMID:28392111
+    reference_title: SMXL3, SMXL4 and SMXL5 are required for phloem formation.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Vascular plants do not possess a heart or blood circulatory system; GO:0003013 (circulatory
+      system process) and GO:0003018 (vascular process in circulatory system) are enriched because the
+      GO hierarchy places plant vascular transport (GO:0010232) and phloem transport (GO:0010233) as is_a
+      children of vertebrate-centric GO:0003018/GO:0003013.
+  curator_note: 'Vertebrate-centric GO hierarchy artifact: any plant gene annotated to phloem transport
+    (CALS7, OPS, SMXL4, SMXL5) automatically inherits ''circulatory system process'' (GO:0003013, p_adj=2.85e-03)
+    via true-path propagation.'
+- term:
+    id: GO:0010078
+    label: maintenance of root meristem identity
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 8.6573e-09
+    p_adjust: 0.0011328
+    overlap: 5
+    query_size: 34
+    target_size: 49
+    overlap_genes:
+    - BAM3
+    - BRX
+    - CLE45
+    - CLV2
+    - CRN
+  evidence:
+  - reference: PMID:28392111
+    reference_title: SMXL3, SMXL4 and SMXL5 are required for phloem formation.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: In this phloem module, CLE45, BAM3, CLV2, CRN, and BRX suppress or promote protophloem
+      differentiation rather than maintaining the stem-cell niche of the root quiescent center (GO:0010078).
+  curator_note: 'Receptor-module pleiotropy artifact in all (5/34 genes: BAM3, BRX, CLE45, CLV2, CRN,
+    p_adj=1.13e-03), avoided by iba_iea and iba.'
+- term:
+    id: GO:0009834
+    label: plant-type secondary cell wall biogenesis
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: false_association
+  evidence:
+  - reference: PMID:25378460
+    reference_title: Arabidopsis NAC45/86-dependent exoribonuclease-mediated enucleation during phloem
+      sieve element differentiation.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Lignified secondary cell wall biogenesis (GO:0009834) defines the contrasting xylem vessel/fiber
+      pole (ARATH_SECONDARY_CELL_WALL_REGULON) of SERIES:ARATH_VASCULAR_TISSUES.
+  curator_note: Contrasting pole trap against ARATH_SECONDARY_CELL_WALL_REGULON in SERIES:ARATH_VASCULAR_TISSUES.

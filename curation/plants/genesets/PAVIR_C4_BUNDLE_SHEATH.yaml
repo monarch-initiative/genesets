@@ -1,0 +1,456 @@
+gene_set_id: LIT:PAVIR_C4_BUNDLE_SHEATH
+gene_set_name: PAVIR_C4_BUNDLE_SHEATH
+collection: LIT:DOE_BER_BIOENERGY
+taxon:
+  id: NCBITaxon:38727
+  label: Panicum virgatum
+direction: UP
+series: SERIES:PAVIR_C4_KRANZ
+series_role: bundle_sheath_decarboxylation
+n_genes: 34
+description: C4 dicarboxylate decarboxylation and Calvin-Benson-Bassham refixation program in Kranz bundle
+  sheath cells of the NAD-ME C4 bioenergy grass Panicum virgatum (switchgrass) (Rao et al. 2016 Plant
+  Physiol PMID:27099212; Lovell et al. 2021 Nature PMID:33505029). Contrasts with PAVIR_C4_MESOPHYLL in
+  SERIES:PAVIR_C4_KRANZ. Imported C4 acids are decarboxylated in bundle sheath mitochondria by NAD-dependent
+  malic enzyme (NAD-ME) and cytosolic PEPCK to concentrate CO2 around bundle-sheath-restricted RuBisCO
+  (RBCS), RuBisCO activase (RCA), PRK, PGK, and SBPase/FBPase for Calvin-Benson-Bassham carbon assimilation.
+contexts:
+- term:
+    id: PO:0006023
+    label: bundle sheath
+  context_type: anatomical_structure
+  role_note: Inner Kranz chlorenchyma sheath surrounding leaf veins where NAD-ME decarboxylates C4 acids
+    to concentrate CO2 around RuBisCO.
+- term:
+    id: PO:0025034
+    label: leaf
+  context_type: anatomical_structure
+  role_note: Kranz-anatomy C4 photosynthetic leaf blade of Panicum virgatum.
+associations:
+- term:
+    id: GO:0006108
+    label: malate metabolic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.1757e-24
+    p_adjust: 5.6647e-20
+    overlap: 10
+    query_size: 34
+    target_size: 34
+    overlap_genes:
+    - PVAP13_5KG055100
+    - PVAP13_5KG515900
+    - PVAP13_5NG039100
+    - PVAP13_5NG473400
+    - PVAP13_5NG491300
+    - PVAP13_7NG086700
+    - PVAP13_8KG331900
+    - PVAP13_8NG228300
+    - PVAP13_9KG132400
+    - PVAP13_9NG251700
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Seven NAD-dependent malic enzyme (NAD-ME) paralogs oxidatively decarboxylate malate to
+      pyruvate and CO2 in bundle sheath mitochondria.
+  curator_note: Core decarboxylation process of NAD-ME C4 bundle sheath cells (7/34 members; recovered
+    in all and iba_iea, 0 in iba).
+- term:
+    id: GO:0015977
+    label: carbon fixation
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.1841e-07
+    p_adjust: 0.003083
+    overlap: 3
+    query_size: 34
+    target_size: 13
+    overlap_genes:
+    - PVAP13_9NG204511
+    - RBCS
+    - rbcL
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Ten bundle-sheath-restricted RuBisCO (RBCS) and RuBisCO activase (RCA) paralogs refix
+      the concentrated CO2 released by NAD-ME and PEPCK.
+  curator_note: Core photosynthetic carbon refixation restricted to bundle sheath cells in Kranz anatomy
+    (10/34 members; recovered in all and iba_iea).
+- term:
+    id: GO:0019253
+    label: reductive pentose-phosphate cycle
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.7469e-07
+    p_adjust: 0.014963
+    overlap: 2
+    query_size: 34
+    target_size: 2
+    overlap_genes:
+    - RBCS
+    - rbcL
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: RBCS, RCA, PRK, PGK, and stromal FBPase/SBPase execute the reductive pentose-phosphate
+      (Calvin-Benson-Bassham) cycle inside bundle sheath chloroplasts.
+  curator_note: Core stromal carbon reduction pathway of bundle sheath cells (17/34 members; recovered
+    in all and iba_iea).
+- term:
+    id: GO:0004471
+    label: malate dehydrogenase (decarboxylating) (NAD+) activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.1595e-15
+    p_adjust: 1.083e-10
+    overlap: 5
+    query_size: 34
+    target_size: 7
+    overlap_genes:
+    - PVAP13_7NG086700
+    - PVAP13_8KG331900
+    - PVAP13_8NG228300
+    - PVAP13_9KG132400
+    - PVAP13_9NG251700
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Seven switchgrass NAD-ME paralogs catalyze NAD+-dependent malate decarboxylation (GO:0004471),
+      the signature enzyme defining the NAD-ME C4 biochemical subtype.
+  curator_note: Biochemical hallmark distinguishing NAD-ME switchgrass from NADP-ME grasses like sorghum
+    and maize (7/34 members; recovered in all and iba_iea).
+- term:
+    id: GO:0004612
+    label: phosphoenolpyruvate carboxykinase (ATP) activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.9203e-13
+    p_adjust: 7.6032e-09
+    overlap: 4
+    query_size: 34
+    target_size: 4
+    overlap_genes:
+    - PVAP13_7KG326200
+    - PVAP13_7NG316224
+    - PVAP13_9KG517100
+    - PVAP13_9NG671314
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Four bundle-sheath ATP-dependent phosphoenolpyruvate carboxykinase (PEPCK) paralogs provide
+      auxiliary oxaloacetate decarboxylation in switchgrass bundle sheath cells.
+  curator_note: Captures the secondary PEPCK decarboxylation wing active in switchgrass bundle sheath
+    cells (4/34 members; recovered in all and iba_iea).
+- term:
+    id: GO:0016984
+    label: ribulose-bisphosphate carboxylase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.9203e-13
+    p_adjust: 7.6032e-09
+    overlap: 4
+    query_size: 34
+    target_size: 4
+    overlap_genes:
+    - PVAP13_9NG204511
+    - PVAP13_9NG204584
+    - RBCS
+    - rbcL
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Six RuBisCO small subunit (RBCS) paralogs assemble with plastid RbcL to provide ribulose-bisphosphate
+      carboxylase activity exclusively in bundle sheath chloroplasts.
+  curator_note: Core carboxylase enzyme of the bundle sheath Calvin cycle (6/34 members; recovered in
+    all and iba_iea).
+- term:
+    id: GO:0046863
+    label: ribulose-1,5-bisphosphate carboxylase/oxygenase activator activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.1891e-15
+    p_adjust: 3.0959e-11
+    overlap: 5
+    query_size: 34
+    target_size: 6
+    overlap_genes:
+    - PVAP13_7KG428800
+    - PVAP13_7NG391900
+    - PVAP13_8KG245700
+    - PVAP13_8KG245850
+    - PVAP13_8NG297400
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Four RuBisCO activase (RCA) paralogs remodel inhibited RuBisCO catalytic sites via AAA+
+      ATPase activity in bundle sheath chloroplasts.
+  curator_note: Essential chaperone/activase maintaining RuBisCO activity under high bundle-sheath CO2
+    and heat (4/34 members; recovered in all and iba_iea).
+- term:
+    id: GO:0009507
+    label: chloroplast
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 6.6252e-17
+    p_adjust: 1.7249e-12
+    overlap: 19
+    query_size: 34
+    target_size: 2106
+    overlap_genes:
+    - PVAP13_1KG462500
+    - PVAP13_1NG438700
+    - PVAP13_2NG117500
+    - PVAP13_5KG055100
+    - PVAP13_5KG515900
+    - PVAP13_5KG535300
+    - PVAP13_5NG039100
+    - PVAP13_5NG473400
+    - PVAP13_5NG491300
+    - PVAP13_5NG632004
+    - PVAP13_7KG319200
+    - PVAP13_7KG428800
+    - PVAP13_7NG391900
+    - PVAP13_8KG245700
+    - PVAP13_8KG245850
+    - PVAP13_8NG297400
+    - PVAP13_9KG500300
+    - RBCS
+    - rbcL
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: RuBisCO, RCA, PRK, and stromal phosphatases localize to bundle sheath chloroplasts.
+  curator_note: Plastid compartment housing the bundle sheath Calvin cycle (16/34 members; recovered in
+    all and iba_iea).
+- term:
+    id: GO:0009570
+    label: chloroplast stroma
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: confirmatory
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: RBCS and RCA localize to the chloroplast stroma of bundle sheath cells.
+  curator_note: Specific sub-plastid compartment of CO2 refixation; only RBCS paralogs carry GO:0009570
+    in switchgrass IEA while Calvin-cycle phosphatases/kinases carry generic GO:0009507 (chloroplast),
+    leaving GO:0009570 just below the multi-set Bonferroni threshold.
+- term:
+    id: GO:0009760
+    label: C4 photosynthesis
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: confirmatory
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: NAD-ME, PEPCK, and bundle-sheath RuBisCO/Calvin-cycle enzymes execute the bundle-sheath
+      decarboxylation and refixation phase of C4 photosynthesis.
+  curator_note: Zero genes in the Panicum virgatum EBI GOA proteome are annotated to GO:0009760 (C4 photosynthesis)
+    because automated IEA rules only assign individual enzymatic reactions.
+- term:
+    id: GO:0009763
+    label: NAD-malic enzyme C4 photosynthesis
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: mechanistic
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Panicum virgatum is a textbook NAD-malic enzyme C4 grass (GO:0009763) relying on mitochondrial
+      NAD-ME in bundle sheath cells.
+  curator_note: High-precision subtype term (GO:0009763, NAD-malic enzyme C4 photosynthesis) completely
+    unannotated in the switchgrass IEA proteome.
+- term:
+    id: GO:0003824
+    label: catalytic activity
+  aspect: molecular_function
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.1671e-12
+    p_adjust: 5.6423e-08
+    overlap: 34
+    query_size: 34
+    target_size: 20064
+    overlap_genes:
+    - PVAP13_1KG462500
+    - PVAP13_1NG438700
+    - PVAP13_2NG117500
+    - PVAP13_4KG017300
+    - PVAP13_4NG035900
+    - PVAP13_5KG055100
+    - PVAP13_5KG515900
+    - PVAP13_5KG535300
+    - PVAP13_5NG039100
+    - PVAP13_5NG473400
+    - PVAP13_5NG491300
+    - PVAP13_5NG632004
+    - PVAP13_7KG032229
+    - PVAP13_7KG319200
+    - PVAP13_7KG326200
+    - PVAP13_7KG428800
+    - PVAP13_7NG086700
+    - PVAP13_7NG211917
+    - PVAP13_7NG316224
+    - PVAP13_7NG391900
+    - PVAP13_8KG245700
+    - PVAP13_8KG245850
+    - PVAP13_8KG331900
+    - PVAP13_8NG228300
+    - PVAP13_8NG297400
+    - PVAP13_9KG132400
+    - PVAP13_9KG500300
+    - PVAP13_9KG517100
+    - PVAP13_9NG204511
+    - PVAP13_9NG204584
+    - PVAP13_9NG251700
+    - PVAP13_9NG671314
+    - RBCS
+    - rbcL
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Top-level molecular-function roll-up across all 34 bundle sheath enzymes.
+  curator_note: Generic catalytic activity roll-up (34/34 members).
+- term:
+    id: GO:0006094
+    label: gluconeogenesis
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.7396e-16
+    p_adjust: 7.1327e-12
+    overlap: 7
+    query_size: 34
+    target_size: 32
+    overlap_genes:
+    - PVAP13_5KG535300
+    - PVAP13_5NG632004
+    - PVAP13_7KG326200
+    - PVAP13_7NG316224
+    - PVAP13_9KG500300
+    - PVAP13_9KG517100
+    - PVAP13_9NG671314
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: In C4 bundle sheath cells, PEPCK decarboxylates OAA to supply CO2 to RuBisCO while chloroplastic
+      PGK and FBPase/SBPase drive the photosynthetic Calvin cycle, not heterotrophic gluconeogenesis from
+      lipid/protein reserves.
+  curator_note: 'IEA pathway-context error: UniRule/InterPro IEA maps PEPCK, PGK, and FBPase/SBPase to
+    GO:0006094 (gluconeogenesis, 14/34 genes, p_adj=2.66e-24 in all and iba_iea) without distinguishing
+    photosynthetic carbon assimilation from heterotrophic gluconeogenesis.'

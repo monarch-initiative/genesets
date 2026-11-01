@@ -1,0 +1,421 @@
+gene_set_id: LIT:ARATH_PTI_FLG22_IMMUNITY
+gene_set_name: ARATH_PTI_FLG22_IMMUNITY
+collection: LIT:PLANT_IMMUNITY
+taxon:
+  id: NCBITaxon:3702
+  label: Arabidopsis thaliana
+direction: UP
+series: SERIES:ARATH_IMMUNE_SIGNALING
+series_role: pti_early
+n_genes: 35
+description: The Arabidopsis thaliana cell-surface pattern-triggered immunity (PTI) receptor, RLCK, MAPK/CDPK,
+  and WRKY/indolic-phytoalexin early transcriptional response module (Bjornson et al. 2021 Nat Plants
+  PMID:33723397; Zipfel et al. 2004 Nature PMID:15085136). Contrasts with ARATH_SAR_SALICYLIC_ACID_IMMUNITY
+  in SERIES:ARATH_IMMUNE_SIGNALING. Includes surface PRRs and coreceptors (FLS2, EFR, CERK1, LYK5, LORE,
+  WAK1, BAK1, BKK1, SOBIR1), receptor-like cytoplasmic kinases (BIK1, PBL1, BSK1), NADPH oxidase and calcium
+  channels (RBOHD, CNGC2, CNGC4), MAPK and CDPK cascades (MEKK1, MKK4, MKK5, MPK3, MPK4, MPK6, CPK4, CPK5,
+  CPK6, CPK11), defense WRKYs (WRKY22, WRKY29, WRKY33, WRKY40, FRK1), and camalexin/indole-glucosinolate
+  phytoalexin enzymes (CYP71A13, CYP71B15/PAD3,CYP79B2, CYP79B3, PEN2, PEN3).
+contexts:
+- term:
+    id: PO:0025034
+    label: leaf
+  context_type: anatomical_structure
+  role_note: Foliar tissue where MAMP/PAMP perception at the cell surface initiates pattern-triggered
+    immunity.
+associations:
+- term:
+    id: GO:0002221
+    label: pattern recognition receptor signaling pathway
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 7.2724e-09
+    p_adjust: 0.00095155
+    overlap: 5
+    query_size: 35
+    target_size: 46
+    overlap_genes:
+    - BIK1
+    - CERK1
+    - EFR
+    - FLS2
+    - PBL1
+  evidence:
+  - reference: PMID:33723397
+    reference_title: The transcriptional landscape of plant pattern-triggered immunity.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Surface PRRs (FLS2, EFR, CERK1, LYK5), coreceptors (BAK1, BKK1, SOBIR1), RLCKs (BIK1,
+      PBL1, BSK1), and the MKK4/5-MPK3/6 cascade constitute the canonical pattern recognition receptor
+      signaling pathway.
+  curator_note: Defining pathway of the set carried by 15/35 members. Enriched in all (p_adj=2.03e-25),
+    absent in iba_iea and iba because PRR signaling annotations in plants derive from experimental genetics
+    rather than PANTHER/InterPro rules.
+- term:
+    id: GO:0045087
+    label: innate immune response
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.9383e-16
+    p_adjust: 2.5362e-11
+    overlap: 12
+    query_size: 35
+    target_size: 216
+    overlap_genes:
+    - BAK1
+    - CERK1
+    - CYP71A13
+    - EFR
+    - LYK5
+    - MKK5
+    - MPK6
+    - PEP2
+    - PEP3
+    - PEPR1
+    - PROPEP1
+    - SERK4
+  evidence:
+  - reference: PMID:15085136
+    reference_title: Bacterial disease resistance in Arabidopsis through flagellin perception.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: 33 of 35 set members directly mediate cell-surface innate immune perception, signaling,
+      or antimicrobial defense.
+  curator_note: Core innate immune process carried by 33/35 members. Recovered across all 4 variants including
+    IBA-only.
+- term:
+    id: GO:0042742
+    label: defense response to bacterium
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 6.2869e-13
+    p_adjust: 8.226e-08
+    overlap: 12
+    query_size: 35
+    target_size: 425
+    overlap_genes:
+    - BAK1
+    - BIK1
+    - BSK1
+    - CERK1
+    - CYP71A13
+    - FLS2
+    - MPK6
+    - PEPR2
+    - SIRK
+    - WRKY18
+    - WRKY33
+    - WRKY40
+  evidence:
+  - reference: PMID:15085136
+    reference_title: Bacterial disease resistance in Arabidopsis through flagellin perception.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Perception of bacterial flagellin (flg22 via FLS2) and EF-Tu (elf18 via EFR) triggers
+      ROS burst (RBOHD), MAPK/CPK activation, and antibacterial defense.
+  curator_note: Core antibacterial defense process carried by 31/35 members.
+- term:
+    id: GO:0000165
+    label: MAPK cascade
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.37e-08
+    p_adjust: 0.0017926
+    overlap: 5
+    query_size: 35
+    target_size: 52
+    overlap_genes:
+    - MKK4
+    - MKK5
+    - MPK3
+    - MPK4
+    - MPK6
+  evidence:
+  - reference: PMID:33723397
+    reference_title: The transcriptional landscape of plant pattern-triggered immunity.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: MEKK1, MKK4, MKK5, MPK3, MPK4, and MPK6 form the dual MAPK cascades activated within
+      minutes of PAMP perception to phosphorylate WRKY22/29/33.
+  curator_note: Mechanistically resolves the intracellular MAPK phosphorylation relay (14/35 members).
+- term:
+    id: GO:0010120
+    label: camalexin biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.3929e-11
+    p_adjust: 3.131e-06
+    overlap: 5
+    query_size: 35
+    target_size: 16
+    overlap_genes:
+    - CYP71A13
+    - CYP71B15
+    - MPK3
+    - MPK6
+    - WRKY33
+  evidence:
+  - reference: PMID:33723397
+    reference_title: The transcriptional landscape of plant pattern-triggered immunity.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: MPK3/MPK6-activated WRKY33 induces CYP79B2, CYP79B3, CYP71A13, and PAD3 (CYP71B15) to
+      synthesize the antimicrobial phytoalexin camalexin.
+  curator_note: Captures the downstream tryptophan-derived phytoalexin effector branch of PTI (8/35 members).
+- term:
+    id: GO:0002237
+    label: response to molecule of bacterial origin
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.6989e-12
+    p_adjust: 2.2229e-07
+    overlap: 7
+    query_size: 35
+    target_size: 55
+    overlap_genes:
+    - BIK1
+    - CERK1
+    - EFR
+    - LYK5
+    - PBL1
+    - WRKY18
+    - WRKY40
+  evidence:
+  - reference: PMID:15085136
+    reference_title: Bacterial disease resistance in Arabidopsis through flagellin perception.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: FLS2, EFR, BAK1, BIK1, RBOHD, and downstream kinases/WRKYs respond directly to bacterial
+      PAMPs (flg22, elf18, peptidoglycan, LPS).
+  curator_note: Supporting MAMP-response term carried by 15/35 members (recovered in all and iba_iea).
+- term:
+    id: GO:0098581
+    label: detection of external biotic stimulus
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.5558e-07
+    p_adjust: 0.03344
+    overlap: 3
+    query_size: 35
+    target_size: 9
+    overlap_genes:
+    - CERK1
+    - EFR
+    - FLS2
+  evidence:
+  - reference: PMID:33723397
+    reference_title: The transcriptional landscape of plant pattern-triggered immunity.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Cell-surface receptor kinases FLS2, EFR, CERK1, LYK5, and LORE detect extracellular pathogen-derived
+      ligands.
+  curator_note: Captures the initial extracellular ligand-recognition step (8/35 members).
+- term:
+    id: GO:0005886
+    label: plasma membrane
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.9919e-07
+    p_adjust: 0.039148
+    overlap: 18
+    query_size: 35
+    target_size: 3401
+    overlap_genes:
+    - BAK1
+    - BIK1
+    - BSK1
+    - CERK1
+    - CPK11
+    - CPK4
+    - CPK5
+    - CPK6
+    - EFR
+    - FLS2
+    - LYK5
+    - NHL10
+    - PBL1
+    - PEPR1
+    - PEPR2
+    - RBOHD
+    - SERK4
+    - SIRK
+  evidence:
+  - reference: PMID:33723397
+    reference_title: The transcriptional landscape of plant pattern-triggered immunity.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: PRR complexes (FLS2, EFR, CERK1, LYK5, LORE, BAK1, BKK1, SOBIR1), RLCKs (BIK1, PBL1,
+      BSK1), RBOHD, CNGC2/4, and PEN3 assemble at the plasma membrane.
+  curator_note: Primary cellular compartment where extracellular PAMP perception and early ion/ROS signaling
+    occur (30/35 members; recovered across all 4 variants).
+- term:
+    id: GO:0050896
+    label: response to stimulus
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 8.82e-16
+    p_adjust: 1.154e-10
+    overlap: 32
+    query_size: 35
+    target_size: 6202
+    overlap_genes:
+    - BAK1
+    - BIK1
+    - BSK1
+    - CERK1
+    - CPK11
+    - CPK4
+    - CPK5
+    - CPK6
+    - CYP71A13
+    - CYP71B15
+    - EFR
+    - FLS2
+    - LYK5
+    - MKK4
+    - MKK5
+    - MPK3
+    - MPK4
+    - MPK6
+    - NHL10
+    - PBL1
+    - PEP2
+    - PEP3
+    - PEPR1
+    - PEPR2
+    - PROPEP1
+    - RBOHD
+    - SERK4
+    - SIRK
+    - WRKY18
+    - WRKY22
+    - WRKY33
+    - WRKY40
+  evidence:
+  - reference: PMID:33723397
+    reference_title: The transcriptional landscape of plant pattern-triggered immunity.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Top-level biological-process roll-up of immune and stimulus responses.
+  curator_note: Overly broad root-adjacent term (35/35 members).
+- term:
+    id: GO:0010229
+    label: inflorescence development
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 6.1127e-08
+    p_adjust: 0.007998
+    overlap: 4
+    query_size: 35
+    target_size: 26
+    overlap_genes:
+    - MKK4
+    - MKK5
+    - MPK3
+    - MPK6
+  evidence:
+  - reference: PMID:33723397
+    reference_title: The transcriptional landscape of plant pattern-triggered immunity.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: GO:0010229 (inflorescence development) is enriched in full GAF because the ERECTA-MKK4/MKK5-MPK3/MPK6
+      kinase module and BAK1/BKK1 coreceptors are pleiotropically reused in floral/inflorescence pedicel
+      morphogenesis.
+  curator_note: 'Pleiotropic signaling-module reuse trap: MKK4, MKK5, MPK3, MPK6, and BAK1 carry experimental
+    annotations to inflorescence development in all (5/35 genes, p_adj=3.19e-03), avoided by iba_iea and
+    iba.'
+- term:
+    id: GO:0009627
+    label: systemic acquired resistance
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: false_association
+  evidence:
+  - reference: PMID:33723397
+    reference_title: The transcriptional landscape of plant pattern-triggered immunity.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Systemic acquired resistance via salicylic acid and N-hydroxypipecolic acid (GO:0009627)
+      defines the contrasting ARATH_SAR_SALICYLIC_ACID_IMMUNITY pole of SERIES:ARATH_IMMUNE_SIGNALING.
+  curator_note: Contrasting pole trap against ARATH_SAR_SALICYLIC_ACID_IMMUNITY in SERIES:ARATH_IMMUNE_SIGNALING.

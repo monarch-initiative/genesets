@@ -1,0 +1,375 @@
+gene_set_id: LIT:ARATH_PHOSPHATE_STARVATION_PHR1
+gene_set_name: ARATH_PHOSPHATE_STARVATION_PHR1
+collection: LIT:PLANT_STRESS_RESPONSE
+taxon:
+  id: NCBITaxon:3702
+  label: Arabidopsis thaliana
+direction: UP
+series: SERIES:ARATH_ROOT_NUTRIENT_FORAGING
+series_role: phosphate_phr1_lipid_remodeling
+n_genes: 37
+description: The Arabidopsis thaliana PHR1/PHL1-SPX1/2/3/4 inositol-pyrophosphate phosphate starvation
+  response (PSR) regulon, PHT1-PHF1-PHO2/UBC24-NLA-PHO1 phosphate transport module, SQD1/2-MGD2/3-DGD1/2-NPC4/5
+  membrane phospholipid-to-sulfolipid/galactolipid substitution pathway, and secreted purple acid phosphatase
+  (PAP10/12/17/26) / STOP1-ALMT1-LPR1/2 organic-Pi scavenging program (Puga et al. 2014 PNAS PMID:25271326;
+  Bustos et al. 2010 PLoS Genet PMID:20838596). Contrasts with ARATH_IRON_DEFICIENCY_FIT_COUMARIN in SERIES:ARATH_ROOT_NUTRIENT_FORAGING.
+contexts:
+- term:
+    id: PO:0009005
+    label: root
+  context_type: anatomical_structure
+  role_note: Root system remodeling root architecture, secreting malate and acid phosphatases, and inducing
+    high-affinity PHT1 transporters under inorganic phosphate deprivation.
+associations:
+- term:
+    id: GO:0016036
+    label: cellular response to phosphate starvation
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.2001e-50
+    p_adjust: 4.1871e-45
+    overlap: 24
+    query_size: 37
+    target_size: 93
+    overlap_genes:
+    - DGD2
+    - LPR1
+    - LPR2
+    - MGD2
+    - MGD3
+    - NPC5
+    - PAP10
+    - PAP12
+    - PDR2
+    - PHF1
+    - PHL2
+    - PHO1
+    - PHO1-H1
+    - PHR1
+    - PHT1-1
+    - PHT1-2
+    - RNS1
+    - SPX1
+    - SPX2
+    - SPX3
+    - SPX4
+    - SQD1
+    - SQD2
+    - UBC24
+  evidence:
+  - reference: PMID:25271326
+    reference_title: SPX1 is a phosphate-dependent inhibitor of Phosphate Starvation Response 1 in Arabidopsis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: 24 of 37 set members directly mediate the PHR1/SPX transcriptional cascade, PHT1/PHO1
+      transport, or membrane lipid remodeling during cellular response to phosphate starvation.
+  curator_note: Defining biological process of the set carried by 24/37 members. Recovered across all
+    4 variants including IBA-only (p_adj=4.19e-45).
+- term:
+    id: GO:0006817
+    label: phosphate ion transport
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 6.461e-16
+    p_adjust: 8.4538e-11
+    overlap: 8
+    query_size: 37
+    target_size: 37
+    overlap_genes:
+    - PHF1
+    - PHO1
+    - PHO1-H1
+    - PHT1-1
+    - PHT1-2
+    - PHT1-4
+    - PHT1-5
+    - UBC24
+  evidence:
+  - reference: PMID:20838596
+    reference_title: A central role of MYB-CC transcription factors in the Arabidopsis phosphate starvation
+      response.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: High-affinity H+/Pi symporters (PHT1-1, PHT1-2, PHT1-4, PHT1-5), ER exit chaperone PHF1,
+      xylem exporters (PHO1, PHO1-H1), and ubiquitin E2/E3 regulators (PHO2/UBC24, NLA) govern phosphate
+      ion transport.
+  curator_note: Core nutrient uptake and root-to-shoot translocation process (8/37 members; recovered
+    in all and iba_iea).
+- term:
+    id: GO:0055062
+    label: phosphate ion homeostasis
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.1344e-10
+    p_adjust: 1.4843e-05
+    overlap: 5
+    query_size: 37
+    target_size: 20
+    overlap_genes:
+    - PAP17
+    - PAP26
+    - PHO1
+    - SPX4
+    - UBC24
+  evidence:
+  - reference: PMID:25271326
+    reference_title: SPX1 is a phosphate-dependent inhibitor of Phosphate Starvation Response 1 in Arabidopsis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: InsP8-sensing SPX1-4 proteins, PHR1/PHL1, IPS1/AT4 miRNA399 target mimics, PHO2/UBC24,
+      NLA, and PHO1 maintain systemic inorganic phosphate homeostasis.
+  curator_note: Captures systemic Pi sensing and homeostasis (5/37 members; recovered in all only).
+- term:
+    id: GO:0009247
+    label: glycolipid biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.4853e-12
+    p_adjust: 1.9434e-07
+    overlap: 7
+    query_size: 37
+    target_size: 51
+    overlap_genes:
+    - DGD1
+    - DGD2
+    - MGD2
+    - MGD3
+    - NPC5
+    - SQD1
+    - SQD2
+  evidence:
+  - reference: PMID:20838596
+    reference_title: A central role of MYB-CC transcription factors in the Arabidopsis phosphate starvation
+      response.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Under Pi starvation, PHR1 induces sulfolipid synthases (SQD1, SQD2) and galactolipid
+      synthases (MGD2, MGD3, DGD1, DGD2) alongside phospholipases (NPC4, NPC5) to replace membrane phospholipids
+      with non-phosphorus glycolipids.
+  curator_note: Mechanistically resolves the signature membrane phospholipid-to-glycolipid substitution
+    strategy that frees internal cellular phosphate (7/37 members; recovered across all 4 variants).
+- term:
+    id: GO:0019375
+    label: galactolipid biosynthetic process
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.7364e-09
+    p_adjust: 0.00048888
+    overlap: 4
+    query_size: 37
+    target_size: 13
+    overlap_genes:
+    - DGD1
+    - DGD2
+    - MGD2
+    - MGD3
+  evidence:
+  - reference: PMID:20838596
+    reference_title: A central role of MYB-CC transcription factors in the Arabidopsis phosphate starvation
+      response.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: MGD2, MGD3, DGD1, and DGD2 synthesize monogalactosyldiacylglycerol (MGDG) and digalactosyldiacylglycerol
+      (DGDG) for extraplastidic membrane replacement under Pi deficit.
+  curator_note: Resolves the galactolipid branch of phosphate-sparing membrane remodeling (4/37 members;
+    recovered across all 4 variants).
+- term:
+    id: GO:0005315
+    label: phosphate transmembrane transporter activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.9484e-11
+    p_adjust: 7.7832e-06
+    overlap: 6
+    query_size: 37
+    target_size: 43
+    overlap_genes:
+    - PHO1
+    - PHO1-H1
+    - PHT1-1
+    - PHT1-2
+    - PHT1-4
+    - PHT1-5
+  evidence:
+  - reference: PMID:20838596
+    reference_title: A central role of MYB-CC transcription factors in the Arabidopsis phosphate starvation
+      response.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: PHT1-1, PHT1-2, PHT1-4, PHT1-5, PHO1, and PHO1-H1 catalyze inorganic phosphate transmembrane
+      transport.
+  curator_note: Molecular transporter activity mediating rhizosphere Pi uptake and xylem loading (6/37
+    members; recovered in all and iba_iea).
+- term:
+    id: GO:0003993
+    label: acid phosphatase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.7501e-07
+    p_adjust: 0.049068
+    overlap: 4
+    query_size: 37
+    target_size: 38
+    overlap_genes:
+    - PAP10
+    - PAP12
+    - PAP17
+    - PAP26
+  evidence:
+  - reference: PMID:20838596
+    reference_title: A central role of MYB-CC transcription factors in the Arabidopsis phosphate starvation
+      response.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Secreted and vacuolar purple acid phosphatases PAP10, PAP12, PAP17, and PAP26 hydrolyze
+      rhizosphere and intracellular phosphate monoesters to liberate inorganic Pi.
+  curator_note: Enzymatic organic-P scavenging mechanism under Pi starvation (4/37 members; recovered
+    across all 4 variants).
+- term:
+    id: GO:0005886
+    label: plasma membrane
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: broadly_expressed
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: confirmatory
+  evidence:
+  - reference: PMID:20838596
+    reference_title: A central role of MYB-CC transcription factors in the Arabidopsis phosphate starvation
+      response.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: PHT1-1/2/4/5, NLA, ALMT1, NPC4, and root-surface PAP10/12/26 operate at the plasma membrane.
+  curator_note: Primary membrane site of Pi uptake, malate exudation, and phospholipid remodeling; diluted
+    by high background prevalence of GO:0005886 across the Arabidopsis proteome.
+- term:
+    id: GO:0050896
+    label: response to stimulus
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 6.1422e-12
+    p_adjust: 8.0367e-07
+    overlap: 30
+    query_size: 37
+    target_size: 6202
+    overlap_genes:
+    - ALMT1
+    - DGD1
+    - DGD2
+    - LPR1
+    - LPR2
+    - MGD2
+    - MGD3
+    - NLA
+    - NPC5
+    - PAP10
+    - PAP12
+    - PAP17
+    - PAP26
+    - PDR2
+    - PHF1
+    - PHL2
+    - PHO1
+    - PHO1-H1
+    - PHR1
+    - PHT1-1
+    - PHT1-2
+    - RNS1
+    - SPX1
+    - SPX2
+    - SPX3
+    - SPX4
+    - SQD1
+    - SQD2
+    - STOP1
+    - UBC24
+  evidence:
+  - reference: PMID:25271326
+    reference_title: SPX1 is a phosphate-dependent inhibitor of Phosphate Starvation Response 1 in Arabidopsis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Top-level biological-process roll-up of nutrient starvation responses.
+  curator_note: Overly broad root-adjacent term (35/37 members).
+- term:
+    id: GO:0006826
+    label: iron ion transport
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: false_association
+  evidence:
+  - reference: PMID:25271326
+    reference_title: SPX1 is a phosphate-dependent inhibitor of Phosphate Starvation Response 1 in Arabidopsis.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Iron ion transport (GO:0006826) defines the contrasting ARATH_IRON_DEFICIENCY_FIT_COUMARIN
+      pole of SERIES:ARATH_ROOT_NUTRIENT_FORAGING (whereas LPR1/LPR2 in PSR oxidize Fe only to arrest
+      primary root tip growth under low Pi).
+  curator_note: Contrasting pole trap against ARATH_IRON_DEFICIENCY_FIT_COUMARIN in SERIES:ARATH_ROOT_NUTRIENT_FORAGING.

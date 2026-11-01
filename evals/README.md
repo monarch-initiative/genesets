@@ -22,6 +22,9 @@ Normal `cargo test` does not depend on network access. Evals that fetch public d
   over the same stratified 5,000-set expression-like fixture.
 - `expression_like`: larger MyGeneset/MSigDB query snapshots, such as GSE or `*_UP`/`*_DN` signatures, for scale tests that look more like differential-expression outputs.
 - `reactome_flat`: the 500 expression-like query snapshot enriched against the official Reactome pathway GMT as a flat target library.
+- [`iba_vs_benchmark`](iba_vs_benchmark/README.md): GOA evidence variants (`all`, `no_contributes_to`, `iba_iea`, `iba`) scored against the human GO-interpretation gold standard in `curation/genesets/`.
+- [`cgsa`](cgsa/README.md): LLM-based gene set interpretation benchmark (Hu et al. 2024 CGSA panel) curated under `curation/cgsa/`.
+- [`plants`](plants/README.md): Multi-species plant GO-interpretation benchmark (30 gene sets in `curation/plants/`) scoring GOA evidence variants (`all`, `no_contributes_to`, `iba_iea`, `iba`) across *Arabidopsis thaliana* and five DOE/BER bioenergy & oilseed species (*Populus trichocarpa*, *Panicum virgatum*, *Sorghum bicolor*, *Thlaspi arvense*, *Brachypodium distachyon*).
 
 ## Principles
 

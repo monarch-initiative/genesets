@@ -1,0 +1,396 @@
+gene_set_id: LIT:ARATH_ROOT_HAIR_TRICHOBLAST
+gene_set_name: ARATH_ROOT_HAIR_TRICHOBLAST
+collection: LIT:PLANT_CELL_TYPE
+taxon:
+  id: NCBITaxon:3702
+  label: Arabidopsis thaliana
+direction: UP
+series: SERIES:ARATH_ROOT_EPIDERMIS
+series_role: trichoblast
+n_genes: 25
+description: Transcriptional and effector program of the Arabidopsis thaliana root hair (trichoblast,
+  H-position) epidermal cell lineage, defined by single-cell and developmental genetics studies (Ryu et
+  al. 2019 Plant Physiol PMID:30842268; Denyer et al. 2019 Dev Cell PMID:30910786; Bruex et al. 2012 PLoS
+  Genet PMID:22291601). Contrasts with ARATH_ROOT_ATRICHOBLAST (the non-hair N-position pole of SERIES:ARATH_ROOT_EPIDERMIS).
+  Includes the bHLH/C2H2 transcriptional cascade (RHD6, RSL2, RSL4, ZFP5) and polarized tip-growth effectors
+  (EXPA7, EXPA18, RBOHC, SFH1, LRX1, LRX2, IRE, MRH6, PERK13, PRP3, PIP5K3, ADF8, ARAC4, ACT8, CML25).
+contexts:
+- term:
+    id: PO:0000262
+    label: trichoblast
+  context_type: cell_type
+  role_note: Root epidermal hair-forming precursor cell (H-position) overlying a cleft between two cortical
+    cells.
+- term:
+    id: PO:0000256
+    label: root hair cell
+  context_type: cell_type
+  role_note: Differentiated tubular root epidermal cell executing polarized tip growth for water and nutrient
+    foraging.
+associations:
+- term:
+    id: GO:0010054
+    label: trichoblast differentiation
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.3173e-38
+    p_adjust: 1.7236e-33
+    overlap: 19
+    query_size: 25
+    target_size: 135
+    overlap_genes:
+    - ACT8
+    - ARAC4
+    - CML25
+    - DTX31
+    - EXPA7
+    - IP5P5
+    - KINUC
+    - LRX1
+    - MDIS2
+    - MRH6
+    - PIN3
+    - PIP5K3
+    - PRP3
+    - RHD6
+    - RSL2
+    - RSL4
+    - SFH1
+    - SRPP
+    - ZFP5
+  evidence:
+  - reference: PMID:22291601
+    reference_title: A gene regulatory network for root epidermis cell differentiation in Arabidopsis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Specification and differentiation of H-position trichoblasts is controlled by RHD6, RSL2,
+      RSL4, ZFP5, and downstream cell-wall and signaling effectors.
+  curator_note: Core epidermal fate determination process carried by 20/25 set members. Enriched in all
+    and iba_iea, but absent in IBA-only because angiosperm root-hair specification is not transferred
+    by PANTHER PAINT.
+- term:
+    id: GO:0048765
+    label: root hair cell differentiation
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.1037e-33
+    p_adjust: 2.7526e-28
+    overlap: 17
+    query_size: 25
+    target_size: 132
+    overlap_genes:
+    - ACT8
+    - ARAC4
+    - CML25
+    - DTX31
+    - EXPA7
+    - IP5P5
+    - KINUC
+    - MDIS2
+    - MRH6
+    - PIN3
+    - PIP5K3
+    - RHD6
+    - RSL2
+    - RSL4
+    - SFH1
+    - SRPP
+    - ZFP5
+  evidence:
+  - reference: PMID:30842268
+    reference_title: Single-Cell RNA Sequencing Resolves Molecular Relationships Among Individual Plant
+      Cells.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: RHD6, RSL2, RSL4, and tip-growth effectors (EXPA7, RBOHC, SFH1, LRX1, LRX2) directly
+      govern differentiation of root hair cells from H-position trichoblasts.
+  curator_note: Core lineage-defining process carried by 20/25 set members. Recovered in all and iba_iea,
+    absent in IBA-only.
+- term:
+    id: GO:0048767
+    label: root hair elongation
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.3417e-21
+    p_adjust: 1.7555e-16
+    overlap: 11
+    query_size: 25
+    target_size: 79
+    overlap_genes:
+    - ACT8
+    - ARAC4
+    - CML25
+    - DTX31
+    - EXPA7
+    - KINUC
+    - PIN3
+    - PIP5K3
+    - RHD6
+    - SFH1
+    - ZFP5
+  evidence:
+  - reference: PMID:30910786
+    reference_title: Spatiotemporal Developmental Trajectories in the Arabidopsis Root Revealed Using
+      High-Throughput Single-Cell RNA Sequencing.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Downstream of RHD6/RSL4, trichoblasts execute rapid polarized tip elongation driven by
+      ROS generation (RBOHC), phosphatidylinositol transfer (SFH1), and cell-wall remodeling (EXPA7, EXPA18,
+      LRX1, LRX2).
+  curator_note: Mechanistic effector process distinguishing mature root hair elongation from early fate
+    specification; carried by 15/25 members. Recovered in all only.
+- term:
+    id: GO:0048766
+    label: root hair initiation
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.6326e-20
+    p_adjust: 4.753e-15
+    overlap: 8
+    query_size: 25
+    target_size: 19
+    overlap_genes:
+    - ARAC4
+    - IP5P5
+    - PIN3
+    - PIP5K3
+    - RHD6
+    - RSL2
+    - RSL4
+    - ZFP5
+  evidence:
+  - reference: PMID:22291601
+    reference_title: A gene regulatory network for root epidermis cell differentiation in Arabidopsis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Bulge formation and localized cell-wall relaxation at the basal pole of the trichoblast
+      initiate the root hair protuberance via RHD6, RSL4, ARAC4, PIP5K3, and EXPA7.
+  curator_note: Specific morphogenetic initiation step carried by 9/25 set members (ARAC4, EXPA7, PIP5K3,
+    RBOHC, RHD6, RSL2, RSL4, SFH1, ZFP5).
+- term:
+    id: GO:0048768
+    label: root hair cell tip growth
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.5131e-10
+    p_adjust: 1.9798e-05
+    overlap: 5
+    query_size: 25
+    target_size: 31
+    overlap_genes:
+    - ACT8
+    - KINUC
+    - PIP5K3
+    - RHD6
+    - SFH1
+  evidence:
+  - reference: PMID:30842268
+    reference_title: Single-Cell RNA Sequencing Resolves Molecular Relationships Among Individual Plant
+      Cells.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Apical vesicle trafficking, PtdIns(4,5)P2 synthesis (PIP5K3, SFH1), and NADPH oxidase
+      ROS production (RBOHC) sustain polarized root hair cell tip growth.
+  curator_note: 'Captures the specialized apical tip-growth mechanism of root hair cells (6/25 members:
+    IRE, LRX1, PIP5K3, RBOHC, RSL4, SFH1).'
+- term:
+    id: GO:0009932
+    label: cell tip growth
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.3738e-10
+    p_adjust: 7.0313e-05
+    overlap: 7
+    query_size: 25
+    target_size: 177
+    overlap_genes:
+    - ACT8
+    - ARAC4
+    - IP5P5
+    - KINUC
+    - PIP5K3
+    - RHD6
+    - SFH1
+  evidence:
+  - reference: PMID:30842268
+    reference_title: Single-Cell RNA Sequencing Resolves Molecular Relationships Among Individual Plant
+      Cells.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Root hairs and pollen tubes share the conserved polarized tip-growth machinery including
+      RBOHC, SFH1, PIP5K3, LRX1, and IRE.
+  curator_note: Captures the biophysical mechanism of apical polarized expansion shared with pollen tubes
+    (7/25 members).
+- term:
+    id: GO:0009826
+    label: unidimensional cell growth
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.1388e-18
+    p_adjust: 1.49e-13
+    overlap: 13
+    query_size: 25
+    target_size: 306
+    overlap_genes:
+    - ACT8
+    - ARAC4
+    - EXPA18
+    - EXPA7
+    - IP5P5
+    - IRE
+    - KINUC
+    - LRX1
+    - LRX2
+    - PIP5K3
+    - RHD6
+    - SFH1
+    - SRPP
+  evidence:
+  - reference: PMID:30910786
+    reference_title: Spatiotemporal Developmental Trajectories in the Arabidopsis Root Revealed Using
+      High-Throughput Single-Cell RNA Sequencing.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Trichoblasts expand unidimensionally perpendicular to the root axis during tubular root
+      hair outgrowth.
+  curator_note: Supporting morphogenetic process carried by 17/25 set members.
+- term:
+    id: GO:0035618
+    label: root hair
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: mechanistic
+  evidence:
+  - reference: PMID:30842268
+    reference_title: Single-Cell RNA Sequencing Resolves Molecular Relationships Among Individual Plant
+      Cells.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: RBOHC, SFH1, PIP5K3, and ARAC4 localize to the growing root hair tip where ROS and phosphoinositides
+      drive apical expansion.
+  curator_note: The set contains the canonical root hair apex machinery (RBOHC, SFH1, PIP5K3, ARAC4),
+    but too few genes in TAIR GAF are annotated directly to GO:0035618 (root hair tip) to cross the Fisher
+    Bonferroni threshold.
+- term:
+    id: GO:0030154
+    label: cell differentiation
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.5968e-27
+    p_adjust: 3.3978e-22
+    overlap: 20
+    query_size: 25
+    target_size: 650
+    overlap_genes:
+    - ACT8
+    - ARAC4
+    - CML25
+    - DTX31
+    - EXPA7
+    - IP5P5
+    - KINUC
+    - LRX1
+    - MDIS2
+    - MRH6
+    - PIN3
+    - PIP5K3
+    - PRP3
+    - RBOHC
+    - RHD6
+    - RSL2
+    - RSL4
+    - SFH1
+    - SRPP
+    - ZFP5
+  evidence:
+  - reference: PMID:30842268
+    reference_title: Single-Cell RNA Sequencing Resolves Molecular Relationships Among Individual Plant
+      Cells.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Ancestor roll-up of trichoblast and root hair cell differentiation.
+  curator_note: Overly broad developmental roll-up (20/25 genes).
+- term:
+    id: GO:0010055
+    label: atrichoblast differentiation
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: false_association
+  evidence:
+  - reference: PMID:22291601
+    reference_title: A gene regulatory network for root epidermis cell differentiation in Arabidopsis.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: GO:0010055 (atrichoblast differentiation) defines the non-hair N-position pole of SERIES:ARATH_ROOT_EPIDERMIS
+      (WER-GL3-TTG1-GL2), which actively represses RHD6 and the trichoblast program.
+  curator_note: Contrasting pole trap against ARATH_ROOT_ATRICHOBLAST in SERIES:ARATH_ROOT_EPIDERMIS.

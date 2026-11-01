@@ -1,0 +1,361 @@
+gene_set_id: LIT:PAVIR_RHIZOME_OVERWINTERING_SENESCENCE
+gene_set_name: PAVIR_RHIZOME_OVERWINTERING_SENESCENCE
+collection: LIT:DOE_BER_BIOENERGY
+taxon:
+  id: NCBITaxon:38727
+  label: Panicum virgatum
+direction: UP
+series: SERIES:PAVIR_PERENNIAL_BIOMASS_ARCHITECTURE
+series_role: autumn_senescence_rhizome_remobilization
+n_genes: 35
+description: The Panicum virgatum (switchgrass) autumnal shoot senescence, pheophorbide a oxygenase (PAO/SGR)
+  chlorophyll breakdown, autophagic (ATG8/ATG9) chloroplast dismantling, glutamine/asparagine synthetase
+  (GLN1/ASN1) nitrogen translocation, and belowground rhizome starch storage program (Palmer et al. 2017
+  BMC Plant Biol PMID:28851290; Lovell et al. 2021 Nature PMID:33505029; Sarath et al. 2014 BioEnergy
+  Res). Contrasts with PAVIR_TILLER_AXILLARY_BUD_OUTGROWTH in SERIES:PAVIR_PERENNIAL_BIOMASS_ARCHITECTURE.
+  Complete autumn nitrogen and mineral remobilization from aerial tillers to perennial rhizomes is critical
+  both for multi-year stand persistence and for low-ash, low-NOx lignocellulosic biofuel feedstock quality.
+contexts:
+- term:
+    id: PO:0025034
+    label: leaf
+  context_type: anatomical_structure
+  role_note: Senescing autumn switchgrass leaves dismantling RuBisCO and thylakoid complexes for phloem
+    N export.
+- term:
+    id: PO:0009047
+    label: stem
+  context_type: anatomical_structure
+  role_note: Subterranean perennial rhizomes (modified underground stems) accumulating remobilized nitrogen
+    and starch reserves over winter.
+associations:
+- term:
+    id: GO:0010150
+    label: leaf senescence
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.9391e-18
+    p_adjust: 1.2859e-13
+    overlap: 8
+    query_size: 35
+    target_size: 40
+    overlap_genes:
+    - PVAP13_7NG212300
+    - PVAP13_8KG390000
+    - PVAP13_9KG172600
+    - PVAP13_9KG182200
+    - PVAP13_9KG561400
+    - PVAP13_9NG296500
+    - PVAP13_9NG382500
+    - PVAP13_9NG786100
+  evidence:
+  - reference: PMID:28851290
+    reference_title: Transcriptome analysis of senescing leaves and overwintering rhizomes in switchgrass.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Eight switchgrass senescence-associated NAC/WRKY and stay-green (SGR/NYC1) paralogs execute
+      autumnal leaf senescence.
+  curator_note: Core seasonal developmental program carried by 8/35 set members (recovered in all and
+    iba_iea, 0 in IBA-only).
+- term:
+    id: GO:0015996
+    label: chlorophyll catabolic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.8441e-21
+    p_adjust: 7.4049e-17
+    overlap: 8
+    query_size: 35
+    target_size: 18
+    overlap_genes:
+    - PVAP13_8KG014700
+    - PVAP13_9KG085600
+    - PVAP13_9KG196100
+    - PVAP13_9KG265900
+    - PVAP13_9NG180200
+    - PVAP13_9NG316773
+    - PVAP13_9NG407200
+    - PVAP13_9NG407400
+  evidence:
+  - reference: PMID:28851290
+    reference_title: Transcriptome analysis of senescing leaves and overwintering rhizomes in switchgrass.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Eight switchgrass Mg-dechelatase (SGR), pheophytinase (PPH), pheophorbide a oxygenase
+      (PAO), and red chlorophyll catabolite reductase (RCCR) paralogs detoxify and degrade chlorophyll
+      during chloroplast dismantling.
+  curator_note: Mechanistically resolves the PAO/phyllobilin chlorophyll catabolic pathway releasing apoprotein
+    nitrogen (8/35 members; recovered in all and iba_iea).
+- term:
+    id: GO:0006541
+    label: L-glutamine metabolic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 7.7537e-21
+    p_adjust: 2.0188e-16
+    overlap: 10
+    query_size: 35
+    target_size: 69
+    overlap_genes:
+    - PVAP13_4KG205100
+    - PVAP13_4NG121100
+    - PVAP13_9KG033025
+    - PVAP13_9KG220300
+    - PVAP13_9KG477600
+    - PVAP13_9KG542200
+    - PVAP13_9NG138400
+    - PVAP13_9NG336200
+    - PVAP13_9NG637500
+    - PVAP13_9NG685100
+  evidence:
+  - reference: PMID:28851290
+    reference_title: Transcriptome analysis of senescing leaves and overwintering rhizomes in switchgrass.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Ten switchgrass cytosolic glutamine synthetase (GLN1) and amidotransferase paralogs assimilate
+      proteolytically released ammonium into L-glutamine for phloem translocation to the rhizome.
+  curator_note: Captures the central amino-acid carrier pathway of perennial nitrogen remobilization (10/35
+    members; recovered in all and iba_iea).
+- term:
+    id: GO:0070981
+    label: L-asparagine biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.2971e-13
+    p_adjust: 8.5843e-09
+    overlap: 4
+    query_size: 35
+    target_size: 4
+    overlap_genes:
+    - PVAP13_4KG205100
+    - PVAP13_4NG121100
+    - PVAP13_9KG477600
+    - PVAP13_9NG685100
+  evidence:
+  - reference: PMID:28851290
+    reference_title: Transcriptome analysis of senescing leaves and overwintering rhizomes in switchgrass.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Four switchgrass asparagine synthetase (ASN1) paralogs convert glutamine into high-N:C
+      L-asparagine for long-distance phloem transport and winter rhizome storage.
+  curator_note: Resolves the high-N:C transport/storage amino acid synthesis branch (4/35 members; recovered
+    in all and iba_iea).
+- term:
+    id: GO:0006914
+    label: autophagy
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.57e-10
+    p_adjust: 4.0877e-06
+    overlap: 6
+    query_size: 35
+    target_size: 98
+    overlap_genes:
+    - PVAP13_9KG027400
+    - PVAP13_9NG130300
+    - PVAP13_9NG130446
+    - PVAP13_9NG152000
+    - PVAP13_9NG238219
+    - PVAP13_9NG569400
+  evidence:
+  - reference: PMID:28851290
+    reference_title: Transcriptome analysis of senescing leaves and overwintering rhizomes in switchgrass.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Six switchgrass ATG8/ATG7/ATG9 autophagy paralogs mediate chlorophagy and bulk RuBisCO
+      degradation for nitrogen salvage.
+  curator_note: Cellular mechanism recycling stromal protein nitrogen during leaf senescence (6/35 members;
+    recovered in all and iba_iea).
+- term:
+    id: GO:0019252
+    label: starch biosynthetic process
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.0721e-07
+    p_adjust: 0.0079986
+    overlap: 3
+    query_size: 35
+    target_size: 17
+    overlap_genes:
+    - PVAP13_6NG088000
+    - PVAP13_7KG392600
+    - PVAP13_7NG362400
+  evidence:
+  - reference: PMID:28851290
+    reference_title: Transcriptome analysis of senescing leaves and overwintering rhizomes in switchgrass.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Three switchgrass ADP-glucose pyrophosphorylase and starch synthase paralogs convert
+      imported sucrose into overwintering starch granules in subterranean rhizomes.
+  curator_note: Captures the belowground rhizome carbon-sink storage phase of perennial dormancy preparation
+    (3/35 members; recovered in all and iba_iea).
+- term:
+    id: GO:0004356
+    label: glutamine synthetase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 7.2369e-17
+    p_adjust: 1.8842e-12
+    overlap: 6
+    query_size: 35
+    target_size: 11
+    overlap_genes:
+    - PVAP13_9KG033025
+    - PVAP13_9KG220300
+    - PVAP13_9KG542200
+    - PVAP13_9NG138400
+    - PVAP13_9NG336200
+    - PVAP13_9NG637500
+  evidence:
+  - reference: PMID:28851290
+    reference_title: Transcriptome analysis of senescing leaves and overwintering rhizomes in switchgrass.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Six switchgrass GLN1 paralogs catalyze ATP-dependent glutamate-ammonia ligase (glutamine
+      synthetase) activity in senescing vascular bundles.
+  curator_note: Rate-limiting enzymatic activity of shoot-to-rhizome N remobilization (6/35 members; recovered
+    in all and iba_iea).
+- term:
+    id: GO:0009507
+    label: chloroplast
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: confirmatory
+  evidence:
+  - reference: PMID:28851290
+    reference_title: Transcriptome analysis of senescing leaves and overwintering rhizomes in switchgrass.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Chlorophyll catabolic enzymes (SGR, PPH, PAO, RCCR) and amyloplast starch synthases localize
+      to plastids/chloroplasts.
+  curator_note: Organelle dismantled in senescing leaves to liberate >75% of foliar nitrogen; in switchgrass
+    IEA, PAO/SGR/GLN1 enzymes lack GO:0009507 (chloroplast) annotations.
+- term:
+    id: GO:0008152
+    label: metabolic process
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.5996e-06
+    p_adjust: 0.041648
+    overlap: 27
+    query_size: 35
+    target_size: 16387
+    overlap_genes:
+    - PVAP13_4KG205100
+    - PVAP13_4NG121100
+    - PVAP13_6NG088000
+    - PVAP13_7KG392600
+    - PVAP13_7NG362400
+    - PVAP13_8KG014700
+    - PVAP13_9KG027400
+    - PVAP13_9KG033025
+    - PVAP13_9KG085600
+    - PVAP13_9KG196100
+    - PVAP13_9KG220300
+    - PVAP13_9KG265900
+    - PVAP13_9KG477600
+    - PVAP13_9KG542200
+    - PVAP13_9NG130300
+    - PVAP13_9NG130446
+    - PVAP13_9NG138400
+    - PVAP13_9NG152000
+    - PVAP13_9NG180200
+    - PVAP13_9NG238219
+    - PVAP13_9NG316773
+    - PVAP13_9NG336200
+    - PVAP13_9NG407200
+    - PVAP13_9NG407400
+    - PVAP13_9NG569400
+    - PVAP13_9NG637500
+    - PVAP13_9NG685100
+  evidence:
+  - reference: PMID:28851290
+    reference_title: Transcriptome analysis of senescing leaves and overwintering rhizomes in switchgrass.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Top-level metabolic process roll-up.
+  curator_note: Broad metabolic roll-up (29/35 members).
+- term:
+    id: GO:0009926
+    label: auxin polar transport
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: false_association
+  evidence:
+  - reference: PMID:33505029
+    reference_title: Genomic mechanisms of climate adaptation in polyploid bioenergy switchgrass.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Polar auxin transport and axillary bud outgrowth (GO:0009926) define the contrasting
+      spring vegetative tillering pole (PAVIR_TILLER_AXILLARY_BUD_OUTGROWTH) of SERIES:PAVIR_PERENNIAL_BIOMASS_ARCHITECTURE.
+  curator_note: Contrasting pole trap against PAVIR_TILLER_AXILLARY_BUD_OUTGROWTH in SERIES:PAVIR_PERENNIAL_BIOMASS_ARCHITECTURE.

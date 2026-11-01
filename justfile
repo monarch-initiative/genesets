@@ -78,6 +78,17 @@ curate-validate-schema:
 curate-report out="curation/report.tsv":
     {{gw}} genesets-workflows curate report --dir curation/genesets -o {{out}}
 
+# Validate every plant interpretation YAML under curation/plants/genesets.
+curate-validate-plants:
+    for f in curation/plants/genesets/*.yaml; do \
+      echo "== $f =="; \
+      {{gw}} genesets-workflows curate validate "$f" --skip-references || exit 1; \
+    done
+
+# Build the precision/recall report over all curated plant interpretations.
+curate-report-plants out="curation/plants/report.tsv":
+    {{gw}} genesets-workflows curate report --dir curation/plants/genesets -o {{out}}
+
 # --- Metabolite (chemical-to-GO) enrichment ----------------------------------
 
 chem2go_dir := "evals/chem2go/generated/current"

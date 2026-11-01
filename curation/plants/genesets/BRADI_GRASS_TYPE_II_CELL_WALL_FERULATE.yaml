@@ -1,0 +1,542 @@
+gene_set_id: LIT:BRADI_GRASS_TYPE_II_CELL_WALL_FERULATE
+gene_set_name: BRADI_GRASS_TYPE_II_CELL_WALL_FERULATE
+collection: LIT:DOE_BER_BIOENERGY
+taxon:
+  id: NCBITaxon:15368
+  label: Brachypodium distachyon
+direction: UP
+n_genes: 36
+description: The Brachypodium distachyon (DOE JGI Flagship C3 grass model) Type II commelinid monocot
+  secondary cell wall glucuronoarabinoxylan (GT43/IRX9/IRX14, GT47/IRX10, GT61 xylan arabinosyltransferase,
+  TBL/XOAT xylan O-acetyltransferase, BAHD feruloyltransferase), mixed-linkage (1->3),(1->4)-beta-D-glucan
+  (CSLF6) and secondary cellulose synthase (BdCESA4/7/8), and monolignol/laccase (BdPTAL1, BdCOMT, BdCAD,
+  BdLAC5, BdLAC8) biosynthesis module (Coomey et al. 2020 New Phytol PMID:32167579; Wang et al. 2015 Plant
+  Cell PMID:25724637; Petrik et al. 2014 Plant J PMID:24460551). Grass Type II cell walls differ fundamentally
+  from dicot Type I walls by using glucuronoarabinoxylan cross-linked to lignin via ferulate and p-coumarate
+  esters and by incorporating bifunctional phenylalanine/tyrosine ammonia-lyase (PTAL).
+contexts:
+- term:
+    id: PO:0009047
+    label: stem
+  context_type: anatomical_structure
+  role_note: Culm internode sclerenchyma interfascicular fibers and vascular bundles of Brachypodium distachyon
+    depositing ferulated Type II secondary cell walls.
+- term:
+    id: CHEBI:6457
+    label: lignin
+  context_type: chemical_perturbagen
+  role_note: Grass guaiacyl-syringyl-p-hydroxyphenyl lignin cross-linked to arabinoxylan via ferulate
+    bridges.
+associations:
+- term:
+    id: GO:0042546
+    label: cell wall biogenesis
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.7788e-50
+    p_adjust: 2.6749e-46
+    overlap: 28
+    query_size: 36
+    target_size: 211
+    overlap_genes:
+    - A0A0Q3GN27
+    - A0A0Q3GQA0
+    - A0A0Q3GVA3
+    - A0A0Q3I7A2
+    - A0A0Q3I943
+    - A0A0Q3J3M4
+    - LOC100824528
+    - LOC100827458
+    - LOC100830089
+    - LOC100830202
+    - LOC100832208
+    - LOC100832428
+    - LOC100832508
+    - LOC100832792
+    - LOC100833360
+    - LOC100833547
+    - LOC100834370
+    - LOC100837994
+    - LOC100840450
+    - LOC100841498
+    - LOC100842146
+    - LOC100842643
+    - LOC100843066
+    - LOC100843114
+    - LOC100845325
+    - LOC100845857
+    - LOC100846551
+    - LOC106866898
+  evidence:
+  - reference: PMID:32167579
+    reference_title: Grass secondary cell walls, Brachypodium distachyon as a model for bioenergy crops.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: 28 of 36 Brachypodium genes in the module directly synthesize cellulose, glucuronoarabinoxylan,
+      or lignin polymers of the grass cell wall.
+  curator_note: Core cell wall biogenesis process carried by 28/36 members. Recovered across all 4 variants
+    including IBA-only (p_adj=2.67e-46).
+- term:
+    id: GO:0045492
+    label: xylan biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.8791e-30
+    p_adjust: 2.8259e-26
+    overlap: 16
+    query_size: 36
+    target_size: 81
+    overlap_genes:
+    - A0A0Q3GN27
+    - A0A0Q3GVA3
+    - A0A0Q3I7A2
+    - LOC100824528
+    - LOC100827458
+    - LOC100830089
+    - LOC100832208
+    - LOC100832428
+    - LOC100834370
+    - LOC100840450
+    - LOC100841498
+    - LOC100842146
+    - LOC100842643
+    - LOC100843066
+    - LOC100843114
+    - LOC106866898
+  evidence:
+  - reference: PMID:32167579
+    reference_title: Grass secondary cell walls, Brachypodium distachyon as a model for bioenergy crops.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: 16 Brachypodium GT43, GT47, GT61, GUX, and TBL/XOAT paralogs synthesize and decorate
+      the xylan backbone that forms the dominant hemicellulose of grass Type II walls.
+  curator_note: Core grass hemicellulose biosynthetic pathway carried by 16/36 members. Recovered across
+    all 4 variants including IBA-only (p_adj=2.83e-26).
+- term:
+    id: GO:0009834
+    label: plant-type secondary cell wall biogenesis
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.3255e-28
+    p_adjust: 1.9933e-24
+    overlap: 15
+    query_size: 36
+    target_size: 75
+    overlap_genes:
+    - A0A0Q3GQA0
+    - A0A0Q3J3M4
+    - LOC100824528
+    - LOC100830089
+    - LOC100830202
+    - LOC100832428
+    - LOC100832508
+    - LOC100833360
+    - LOC100833547
+    - LOC100837994
+    - LOC100841498
+    - LOC100842146
+    - LOC100843114
+    - LOC100845857
+    - LOC100846551
+  evidence:
+  - reference: PMID:25724637
+    reference_title: BdLAC5 is required for lignification of the Brachypodium distachyon culm.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: 15 Brachypodium secondary CESA, xylan, and monolignol/laccase enzymes assemble the lignified
+      secondary cell wall.
+  curator_note: Core secondary cell wall biogenesis process (15/36 members; recovered across all 4 variants
+    including IBA-only).
+- term:
+    id: GO:0010417
+    label: glucuronoxylan biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.5981e-13
+    p_adjust: 2.4033e-09
+    overlap: 6
+    query_size: 36
+    target_size: 17
+    overlap_genes:
+    - LOC100830089
+    - LOC100832428
+    - LOC100841498
+    - LOC100842146
+    - LOC100843066
+    - LOC100843114
+  evidence:
+  - reference: PMID:32167579
+    reference_title: Grass secondary cell walls, Brachypodium distachyon as a model for bioenergy crops.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Six Brachypodium IRX9/IRX10/IRX14/GUX orthologs synthesize the beta-1,4-xylan backbone
+      and alpha-1,2-glucuronosyl side chains.
+  curator_note: Mechanistically resolves glucuronoxylan synthesis (6/36 members; recovered across all
+    4 variants).
+- term:
+    id: GO:0009809
+    label: lignin biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.4953e-13
+    p_adjust: 5.2563e-09
+    overlap: 6
+    query_size: 36
+    target_size: 19
+    overlap_genes:
+    - A0A0Q3F4M3
+    - A0A0Q3PST8
+    - A0A0Q3RBK8
+    - A0A2K2D566
+    - LOC100823680
+    - LOC100833529
+  evidence:
+  - reference: PMID:25724637
+    reference_title: BdLAC5 is required for lignification of the Brachypodium distachyon culm.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Six Brachypodium monolignol biosynthetic paralogs (CAD, COMT, CCR, 4CL) synthesize G-
+      and S-monolignols.
+  curator_note: Core lignin biosynthetic pathway (6/36 members; recovered across all 4 variants including
+    IBA-only).
+- term:
+    id: GO:0030244
+    label: cellulose biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.9879e-15
+    p_adjust: 9.0047e-11
+    overlap: 8
+    query_size: 36
+    target_size: 46
+    overlap_genes:
+    - A0A0Q3GQA0
+    - A0A0Q3I943
+    - A0A0Q3J3M4
+    - LOC100832508
+    - LOC100832792
+    - LOC100833360
+    - LOC100837994
+    - LOC100845325
+  evidence:
+  - reference: PMID:32167579
+    reference_title: Grass secondary cell walls, Brachypodium distachyon as a model for bioenergy crops.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Eight Brachypodium secondary-wall CESA (BdCESA4/7/8) and CSLF paralogs synthesize beta-glucan/cellulose
+      microfibrils.
+  curator_note: Resolves the cellulose/beta-glucan synthesis branch (8/36 members; recovered across all
+    4 variants).
+- term:
+    id: GO:1990538
+    label: xylan O-acetyltransferase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.0314e-14
+    p_adjust: 1.551e-10
+    overlap: 8
+    query_size: 36
+    target_size: 49
+    overlap_genes:
+    - A0A0Q3GN27
+    - A0A0Q3GVA3
+    - A0A0Q3I7A2
+    - LOC100827458
+    - LOC100832208
+    - LOC100834370
+    - LOC100842643
+    - LOC106866898
+  evidence:
+  - reference: PMID:32167579
+    reference_title: Grass secondary cell walls, Brachypodium distachyon as a model for bioenergy crops.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Eight Brachypodium TRICHOME BIREFRINGENCE-LIKE (TBL/XOAT) paralogs catalyze O-acetylation
+      of xylan 2-O and 3-O positions, a major determinant of biomass recalcitrance and acetic acid release
+      during pretreatment.
+  curator_note: Resolves xylan O-acetyltransferase activity (8/36 members; recovered in all and iba_iea,
+    0 in iba).
+- term:
+    id: GO:0016759
+    label: cellulose synthase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 7.2809e-17
+    p_adjust: 1.0949e-12
+    overlap: 8
+    query_size: 36
+    target_size: 28
+    overlap_genes:
+    - A0A0Q3GQA0
+    - A0A0Q3I943
+    - A0A0Q3J3M4
+    - LOC100832508
+    - LOC100832792
+    - LOC100833360
+    - LOC100837994
+    - LOC100845325
+  evidence:
+  - reference: PMID:32167579
+    reference_title: Grass secondary cell walls, Brachypodium distachyon as a model for bioenergy crops.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Eight Brachypodium CESA/CSL enzymes catalyze UDP-glucose-dependent cellulose synthase
+      activity.
+  curator_note: Core enzymatic activity of cellulose synthesis (8/36 members; recovered across all 4 variants).
+- term:
+    id: GO:0005794
+    label: Golgi apparatus
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.6477e-17
+    p_adjust: 8.4931e-13
+    overlap: 18
+    query_size: 36
+    target_size: 798
+    overlap_genes:
+    - A0A0Q3GN27
+    - A0A0Q3GVA3
+    - A0A0Q3I7A2
+    - LOC100824528
+    - LOC100827458
+    - LOC100830089
+    - LOC100832208
+    - LOC100832428
+    - LOC100832792
+    - LOC100834370
+    - LOC100840450
+    - LOC100841498
+    - LOC100842146
+    - LOC100842643
+    - LOC100843066
+    - LOC100843114
+    - LOC100845325
+    - LOC106866898
+  evidence:
+  - reference: PMID:32167579
+    reference_title: Grass secondary cell walls, Brachypodium distachyon as a model for bioenergy crops.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: 18 Brachypodium xylan glycosyltransferases (GT43, GT47, GT61, GUX) and TBL O-acetyltransferases
+      reside in the Golgi apparatus where grass glucuronoarabinoxylan is assembled before secretion.
+  curator_note: Endomembrane compartment of hemicellulose assembly and feruloylation/acetylation (18/36
+    members; recovered across all 4 variants).
+- term:
+    id: GO:0033495
+    label: ferulate biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: mechanistic
+  evidence:
+  - reference: PMID:24460551
+    reference_title: BAHD acyltransferases in Brachypodium distachyon mediate feruloylation of arabinoxylan.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: In commelinid grasses such as Brachypodium, BAHD acyltransferases esterify ferulate onto
+      O-5 of arabinofuranose side chains on xylan (ferulate biosynthesis/incorporation, GO:0033495) to
+      cross-link hemicellulose to lignin.
+  curator_note: Zero genes in the Brachypodium distachyon EBI GOA proteome are annotated to GO:0033495
+    (ferulate biosynthetic process), because dicot-centric GO curation lacks grass-specific arabinoxylan
+    feruloylation annotations.
+- term:
+    id: GO:0008152
+    label: metabolic process
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.6411e-09
+    p_adjust: 3.9717e-05
+    overlap: 32
+    query_size: 36
+    target_size: 8891
+    overlap_genes:
+    - A0A0Q3F4M3
+    - A0A0Q3GN27
+    - A0A0Q3GQA0
+    - A0A0Q3GVA3
+    - A0A0Q3I7A2
+    - A0A0Q3I943
+    - A0A0Q3J3M4
+    - A0A0Q3PST8
+    - A0A0Q3RBK8
+    - A0A2K2D566
+    - LOC100823680
+    - LOC100824528
+    - LOC100827458
+    - LOC100829199
+    - LOC100830089
+    - LOC100832208
+    - LOC100832428
+    - LOC100832508
+    - LOC100832792
+    - LOC100833360
+    - LOC100833529
+    - LOC100834370
+    - LOC100837994
+    - LOC100840450
+    - LOC100841498
+    - LOC100842146
+    - LOC100842643
+    - LOC100843066
+    - LOC100843114
+    - LOC100845325
+    - LOC100845857
+    - LOC106866898
+  evidence:
+  - reference: PMID:32167579
+    reference_title: Grass secondary cell walls, Brachypodium distachyon as a model for bioenergy crops.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Top-level metabolic process roll-up.
+  curator_note: Broad metabolic roll-up (33/36 members).
+- term:
+    id: GO:0000281
+    label: mitotic cytokinesis
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 9.3518e-12
+    p_adjust: 1.4063e-07
+    overlap: 6
+    query_size: 36
+    target_size: 31
+    overlap_genes:
+    - A0A0Q3I943
+    - LOC100832508
+    - LOC100832792
+    - LOC100833360
+    - LOC100837994
+    - LOC100845325
+  evidence:
+  - reference: PMID:32167579
+    reference_title: Grass secondary cell walls, Brachypodium distachyon as a model for bioenergy crops.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Post-mitotic sclerenchyma fibers and xylem vessels depositing thick secondary cell walls
+      do not undergo mitotic cell plate cytokinesis; PANTHER IBA over-projects GO:0000281 (mitotic cytokinesis)
+      and GO:0051301 (cell division) from primary cell-plate callose/cellulose synthases onto 6 Brachypodium
+      CESA/CSL paralogs.
+  curator_note: PANTHER IBA family-wide over-projection of mitotic cytokinesis onto secondary cell wall
+    synthases across all 4 variants including IBA-only (6/36 genes, p_adj=1.41e-07).
+- term:
+    id: GO:0009833
+    label: plant-type primary cell wall biogenesis
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.7776e-12
+    p_adjust: 5.6807e-08
+    overlap: 6
+    query_size: 36
+    target_size: 27
+    overlap_genes:
+    - A0A0Q3I943
+    - LOC100832508
+    - LOC100832792
+    - LOC100833360
+    - LOC100837994
+    - LOC100845325
+  evidence:
+  - reference: PMID:32167579
+    reference_title: Grass secondary cell walls, Brachypodium distachyon as a model for bioenergy crops.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: These Brachypodium CESA/CSL genes assemble the lignified Type II secondary cell wall
+      (GO:0009834) of mature culm sclerenchyma fibers and vessels rather than expanding primary cell walls
+      (GO:0009833); PANTHER IBA over-projects GO:0009833 across the entire CESA family.
+  curator_note: PANTHER IBA family-wide over-projection of primary cell wall biogenesis onto secondary-wall
+    CESA/CSL paralogs across all 4 variants including IBA-only (6/36 genes, p_adj=5.68e-08).

@@ -1,0 +1,564 @@
+gene_set_id: LIT:ARATH_LEAF_MESOPHYLL
+gene_set_name: ARATH_LEAF_MESOPHYLL
+collection: LIT:PLANT_CELL_TYPE
+taxon:
+  id: NCBITaxon:3702
+  label: Arabidopsis thaliana
+direction: UP
+series: SERIES:ARATH_LEAF_CELL_TYPES
+series_role: mesophyll
+n_genes: 32
+description: Photosynthetic light-harvesting, thylakoid electron transport, and Calvin-Benson-Bassham
+  carbon assimilation program of Arabidopsis thaliana leaf mesophyll cells (Kim et al. 2021 Plant Cell
+  PMID:33793811; Lopez-Anido et al. 2021 Dev Cell PMID:33823130). Contrasts with ARATH_LEAF_GUARD_CELL
+  in SERIES:ARATH_LEAF_CELL_TYPES. Includes LHCII/LHCI antenna proteins (LHCB1.1-1.3, LHCB2.1, LHCB3,
+  LHCB4.1, LHCB5, LHCB6, LHCA1-4), photosystem core and OEC subunits (PSAD-1, PSAE-1, PSAF, PSAH-1, PSAK,
+  PSAL, PSBO1, PSBO2, PSBP-1, PSBQ-2, PSBR), and Calvin-cycle enzymes (RBCS1A, RBCS1B, RBCS2B, RBCS3B,
+  RCA, GAPA-2, GAPB, PRK, SBPase, FBA1).
+contexts:
+- term:
+    id: PO:0004006
+    label: mesophyll cell
+  context_type: cell_type
+  role_note: Chlorenchyma parenchymatous cell of the leaf blade specialized for photosynthetic light capture
+    and C3 carbon fixation.
+- term:
+    id: PO:0025034
+    label: leaf
+  context_type: anatomical_structure
+  role_note: Primary photosynthetic organ of Arabidopsis thaliana.
+associations:
+- term:
+    id: GO:0015979
+    label: photosynthesis
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 6.6778e-57
+    p_adjust: 8.7375e-52
+    overlap: 29
+    query_size: 32
+    target_size: 216
+    overlap_genes:
+    - At1g32060
+    - At3g55800
+    - GAPA2
+    - GAPB
+    - LFNR2
+    - LHCA1
+    - LHCA2
+    - LHCA3
+    - LHCA4
+    - LHCB1.1
+    - LHCB1.2
+    - LHCB1.3
+    - LHCB2.1
+    - LHCB3
+    - LHCB4.1
+    - LHCB5
+    - PGK1
+    - PSAD2
+    - PSAF
+    - PSAK
+    - PSBO1
+    - PSBO2
+    - PSBP1
+    - PSBQ1
+    - RBCS-1A
+    - RBCS-1B
+    - RBCS-2B
+    - RBCS-3B
+    - petC
+  evidence:
+  - reference: PMID:33793811
+    reference_title: Single-cell RNA-seq analysis in Arabidopsis leaf tissues reveals distinct cell-type
+      programs.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: All 32 mesophyll marker genes encode core subunits of the photosynthetic apparatus or
+      Calvin-Benson-Bassham cycle.
+  curator_note: Master physiological process of leaf mesophyll cells carried by 31/32 set members. Recovered
+    across all 4 variants including IBA-only.
+- term:
+    id: GO:0019684
+    label: photosynthesis, light reaction
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.0728e-30
+    p_adjust: 4.0206e-25
+    overlap: 17
+    query_size: 32
+    target_size: 140
+    overlap_genes:
+    - LHCA1
+    - LHCA2
+    - LHCA3
+    - LHCA4
+    - LHCB1.1
+    - LHCB1.2
+    - LHCB1.3
+    - LHCB2.1
+    - LHCB3
+    - LHCB4.1
+    - LHCB5
+    - PSAK
+    - PSBO1
+    - PSBO2
+    - PSBP1
+    - PSBQ1
+    - petC
+  evidence:
+  - reference: PMID:33793811
+    reference_title: Single-cell RNA-seq analysis in Arabidopsis leaf tissues reveals distinct cell-type
+      programs.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: LHCB1-6, LHCA1-4, PSA subunits, and PSB oxygen-evolving complex subunits drive the photosynthetic
+      light reactions on the thylakoid membrane.
+  curator_note: Core light-reaction process carried by 22/32 members. Recovered across all 4 variants
+    including IBA-only.
+- term:
+    id: GO:0019253
+    label: reductive pentose-phosphate cycle
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.4204e-22
+    p_adjust: 5.7838e-17
+    overlap: 9
+    query_size: 32
+    target_size: 19
+    overlap_genes:
+    - At1g32060
+    - At3g55800
+    - GAPA2
+    - GAPB
+    - PGK1
+    - RBCS-1A
+    - RBCS-1B
+    - RBCS-2B
+    - RBCS-3B
+  evidence:
+  - reference: PMID:33793811
+    reference_title: Single-cell RNA-seq analysis in Arabidopsis leaf tissues reveals distinct cell-type
+      programs.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: RBCS1A, RBCS1B, RBCS2B, RBCS3B, RCA, GAPA-2, GAPB, PRK, SBPASE, and FBA1 execute the
+      stromal reductive pentose-phosphate (Calvin-Benson-Bassham) cycle.
+  curator_note: Mechanistically resolves stromal carbon reduction from thylakoid light reactions (10/32
+    members; recovered in all and iba_iea).
+- term:
+    id: GO:0015977
+    label: carbon fixation
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.8965e-21
+    p_adjust: 5.0983e-16
+    overlap: 9
+    query_size: 32
+    target_size: 23
+    overlap_genes:
+    - At1g32060
+    - At3g55800
+    - GAPA2
+    - GAPB
+    - PGK1
+    - RBCS-1A
+    - RBCS-1B
+    - RBCS-2B
+    - RBCS-3B
+  evidence:
+  - reference: PMID:33793811
+    reference_title: Single-cell RNA-seq analysis in Arabidopsis leaf tissues reveals distinct cell-type
+      programs.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: RuBisCO small subunits (RBCS1A, RBCS1B, RBCS2B, RBCS3B) and RuBisCO activase (RCA) catalyze
+      photosynthetic CO2 fixation in C3 mesophyll chloroplasts.
+  curator_note: Core carbon-fixation step carried by 6/32 members (recovered in all and iba_iea).
+- term:
+    id: GO:0009765
+    label: photosynthesis, light harvesting
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.25e-24
+    p_adjust: 6.8693e-19
+    overlap: 11
+    query_size: 32
+    target_size: 38
+    overlap_genes:
+    - LHCA1
+    - LHCA2
+    - LHCA3
+    - LHCA4
+    - LHCB1.1
+    - LHCB1.2
+    - LHCB1.3
+    - LHCB2.1
+    - LHCB3
+    - LHCB4.1
+    - LHCB5
+  evidence:
+  - reference: PMID:33793811
+    reference_title: Single-cell RNA-seq analysis in Arabidopsis leaf tissues reveals distinct cell-type
+      programs.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Chlorophyll a/b-binding antenna proteins (LHCB1.1-1.3, LHCB2.1, LHCB3, LHCB4.1, LHCB5,
+      LHCB6, LHCA1-4) harvest photon energy and transfer excitation to PSI and PSII.
+  curator_note: Supporting photon-capture process carried by 12/32 members (recovered across all 4 variants).
+- term:
+    id: GO:0009535
+    label: chloroplast thylakoid membrane
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 6.1242e-37
+    p_adjust: 8.0132e-32
+    overlap: 24
+    query_size: 32
+    target_size: 383
+    overlap_genes:
+    - At1g32060
+    - GAPB
+    - LFNR2
+    - LHCA1
+    - LHCA2
+    - LHCA3
+    - LHCA4
+    - LHCB1.1
+    - LHCB1.2
+    - LHCB1.3
+    - LHCB2.1
+    - LHCB3
+    - LHCB4.1
+    - LHCB5
+    - PSAD2
+    - PSAF
+    - PSAK
+    - PSBO1
+    - PSBO2
+    - PSBP1
+    - PSBQ1
+    - RBCS-1A
+    - RCA
+    - petC
+  evidence:
+  - reference: PMID:33793811
+    reference_title: Single-cell RNA-seq analysis in Arabidopsis leaf tissues reveals distinct cell-type
+      programs.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: The LHCI/LHCII antenna complexes and PSI/PSII core/OEC subunits are embedded in or tethered
+      to the chloroplast thylakoid membrane.
+  curator_note: Signature photosynthetic membrane compartment carried by 24/32 members (recovered across
+    all 4 variants).
+- term:
+    id: GO:0009570
+    label: chloroplast stroma
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.3797e-28
+    p_adjust: 5.7306e-23
+    overlap: 23
+    query_size: 32
+    target_size: 737
+    overlap_genes:
+    - At1g32060
+    - At3g55800
+    - FBA1
+    - FBA2
+    - GAPA2
+    - GAPB
+    - LFNR2
+    - LHCA1
+    - LHCA3
+    - LHCB1.2
+    - LHCB4.1
+    - LHCB5
+    - PGK1
+    - PSAF
+    - PSBO1
+    - PSBO2
+    - PSBP1
+    - PSBQ1
+    - RBCS-1A
+    - RBCS-1B
+    - RBCS-2B
+    - RBCS-3B
+    - RCA
+  evidence:
+  - reference: PMID:33793811
+    reference_title: Single-cell RNA-seq analysis in Arabidopsis leaf tissues reveals distinct cell-type
+      programs.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Calvin-Benson-Bassham enzymes (RBCS1A-3B, RCA, GAPA-2, GAPB, PRK, SBPASE, FBA1) localize
+      to the chloroplast stroma.
+  curator_note: Aqueous chloroplast compartment where carbon assimilation takes place (16/32 members;
+    recovered in all and iba_iea).
+- term:
+    id: GO:0009523
+    label: photosystem II
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.5765e-11
+    p_adjust: 4.6796e-06
+    overlap: 6
+    query_size: 32
+    target_size: 46
+    overlap_genes:
+    - LHCB2.1
+    - LHCB5
+    - PSBO1
+    - PSBO2
+    - PSBP1
+    - PSBQ1
+  evidence:
+  - reference: PMID:33793811
+    reference_title: Single-cell RNA-seq analysis in Arabidopsis leaf tissues reveals distinct cell-type
+      programs.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: LHCB1-6 and oxygen-evolving complex subunits PSBO1, PSBO2, PSBP-1, PSBQ-2, and PSBR assemble
+      into photosystem II.
+  curator_note: Resolves the water-splitting PSII supercomplex (13/32 members; recovered in all and iba_iea).
+- term:
+    id: GO:0009522
+    label: photosystem I
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.0666e-08
+    p_adjust: 0.0027041
+    overlap: 4
+    query_size: 32
+    target_size: 22
+    overlap_genes:
+    - LHCB2.1
+    - PSAD2
+    - PSAF
+    - PSAK
+  evidence:
+  - reference: PMID:33793811
+    reference_title: Single-cell RNA-seq analysis in Arabidopsis leaf tissues reveals distinct cell-type
+      programs.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: LHCA1-4 and core subunits PSAD-1, PSAE-1, PSAF, PSAH-1, PSAK, and PSAL form photosystem
+      I.
+  curator_note: Resolves the ferredoxin-reducing PSI supercomplex (10/32 members).
+- term:
+    id: GO:0008152
+    label: metabolic process
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.2183e-13
+    p_adjust: 1.5941e-08
+    overlap: 31
+    query_size: 32
+    target_size: 8138
+    overlap_genes:
+    - At1g32060
+    - At3g55800
+    - FBA1
+    - FBA2
+    - GAPA2
+    - GAPB
+    - LFNR2
+    - LHCA1
+    - LHCA2
+    - LHCA3
+    - LHCA4
+    - LHCB1.1
+    - LHCB1.2
+    - LHCB1.3
+    - LHCB2.1
+    - LHCB3
+    - LHCB4.1
+    - LHCB5
+    - PGK1
+    - PSAD2
+    - PSAF
+    - PSAK
+    - PSBO1
+    - PSBO2
+    - PSBP1
+    - PSBQ1
+    - RBCS-1A
+    - RBCS-1B
+    - RBCS-2B
+    - RBCS-3B
+    - petC
+  evidence:
+  - reference: PMID:33793811
+    reference_title: Single-cell RNA-seq analysis in Arabidopsis leaf tissues reveals distinct cell-type
+      programs.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: High-level ancestor roll-up of photosynthetic and metabolic terms.
+  curator_note: Generic top-level metabolic process roll-up (31/32 members).
+- term:
+    id: GO:0003729
+    label: mRNA binding
+  aspect: molecular_function
+  category: false_association
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.1253e-25
+    p_adjust: 5.3977e-20
+    overlap: 24
+    query_size: 32
+    target_size: 1180
+    overlap_genes:
+    - FBA2
+    - GAPA2
+    - GAPB
+    - LHCA1
+    - LHCA3
+    - LHCA4
+    - LHCB1.1
+    - LHCB1.2
+    - LHCB1.3
+    - LHCB4.1
+    - LHCB5
+    - PGK1
+    - PSAD2
+    - PSAF
+    - PSBO1
+    - PSBO2
+    - PSBP1
+    - PSBQ1
+    - RBCS-1A
+    - RBCS-1B
+    - RBCS-2B
+    - RBCS-3B
+    - RCA
+    - petC
+  evidence:
+  - reference: PMID:33793811
+    reference_title: Single-cell RNA-seq analysis in Arabidopsis leaf tissues reveals distinct cell-type
+      programs.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Chloroplast antenna proteins, OEC subunits, and RuBisCO/Calvin-cycle enzymes are not
+      bona fide mRNA-binding regulators; GO:0003729 (mRNA binding) is enriched in full TAIR GAF due to
+      high-throughput UV-crosslinking RNA-interactome proteomics capturing hyper-abundant leaf proteins.
+  curator_note: 'Classic plant proteomics abundance artifact: hyper-abundant photosynthetic proteins (RBCS,
+    GAPA-2, GAPB, FBA1, LHCB, PSBO1/2) co-purify in whole-leaf mRNA interactome screens and receive HDA/IDA
+    annotations to GO:0003729 in all (19/32 genes, p_adj=1.40e-12), completely eliminated by iba_iea and
+    iba.'
+- term:
+    id: GO:1901149
+    label: salicylic acid binding
+  aspect: molecular_function
+  category: false_association
+  confidence: high
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.7515e-08
+    p_adjust: 0.0075255
+    overlap: 4
+    query_size: 32
+    target_size: 28
+    overlap_genes:
+    - GAPA2
+    - GAPB
+    - PSBP1
+    - RBCS-1A
+  evidence:
+  - reference: PMID:33793811
+    reference_title: Single-cell RNA-seq analysis in Arabidopsis leaf tissues reveals distinct cell-type
+      programs.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Calvin-cycle enzymes (GAPA-2, GAPB, RBCS1A) and PSBP-1 define photosynthetic carbon assimilation
+      rather than salicylic acid hormone receptor signaling; GO:1901149 (salicylic acid binding) is enriched
+      in full GAF from chemical-affinity pull-down screens on whole-leaf extracts.
+  curator_note: High-throughput affinity pull-down false positive on abundant chloroplast enzymes in all
+    (4/32 genes, p_adj=9.77e-03), avoided by iba_iea and iba.

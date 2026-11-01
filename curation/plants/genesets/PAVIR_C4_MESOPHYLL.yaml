@@ -1,0 +1,548 @@
+gene_set_id: LIT:PAVIR_C4_MESOPHYLL
+gene_set_name: PAVIR_C4_MESOPHYLL
+collection: LIT:DOE_BER_BIOENERGY
+taxon:
+  id: NCBITaxon:38727
+  label: Panicum virgatum
+direction: UP
+series: SERIES:PAVIR_C4_KRANZ
+series_role: mesophyll_c4_fixation
+n_genes: 33
+description: Initial C4 carbon fixation and phosphoenolpyruvate regeneration program in leaf mesophyll
+  cells of the NAD-malic enzyme C4 bioenergy grass Panicum virgatum (switchgrass) (Rao et al. 2016 Plant
+  Physiol PMID:27099212; Lovell et al. 2021 Nature PMID:33505029). Contrasts with PAVIR_C4_BUNDLE_SHEATH
+  in SERIES:PAVIR_C4_KRANZ. In NAD-ME C4 Kranz anatomy, atmospheric CO2 is hydrated to bicarbonate by
+  cytosolic beta-carbonic anhydrases (CA) in mesophyll cells, fixed into oxaloacetate by phosphoenolpyruvate
+  carboxylase (PEPC), and converted to aspartate (via AspAT) or malate (via NADP-MDH) for export to bundle
+  sheath cells, while pyruvate returning from the bundle sheath is regenerated into PEP by chloroplastic
+  pyruvate, orthophosphate dikinase (PPDK).
+contexts:
+- term:
+    id: PO:0004006
+    label: mesophyll cell
+  context_type: cell_type
+  role_note: Outer Kranz chlorenchyma cell layer of switchgrass leaves performing initial C4 HCO3- fixation
+    by PEPC and PEP regeneration by PPDK.
+- term:
+    id: PO:0025034
+    label: leaf
+  context_type: anatomical_structure
+  role_note: Kranz-anatomy C4 photosynthetic leaf blade of Panicum virgatum.
+associations:
+- term:
+    id: GO:0015977
+    label: carbon fixation
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.3848e-30
+    p_adjust: 8.8127e-26
+    overlap: 10
+    query_size: 33
+    target_size: 13
+    overlap_genes:
+    - PVAP13_1KG181862
+    - PVAP13_1NG132600
+    - PVAP13_2KG207600
+    - PVAP13_2NG171100
+    - PVAP13_4KG247315
+    - PVAP13_4NG215687
+    - PVAP13_5KG144500
+    - PVAP13_5KG551100
+    - PVAP13_5NG148681
+    - PVAP13_5NG505300
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Eleven switchgrass PEPC paralogs catalyze initial C4 carbon fixation of bicarbonate into
+      oxaloacetate in leaf mesophyll cytosol.
+  curator_note: Core carbon-fixation process carried by 11/33 set members. Recovered in all and iba_iea,
+    but 0 overlap in IBA-only because Panicum virgatum lacks PANTHER IBA projections in EBI GOA.
+- term:
+    id: GO:0006730
+    label: one-carbon metabolic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.3351e-18
+    p_adjust: 6.0797e-14
+    overlap: 8
+    query_size: 33
+    target_size: 39
+    overlap_genes:
+    - PVAP13_6KG306300
+    - PVAP13_6KG306306
+    - PVAP13_6NG274100
+    - PVAP13_6NG274200
+    - PVAP13_6NG287100
+    - PVAP13_6NG287225
+    - PVAP13_7KG087400
+    - PVAP13_7NG173400
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Eight mesophyll beta-carbonic anhydrase paralogs rapidly hydrate dissolved CO2 into HCO3-
+      to supply substrate for PEPC.
+  curator_note: Captures the essential inorganic carbon hydration step preceding PEPC carboxylation (8/33
+    members; recovered in all and iba_iea, 0 in iba).
+- term:
+    id: GO:0006108
+    label: malate metabolic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.1763e-08
+    p_adjust: 0.00030626
+    overlap: 4
+    query_size: 33
+    target_size: 34
+    overlap_genes:
+    - PVAP13_6NG143300
+    - PVAP13_6NG362700
+    - PVAP13_9KG307474
+    - PVAP13_9NG074500
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Six mesophyll malate dehydrogenase paralogs interconvert oxaloacetate and malate in the
+      C4 dicarboxylate shuttle.
+  curator_note: Core C4 dicarboxylate metabolism step carried by 6/33 members (recovered in all and iba_iea,
+    0 in iba).
+- term:
+    id: GO:0008964
+    label: phosphoenolpyruvate carboxylase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.1852e-32
+    p_adjust: 3.0858e-28
+    overlap: 10
+    query_size: 33
+    target_size: 10
+    overlap_genes:
+    - PVAP13_1KG181862
+    - PVAP13_1NG132600
+    - PVAP13_2KG207600
+    - PVAP13_2NG171100
+    - PVAP13_4KG247315
+    - PVAP13_4NG215687
+    - PVAP13_5KG144500
+    - PVAP13_5KG551100
+    - PVAP13_5NG148681
+    - PVAP13_5NG505300
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Eleven switchgrass PEPC paralogs provide phosphoenolpyruvate carboxylase activity.
+  curator_note: Signature enzymatic activity of C4 mesophyll carbon fixation (11/33 members; recovered
+    in all and iba_iea).
+- term:
+    id: GO:0004089
+    label: carbonate dehydratase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.2241e-20
+    p_adjust: 3.1871e-16
+    overlap: 8
+    query_size: 33
+    target_size: 22
+    overlap_genes:
+    - PVAP13_6KG306300
+    - PVAP13_6KG306306
+    - PVAP13_6NG274100
+    - PVAP13_6NG274200
+    - PVAP13_6NG287100
+    - PVAP13_6NG287225
+    - PVAP13_7KG087400
+    - PVAP13_7NG173400
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Eight beta-carbonic anhydrase paralogs provide carbonate dehydratase activity in mesophyll
+      cells.
+  curator_note: First enzymatic activity of the C4 CO2-concentrating mechanism (8/33 members; recovered
+    in all and iba_iea).
+- term:
+    id: GO:0050242
+    label: pyruvate, phosphate dikinase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.5172e-09
+    p_adjust: 3.9502e-05
+    overlap: 3
+    query_size: 33
+    target_size: 4
+    overlap_genes:
+    - PVAP13_3KG261700
+    - PVAP13_3NG076904
+    - PVAP13_9KG370100
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Four switchgrass PPDK paralogs catalyze ATP- and Pi-dependent regeneration of phosphoenolpyruvate
+      from pyruvate in mesophyll chloroplasts.
+  curator_note: Rate-limiting PEP-regenerating enzyme of the C4 cycle (4/33 members; recovered in all
+    and iba_iea).
+- term:
+    id: GO:0004069
+    label: L-aspartate:2-oxoglutarate transaminase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 9.0043e-12
+    p_adjust: 2.3444e-07
+    overlap: 4
+    query_size: 33
+    target_size: 7
+    overlap_genes:
+    - PVAP13_1KG178300
+    - PVAP13_1NG128000
+    - PVAP13_5KG554400
+    - PVAP13_5NG507000
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Four aspartate aminotransferase (AspAT) paralogs transaminate oxaloacetate into aspartate,
+      the primary C4 transport amino acid in NAD-ME switchgrass.
+  curator_note: Defines the NAD-ME subtype aspartate shuttle between mesophyll and bundle sheath cells
+    (4/33 members; recovered in all and iba_iea).
+- term:
+    id: GO:0009507
+    label: chloroplast
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.4764e-09
+    p_adjust: 3.8441e-05
+    overlap: 13
+    query_size: 33
+    target_size: 2106
+    overlap_genes:
+    - PVAP13_1KG181862
+    - PVAP13_1NG132600
+    - PVAP13_2KG207600
+    - PVAP13_2KG454100
+    - PVAP13_2NG171100
+    - PVAP13_2NG520000
+    - PVAP13_4KG247315
+    - PVAP13_4NG215687
+    - PVAP13_5KG551100
+    - PVAP13_5NG505300
+    - PVAP13_6NG362700
+    - PVAP13_9KG307474
+    - PVAP13_9NG074500
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: PPDK, NADP-MDH, and carbonic anhydrase isoforms localize to mesophyll chloroplasts.
+  curator_note: Plastid compartment where PEP regeneration and malate reduction occur (12/33 members;
+    recovered in all and iba_iea).
+- term:
+    id: GO:0005829
+    label: cytosol
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 6.9841e-07
+    p_adjust: 0.018184
+    overlap: 10
+    query_size: 33
+    target_size: 1875
+    overlap_genes:
+    - PVAP13_1KG181862
+    - PVAP13_1NG132600
+    - PVAP13_2KG207600
+    - PVAP13_2NG171100
+    - PVAP13_4KG247315
+    - PVAP13_4NG215687
+    - PVAP13_5KG144500
+    - PVAP13_5KG551100
+    - PVAP13_5NG148681
+    - PVAP13_5NG505300
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Unlike C3 RuBisCO (chloroplastic), C4 PEPC and cytosolic AspAT/CA operate in the mesophyll
+      cytosol.
+  curator_note: Key compartmental distinction of C4 initial carbon fixation (6/33 members; recovered in
+    all and iba_iea).
+- term:
+    id: GO:0009760
+    label: C4 photosynthesis
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: confirmatory
+  evidence:
+  - reference: PMID:33505029
+    reference_title: Genomic mechanisms of climate adaptation in polyploid bioenergy switchgrass.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: CA, PEPC, PPDK, AspAT, and MDH constitute the canonical mesophyll half of C4 photosynthesis
+      (GO:0009760) in Panicum virgatum.
+  curator_note: Because Panicum virgatum is annotated exclusively via automated IEA in EBI GOA, individual
+    enzymes receive only generic catalytic/metabolic terms and 0 genes in the switchgrass proteome are
+    annotated to GO:0009760 (C4 photosynthesis).
+- term:
+    id: GO:0003824
+    label: catalytic activity
+  aspect: molecular_function
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.7768e-12
+    p_adjust: 1.2437e-07
+    overlap: 33
+    query_size: 33
+    target_size: 20064
+    overlap_genes:
+    - PVAP13_1KG178300
+    - PVAP13_1KG181862
+    - PVAP13_1NG128000
+    - PVAP13_1NG132600
+    - PVAP13_2KG207600
+    - PVAP13_2KG454100
+    - PVAP13_2NG171100
+    - PVAP13_2NG520000
+    - PVAP13_3KG261700
+    - PVAP13_3NG076904
+    - PVAP13_4KG247315
+    - PVAP13_4NG215687
+    - PVAP13_5KG144500
+    - PVAP13_5KG551100
+    - PVAP13_5KG554400
+    - PVAP13_5NG148681
+    - PVAP13_5NG505300
+    - PVAP13_5NG507000
+    - PVAP13_6KG306300
+    - PVAP13_6KG306306
+    - PVAP13_6NG143300
+    - PVAP13_6NG274100
+    - PVAP13_6NG274200
+    - PVAP13_6NG287100
+    - PVAP13_6NG287225
+    - PVAP13_6NG362700
+    - PVAP13_7KG087400
+    - PVAP13_7NG173400
+    - PVAP13_9KG269500
+    - PVAP13_9KG307474
+    - PVAP13_9KG370100
+    - PVAP13_9NG074500
+    - PVAP13_9NG411700
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Top-level molecular-function roll-up across all 33 C4 mesophyll enzymes.
+  curator_note: Generic catalytic activity roll-up (33/33 members).
+- term:
+    id: GO:0006099
+    label: tricarboxylic acid cycle
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.0105e-28
+    p_adjust: 2.6309e-24
+    overlap: 13
+    query_size: 33
+    target_size: 72
+    overlap_genes:
+    - PVAP13_1KG181862
+    - PVAP13_1NG132600
+    - PVAP13_2KG207600
+    - PVAP13_2NG171100
+    - PVAP13_4KG247315
+    - PVAP13_4NG215687
+    - PVAP13_5KG144500
+    - PVAP13_5KG551100
+    - PVAP13_5NG148681
+    - PVAP13_5NG505300
+    - PVAP13_6NG143300
+    - PVAP13_9KG307474
+    - PVAP13_9NG074500
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: These mesophyll PEPC and MDH isoforms execute the light-driven photosynthetic C4 dicarboxylate
+      shuttle, not mitochondrial respiratory TCA cycle oxidation; UniRule/InterPro IEA projects GO:0006099
+      (tricarboxylic acid cycle) onto all 17 PEPC and MDH genes.
+  curator_note: 'Classic C4 plant IEA mis-annotation: automated rules cannot distinguish photosynthetic
+    C4 PEPC/MDH paralogs from respiratory TCA/anaplerotic isoforms (17/33 genes, p_adj=4.42e-28 in all
+    and iba_iea).'
+- term:
+    id: GO:0009060
+    label: aerobic respiration
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.8315e-20
+    p_adjust: 1.2579e-15
+    overlap: 13
+    query_size: 33
+    target_size: 315
+    overlap_genes:
+    - PVAP13_1KG181862
+    - PVAP13_1NG132600
+    - PVAP13_2KG207600
+    - PVAP13_2NG171100
+    - PVAP13_4KG247315
+    - PVAP13_4NG215687
+    - PVAP13_5KG144500
+    - PVAP13_5KG551100
+    - PVAP13_5NG148681
+    - PVAP13_5NG505300
+    - PVAP13_6NG143300
+    - PVAP13_9KG307474
+    - PVAP13_9NG074500
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: GO:0009060 (aerobic respiration) is the parent roll-up of the erroneous IEA tricarboxylic
+      acid cycle annotation on C4 photosynthetic PEPC and MDH.
+  curator_note: Parent IEA roll-up false positive (17/33 genes in all and iba_iea).
+- term:
+    id: GO:0004611
+    label: phosphoenolpyruvate carboxykinase activity
+  aspect: molecular_function
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.1841e-29
+    p_adjust: 3.083e-25
+    overlap: 10
+    query_size: 33
+    target_size: 14
+    overlap_genes:
+    - PVAP13_1KG181862
+    - PVAP13_1NG132600
+    - PVAP13_2KG207600
+    - PVAP13_2NG171100
+    - PVAP13_4KG247315
+    - PVAP13_4NG215687
+    - PVAP13_5KG144500
+    - PVAP13_5KG551100
+    - PVAP13_5NG148681
+    - PVAP13_5NG505300
+  evidence:
+  - reference: PMID:27099212
+    reference_title: Comparative transcriptomics of C4 photosynthesis in switchgrass (Panicum virgatum).
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: The 11 PEPC genes in this set are phosphoenolpyruvate carboxylases (GO:0008964), not
+      GTP-dependent phosphoenolpyruvate carboxykinases (GO:0004611); automated IEA rules in GOA erroneously
+      co-attach GO:0004611 to switchgrass PEPC entries.
+  curator_note: Enzyme-class IEA mis-annotation on all 11 switchgrass PEPC paralogs (p_adj=2.66e-24 in
+    all and iba_iea).

@@ -1,0 +1,333 @@
+gene_set_id: LIT:ARATH_ROOT_ENDODERMIS_CASPARIAN
+gene_set_name: ARATH_ROOT_ENDODERMIS_CASPARIAN
+collection: LIT:PLANT_CELL_TYPE
+taxon:
+  id: NCBITaxon:3702
+  label: Arabidopsis thaliana
+direction: UP
+n_genes: 30
+description: Transcriptional and apoplastic barrier program of the Arabidopsis thaliana root endodermis
+  governing Casparian strip lignification and suberin lamellae deposition (Pfister et al. 2014 eLife PMID:25233276;
+  Naseer et al. 2012 PNAS PMID:22645358; Ryu et al. 2019 Plant Physiol PMID:30842268). Includes the SHR-SCR-MYB36
+  regulatory cascade, CASP1-5 membrane scaffolds, the SGN1-SGN3-CIF1/2 surveillance receptor pathway,
+  localized lignin polymerization machinery (RBOHF, PER64, ESB1, LAC3), and endodermal suberin biosynthetic
+  enzymes (GPAT5, ASFT, KCS2, KCS20, CYP86A1/HORST, CYP86B1, FAR1, FAR4, FAR5, ABCG2, ABCG6, ABCG20, MYB41).
+contexts:
+- term:
+    id: PO:0000252
+    label: endodermis
+  context_type: cell_type
+  role_note: Innermost cortical ground-tissue layer of the root forming the selective apoplastic and transcellular
+    barrier around the stele.
+- term:
+    id: PO:0009005
+    label: root
+  context_type: anatomical_structure
+  role_note: Root vascular cylinder boundary where Casparian strips and suberin lamellae regulate radial
+    nutrient uptake.
+associations:
+- term:
+    id: GO:0048226
+    label: Casparian strip
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.7614e-26
+    p_adjust: 2.3047e-21
+    overlap: 10
+    query_size: 30
+    target_size: 16
+    overlap_genes:
+    - CASP1
+    - CASP2
+    - CASP3
+    - CASP4
+    - CASP5
+    - CIF1
+    - CIF2
+    - DIR10
+    - GSO1
+    - MYB36
+  evidence:
+  - reference: PMID:25233276
+    reference_title: A receptor-like kinase mutant with absent endodermal diffusion barrier displays selective
+      root nutrient transport defects.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: CASP1-5, ESB1, PER64, RBOHF, SGN1, and SGN3 localize to the Casparian strip membrane
+      domain and ring-like lignified cell wall belt of the root endodermis.
+  curator_note: Signature cellular structure of the root endodermis carried by 12/30 set members. Recovered
+    across all 4 variants including IBA-only.
+- term:
+    id: GO:0160073
+    label: Casparian strip assembly
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 7.5895e-09
+    p_adjust: 0.00099304
+    overlap: 3
+    query_size: 30
+    target_size: 4
+    overlap_genes:
+    - CIF1
+    - CIF2
+    - GSO1
+  evidence:
+  - reference: PMID:25233276
+    reference_title: A receptor-like kinase mutant with absent endodermal diffusion barrier displays selective
+      root nutrient transport defects.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: MYB36 activates CASP1-5, ESB1, and PER64, while SGN1 and SGN3 monitor barrier integrity
+      to direct Casparian strip assembly.
+  curator_note: Core morphogenetic process defining Stage I endodermal differentiation (13/30 members).
+    Enriched in all and iba_iea, absent in IBA-only.
+- term:
+    id: GO:0010345
+    label: suberin biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.921e-31
+    p_adjust: 2.5135e-26
+    overlap: 12
+    query_size: 30
+    target_size: 20
+    overlap_genes:
+    - ABCG2
+    - ABCG20
+    - ABCG6
+    - CYP86A1
+    - CYP86B1
+    - DIR10
+    - FAR1
+    - FAR4
+    - FAR5
+    - GPAT5
+    - HHT1
+    - MYB92
+  evidence:
+  - reference: PMID:22645358
+    reference_title: Casparian strip diffusion barrier in Arabidopsis is made of a lignin polymer without
+      suberin.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Stage II endodermal differentiation deposits suberin lamellae via GPAT5, ASFT, CYP86A1,
+      CYP86B1, FAR1, FAR4, FAR5, KCS2, KCS20, ABCG2, ABCG6, ABCG20, and MYB41.
+  curator_note: Second major barrier program of the root endodermis (13/30 members). Recovered across
+    all 4 variants including IBA-only.
+- term:
+    id: GO:0007043
+    label: cell-cell junction assembly
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.4587e-14
+    p_adjust: 1.9086e-09
+    overlap: 5
+    query_size: 30
+    target_size: 6
+    overlap_genes:
+    - CASP1
+    - CASP2
+    - CASP3
+    - CASP4
+    - CASP5
+  evidence:
+  - reference: PMID:25233276
+    reference_title: A receptor-like kinase mutant with absent endodermal diffusion barrier displays selective
+      root nutrient transport defects.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: CASP1-5 proteins polymerize at the plasma membrane to form an epithelial-like tight cell-cell
+      junction sealing the apoplastic space between adjacent endodermal cells.
+  curator_note: 'Captures the mechanistic parallel between plant CASP domains and tight cell-cell junction
+    assembly (5/30 members: CASP1-5; recovered across all variants).'
+- term:
+    id: GO:0009699
+    label: phenylpropanoid biosynthetic process
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 7.0532e-21
+    p_adjust: 9.2287e-16
+    overlap: 12
+    query_size: 30
+    target_size: 113
+    overlap_genes:
+    - ABCG2
+    - ABCG20
+    - ABCG6
+    - CYP86A1
+    - CYP86B1
+    - DIR10
+    - FAR1
+    - FAR4
+    - FAR5
+    - GPAT5
+    - HHT1
+    - MYB92
+  evidence:
+  - reference: PMID:22645358
+    reference_title: Casparian strip diffusion barrier in Arabidopsis is made of a lignin polymer without
+      suberin.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Casparian strips are composed of a phenylpropanoid-derived lignin polymer and suberin
+      contains feruloyl/phenylpropanoid aromatics (ASFT, PER64, LAC3).
+  curator_note: Supporting biosynthetic pathway supplying monolignol and feruloyl aromatics (12/30 members;
+    recovered in all and iba).
+- term:
+    id: GO:0080019
+    label: alcohol-forming very long-chain fatty acyl-CoA reductase (NADP+) activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.0589e-07
+    p_adjust: 0.013855
+    overlap: 3
+    query_size: 30
+    target_size: 8
+    overlap_genes:
+    - FAR1
+    - FAR4
+    - FAR5
+  evidence:
+  - reference: PMID:25233276
+    reference_title: A receptor-like kinase mutant with absent endodermal diffusion barrier displays selective
+      root nutrient transport defects.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Fatty acyl-CoA reductases FAR1, FAR4, and FAR5 generate C18-C22 primary fatty alcohols
+      incorporated into endodermal suberin.
+  curator_note: 'Specific enzymatic step of endodermal suberin monomer synthesis (3/30 members: FAR1,
+    FAR4, FAR5; recovered across all variants).'
+- term:
+    id: GO:2000067
+    label: regulation of root morphogenesis
+  aspect: biological_process
+  category: supporting_process
+  confidence: medium
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.8659e-08
+    p_adjust: 0.0076752
+    overlap: 4
+    query_size: 30
+    target_size: 30
+    overlap_genes:
+    - CIF1
+    - CIF2
+    - GSO1
+    - MYB36
+  evidence:
+  - reference: PMID:30842268
+    reference_title: Single-Cell RNA Sequencing Resolves Molecular Relationships Among Individual Plant
+      Cells.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: SHR, SCR, MYB36, and SGN3 coordinate radial root patterning and endodermal morphogenesis.
+  curator_note: Supporting developmental regulation carried by 8/30 members (recovered in all and iba_iea).
+- term:
+    id: GO:0005618
+    label: cell wall
+  aspect: cellular_component
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 9.5295e-11
+    p_adjust: 1.2469e-05
+    overlap: 11
+    query_size: 30
+    target_size: 597
+    overlap_genes:
+    - CASP1
+    - CASP2
+    - CASP3
+    - CASP4
+    - CASP5
+    - CIF1
+    - CIF2
+    - DIR10
+    - GSO1
+    - MYB36
+    - PER64
+  evidence:
+  - reference: PMID:22645358
+    reference_title: Casparian strip diffusion barrier in Arabidopsis is made of a lignin polymer without
+      suberin.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Broad cellular-component parent of Casparian strip and suberized cell wall.
+  curator_note: Generic plant extracellular compartment roll-up (15/30 members).
+- term:
+    id: GO:0010054
+    label: trichoblast differentiation
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: false_association
+  evidence:
+  - reference: PMID:30842268
+    reference_title: Single-Cell RNA Sequencing Resolves Molecular Relationships Among Individual Plant
+      Cells.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: GO:0010054 (trichoblast differentiation) is an outer epidermal fate program distinct
+      from the inner ground-tissue endodermal lineage specified by SHR/SCR/MYB36.
+  curator_note: Negative control term from outer root epidermis.
