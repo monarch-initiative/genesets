@@ -1,0 +1,163 @@
+gene_set_id: LIT:POECILIID_PLACENTAL_LFC_DN
+gene_set_name: POECILIID_PLACENTAL_LFC_DN
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:8079
+  label: Poeciliidae
+direction: DN
+series: SERIES:POECILIID_PLACENTAL_LFC
+series_role: placental_down
+n_genes: 927
+description: >-
+  Literature-defined cell-state program: the genes DOWN-regulated in the late
+  follicle cell (LFC) of placental poeciliid fishes relative to each species'
+  non-placental sister, from Safian, Kraunsoe et al. (bioRxiv 2026,
+  doi:10.64898/2026.11.11.765921, Fig. 5A; no PMID yet). This is the DOWN arm.
+  Its pole is LIT:POECILIID_PLACENTAL_LFC_UP, which describes the cell type, the
+  four placental/non-placental pairs and the outgroup polarization. MEMBERSHIP
+  CAPTURE: rows with `lineage` equal to the placental species and
+  `direction: down` in data/reference/rna/DEGs/*_LFC.csv of
+  github.com/cardosomoreiralab/fish-placentas-2026 (commit 96536fe). Per-lineage
+  counts match Fig. 5A to within a few genes (turneri 515 vs 511 printed,
+  prolifica 373 vs 371, bifurca 221 vs 218, formosa 97 vs 97). P. turneri
+  dominates this arm, as P. bifurca dominates the UP arm. The 1,206 lineage rows
+  (1,051 distinct fish genes) map through
+  scripts/capture_poeciliid_placenta_sets.py: 848 by ZFIN orthology, 207 by an
+  HGNC symbol in the fish annotation, 22 by upper-cased zebrafish symbol, and
+  129 rows dropped. The result is 927 approved HGNC symbols. The authors do not
+  analyse the down-regulated genes functionally, so every term here is a
+  curator reading of the membership. ANALYSIS CAVEAT: against the ~10,000-gene
+  1:1-ortholog universe only four terms pass Bonferroni: lipid homeostasis,
+  regulation of plasma lipoprotein particle levels, sterol homeostasis and
+  cytoplasmic vesicle. The broad terms below are recovered against the GOA
+  background the benchmark uses.
+  SEED_SOURCE SEMANTICS: `enrichment_recovered` means genesets-rs (Fisher,
+  Bonferroni < 0.05, GOA background) recovered the term for this membership;
+  `curator_added` means it did not.
+contexts:
+  - term:
+      id: UBERON:0001305
+      label: ovarian follicle
+    context_type: anatomical_structure
+    role_note: >-
+      The LFC is a somatic cell of the late ovarian follicle, which in placental
+      species forms the maternal follicular wall of the placenta.
+  - term:
+      id: UBERON:0001987
+      label: placenta
+    context_type: anatomical_structure
+    role_note: >-
+      Contrast axis: placental vs non-placental sister species across four
+      independent placenta origins; this arm is what placental LFCs lose.
+  - term:
+      id: CL:0000501
+      label: granulosa cell
+    context_type: cell_type
+    role_note: >-
+      Nearest CL term; the LFC has no CL class and is thought to derive from
+      granulosa cells by terminal differentiation.
+associations:
+  - term:
+      id: GO:0055088
+      label: lipid homeostasis
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      The one specific program that survives the ortholog-universe test in this
+      arm (Bonferroni 0.01 against the universe, 2e-10 against GOA). It is a
+      plasma-lipoprotein module: the apolipoproteins APOA2, APOA4, APOC2 and
+      APOE with LPL, CETP, LDLR, LDLRAP1, ABCA1 and DGAT2, plus sterol sensing
+      (INSIG1) and fatty-acid oxidation control (ACOX1, ACACB, PRKAA2, SIRT1).
+      Curator reading, not the authors' claim: in the egg-retaining sister,
+      LFCs appear to run a lipoprotein secretion and turnover program that
+      placental LFCs lose while gaining the ER, apical-transporter and lipid
+      synthesis program of the UP pole. Placentation would then rewire lipid
+      handling rather than simply switching it on. Mechanistic because this
+      split is not entailed by construction. Confidence medium: the authors do
+      not test it, and H. formosa contributes few down genes.
+  - term:
+      id: GO:0097006
+      label: regulation of plasma lipoprotein particle levels
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The narrowest form of the lipid homeostasis program: 16 of 64 annotated
+      genes (FE 4.7 against the ortholog universe), namely ABCA1, AGT, APOA2,
+      APOA4, APOC2, APOE, BLOC1S6, CES3, CETP, DGAT2, LDLR, LDLRAP1, LPL, PCSK5
+      and PRKACB. Supporting rather than core because it restates the parent
+      term at higher specificity. LDLR appears in both poles: the same
+      fish ldlr ortholog goes up in some placental lineages and down in others.
+  - term:
+      id: GO:0031410
+      label: cytoplasmic vesicle
+    aspect: cellular_component
+    category: core_component
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Vesicle machinery is also lost, not only gained. 196 members (Bonferroni
+      2e-41 against GOA, 0.04 against the ortholog universe), weighted toward
+      the endolysosomal route: early endosome and RAB5/RAB7 trafficking (EEA1,
+      RAB5A, RAB5B, RAB7A, RILP, SNX1, EPS15, ITSN1), the V-ATPase (ATP6AP1,
+      ATP6V0C) and BLOC1S6. That differs from the ER/Golgi-secretory and
+      apical bias of the UP pole. Confirmatory: a broad compartment.
+  - term:
+      id: GO:0016192
+      label: vesicle-mediated transport
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The process counterpart of the vesicle component: 88 members (Bonferroni
+      6e-17 against GOA, not significant against the ortholog universe),
+      dominated by endocytosis and endosomal sorting (LDLR, LDLRAP1, LRP1,
+      EPS15, ITSN1, SH3GL1, RAB5A, RAB7A, PIKFYVE) and exocyst components
+      (EXOC3L1, EXOC3L2, EXOC6B). Supporting, and shared in kind with the UP
+      pole.
+  - term:
+      id: GO:0006629
+      label: lipid metabolic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: low
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Recovered against GOA (92 members, Bonferroni 5e-21) but not against the
+      ortholog universe, and equally strong in the UP pole. Recorded so the
+      benchmark sees that lipid metabolism as such does not separate the poles;
+      the direction-specific content is lipoprotein homeostasis here and lipid
+      synthesis/ER export in UP. Low confidence as a distinguishing description.
+  - term:
+      id: GO:0005515
+      label: protein binding
+    aspect: molecular_function
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Top hit by p-value (811 of 927 members, Bonferroni 5e-206) and
+      biologically empty: an annotation-density artefact of orthology-filtered,
+      well-studied genes tested against the genome-wide GOA background. A
+      negative control.

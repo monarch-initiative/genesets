@@ -48,7 +48,17 @@ a real evaluation.
    (357 and 558 members, captured from the Supplementary Table S3/S4 PDFs; the
    parsed counts reproduce the paper's stated 357/558/915 exactly). Four of the
    five form `SERIES:RFX6_KNOCKDOWN_ISLET_CELL` with roles `beta_up`,
-   `beta_down`, `alpha_up`, `alpha_down`.
+   `beta_down`, `alpha_up`, `alpha_down`. The first non-human sets are four
+   Poeciliidae placenta sets from Safian, Kraunsoe et al. (bioRxiv 2026,
+   doi:10.64898/2026.11.11.765921). Two are LFC DEG unions
+   (`POECILIID_PLACENTAL_LFC_UP` / `_DN`, 794 and 927 human symbols) and two are
+   the Fig. 6D multi-evidence panels (`POECILIID_PLACENTATION_LFC_GENES` /
+   `_YOLK_SAC_GENES`, 41 and 19). Fish genes are mapped to human through
+   ZFIN's curated orthology by `scripts/capture_poeciliid_placenta_sets.py`, so
+   they score against human GOA like every other query. They carry
+   `taxon: NCBITaxon:8079` and two series (`SERIES:POECILIID_PLACENTAL_LFC`,
+   `SERIES:POECILIID_PLACENTA_INTERFACE`). They are not yet in the numbers
+   below.
 
 2. **Annotation variants** —
    ```bash
