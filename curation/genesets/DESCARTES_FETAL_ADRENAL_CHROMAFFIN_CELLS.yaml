@@ -102,13 +102,13 @@ associations:
       the defining effector function the set omits. This is the headline honest
       call for this signature.
   - term:
-      id: GO:0015874
-      label: norepinephrine transport
+      id: GO:0051620
+      label: norepinephrine uptake
     aspect: biological_process
     category: supporting_process
     confidence: high
     specificity: cell_type_specific
-    seed_source: enrichment_recovered
+    seed_source: curator_added
     recovery_status: annotation_supported
     insight: confirmatory
     curator_note: >-
@@ -122,7 +122,13 @@ associations:
       catecholamine-biosynthesis function (which is itself a membership_gap here).
       Its presence without the synthesis enzymes is consistent with the
       developmental ordering of the noradrenergic effector program in this fetal
-      cell.
+      cell. TERM UPDATE: originally curated as GO:0015874 norepinephrine
+      transport, which GO obsoleted as an unnecessary grouping term
+      (go-ontology#31143) with no replacement. Re-pointed to the more specific
+      GO:0051620 norepinephrine uptake, to which SLC6A2 is directly annotated
+      (IDA). As a single-gene hit (1 of 89 annotated members, raw p 0.016) it
+      does not pass Bonferroni, so the seed is now curator_added; category,
+      confidence and recovery_status are unchanged.
   - term:
       id: GO:0042583
       label: chromaffin granule
