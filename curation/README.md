@@ -136,6 +136,21 @@ annotations for the processes they read out. The RFX6-knockdown pair
 worked example, and it shows why the perturbed gene must not be confused with
 the membership: RFX6 itself is not a member of either arm.
 
+A fourth, `LIT:PHENOTYPIC_PROFILING`, holds **connectivity (guilt-by-similarity)
+sets** from image-based or other phenotypic profiling: the members are the
+annotated targets of reference compounds whose profiles match a query
+perturbagen, so they are the genes whose inhibition *phenocopies* the query.
+The query's own target is the `chemical_perturbagen` context, not a member, and
+the pathway it drives is typically a `membership_gap`. These sets carry
+construction biases worth recording as negative controls. Annotated compound
+libraries are dominated by kinase inhibitors, so kinase/phosphorylation terms
+are `nonspecific`. A morphological match can also come from a shared cell shape
+rather than a shared mechanism, which makes such co-matches at most
+`marker_driven_plausible`. The worked example is
+`LIT:PPARG_INVERSE_AGONIST_PHENOCOPY_TARGETS`: the JUMP Cell Painting compound
+targets that phenocopy covalent PPARG inverse agonists (CDK4/6, RRM1/2, TOP2A,
+…), which resolve to the CDK4/6-Rb G1/S checkpoint and senescence.
+
 ## Pairs and series
 Related signatures are linked with two optional fields: `series` (a shared id,
 e.g. `SERIES:MICROGLIA_ACTIVATION`) and `series_role` (this set's pole or
