@@ -29,7 +29,7 @@ contexts:
 associations:
   - term:
       id: GO:0016266
-      label: protein O-linked glycosylation via N-acetyl-galactosamine
+      label: protein O-linked glycosylation via N-acetylgalactosamine
     aspect: biological_process
     category: core_process
     confidence: high

@@ -19,6 +19,7 @@ future curated gene set browser.
 ## Layout
 - `schema/genesets_interpretation.yaml` - LinkML schema (source of truth).
 - `conf/` - OAK adapters and reference-validator config.
+- `ontology_migrations.tsv` - audit log of every ontology-drift migration (see "Ontology drift").
 - `genesets/manifest.tsv` - index of curated sets (id, collection, biological context term, series, series_role).
 - `genesets/<SET>.yaml` - one interpretation per gene set or ranked signature.
 - `rankings/<NAME>.rnk.gz` - scores of ranked signatures (gzipped `gene`/`score` TSV).
@@ -31,8 +32,9 @@ future curated gene set browser.
    `genesets-workflows curate draft MSIGDB:<SET> --enrichment-tsv <tsv> -o genesets/<SET>.yaml`
 3. Adjudicate: set each association's `category`, `confidence`, `specificity`;
    add `curator_added` core terms the tool missed; add `evidence`.
-4. `just curate-validate` - structural + term + reference + obsolescence +
-   ranking validation.
+4. `just curate-validate` - structural + term + reference + ontology-drift +
+   ranking validation (reports every failing file). After a GO release, run
+   `just curate-drift` / `just curate-migrate` (see "Ontology drift").
 5. `just curate-report` - precision/recall/F1.
 
 ## Categories (biology)
@@ -260,10 +262,43 @@ ranking, `direction` agrees with the sign of NES, and ranked methods appear
 only on ranked interpretations. `LIT:SCHIZOPHRENIA_SCHEMA_EXOME` is the first
 example.
 
-## Term obsolescence
-`curate validate` adds a fourth gate: every ontology term id is swept against
-its ontology's OAK `obsoletes()` set. This catches obsolete terms the
-term-validator misses — the `sqlite:obo:*` builds retain labels for obsolete
-classes, so an obsolete id paired with its old label still passes id+label
-validation. An obsolete `id:` now fails the build (e.g. `GO:0050663` cytokine
-secretion → use `GO:0032635`; `GO:0062023` → `GO:0031012`).
+## Ontology drift (obsolescence, merges, relabels)
+GO and the other cited ontologies change underneath the gold standard. Each
+change costs something different. An obsolete term can never be recovered, because GOA stops
+annotating to it, so a core term that went obsolete silently lowers recall. A
+merged id stops resolving. A relabel passes the term-validator, which accepts
+synonyms, but leaves the file out of date. The repo treats these changes as routine
+maintenance with an audit trail, not as surprise build failures:
+
+- **Gate.** `curate validate`'s drift check (gate 4) classifies every context and
+  association term against the current OAK ontology. Obsolete, merged and
+  unknown ids are errors; a relabel of a live term is a warning, so a GO rename
+  never breaks the build. Each message names its fix.
+- **Report.** `just curate-drift` scans the whole corpus, prints each ontology's
+  version, and exits 1 while anything is unresolved (usable as a CI check).
+- **Migrate.** `just curate-migrate` rewrites what the ontology itself declares:
+  relabels, merges (alt ids → primary) and obsoletions with exactly one live
+  `replaced_by`. Only the term's `id:`/`label:` lines change, and each rewrite is
+  re-read and verified. A fix whose target is already asserted in the same file
+  is held back as `needs_review` so associations are never silently duplicated.
+- **Curator decisions.** An obsoletion with only `consider` suggestions or no
+  replacement needs a curator:
+  `genesets-workflows curate drift FILE --map OLD=NEW --note "why"`. Choose
+  from the members' actual annotations, then update the `curator_note`.
+- **Audit log.** Every applied change is appended to
+  `curation/ontology_migrations.tsv` (old/new id and label, kind, ontology
+  version, GO tracker issue, note).
+
+Migration never edits `category`, `recovery_status` or `insight`. It follows
+the ontology's declarations and keeps the curator's judgment. When the
+replacement is narrower or broader, re-check `recovery_status` against GOA as
+part of the review. For example, on 2026-11-14 no CAD member was still annotated
+to obsolete `GO:0007263`, while four carry its replacement `GO:0038060`.
+
+The eval side pins and records its GO version: `prepare_go_eval.py
+--go-release YYYY-MM-DD` uses a dated release, resolving that release's archive
+layout, and every run records the OBO `data-version` in `metadata.json`.
+`score_method_vs_benchmark.py` prints that version and warns, or fails with
+`--strict`, when a gold GO term is obsolete or unknown in the eval's release,
+so version skew between the gold and the eval is never mistaken for a recall
+change.

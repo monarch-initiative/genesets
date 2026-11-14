@@ -65,10 +65,6 @@ def run_command(command: list[str]) -> dict:
     }
 
 
-def release_url(date: str, path: str) -> str:
-    return f"https://release.geneontology.org/{date}/{path}"
-
-
 def read_json(path: Path) -> dict:
     return json.loads(path.read_text())
 
@@ -218,10 +214,8 @@ def main() -> int:
                 ",".join(variants),
                 "--max-p-adjust",
                 str(args.max_p_adjust),
-                "--ontology-url",
-                release_url(release_date, "ontology/go-basic.obo"),
-                "--gaf-url",
-                release_url(release_date, "annotations/goa_human.gaf.gz"),
+                "--go-release",
+                release_date,
             ]
             if args.force_download:
                 command.append("--force-download")

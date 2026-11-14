@@ -50,6 +50,64 @@ def validate(
 
 
 @app.command()
+def drift(
+    paths: list[Path] = typer.Argument(None, help="Interpretation YAMLs (default: every curation/genesets/*.yaml)."),
+    oak_config: Path = typer.Option(Path("curation/conf/oak_config.yaml"), "--oak-config"),
+    apply_fixes: bool = typer.Option(False, "--apply", help="Rewrite the changes the ontology declares (relabels, merges, single replaced_by)."),
+    remaps: list[str] = typer.Option(None, "--map", help="Curator decision OLD=NEW for a term the ontology gives no single replacement for (repeatable; implies --apply for it)."),
+    note: str = typer.Option("", "--note", help="Free-text note recorded in the migration log for --map decisions."),
+    log: Path = typer.Option(Path("curation/ontology_migrations.tsv"), "--log", help="Migration log (TSV) every applied change is appended to."),
+) -> None:
+    """Report (and optionally migrate) ontology drift: obsoleted, merged and relabelled terms.
+
+    Exits 1 while any drift remains unresolved, so it works as a CI check.
+    """
+    from genesets_workflows.curation import ontology_drift as od
+
+    files = list(paths or sorted(Path("curation/genesets").glob("*.yaml")))
+    prefixes = {tid.split(":", 1)[0] for f in files for tid, _ in od.asserted_terms(f)}
+    views = od.load_views(oak_config, prefixes)
+    for prefix, view in views.items():
+        typer.echo(f"{prefix}: {view.version()}")
+    drifts = od.scan(files, views)
+
+    decisions = {}
+    for item in remaps or []:
+        old, sep, new = item.partition("=")
+        if not sep:
+            raise typer.BadParameter(f"--map expects OLD=NEW, got {item!r}")
+        decisions[old.strip()] = new.strip()
+    unmatched = set(decisions) - {d.term_id for d in drifts}
+    if unmatched:
+        raise typer.BadParameter(f"--map ids are not drifted terms: {', '.join(sorted(unmatched))}")
+
+    to_apply, remaining = [], []
+    for d in drifts:
+        if d.term_id in decisions:
+            to_apply.append(od.remap(d, decisions[d.term_id], views[d.term_id.split(":", 1)[0]]))
+        elif apply_fixes and d.auto_fixable:
+            to_apply.append(d)
+        else:
+            remaining.append(d)
+
+    for d in od.apply(to_apply, log, note=note):
+        typer.echo(f"FIXED   {Path(d.file).name}: {d.describe()}")
+    for d in remaining:
+        tag = "AUTO   " if d.auto_fixable else "MANUAL "
+        typer.echo(f"{tag} {Path(d.file).name}: {d.describe()}")
+        if d.reason:
+            typer.echo(f"          reason: {d.reason}")
+        if d.tracker:
+            typer.echo(f"          tracker: {d.tracker}")
+    if remaining:
+        auto = sum(d.auto_fixable for d in remaining)
+        typer.echo(f"{len(remaining)} unresolved ({auto} auto-fixable with --apply, "
+                   f"{len(remaining) - auto} need a curator --map OLD=NEW)")
+        raise typer.Exit(1)
+    typer.echo("no unresolved ontology drift")
+
+
+@app.command()
 def draft(
     gene_set_id: str = typer.Argument(..., help="e.g. MSIGDB:HAY_BONE_MARROW_DENDRITIC_CELL"),
     enrichment_tsv: Path = typer.Option(..., "--enrichment-tsv", help="genesets-rs enrich TSV for this set."),
