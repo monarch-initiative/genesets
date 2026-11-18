@@ -98,6 +98,107 @@ genesets-rs matrix ... --output-format parquet --output results.parquet
 duckdb -c "SELECT * FROM 'results.parquet' WHERE p_adjust_bonferroni <= 0.05"
 ```
 
+## `mgsa`
+
+Bayesian model-based gene set analysis. It takes the same target and sample
+options as `enrich`. Every set in a multi-set sample file is analyzed
+independently unless `--sample-set` picks one.
+
+```bash
+genesets-rs mgsa \
+  --annotations gene_terms.tsv \
+  --terms terms.tsv \
+  --closure closure.tsv \
+  --sample study_genes.txt \
+  --background population_genes.txt \
+  --min-posterior 0.5 \
+  --summary-output mgsa-summary.yaml
+```
+
+Output columns: `query_id`, `query_name`, `target_id`, `target_name`,
+`posterior`, `overlap`, `query_size`, `target_size`, `background_size`,
+`p_value` (term-for-term, for comparison), `equivalent_ids`, and with
+`--overlap-genes`, `overlap_genes` and `overlap_gene_names`. Rows are sorted by
+posterior, highest first.
+
+| Option | Default | Meaning |
+| --- | --- | --- |
+| `--samples-per-term` | 100 | recorded samples per modeled term |
+| `--burn-per-term` | 10 | burn-in samples per modeled term |
+| `--term-prob`, `--term-count` | 0.5, 0 | Beta prior on a term being active |
+| `--false-pos-prob`, `--false-pos-count` | 0.5, 0 | Beta prior on the false-positive rate |
+| `--false-neg-prob`, `--false-neg-count` | 0.5, 0 | Beta prior on the false-negative rate |
+| `--flip-rate`, `--step-rate`, `--jump-rate` | 1, 1, 1 | relative move rates; `step` needs `--closure` |
+| `--seed` | 123456789 | random seed |
+| `--min-posterior` | 0 | drop rows below this posterior |
+
+Only TSV (or `null`) output is supported. See [Statistics](statistics.md) for
+the model.
+
+## `gsea`
+
+Preranked gene set enrichment analysis. It takes the same target options as
+`enrich`, but a scored gene list instead of a sample set and background: the
+ranking is the universe, so every ranked gene counts whether or not it is
+annotated, and target sets are restricted to ranked genes.
+
+```bash
+genesets-rs gsea \
+  --annotations gene_terms.tsv \
+  --terms terms.tsv \
+  --closure closure.tsv \
+  --ranks contrast.rnk \
+  --max-p-adjust 0.05 \
+  --leading-edge-genes
+```
+
+`--ranks` accepts two columns (`gene`, `score`), as in a GSEA `.rnk` file, or
+three (`ranking_id`, `gene`, `score`) to run several rankings at once; each is
+analyzed and adjusted independently. A first row with a non-numeric score is
+treated as a header. Duplicate genes and non-finite scores are errors. Like
+every table input, it may be gzip-compressed (detected from the file's
+contents, not its extension), as the curated `curation/rankings/*.rnk.gz` are.
+
+`--statistic ks` (the default) is the GSEA running sum; `--statistic wilcoxon`
+is a Wilcoxon rank-sum (Mann-Whitney U) test of members against non-members.
+`--algorithm elim` and `--algorithm weight01` use the ontology graph to keep
+redundant ancestors from riding on a child's signal; both need `--closure`.
+
+Output columns: `query_id` (the ranking), `query_name`, `target_id`,
+`target_name`, `es`, `nes`, `p_value`, `p_adjust`, `set_size` (members
+scored), `eliminated` (ranked members removed by `elim` or `weight01`),
+`target_size`, `ranked_size`, `leading_edge_size`, `peak_rank`, and with
+`--leading-edge-genes`, `leading_edge_genes` and `leading_edge_gene_names`.
+
+| Column | `--statistic ks` | `--statistic wilcoxon` |
+| --- | --- | --- |
+| `es` | enrichment score | rank-biserial correlation |
+| `nes` | ES over the mean same-sign null ES | z-score |
+| `p_value` | permutation p-value | normal approximation, two-sided |
+| `p_adjust` | GSEA FDR q-value | Benjamini-Hochberg |
+
+Both `es` columns run from -1 to 1 and are positive toward high scores.
+`peak_rank` is the 1-based rank of the leading edge's boundary gene: its last
+gene for positive scores, its first for negative ones. Rows are sorted by
+p-value, then by |NES|. The `p_adjust` column means `compare` can diff two
+GSEA runs directly.
+
+| Option | Default | Meaning |
+| --- | --- | --- |
+| `--ranks-name` | file stem | ranking id for a two-column file |
+| `--ranks-set` | all | analyze one ranking from a three-column file |
+| `--statistic` | `ks` | `ks` or `wilcoxon` |
+| `--algorithm` | `classic` | `classic`, `elim`, or `weight01`; the last two need `--closure` |
+| `--elim-cutoff` | 0.01 | raw p-value at which `elim` removes a term's genes from its ancestors |
+| `--weight` | 1 | KS exponent on \|score\|; 0 is the unweighted KS statistic |
+| `--permutations` | 1000 | random gene sets per KS null |
+| `--min-size`, `--max-size` | 15, 500 | ranked-member size limits for tested targets |
+| `--seed` | 123456789 | random seed |
+| `--max-p-value`, `--max-p-adjust` | none | drop rows above these cutoffs |
+
+Only TSV (or `null`) output is supported. See [Statistics](statistics.md#preranked-gsea)
+for the method.
+
 ## `compare`
 
 Compare two enrichment result tables by `(query_id, target_id)` and classify

@@ -171,6 +171,69 @@ pub fn build_ontology_sets(
     sets
 }
 
+/// Direct parent links between target sets, derived from a reflexive
+/// child-to-ancestor closure by transitive reduction.
+#[derive(Clone, Debug, Default)]
+pub struct TermGraph {
+    /// Direct parents of each set, by index into the set list.
+    pub parents: Vec<Vec<usize>>,
+    /// Number of strict ancestors of each set; deeper terms have more.
+    pub ancestor_counts: Vec<usize>,
+}
+
+pub fn build_term_graph(sets: &[NamedSet], closure: &[(String, String)]) -> TermGraph {
+    let index_by_id: HashMap<&str, usize> = sets
+        .iter()
+        .enumerate()
+        .map(|(index, set)| (set.id.as_str(), index))
+        .collect();
+
+    let mut ancestors = vec![Vec::<usize>::new(); sets.len()];
+    for (child, ancestor) in closure {
+        let (Some(&child_index), Some(&ancestor_index)) = (
+            index_by_id.get(child.as_str()),
+            index_by_id.get(ancestor.as_str()),
+        ) else {
+            continue;
+        };
+        if child_index != ancestor_index {
+            ancestors[child_index].push(ancestor_index);
+        }
+    }
+    for list in &mut ancestors {
+        list.sort_unstable();
+        list.dedup();
+    }
+
+    let mut indirect = vec![false; sets.len()];
+    let parents = ancestors
+        .iter()
+        .map(|own| {
+            for ancestor in own {
+                for grand in &ancestors[*ancestor] {
+                    indirect[*grand] = true;
+                }
+            }
+            let direct = own
+                .iter()
+                .copied()
+                .filter(|ancestor| !indirect[*ancestor])
+                .collect();
+            for ancestor in own {
+                for grand in &ancestors[*ancestor] {
+                    indirect[*grand] = false;
+                }
+            }
+            direct
+        })
+        .collect();
+
+    TermGraph {
+        parents,
+        ancestor_counts: ancestors.iter().map(Vec::len).collect(),
+    }
+}
+
 pub fn build_flat_sets(raw_sets: &[RawSet], universe: &GeneUniverse) -> Vec<NamedSet> {
     raw_sets
         .iter()
@@ -210,7 +273,7 @@ pub fn union_sets(sets: &[NamedSet], gene_count: usize) -> DenseBitSet {
 
 #[cfg(test)]
 mod tests {
-    use super::{GeneUniverse, build_ontology_sets};
+    use super::{GeneUniverse, build_ontology_sets, build_term_graph};
 
     #[test]
     fn propagates_annotations_to_ancestors() {
@@ -234,5 +297,29 @@ mod tests {
 
         assert_eq!(child.bits.count_ones(), 1);
         assert_eq!(parent.bits.count_ones(), 2);
+    }
+
+    #[test]
+    fn reduces_closure_to_direct_parents() {
+        let universe = GeneUniverse::new();
+        let closure: Vec<(String, String)> = [
+            ("a", "a"),
+            ("b", "b"),
+            ("b", "a"),
+            ("c", "c"),
+            ("c", "b"),
+            ("c", "a"),
+        ]
+        .iter()
+        .map(|(child, ancestor)| ((*child).to_owned(), (*ancestor).to_owned()))
+        .collect();
+        let sets = build_ontology_sets(&[], &closure, &[], &universe);
+        let graph = build_term_graph(&sets, &closure);
+        let index = |id: &str| sets.iter().position(|set| set.id == id).unwrap();
+
+        assert_eq!(graph.parents[index("c")], vec![index("b")]);
+        assert_eq!(graph.parents[index("b")], vec![index("a")]);
+        assert!(graph.parents[index("a")].is_empty());
+        assert_eq!(graph.ancestor_counts[index("c")], 2);
     }
 }

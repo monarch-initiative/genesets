@@ -57,8 +57,14 @@ curate-test:
     {{gw}} --with pytest python -m pytest --doctest-modules \
       python/genesets-workflows/src/genesets_workflows/curation -v
 
+# Build every curated ranking from its recipe (committed ones are checked to rebuild unchanged).
+curate-build-rankings:
+    for r in curation/rankings/*.recipe.yaml; do \
+      {{gw}} genesets-workflows curate build-ranking "$r" || exit 1; \
+    done
+
 # Validate every interpretation YAML under curation/genesets.
-curate-validate:
+curate-validate: curate-build-rankings
     for f in curation/genesets/*.yaml; do \
       echo "== $f =="; \
       {{gw}} genesets-workflows curate validate "$f" || exit 1; \
@@ -71,3 +77,30 @@ curate-validate-schema:
 # Build the precision/recall report over all curated C8 interpretations.
 curate-report out="curation/report.tsv":
     {{gw}} genesets-workflows curate report --dir curation/genesets -o {{out}}
+
+# --- Metabolite (chemical-to-GO) enrichment ----------------------------------
+
+chem2go_dir := "evals/chem2go/generated/current"
+human_gaf := "http://current.geneontology.org/annotations/goa_human.gaf.gz"
+
+# Build chemical-to-GO tables (GO-plus definitions, Rhea, and the human enzyme bridge).
+chem2go-prep gaf_url=human_gaf:
+    uv run --project python/genesets-workflows genesets-workflows prepare-chem2go \
+      --out-dir {{chem2go_dir}} --gaf-url {{gaf_url}}
+
+# Normalize a metabolite list (HMDB, KEGG, ChEBI, ...) to canonical ChEBI ids.
+chem2go-normalize input out:
+    uv run --project python/genesets-workflows genesets-workflows normalize-chemicals \
+      {{input}} --prep-dir {{chem2go_dir}} --out {{out}} --report {{out}}.report.tsv
+
+# Run the chem2go smoke queries (TCA cycle, urea cycle) against every bridge.
+chem2go-smoke:
+    bash evals/chem2go/run_smoke.sh {{chem2go_dir}}
+
+# Unit tests and doctests for the chemical layer.
+chem2go-test:
+    uv run --project python/genesets-workflows --with pytest pytest \
+      python/genesets-workflows/tests/test_chem2go.py -v
+    uv run --project python/genesets-workflows --with pytest python -m pytest --doctest-modules \
+      python/genesets-workflows/src/genesets_workflows/chemid.py \
+      python/genesets-workflows/src/genesets_workflows/sources/chem2go.py -v

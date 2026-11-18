@@ -31,7 +31,7 @@ categories, and the findings. Don't duplicate — extend.
 
 - **uv, never `requirements.txt`.** Python commands go through
   `uv run --project python/genesets-workflows …`.
-- **`just` over raw commands.** Key targets: `just curate-validate` (4-gate
+- **`just` over raw commands.** Key targets: `just curate-validate` (5-gate
   validation of every interpretation), `just curate-test` (pytest + doctests),
   `just curate-report` (precision/recall/F1), `just curate-validate-schema`.
 - **No try/except cheating.** If something throws unexpectedly, fix the cause;
@@ -57,7 +57,7 @@ categories, and the findings. Don't duplicate — extend.
 
 ## Before you open / extend a PR
 
-1. `just curate-validate` — all interpretation YAMLs pass the 4 gates.
+1. `just curate-validate` — all interpretation YAMLs pass the 5 gates.
 2. `just curate-test` — unit + doctests pass.
 3. Regenerate `curation/genesets/manifest.tsv` if you added/changed sets.
 4. If you added evaluable sets, re-run the **evaluate-enrichment** pipeline and
@@ -78,7 +78,10 @@ categories, and the findings. Don't duplicate — extend.
 MSigDB (`MSIGDB:` — C8 single-cell, C2 pathways, H hallmark, C5:HPO phenotypes)
 and literature (`LIT:` — `DISEASE_ACTIVITY` cell-state programs and `GENETIC`
 GWAS/CRISPR convergences, with membership captured into
-`curation/genesets/lit_members.gmt`).
+`curation/genesets/lit_members.gmt`). Ranked signatures (a score per gene,
+analyzed with `genesets-rs gsea`) carry a `ranking` block pointing at
+`curation/rankings/<NAME>.rnk.gz`; see "Ranked signatures" in
+`curation/README.md`.
 
 ## Gotchas
 

@@ -1,0 +1,398 @@
+gene_set_id: LIT:ALZHEIMERS_GWAS_MAGMA
+gene_set_name: ALZHEIMERS_GWAS_MAGMA
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+ranking:
+  source: PMID:30617256
+  score_type: neg_log10_p
+  signed: false
+  gene_id_type: HGNC symbol
+  n_ranked: 18156
+  file: ../rankings/ALZHEIMERS_GWAS_MAGMA.rnk.gz
+  sha256: 40f9046dd868f541c9aeee02cdaa0aad3db246ac14b47ea57574351379b465c7
+  source_detail: GWAS ATLAS (Watanabe et al. 2019, PMID:31427789) MAGMA gene-based
+    results (magma.genes.out), atlas study 4094
+  download_url: https://atlas.ctglab.nl/traitDB/4094
+  score_description: '-log10 of the MAGMA gene-based p-value (snp-wise mean model,
+    1 kb windows, protein-coding genes; one-sided). Built by `curate build-ranking`
+    from rankings/ALZHEIMERS_GWAS_MAGMA.recipe.yaml: of 19,097 atlas rows, 252 mapped
+    by their approved symbol after their Ensembl v92 id failed, 876 have no approved
+    HGNC symbol, and 65 duplicate symbols kept the stronger score; 18,156 genes ranked.
+    Scored on -log10 p rather than ZSTAT because the KS running sum weights by |score|,
+    which would treat strongly negative Z as signal.'
+description: 'Genome-wide MAGMA gene ranking for Alzheimer''s disease from the Jansen
+  et al. 2019 GWAS of clinically diagnosed and UK Biobank proxy AD (71,880 cases,
+  383,378 controls; PMID:30617256), as computed by the GWAS ATLAS. It is the scored
+  counterpart of LIT:ALZHEIMERS_GWAS_GENES, whose membership comes from the later
+  Bellenguez et al. 2022 GWAS; no genome-wide gene table of Bellenguez is publicly
+  available, so the two entries describe overlapping but not identical studies. The
+  APOE locus dominates: NECTIN2, TOMM40 and APOE are the top three genes and one signal.
+  GSEA''s weighted KS reaches no term at FDR q < 0.05 (unweighted KS reaches 14: weighting
+  by -log10 p lets the APOE locus swamp the running sum); Wilcoxon reaches seven,
+  all carried by a few loci. The interpretation is amyloid handling (APOE, CLU, PICALM,
+  SORL1, APP, PSEN1, TREM2) with a smaller immune component. Microglial activation
+  and APP catabolism, CORE in the gene-set entry, are kept as curator-added CORE terms:
+  their genes rank high (TREM2, ABCA7, ADAM10, BACE1, PSEN1) but the whole-term tests
+  stop at nominal significance. MAGMA gene p-values of neighbouring genes share SNPs
+  and LD, and the gene-set tests here do not model that correlation, so a term carried
+  by one locus is one finding, not many.'
+contexts:
+- term:
+    id: MONDO:0004975
+    label: Alzheimer disease
+  context_type: disease
+  role_note: Common-variant association strength per gene, clinical plus proxy AD.
+associations:
+- term:
+    id: GO:1905906
+    label: regulation of amyloid fibril formation
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: core_process
+  confidence: medium
+  specificity: broadly_expressed
+  direction: UP
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: wilcoxon
+    algorithm: classic
+    p_adjust_method: benjamini_hochberg
+    p_value: 1.421702e-05
+    p_adjust: 0.01359858
+    target_size: 20
+    es: 0.626792
+    nes: 4.340482
+    set_size: 16
+    leading_edge_size: 13
+    leading_edge_genes:
+    - APOE
+    - CLU
+    - PFDN2
+    - APP
+    - USP8
+    - TREM2
+    - PFDN1
+    - PSEN1
+    - PFDN6
+    - PFDN4
+    - HSPG2
+    - LDLR
+    - CRYAB
+    peak_rank: 5191
+  evidence:
+  - reference: PMID:30617256
+    reference_title: Genome-wide meta-analysis identifies new loci and functional
+      pathways influencing Alzheimer's disease risk.
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: lipid-related processes and degradation of amyloid
+    explanation: Jansen et al.'s own gene-set analysis of this GWAS points to amyloid
+      precursor protein degradation.
+  curator_note: 'Leading edge APOE, CLU, PFDN2, APP, USP8, TREM2, PFDN1, PSEN1: at
+    least five independent AD loci (APOE, CLU, APP, TREM2, PSEN1), so this is convergence
+    rather than one locus. Confirmatory: amyloid is the field''s founding hypothesis.'
+- term:
+    id: GO:0001540
+    label: amyloid-beta binding
+  seed_source: enrichment_recovered
+  aspect: molecular_function
+  category: supporting_process
+  confidence: medium
+  specificity: broadly_expressed
+  direction: UP
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: wilcoxon
+    algorithm: classic
+    p_adjust_method: benjamini_hochberg
+    p_value: 3.088662e-05
+    p_adjust: 0.02532262
+    target_size: 85
+    es: 0.274749
+    nes: 4.166829
+    set_size: 77
+    leading_edge_size: 41
+    leading_edge_genes:
+    - APOE
+    - CLU
+    - PICALM
+    - SORL1
+    - PFDN2
+    - GRIA1
+    - ITGAM
+    - LILRB2
+    - BACE1
+    - TREM2
+    - PFDN1
+    - ATP1A3
+    - APBB2
+    - LDLRAP1
+    - APBB3
+    - COL25A1
+    - ACHE
+    - MSR1
+    - FPR2
+    - PFDN6
+    - PFDN4
+    - IDE
+    - CACNA1B
+    - CD74
+    - CACNA1A
+    - GRIN2B
+    - INSR
+    - EPHB2
+    - HSPG2
+    - FBXO2
+    - FCGR2B
+    - EPHA4
+    - LRP1
+    - DLGAP3
+    - CST3
+    - LDLR
+    - GRIN1
+    - GRIA2
+    - CLSTN1
+    - CRYAB
+    - ITM2B
+    peak_rank: 5316
+  curator_note: APOE, CLU, PICALM and SORL1 lead, four separate loci, all with amyloid-beta
+    binding or trafficking roles. Supporting the amyloid-handling core.
+- term:
+    id: GO:0042987
+    label: amyloid precursor protein catabolic process
+  seed_source: curator_added
+  aspect: biological_process
+  category: core_process
+  confidence: medium
+  specificity: broadly_expressed
+  direction: UP
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 0.002944162
+    p_adjust: 0.1223384
+    target_size: 16
+    es: 0.857279
+    nes: 1.779784
+    set_size: 15
+    leading_edge_size: 5
+    leading_edge_genes:
+    - ABCA7
+    - ADAM10
+    - APH1B
+    - BACE1
+    - PSEN1
+    peak_rank: 845
+  curator_note: CORE in LIT:ALZHEIMERS_GWAS_GENES. Here the KS leading edge is ABCA7,
+    ADAM10, APH1B, BACE1, PSEN1, five independent loci on the APP processing pathway,
+    but the 15-gene term stops at nominal p = 0.003 (FDR q = 0.12).
+- term:
+    id: GO:0001774
+    label: microglial cell activation
+  seed_source: curator_added
+  aspect: biological_process
+  category: core_process
+  confidence: medium
+  specificity: lineage_shared
+  direction: UP
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: wilcoxon
+    algorithm: classic
+    p_adjust_method: benjamini_hochberg
+    p_value: 0.009523618
+    p_adjust: 0.3385214
+    target_size: 37
+    es: 0.273526
+    nes: 2.592662
+    set_size: 30
+    leading_edge_size: 21
+    leading_edge_genes:
+    - CLU
+    - APP
+    - ITGAM
+    - TREM2
+    - IL33
+    - GRN
+    - TNF
+    - MAPT
+    - FPR2
+    - SNCA
+    - AIF1
+    - IFNG
+    - IL1RAP
+    - CX3CR1
+    - IL1B
+    - CX3CL1
+    - ITGB2
+    - AGER
+    - TLR9
+    - C1QA
+    - IFNGR1
+    peak_rank: 8372
+  evidence:
+  - reference: PMID:30617256
+    reference_title: Genome-wide meta-analysis identifies new loci and functional
+      pathways influencing Alzheimer's disease risk.
+    supports: SUPPORT
+    evidence_source: HUMAN_CLINICAL
+    snippet: strongly expressed in immune-related tissues and
+    explanation: The paper reports AD-associated genes are most expressed in immune
+      tissues and microglia.
+  curator_note: 'CORE in LIT:ALZHEIMERS_GWAS_GENES. CLU, APP, ITGAM, TREM2, IL33,
+    GRN and TNF lead, but the term is only nominal here (Wilcoxon p = 0.0095, q =
+    0.34). Kept mechanistic: a microglial immune role is not entailed by an amyloid-centred
+    view.'
+- term:
+    id: GO:0042611
+    label: MHC protein complex
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: marker_driven_plausible
+  confidence: low
+  specificity: lineage_shared
+  direction: UP
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: wilcoxon
+    algorithm: classic
+    p_adjust_method: benjamini_hochberg
+    p_value: 1.751466e-06
+    p_adjust: 0.005025833
+    target_size: 23
+    es: 0.602613
+    nes: 4.78017
+    set_size: 21
+    leading_edge_size: 13
+    leading_edge_genes:
+    - HLA-DRA
+    - HLA-DRB1
+    - HLA-DQA1
+    - HLA-E
+    - HLA-DQB1
+    - HLA-DOB
+    - HLA-DRB5
+    - HLA-F
+    - HLA-G
+    - HLA-DQB2
+    - CD74
+    - HLA-C
+    - HLA-DQA2
+    peak_rank: 2251
+  curator_note: 'Carried entirely by the HLA class II block (HLA-DRA, HLA-DRB1, HLA-DQA1,
+    HLA-DQB1, HLA-DRB5) plus HLA-E/F: one locus, a known but modest AD association.
+    MAGMA gene p-values of neighbouring genes share SNPs and LD, and the gene-set
+    tests here do not model that correlation, so a term carried by one locus is one
+    finding, not many.'
+- term:
+    id: GO:0042277
+    label: peptide binding
+  seed_source: enrichment_recovered
+  aspect: molecular_function
+  category: nonspecific
+  confidence: medium
+  specificity: ubiquitous
+  direction: UP
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: wilcoxon
+    algorithm: classic
+    p_adjust_method: benjamini_hochberg
+    p_value: 1.851293e-07
+    p_adjust: 0.001062457
+    target_size: 183
+    es: 0.240528
+    nes: 5.213681
+    set_size: 158
+    leading_edge_size: 77
+    leading_edge_genes:
+    - APOE
+    - CLU
+    - PICALM
+    - SORL1
+    - HLA-DRA
+    - PFDN2
+    - MME
+    - HLA-DRB1
+    - HLA-DQA1
+    - TAP2
+    - HLA-E
+    - HLA-DQB1
+    - GRIA1
+    - ITGAM
+    - LILRB2
+    - SLC7A9
+    - HLA-DOB
+    - CLTA
+    - BACE1
+    - HLA-DRB5
+    - TREM2
+    - PFDN1
+    - ATP1A3
+    - FNTB
+    - TAPBP
+    - APBB2
+    - HLA-F
+    - LDLRAP1
+    - HLA-G
+    - APBB3
+    - COL25A1
+    - ACHE
+    - MSR1
+    - FPR2
+    - PTGDR2
+    - PFDN6
+    - PFDN4
+    - IDE
+    - HLA-DQB2
+    - CACNA1B
+    - NLN
+    - CD74
+    - OPRL1
+    - SSTR1
+    - MAML1
+    - HLA-C
+    - HLA-DQA2
+    - OPRM1
+    - CACNA1A
+    - SLC7A8
+    - GRIN2B
+    - INSR
+    - CALR
+    - EPHB2
+    - HSPG2
+    - PCSK5
+    - FURIN
+    - GPR171
+    - FBXO2
+    - FCGR2B
+    - NUP98
+    - EPHA4
+    - LRP1
+    - NPBWR2
+    - DLGAP3
+    - GALR2
+    - HLA-DOA
+    - NPBWR1
+    - CRIP1
+    - CST3
+    - OPRK1
+    - NMUR2
+    - LDLR
+    - MC4R
+    - RXRA
+    - GRIN1
+    - GRIA2
+    peak_rank: 4843
+  curator_note: The strongest Wilcoxon term, but a broad molecular-function union
+    of the amyloid genes (APOE, CLU, PICALM, SORL1) and the HLA block. Uninformative
+    beyond the two specific terms that carry the same genes.

@@ -12,7 +12,9 @@ use serde::Deserialize;
 use crate::{
     compare::DiffRow,
     enrichment::{Correction, EnrichmentRow},
+    gsea::{GseaRow, Ranking},
     index::{GeneUniverse, NamedSet},
+    mgsa::MgsaResult,
 };
 
 #[derive(Copy, Clone, Debug, Eq, PartialEq, ValueEnum, Deserialize)]
@@ -226,6 +228,163 @@ fn write_tsv_rows<W: Write + ?Sized>(
             record.push(gene_names);
         }
 
+        writer.write_record(record)?;
+    }
+
+    writer.flush()?;
+    Ok(())
+}
+
+/// Writes MGSA posteriors as TSV, one row per modeled term per query.
+pub fn write_mgsa_rows<W: Write + ?Sized>(
+    writer: &mut W,
+    results: &[MgsaResult],
+    queries: &[NamedSet],
+    targets: &[NamedSet],
+    genes: &GeneUniverse,
+    min_posterior: f64,
+    include_overlap_genes: bool,
+) -> Result<()> {
+    let mut writer = csv::WriterBuilder::new()
+        .delimiter(b'\t')
+        .from_writer(writer);
+    let mut header = vec![
+        "query_id",
+        "query_name",
+        "target_id",
+        "target_name",
+        "posterior",
+        "overlap",
+        "query_size",
+        "target_size",
+        "background_size",
+        "p_value",
+        "equivalent_ids",
+    ];
+    if include_overlap_genes {
+        header.push("overlap_genes");
+        header.push("overlap_gene_names");
+    }
+    writer.write_record(header)?;
+
+    for result in results {
+        let query = &queries[result.query_index];
+        for term in &result.terms {
+            if term.posterior < min_posterior {
+                continue;
+            }
+            let target = &targets[term.target_index];
+            let mut record = vec![
+                query.id.clone(),
+                query.name.clone().unwrap_or_default(),
+                target.id.clone(),
+                target.name.clone().unwrap_or_default(),
+                format!("{:.6}", term.posterior),
+                term.overlap.to_string(),
+                result.query_size.to_string(),
+                term.target_size.to_string(),
+                result.background_size.to_string(),
+                format_p_value(term.p_value),
+                term.equivalent_indices
+                    .iter()
+                    .map(|index| targets[*index].id.as_str())
+                    .collect::<Vec<_>>()
+                    .join(";"),
+            ];
+            if include_overlap_genes {
+                let indices = term.overlap_indices.as_deref().unwrap_or(&[]);
+                record.push(
+                    indices
+                        .iter()
+                        .map(|index| genes.gene_id(*index))
+                        .collect::<Vec<_>>()
+                        .join(";"),
+                );
+                record.push(
+                    indices
+                        .iter()
+                        .filter_map(|index| genes.gene_name(*index))
+                        .collect::<Vec<_>>()
+                        .join(";"),
+                );
+            }
+            writer.write_record(record)?;
+        }
+    }
+
+    writer.flush()?;
+    Ok(())
+}
+
+/// Writes GSEA results as TSV, one row per tested target per ranking.
+pub fn write_gsea_rows<W: Write + ?Sized>(
+    writer: &mut W,
+    rows: &[GseaRow],
+    rankings: &[Ranking],
+    targets: &[NamedSet],
+    genes: &GeneUniverse,
+    include_leading_edge: bool,
+) -> Result<()> {
+    let mut writer = csv::WriterBuilder::new()
+        .delimiter(b'\t')
+        .from_writer(writer);
+    let mut header = vec![
+        "query_id",
+        "query_name",
+        "target_id",
+        "target_name",
+        "es",
+        "nes",
+        "p_value",
+        "p_adjust",
+        "set_size",
+        "eliminated",
+        "target_size",
+        "ranked_size",
+        "leading_edge_size",
+        "peak_rank",
+    ];
+    if include_leading_edge {
+        header.push("leading_edge_genes");
+        header.push("leading_edge_gene_names");
+    }
+    writer.write_record(header)?;
+
+    for row in rows {
+        let target = &targets[row.target_index];
+        let mut record = vec![
+            rankings[row.query_index].id.clone(),
+            String::new(),
+            target.id.clone(),
+            target.name.clone().unwrap_or_default(),
+            format!("{:.6}", row.es),
+            format!("{:.6}", row.nes),
+            format_p_value(row.p_value),
+            format_p_value(row.p_adjust),
+            row.set_size.to_string(),
+            row.eliminated.to_string(),
+            row.target_size.to_string(),
+            row.ranked_size.to_string(),
+            row.leading_edge_size.to_string(),
+            row.peak_rank.to_string(),
+        ];
+        if include_leading_edge {
+            let indices = row.leading_edge_indices.as_deref().unwrap_or(&[]);
+            record.push(
+                indices
+                    .iter()
+                    .map(|index| genes.gene_id(*index))
+                    .collect::<Vec<_>>()
+                    .join(";"),
+            );
+            record.push(
+                indices
+                    .iter()
+                    .filter_map(|index| genes.gene_name(*index))
+                    .collect::<Vec<_>>()
+                    .join(";"),
+            );
+        }
         writer.write_record(record)?;
     }
 

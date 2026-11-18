@@ -1,0 +1,22 @@
+# Wei et al. 2021 (PMID:33147444), genome-wide knockout screen for SARS-CoV-2-
+# induced death in African green monkey Vero-E6 cells, Table S1. Score: the
+# averaged gene z-score of the Cas9-v2 screens; positive = enriched in
+# survivors = proviral host factor, negative = depleted. Signed. The library
+# targets Chlorocebus sabaeus genes; their symbols are mapped to human HGNC
+# symbols (approved, then unambiguous previous or alias symbols), so LOC loci
+# and monkey-specific names drop out.
+name: SARS_COV2_WEI_CRISPR
+source:
+  url: https://ars.els-cdn.com/content/image/1-s2.0-S0092867420313921-mmc1.xlsx
+  sha256: 239f2935ee505a961b94285de998e074d9524949c311c79c1cff1e37dee5252c
+table:
+  format: xlsx
+  sheet: VeroE6 SARS-2 genomewide zscore
+gene_column: Gene
+gene_id_type: symbol
+score_column: Cas9-v2 Avg.
+transform: identity
+duplicates: prefer_exact
+hgnc:
+  url: https://storage.googleapis.com/public-download-files/hgnc/archive/archive/monthly/tsv/hgnc_complete_set_2026-10-06.txt
+  sha256: 8bf6f686e640dbc864a346484626953621b0500d900d26cd085a35c2782d725d

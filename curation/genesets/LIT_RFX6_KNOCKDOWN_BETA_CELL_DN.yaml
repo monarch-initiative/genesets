@@ -1,0 +1,328 @@
+gene_set_id: LIT:RFX6_KNOCKDOWN_BETA_CELL_DN
+gene_set_name: RFX6_KNOCKDOWN_BETA_CELL_DN
+collection: LIT:PERTURBATION
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: DN
+series: SERIES:RFX6_KNOCKDOWN_ISLET_CELL
+series_role: beta_down
+n_genes: 1397
+description: >-
+  Literature-defined genetic-perturbation signature: the genes DOWNregulated in
+  primary human pancreatic beta cells after knockdown of the islet transcription
+  factor RFX6, from Walker, Saunders, Rai et al. (Nature 2023, PMID:38049589).
+  Adenoviral U6-driven RFX6-targeted shRNA (shRFX6, mKate2-tagged) or scramble
+  shRNA (control, mCherry-tagged) was delivered to dispersed primary human islet
+  cells that were then reaggregated into pseudoislets for six days; shRFX6 and
+  control pseudoislets from seven matched donors were profiled by single-nucleus
+  multiome (snRNA-seq + snATAC-seq), and the RNA component of the beta cell
+  nuclei (15,825 nuclei total across cell types) was tested for differential
+  expression. The published list (Supplementary Data 2a, "Genes differentially
+  expressed (DE) at Padj<0.01, shRFX6 vs scramble, beta cell nuclei, multiome
+  (RNA)") contains 2,675 entries, of which 1,401 have negative log2 fold change;
+  this file is that DOWN arm. Members are the READOUT of a genetic perturbation,
+  not causal/driver genes: RFX6 itself is not a member (it does not reach the
+  Padj<0.01 threshold in the snRNA data), so this is a downstream-of-knockdown
+  signature rather than a set in which RFX6 is merely differentially expressed.
+  MEMBERSHIP PROCESSING: the two vector reporter transcripts mCherry (log2FC
+  -4.37, the control construct's tag) and mKate2 (log2FC +4.61, the shRFX6
+  construct's tag) are experimental artefacts of the dual-construct design and
+  were removed — their opposite signs independently confirm the stated
+  shRFX6-vs-scramble polarity of the table. Of the remaining symbols, 207 were
+  renamed to their current HGNC symbols via mygene.info using an
+  exact-current-symbol-first rule (alias resolution only where the published
+  symbol is no longer current, e.g. FAM129A -> NIBAN1, KIAA0368 -> ECPAS,
+  TRAF3IP1 -> IFT54, HIST1H2AC -> H2AC6, PARK2 -> PRKN), which collapsed four
+  duplicate rows (CXorf22/CHDC2/CXorf30 -> CFAP47, AGPAT9 -> LPCAT1, C10orf68 ->
+  CCDC7) and yields 1,397 unique members; 354 clone-based identifiers from the
+  study's GENCODE annotation that have no current HGNC symbol (RP11-*, AC*,
+  CTD-*) were retained verbatim across both arms so the membership stays faithful
+  to the published set, but they carry no GO annotation and contribute nothing to
+  enrichment. INTERPRETATION: the down arm is where the catabolic and
+  trafficking machinery of the beta cell collapses. The paper's own narrative
+  reports membrane trafficking, autophagy and ciliary pathways; the strongest
+  signal in its Metascape output (Supplementary Data 2b), which the paper does
+  not discuss, is the ubiquitin-proteasome system (LogP -39 for proteolysis
+  involved in cellular protein catabolic process), carried by 25 proteasome
+  subunits plus SCF/APC ubiquitin-ligase components. The naively EXPECTED arm —
+  the insulin-secretion machinery going down alongside the blunted secretion
+  phenotype — is NOT here: those transcripts are in the UP arm
+  (LIT:RFX6_KNOCKDOWN_BETA_CELL_UP), which is recorded below as a
+  membership_gap and is the interpretive point of the pair. DISEASE RELEVANCE:
+  RFX6 is the beta cell hub gene on which multiple layers of type 2 diabetes
+  genetic risk converge in this study, and genetically predicted lower islet
+  RFX6 expression is causally associated with T2D. SEED_SOURCE SEMANTICS: no
+  genesets-rs run seeded this file. `enrichment_recovered` here means the term
+  (or its immediate parent/child) appears in the study's own published
+  enrichment of this exact gene list — Metascape over the up, down and combined
+  arms, Supplementary Data 2b — and `curator_added` means it does not, so the
+  eval's recall denominator is honest with respect to an independent prior
+  enrichment rather than to the tool being scored.
+contexts:
+  - term:
+      id: PR:Q8HWS3
+      label: DNA-binding protein RFX6 (human)
+    context_type: genetic_perturbation
+    role_note: >-
+      Perturbagen. Adenoviral shRNA knockdown of RFX6 versus scramble shRNA in
+      primary human islet cells reaggregated as pseudoislets for six days; the
+      members are the transcriptional readout of that knockdown, not RFX6
+      targets defined by binding.
+  - term:
+      id: CL:0000169
+      label: type B pancreatic cell
+    context_type: cell_type
+    role_note: >-
+      Differential expression was computed in beta cell nuclei specifically; 13%
+      of detected genes were DE in beta cells versus less than 3% in the other
+      islet cell types of the same pseudoislets.
+  - term:
+      id: UBERON:0000006
+      label: islet of Langerhans
+    context_type: anatomical_structure
+    role_note: >-
+      Primary human islets from seven organ donors, dispersed and reaggregated
+      into pseudoislets so that a virus could be delivered to the interior cells.
+  - term:
+      id: MONDO:0005148
+      label: type 2 diabetes mellitus
+    context_type: disease
+    role_note: >-
+      The disease context the perturbation models: RFX6 is decreased in T2D beta
+      cells, and shRFX6 pseudoislets phenocopy the blunted stimulated insulin
+      secretion of T2D islets.
+associations:
+  - term:
+      id: GO:0043161
+      label: proteasome-mediated ubiquitin-dependent protein catabolic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:38049589
+        reference_title: "Genetic risk converges on regulatory networks mediating early type 2 diabetes."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        explanation: >-
+          The single strongest enrichment of the down arm in the study's own
+          Metascape output (Supplementary Data 2b): proteolysis involved in
+          cellular protein catabolic process LogP -39.2, modification-dependent
+          protein catabolic process -33.9, ubiquitin-dependent protein catabolic
+          process -33.2, proteasomal protein catabolic process -32.2,
+          proteasome-mediated ubiquitin-dependent protein catabolic process
+          -26.0, KEGG Proteasome -24.2. The carriers are in the membership:
+          PSMA2, PSMA3, PSMA4, PSMA5, PSMA7, PSMB2, PSMB3, PSMB4, PSMB6, PSMB7,
+          PSMC1, PSMC3, PSMC4, PSMC6, PSMD1, PSMD2, PSMD3, PSMD4, PSMD6, PSMD7,
+          PSMD8, PSMD11, PSMD12, PSMD13 and PSMD14, together with UBC, the
+          proteasome-assembly chaperone ECPAS, the ERAD cofactor UFD1 and the
+          SCF/APC ubiquitin-ligase components SKP1, CUL1, FBXW7 and CDC27. These
+          genes carry the annotation directly, so enrichment recovers it
+          (annotation_supported). No verbatim snippet is attached because the
+          paper's Results narrative does not discuss this arm at all — it is
+          present only in the deposited supplementary enrichment table.
+    curator_note: >-
+      Scored mechanistic rather than confirmatory on the tightened rule: nothing
+      about "genes down after knocking down a beta cell transcription factor"
+      entails a coordinated collapse of the ubiquitin-proteasome system, and the
+      authors themselves did not report it, so it is a genuine, non-obvious
+      enrichment insight rather than a restatement of the set's construction.
+      This is the term to watch in the eval — a method that returns only the
+      trafficking/cilia story the paper narrates is missing the largest signal in
+      the set.
+  - term:
+      id: GO:0000502
+      label: proteasome complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      The structural counterpart of the catabolic process above and the same
+      convergence seen as a component: the 20S core (PSMA2/3/4/5/7,
+      PSMB2/3/4/6/7) and 19S regulatory particle (PSMC1/3/4/6,
+      PSMD1/2/3/4/6/7/8/11/12/13/14) are both represented, which is why the
+      study's Metascape output returns the CORUM PA700-20S-PA28 complex at LogP
+      -24.8. All of these members carry the proteasome complex annotation
+      (annotation_supported). Specificity is ubiquitous — the proteasome is a
+      housekeeping machine present in every cell — but it is scored core rather
+      than nonspecific because it is not a diffuse background hit here: 25
+      subunits — most of the 26S proteasome's structural repertoire — are
+      coordinately down in one arm of one perturbation, which is the observation
+      itself. Marked
+      mechanistic for the same reason as the process term.
+  - term:
+      id: GO:0016236
+      label: macroautophagy
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:38049589
+        reference_title: "Genetic risk converges on regulatory networks mediating early type 2 diabetes."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        explanation: >-
+          Autophagy is one of the three down-arm programs the authors name in the
+          Results (Extended Data Fig. 9d), alongside membrane trafficking and
+          ciliary pathways. No verbatim snippet is attached: only the abstract is
+          machine-retrievable for this reference (the cached record is
+          content_type abstract_only), and the abstract does not descend to this
+          level, so quoting the Results sentence would leave an unvalidatable
+          excerpt in the gold standard.
+          The term is carried by members ATG2B, ATG5, ATG9B, ATG16L1, RB1CC1,
+          PIK3C3, GABARAPL1, SQSTM1, TAX1BP1 and the ER-phagy receptor RETREG1,
+          which hold the annotation, so enrichment recovers it
+          (annotation_supported); the study's Metascape output scores
+          macroautophagy at LogP -18.0 and regulation of macroautophagy at -8.8
+          in the down arm and returns nothing for the up arm. Scored confirmatory
+          rather than mechanistic: loss of autophagic capacity is a generic
+          downstream hallmark of a stressed, dedifferentiating secretory cell and
+          is explicitly the arm the paper leads with, so it recapitulates the
+          published framing rather than revealing anything the set's construction
+          did not already suggest.
+  - term:
+      id: GO:0016192
+      label: vesicle-mediated transport
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:38049589
+        reference_title: "Genetic risk converges on regulatory networks mediating early type 2 diabetes."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        explanation: >-
+          Membrane trafficking is the arm the authors emphasise, and the one they
+          connect to disease: they report common pathway overlap between shRFX6
+          beta cell nuclei and purified T2D beta cells, particularly in cellular
+          membrane and vesicle components linked to T2D GWAS variants, and
+          conclude that reduced RFX6 disrupts networks fundamental to beta cell
+          function, identifying exocytosis as a target of RFX6-mediated
+          dysfunction (Results, Fig. 5). No verbatim snippet is attached because
+          only the abstract is machine-retrievable for this reference.
+          The members carrying the term are the clathrin/adaptor and
+          coat machinery (CLTC, AP2B1, DNM1, SEC24B), the retromer (VPS26A,
+          VPS29), the exocyst (EXOC2, EXOC4), TRAPPC8/TRAPPC9 and the cytoplasmic
+          dynein motor (DYNC1H1, DYNC1I2); Reactome Membrane Trafficking scores
+          LogP -20.5 and vesicle-mediated transport -18.7 in the down arm of the
+          study's Metascape output, with no up-arm signal.
+    curator_note: >-
+      Confirmatory: a transcription factor whose knockdown blunts stimulated
+      insulin secretion depleting the vesicle-transport machinery is the
+      expected, paper-forward reading. Specificity ubiquitous because vesicular
+      transport operates in every cell; kept core because it is the functional
+      axis the study itself ties to the secretory phenotype.
+  - term:
+      id: GO:0005929
+      label: cilium
+    aspect: cellular_component
+    category: core_component
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:38049589
+        reference_title: "Genetic risk converges on regulatory networks mediating early type 2 diabetes."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        explanation: >-
+          The ciliary arm is named by the authors in the Results (Extended Data
+          Fig. 9d) — again without a verbatim snippet here, since only the
+          abstract is machine-retrievable for this reference. It is
+          carried by members IFT88,
+          IFT172, IFT54, DYNC2LI1, BBS4, BBS9, CEP290, TTBK2, KATNIP, CEP20, KIZ,
+          CFAP43 and CFAP47, which hold cilium annotations (annotation_supported);
+          WP4352 Ciliary landscape scores LogP -11.6 in the down arm with no
+          up-arm signal. It connects to the rest of the paper, where
+          cilia-related processes defined functionally correlated modules in
+          every islet sample type and the cilium-movement modules were negatively
+          correlated with glucose-stimulated insulin secretion.
+    curator_note: >-
+      Scored mechanistic: RFX6 is the endocrine outlier of the RFX family, and
+      the ciliogenic transcriptional program is the job of its paralogues RFX2
+      and RFX3 — RFX2 is itself a member of this down arm — so intraflagellar
+      transport and basal-body genes collapsing after RFX6 knockdown in a
+      post-mitotic primary beta cell is a specific and non-obvious result, and
+      one with a mechanism attached given that the beta cell primary cilium
+      regulates insulin secretion. Confidence medium and specificity
+      lineage_shared rather than higher: the arm is smaller than the
+      proteasome/trafficking convergences, and primary cilia are shared across
+      most vertebrate cell types rather than being beta cell-specific.
+  - term:
+      id: GO:0030073
+      label: insulin secretion
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: membership_gap
+    insight: confirmatory
+    evidence:
+      - reference: PMID:38049589
+        reference_title: "Genetic risk converges on regulatory networks mediating early type 2 diabetes."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "converge on an RFX6-mediated network to reduce insulin secretion"
+        explanation: >-
+          Recorded as the contrastive, naively EXPECTED arm of an RFX6-knockdown
+          down-signature. The functional phenotype is real and central — the
+          abstract's whole claim is that genetic risk converges on an
+          RFX6-mediated network to reduce insulin secretion, and in the Results
+          the dynamic insulin secretion of shRFX6 pseudoislets is significantly
+          blunted in the presence of secretagogues — but the transcripts that
+          execute it are NOT in this arm. ABCC8, SLC30A8, SLC2A2, G6PC2, CACNA1C,
+          CACNA1D,
+          PCSK1, PCSK2, CPE, IAPP, MAFA, UNC13A and CADPS all move in the
+          opposite direction and are members of LIT:RFX6_KNOCKDOWN_BETA_CELL_UP,
+          and the study's Metascape output returns no insulin-secretion term for
+          either arm. Hence membership_gap and curator_added rather than
+          false_association: the biology belongs in a complete account of RFX6
+          knockdown, but the down arm cannot carry it.
+    curator_note: >-
+      The interpretive hinge of this series. Marked supporting rather than core
+      because it is not a process the down-arm members execute, and confirmatory
+      because it is exactly what one would predict from "RFX6 knockdown reduces
+      insulin secretion" — the surprise is its direction, which is scored on the
+      UP pole.
+  - term:
+      id: GO:0007049
+      label: cell cycle
+    aspect: biological_process
+    category: nonspecific
+    confidence: medium
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Recorded as the arm's main spurious enrichment so precision can be scored
+      against it. The study's Metascape output is full of mitotic terms for the
+      down arm — Cell Cycle (LogP -16.9), Regulation of mitotic cell cycle
+      (-20.9), APC/C-mediated degradation of cell cycle proteins (-20.9), Orc1
+      removal from chromatin (-22.1), Mitotic G2-G2/M phases (-22.4) — but these
+      are driven almost entirely by the proteasome subunits above together with
+      CDC27, SKP1, CUL1 and FBXW7, because the Reactome representation of
+      APC/C- and SCF-mediated degradation is annotated as cell-cycle machinery.
+      Adult primary human beta cells in six-day pseudoislets are essentially
+      post-mitotic and the set contains none of the actual cell-cycle drivers
+      (no cyclins, CDKs, MCMs, PCNA, AURKA/B, PLK1 or TOP2A), so the term is
+      annotation_supported but biologically uninformative here. No insight tag:
+      insight is reserved for core and supporting terms.

@@ -1,0 +1,220 @@
+gene_set_id: LIT:RFX6_KNOCKDOWN_ALPHA_CELL_DN
+gene_set_name: RFX6_KNOCKDOWN_ALPHA_CELL_DN
+collection: LIT:PERTURBATION
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: DN
+series: SERIES:RFX6_KNOCKDOWN_ISLET_CELL
+series_role: alpha_down
+n_genes: 558
+description: >-
+  Literature-defined genetic-perturbation signature: the genes DOWNregulated in
+  primary human pancreatic ALPHA cells after knockdown of RFX6, from Coykendall,
+  Qian, Tellez et al. (Diabetes 2024, PMID:38064570, Supplementary Table S4).
+  GIPZ lentiviral shRNA against RFX6 or scramble control was delivered to
+  dispersed primary human islet cells; alpha cells were then purified (CD26+
+  GFP+ FACS after MagSep enrichment) from four independent donors and profiled by
+  bulk RNA-seq, with DESeq2 calling 915 differentially expressed genes at
+  P-adjusted < 0.1 — 558 down and 357 up. This file is the DOWN arm; its pole is
+  LIT:RFX6_KNOCKDOWN_ALPHA_CELL_UP. All 558 symbols and fold changes were
+  captured from the published Supplementary Table S4 PDF; the parsed counts
+  (558 down, 357 up, 915 total) reproduce the paper's stated numbers exactly,
+  every fold change in this arm is negative, and the maximum P-adjusted is
+  0.0994, so the capture matches the published list rather than a recomputation.
+  Twenty symbols were updated to current HGNC symbols (KARS -> KARS1, IKBKAP ->
+  ELP1, KIAA1109 -> BLTP1, HIST1H2BC -> H2BC4 among them). Five identifiers could
+  not be resolved and are retained verbatim (AF011889.5, RP13.582O9.6,
+  ANKHD1.EIF4, RP11.190A12, RP11.977G19); these are clone-based or readthrough
+  names that the published PDF renders with periods for hyphens and, in the case
+  of ANKHD1.EIF4 (ANKHD1-EIF4EBP3), truncates at the column width. None carries
+  GO annotation, so none affects enrichment.
+  MEMBERSHIP NOTE: unlike the Walker beta cell sets, RFX6 ITSELF IS A MEMBER here
+  (log2FC -2.27) — this is bulk RNA-seq of a knockdown, so the targeted
+  transcript is measured and significantly reduced, and it doubles as the
+  knockdown-efficiency readout (77% in alpha cells). It is retained because
+  removing it would misrepresent the published membership; curators using this
+  set to ask what RFX6 regulates should note that one member is RFX6.
+  INTERPRETATION: this arm is what the alpha cell loses. It contains the
+  alpha-cell-enriched and alpha-cell-specific genes the authors name (GPR119,
+  GPR148, LOXL4, KLHL41, PLCE1, LDB2, ALDH1A1, PEMT, PTPRT, SPOCK3, ARRDC4),
+  the islet fate transcription factors (ISL1, MAFB, RFX3, IRF6), the
+  hormone-secretion machinery (UCN3, SLC30A8, CHGA, PCSK2, CPE, GLUL), the
+  ion channels and cell-cell signalling genes (KCNA5, CACNA1A, CACNA1C, KCNMA1,
+  CACNB2, NCAM1, SSTR2, RAPGEF4, TMEM64, FGF18, EPCAM) and the vesicle-transport
+  genes (SYTL2, BAIAP3, LGI3, EPG5). ABCC8 and GCK are absent, consistent with
+  the authors' finding that those are beta-cell-restricted RFX6 targets.
+  SEED_SOURCE SEMANTICS: no genesets-rs run seeded this file;
+  `enrichment_recovered` means the term corresponds to a GO pathway the authors
+  report as significantly downregulated for this list (Fig. 4E), `curator_added`
+  means it does not.
+contexts:
+  - term:
+      id: PR:Q8HWS3
+      label: DNA-binding protein RFX6 (human)
+    context_type: genetic_perturbation
+    role_note: >-
+      Perturbagen. GIPZ lentiviral shRNA knockdown of RFX6 versus scramble in
+      primary human islet cells, read out in FACS-purified alpha cells. Note
+      this is a different vector and a different assay from the Walker beta cell
+      poles of this series (adenoviral shRNA, single-nucleus multiome), and a
+      looser significance threshold (P-adjusted < 0.1 versus < 0.01).
+  - term:
+      id: CL:0000171
+      label: pancreatic A cell
+    context_type: cell_type
+    role_note: >-
+      Differential expression was computed in purified alpha cells. The authors
+      note the corresponding phenotypes were not seen when RFX6 was suppressed
+      across all islet cells, so the alpha-cell-selective targeting is essential
+      to the result.
+  - term:
+      id: UBERON:0000006
+      label: islet of Langerhans
+    context_type: anatomical_structure
+    role_note: >-
+      Primary human islets from four organ donors, dispersed, transduced and
+      reaggregated as pseudoislets before alpha cell purification.
+  - term:
+      id: MONDO:0005148
+      label: type 2 diabetes mellitus
+    context_type: disease
+    role_note: >-
+      Disease context: mutations in RFX6 are associated with human diabetes, and
+      alpha-cell RFX6 expression is altered in diabetes.
+associations:
+  - term:
+      id: GO:0030072
+      label: peptide hormone secretion
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:38064570
+        reference_title: "RFX6 Maintains Gene Expression and Function of Adult Human Islet alpha-Cells."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "led to impaired α-cell exocytosis and dysregulated glucagon"
+        explanation: >-
+          The defining loss of this arm, and the one the abstract ties to the
+          functional phenotype: RFX6 suppression by RNA interference led to
+          impaired alpha-cell exocytosis and dysregulated glucagon secretion in
+          vitro and in vivo. Peptide hormone secretion is one of the GO
+          categories the authors report as significantly downregulated (Fig. 4E),
+          carried in the membership by UCN3, SLC30A8, GPR119, CHGA, PCSK2, CPE,
+          GLUL, ISL1, RFX3 and RFX6 itself, which hold the annotation
+          (annotation_supported). Confirmatory: a set built as "genes lost when a
+          secretion-controlling islet transcription factor is knocked down"
+          enriching for hormone secretion restates its own construction.
+  - term:
+      id: GO:0070091
+      label: glucagon secretion
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      The alpha cell's defining function and the paper's headline phenotype
+      (dysregulated glucagon secretion), asserted as core biology for this set.
+      Marked annotation_gap rather than annotation_supported: the genes that
+      execute it ARE here — SSTR2 and RAPGEF4/EPAC2 are canonical regulators of
+      alpha-cell glucagon output, alongside the KCNA5, CACNA1A and KCNMA1
+      channels that set alpha-cell excitability, and UCN3 which mediates the
+      paracrine loop — but GO annotates most of them only to the generic
+      hormone-secretion or ion-transport parents, not to glucagon secretion
+      specifically, so enrichment will not surface the term. GCG itself is not
+      differentially expressed and is not a member, which is the point: the
+      lesion is in the secretory apparatus, not in glucagon transcription. A GO
+      annotation curation target.
+  - term:
+      id: GO:0031018
+      label: endocrine pancreas development
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The identity arm. The authors report that RFX6 knockdown reduced genes
+      known to regulate islet development and fate, naming ISL1, IRF6, MAFB,
+      LDHA and JAK2, and separately a panel of alpha-cell-enriched or
+      alpha-cell-specific genes (GPR119, GPR148, LOXL4, KLHL41, PLCE1, LDB2,
+      ALDH1A1, PEMT, PTPRT, SPOCK3, ARRDC4) — all members of this arm. ISL1,
+      MAFB and RFX3 carry endocrine-pancreas-development annotations
+      (annotation_supported). Kept core because loss of the identity program is
+      the paper's central claim (RFX6 maintains gene expression and function of
+      adult human alpha cells); confirmatory because it is what "knock down a
+      lineage transcription factor" is expected to produce.
+  - term:
+      id: GO:0042391
+      label: regulation of membrane potential
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:38064570
+        reference_title: "RFX6 Maintains Gene Expression and Function of Adult Human Islet alpha-Cells."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        explanation: >-
+          Excitability is the mechanistic bridge between the transcriptome and
+          the exocytosis defect: the authors group KCNA5, CACNA1A, NCAM1, SSTR2,
+          RAPGEF4, TMEM64, FGF18, UCN3, GPR119 and EPCAM as downregulated
+          cell-cell signalling genes (Fig. 4E), and this arm additionally
+          contains CACNA1C, KCNMA1 and CACNB2. These carry
+          membrane-potential annotations (annotation_supported). No verbatim
+          snippet is attached: only the abstract is machine-retrievable for this
+          reference, and the gene-level detail is in the Results.
+    curator_note: >-
+      Supporting rather than core — it is the substrate the secretory phenotype
+      runs on rather than the defining activity of the set — and lineage_shared
+      because the same channel repertoire operates across islet endocrine cells
+      and neurons.
+  - term:
+      id: GO:0016192
+      label: vesicle-mediated transport
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The authors name vesicle-mediated transport as a downregulated category
+      (Fig. 4E), carried by LGI3, SYTL2, BAIAP3 and EPG5, with RAB3B and AP2B1
+      also in the arm. Supporting rather than core: it is a smaller and more
+      generic arm than the hormone-secretion and identity programs, and it is the
+      one axis this pole shares with the beta cell DN pole of the series, where
+      the same term is core and much more strongly carried.
+  - term:
+      id: GO:0030141
+      label: secretory granule
+    aspect: cellular_component
+    category: core_component
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The structural counterpart of the hormone-secretion process: CHGA, PCSK2,
+      CPE, SLC30A8, SYTL2 and BAIAP3 are granule cargo, processing enzymes and
+      granule-trafficking proteins, all members of this arm and all carrying
+      secretory-granule annotations. curator_added because the authors' reported
+      GO categories are process-level (Fig. 4E lists no component terms).
+      Confidence medium: the granule arm here is thinner than in a beta cell set,
+      where the insulin granule dominates.

@@ -61,6 +61,49 @@ The next performance milestones are:
 - criterion benchmarks on synthetic and real ontology fixtures;
 - comparison runs against GOATOOLS, g:Profiler, topGO, and clusterProfiler on the same frozen inputs.
 
+## MGSA
+
+`genesets-rs mgsa` is a Markov chain Monte Carlo (MCMC) sampler, so it costs
+more than Fisher scoring. The run length is
+`(samples_per_term + burn_per_term) x modeled_terms` steps (110 per term by
+default). Each step touches only the genes of the one or two terms it toggles
+and updates six integer counts. The sampler reaches roughly 200k-500k steps per
+second on one core; the rate depends on term sizes and the acceptance rate.
+
+Timings from a 4-core cloud container with current GO (is_a plus part_of) and
+human GOA. Loading GO and GOA takes about 1.7s of each run and is the same cost
+as for `enrich`:
+
+| Job | Modeled terms | Wall time |
+| --- | ---: | ---: |
+| `enrich` on the `examples/ontologizer-ui` lists (load-only baseline) | n/a | 1.6-1.7s |
+| `mgsa`, same lists (969 study genes, 19,687 population genes) | 8,740 | 3.4-4.1s |
+| `mgsa`, same study genes, background = every GOA gene, 1 thread | 8,759 | 6.1s |
+
+Sampling cost per query grows with query size, because larger queries touch
+more terms. These are random population genes, one thread, load time excluded:
+
+| Query size | Modeled terms | Sampling per query |
+| ---: | ---: | ---: |
+| 50 | ~1,500 | ~0.6s |
+| 200 | ~3,500 | ~0.85s |
+| 1,000 | ~7,500 | ~1.4s |
+| 3,000 | ~11,400 | ~2.0s |
+
+Queries in a multi-set sample file run in parallel: 8 queries of 3,000 genes
+took 17.4s on one thread and 6.2s on four.
+
+For reference, the original JavaScript wtfgenes (`bin/wtfgenes.js`, defaults)
+ran the 6.1s job above at about 500 steps per second. It reached 32% of its
+958k steps after a 10-minute timeout, and its progress meter projected about
+30 minutes in total. The gap comes mostly from data structures rather than the
+language. wtfgenes keeps counts in string-keyed objects and allocates new ones
+on every proposal, while genesets-rs updates dense arrays in place.
+
+To trade accuracy for speed, lower `--samples-per-term`; run time scales
+roughly linearly with it. Use `--summary-output` to see the modeled-term count,
+the acceptance rate, and the number of samples behind each posterior.
+
 ## Result Storage
 
 For the mass-diff use case, the preferred storage shape is numeric and columnar:

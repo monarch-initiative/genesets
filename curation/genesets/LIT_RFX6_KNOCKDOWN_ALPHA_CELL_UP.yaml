@@ -1,0 +1,185 @@
+gene_set_id: LIT:RFX6_KNOCKDOWN_ALPHA_CELL_UP
+gene_set_name: RFX6_KNOCKDOWN_ALPHA_CELL_UP
+collection: LIT:PERTURBATION
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:RFX6_KNOCKDOWN_ISLET_CELL
+series_role: alpha_up
+n_genes: 357
+description: >-
+  Literature-defined genetic-perturbation signature: the genes UPregulated in
+  primary human pancreatic ALPHA cells after knockdown of RFX6, from Coykendall,
+  Qian, Tellez et al. (Diabetes 2024, PMID:38064570, Supplementary Table S3).
+  GIPZ lentiviral shRNA against RFX6 or scramble control in dispersed primary
+  human islet cells, alpha cells purified by CD26+ GFP+ FACS from four
+  independent donors, bulk RNA-seq, DESeq2 at P-adjusted < 0.1: 915 DEGs of
+  which 357 are up. This file is the UP arm; its pole is
+  LIT:RFX6_KNOCKDOWN_ALPHA_CELL_DN. Membership was captured from the published
+  Supplementary Table S3 PDF; the parsed count (357) reproduces the paper's
+  stated number exactly, every fold change is positive and the maximum
+  P-adjusted is 0.0995. Twenty-two symbols were updated to current HGNC symbols
+  (DDX58 -> RIGI, WARS -> WARS1, HIST1H2AC -> H2AC6, SEPW1 -> SELENOW among
+  them). Three identifiers could not be resolved and are retained verbatim
+  (RP11.724O16, AC084219.2, RP11.691N7.6); these are clone-based names whose
+  hyphens the published PDF renders as periods, and they carry no GO annotation.
+  INTERPRETATION: where the DN arm is the alpha cell
+  losing its identity and secretory machinery, this arm is what rises in its
+  place, and it is dominated by a single coherent module the paper mentions only
+  in passing as "stress responses" — the type I interferon / antiviral program.
+  MX1, IFIT1, IFIT2, IFIT3, IFIH1, IFI6, ISG15, STAT1, IRF7 and RIGI (DDX58) are all
+  members, together with the interferon-inducible antigen-processing machinery
+  (TAP1, PSMB8, PSMB9), alongside a genuine stress and growth-arrest arm
+  (CDKN1A, GADD45G, SOD2, ATF3, DDIT3, TRIB3, HIF1A, DDR1) and the two
+  proliferation genes the authors name (ABCG1, TRIB3). INTERPRETIVE CAVEAT,
+  recorded rather than resolved: an interferon-stimulated-gene signature in a
+  lentivirally transduced primary cell always invites the question of whether it
+  reflects the perturbation or the vector. The comparison here is shRNA versus
+  scramble control, and both arms are transduced, so a pure transduction artefact
+  should cancel; but knockdown-specific differences in viral load, in
+  RNAi-triggered innate sensing, or simply the generic innate-stress response of
+  a cell losing a lineage transcription factor are all live alternatives to a
+  direct RFX6-dependent mechanism. The interferon terms below are therefore
+  scored as real for the SET while the note is explicit that they are not
+  established as direct RFX6 biology. SEED_SOURCE SEMANTICS: no genesets-rs run
+  seeded this file; `enrichment_recovered` means the term corresponds to a GO
+  category the authors report as significantly upregulated (Fig. 4F),
+  `curator_added` means it does not.
+contexts:
+  - term:
+      id: PR:Q8HWS3
+      label: DNA-binding protein RFX6 (human)
+    context_type: genetic_perturbation
+    role_note: >-
+      Perturbagen. GIPZ lentiviral shRNA knockdown of RFX6 versus scramble in
+      primary human islet cells, read out in FACS-purified alpha cells.
+  - term:
+      id: CL:0000171
+      label: pancreatic A cell
+    context_type: cell_type
+    role_note: >-
+      Differential expression was computed in purified alpha cells.
+  - term:
+      id: UBERON:0000006
+      label: islet of Langerhans
+    context_type: anatomical_structure
+    role_note: >-
+      Primary human islets from four organ donors, dispersed, transduced and
+      reaggregated as pseudoislets before alpha cell purification.
+  - term:
+      id: MONDO:0005148
+      label: type 2 diabetes mellitus
+    context_type: disease
+    role_note: >-
+      Disease context: mutations in RFX6 are associated with human diabetes, and
+      alpha-cell RFX6 expression is altered in diabetes.
+associations:
+  - term:
+      id: GO:0060337
+      label: type I interferon-mediated signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:38064570
+        reference_title: "RFX6 Maintains Gene Expression and Function of Adult Human Islet alpha-Cells."
+        supports: NEUTRAL
+        evidence_source: IN_VITRO
+        explanation: >-
+          The dominant coherent module of this arm, carried by MX1, IFIT1,
+          IFIT2, IFIT3, IFIH1, IFI6, ISG15, STAT1, IRF7 and RIGI (published as
+          DDX58) — a canonical
+          interferon-stimulated-gene panel, with the interferon-inducible
+          immunoproteasome and antigen-processing genes PSMB8, PSMB9 and TAP1
+          alongside it. All carry type I interferon signalling annotations
+          (annotation_supported). Marked curator_added and supports NEUTRAL
+          because the paper does not report it as such: the Results name only
+          "stress responses (HIF1A, DDR1, IFIH1, and IFIT3)" and proliferation
+          among the upregulated categories, so three of the ten ISGs are
+          mentioned, subsumed under a broader heading, and the interferon
+          identity of the module is a curator reading of the membership rather
+          than a published claim.
+    curator_note: >-
+      Scored mechanistic — a specific, non-obvious program, not entailed by
+      "knock down an islet transcription factor and see what rises" — but read
+      the caveat in the description before using it: an ISG signature in
+      lentivirally transduced primary cells has plausible vector- and
+      RNAi-related explanations that this experiment does not exclude, and the
+      authors did not claim it. It is scored as real for the SET (the genes are
+      there, coherent, and annotated) while remaining unestablished as direct
+      RFX6 biology. This is also the one place in the RFX6 series that touches
+      the corpus's interferon sets (LIT:TYPE_I_INTERFERON_SIGNATURE,
+      REACTOME_INTERFERON_SIGNALING), which are worth comparing against it.
+  - term:
+      id: GO:0051607
+      label: defense response to virus
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The effector face of the same module — MX1, IFIT1/2/3, ISG15, RIGI and
+      IFIH1 are annotated to antiviral defence as well as to interferon
+      signalling — recorded separately because it is the term a tool is most
+      likely to return for this membership. Supporting rather than core, and
+      confirmatory rather than mechanistic: once the interferon program is
+      accepted, an antiviral annotation follows from it, and here it is more
+      likely a marker of innate activation than of any actual virus response
+      beyond the transducing vector.
+  - term:
+      id: GO:0033554
+      label: cellular response to stress
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:38064570
+        reference_title: "RFX6 Maintains Gene Expression and Function of Adult Human Islet alpha-Cells."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        explanation: >-
+          The category the authors do report for this arm: increased expression
+          of genes governing stress responses (HIF1A, DDR1, IFIH1 and IFIT3) and
+          proliferation (ABCG1 and TRIB3), Fig. 4F. The membership carries it
+          well beyond those six — CDKN1A, GADD45G, SOD2, ATF3 and DDIT3 are all
+          members and all annotated to stress response (annotation_supported).
+          No verbatim snippet: only the abstract is machine-retrievable for this
+          reference, and this statement is in the Results.
+    curator_note: >-
+      Confirmatory: a stressed, dedifferentiating endocrine cell mounting a
+      stress response is the generic expectation for a lineage-factor knockdown,
+      and it is what the authors themselves report. Kept core because it is the
+      second real program of the arm alongside the interferon module, not a
+      peripheral hit.
+  - term:
+      id: GO:0043066
+      label: negative regulation of apoptotic process
+    aspect: biological_process
+    category: false_association
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: false_association
+    curator_note: >-
+      Recorded as an explicit negative for precision scoring. CDKN1A, GADD45G,
+      DDIT3, ATF3 and TRIB3 are a growth-arrest and pro-apoptotic-stress
+      combination, and DDIT3/CHOP and TRIB3 in particular are effectors of stress
+      responses that promote rather than prevent death; nothing in this arm
+      supports an anti-apoptotic program, and the authors report no survival
+      phenotype. Any method returning survival or anti-apoptotic terms for this
+      membership has the sign backwards — the same class of error the corpus
+      records for the immune CRISPR screens, where the insight is the direction
+      of regulation. No insight tag: insight is reserved for core and supporting
+      terms.

@@ -1,0 +1,19 @@
+# Zhang et al. 2016 (PMID:27383988), genome-wide GeCKOv2 knockout screen for
+# West Nile virus-induced death in HEK293FT cells, Supplementary Table 2.
+# Score: -log10 of the MAGeCK RRA positive-selection score; high = proviral host
+# factor. One-sided, unsigned.
+name: WEST_NILE_ZHANG_CRISPR
+source:
+  url: https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fnature18625/MediaObjects/41586_2016_BFnature18625_MOESM104_ESM.xlsx
+  sha256: 73a6d62681555246a94b012f7b11ff9aaf2ffe98343d78e8d26fa7a910e1b36e
+table:
+  format: xlsx
+  sheet: WNV AB3
+gene_column: id
+gene_id_type: symbol
+score_column: low.positive
+transform: neg_log10
+duplicates: prefer_exact
+hgnc:
+  url: https://storage.googleapis.com/public-download-files/hgnc/archive/archive/monthly/tsv/hgnc_complete_set_2026-10-06.txt
+  sha256: 8bf6f686e640dbc864a346484626953621b0500d900d26cd085a35c2782d725d

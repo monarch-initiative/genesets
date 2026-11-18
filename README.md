@@ -11,6 +11,10 @@ curated gene set interpretation.
   bundles.
 - `curation/`: a LinkML-validated corpus of curated GO interpretations for
   non-GO gene sets.
+- Metabolite enrichment: `genesets-workflows prepare-chem2go` turns GO-plus
+  chemical axioms, Rhea and (optionally) enzyme annotations into
+  chemical-to-GO tables the Rust engine runs unchanged; see
+  `docs/src/metabolite-enrichment.md`.
 
 The Rust engine remains ontology-neutral. GO is represented as ordinary term
 IDs, a human-readable term-name table, a precomputed child-to-ancestor closure
@@ -172,6 +176,43 @@ genesets-rs matrix \
   --output enrichments.tsv
 ```
 
+Bayesian model-based gene set analysis (MGSA), which explains the query with a
+few jointly active terms instead of testing each term on its own:
+
+```bash
+genesets-rs mgsa \
+  --annotations examples/gene_terms.tsv \
+  --terms examples/terms.tsv \
+  --closure examples/closure.tsv \
+  --sample examples/sample.txt \
+  --background examples/background.txt
+```
+
+The same MGSA sampler is available in Python as `genesets.mgsa(...)` from
+`python/genesets-py` (PyO3 bindings; see its README for install).
+
+Preranked gene set enrichment analysis (GSEA) over a scored gene list instead
+of a thresholded set. Every measured gene keeps its score (fold change, signed
+-log10 p-value, t-statistic), and each term gets an enrichment score for
+sitting at the top or bottom of the ranking:
+
+```bash
+genesets-rs gsea \
+  --annotations examples/gene_terms.tsv \
+  --terms examples/terms.tsv \
+  --closure examples/closure.tsv \
+  --ranks examples/ranks.rnk \
+  --min-size 1 \
+  --leading-edge-genes
+```
+
+`--ranks` is a two-column `gene, score` table (a GSEA `.rnk` file) or a
+three-column `ranking_id, gene, score` table for many contrasts in one run;
+like every table input, it may be gzip-compressed.
+`--statistic wilcoxon` swaps the GSEA running sum for a Wilcoxon rank-sum test,
+and `--algorithm elim` or `weight01` uses the ontology graph so that ancestors
+do not ride on a child's signal (see `docs/src/statistics.md`).
+
 YAML configuration:
 
 ```bash
@@ -190,6 +231,16 @@ Output is TSV with:
 
 With `--overlap-genes`, the CLI also emits `overlap_genes` and `overlap_gene_names`.
 
+`mgsa` output replaces the adjusted p-value with `posterior` (the probability
+that the term is active), keeps the term-for-term `p_value` for comparison, and
+adds `equivalent_ids` for terms with identical genes in the background.
+
+`gsea` output has `es`, `nes`, `p_value`, and `p_adjust` (GSEA FDR q-value for
+KS, Benjamini-Hochberg for Wilcoxon), plus `set_size` (members scored),
+`eliminated` (members removed by `elim` or `weight01`), `target_size`, `ranked_size`,
+`leading_edge_size`, and `peak_rank`; `--leading-edge-genes` adds the
+leading-edge gene ids and names.
+
 ## Design Notes
 
 - Terms and query sets are represented as dense `Vec<u64>` bitsets over a shared gene universe.
@@ -200,8 +251,7 @@ With `--overlap-genes`, the CLI also emits `overlap_genes` and `overlap_gene_nam
 ## Planned Extensions
 
 - Serialized reusable indexes for repeated GO version comparisons.
-- Ranked-list methods alongside Fisher exact.
-- Ontologizer-style parent-child, elim, weight, and model-set approaches.
+- Ontologizer-style parent-child, elim, and weight approaches (model-set MGSA is available as `genesets-rs mgsa`).
 - Convenience wrappers for species/build metadata without baking those concerns into the core model.
 - Test-data adapters around mygeneset.info and other public gene set sources.
 

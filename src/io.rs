@@ -10,7 +10,7 @@ use clap::ValueEnum;
 use csv::{ReaderBuilder, Trim};
 use serde::Deserialize;
 
-use crate::index::RawSet;
+use crate::{gsea::RankedList, index::RawSet};
 
 #[derive(Copy, Clone, Debug, Eq, PartialEq, ValueEnum, Deserialize)]
 #[serde(rename_all = "kebab-case")]
@@ -107,6 +107,63 @@ pub fn read_sets(path: &Path, format: SetFormat, default_name: &str) -> Result<V
         SetFormat::Gmx => read_gmx(path, false),
         SetFormat::GmxDesc => read_gmx(path, true),
     }
+}
+
+/// Reads scored gene lists for GSEA.
+///
+/// Two columns (`gene`, `score`, as in a GSEA `.rnk` file) give one ranking
+/// named `default_name`. Three columns (`ranking_id`, `gene`, `score`) give one
+/// ranking per id, in order of first appearance. A first row whose score does
+/// not parse as a number is treated as a header.
+pub fn read_rankings(path: &Path, default_name: &str) -> Result<Vec<RankedList>> {
+    let records = read_records(path)?;
+    let Some(width) = records.first().map(Vec::len) else {
+        bail!("no ranked genes in {}", path.display());
+    };
+    if !(2..=3).contains(&width) {
+        bail!(
+            "{} must have two columns (gene, score) or three (ranking_id, gene, score)",
+            path.display()
+        );
+    }
+
+    let mut rankings = Vec::<RankedList>::new();
+    let mut offsets = HashMap::<String, usize>::new();
+    for (row_index, record) in records.into_iter().enumerate() {
+        if record.len() != width {
+            bail!(
+                "{} row {} has {} columns; expected {width}",
+                path.display(),
+                row_index + 1,
+                record.len()
+            );
+        }
+        let (ranking_id, gene, score) = if width == 2 {
+            (default_name, &record[0], &record[1])
+        } else {
+            (record[0].as_str(), &record[1], &record[2])
+        };
+        let Ok(score) = score.parse::<f64>() else {
+            if row_index == 0 {
+                continue;
+            }
+            bail!(
+                "{} row {} has a non-numeric score {score:?}",
+                path.display(),
+                row_index + 1
+            );
+        };
+        if gene.is_empty() {
+            continue;
+        }
+        let index = *offsets.entry(ranking_id.to_owned()).or_insert_with(|| {
+            rankings.push(RankedList::new(ranking_id, Vec::new(), Vec::new()));
+            rankings.len() - 1
+        });
+        rankings[index].genes.push(gene.clone());
+        rankings[index].scores.push(score);
+    }
+    Ok(rankings)
 }
 
 fn read_pair_table(
@@ -282,8 +339,7 @@ fn read_records(path: &Path) -> Result<Vec<Vec<String>>> {
         .flexible(true)
         .comment(Some(b'#'))
         .trim(Trim::All)
-        .from_path(path)
-        .with_context(|| format!("failed to open {}", path.display()))?;
+        .from_reader(open_text(path)?);
 
     let mut records = Vec::new();
     for record in reader.records() {
@@ -297,6 +353,23 @@ fn read_records(path: &Path) -> Result<Vec<Vec<String>>> {
     Ok(records)
 }
 
+/// Opens a text input, decompressing it if it is gzip (detected by its magic
+/// bytes, so the extension does not matter).
+fn open_text(path: &Path) -> Result<Box<dyn BufRead>> {
+    let mut file = BufReader::new(
+        File::open(path).with_context(|| format!("failed to open {}", path.display()))?,
+    );
+    let gzipped = file
+        .fill_buf()
+        .with_context(|| format!("failed to read {}", path.display()))?
+        .starts_with(&[0x1f, 0x8b]);
+    Ok(if gzipped {
+        Box::new(BufReader::new(flate2::bufread::MultiGzDecoder::new(file)))
+    } else {
+        Box::new(file)
+    })
+}
+
 fn detect_delimiter(path: &Path) -> Result<u8> {
     if path
         .extension()
@@ -306,8 +379,7 @@ fn detect_delimiter(path: &Path) -> Result<u8> {
         return Ok(b',');
     }
 
-    let file = File::open(path).with_context(|| format!("failed to open {}", path.display()))?;
-    for line in BufReader::new(file).lines() {
+    for line in open_text(path)?.lines() {
         let line = line.with_context(|| format!("failed to read {}", path.display()))?;
         let line = line.trim();
         if line.is_empty() || line.starts_with('#') {
@@ -357,7 +429,7 @@ pub fn default_set_name(path: &Path) -> String {
 mod tests {
     use std::{fs, path::PathBuf};
 
-    use super::{SetFormat, read_sets};
+    use super::{SetFormat, read_rankings, read_sets};
 
     fn temp_file(name: &str, contents: &str) -> PathBuf {
         let path =
@@ -386,5 +458,27 @@ mod tests {
         assert_eq!(sets.len(), 2);
         assert_eq!(sets[0].genes, vec!["g1", "g2"]);
         assert_eq!(sets[1].genes, vec!["g3"]);
+    }
+
+    #[test]
+    fn reads_single_and_long_rankings() {
+        let path = temp_file("contrast.rnk", "gene\tscore\ng1\t2.5\ng2\t-1e-3\n");
+        let rankings = read_rankings(&path, "contrast").unwrap();
+        fs::remove_file(path).unwrap();
+        assert_eq!(rankings.len(), 1);
+        assert_eq!(rankings[0].id, "contrast");
+        assert_eq!(rankings[0].genes, vec!["g1", "g2"]);
+        assert_eq!(rankings[0].scores, vec![2.5, -1e-3]);
+
+        let path = temp_file("long.tsv", "r1\tg1\t1\nr2\tg1\t-1\nr1\tg2\t0.5\n");
+        let rankings = read_rankings(&path, "unused").unwrap();
+        fs::remove_file(path).unwrap();
+        assert_eq!(rankings.len(), 2);
+        assert_eq!(rankings[0].genes, vec!["g1", "g2"]);
+        assert_eq!(rankings[1].scores, vec![-1.0]);
+
+        let path = temp_file("bad.rnk", "g1\t1\ng2\tNA\n");
+        assert!(read_rankings(&path, "bad").is_err());
+        fs::remove_file(path).unwrap();
     }
 }

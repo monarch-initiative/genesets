@@ -1,0 +1,648 @@
+gene_set_id: LIT:DENGUE_MARCEAU_CRISPR
+gene_set_name: DENGUE_MARCEAU_CRISPR
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+ranking:
+  source: PMID:27383987
+  score_type: other
+  signed: false
+  gene_id_type: HGNC symbol
+  n_ranked: 20483
+  file: ../rankings/DENGUE_MARCEAU_CRISPR.rnk.gz
+  sha256: 276a629d14f06200e40fd237d498f65be6d842b9586531422c7e9bb833ce61ea
+  source_detail: Supplementary Table 2 (MOESM124), sheet DENV mean RIGER, column -
+    log RIGER score
+  download_url: https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fnature18631/MediaObjects/41586_2016_BFnature18631_MOESM124_ESM.xlsx
+  score_description: 'The ''- log RIGER score'' over three replicate screens; high
+    = the knockout survives dengue virus = proviral host factor. It dips slightly
+    below zero where the mean NES exceeds 1. Built by `curate build-ranking` from
+    rankings/DENGUE_MARCEAU_CRISPR.recipe.yaml: of 21,703 source rows, 1,112 have
+    no approved HGNC symbol and 108 collide on one symbol (rows named by the approved
+    symbol win over previous or alias names); 20,483 genes ranked.'
+description: 'Genome-wide CRISPR knockout ranking of human host factors for dengue
+  virus from Marceau et al. 2016 (Huh7.5.1 cells, three replicates, RIGER; PMID:27383987).
+  The ranked counterpart of the Marceau half of LIT:FLAVIVIRUS_HOST_FACTORS. MAGT1,
+  STT3B, SSR2, RPN2 and STT3A head the ranking: the oligosaccharyltransferase, with
+  the ER membrane complex and translocon close behind, all significant once small
+  complexes are scored (--min-size 5). The signal peptidase, required for West Nile
+  virus in Zhang et al., is flat here (SPCS1 ranks about 1,800th), the published contrast
+  between the two screens. Wilcoxon over the whole ranking is led by two artefacts,
+  recorded as false associations. Clustered genes that share exons (PCDHA, UGT1A)
+  are hit by the same guides and score together. And genes not expressed in the screened
+  cells escape that fitness cost, so whole-term tests over the full ranking shift
+  tissue-restricted gene families (olfactory receptors, circulatory genes) without
+  any biology of the selection.'
+contexts:
+- term:
+    id: MONDO:0005502
+    label: dengue disease
+  context_type: infection
+  role_note: Survival of dengue virus infection in Huh7.5.1 cells after gene knockout.
+associations:
+- term:
+    id: GO:0008250
+    label: oligosaccharyltransferase complex
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: ubiquitous
+  direction: UP
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 0.0001065984
+    p_adjust: 0.0
+    target_size: 13
+    es: 0.959522
+    nes: 2.732844
+    set_size: 13
+    leading_edge_size: 9
+    leading_edge_genes:
+    - MAGT1
+    - STT3B
+    - RPN2
+    - STT3A
+    - OSTC
+    - OST4
+    - DDOST
+    - RPN1
+    - TMEM258
+    peak_rank: 47
+  evidence:
+  - reference: PMID:27383987
+    reference_title: Genetic dissection of Flaviviridae host factors through genome-scale
+      CRISPR screens.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: Strikingly, in both the haploid and CRISPR screens, the most significantly
+      enriched genes were subunits of the OST complex, an enzyme essential for N-linked
+      glycosylation
+    explanation: 'The oligosaccharyltransferase (OST) complex is the single most significantly
+      enriched cluster of host-dependency hits in both the haploid and CRISPR DENV
+      screens. Its subunits — STT3A, STT3B, MAGT1 (the highest-scoring CRISPR hit),
+      RPN1, RPN2 and OSTC — are members of the set and carry the OST complex annotation
+      directly, so enrichment recovers it (annotation_supported). It is scored mechanistic,
+      not confirmatory: a flavivirus depending on the ER N-glycosylation enzyme complex
+      is non-obvious, and Marceau et al. further show the dependence is on a non-canonical,
+      catalysis-independent role of OST at the viral RNA-replication complex (NS proteins
+      bind OST), not on glycosylation per se — a genuine mechanistic discovery rather
+      than anything entailed by the set''s "infection" framing.'
+  curator_note: 9 of 13 subunits in the leading edge (MAGT1, STT3B, RPN2, STT3A, OSTC,
+    OST4, DDOST); q < 0.001 with --min-size 5.
+- term:
+    id: GO:0006487
+    label: protein N-linked glycosylation
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: ubiquitous
+  direction: UP
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 9.999e-05
+    p_adjust: 0.0
+    target_size: 92
+    es: 0.569188
+    nes: 2.165141
+    set_size: 86
+    leading_edge_size: 18
+    leading_edge_genes:
+    - MAGT1
+    - STT3B
+    - RPN2
+    - STT3A
+    - OSTC
+    - OST4
+    - DDOST
+    - UBE2J1
+    - RPN1
+    - TMEM258
+    - MAN2A2
+    - SLC39A8
+    - MGAT4B
+    - ST8SIA6
+    - FUT3
+    - ST8SIA5
+    - ST6GAL1
+    - GANC
+    peak_rank: 1595
+  curator_note: The OST's process. Marceau et al. place the OST requirement at viral
+    RNA replication, not entry or translation.
+- term:
+    id: GO:0072546
+    label: EMC complex
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: ubiquitous
+  direction: UP
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 0.0001106072
+    p_adjust: 0.0
+    target_size: 10
+    es: 0.93851
+    nes: 2.519446
+    set_size: 10
+    leading_edge_size: 8
+    leading_edge_genes:
+    - EMC3
+    - EMC1
+    - EMC2
+    - EMC4
+    - MMGT1
+    - EMC6
+    - EMC7
+    - EMC9
+    peak_rank: 237
+  curator_note: 'EMC3, EMC1, EMC2, EMC4, MMGT1, EMC6, EMC7: the ER membrane complex
+    (q < 0.001, --min-size 5).'
+- term:
+    id: GO:0045047
+    label: protein targeting to ER
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: ubiquitous
+  direction: UP
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 0.0001004117
+    p_adjust: 0.004724915
+    target_size: 2009
+    es: 0.607246
+    nes: 2.115438
+    set_size: 38
+    leading_edge_size: 12
+    leading_edge_genes:
+    - SSR2
+    - SSR3
+    - SSR1
+    - SEC61A1
+    - BAG6
+    - TRAM1
+    - SSR4
+    - SRPRB
+    - SEC61B
+    - SPCS1
+    - SPCS3
+    - VPS54
+    peak_rank: 2310
+  curator_note: 'SSR1-4, SEC61A1, TRAM1, SRPRB: translocon-associated protein complex
+    and Sec61.'
+- term:
+    id: GO:0005787
+    label: signal peptidase complex
+  seed_source: curator_added
+  aspect: cellular_component
+  category: supporting_process
+  confidence: medium
+  specificity: ubiquitous
+  direction: UP
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 0.1718122
+    p_adjust: 0.9974667
+    target_size: 6
+    es: 0.576804
+    nes: 1.263579
+    set_size: 5
+    leading_edge_size: 3
+    leading_edge_genes:
+    - SPCS1
+    - SPCS3
+    - SEC11A
+    peak_rank: 4592
+  curator_note: Flat in this dengue screen (p = 0.17) though core for West Nile in
+    Zhang et al.; Zhang et al. also found SPCS needed for dengue in follow-up assays.
+    Kept as supporting to record the contrast between the screens.
+- term:
+    id: GO:0007156
+    label: homophilic cell-cell adhesion
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  direction: UP
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: wilcoxon
+    algorithm: classic
+    p_adjust_method: benjamini_hochberg
+    p_value: 3.100531e-12
+    p_adjust: 2.25835e-09
+    target_size: 176
+    es: 0.309171
+    nes: 6.97309
+    set_size: 171
+    leading_edge_size: 77
+    leading_edge_genes:
+    - PCDHA5
+    - PCDHAC2
+    - PCDHA1
+    - PCDHA4
+    - PCDHA12
+    - PSG5
+    - PCDHA13
+    - PCDHAC1
+    - PCDHA11
+    - PCDHA7
+    - PCDHA2
+    - PCDHA9
+    - PCDHA10
+    - PCDHA6
+    - PCDHA8
+    - MPZL2
+    - PCDHGC5
+    - PCDHGA6
+    - PCDHB5
+    - CEACAM1
+    - CLSTN1
+    - PCDHGA7
+    - PCDHGA10
+    - PCDHA3
+    - PCDHGA11
+    - PCDHGA12
+    - PCDHGB1
+    - PCDHGB3
+    - PCDHGA9
+    - PCDHGC3
+    - NECTIN2
+    - RET
+    - PCDHGB4
+    - PCDHGB6
+    - PCDHGB7
+    - PCDHGA2
+    - PCDHGC4
+    - PCDHGA5
+    - PCDHGA3
+    - PCDHGB2
+    - PCDHGA8
+    - PCDHGB5
+    - PCDHB2
+    - CDH12
+    - CLSTN2
+    - PCDH19
+    - PCDHGA1
+    - PCDH12
+    - NECTIN3
+    - SDK2
+    - HMCN1
+    - CDH20
+    - DSC1
+    - DCHS2
+    - PVR
+    - DSG2
+    - PCDHB12
+    - DSC2
+    - PALLD
+    - CDH13
+    - PCDH17
+    - PSG11
+    - DSC3
+    - NPTN
+    - PCDH15
+    - NECTIN4
+    - CDH1
+    - CEACAM5
+    - ITGB1
+    - DSG3
+    - CEACAM8
+    - DSG1
+    - CDHR4
+    - CDHR3
+    - CDH26
+    - NEXN
+    - CELSR3
+    peak_rank: 4004
+  curator_note: The most significant Wilcoxon term (q = 2e-9), carried by the PCDHA
+    cluster, whose genes share constant exons and so the same guides.
+- term:
+    id: GO:0004984
+    label: olfactory receptor activity
+  seed_source: enrichment_recovered
+  aspect: molecular_function
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  direction: UP
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: wilcoxon
+    algorithm: classic
+    p_adjust_method: benjamini_hochberg
+    p_value: 9.200541e-08
+    p_adjust: 1.898064e-05
+    target_size: 437
+    es: 0.160745
+    nes: 5.341845
+    set_size: 375
+    leading_edge_size: 273
+    leading_edge_genes:
+    - OR11L1
+    - OR4N2
+    - OR2A7
+    - OR2T8
+    - OR52N4
+    - OR13C4
+    - OR2M7
+    - OR2A5
+    - OR51B4
+    - OR1Q1
+    - OR6B2
+    - OR51I1
+    - OR5P2
+    - OR52I1
+    - OR10A5
+    - OR4L1
+    - OR10G2
+    - OR8U3
+    - OR5AC2
+    - OR12D2
+    - OR52H1
+    - OR2K2
+    - OR6N1
+    - OR11G2
+    - OR52W1
+    - OR4F17
+    - OR4F4
+    - OR4F15
+    - OR2T11
+    - OR7A5
+    - OR5AR1
+    - OR9Q1
+    - OR10V1
+    - OR2H1
+    - OR10A7
+    - OR1E1
+    - OR56B4
+    - OR5M1
+    - OR52I2
+    - OR4M1
+    - OR2T1
+    - OR9K2
+    - OR5W2
+    - OR8U8
+    - OR52E8
+    - OR11A1
+    - OR2A2
+    - OR2B3
+    - OR4C11
+    - OR1J4
+    - OR7C2
+    - OR8B3
+    - OR8H1
+    - OR4A5
+    - OR4X2
+    - OR52K2
+    - OR1I1
+    - OR10H1
+    - OR6B3
+    - OR51D1
+    - OR6F1
+    - OR2T33
+    - OR5AU1
+    - OR5H1
+    - OR4K15
+    - OR1C1
+    - OR5H2
+    - OR5F1
+    - OR10G8
+    - OR11H6
+    - OR1N2
+    - OR1D5
+    - OR2M4
+    - GPR148
+    - OR2M2
+    - OR1L1
+    - OR2T2
+    - OR1J1
+    - OR14J1
+    - OR13J1
+    - OR6K2
+    - OR2L8
+    - OR4D6
+    - OR2A4
+    - OR1L3
+    - OR5D13
+    - OR56A3
+    - OR10AG1
+    - OR1A2
+    - OR1F1
+    - OR10G7
+    - OR7A10
+    - OR8H3
+    - OR2T12
+    - OR5B2
+    - OR1D2
+    - OR2L5
+    - OR2B2
+    - OR4C45
+    - OR8B12
+    - OR52N5
+    - OR56B1
+    - OR6X1
+    - OR1L4
+    - OR10K1
+    - OR2W3
+    - OR10G4
+    - OR14C36
+    - OR8B4
+    - OR51T1
+    - OR2F1
+    - OR8D2
+    - OR8S1
+    - OR51A4
+    - OR4K2
+    - OR52E4
+    - OR10Z1
+    - OR2AG2
+    - OR5B21
+    - OR10H3
+    - OR2L2
+    - OR6C70
+    - OR4C16
+    - OR5K4
+    - OR4K1
+    - OR5P3
+    - OR5K2
+    - OR2C3
+    - OR4C13
+    - OR1M1
+    - OR4F6
+    - OR10J5
+    - OR5K1
+    - OR2J3
+    - OR2G3
+    - OR5AK2
+    - OR52A1
+    - OR8U1
+    - OR51F1
+    - OR5B17
+    - OR4Q3
+    - OR52M1
+    - OR6T1
+    - OR1J2
+    - OR56A1
+    - OR4N5
+    - OR51M1
+    - OR10A2
+    - OR7A17
+    - OR4N4
+    - OR2AT4
+    - OR5C1
+    - OR5V1
+    - OR4F5
+    - OR10X1
+    - OR6B1
+    - OR6C68
+    - OR56A5
+    - OR6Y1
+    - OR8K5
+    - OR52N2
+    - OR52L1
+    - OR6A2
+    - OR2G6
+    - OR10A6
+    - OR4K13
+    - OR13C9
+    - OR13A1
+    - OR10P1
+    - OR4D9
+    - OR8H2
+    - OR51V1
+    - OR6C1
+    - OR10A4
+    - OR6V1
+    - OR8B2
+    - OR5AS1
+    - OR5T2
+    - OR52B4
+    - OR51S1
+    - OR2A12
+    - OR6C74
+    - OR6C3
+    - OR10G9
+    - OR10A3
+    - OR2AK2
+    - OR2S2
+    - OR4K17
+    - OR1N1
+    - OR51A7
+    - OR13C2
+    - OR9A2
+    - OR8D4
+    - OR10G3
+    - OR52A5
+    - OR5J2
+    - OR5D18
+    - OR4B1
+    - OR10S1
+    - OR51A2
+    - OR2T10
+    - OR52E2
+    - OR13C8
+    - OR9A4
+    - OR8K1
+    - OR8A1
+    - OR2A14
+    - OR4C12
+    - OR2AG1
+    - OR51I2
+    - OR1B1
+    - OR2B6
+    - OR7G2
+    - OR2B11
+    - OR5M9
+    - OR6C2
+    - OR1S2
+    - OR51G2
+    - OR51F2
+    - OR4C6
+    - OR2AP1
+    - OR7C1
+    - OR10J3
+    - OR2T4
+    - OR7G1
+    - OR4S2
+    - OR7D2
+    - OR5H15
+    - OR2J2
+    - OR6K3
+    - OR52N1
+    - OR2T27
+    - OR8G2P
+    - OR51E2
+    - OR2M5
+    - OR12D3
+    - OR5I1
+    - OR10H5
+    - OR11H2
+    - OR6N2
+    - OR5AN1
+    - OR3A3
+    - OR10K2
+    - OR4C46
+    - OR11H4
+    - OR52K1
+    - OR5M3
+    - OR4A47
+    - OR4C3
+    - OR2C1
+    - OR1S1
+    - OR8B8
+    - OR4D11
+    - OR9Q2
+    - OR7D4
+    - OR2H2
+    - OR10AD1
+    - OR2W1
+    - OR5M10
+    - OR1L8
+    - OR11H1
+    - OR51B2
+    - OR2V2
+    - OR13H1
+    - OR4M2
+    - OR5M11
+    - OR4D1
+    - OR2AE1
+    - OR2L13
+    - OR10C1
+    - OR52B2
+    - OR52E6
+    - OR8K3
+    peak_rank: 12083
+  curator_note: 'Olfactory receptors (q = 2e-5): not expressed in Huh7.5.1 cells,
+    so their knockouts escape the fitness cost that shifts expressed genes down.'

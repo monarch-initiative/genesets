@@ -1,0 +1,315 @@
+gene_set_id: LIT:RFX6_KNOCKDOWN_BETA_CELL_UP
+gene_set_name: RFX6_KNOCKDOWN_BETA_CELL_UP
+collection: LIT:PERTURBATION
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+series: SERIES:RFX6_KNOCKDOWN_ISLET_CELL
+series_role: beta_up
+n_genes: 1272
+description: >-
+  Literature-defined genetic-perturbation signature: the genes UPregulated in
+  primary human pancreatic beta cells after knockdown of the islet transcription
+  factor RFX6, from Walker, Saunders, Rai et al. (Nature 2023, PMID:38049589).
+  Adenoviral U6-driven RFX6-targeted shRNA (shRFX6, mKate2-tagged) or scramble
+  shRNA (control, mCherry-tagged) was delivered to dispersed primary human islet
+  cells that were then reaggregated into pseudoislets for six days; shRFX6 and
+  control pseudoislets from seven matched donors were profiled by single-nucleus
+  multiome, and the RNA component of the beta cell nuclei was tested for
+  differential expression. The published list (Supplementary Data 2a, "Genes
+  differentially expressed (DE) at Padj<0.01, shRFX6 vs scramble, beta cell
+  nuclei, multiome (RNA)") contains 2,675 entries, of which 1,273 have positive
+  log2 fold change; this file is that UP arm, and
+  LIT:RFX6_KNOCKDOWN_BETA_CELL_DN is its pole. Members are the READOUT of a
+  genetic perturbation, not causal/driver genes: RFX6 itself is not a member, so
+  this is a downstream-of-knockdown signature rather than a set in which RFX6 is
+  merely differentially expressed. MEMBERSHIP PROCESSING: the vector reporter
+  transcript mKate2 (log2FC +4.61, the shRFX6 construct's tag; its counterpart
+  mCherry sits at -4.37 in the down arm, which independently confirms the stated
+  shRFX6-vs-scramble polarity) is an artefact of the dual-construct design and
+  was removed, leaving 1,272 members. Published symbols were normalized to
+  current HGNC symbols via mygene.info with an exact-current-symbol-first rule;
+  no duplicate rows collapsed in this arm. Clone-based identifiers from the
+  study's GENCODE annotation with no current HGNC symbol (RP11-*, AC*, CTD-*)
+  were retained verbatim so membership stays faithful to the published set,
+  though they carry no GO annotation. INTERPRETATION: this arm is where the
+  paradox of the experiment lives. RFX6 knockdown blunts stimulated insulin
+  secretion, yet the transcripts of the insulin secretory apparatus go UP, not
+  down — ABCC8 (+0.81), SLC30A8 (+1.06), SLC2A2 (+1.05), G6PC2 (+0.31), CACNA1D
+  (+0.79), PCSK1 (+0.41), PCSK2 (+0.63), CPE (+0.32), IAPP (+0.96) and the beta
+  cell identity factors MAFA (+1.28), ISL1, PAX6, MNX1, GLIS3 and SIX3 — while
+  the machinery that traffics, degrades and recycles those products falls in the
+  DN arm, and the pseudoislets accumulate a greater insulin content. Alongside
+  it, a neuronal/synaptic module is de-repressed (GRM5 +3.62, GRIK2, GRIA4,
+  NRXN1, LRRTM4, CRHR1, ROBO1/2, SEMA3A), which the authors read as a broad
+  similarity of beta cells to neurons as electrically active and secretory cells.
+  DISEASE RELEVANCE: RFX6 is the beta cell hub gene on which multiple layers of
+  type 2 diabetes genetic risk converge in this study; the direction of this arm
+  is why the resulting secretory defect is best read as post-transcriptional
+  rather than as loss of secretory gene expression. SEED_SOURCE SEMANTICS: no
+  genesets-rs run seeded this file. `enrichment_recovered` here means the term
+  (or its immediate parent/child) appears in the study's own published
+  enrichment of this exact gene list — Metascape over the up, down and combined
+  arms, Supplementary Data 2b — and `curator_added` means it does not, so the
+  eval's recall denominator is honest with respect to an independent prior
+  enrichment rather than to the tool being scored. Two of this arm's three core
+  terms are curator_added, which makes it a deliberately hard recall target.
+contexts:
+  - term:
+      id: PR:Q8HWS3
+      label: DNA-binding protein RFX6 (human)
+    context_type: genetic_perturbation
+    role_note: >-
+      Perturbagen. Adenoviral shRNA knockdown of RFX6 versus scramble shRNA in
+      primary human islet cells reaggregated as pseudoislets for six days; the
+      members are the transcriptional readout of that knockdown, not RFX6
+      targets defined by binding.
+  - term:
+      id: CL:0000169
+      label: type B pancreatic cell
+    context_type: cell_type
+    role_note: >-
+      Differential expression was computed in beta cell nuclei specifically; 13%
+      of detected genes were DE in beta cells versus less than 3% in the other
+      islet cell types of the same pseudoislets.
+  - term:
+      id: UBERON:0000006
+      label: islet of Langerhans
+    context_type: anatomical_structure
+    role_note: >-
+      Primary human islets from seven organ donors, dispersed and reaggregated
+      into pseudoislets so that a virus could be delivered to the interior cells.
+  - term:
+      id: MONDO:0005148
+      label: type 2 diabetes mellitus
+    context_type: disease
+    role_note: >-
+      The disease context the perturbation models: RFX6 is decreased in T2D beta
+      cells, and shRFX6 pseudoislets phenocopy the blunted stimulated insulin
+      secretion of T2D islets.
+associations:
+  - term:
+      id: GO:0030073
+      label: insulin secretion
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:38049589
+        reference_title: "Genetic risk converges on regulatory networks mediating early type 2 diabetes."
+        supports: NEUTRAL
+        evidence_source: IN_VITRO
+        snippet: "converge on an RFX6-mediated network to reduce insulin secretion"
+        explanation: >-
+          The quotation is the paper's own headline claim and is recorded here as
+          the CONTRAST, hence supports NEUTRAL: secretion falls, while the
+          transcripts for the process rise.
+          The set contains the beta cell secretory apparatus, and it is UP:
+          ABCC8, SLC30A8, SLC2A2, G6PC2, CACNA1C, CACNA1D, PCSK1, PCSK2, CPE,
+          IAPP, CHGB, SCG3, SCG5, UNC13A, CADPS and STXBP5, together with the
+          identity factors MAFA, ISL1, PAX6, MNX1, GLIS3, SIX3 and the PDX1
+          lncRNA PLUT. These members carry insulin-secretion annotations, so the
+          term is annotation_supported. It is marked curator_added because the
+          study's own Metascape output (Supplementary Data 2b) returns no
+          insulin-secretion term for either arm — its clustered output is
+          dominated by the synaptic and cytoskeletal modules — so a method that
+          recovers this term is finding something the published enrichment did
+          not. The paper's matching functional observation, in the Results, is
+          that shRFX6 pseudoislets had a greater insulin content while proinsulin
+          processing was unchanged, even though stimulated secretion was blunted;
+          that sentence is not attached as a snippet because only the abstract is
+          machine-retrievable for this reference (the cached record is
+          content_type abstract_only).
+      - reference: PMID:38064570
+        reference_title: "RFX6 Maintains Gene Expression and Function of Adult Human Islet alpha-Cells."
+        supports: REFUTE
+        evidence_source: IN_VITRO
+        explanation: >-
+          Recorded as a genuine DISAGREEMENT in the literature about the sign of
+          this arm, not as support. A companion study of the same perturbation in
+          the same tissue (GIPZ lentiviral shRNA against RFX6 in primary human
+          pseudoislets, FACS-purified cells, bulk RNA-seq, DESeq2) reports the
+          OPPOSITE direction for the secretory machinery. In its alpha cells,
+          SLC30A8 falls (log2FC -0.79) along with UCN3, CHGA, PCSK2, CPE and the
+          CACNA1A/CACNA1C/KCNA5 channels — see
+          LIT:RFX6_KNOCKDOWN_ALPHA_CELL_DN. In its beta cells it reports 155
+          DEGs in which ABCC8 and GCK are DOWNregulated, described as
+          corroborating prior mouse work showing Abcc8 and Gck are RFX6-regulated
+          — whereas in this set ABCC8 is +0.81 and SLC30A8 is +1.06. The two
+          studies differ in vector (adenoviral versus lentiviral), in assay
+          (single-nucleus multiome of whole pseudoislets versus bulk RNA-seq of
+          FACS-purified cells), in threshold (Padj<0.01 versus <0.1) and in
+          knockdown efficiency, so the discrepancy has methodological
+          explanations and is not adjudicated here. No verbatim snippet: only the
+          abstract is machine-retrievable for this reference.
+    curator_note: >-
+      Scored mechanistic, and the reason this pole is worth curating: nothing
+      about "RFX6 knockdown reduces insulin secretion" entails that the secretory
+      and identity transcripts RISE, and the naive expectation — that they fall —
+      is recorded as a membership_gap on the DN pole. One coherent reading of the
+      pair is a post-transcriptional lesion, with secretory cargo genes and MAFA
+      transcriptionally intact or elevated and insulin content accumulating,
+      while the trafficking, autophagy, ciliary and proteasomal machinery that
+      would move and turn over that cargo is depleted in the DN arm. BUT THAT
+      READING IS CONTESTED: the REFUTE evidence above records a companion study
+      reporting the opposite sign for ABCC8, GCK and SLC30A8 in the same tissue
+      and perturbation. The category stays core_process — these genes are in this
+      set and this term is what they do — and the direction stays as published,
+      but the mechanistic interpretation is explicitly held open rather than
+      asserted. cell_type_specific: insulin secretion is executed by the beta
+      cell alone.
+  - term:
+      id: GO:0030141
+      label: secretory granule
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The structural counterpart of the term above: the insulin granule and its
+      cargo/processing machinery are represented by CHGB, SCG3, SCG5, CPE, PCSK1,
+      PCSK2, IAPP, SLC30A8 (the granular zinc transporter) and CADPS (granule
+      priming), all members of this arm and all carrying secretory-granule
+      annotations (annotation_supported). curator_added for the same reason as
+      insulin secretion — the study's clustered Metascape output does not surface
+      it. Confirmatory rather than mechanistic: once one accepts that the
+      secretory transcripts are up, that they are granule proteins is entailed;
+      the non-obvious part is the direction, which is scored on the process term.
+  - term:
+      id: GO:0099536
+      label: synaptic signaling
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:38049589
+        reference_title: "Genetic risk converges on regulatory networks mediating early type 2 diabetes."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        explanation: >-
+          Synaptic signalling is one of the two up-arm programs the authors name
+          in the Results (Extended Data Fig. 9d), and it is the dominant one in
+          their own Metascape output (Supplementary Data 2b): modulation of
+          chemical synaptic transmission LogP -13.1, regulation of trans-synaptic
+          signaling -13.1, chemical synaptic transmission -10.1, synaptic
+          signaling -9.3, versus no down-arm signal for the narrower terms. The
+          carriers are members: the glutamate receptors GRM5 (log2FC +3.62),
+          GRIK2 and GRIA4, the synaptic adhesion molecules NRXN1 and LRRTM4, the
+          dense-core-vesicle priming factor CADPS, the neuropeptide receptor
+          CRHR1 and the axon-guidance ligands/receptors ROBO1, ROBO2 and SEMA3A.
+    curator_note: >-
+      Beta cells do not form synapses; the term is recovered because the beta
+      cell, as a neuroendocrine cell, shares a large part of the neuronal
+      receptor, adhesion and regulated-exocytosis repertoire, and that module is
+      coordinately de-repressed when RFX6 is knocked down. Kept core because it
+      is the dominant coherent program of this arm and is the enrichment the
+      authors themselves report, and lineage_shared because the module is a
+      neuroendocrine inheritance rather than anything beta cell-specific. Scored
+      confirmatory on the tightened rule: "islet transcription factor knocked
+      down, neuronal-like program comes up" is the generic loss-of-identity
+      hallmark of an endocrine perturbation, and the authors present it as
+      confirming a known similarity rather than as a discovery.
+  - term:
+      id: GO:0042391
+      label: regulation of membrane potential
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The electrical arm that sits between the two programs above, at LogP -7.5
+      in the up arm of the study's Metascape output with no down-arm signal.
+      Carried by members that are simultaneously beta cell stimulus-secretion
+      coupling genes and generic excitability genes: the KATP subunit ABCC8, the
+      L-type calcium channels CACNA1C and CACNA1D, the large-conductance
+      potassium channel KCNMA1, KCND3 and TRPM3. Supporting rather than core
+      because it is a shared substrate of the secretory and neuronal modules
+      rather than the defining activity of the set, and confirmatory because
+      electrical excitability is exactly what one expects to move with them.
+  - term:
+      id: GO:0048812
+      label: neuron projection morphogenesis
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The morphogenetic tail of the same neuronal module (LogP -8.7 up), carried
+      by the guidance receptors and ligands ROBO1, ROBO2, UNC5C, PLXNA4, NRP1,
+      SEMA3A and the neural adhesion molecules LRRC4C, NTM and CNTN4, which hold
+      the annotation (annotation_supported). Supporting rather than core: these
+      genes are present and coherently up, but a primary human beta cell extends
+      no neurites, so this is a by-product of de-repressing the neuronal
+      repertoire rather than a process the cell performs. Note the term is also
+      enriched in the DN arm (-10.4), so it does not discriminate the poles of
+      this series.
+  - term:
+      id: GO:0030048
+      label: actin filament-based movement
+    aspect: biological_process
+    category: marker_driven_plausible
+    confidence: low
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Recorded because it is one of the two terms the paper names for this arm,
+      but downgraded on the membership. It is the weaker of the two (LogP -5.0
+      up, with actin-mediated cell contraction at -4.5) and the up arm contains
+      very few actual actomyosin genes — MYO3A and MYOM1, with the signal
+      otherwise resting on Rho-family regulators (ARHGAP10, ARHGAP15, ARHGAP24,
+      ARHGEF26, ARHGEF28, RHOU, RHOBTB1, RHOBTB3) that map to the broader actin
+      filament-based process; the canonical myosins, tropomyosins and actinins
+      are absent, and the stronger actin-cytoskeleton signal in this experiment
+      is in the DN arm. Plausible from the genes present, peripheral for the set.
+      No insight tag: insight is reserved for core and supporting terms.
+  - term:
+      id: GO:0007420
+      label: brain development
+    aspect: biological_process
+    category: marker_driven_plausible
+    confidence: low
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:38049589
+        reference_title: "Genetic risk converges on regulatory networks mediating early type 2 diabetes."
+        supports: NEUTRAL
+        evidence_source: IN_VITRO
+        explanation: >-
+          Brain development scores LogP -7.7 in the up arm of the study's
+          Metascape output (with head development -6.8, forebrain development
+          -3.7 and telencephalon development -2.8 trailing it), and the genes
+          carrying it are real members. But an adult primary human beta cell
+          executes no part of brain development: the term is the classic artefact
+          of a neuroendocrine cell de-repressing a neuronal gene repertoire, and
+          the authors' own framing of the neuronal enrichment (Fig. 5d legend) is
+          a broad similarity of beta cells to neurons as electrically active and
+          secretory cells, not neural differentiation. Recorded as NEUTRAL: the
+          reference explains the enrichment rather than endorsing the term. No
+          verbatim snippet, since only the abstract is machine-retrievable for
+          this reference.
+    curator_note: >-
+      Kept in the file as the arm's main over-call so precision can be scored
+      against it, rather than deleted. annotation_supported (the genes genuinely
+      carry it) but marker_driven_plausible, low confidence. No insight tag:
+      insight is reserved for core and supporting terms.

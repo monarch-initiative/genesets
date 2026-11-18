@@ -1,0 +1,23 @@
+# Inflammatory bowel disease GWAS, de Lange et al. 2017 (PMID:28067908), European ancestry: 25,042 cases, 34,915 controls.
+# MAGMA gene-based results (snp-wise mean model, 1 kb windows, protein-coding
+# genes) as computed by the GWAS ATLAS (Watanabe et al. 2019, PMID:31427789),
+# atlas study 2031. Score: -log10 of the MAGMA gene p-value (one-sided, unsigned).
+name: IBD_GWAS_MAGMA
+source:
+  kind: ctg_atlas
+  atlas_id: 2031
+  sha256: 54533b69b4f91ea428706644cb4672822b94db5e8878d0637780c1c3dbc6d07e
+table:
+  format: atlas_json
+gene_column: GENE
+gene_id_type: ensembl
+fallback_symbol_column: SYMBOL
+score_column: P
+transform: neg_log10
+duplicates: max
+# The atlas serves this table only through its web page, so the built ranking
+# is committed rather than rebuilt on demand.
+store: true
+hgnc:
+  url: https://storage.googleapis.com/public-download-files/hgnc/archive/archive/monthly/tsv/hgnc_complete_set_2026-10-06.txt
+  sha256: 8bf6f686e640dbc864a346484626953621b0500d900d26cd085a35c2782d725d

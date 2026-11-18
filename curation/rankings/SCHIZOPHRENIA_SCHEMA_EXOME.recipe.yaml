@@ -1,0 +1,17 @@
+# SCHEMA exome meta-analysis gene results (Singh et al. 2022, PMID:35396579),
+# from the SCHEMA browser's download. Score: -log10 of P meta, the combined
+# case-control and de novo rare-variant burden p-value (one-sided, unsigned).
+name: SCHIZOPHRENIA_SCHEMA_EXOME
+source:
+  url: https://atgu-exome-browser-data.s3.amazonaws.com/SCHEMA/SCHEMA_gene_results.tsv.bgz
+  sha256: 88b478eb438ea35c7899bb9c4956bff82dd3c25135c462551f3e00b25631c9b0
+table:
+  format: tsv
+gene_column: gene_id
+gene_id_type: ensembl
+score_column: P meta
+transform: neg_log10
+duplicates: max
+hgnc:
+  url: https://storage.googleapis.com/public-download-files/hgnc/archive/archive/monthly/tsv/hgnc_complete_set_2026-10-06.txt
+  sha256: 8bf6f686e640dbc864a346484626953621b0500d900d26cd085a35c2782d725d

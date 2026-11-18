@@ -1,0 +1,207 @@
+gene_set_id: LIT:RFX6_KNOCKDOWN_BETA_REGULON
+gene_set_name: RFX6_KNOCKDOWN_BETA_REGULON
+collection: LIT:PERTURBATION
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 220
+description: >-
+  Literature-defined genetic-perturbation signature at REGULON granularity: the
+  genes connected to the top 10 differentially active beta cell regulons after
+  RFX6 knockdown in primary human beta cells, from Walker, Saunders, Rai et al.
+  (Nature 2023, PMID:38049589, Supplementary Data 2c). Same experiment as
+  LIT:RFX6_KNOCKDOWN_BETA_CELL_UP / _DN — adenoviral shRNA against RFX6 versus
+  scramble in reaggregated primary human pseudoislets from seven matched donors,
+  single-nucleus multiome — but a different way of reading it out. Rather than
+  thresholding per-gene differential expression, the authors ran SCENIC
+  (Single-Cell rEgulatory Network Inference and Clustering) on the beta cell
+  nuclei, ranked regulons by differential activity between shRFX6 and control,
+  and took the genes connected to the top 10. The result is a regulatory-network
+  core instead of a differential-expression sweep. MEMBERSHIP PROCESSING: the
+  published table has 256 rows but only 220 distinct genes — 29 genes are
+  targets of two or three of the top-10 regulons and are therefore listed more
+  than once (GNAS, RUNX1T1, EPB41, NOL4, CSRNP3, KCNB2 and KCNMB2 each appear
+  three times). Deduplicating gives 220, which is exactly the n the Fig. 5d
+  legend reports for the authors' own g:Profiler input, so the captured
+  membership matches what they analysed. Ten symbols were additionally updated to
+  current HGNC symbols (FAM69A -> DIPK1A, KIAA1715 -> LNPK, INADL -> PATJ,
+  KIAA0368 -> ECPAS, PVRL3 -> NECTIN3 among them); none of the renames merged
+  distinct genes. Direction is NA because regulon membership is not signed (a
+  regulon can be differentially active in either direction, and the published
+  list carries no per-gene fold change). WHY THIS SET EXISTS SEPARATELY: it is
+  the same biology read at a different granularity, which makes it a control for
+  its 2,675-gene parent. Over these genes the authors' own enrichment does
+  recover the secretory program that the diffuse UP arm misses — Metascape
+  returns the KEGG pathways Insulin secretion (LogP -7.9) and Maturity onset
+  diabetes of the young (-9.2) in Supplementary Data 2d, and the Results report
+  the regulon genes significantly enriched (P < 0.001) for those same pathways by
+  g:Profiler. Note precisely what that is: KEGG pathway membership, not GO. The
+  secretory genes here (NKX6-1, SLC30A8, INS, IAPP, CADPS, PCLO, CACNA1C,
+  CACNA1D, KCNB2, KCNMB2) sit squarely inside KEGG's channel-centric
+  insulin-secretion pathway while being thinly annotated to GO's insulin
+  secretion, so recovering the KEGG pathway does not entail that GO-based
+  enrichment recovers the GO term at this size. The `annotation_supported` label
+  on that association below is the standard corpus claim that the member genes
+  carry the annotation, not a prediction that it clears genome-wide significance.
+  The membership is a genuine mixture of the two programs the parent set splits
+  apart — the secretory/identity arm (the beta cell master regulator NKX6-1,
+  SLC30A8, INS, IAPP, CADPS, the granule scaffold PCLO, the channels CACNA1C,
+  CACNA1D, KCNB2 and KCNMB2, IDE, and the v-ATPase subunits ATP6V1A and
+  ATP6V0A1) and the
+  neuronal/synaptic arm (NRXN1, NLGN1, LRRTM4, ROBO1, ROBO2, MAST1, CLIP1,
+  MAP1B, PLXNA4, CNTN4) — which is why the paper reads the enrichment as a broad
+  similarity of beta cells to neurons as electrically active and secretory cells.
+  This file is deliberately NOT part of SERIES:RFX6_KNOCKDOWN_ISLET_CELL: it is a
+  granularity variant of one pole rather than a contrasting pole, the same
+  treatment the corpus gives the interferon sets. SEED_SOURCE SEMANTICS: no
+  genesets-rs run seeded this file; `enrichment_recovered` means the term appears
+  in the study's own Metascape enrichment of this exact list (Supplementary Data
+  2d), `curator_added` means it does not.
+contexts:
+  - term:
+      id: PR:Q8HWS3
+      label: DNA-binding protein RFX6 (human)
+    context_type: genetic_perturbation
+    role_note: >-
+      Perturbagen. Adenoviral shRNA knockdown of RFX6 versus scramble shRNA in
+      primary human islet cells reaggregated as pseudoislets for six days. Note
+      these are SCENIC regulon members, i.e. co-expression-inferred network
+      targets of the differentially active regulons — not RFX6 binding sites.
+  - term:
+      id: CL:0000169
+      label: type B pancreatic cell
+    context_type: cell_type
+    role_note: >-
+      Regulon activity was scored in beta cell nuclei of the multiome data.
+  - term:
+      id: MONDO:0018911
+      label: maturity-onset diabetes of the young
+    context_type: disease
+    role_note: >-
+      The strongest disease enrichment of this list in the study's own analysis
+      (Metascape LogP -9.2; g:Profiler P < 0.001) — the monogenic diabetes gene
+      panel, recovered from a network read-out of an RFX6 knockdown.
+  - term:
+      id: MONDO:0005148
+      label: type 2 diabetes mellitus
+    context_type: disease
+    role_note: >-
+      The disease context of the parent study: RFX6 is the beta cell hub gene on
+      which multiple layers of T2D genetic risk converge.
+associations:
+  - term:
+      id: GO:0030073
+      label: insulin secretion
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:38049589
+        reference_title: "Genetic risk converges on regulatory networks mediating early type 2 diabetes."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "converge on an RFX6-mediated network to reduce insulin secretion"
+        explanation: >-
+          Unlike the diffuse UP arm of the same experiment, this list recovers
+          the secretory program directly: the study's Metascape enrichment of
+          these exact 256 genes returns Insulin secretion at LogP -7.9 and
+          Maturity onset diabetes of the young at -9.2 (Supplementary Data 2d),
+          and the Results report the regulon genes significantly enriched
+          (P < 0.001) for those pathways by g:Profiler. Carriers in the
+          membership include SLC30A8, INS, IAPP, CADPS, CACNA1C, CACNA1D and the
+          insulin-degrading enzyme IDE, which hold the annotation
+          (annotation_supported).
+    curator_note: >-
+      Scored confirmatory, not mechanistic: recovering insulin secretion from the
+      regulatory network of a transcription factor already known to control
+      insulin secretion restates the set's construction. The interesting fact is
+      not the term but the contrast in recoverability across analyses — the
+      authors' KEGG-based enrichment surfaces the secretory program here and not
+      in the 2,675-gene parent, where it is recorded as curator_added on the UP
+      pole. That contrast is a property of query size, ontology and
+      multiple-testing rather than of the biology, and it is the reason this file
+      exists as a separate set.
+  - term:
+      id: GO:0050804
+      label: modulation of chemical synaptic transmission
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The neuronal half of the mixture, and the arm the authors themselves
+      emphasise for this list: the study's Metascape output returns modulation of
+      chemical synaptic transmission at LogP -6.8, synapse assembly at -7.2 and
+      Reactome Neuronal system at -5.7 (Supplementary Data 2d). Carried by
+      members NRXN1, NLGN1, LRRTM4, ROBO1, ROBO2, MAST1 and CLIP1, which hold the
+      annotation. Beta cells form no synapses; the term is recovered because the
+      neuroendocrine beta cell shares the neuronal adhesion, receptor and
+      regulated-exocytosis repertoire, which is precisely how the Fig. 5d legend
+      reads it. Confirmatory for the same reason as on the UP pole: a
+      neuronal-like program surfacing when an islet transcription factor is
+      knocked down is the generic loss-of-identity hallmark.
+  - term:
+      id: GO:0031175
+      label: neuron projection development
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The morphogenetic tail of the neuronal arm (Metascape LogP -6.6, with
+      regulation of neuron differentiation at -6.7 and Reactome Axon guidance at
+      -4.8), carried by MAP1B, PLXNA4, CNTN4, ROBO1 and ROBO2. Supporting rather
+      than core: these genes are present and coherently grouped, but a primary
+      human beta cell extends no neurites, so this is a by-product of the shared
+      neuroendocrine repertoire rather than a process the cell performs. Mirrors
+      the same call on LIT:RFX6_KNOCKDOWN_BETA_CELL_UP.
+  - term:
+      id: GO:0042391
+      label: regulation of membrane potential
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The electrical substrate shared by the secretory and neuronal arms, which
+      the study's Metascape output surfaces as Action potential (LogP -5.1).
+      Carried by the L-type calcium channels CACNA1C and CACNA1D, the auxiliary
+      subunit CACNA2D1 and TRPM3. Supporting rather than core — it is a substrate
+      of both programs rather than the defining activity — and confirmatory,
+      since electrical excitability is exactly what the Fig. 5d legend invokes in
+      calling beta cells electrically active secretory cells.
+  - term:
+      id: GO:0007420
+      label: brain development
+    aspect: biological_process
+    category: marker_driven_plausible
+    confidence: low
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Kept as this list's main over-call so precision can be scored against it,
+      and notable because it is the SINGLE STRONGEST term in the study's own
+      Metascape output for these genes (LogP -11.1, ahead of both MODY and
+      insulin secretion), with Cerebellum development trailing at -5.1. An adult
+      primary human beta cell executes no part of brain development; the term is
+      the familiar artefact of a neuroendocrine gene repertoire being scored
+      against a neural-development-heavy ontology. It is the same over-call
+      flagged on LIT:RFX6_KNOCKDOWN_BETA_CELL_UP, which makes the pair a
+      consistency check: a method that returns brain development for both is
+      reproducing a known artefact, not finding beta cell biology. No insight
+      tag: insight is reserved for core and supporting terms.

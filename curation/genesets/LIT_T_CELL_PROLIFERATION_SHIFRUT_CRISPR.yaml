@@ -1,0 +1,550 @@
+gene_set_id: LIT:T_CELL_PROLIFERATION_SHIFRUT_CRISPR
+gene_set_name: T_CELL_PROLIFERATION_SHIFRUT_CRISPR
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+ranking:
+  source: PMID:30449619
+  score_type: log2_fold_change
+  signed: true
+  gene_id_type: HGNC symbol
+  n_ranked: 18928
+  file: ../rankings/T_CELL_PROLIFERATION_SHIFRUT_CRISPR.rnk.gz
+  sha256: 24850db3a5ab6672befc85841191a535705bfe56833223c576ce8bd955953b13
+  source_detail: Table S4 (mmc4.xlsx), sheet MAGeCK_Gene_GWscreen_rep1and2, column
+    pos|lfc
+  download_url: https://ars.els-cdn.com/content/image/1-s2.0-S0092867418313333-mmc4.xlsx
+  score_description: 'The MAGeCK gene log2 fold change of highly versus lowly proliferating
+    T cells; positive = knockout enhances proliferation (negative regulator), negative
+    = knockout impairs it (positive regulator, or essential). Built by `curate build-ranking`
+    from rankings/T_CELL_PROLIFERATION_SHIFRUT_CRISPR.recipe.yaml: of 19,114 source
+    rows, 130 have no approved HGNC symbol and 28 collide on one symbol (all dropped,
+    since Excel-mangled MARCH/SEPT names may hide two genes); 18,928 genes ranked.'
+description: 'Genome-wide CRISPR knockout ranking of regulators of primary human T
+  cell proliferation after TCR stimulation, from Shifrut et al. 2018 (SLICE; PMID:30449619),
+  as signed MAGeCK log fold changes. The ranked counterpart of LIT:T_CELL_FUNCTION_REGULATORS.
+  Both poles are biology here. The positive pole is the brakes: CBLB, SOCS1, RASA2,
+  UBASH3A, ELOB (TCEB2) and CD5 rank in the top 15, and the Cullin-5 ligase module
+  they partly form is significant. The negative pole is TCR signalling (LCP2, VAV1
+  and CD247 rank last; ZAP70 is in the bottom 4%) on top of the fitness signal of
+  essential genes. Negative regulation of T cell activation, CORE in the gene-set
+  entry, is not significant as a term although CBLB and SOCS1 head the ranking: the
+  120-gene term mostly holds genes with no effect. Survival and proliferation screens
+  carry a generic fitness signal: knockouts of essential genes drop out whatever the
+  selection, and knockouts of growth suppressors gain.'
+contexts:
+- term:
+    id: CL:0000084
+    label: T cell
+  context_type: cell_type
+  role_note: Primary human T cells sorted on proliferation after TCR stimulation.
+associations:
+- term:
+    id: GO:0031466
+    label: Cul5-RING ubiquitin ligase complex
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: ubiquitous
+  direction: UP
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 0.0002503129
+    p_adjust: 0.0007027136
+    target_size: 19
+    es: 0.753326
+    nes: 2.293488
+    set_size: 19
+    leading_edge_size: 5
+    leading_edge_genes:
+    - ELOB
+    - RNF7
+    - ARIH2
+    - CUL5
+    - SOCS2
+    peak_rank: 789
+  evidence:
+  - reference: PMID:30449619
+    reference_title: Genome-wide CRISPR Screens in Primary Human T Cells Reveal Key
+      Regulators of Immune Function.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: genes that negatively tune proliferation following stimulation
+    explanation: Regulation of T cell proliferation is the phenotype the screen selected
+      on directly (CFSE-based sorting of dividing vs non-dividing T cells), so every
+      member is a member precisely because it tunes this process. The term is recovered
+      from the members' annotations (annotation_supported) but scored confirmatory
+      because it restates the selection criterion rather than adding mechanism.
+  curator_note: 'UP: ELOB (the paper''s TCEB2), RNF7, ARIH2, CUL5 and SOCS2. A Cullin-5
+    E3 ligase module whose loss boosts T cell proliferation, one of the screen''s
+    non-obvious brakes.'
+- term:
+    id: GO:0050852
+    label: T cell receptor signaling pathway
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  direction: DN
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 0.0001379691
+    p_adjust: 0.0
+    target_size: 109
+    es: -0.633527
+    nes: -2.392267
+    set_size: 94
+    leading_edge_size: 23
+    leading_edge_genes:
+    - TRAF6
+    - RNF31
+    - IKBKG
+    - ZAP70
+    - BCL10
+    - EIF2B2
+    - CSK
+    - PIK3CD
+    - ITK
+    - WNK1
+    - MALT1
+    - PLCG1
+    - CD28
+    - GATA3
+    - CD3E
+    - EIF2B5
+    - LCK
+    - EIF2B3
+    - EIF2B4
+    - CD3D
+    - CD247
+    - LAT
+    - LCP2
+    peak_rank: 18107
+  evidence:
+  - reference: PMID:30449619
+    reference_title: Genome-wide CRISPR Screens in Primary Human T Cells Reveal Key
+      Regulators of Immune Function.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: essential T cell receptor signaling components
+    explanation: The negatively-selected ("positive regulator") arm of the set is
+      the canonical TCR-proximal signaling machinery — CD3D, CD3E, CD247, LCK, ZAP70,
+      LCP2, VAV1, RHOH, LAT, PLCG1, PRKCQ, CARD11 — whose knockout impairs stimulation-dependent
+      proliferation. These genes are members of the set and carry the TCR-signaling
+      annotation, so enrichment recovers it (annotation_supported). Scored confirmatory
+      because identifying the TCR pathway as required for a TCR-stimulation proliferation
+      screen recapitulates the assay design rather than revealing new mechanism.
+  curator_note: 'DN: ZAP70, BCL10, IKBKG, TRAF6 and RNF31 (CBM-NF-kB) lead; LCP2,
+    VAV1 and CD247 rank last overall. Confirmatory: TCR signalling is the stimulus.'
+- term:
+    id: GO:0050868
+    label: negative regulation of T cell activation
+  seed_source: curator_added
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: lineage_shared
+  direction: UP
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 0.1057613
+    p_adjust: 0.5664106
+    target_size: 128
+    es: 0.263437
+    nes: 1.20588
+    set_size: 120
+    leading_edge_size: 17
+    leading_edge_genes:
+    - CBLB
+    - SOCS1
+    - ZC3H12A
+    - PTPN2
+    - CBFB
+    - PLA2G5
+    - RUNX3
+    - LILRB1
+    - LAX1
+    - LGALS3
+    - LILRB2
+    - TMEM131L
+    - LGALS9B
+    - HMGB1
+    - VSIG4
+    - RC3H1
+    - DUSP3
+    peak_rank: 1756
+  evidence:
+  - reference: PMID:30449619
+    reference_title: Genome-wide CRISPR Screens in Primary Human T Cells Reveal Key
+      Regulators of Immune Function.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: genes that negatively tune proliferation following stimulation
+    explanation: Regulation of T cell proliferation is the phenotype the screen selected
+      on directly (CFSE-based sorting of dividing vs non-dividing T cells), so every
+      member is a member precisely because it tunes this process. The term is recovered
+      from the members' annotations (annotation_supported) but scored confirmatory
+      because it restates the selection criterion rather than adding mechanism.
+  curator_note: 'CORE in LIT:T_CELL_FUNCTION_REGULATORS. CBLB, SOCS1, ZC3H12A, PTPN2
+    and CBFB lead, but the 120-gene term is not significant (p = 0.11): a few strong
+    brakes diluted by many members without effect.'
+- term:
+    id: GO:0001960
+    label: negative regulation of cytokine-mediated signaling pathway
+  seed_source: curator_added
+  aspect: biological_process
+  category: supporting_process
+  confidence: medium
+  specificity: broadly_expressed
+  direction: UP
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: wilcoxon
+    algorithm: classic
+    p_adjust_method: benjamini_hochberg
+    p_value: 0.005076046
+    p_adjust: 0.06286322
+    target_size: 111
+    es: 0.179053
+    nes: 2.802168
+    set_size: 82
+    leading_edge_size: 43
+    leading_edge_genes:
+    - PTPN2
+    - EIF4E2
+    - APOA1
+    - PARP14
+    - SLIT2
+    - NR1H2
+    - SH2B3
+    - IL1R1
+    - OAS1
+    - IL6ST
+    - IRAK3
+    - PALM3
+    - PADI2
+    - GIGYF2
+    - ANXA4
+    - CARD16
+    - SAMHD1
+    - USP25
+    - CNOT7
+    - USP18
+    - STAT2
+    - NAIP
+    - PPARG
+    - IL36RN
+    - DCST1
+    - MUL1
+    - OAS3
+    - CYLD
+    - YTHDF2
+    - PXDN
+    - TAX1BP1
+    - NOL3
+    - ROBO1
+    - SORL1
+    - CACTIN
+    - BIRC7
+    - TTLL12
+    - TREM2
+    - DNAJA3
+    - TRAIP
+    - IL1A
+    - NR1H3
+    - GSTP1
+    peak_rank: 6565
+  curator_note: 'UP: PTPN2, PARP14 and SOCS-family genes; q = 0.063, just short of
+    significance. Supporting in the gene-set entry.'
+- term:
+    id: GO:0045271
+    label: respiratory chain complex I
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: marker_driven_plausible
+  confidence: low
+  specificity: ubiquitous
+  direction: UP
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 0.000278474
+    p_adjust: 0.0
+    target_size: 46
+    es: 0.659385
+    nes: 2.410468
+    set_size: 39
+    leading_edge_size: 24
+    leading_edge_genes:
+    - NDUFB11
+    - NDUFB10
+    - NDUFA2
+    - NDUFC1
+    - NDUFS8
+    - NDUFB2
+    - NDUFS2
+    - NDUFB4
+    - NDUFC2-KCTD14
+    - NDUFB7
+    - NDUFS7
+    - NDUFB6
+    - NDUFV3
+    - NDUFA1
+    - NDUFV2
+    - NDUFA10
+    - NDUFC2
+    - NDUFV1
+    - NDUFS5
+    - NDUFA6
+    - NDUFA8
+    - NDUFS1
+    - NDUFB5
+    - NDUFB8
+    peak_rank: 2953
+  curator_note: 'UP, q < 0.001: 24 complex I subunits (NDUFB10, NDUFA2, NDUFS8...)
+    and the mitoribosome shift toward the high-proliferation sort. Unexpected for
+    essential genes; possibly a sorting artefact of dye-dilution gates, possibly a
+    real metabolic brake. Not interpreted.'
+- term:
+    id: GO:0022613
+    label: ribonucleoprotein complex biogenesis
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  direction: DN
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: gsea_ks
+    algorithm: classic
+    ks_weight: 1.0
+    p_adjust_method: gsea_fdr
+    p_value: 0.000110424
+    p_adjust: 0.0
+    target_size: 1334
+    es: -0.700121
+    nes: -3.120994
+    set_size: 434
+    leading_edge_size: 195
+    leading_edge_genes:
+    - BUD13
+    - ZMAT5
+    - ZNF574
+    - MRTO4
+    - SRFBP1
+    - SNRNP70
+    - SLU7
+    - RBM42
+    - RPSA
+    - SF3B3
+    - EBNA1BP2
+    - PRPF31
+    - AATF
+    - ESF1
+    - SNRNP27
+    - RPS19
+    - RPF1
+    - FCF1
+    - PAK1IP1
+    - RIOK2
+    - SNRPF
+    - NPM1
+    - RRP15
+    - WDR74
+    - RPS12
+    - CINP
+    - NUFIP1
+    - DHX29
+    - ISY1
+    - GEMIN2
+    - DDX42
+    - RPL26
+    - USP39
+    - SNRNP200
+    - PRP4K
+    - TCOF1
+    - RPS3A
+    - CLP1
+    - GEMIN4
+    - PES1
+    - RUVBL2
+    - XRN2
+    - SNRPA1
+    - PELP1
+    - EIF1AX
+    - SDAD1
+    - TSR1
+    - SRSF10
+    - EIF5
+    - SBDS
+    - RPL7A
+    - NOL8
+    - NOP10
+    - EIF3F
+    - AFG2A
+    - RRP9
+    - UTP25
+    - KRI1
+    - PHF5A
+    - NOP9
+    - EIF3E
+    - ZNF622
+    - RPL35
+    - RPS14
+    - NGDN
+    - RPS6
+    - CENATAC
+    - UTP14A
+    - UTP15
+    - UTP18
+    - UTP11
+    - AK6
+    - RPS23
+    - SART3
+    - DIMT1
+    - EXOSC4
+    - TXNL4B
+    - WDR3
+    - RPS9
+    - EXOSC5
+    - SHQ1
+    - PUF60
+    - DDX10
+    - PPAN
+    - CELF5
+    - NOC2L
+    - EIF3D
+    - DHX9
+    - LSM2
+    - AIRIM
+    - RPS4X
+    - RPS16
+    - RPF2
+    - CLNS1A
+    - ABT1
+    - ZNHIT3
+    - BRIX1
+    - PDCD11
+    - EXOSC7
+    - PNO1
+    - RPLP0
+    - PWP2
+    - NSA2
+    - UTP20
+    - DCAF13
+    - SURF6
+    - MAK16
+    - STRAP
+    - GEMIN8
+    - WDR43
+    - NOL6
+    - EIF3A
+    - ZRSR2
+    - EFTUD2
+    - PWP1
+    - SDE2
+    - XRCC5
+    - EIF3G
+    - RPS19BP1
+    - SNRNP40
+    - EIF2S2
+    - SNRNP25
+    - NAT10
+    - BYSL
+    - RPS28
+    - NAF1
+    - RPS5
+    - RPS11
+    - MDN1
+    - LAS1L
+    - TBL3
+    - EIF3I
+    - NMD3
+    - EXOSC2
+    - NOP53
+    - PRMT5
+    - IMP4
+    - BOP1
+    - GTPBP4
+    - RPS24
+    - PDCD2
+    - DDX27
+    - SRSF1
+    - XPO1
+    - DIS3
+    - FBL
+    - EIF3J
+    - RRS1
+    - ZNHIT6
+    - RPL27
+    - FAU
+    - WDR46
+    - EIF3CL
+    - DKC1
+    - NOP16
+    - WDR77
+    - SNRPD3
+    - DDX54
+    - RPS25
+    - EXOSC9
+    - WDR18
+    - NOL7
+    - NOM1
+    - NHP2
+    - AFG2B
+    - NOB1
+    - EIF3H
+    - EXOSC8
+    - BMS1
+    - UTP6
+    - LUC7L3
+    - RPL5
+    - RRP36
+    - RPS8
+    - GTF3A
+    - IMP3
+    - RPS13
+    - UTP3
+    - EMG1
+    - EIF3B
+    - DHX37
+    - NOP2
+    - NOL10
+    - TSR2
+    - EIF2S3
+    - NOP56
+    - TEX10
+    - RPL11
+    - RPL37
+    - EIF3C
+    - LTO1
+    - PRPF8
+    - EIF6
+    - NOP14
+    - TRMT112
+    peak_rank: 17184
+  curator_note: 'DN, q < 0.001: ribosome biogenesis genes, the essential-gene fitness
+    signal.'
