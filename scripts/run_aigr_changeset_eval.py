@@ -38,7 +38,8 @@ import prepare_go_eval  # noqa: E402
 from score_method_vs_benchmark import load_gold  # noqa: E402
 from genesets_workflows.curation import model  # noqa: E402
 
-MAIN_VARIANTS = ["all", "aigr_remove", "aigr_prune", "aigr_full", "aigr_core"]
+MAIN_VARIANTS = ["all", "iba", "iba_iea", "aigr_remove", "aigr_prune", "aigr_full", "aigr_core"]
+NOISE = {"nonspecific", "false_association"}
 CORE = {"core_process", "core_component"}
 GENERAL_TERM_SIZE = 1000  # terms annotating >1000 genes are "general"
 
@@ -168,9 +169,45 @@ def load_nonspecific(genesets_dir: Path) -> dict[str, set[str]]:
     for path in sorted(genesets_dir.glob("*.yaml")):
         interp = model.load_interpretation(path)
         for assoc in interp.associations:
-            if assoc.category == "nonspecific":
+            if assoc.category in NOISE:
                 out[interp.gene_set_name].add(assoc.term.id)
     return out
+
+
+def precision_arm(genesets_dir: Path, sig_by_variant: dict, report: Path) -> list[dict]:
+    """Precision over sets whose every pooled hit was labelled (`hit_adjudication`).
+
+    A hit is signal if labelled core/supporting/marker_driven_plausible, noise if
+    nonspecific/false_association, and unlabelled otherwise. Unlabelled hits are
+    only expected for variants outside the set's pool; they are reported, never
+    counted as either.
+    """
+    rows = []
+    for path in sorted(genesets_dir.glob("*.yaml")):
+        interp = model.load_interpretation(path)
+        if interp.hit_adjudication is None:
+            continue
+        labels = {a.term.id: a for a in interp.associations}
+        pooled = set(interp.hit_adjudication.pooled_variants)
+        for v, sig in sig_by_variant.items():
+            hits = sig.get(interp.gene_set_name, set())
+            signal = [t for t in hits if t in labels and labels[t].category not in NOISE]
+            noise = [t for t in hits if t in labels and labels[t].category in NOISE]
+            unlabelled = [t for t in hits if t not in labels]
+            core = {t for t, a in labels.items() if a.category in ("core_process", "core_component")}
+            causes = defaultdict(int)
+            for t in noise:
+                causes[labels[t].artifact_cause or "unspecified"] += 1
+            rows.append({
+                "gene_set": interp.gene_set_name, "variant": v, "in_pool": v in pooled,
+                "hits": len(hits), "signal": len(signal), "noise": len(noise),
+                "unlabelled": len(unlabelled),
+                "precision": round(len(signal) / (len(signal) + len(noise)), 3) if signal or noise else None,
+                "core_recovered": len(core & hits), "core_total": len(core),
+                **{f"noise_{k}": n for k, n in sorted(causes.items())},
+            })
+    write_tsv(report / "curated_precision.tsv", rows)
+    return rows
 
 
 def curated_set_metrics(name, gold, nonspec, sig, pvals) -> dict:
@@ -319,7 +356,8 @@ def curated_arm(args, eval_dir: Path, variants: list[str], report: Path, reviewe
                 })
     write_tsv(report / "curated_core_term_changes.tsv", attr_rows)
 
-    return {"summary": summary_rows, "paired_tests": tests, "null_comparison": null_cmp,
+    precision = precision_arm(args.genesets_dir, {v: sig_by_variant[v] for v in variants if not v.startswith("null_")}, report)
+    return {"summary": summary_rows, "paired_tests": tests, "null_comparison": null_cmp, "precision": precision,
             "core_term_changes": len(attr_rows), "scored_sets": len(scored),
             "exposure_median": round(statistics.median(exposure[n] for n in scored), 3)}
 

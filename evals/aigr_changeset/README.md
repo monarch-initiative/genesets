@@ -256,6 +256,102 @@ The first run of this eval kept `protein binding`. Dropping it matters a great d
 - **The AIGR effect does not depend on it.** With `protein binding` kept, pruning lost 912 benchmark hits against 368–507 for random removal, and 374 chem hits against 167–272. The specificity gap to the null was the same.
 - CORE recall with `protein binding` kept was 221/394 for `all`, 219 for `aigr_prune` and 210 for `aigr_core`, over 126 scored sets.
 
+## Update (2026-11-18): protein-coding background, precision on the Ballouz case studies
+
+AIGR main at `ca908e2`, 3,782 human reviews; `goa_human` 2026-05-21; GO
+2026-07-26. Sections 1–5 above are the October run and are left as they were.
+
+### The background contained ncRNAs and complexes
+
+`goa_human` also annotates 16,854 RNAcentral ncRNAs and 2,274 ComplexPortal
+complexes, next to 19,425 UniProtKB proteins. Every eval used all of them as
+the background. They carry few annotations, so any protein-coding query list
+looked enriched for broad terms merely for being protein-coding. Even
+`biological_process` itself came out significant for a 72-gene list.
+`prepare_go_eval.py` and `prepare_aigr_changeset_eval.py` now keep UniProtKB
+rows only (`--gaf-db ""` restores the old behaviour).
+
+Effect on the existing benchmark, all-GOA variant, on the same 125 sets:
+
+| background | recall_core | significant hits |
+|---|---|---|
+| all GAF entities (old) | 0.577 (228/395) | 29,928 |
+| UniProtKB proteins (new) | 0.491 (194/395) | 15,863 |
+
+About half of all significant hits, and 34 recovered CORE terms, came from the
+diluted background. Five sets lose every hit; their whole result had been
+root-level terms (`molecular_function`, `binding`, `response to stimulus`).
+
+### Benchmark with the protein background and current AIGR
+
+128 scored sets, CORE total 408 (now including the Ballouz sets):
+
+| variant | recall_core | significant hits | hits on labelled noise terms |
+|---|---|---|---|
+| all | 0.503 (205) | 15,967 | 61 |
+| iba | 0.284 (116) | 5,323 | 9 |
+| iba_iea | 0.390 (159) | 8,874 | 20 |
+| aigr_prune | 0.503 (205) | 15,079 | 63 |
+| aigr_full | 0.507 (207) | 14,967 | 62 |
+| aigr_core | 0.431 (176) | 10,520 | 26 |
+| null_prune (mean of 20) | 0.500 (204.1) | 15,605 | 62 |
+
+Pruning again removes more hits than random removal of the same rows (888
+against 362 on average) at no cost to recall, and `aigr_full` recovers two
+more CORE terms. The labelled-noise column only covers terms curators have
+labelled, so it is mostly a count over the three adjudicated sets below.
+
+### Precision on the Ballouz 2017 case studies
+
+`LIT_GILMAN_2011_AUTISM_CNV`, `LIT_MANALO_2005_HYPOXIA_HIF1_UP` and
+`LIT_SCHMIDT_KASTNER_2012_SCHIZOPHRENIA` are the first fully adjudicated sets:
+every significant hit of `all`, `iba`, `iba_iea`, `aigr_prune` and `aigr_full`
+(118 terms in total) was labelled, blind to which variant reported it. They
+also carry the terms Ballouz et al. call meaningful or artefactual as
+curator-added terms. AIGR has reviewed about 30% of each set's genes (24/72,
+60/202, 25/77).
+
+Precision is `signal / (signal + noise)`, summed over the three sets
+(`report/curated_precision.tsv`). Core recall counts the 13 CORE terms,
+including curator-added ones:
+
+| variant | signal | noise | precision | CORE recovered |
+|---|---|---|---|---|
+| all | 47 | 57 | 0.45 | 11/13 |
+| iba | 9 | 5 | 0.64 | 4/13 |
+| iba_iea | 33 | 16 | 0.67 | 6/13 |
+| aigr_prune | 48 | 59 | 0.45 | 11/13 |
+| aigr_full | 45 | 57 | 0.44 | 11/13 |
+| aigr_core | 24 | 21 | 0.53 | 6/13 (+1 unlabelled hit) |
+
+- **Every noise hit here is `overly_general_term`.** These are broad ancestors
+  such as *developmental process*, *biological regulation* and *plasma
+  membrane*. None of the artefacts Ballouz et al. name (*learning or memory*,
+  *positive regulation of signaling*, *inflammatory response*, *response to
+  stress*) is significant in any variant once the background is protein-coding
+  and the correction is matrix-wide. Their multifunctionality artefact largely
+  does not arise under these settings.
+- **IBA and IBA+IEA have the highest precision, at a large cost in recall.**
+  IBA-only recovers 4 of 13 CORE terms and nothing at all for the autism set.
+  Higher precision here comes mostly from reporting fewer terms, the same
+  trade-off as the recall benchmark.
+- **AIGR pruning leaves precision where it was.** Broad ancestors are carried
+  by many correct annotations, so removing a few wrong rows cannot remove
+  them; that kind of noise is a property of the test, not of annotation
+  errors. AIGR's effect, removing hits more general than random removal does
+  (sections 2 and 4), operates on the large collections, not on these three
+  small sets.
+- **Two biology findings for GO curation.** *Peptidyl-proline hydroxylation*,
+  one of Ballouz's four meaningful hypoxia terms, has no carriers in the
+  current release, although P4HA1, P4HA2, EGLN1 and EGLN3 are in the set; it
+  is recorded as an `annotation_gap`. *Neuron migration*, their meaningful
+  autism term, has only three carriers (BAIAP2, DCC, NDE1) and does not reach
+  significance in any variant.
+
+Three small sets are too few to rank methods; they establish the labelling
+and scoring machinery. The next step is to adjudicate more sets, ideally ones
+with high AIGR coverage.
+
 ## Interpretation
 
 Applying AIGR's over-annotation removals to GOA makes enrichment results

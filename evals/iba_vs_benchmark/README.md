@@ -119,6 +119,14 @@ iba 133). Only 125 sets are scored (CORE total 391), because
 HP_SPINAL_MUSCULAR_ATROPHY's only significant term was `protein binding`.
 Pass `--drop-direct-terms ""` to reproduce the table exactly.
 
+**Background (2026-11-18).** These numbers also used every entity in
+`goa_human` as the background, including about 19k RNAcentral ncRNAs and
+ComplexPortal complexes. `prepare_go_eval.py` now keeps UniProtKB proteins
+only (`--gaf-db ""` restores the old behaviour). On a protein-coding
+background, over 125 comparable sets, recall_core is 0.491 for all, 0.395 for
+iba_iea (122 sets) and 0.323 for iba (108 sets), against 0.577, 0.463 and
+0.392 before. The ordering is unchanged. See `evals/aigr_changeset/README.md`.
+
 1. **IBA carries ~2/3 of the core biology full GOA does** (recall_core 0.34 vs
    0.56); IEA recovers much of the difference (iba_iea 0.44).
 2. **IBA is nearly a strict subset of all-GOA — it does not fill experimental
