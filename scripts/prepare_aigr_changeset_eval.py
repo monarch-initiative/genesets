@@ -65,6 +65,11 @@ def parse_args() -> argparse.Namespace:
         default=",".join(prepare_go_eval.DEFAULT_DROP_DIRECT_TERMS),
         help="GO ids whose direct annotations are dropped from every variant (default: protein binding).",
     )
+    parser.add_argument(
+        "--gaf-db",
+        default=",".join(prepare_go_eval.DEFAULT_GAF_DBS),
+        help="GAF DB column values kept (default: UniProtKB proteins only).",
+    )
     parser.add_argument("--null-seeds", type=int, default=20, help="number of null_prune replicates")
     parser.add_argument("--max-p-adjust", type=float, default=0.05)
     parser.add_argument("--force-download", action="store_true")
@@ -102,7 +107,10 @@ def read_changeset(path: Path) -> tuple[dict, list[dict], dict]:
 
 
 def load_gaf_rows(
-    path: Path, valid_terms: set[str], drop_terms: frozenset[str] = frozenset()
+    path: Path,
+    valid_terms: set[str],
+    drop_terms: frozenset[str] = frozenset(),
+    gaf_dbs: frozenset[str] = frozenset(prepare_go_eval.DEFAULT_GAF_DBS),
 ) -> list[tuple[str, str, str, str, tuple[str, ...]]]:
     """NOT-filtered GAF rows as (accession, symbol, term, evidence, refs)."""
     rows = []
@@ -114,6 +122,8 @@ def load_gaf_rows(
             if len(fields) < 15 or fields[4] not in valid_terms or not fields[2].strip():
                 continue
             if fields[4] in drop_terms:
+                continue
+            if gaf_dbs and fields[0] not in gaf_dbs:
                 continue
             if "NOT" in prepare_go_eval.parse_qualifiers(fields[3]):
                 continue
@@ -164,7 +174,8 @@ def main() -> int:
 
     index, new_rows, cs_stats = read_changeset(args.changeset)
     drop_terms = prepare_go_eval.drop_direct_terms(args.drop_direct_terms)
-    gaf_rows = load_gaf_rows(downloads / "goa_human.gaf.gz", valid_terms, drop_terms)
+    gaf_dbs = prepare_go_eval.drop_direct_terms(args.gaf_db)
+    gaf_rows = load_gaf_rows(downloads / "goa_human.gaf.gz", valid_terms, drop_terms, gaf_dbs)
     matched, match_stats = match_rows(gaf_rows, index)
 
     acc_to_symbol: dict[str, str] = {}
@@ -258,6 +269,7 @@ def main() -> int:
         "changeset": {"path": str(args.changeset), **cs_stats},
         "matching": match_stats,
         "dropped_direct_terms": sorted(drop_terms),
+        "gaf_db_kept": sorted(gaf_dbs) or "all",
         "reviewed_gene_count": len(reviewed_symbols),
         "background_gene_count": len(background),
         "null_target_rows_by_evidence": dict(sorted(target.items())),
