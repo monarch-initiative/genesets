@@ -20,7 +20,11 @@ def term_ids_by_prefix(
     interp: GeneSetInterpretation,
     skip_prefixes: frozenset[str] = OBSOLESCENCE_SKIP_PREFIXES,
 ) -> dict[str, set[str]]:
-    """Map ontology prefix -> set of term ids asserted in contexts/associations.
+    """Map ontology prefix -> set of term ids asserted in the interpretation.
+
+    Covers contexts, associations, and the current-term mappings of
+    published analyses' reported terms. A reported term's ``reported_id`` is
+    a historical record copied as printed and is deliberately not included.
 
     >>> from genesets_workflows.curation import model
     >>> interp = model.GeneSetInterpretation(
@@ -34,9 +38,23 @@ def term_ids_by_prefix(
     ...         seed_source="enrichment_recovered")])
     >>> term_ids_by_prefix(interp) == {"CL": {"CL:0000129"}, "GO": {"GO:0006909"}}
     True
+    >>> interp.published_analyses = [model.PublishedAnalysis(
+    ...     reference="PMID:1", analysis_role="original",
+    ...     reported_terms=[
+    ...         model.ReportedTerm(reported_label="old name", reported_id="GO:0000001",
+    ...             term=model.Term(id="GO:0007268", label="chemical synaptic transmission")),
+    ...         model.ReportedTerm(reported_label="unmapped")])]
+    >>> sorted(term_ids_by_prefix(interp)["GO"])
+    ['GO:0006909', 'GO:0007268']
     """
     by_prefix: dict[str, set[str]] = {}
     terms = [c.term for c in interp.contexts] + [a.term for a in interp.associations]
+    terms += [
+        r.term
+        for analysis in interp.published_analyses
+        for r in analysis.reported_terms
+        if r.term is not None
+    ]
     for term in terms:
         tid = term.id
         if not tid or ":" not in tid:

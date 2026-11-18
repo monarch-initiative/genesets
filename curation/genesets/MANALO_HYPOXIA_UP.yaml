@@ -1,0 +1,327 @@
+gene_set_id: MSIGDB:MANALO_HYPOXIA_UP
+gene_set_name: MANALO_HYPOXIA_UP
+collection: C2:CGP
+msigdb_release: v2025.1.Hs
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+n_genes: 210
+description: >-
+  MSigDB C2:CGP set of genes induced in cultured human arterial endothelial
+  cells both by hypoxia and by adenoviral expression of a constitutively
+  active HIF-1alpha (AdCA5) under normoxia, at least 1.5-fold in each (Manalo
+  et al., Blood 2005, PMID:15374877). It is the cell-autonomous, HIF-1-driven
+  part of the endothelial hypoxia response. The membership has the expected
+  HIF targets: angiogenic factors (VEGFA, VEGFC, PGF, ANGPTL4, ADM, EDN1),
+  the HIF negative-feedback prolyl hydroxylases EGLN1 and EGLN3, hypoxia
+  markers (BNIP3, BNIP3L, NDRG1, DDIT4, AK4, ERO1A, STC1, STC2), and many
+  transcription factors (BHLHE40, HES1, KLF11, MXI1, NPAS2, ZNF395, SOX4,
+  HIF3A, MAFF), the largest group in Manalo's own categorization. Its less
+  obvious axis is a collagen-maturation and matrix-remodelling program:
+  collagens COL1A2, COL4A1, COL4A2, COL5A1, COL9A1, COL18A1, the collagen
+  prolyl-4-hydroxylases P4HA1 and P4HA2, the lysyl hydroxylases PLOD1 and
+  PLOD2, and the cross-linking oxidases LOX and LOXL2.
+  This is one of the three case studies in Ballouz et al. (NAR 2017,
+  PMID:28204549) and in the PAN-GO functionome paper (PMID:40011791), both
+  of which ran it as a 202-gene list from an earlier MSigDB release. The
+  current MSigDB mapping has 210 genes and shares 195 with it. Their results
+  are under published_analyses.
+contexts:
+  - term:
+      id: CL:1000413
+      label: endothelial cell of artery
+    context_type: cell_type
+    role_note: Cultured human arterial endothelial cells.
+  - term:
+      id: PR:Q16665
+      label: hypoxia-inducible factor 1-alpha (human)
+    context_type: genetic_perturbation
+    role_note: >-
+      Constitutively active HIF-1alpha (AdCA5) in normoxia, intersected with
+      the response to hypoxia.
+associations:
+  - term:
+      id: GO:0071456
+      label: cellular response to hypoxia
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      AK4, BNIP3, BNIP3L, EDN1, EGLN1, EGLN3, ERO1A, INHBA, NDRG1, PPARG, PTGIS,
+      STC1, STC2 and VEGFA (14/207 vs 139; all-GOA Fisher, per-set Bonferroni
+      p = 6.6e-10). The parent response to hypoxia is stronger still (25
+      genes, p = 2.0e-19). Under IBA only EGLN1 and EGLN3 carry the cellular
+      term, so it is not recovered, while the parent is (7 genes, p = 3.8e-8).
+      Confirmatory: the set is defined by induction by hypoxia.
+  - term:
+      id: GO:0001525
+      label: angiogenesis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:15374877
+        reference_title: "Transcriptional regulation of vascular endothelial cell responses to hypoxia by HIF-1."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Infection of endothelial cells with AdCA5 under nonhypoxic conditions was sufficient to induce increased basement membrane invasion and tube formation similar to the responses induced by hypoxia, indicating that HIF-1 mediates cell-autonomous activation of endothelial cells."
+        explanation: >-
+          HIF-1 alone drives the endothelial angiogenic phenotype (invasion,
+          tube formation), not only the secretion of angiogenic factors by
+          other cells.
+    curator_note: >-
+      ACKR3, ANG, APOD, COL18A1, COL4A1, GJA5, LEPR, LOXL2, MMP2, NOTCH4,
+      PDGFB, PGF, PTPRB, PXDN, SERPINE1, TGFBI, VEGFA and VEGFC (18/207 vs
+      211; per-set Bonferroni p = 2.5e-12; IBA 8 genes, p = 9.9e-6). Confirmatory for
+      a HIF-induced endothelial set.
+  - term:
+      id: GO:0031012
+      label: extracellular matrix
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      31/207 vs 571 (per-set Bonferroni p = 9.5e-18; IBA 17 genes, p = 9.2e-11),
+      led by the collagens (COL1A2, COL4A1, COL4A2, COL5A1, COL9A1, COL18A1),
+      LAMB1, BGN, the collagen-modifying enzymes PLOD1, PLOD2, LOX and LOXL2,
+      and secreted factors (ANGPTL4, IGFBP3, SERPINE1, TGFBI, VWF). Manalo
+      list collagens among the gene groups they found. The component is
+      recorded as confirmatory; the specific mechanism is collagen fibril
+      organization below.
+  - term:
+      id: GO:0030199
+      label: collagen fibril organization
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      COL1A2, COL4A1, COL4A2, COL5A1, LOX, LOXL2, P4HA1, PLOD1, PLOD2 and PXDN
+      (10/207 vs 69; per-set Bonferroni p = 8.1e-8; IBA 7 genes, p = 2.9e-7).
+      Hypoxia, through HIF-1, induces the whole collagen maturation pathway:
+      the prolyl and lysyl hydroxylases that make collagen hydroxylation
+      oxygen-dependent and the lysyl oxidases that cross-link it.
+      Mechanistic because matrix remodelling is not implied by an
+      oxygen-sensing set. One of the four groups Ballouz et al. find
+      significant after multifunctionality correction.
+  - term:
+      id: GO:0031545
+      label: peptidyl-proline 4-dioxygenase activity
+    aspect: molecular_function
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      EGLN1, EGLN3, P4HA1 and P4HA2 (4/207 vs 8; per-set Bonferroni p = 1.1e-3;
+      IBA p = 1.3e-4). Two prolyl-4-hydroxylase families: EGLN1/EGLN3
+      hydroxylate HIF-alpha and mark it for degradation, so their induction
+      is HIF's own negative feedback; P4HA1/P4HA2 hydroxylate collagen.
+      Recorded as an MF term because current GO annotates these genes to the
+      dioxygenase activities, not to the process terms. Ballouz et al.'s
+      peptidyl-proline modification (GO:0018208) has no carriers in this set
+      under current GOA, so that 2013 result is not reproducible with current
+      annotations.
+  - term:
+      id: GO:0006355
+      label: regulation of DNA-templated transcription
+    aspect: biological_process
+    category: nonspecific
+    confidence: medium
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:15374877
+        reference_title: "Transcriptional regulation of vascular endothelial cell responses to hypoxia by HIF-1."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Transcription factors accounted for the largest group of HIF-1-regulated genes, indicating that HIF-1 controls a network of transcriptional responses to hypoxia in endothelial cells."
+        explanation: >-
+          The authors' own headline. It describes a real feature of the
+          membership but not a specific process.
+    curator_note: >-
+      45/207 vs 3731 (per-set Bonferroni p = 3.1e-3 under all-GOA; 25 genes,
+      not significant, under IBA). Real, and the original paper's headline, but
+      too generic to say which transcriptional program is meant, so it is
+      nonspecific. The PAN-GO reanalysis also reports transcriptional
+      regulation groups.
+  - term:
+      id: GO:0008217
+      label: regulation of blood pressure
+    aspect: biological_process
+    category: marker_driven_plausible
+    confidence: low
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      ADM, COL1A2, EDN1, GJA5, NPR1, PPARG, PTGS1, TPM1 and VEGFC (9/207 vs
+      164; per-set Bonferroni p = 5.7e-3 under all-GOA, not significant under
+      IBA). The
+      top GO group in Ballouz et al.'s 2013 run (FDR 1.4e-4), which does not
+      survive multifunctionality correction. The vasoactive genes (ADM, EDN1,
+      NPR1, PTGS1) are real endothelial HIF targets, but blood pressure is a
+      systemic process that cultured cells do not carry out.
+published_analyses:
+  - reference: PMID:15374877
+    reference_title: "Transcriptional regulation of vascular endothelial cell responses to hypoxia by HIF-1."
+    analysis_role: original
+    method: Manual assignment of genes to functional categories; no GO enrichment test.
+    membership_note: >-
+      245 up-regulated probes (genes induced by both hypoxia and AdCA5);
+      MSigDB maps them to 210 genes today, and 202 in the release Ballouz et
+      al. and PAN-GO used.
+    summary: >-
+      Transcription factors were the largest category of HIF-1-regulated
+      genes, with cytokines, growth factors, receptors and other signalling
+      proteins also common among the up-regulated genes.
+    snippet: "Transcription factors accounted for the largest group of HIF-1-regulated genes, indicating that HIF-1 controls a network of transcriptional responses to hypoxia in endothelial cells."
+  - reference: PMID:28204549
+    reference_title: "Using predictive specificity to determine when gene set analysis is biologically meaningful."
+    analysis_role: reanalysis
+    tool: ErmineJ 3.0
+    method: >-
+      Over-representation (ErmineJ ORA), GO groups of 20-200 genes, hit list
+      scored with a dummy-score threshold.
+    annotation_source: GO (ErmineJ Generic_human_noParents annotations)
+    annotation_date: 2013-04
+    membership_size: 202
+    membership_note: >-
+      The MSigDB v3.1-era MANALO_HYPOXIA_UP (QuickList.MANALO_HYPOXIA_UP.txt);
+      195 of its genes are in the current 210-gene set.
+    correction: >-
+      Benjamini-Hochberg FDR (p_adjust); multifunctionality-corrected FDR
+      (p_adjust_corrected)
+    significance_threshold: 0.05
+    n_significant: 70
+    significant_unit: GO groups (4 after multifunctionality correction)
+    data_url: http://home.pavlab.msl.ubc.ca/ermineJ/supplement-files/MANALO_HYPOXIA_UP.erminej.txt
+    summary: >-
+      Seventy groups before correction, four after: peptidyl-proline
+      modification, cellular response to hypoxia, collagen fibril
+      organization and cellular response to oxygen levels, which match the
+      themes the original authors emphasised. The cellular response to
+      hypoxia and collagen fibril organization associations above are the
+      same terms.
+    snippet: "only four groups would be significant at an FDR of 0.05 (70 originally)"
+    reported_terms:
+      - reported_id: GO:0008217
+        reported_label: regulation of blood pressure
+        term:
+          id: GO:0008217
+          label: regulation of blood pressure
+        p_value: 6.345e-08
+        p_adjust: 1.438e-04
+        p_adjust_corrected: 1.0
+        significant: true
+        authors_stance: reported
+      - reported_id: GO:0045765
+        reported_label: regulation of angiogenesis
+        term:
+          id: GO:0045765
+          label: regulation of angiogenesis
+        p_value: 2.241e-07
+        p_adjust: 2.54e-04
+        p_adjust_corrected: 0.424
+        significant: true
+        authors_stance: reported
+      - reported_id: GO:0071456
+        reported_label: cellular response to hypoxia
+        term:
+          id: GO:0071456
+          label: cellular response to hypoxia
+        p_value: 3.214e-07
+        p_adjust: 2.428e-04
+        p_adjust_corrected: 0.0409
+        significant: true
+        authors_stance: highlighted
+      - reported_id: GO:0071453
+        reported_label: cellular response to oxygen levels
+        term:
+          id: GO:0071453
+          label: cellular response to oxygen levels
+        p_value: 6.575e-07
+        p_adjust: 3.727e-04
+        p_adjust_corrected: 0.0349
+        significant: true
+        authors_stance: highlighted
+      - reported_id: GO:0018208
+        reported_label: peptidyl-proline modification
+        term:
+          id: GO:0018208
+          label: peptidyl-proline modification
+        p_value: 1.66e-05
+        p_adjust: 3.762e-03
+        p_adjust_corrected: 0.0376
+        significant: true
+        authors_stance: highlighted
+        note: >-
+          No member carries this BP term under current GOA: the prolyl
+          hydroxylases are annotated to dioxygenase activities instead.
+      - reported_id: GO:0030199
+        reported_label: collagen fibril organization
+        term:
+          id: GO:0030199
+          label: collagen fibril organization
+        p_value: 5.662e-05
+        p_adjust: 8.022e-03
+        p_adjust_corrected: 0.0428
+        significant: true
+        authors_stance: highlighted
+      - reported_id: GO:0061418
+        reported_label: regulation of transcription from RNA polymerase II promoter in response to hypoxia
+        p_value: 2.607e-04
+        p_adjust: 0.0191
+        p_adjust_corrected: 0.475
+        significant: true
+        authors_stance: reported
+        note: Not in the current GO release; no current term mapped.
+  - reference: PMID:40011791
+    reference_title: "A compendium of human gene functions derived from evolutionary modelling."
+    analysis_role: reanalysis
+    tool: PANTHER gene list analysis (functionome.geneontology.org)
+    method: Over-representation, GO biological process; related terms grouped
+    annotation_source: all GO annotations (experimental, computational and PAN-GO)
+    membership_size: 202
+    membership_note: The same 202-gene list as Ballouz et al. Supplementary Information, case study 2.
+    correction: FDR
+    significance_threshold: 0.05
+    n_significant: 85
+    significant_unit: groups of related GO biological process terms
+    summary: Too many groups to interpret easily, as in Ballouz et al.'s uncorrected run.
+  - reference: PMID:40011791
+    reference_title: "A compendium of human gene functions derived from evolutionary modelling."
+    analysis_role: reanalysis
+    tool: PANTHER gene list analysis (functionome.geneontology.org)
+    method: Over-representation, GO biological process; related terms grouped
+    annotation_source: PAN-GO annotations only
+    membership_size: 202
+    membership_note: As in the previous entry.
+    correction: FDR
+    significance_threshold: 0.05
+    n_significant: 8
+    significant_unit: groups of related GO biological process terms
+    summary: >-
+      Eight groups, which include terms identical or related to all four of
+      Ballouz et al.'s corrected results, plus transcriptional regulation,
+      reflecting the transcription factors Manalo et al. reported. No
+      correction step was needed.

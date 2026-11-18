@@ -1,0 +1,323 @@
+gene_set_id: LIT:SCHIZOPHRENIA_CANDIDATES_SCHMIDT_KASTNER
+gene_set_name: SCHIZOPHRENIA_CANDIDATES_SCHMIDT_KASTNER
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 77
+description: >-
+  Schizophrenia candidate genes from the pre-2011 genetic association
+  literature (SzGene candidate studies, early GWAS and CNV reports), as
+  collected by Schmidt-Kastner et al. (Mol Psychiatry 2012, PMID:22290124)
+  to test a gene-environment hypothesis: that many schizophrenia genes are
+  linked to the ischemia-hypoxia response or to vascular factors. This entry
+  is the 77-gene list Ballouz et al. (NAR 2017, PMID:28204549) deposited in
+  their ErmineJ supplement (QuickList.schmidt-kastner-szgwas.txt); UFD1L is
+  normalized to UFD1. The PAN-GO functionome paper reanalysed 42 genes, which
+  matches the 55% subset Schmidt-Kastner judged hypoxia- or vascular-linked,
+  not the full list; that subset is not captured here. Membership is in
+  curation/genesets/lit_members.gmt.
+  The list is from the candidate-gene era and differs from modern GWAS sets
+  (compare LIT:SCHIZOPHRENIA_RISK_GENES). It mixes classic neurotransmission
+  candidates (GRIN2B, GRM3, GRIK3, GRID1, GABRA1, GABRB2, GAD1, COMT, DAOA,
+  PRODH, SNAP25, SYN2, CHRNA7), neurodevelopmental candidates (NRG1, NRG3,
+  ERBB4, DISC1, DTNBP1, RELN, BDNF, AKT1) and immune and stress genes (TNF,
+  LTA, IL10, IL3RA, CHI3L1, TP53, XBP1, NOS1, MTHFR). That mixture makes it
+  strongly multifunctionality-biased (Ballouz et al., p < 1e-14): uncorrected
+  enrichment returns both a synaptic story and a stress or inflammation
+  story, and after multifunctionality correction nothing is significant. The
+  synaptic and neuregulin-ErbB terms are recovered with IBA annotations
+  alone; the immune terms are not.
+contexts:
+  - term:
+      id: MONDO:0005090
+      label: schizophrenia
+    context_type: disease
+    role_note: >-
+      Candidate genes reported as associated with schizophrenia in the
+      genetic association literature up to about 2011.
+associations:
+  - term:
+      id: GO:0007268
+      label: chemical synaptic transmission
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:28204549
+        reference_title: "Using predictive specificity to determine when gene set analysis is biologically meaningful."
+        supports: SUPPORT
+        evidence_source: COMPUTATIONAL
+        snippet: "However, a multifunctionality-corrected analysis results in no gene sets meeting the significance criterion, yet those at top of the list now involving synaptic transmission."
+        explanation: >-
+          Synaptic transmission is what remains at the top once the
+          multifunctionality-driven stress and inflammation terms are
+          down-weighted, although nothing reaches significance.
+    curator_note: >-
+      AKT1, CHRNA7, CNP, GABRA1, GABRB2, GAD1, GRID1, GRIK3, GRIN2B, GRM3,
+      NPY, SNAP25, SNAP29 and SYN2 (14/77 vs 394; all-GOA Fisher, per-set
+      Bonferroni p = 9.7e-10; IBA 8 genes, p = 2.1e-5). Confirmatory: synaptic dysfunction
+      is the long-standing hypothesis that guided which candidates were
+      studied in the first place. The PAN-GO reanalysis of the 42-gene subset
+      reports anterograde trans-synaptic signaling, a near-synonym, under
+      PAN-GO.
+  - term:
+      id: GO:0014069
+      label: postsynaptic density
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      COMT, DISC1, DTNBP1, ERBB4, GRID1, GRIK3, GRIN2B, GRM3, NOS1, PDLIM5,
+      PICK1, RTN4 and SYN2 (13/77 vs 356; per-set Bonferroni p = 5.9e-9; IBA 7
+      genes, p = 2.6e-5). The glutamate receptors (GRIN2B, GRIK3, GRID1, GRM3), the
+      receptor-trafficking scaffold PICK1, NOS1 and the classic candidates
+      DISC1 and DTNBP1 put the candidates at the excitatory postsynapse.
+  - term:
+      id: GO:0038127
+      label: ERBB signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      AKT1, EGF, ERBB4, NRG1 and NRG3 (5/77 vs 72; per-set Bonferroni p =
+      7.1e-3; IBA EGF, ERBB4, NRG1 and NRG3, p = 2.4e-3). The neuregulin-ErbB4 axis, one
+      of the best-known candidate-gene hypotheses for schizophrenia. NRG1 and
+      ERBB4 were included because of that hypothesis, so this is
+      confirmatory.
+  - term:
+      id: GO:0007215
+      label: glutamate receptor signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      GRID1, GRIK3, GRIN2B and GRM3 carry it under all-GOA (only GRM3 under
+      IBA), too few to reach significance (per-set Bonferroni p = 0.30); DAOA, SRR and PRODH, which act on
+      NMDA-receptor co-agonist or glutamate metabolism, are not annotated to
+      the pathway. The glutamate hypothesis of schizophrenia is the reason
+      many of these candidates were studied, so the term is confirmatory.
+  - term:
+      id: GO:0001666
+      label: response to hypoxia
+    aspect: biological_process
+    category: marker_driven_plausible
+    confidence: low
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:22290124
+        reference_title: "An environmental analysis of genes associated with schizophrenia: hypoxia and vascular factors as interacting elements in the neurodevelopmental model."
+        supports: SUPPORT
+        evidence_source: COMPUTATIONAL
+        snippet: "In all, 55% of the schizophrenia candidate genes (n=42 genes) met the criteria for a link to ischemia-hypoxia and/or vascular factors."
+        explanation: >-
+          The defining paper's hypothesis. Its four criteria include
+          regulation by hypoxia in expression studies and vascular
+          expression, which are broader than GO's response to hypoxia.
+    curator_note: >-
+      The authors' gene-environment hypothesis, kept as a plausible but
+      unestablished framing rather than core biology. Under all-GOA seven
+      members carry the term (CHRNA7, LTA, MTHFR, NOS1, RTN4, TNF, TP53;
+      per-set Bonferroni p = 0.022), several of them immune or stress genes
+      with long annotation lists; none carry it under IBA. Most of Schmidt-Kastner's
+      hypoxia or vascular links are expression or literature associations,
+      not evidence that the gene product takes part in the response, so this
+      is not recorded as an annotation gap.
+  - term:
+      id: GO:0032496
+      label: response to lipopolysaccharide
+    aspect: biological_process
+    category: false_association
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: false_association
+    curator_note: >-
+      A negative control. In Ballouz et al.'s 2013 run this was among the top
+      results (FDR 1.0e-3) and fell to 1.0 after multifunctionality
+      correction. It comes from the immune candidates (IL10, LTA, TNF, plus
+      NOS1, PDE4B, SRR, XBP1 under all-GOA), which are annotated to
+      endotoxin response for reasons unrelated to why they were studied in
+      schizophrenia. Still significant with current all-GOA (7/77 vs 291;
+      per-set Bonferroni p = 0.040); only NOS1 carries it under IBA, where
+      it disappears.
+published_analyses:
+  - reference: PMID:22290124
+    reference_title: "An environmental analysis of genes associated with schizophrenia: hypoxia and vascular factors as interacting elements in the neurodevelopmental model."
+    analysis_role: original
+    method: >-
+      Overlap of the candidate genes with genes from microarray studies of
+      the brain's ischemia-hypoxia response (IHR), plus four criteria applied
+      by hand to link each gene to ischemia-hypoxia or vascular factors.
+    annotation_source: Published IHR microarray gene lists (not GO)
+    membership_note: >-
+      The full candidate collection, of which 42 genes met the hypoxia or
+      vascular criteria.
+    summary: >-
+      A threefold enrichment of schizophrenia candidates among IHR genes,
+      taken as support for hypoxia and vascular factors in the
+      neurodevelopmental model. PAN-GO's supplement reports that the paper's
+      own GO enrichment had synaptic transmission and developmental process
+      as its two smallest p-values.
+    snippet: "Genes associated with schizophrenia showed a significant, threefold enrichment among genes that were derived from microarray studies of the ischemia-hypoxia response (IHR) in the brain."
+  - reference: PMID:28204549
+    reference_title: "Using predictive specificity to determine when gene set analysis is biologically meaningful."
+    analysis_role: reanalysis
+    tool: ErmineJ 3.0
+    method: >-
+      Over-representation (ErmineJ ORA), GO groups of 20-200 genes, hit list
+      scored with a dummy-score threshold.
+    annotation_source: GO (ErmineJ Generic_human_noParents annotations)
+    annotation_date: 2013-04
+    membership_size: 77
+    membership_note: >-
+      Identical to this entry's membership (the deposited
+      QuickList.schmidt-kastner-szgwas.txt), before HGNC normalization.
+    correction: >-
+      Benjamini-Hochberg FDR (p_adjust); multifunctionality-corrected FDR
+      (p_adjust_corrected)
+    significance_threshold: 0.05
+    n_significant: 83
+    significant_unit: GO groups (0 after multifunctionality correction)
+    data_url: http://home.pavlab.msl.ubc.ca/ermineJ/supplement-files/schmidt-kastner-szgwas.erminej.txt
+    summary: >-
+      Eighty-three groups before correction, mixing synaptic, developmental,
+      stress and inflammation terms; none after. Ballouz et al. use it to
+      show that a multifunctional list supports several narratives at once.
+    snippet: "Our re-analysis of this list shows it is also strongly multifunctionality-biased"
+    reported_terms:
+      - reported_id: GO:0050804
+        reported_label: regulation of synaptic transmission
+        term:
+          id: GO:0050804
+          label: modulation of chemical synaptic transmission
+        p_value: 5.82e-08
+        p_adjust: 1.319e-04
+        p_adjust_corrected: 0.806
+        significant: true
+        authors_stance: highlighted
+        note: At the top both before and after correction.
+      - reported_id: GO:0032496
+        reported_label: response to lipopolysaccharide
+        term:
+          id: GO:0032496
+          label: response to lipopolysaccharide
+        p_value: 1.837e-06
+        p_adjust: 1.041e-03
+        p_adjust_corrected: 1.0
+        significant: true
+        authors_stance: discounted
+      - reported_id: GO:0001764
+        reported_label: neuron migration
+        term:
+          id: GO:0001764
+          label: neuron migration
+        p_value: 3.667e-06
+        p_adjust: 1.385e-03
+        p_adjust_corrected: 0.451
+        significant: true
+        authors_stance: reported
+      - reported_id: GO:0050890
+        reported_label: cognition
+        term:
+          id: GO:0050890
+          label: cognition
+        p_value: 7.312e-06
+        p_adjust: 1.658e-03
+        p_adjust_corrected: 1.0
+        significant: true
+        authors_stance: reported
+      - reported_id: GO:0021987
+        reported_label: cerebral cortex development
+        term:
+          id: GO:0021987
+          label: cerebral cortex development
+        p_value: 7.896e-06
+        p_adjust: 1.627e-03
+        p_adjust_corrected: 0.368
+        significant: true
+        authors_stance: reported
+  - reference: PMID:40011791
+    reference_title: "A compendium of human gene functions derived from evolutionary modelling."
+    analysis_role: reanalysis
+    tool: PANTHER gene list analysis (functionome.geneontology.org)
+    method: Over-representation, GO biological process; related terms grouped
+    annotation_source: all GO annotations (experimental, computational and PAN-GO)
+    membership_size: 42
+    membership_note: >-
+      42 genes, matching the hypoxia- or vascular-linked subset rather than
+      this entry's 77. Supplementary Information, case study 3.
+    correction: FDR
+    significance_threshold: 0.05
+    n_significant: 140
+    significant_unit: groups of related GO biological process terms
+    summary: >-
+      Very broad results. The two smallest p-values are synaptic
+      transmission and nervous system development, consistent with the
+      original paper.
+    reported_terms:
+      - reported_label: synaptic transmission
+        term:
+          id: GO:0007268
+          label: chemical synaptic transmission
+        significant: true
+        authors_stance: highlighted
+      - reported_label: nervous system development
+        term:
+          id: GO:0007399
+          label: nervous system development
+        significant: true
+        authors_stance: reported
+  - reference: PMID:40011791
+    reference_title: "A compendium of human gene functions derived from evolutionary modelling."
+    analysis_role: reanalysis
+    tool: PANTHER gene list analysis (functionome.geneontology.org)
+    method: Over-representation, GO biological process; related terms grouped
+    annotation_source: PAN-GO annotations only
+    membership_size: 42
+    membership_note: As in the previous entry.
+    correction: FDR
+    significance_threshold: 0.05
+    n_significant: 6
+    significant_unit: groups of related GO biological process terms
+    summary: >-
+      Six groups, three of them more specific neural terms than the all-GO
+      run gives.
+    reported_terms:
+      - reported_label: anterograde trans-synaptic transmission
+        term:
+          id: GO:0098916
+          label: anterograde trans-synaptic signaling
+        significant: true
+        authors_stance: highlighted
+      - reported_label: modulation of trans-synaptic signaling
+        term:
+          id: GO:0099177
+          label: regulation of trans-synaptic signaling
+        significant: true
+        authors_stance: highlighted
+      - reported_label: neuron differentiation
+        term:
+          id: GO:0030182
+          label: neuron differentiation
+        significant: true
+        authors_stance: highlighted
