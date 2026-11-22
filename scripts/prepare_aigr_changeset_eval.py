@@ -90,6 +90,9 @@ def read_changeset(path: Path) -> tuple[dict, list[dict], dict]:
             if row["negated"] == "true":
                 stats["negated_skipped"] += 1
                 continue
+            if row.get("retired") == "true":  # no longer in GOA; nothing to match
+                stats["retired_skipped"] += 1
+                continue
             if row["action"] == "NEW":
                 new_rows.append(row)
                 continue
