@@ -38,7 +38,15 @@ import prepare_go_eval  # noqa: E402
 from score_method_vs_benchmark import load_gold  # noqa: E402
 from genesets_workflows.curation import model  # noqa: E402
 
-MAIN_VARIANTS = ["all", "iba", "iba_iea", "aigr_remove", "aigr_prune", "aigr_full", "aigr_core"]
+MAIN_VARIANTS = ["all", "iba", "iba_iea", "aigr_base", "aigr_drop_moa", "aigr_drop_noncore", "aigr_drop_both"]
+# What each variant is compared with: aigr_base (REMOVE/MODIFY/NEW applied) is
+# the step everyone agrees on; the open question is each drop on top of it.
+REFERENCE = {
+    "iba": "all", "iba_iea": "all", "aigr_base": "all",
+    "aigr_drop_moa": "aigr_base", "aigr_drop_noncore": "aigr_base", "aigr_drop_both": "aigr_base",
+}
+# Each factor's null family: the same number of other reviewed rows dropped from aigr_base.
+NULL_FAMILY = {"aigr_drop_moa": "null_moa_", "aigr_drop_noncore": "null_noncore_"}
 NOISE = {"nonspecific", "false_association"}
 CORE = {"core_process", "core_component"}
 GENERAL_TERM_SIZE = 1000  # terms annotating >1000 genes are "general"
@@ -163,6 +171,13 @@ def write_tsv(path: Path, rows: list[dict]) -> None:
         writer.writerows(rows)
 
 
+def ref_of(variant: str) -> str:
+    """The variant a given variant is compared with (nulls: aigr_base)."""
+    if variant.startswith("null_"):
+        return "aigr_base"
+    return REFERENCE.get(variant, "all")
+
+
 # --------------------------------------------------------------- curated arm
 def load_nonspecific(genesets_dir: Path) -> dict[str, set[str]]:
     out: dict[str, set[str]] = defaultdict(set)
@@ -285,11 +300,13 @@ def curated_arm(args, eval_dir: Path, variants: list[str], report: Path, reviewe
             if v.startswith("null_"):
                 continue
             summary_rows.append({"tier": tier, **totals(v, subset)})
-    nulls = [v for v in variants if v.startswith("null_")]
-    if nulls:
+    families = {f: [v for v in variants if v.startswith(prefix)] for f, prefix in NULL_FAMILY.items()}
+    families = {f: vs for f, vs in families.items() if vs}
+    for factor, nulls in families.items():
         for tier, subset in tiers.items():
             null_totals = [totals(v, subset) for v in nulls]
-            row = {"tier": tier, "variant": f"null_prune (mean of {len(nulls)})", "sets": len(subset)}
+            row = {"tier": tier, "variant": f"{NULL_FAMILY[factor].rstrip('_')} (mean of {len(nulls)})",
+                   "sets": len(subset)}
             for k in ("recall_core", "core_recovered", "core_total", "recall_confirm", "recall_mechan",
                       "nonspecific_hits", "sig_terms", "core_mean_neglog10p"):
                 row[k] = round(statistics.fmean(t[k] for t in null_totals), 4)
@@ -301,45 +318,50 @@ def curated_arm(args, eval_dir: Path, variants: list[str], report: Path, reviewe
     for v in variants:
         if v == "all" or v.startswith("null_"):
             continue
+        ref = REFERENCE.get(v, "all")
         for metric in ("core_recovered", "core_mean_neglog10p", "nonspecific_hits", "sig_terms"):
-            d = [per_variant[v][n][metric] - per_variant["all"][n][metric] for n in scored]
-            tests[f"{v}:{metric}"] = {"mean_delta": round(statistics.fmean(d), 4), "ci95": bootstrap_ci(d), **sign_test(d)}
+            d = [per_variant[v][n][metric] - per_variant[ref][n][metric] for n in scored]
+            tests[f"{v}_vs_{ref}:{metric}"] = {"mean_delta": round(statistics.fmean(d), 4), "ci95": bootstrap_ci(d), **sign_test(d)}
         for n in scored:
             delta_rows.append({
-                "variant": v, "gene_set": n, "exposure": round(exposure[n], 3),
-                **{f"d_{k}": round(per_variant[v][n][k] - per_variant["all"][n][k], 4)
+                "variant": v, "reference": ref, "gene_set": n, "exposure": round(exposure[n], 3),
+                **{f"d_{k}": round(per_variant[v][n][k] - per_variant[ref][n][k], 4)
                    for k in ("core_recovered", "core_mean_neglog10p", "nonspecific_hits", "sig_terms")},
             })
     write_tsv(report / "curated_per_set_deltas.tsv", delta_rows)
 
-    # aigr_prune vs random removal of the same rows
+    # each drop factor vs dropping the same number of other reviewed rows
     null_cmp = {}
-    if nulls:
+    for factor, nulls in families.items():
+        null_cmp[factor] = {}
         for tier, subset in tiers.items():
-            prune = totals("aigr_prune", subset)
-            null_cmp[tier] = {}
+            obs = totals(factor, subset)
+            base_t = totals("aigr_base", subset)
+            null_cmp[factor][tier] = {}
             for k in ("core_recovered", "core_mean_neglog10p", "nonspecific_hits", "sig_terms"):
                 dist = [totals(v, subset)[k] for v in nulls]
-                null_cmp[tier][k] = {
-                    "aigr_prune": prune[k],
+                null_cmp[factor][tier][k] = {
+                    "aigr_base": base_t[k],
+                    factor: obs[k],
                     "null_mean": round(statistics.fmean(dist), 4),
                     "null_min": min(dist), "null_max": max(dist),
-                    "frac_null_ge_prune": round(sum(x >= prune[k] for x in dist) / len(dist), 3),
-                    "frac_null_le_prune": round(sum(x <= prune[k] for x in dist) / len(dist), 3),
+                    "frac_null_ge_obs": round(sum(x >= obs[k] for x in dist) / len(dist), 3),
+                    "frac_null_le_obs": round(sum(x <= obs[k] for x in dist) / len(dist), 3),
                 }
 
     # attribution: which CORE terms were gained/lost and which gene edits did it
     anc = read_closure(eval_dir / "closure.tsv")
-    base_pairs = read_pairs(eval_dir / "all" / "gene_terms.tsv")
     attr_rows = []
-    for v in ("aigr_prune", "aigr_full", "aigr_core"):
+    for v in ("aigr_base", "aigr_drop_moa", "aigr_drop_noncore", "aigr_drop_both"):
         if v not in variants:
             continue
+        ref = REFERENCE[v]
+        base_pairs = read_pairs(eval_dir / ref / "gene_terms.tsv")
         var_pairs = read_pairs(eval_dir / v / "gene_terms.tsv")
         for n in scored:
             core = set().union(*gold[n]["rec"].values()) if gold[n]["rec"] else set()
             for t in sorted(core):
-                was, now = t in sig_by_variant["all"].get(n, ()), t in sig_by_variant[v].get(n, ())
+                was, now = t in sig_by_variant[ref].get(n, ()), t in sig_by_variant[v].get(n, ())
                 if was == now:
                     continue
                 lost_genes, gained_genes = [], []
@@ -351,7 +373,7 @@ def curated_arm(args, eval_dir: Path, variants: list[str], report: Path, reviewe
                     elif after and not before:
                         gained_genes.append(g)
                 attr_rows.append({
-                    "variant": v, "gene_set": n, "term_id": t, "change": "gained" if now else "lost",
+                    "variant": v, "reference": ref, "gene_set": n, "term_id": t, "change": "gained" if now else "lost",
                     "genes_losing_term": ",".join(lost_genes), "genes_gaining_term": ",".join(gained_genes),
                 })
     write_tsv(report / "curated_core_term_changes.tsv", attr_rows)
@@ -425,7 +447,7 @@ def breadth_arm(args, eval_dir: Path, variants: list[str], report: Path, reviewe
             per_variant[v] = m
             sig_sets[v] = sig
         base = per_variant["all"]
-        lost_profile = {v: lost_profile_for(sig_sets["all"], sig_sets[v], members) for v in variants}
+        lost_profile = {v: lost_profile_for(sig_sets[ref_of(v)], sig_sets[v], members) for v in variants}
         for v in variants:
             for n in members:
                 pooled[v][f"{collection}/{n}"] = {
@@ -442,20 +464,24 @@ def breadth_arm(args, eval_dir: Path, variants: list[str], report: Path, reviewe
             for k in ("mean_ic", "redundant_frac"):
                 row[k] = round(statistics.fmean(m[n][k] for n in with_hits), 4) if with_hits else 0
             if v != "all":
-                d = [m[n]["sig_terms"] - base[n]["sig_terms"] for n in with_hits]
-                d_ic = [m[n]["mean_ic"] - base[n]["mean_ic"] for n in with_hits if m[n]["any_hit"]]
+                r = per_variant[ref_of(v)]
+                row["reference"] = ref_of(v)
+                d = [m[n]["sig_terms"] - r[n]["sig_terms"] for n in with_hits]
+                d_ic = [m[n]["mean_ic"] - r[n]["mean_ic"] for n in with_hits if m[n]["any_hit"] and r[n]["any_hit"]]
                 st = sign_test(d)
                 row["sets_fewer_terms"], row["sets_more_terms"] = st["down"], st["up"]
                 row["d_mean_ic"] = round(statistics.fmean(d_ic), 4) if d_ic else 0
                 row["d_mean_ic_ci95"] = bootstrap_ci(d_ic)
                 row.update(lost_profile[v])
             rows.append(row)
-        nulls = [v for v in variants if v.startswith("null_")]
-        if nulls:
-            out[collection] = {
-                "aigr_prune_sig_terms": sum(per_variant["aigr_prune"][n]["sig_terms"] for n in members),
+        for factor, prefix in NULL_FAMILY.items():
+            nulls = [v for v in variants if v.startswith(prefix)]
+            if not nulls or factor not in per_variant:
+                continue
+            out.setdefault(collection, {})[factor] = {
+                "sig_terms": sum(per_variant[factor][n]["sig_terms"] for n in members),
                 "null_sig_terms": [sum(per_variant[v][n]["sig_terms"] for n in members) for v in nulls],
-                "aigr_prune_lost": lost_profile["aigr_prune"],
+                "lost_vs_base": lost_profile[factor],
                 "null_lost_mean_ic": [lost_profile[v]["lost_mean_ic"] for v in nulls],
                 "null_lost_general_frac": [lost_profile[v]["lost_general_frac"] for v in nulls],
             }
@@ -463,7 +489,6 @@ def breadth_arm(args, eval_dir: Path, variants: list[str], report: Path, reviewe
     write_tsv(report / "breadth_summary.tsv", rows)
 
     # Pooled over every breadth collection, split by how much of each set AIGR has reviewed.
-    nulls = [v for v in variants if v.startswith("null_")]
     for tier, (lo, hi) in tiers.items():
         keys = [k for k, m in pooled["all"].items() if lo <= m["exposure"] < hi]
         sig = {v: {k: pooled[v][k]["sig"] for k in keys} for v in variants}
@@ -474,16 +499,23 @@ def breadth_arm(args, eval_dir: Path, variants: list[str], report: Path, reviewe
                    "sets_with_hits": sum(1 for k in keys if sig[v][k]),
                    "sig_terms": sum(len(sig[v][k]) for k in keys)}
             if v != "all":
-                row.update(lost_profile_for(sig["all"], sig[v], keys))
+                row["reference"] = ref_of(v)
+                row.update(lost_profile_for(sig[ref_of(v)], sig[v], keys))
             tier_rows.append(row)
-        if nulls:
-            profiles = [lost_profile_for(sig["all"], sig[v], keys) for v in nulls]
+        for factor, prefix in NULL_FAMILY.items():
+            nulls = [v for v in variants if v.startswith(prefix)]
+            if not nulls:
+                continue
+            profiles = [lost_profile_for(sig["aigr_base"], sig[v], keys) for v in nulls]
             sizes = [sum(len(sig[v][k]) for k in keys) for v in nulls]
+            losts = [p["lost_hits"] for p in profiles]
             ics = [p["lost_mean_ic"] for p in profiles if p["lost_mean_ic"] is not None]
             gens = [p["lost_general_frac"] for p in profiles if p["lost_general_frac"] is not None]
             tier_rows.append({
-                "tier": tier, "variant": f"null_prune (range of {len(nulls)})", "sets": len(keys),
+                "tier": tier, "variant": f"{prefix.rstrip('_')} (range of {len(nulls)})", "sets": len(keys),
+                "reference": "aigr_base",
                 "sig_terms": f"{min(sizes)}-{max(sizes)}",
+                "lost_hits": f"{min(losts)}-{max(losts)}",
                 "lost_mean_ic": f"{min(ics)}-{max(ics)}" if ics else None,
                 "lost_general_frac": f"{min(gens)}-{max(gens)}" if gens else None,
             })

@@ -8,16 +8,22 @@ This builds on ``prepare_go_eval.py`` (same GO/GOA downloads, terms/closure
 tables, common all-GOA background and genesets-rs config shape) and adds
 variants in which the AIGR change set is applied *row by row* to the GAF:
 
-- ``aigr_remove``   drop rows reviewed REMOVE
-- ``aigr_prune``    drop REMOVE and MARK_AS_OVER_ANNOTATED (over-annotation removal)
-- ``aigr_full``     aigr_prune + MODIFY swaps the term for its GO replacement(s)
-                    + NEW annotations added
-- ``aigr_core``     reviewed rows kept only if ACCEPT (plus MODIFY replacements
-                    and NEW); KEEP_AS_NON_CORE/UNDECIDED also dropped. The most
-                    aggressive arm.
-- ``null_prune_<k>`` negative control: among the same reviewed rows, drop a
-                    random sample with the same per-evidence-code counts that
-                    aigr_prune drops.
+Every AIGR variant applies the uncontroversial part of the change set: rows
+reviewed REMOVE are dropped, MODIFY swaps the term for its GO replacement(s)
+(a MODIFY whose replacements are all proposed terms keeps the original term),
+and NEW annotations are added. The open question is what to do with the two
+"true but" actions, so they are crossed as a 2x2 on top of that base:
+
+- ``aigr_base``          REMOVE dropped, MODIFY and NEW applied
+- ``aigr_drop_moa``      aigr_base + MARK_AS_OVER_ANNOTATED rows dropped
+- ``aigr_drop_noncore``  aigr_base + KEEP_AS_NON_CORE rows dropped
+- ``aigr_drop_both``     aigr_base + both dropped
+- ``null_moa_<k>`` / ``null_noncore_<k>``  negative controls: starting from
+                         aigr_base, drop a random sample of the reviewed rows
+                         that aigr_base keeps unchanged, with the same
+                         per-evidence-code counts as the factor drops.
+
+ACCEPT, TOO_GENERAL, UNDECIDED and PENDING rows are kept in every variant.
 
 A GAF row is matched to a change-set row on (UniProt accession, GO term,
 evidence code, reference), where the reference matches any of the GAF row's
@@ -44,15 +50,15 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import prepare_go_eval  # noqa: E402
 
-POLICIES = ("aigr_remove", "aigr_prune", "aigr_full", "aigr_core")
+BASE_DROP = {"REMOVE"}
+FACTORS = {"moa": {"MARK_AS_OVER_ANNOTATED"}, "noncore": {"KEEP_AS_NON_CORE"}}
+POLICIES = ("aigr_base", "aigr_drop_moa", "aigr_drop_noncore", "aigr_drop_both")
 DROP = {
-    "aigr_remove": {"REMOVE"},
-    "aigr_prune": {"REMOVE", "MARK_AS_OVER_ANNOTATED"},
-    "aigr_full": {"REMOVE", "MARK_AS_OVER_ANNOTATED"},
-    "aigr_core": {"REMOVE", "MARK_AS_OVER_ANNOTATED", "KEEP_AS_NON_CORE", "UNDECIDED", "PENDING", ""},
+    "aigr_base": BASE_DROP,
+    "aigr_drop_moa": BASE_DROP | FACTORS["moa"],
+    "aigr_drop_noncore": BASE_DROP | FACTORS["noncore"],
+    "aigr_drop_both": BASE_DROP | FACTORS["moa"] | FACTORS["noncore"],
 }
-APPLIES_MODIFY_AND_NEW = {"aigr_full", "aigr_core"}
-
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
@@ -70,7 +76,7 @@ def parse_args() -> argparse.Namespace:
         default=",".join(prepare_go_eval.DEFAULT_GAF_DBS),
         help="GAF DB column values kept (default: UniProtKB proteins only).",
     )
-    parser.add_argument("--null-seeds", type=int, default=20, help="number of null_prune replicates")
+    parser.add_argument("--null-seeds", type=int, default=10, help="null replicates per factor")
     parser.add_argument("--max-p-adjust", type=float, default=0.05)
     parser.add_argument("--force-download", action="store_true")
     return parser.parse_args()
@@ -199,16 +205,19 @@ def main() -> int:
         handle.writelines(f"{g}\n" for g in reviewed_symbols)
 
     variant_stats: dict[str, dict] = {"all": {"pairs": len(baseline)}}
-    for policy in POLICIES:
-        drop = DROP[policy]
+    def build_pairs(drop: set[str], skip_rows: set[int] = frozenset()) -> tuple[set, Counter]:
+        """Apply REMOVE/MODIFY/NEW plus ``drop``; rows in ``skip_rows`` are also dropped."""
         pairs: set[tuple[str, str]] = set()
         counts: Counter = Counter()
-        for (acc, symbol, term, _ev, _refs), hit in zip(gaf_rows, matched):
+        for i, ((_acc, symbol, term, _ev, _refs), hit) in enumerate(zip(gaf_rows, matched)):
+            if i in skip_rows:
+                counts["rows_dropped_null"] += 1
+                continue
             if hit is None:
                 pairs.add((symbol, term))
                 continue
             action = hit["action"]
-            if policy in APPLIES_MODIFY_AND_NEW and action == "MODIFY":
+            if action == "MODIFY":
                 replacements = [t for t in hit["replacement_term_ids"].split("|") if t in valid_terms]
                 if replacements:
                     counts["modify_rows_replaced"] += 1
@@ -221,15 +230,20 @@ def main() -> int:
                 counts[f"rows_dropped_{action or 'BLANK'}"] += 1
                 continue
             pairs.add((symbol, term))
-        if policy in APPLIES_MODIFY_AND_NEW:
-            for row in new_rows:
-                symbol = acc_to_symbol.get(row["uniprot_id"])
-                if symbol and row["term_id"] in valid_terms:
-                    counts["new_pairs_added"] += 1
-                    pairs.add((symbol, row["term_id"]))
-                else:
-                    counts["new_rows_unmappable"] += 1
+        for row in new_rows:
+            symbol = acc_to_symbol.get(row["uniprot_id"])
+            if symbol and row["term_id"] in valid_terms:
+                counts["new_pairs_added"] += 1
+                pairs.add((symbol, row["term_id"]))
+            else:
+                counts["new_rows_unmappable"] += 1
+        return pairs, counts
+
+    for policy in POLICIES:
+        pairs, counts = build_pairs(DROP[policy])
         write_pairs(out_dir, policy, pairs)
+        if policy == "aigr_base":
+            base_pairs = set(pairs)
         variant_stats[policy] = {
             "pairs": len(pairs),
             "pairs_removed_vs_all": len(baseline - pairs),
@@ -237,28 +251,36 @@ def main() -> int:
             **counts,
         }
 
-    # Null: same per-evidence-code number of dropped rows as aigr_prune, drawn
-    # uniformly from all matched (reviewed) rows.
-    prune_drop = DROP["aigr_prune"]
-    target: Counter = Counter()
+    # Nulls, one family per factor: start from aigr_base and drop a random
+    # sample of the reviewed rows that aigr_base keeps unchanged (not REMOVE,
+    # not MODIFY), matching the factor's per-evidence-code row counts. The
+    # comparison is then "these rows" against "the same number of other rows".
+    base_kept = [
+        i for i, hit in enumerate(matched)
+        if hit is not None and hit["action"] not in BASE_DROP and hit["action"] != "MODIFY"
+    ]
     pool: dict[str, list[int]] = defaultdict(list)
-    for i, ((_acc, _symbol, _term, evidence, _refs), hit) in enumerate(zip(gaf_rows, matched)):
-        if hit is None:
-            continue
-        pool[evidence].append(i)
-        if hit["action"] in prune_drop:
-            target[evidence] += 1
+    for i in base_kept:
+        pool[gaf_rows[i][3]].append(i)
     null_names = []
-    for seed in range(args.null_seeds):
-        rng = random.Random(seed)
-        dropped: set[int] = set()
-        for evidence, n in target.items():
-            dropped.update(rng.sample(pool[evidence], n))
-        pairs = {(r[1], r[2]) for i, r in enumerate(gaf_rows) if i not in dropped}
-        name = f"null_prune_{seed:02d}"
-        write_pairs(out_dir, name, pairs)
-        null_names.append(name)
-        variant_stats[name] = {"pairs": len(pairs), "pairs_removed_vs_all": len(baseline - pairs)}
+    null_targets = {}
+    for factor, actions in FACTORS.items():
+        target: Counter = Counter(gaf_rows[i][3] for i in base_kept if matched[i]["action"] in actions)
+        null_targets[factor] = dict(sorted(target.items()))
+        for seed in range(args.null_seeds):
+            rng = random.Random(f"{factor}:{seed}")
+            dropped: set[int] = set()
+            for evidence, n in target.items():
+                dropped.update(rng.sample(pool[evidence], n))
+            pairs, _ = build_pairs(BASE_DROP, dropped)
+            name = f"null_{factor}_{seed:02d}"
+            write_pairs(out_dir, name, pairs)
+            null_names.append(name)
+            variant_stats[name] = {
+                "pairs": len(pairs),
+                "pairs_removed_vs_all": len(baseline - pairs),
+                "pairs_removed_vs_base": len(base_pairs - pairs),
+            }
 
     queries_path = out_dir / "queries.gmt"
     variants = ["all", *POLICIES, *null_names]
@@ -275,7 +297,7 @@ def main() -> int:
         "gaf_db_kept": sorted(gaf_dbs) or "all",
         "reviewed_gene_count": len(reviewed_symbols),
         "background_gene_count": len(background),
-        "null_target_rows_by_evidence": dict(sorted(target.items())),
+        "null_target_rows_by_evidence": null_targets,
         "variants": variant_stats,
     }
     with (out_dir / "metadata.json").open("w") as handle:
