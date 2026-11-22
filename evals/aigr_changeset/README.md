@@ -26,11 +26,18 @@ supporting rows survives.
 | variant | edit |
 |---|---|
 | `all` | current GOA, unchanged (baseline; also defines the common background) |
-| `aigr_remove` | drop REMOVE rows |
-| `aigr_prune` | drop REMOVE + MARK_AS_OVER_ANNOTATED rows — **the main arm** |
-| `aigr_full` | `aigr_prune` + MODIFY → replacement term(s) + NEW annotations |
-| `aigr_core` | reviewed rows kept only if ACCEPT (+ MODIFY replacements, NEW): also drops KEEP_AS_NON_CORE and UNDECIDED |
-| `null_prune_00..19` | negative control: from the same reviewed rows, drop a random sample with `aigr_prune`'s per-evidence-code row counts |
+| `aigr_base` | REMOVE rows dropped, MODIFY → GO replacement term(s), NEW annotations added. Every AIGR variant includes this |
+| `aigr_drop_moa` | `aigr_base` + MARK_AS_OVER_ANNOTATED rows dropped |
+| `aigr_drop_noncore` | `aigr_base` + KEEP_AS_NON_CORE rows dropped |
+| `aigr_drop_both` | `aigr_base` + both dropped |
+| `null_moa_00..09`, `null_noncore_00..09` | negative controls: from `aigr_base`, drop a random sample of the other reviewed rows it keeps unchanged, with the factor's per-evidence-code row counts |
+
+`aigr_base` is compared with `all`; each drop is compared with `aigr_base` and
+with its own null. ACCEPT, TOO_GENERAL, UNDECIDED and PENDING rows are kept in
+every variant. Results before 2026-11-22 used an earlier set of arms
+(`aigr_remove`, `aigr_prune` = REMOVE + MARK_AS_OVER_ANNOTATED, `aigr_full`,
+`aigr_core` = also KEEP_AS_NON_CORE, UNDECIDED and PENDING dropped), and the
+sections below keep those names.
 
 The null is what makes the result interpretable: any removal of annotations
 shrinks enrichment output, so the question is whether **AIGR's** removals do
@@ -351,6 +358,78 @@ including curator-added ones:
 Three small sets are too few to rank methods; they establish the labelling
 and scoring machinery. The next step is to adjudicate more sets, ideally ones
 with high AIGR coverage.
+
+## Update (2026-11-22): base + 2x2 on over-annotation and non-core
+
+REMOVE, MODIFY and NEW are now always applied, and the two "true but" actions
+are crossed on top. AIGR at `43f54f7` (3,817 human reviews); GO and GOA as in
+the 2026-11-18 update; protein background; direct protein binding dropped.
+
+Row and pair counts (pairs before closure):
+
+| step | rows | pairs |
+|---|---|---|
+| `aigr_base` vs `all` | 1,446 REMOVE dropped (most REMOVE rows are already gone from GOA), 9,783 MODIFY replaced, 2,220 NEW | 6,762 removed, 3,612 added |
+| over-annotation, on top of base | 7,343 dropped | 5,875 removed (a size-matched null removes 2,620) |
+| non-core, on top of base | 38,545 dropped | 24,352 removed |
+
+**`aigr_base` is neutral.** Same CORE recall as `all` (205/408), 1% fewer
+significant terms, precision on the Ballouz sets unchanged (0.45).
+
+**Curated benchmark (128 sets)**, each drop against `aigr_base` and its null (mean, range of 10):
+
+| | CORE recovered | nonspecific hits | sig. terms |
+|---|---|---|---|
+| `aigr_base` | 205 | 60 | 15,774 |
+| `aigr_drop_moa` | 206 | 62 | 14,964 |
+| `null_moa` | 205.6 (204–207) | 58.8 (56–62) | 15,482 |
+| `aigr_drop_noncore` | **187** | **33** | 11,573 |
+| `null_noncore` | 197.9 (193–201) | 52.7 (46–58) | 14,121 |
+| `aigr_drop_both` | 179 | 34 | 10,868 |
+
+**Ballouz case studies (all pooled hits adjudicated):**
+
+| | precision | CORE (of 13) | hits |
+|---|---|---|---|
+| `aigr_base` | 0.45 | 11 | 100 |
+| `aigr_drop_moa` | 0.44 | 11 | 102 |
+| `aigr_drop_noncore` | 0.55 | 7 | 63 (1 unlabelled) |
+| `aigr_drop_both` | 0.51 | 6 | 61 (2 unlabelled) |
+| `iba_iea` | 0.67 | 6 | 49 |
+
+**MSigDB + single-cell (18,491 sets), sets with ≥25% of members reviewed (7,802 sets):**
+
+| | hits lost vs base | lost-hit mean IC | lost hits general (>1000 genes) |
+|---|---|---|---|
+| `aigr_drop_moa` | 36,356 (5.8%) | **5.62** | **35%** |
+| `null_moa` | 14,701–17,023 | 5.84–6.18 | 26–34% |
+| `aigr_drop_noncore` | 175,927 (28%) | 5.99 | 29% |
+| `null_noncore` | 73,858–78,194 | 6.21–6.37 | 24–27% |
+
+Below 10% coverage both drops change almost nothing.
+
+### Reading
+
+- **Drop over-annotation: yes.** It removes 2–2.5× as many hits as dropping the
+  same number of other reviewed rows, and the hits it removes are more general
+  than the null's, with no loss of CORE recall. It does not raise precision on
+  the adjudicated sets: the noise there is broad ancestor terms, which many
+  rows support, not the over-annotated rows.
+- **Drop non-core: no, not as a blanket rule.** It is the only edit that
+  changes precision (noise hits on the benchmark fall from 60 to 33, against
+  53 for the null), but it costs CORE recall well beyond the null (187 vs
+  193–201; 11 → 7 of 13 on the Ballouz sets). The losses show why: external
+  gene sets are often explained by a gene's peripheral roles. Examples are
+  `regulation of cell population proliferation` for AKT1, KRAS and MAPK1 in
+  the KEGG cancer sets, `T cell activation` for CD3E and ZAP70, `platelet
+  aggregation` for TLN1 and FLNA, and `angiogenesis` in the hypoxia set.
+  KEEP_AS_NON_CORE means "true, not this gene's core function", and enrichment
+  needs the true annotations. A core-only GOA is a different product, worth
+  offering as a separate option, but not a replacement.
+- Some losses look like non-core calls worth a second look (`T cell
+  activation` on CD3E/ZAP70, `T cell receptor complex` marked over-annotated on
+  CD8A/CD8B). `report/curated_core_term_changes.tsv` lists every CORE term
+  gained or lost, with the genes responsible.
 
 ## Interpretation
 
