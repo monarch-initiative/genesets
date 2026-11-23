@@ -1,0 +1,106 @@
+gene_set_id: LIT:YEAST_RAPAMYCIN_SENSITIVE_XIE
+gene_set_name: YEAST_RAPAMYCIN_SENSITIVE_XIE
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:559292
+  label: Saccharomyces cerevisiae S288C
+direction: DN
+description: >-
+  The 280 Saccharomyces cerevisiae deletion strains with decreased resistance
+  (hypersensitivity) to rapamycin in the genome-wide high-density cell-array screen
+  of Xie et al. (2005, PMID:15883373). Membership is the set of null mutants SGD
+  curated from this paper as "resistance to chemicals: decreased" with sirolimus
+  (snapshot in curation/genesets/model_organism_members.gmt). Rapamycin inhibits
+  TORC1, so hypersensitive mutants are those that already have weakened TORC1
+  activity or depend on TORC1 outputs. GO enrichment is dominated by
+  endosome/vacuole trafficking (vacuolar protein sorting, late endosome, HOPS/CORVET
+  and ESCRT subunits) and autophagy. The mechanistic core is that the vacuole membrane
+  is where TORC1 is activated by amino acids: the set contains all four subunits of
+  the yeast EGO complex (GTR1, GTR2, MEH1/EGO1, SLM4/EGO3; the Rag GTPase and
+  Ragulator orthologues) and TORC1 itself (TOR1, KOG1). A block of ESCRT genes enters
+  via an "ATP export" annotation from an unrelated screen, an annotation-driven
+  false positive.
+contexts:
+  - term:
+      id: CHEBI:9168
+      label: sirolimus
+    context_type: chemical_perturbagen
+associations:
+  - term:
+      id: GO:0071986
+      label: Ragulator complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      GTR1, GTR2, MEH1 (EGO1) and SLM4 (EGO3), the complete EGO complex, are all in
+      the set and directly annotated to Ragulator complex in SGD GOA (4/6). The EGO
+      complex relays vacuolar amino-acid status to TORC1, so losing it lowers TORC1
+      activity and sensitises cells to rapamycin. This is the specific
+      mechanistic explanation for the vacuole-heavy enrichment. Not significant
+      after genome-wide correction (4 genes), so a method-dependent recovery
+      despite complete complex coverage.
+  - term:
+      id: GO:0031931
+      label: TORC1 complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      TOR1 and KOG1 (raptor) are directly annotated (2/5). The drug target's own
+      complex: reduced dosage of the target sensitises to the drug, entailed by
+      the screen's design, so confirmatory. Too small to be enriched.
+  - term:
+      id: GO:0007034
+      label: vacuolar transport
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      35/179, p ~2e-16 (BRO1, VPS20, VPS24, VPS27, VPS41, VAM7, CCZ1, YPT7, the GARP
+      subunits VPS51-54, and others). Vacuolar sorting mutants have impaired
+      TORC1 activation and are rapamycin-sensitive, so the enrichment is a real
+      route to the phenotype rather than background. Medium confidence because
+      vacuolar trafficking mutants are also generically drug-sensitive.
+  - term:
+      id: GO:0006914
+      label: autophagy
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      33/216, p ~3e-12 (ATG10, ATG15, ATG17, VAC8, CCZ1 directly; many trafficking
+      genes via closure). Rapamycin induces autophagy, and cells that cannot carry it
+      out survive TORC1 inhibition poorly. Expected, hence confirmatory.
+  - term:
+      id: GO:1904669
+      label: ATP export
+    aspect: biological_process
+    category: false_association
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Significant (11/17, p ~2e-12) only because ESCRT and MVB-sorting genes (BRO1,
+      DID4, DOA4, MVB12, SNF8, SRN2, VPS20, VPS24, VPS27, VPS28, VPS36) carry IMP
+      annotations to ATP export from a single genome-wide screen of extracellular
+      ATP levels (PMID:26585826). ATP efflux has nothing to do with rapamycin
+      sensitivity: this is screen-phenotype annotation spilling over into
+      enrichment, a useful negative control.

@@ -138,16 +138,18 @@ the membership: RFX6 itself is not a member of either arm.
 
 ### Model-organism sets
 A set is curated in the species it was defined in (`taxon`), and must be scored
-against that species' GAF, never `goa_human`. Two non-human sources are in use:
+against that species' GAF, never `goa_human`. Three non-human sources are in use:
 native-mouse MSigDB M2 perturbation sets (`MSIGDB:` ids, `collection: M2:CGP`,
 `msigdb_release: v2025.1.Mm`), and CTD chemical-gene interaction sets for worm,
 fly and zebrafish as served by mygeneset.info (`MYGENESET:<MeSH>_<taxid>`,
 `collection: CTD:chem_gene_ixns`; context is the chemical's `CHEBI:` or `MESH:`
-term). CTD sets pool mixed-direction literature (sensitivity phenotypes,
+term); and yeast genome-wide deletion screens as `LIT:GENETIC` sets, whose
+membership is SGD's curated null-mutant phenotypes from the one defining paper
+(`taxon: NCBITaxon:559292`). CTD sets pool mixed-direction literature (sensitivity phenotypes,
 expression, proteomics), so they are `direction: NA` and have no single defining
 paper to quote. Membership for every non-human set is snapshotted in
 `genesets/model_organism_members.gmt`. Ground and adjudicate `recovery_status`
-on the species' GOA (MGI, WormBase, FlyBase, ZFIN), which often has different
+on the species' GOA (MGI, WormBase, FlyBase, ZFIN, SGD), which often has different
 gaps from human GOA. For example, mouse Saa1, Saa2 and Hp are not annotated to
 acute-phase response. Eval: `evals/model_organism_benchmark/`.
 
