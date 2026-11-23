@@ -70,6 +70,12 @@ yeast). It then
 runs `genesets-rs run` (Bonferroni, `max_p_adjust 0.05`) and scores with
 `scripts/score_method_vs_benchmark.py --taxon <NCBITaxon>`.
 
+The runner passes `--gaf-db` with each resource's own DB column (`MGI`, `WB`, `FB`,
+`ZFIN`, `SGD`). `prepare_go_eval.py` keeps only `UniProtKB` rows by default, which
+suits `goa_human` but would load almost nothing from a model-organism GAF: 311 of
+MGI's ~707,000 rows, and none at all for SGD. Like the human default, this excludes
+ComplexPortal complexes, and direct *protein binding* annotations are dropped.
+
 The `--taxon` filter keeps human gold out of a species run and vice versa. Never
 score a model-organism set against `goa_human`: its symbols would mostly fail to
 match.

@@ -17,7 +17,7 @@ See evals/model_organism_benchmark/README.md.
     >>> sorted(SPECIES_GAF)[:2]
     ['NCBITaxon:10090', 'NCBITaxon:10116']
     >>> SPECIES_GAF["NCBITaxon:6239"]
-    'wb'
+    ('wb', 'WB')
 """
 
 from __future__ import annotations
@@ -32,17 +32,21 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 GAF_BASE = "https://current.geneontology.org/annotations"
 
-# NCBITaxon -> GO Consortium GAF basename (current.geneontology.org/annotations/<db>.gaf.gz).
+# NCBITaxon -> (GO Consortium GAF basename at current.geneontology.org/annotations/
+# <name>.gaf.gz, the GAF DB column of that resource's own gene entities).
+# prepare_go_eval.py keeps only UniProtKB rows by default, which suits goa_human
+# but would drop nearly every row of a model-organism GAF; passing the MOD's own
+# DB keeps its genes and, like the human default, drops ComplexPortal complexes.
 SPECIES_GAF = {
-    "NCBITaxon:10090": "mgi",
-    "NCBITaxon:10116": "rgd",
-    "NCBITaxon:7955": "zfin",
-    "NCBITaxon:7227": "fb",
-    "NCBITaxon:6239": "wb",
-    "NCBITaxon:559292": "sgd",
-    "NCBITaxon:4896": "pombase",
-    "NCBITaxon:3702": "tair",
-    "NCBITaxon:44689": "dictybase",
+    "NCBITaxon:10090": ("mgi", "MGI"),
+    "NCBITaxon:10116": ("rgd", "RGD"),
+    "NCBITaxon:7955": ("zfin", "ZFIN"),
+    "NCBITaxon:7227": ("fb", "FB"),
+    "NCBITaxon:6239": ("wb", "WB"),
+    "NCBITaxon:559292": ("sgd", "SGD"),
+    "NCBITaxon:4896": ("pombase", "PomBase"),
+    "NCBITaxon:3702": ("tair", "TAIR"),
+    "NCBITaxon:44689": ("dictybase", "dictyBase"),
 }
 
 
@@ -82,14 +86,14 @@ def main() -> int:
         raise SystemExit(f"no captured membership for: {', '.join(missing)}")
 
     for taxon, lines in sorted(lines_by_taxon.items()):
-        db = SPECIES_GAF.get(taxon)
-        if db is None:
+        if taxon not in SPECIES_GAF:
             raise SystemExit(f"no GAF configured for {taxon}; add it to SPECIES_GAF")
+        db, gaf_db = SPECIES_GAF[taxon]
         eval_dir = args.out_dir / db
         eval_dir.mkdir(parents=True, exist_ok=True)
         (eval_dir / "queries.gmt").write_text("\n".join(lines) + "\n")
         run([sys.executable, str(ROOT / "scripts" / "prepare_go_eval.py"), "--out-dir", str(eval_dir),
-             "--gaf-url", f"{GAF_BASE}/{db}.gaf.gz", "--variants", "all"])
+             "--gaf-url", f"{GAF_BASE}/{db}.gaf.gz", "--gaf-db", gaf_db, "--variants", "all"])
         run([args.genesets_rs, "run", str(eval_dir / "all" / "config.yaml")])
         run([sys.executable, str(ROOT / "scripts" / "score_method_vs_benchmark.py"), "--eval-dir", str(eval_dir),
              "--genesets-dir", str(args.genesets_dir), "--variants", "all", "--taxon", taxon,
