@@ -1,0 +1,128 @@
+gene_set_id: MSIGDB:LE_EGR2_TARGETS_DN
+gene_set_name: LE_EGR2_TARGETS_DN
+collection: M2:CGP
+msigdb_release: v2025.1.Mm
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: DN
+description: >-
+  MSigDB mouse M2:CGP set (M15148) of 121 genes down-regulated in sciatic nerves
+  of hypomorphic Egr2 (Krox20) Egr2Lo/Lo mice, a model of congenital hypomyelinating
+  neuropathy (Le et al. 2005, PMID:15695336, Table 2S). Egr2 is the master
+  transcription factor of peripheral myelination, so loss of the myelin structural
+  genes (Mpz, Pmp22, Mbp, Prx, Mal, Gjb1, Ndrg1) is expected. The informative
+  enrichment is the second, larger arm: the cholesterol/sterol biosynthetic pathway
+  (Hmgcr, Hmgcs1, Mvd, Idi1, Fdps, Fdft1, Lss, Cyp51, Msmo1, Nsdhl) plus
+  fatty-acid and galactolipid synthesis (Scd1, Elovl6, Fads1, Me1, Thrsp, Slc25a1;
+  Ugt8a, Fa2h, Cers2). GO enrichment thus exposes the mechanism by which Egr2
+  drives myelination: it is required for the lipid biosynthetic programme that
+  builds the myelin membrane, which is ~70-80% lipid and cholesterol-rich. The set
+  also carries Schwann-cell markers (S100b) and some stromal/endoneurial genes.
+contexts:
+  - term:
+      id: PR:000003469
+      label: early growth response protein 2
+    context_type: genetic_perturbation
+  - term:
+      id: CL:0000218
+      label: myelinating Schwann cell
+    context_type: cell_type
+  - term:
+      id: UBERON:0001322
+      label: sciatic nerve
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0042552
+      label: myelination
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:15695336
+        reference_title: "Analysis of congenital hypomyelinating Egr2Lo/Lo nerves identifies Sox2 as an inhibitor of Schwann cell differentiation and myelination."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "they are developmentally arrested, with down-regulation of myelination-related genes"
+        explanation: >-
+          The defining paper describes this DN set as the loss of the myelination
+          programme in developmentally arrested Egr2Lo/Lo Schwann cells.
+    curator_note: >-
+      Entailed by the perturbation (Egr2 is the myelination master regulator),
+      hence confirmatory. 13 members annotated in MGI GOA: directly Mpz, Pmp22, Mbp,
+      Mal, Ugt8a, Cldn5, Mpdz, and via closure Prx, Ndrg1, Fa2h, Sirt2, Cd9, Abca2.
+      Recovered in a GOA-mouse run (13/156, p ~1e-13).
+  - term:
+      id: GO:0043218
+      label: compact myelin
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The structural product of myelinating Schwann cells. Mbp and Pmp22 directly,
+      Mal, Cldn5, Mpdz and Sirt2 via closure (6/23, p ~4e-10). Mpz, the most
+      abundant PNS compact-myelin protein, is in the set but annotated in MGI to
+      myelination/structural terms rather than to this component, a small GO gap
+      that does not change the term's recovery.
+  - term:
+      id: GO:0006695
+      label: cholesterol biosynthetic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      The top enrichment of this set (zymosterol/cholesterol biosynthesis, 10/35;
+      p ~2e-16 for cholesterol and ~2e-20 for zymosterol biosynthesis): Hmgcr, Hmgcs1, Mvd, Idi1, Fdps, Fdft1, Lss, Cyp51, Msmo1
+      and Nsdhl are all directly annotated. Marked mechanistic because it is not
+      entailed by "myelin gene" construction: it reveals that Egr2-dependent
+      myelination runs through Schwann-cell cholesterol synthesis (myelin
+      membrane is cholesterol-rich, and blood cholesterol cannot cross the
+      blood-nerve barrier in sufficient quantity), i.e. the transcriptional
+      mechanism linking the transcription factor to the membrane it builds.
+  - term:
+      id: GO:0006633
+      label: fatty acid biosynthetic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The fatty-acid arm of the myelin lipid programme: Scd1, Elovl6, Fads1, Lpl,
+      Sirt2 annotated (6/121 incl. Ptgds via closure). Further lipogenic genes in
+      the set (Me1, Thrsp, Slc25a1 citrate carrier) supply NADPH/acetyl-CoA but are
+      annotated to other terms. Below significance alone; it rides on the broader
+      lipid biosynthetic process hit (24/547, p ~6e-18).
+  - term:
+      id: GO:0006682
+      label: galactosylceramide biosynthetic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      Galactocerebroside and sulfatide are the signature myelin glycolipids. Ugt8a
+      (ceramide galactosyltransferase) and Fa2h (fatty-acid 2-hydroxylase, which
+      makes the 2-hydroxy ceramides preferred for myelin galactolipids) are both in
+      the set and directly annotated; Cers2 (very-long-chain ceramide synthase) is
+      also present. Only 2 annotated carriers in a 6-gene term, so it will rarely
+      pass multiple-testing correction, but it is a specific mechanistic link from
+      Egr2 to myelin lipid composition.

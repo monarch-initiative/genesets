@@ -184,3 +184,13 @@ MSIGDB:WP_NONALCOHOLIC_FATTY_LIVER_DISEASE	C2:CP:WIKIPATHWAYS	MONDO:0013209	dise
 MSIGDB:WP_PARKINSONS_DISEASE_PATHWAY	C2:CP:WIKIPATHWAYS	MONDO:0005180	disease	Parkinson disease		
 MSIGDB:WP_SPINAL_CORD_INJURY	C2:CP:WIKIPATHWAYS	MONDO:0043797	disease	spinal cord injury		
 MSIGDB:WP_SUDDEN_INFANT_DEATH_SYNDROME_SIDS_SUSCEPTIBILITY_PATHWAYS	C2:CP:WIKIPATHWAYS	MONDO:1010116	disease	sudden unexpected infant death		
+MSIGDB:BILANGES_RAPAMYCIN_SENSITIVE_GENES	M2:CGP	CHEBI:9168	chemical_perturbagen	sirolimus		
+MSIGDB:CADWELL_ATG16L1_TARGETS_UP	M2:CGP	PR:000004409	genetic_perturbation	autophagy-related protein 16-1		
+MSIGDB:LE_EGR2_TARGETS_DN	M2:CGP	PR:000003469	genetic_perturbation	early growth response protein 2		
+MSIGDB:LIAN_LIPA_TARGETS_6M	M2:CGP	PR:000009832	genetic_perturbation	lysosomal acid lipase/cholesteryl ester hydrolase		
+MSIGDB:SCHMIDT_POR_TARGETS_IN_LIMB_BUD_UP	M2:CGP	PR:000013030	genetic_perturbation	NADPH--cytochrome P450 reductase		
+MYGENESET:C030956_6239	CTD:chem_gene_ixns	MESH:C030956	chemical_perturbagen	insecticidal crystal protein, Bacillus Thuringiensis		
+MYGENESET:D000448_6239	CTD:chem_gene_ixns	CHEBI:2555	chemical_perturbagen	aldicarb		
+MYGENESET:D010269_6239	CTD:chem_gene_ixns	CHEBI:34905	chemical_perturbagen	paraquat		
+MYGENESET:D010269_7227	CTD:chem_gene_ixns	CHEBI:34905	chemical_perturbagen	paraquat		
+MYGENESET:D013749_7955	CTD:chem_gene_ixns	CHEBI:28119	chemical_perturbagen	2,3,7,8-tetrachlorodibenzodioxine		

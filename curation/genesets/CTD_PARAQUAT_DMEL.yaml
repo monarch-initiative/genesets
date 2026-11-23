@@ -1,0 +1,119 @@
+gene_set_id: MYGENESET:D010269_7227
+gene_set_name: CTD_PARAQUAT_DMEL
+collection: CTD:chem_gene_ixns
+taxon:
+  id: NCBITaxon:7227
+  label: Drosophila melanogaster
+direction: NA
+description: >-
+  The 50 Drosophila melanogaster genes with CTD-curated interactions with paraquat
+  (MeSH D010269; mygeneset.info D010269_7227; membership snapshot in
+  curation/genesets/model_organism_members.gmt). Mostly genes whose mutation or
+  overexpression alters paraquat survival, plus some paraquat-induced genes
+  (undirected). In flies paraquat serves both as an oxidative-stress and longevity
+  assay and as a chemical model of Parkinson's disease. GO enrichment
+  separates these. Detoxification: Sod1, Sod2, Cat, Prx2, Prx3, GstD1, GstD3,
+  GstE6/7/9. A stress-signalling mechanism: the JNK pathway (egr, Mekk1, hep, bsk,
+  puc, Gadd45), whose activation confers oxidative-stress tolerance and longevity.
+  Insulin/FOXO (InR, Pi3K92E, foxo, mth). A dopaminergic Parkinson's module:
+  dopamine synthesis (ple/TH, Pu/GTP cyclohydrolase, Catsup) and the Parkinson's
+  genes park, DJ-1alpha and dj-1beta.
+contexts:
+  - term:
+      id: CHEBI:34905
+      label: paraquat
+    context_type: chemical_perturbagen
+associations:
+  - term:
+      id: GO:0006979
+      label: response to oxidative stress
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Top hit in a FB-GOA run (22/123, p ~4e-33): 17 members directly annotated
+      (Atg1, Cat, DJ-1alpha, Hsp22, InR, Mekk1, Mrp4, Pi3K92E, Prx2, Prx3, Sod1, bsk,
+      dj-1beta, foxo, hang, park, puc) plus GLaz, Lon, Sod2, mth, ple via closure.
+      Entailed by paraquat's mode of action.
+  - term:
+      id: GO:0098869
+      label: cellular oxidant detoxification
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The enzymatic ROS-clearing layer: Cat, Sod2, Prx3, GstD1, GstE6, GstE7,
+      DJ-1alpha, dj-1beta direct; Sod1, Prx2 via closure (10/56, p ~4e-15).
+  - term:
+      id: GO:0007254
+      label: JNK cascade
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      Gadd45, Mekk1, bsk, hep and puc are directly annotated (5/20, p ~7e-9), and the TNF
+      ligand egr upstream is also present. JNK signalling is the fly's main
+      inducible defence against oxidative stress: hep gain-of-function and puc
+      heterozygosity extend lifespan and paraquat survival. Mechanistic because it
+      names a specific signalling route rather than a generic stress category.
+  - term:
+      id: GO:0042417
+      label: dopamine metabolic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: mechanistic
+    curator_note: >-
+      The Parkinson's-model arm: ple (tyrosine hydroxylase), Pu (GTP
+      cyclohydrolase, which makes the TH cofactor) and Catsup (negative regulator of
+      TH and GTP cyclohydrolase) set dopamine levels, which modulate dopaminergic
+      neuron vulnerability to paraquat. Only ple and DJ-1alpha are annotated to
+      this term (2/12). Pu and Catsup reach it only through regulation or cofactor
+      terms outside the is_a/part_of closure, so enrichment under-recovers the
+      module: an annotation gap.
+  - term:
+      id: GO:0008340
+      label: determination of adult lifespan
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      13/142 directly annotated (Cat, GLaz, Hsp22, InR, Mrp4, Prx2, Prx3, Sod1,
+      Sod2, foxo, hep, mth, puc), p ~1e-15. Paraquat resistance is used as a
+      longevity correlate in flies.
+  - term:
+      id: GO:1901562
+      label: response to paraquat
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      The defining process of the set is annotated to only one member (mth) in
+      FlyBase GOA; the term has 4 annotated fly genes in total. Most members
+      (Sod1, Sod2, Cat, foxo, hep, puc, park, DJ-1 genes) entered CTD through
+      published paraquat-survival phenotypes that are not captured as GO
+      annotations to this term. An annotation gap on the construction term,
+      paralleling the worm paraquat set.

@@ -1,0 +1,100 @@
+gene_set_id: MSIGDB:BILANGES_RAPAMYCIN_SENSITIVE_GENES
+gene_set_name: BILANGES_RAPAMYCIN_SENSITIVE_GENES
+collection: M2:CGP
+msigdb_release: v2025.1.Mm
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: DN
+description: >-
+  MSigDB mouse M2:CGP set (M2329) of 41 mRNAs whose serum-stimulated recruitment to
+  polysomes in mouse embryo fibroblasts is blocked by rapamycin (Bilanges et al.
+  2007, PMID:17562867, Table 3S). It is a translational (polysome-profiling), not a
+  transcriptional, signature of mTORC1 inhibition. GO enrichment recovers the
+  mechanism directly: the strongest signal is cytosolic ribosomal proteins (Rpl11,
+  Rpl22, Rpl23a, Rpl27, Rpl34, Rpl35, Rpl35a, Rps15), the classic 5'-terminal
+  oligopyrimidine (TOP) mRNAs whose translation mTORC1 controls, so that mTORC1
+  couples growth signalling to ribosome production. The remaining ~33 members are
+  heterogeneous (Insig1, Acsl1, Polr1b, Smc2, Apex1, ...) and carry no coherent
+  GO signal. The ribosomal-protein genes also generate artefactual hits via
+  moonlighting annotations (myoblast fusion, synaptic translation), useful
+  negative controls.
+contexts:
+  - term:
+      id: CHEBI:9168
+      label: sirolimus
+    context_type: chemical_perturbagen
+  - term:
+      id: CL:2000042
+      label: embryonic fibroblast
+    context_type: cell_type
+associations:
+  - term:
+      id: GO:0022625
+      label: cytosolic large ribosomal subunit
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:17562867
+        reference_title: "Tuberous sclerosis complex proteins 1 and 2 control serum-dependent translation in a TOP-dependent and -independent manner."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Serum-responsive mRNAs that are sensitive to inhibition by rapamycin are highly enriched for terminal oligopyrimidine and for very short 5' and 3' untranslated regions."
+        explanation: >-
+          TOP mRNAs are predominantly those encoding ribosomal proteins, so the
+          ribosome enrichment is the GO-visible signature of TOP-dependent,
+          mTORC1-controlled translation.
+    curator_note: >-
+      Top hit in a GOA-mouse run (7/62, p ~3e-12): Rpl11, Rpl22, Rpl23a, Rpl27,
+      Rpl34, Rpl35, Rpl35a, all directly annotated. Marked mechanistic although
+      "ribosome" is usually a housekeeping hit: here the set is defined by
+      rapamycin-sensitive translation, and recovering ribosomal-protein mRNAs is
+      exactly the evidence that mTORC1 acts through TOP-mRNA translation. In this
+      context it is the mechanism, not background.
+  - term:
+      id: GO:0002181
+      label: cytoplasmic translation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The process the TOP-mRNA-encoded ribosomal proteins serve (8/213, p ~6e-10): the seven Rpl genes plus Rps15. Confirmatory relative to the
+      component term: it restates that the targets are translation machinery.
+  - term:
+      id: GO:1901740
+      label: negative regulation of myoblast fusion
+    aspect: biological_process
+    category: false_association
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Significant (6/51, p ~1e-10) only because Rpl11, Rpl23a, Rpl27, Rpl34,
+      Rpl35 and Rpl35a carry direct annotations to this term in MGI GOA (from an
+      extra-ribosomal-function study). Nothing about fibroblast translation
+      control implies myoblast fusion; an annotation-driven artefact and a useful
+      negative control for methods that report specific-sounding child terms.
+  - term:
+      id: GO:0140236
+      label: translation at presynapse
+    aspect: biological_process
+    category: false_association
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      SynGO-style annotations of ribosomal proteins (Rpl22, Rpl23a, Rpl27, Rpl34,
+      Rpl35, Rpl35a) make this term significant (6/47, p ~6e-11) in embryonic
+      fibroblasts, which have no synapses. Artefact of annotation context, not
+      biology of the set.

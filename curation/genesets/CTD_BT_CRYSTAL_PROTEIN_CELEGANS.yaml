@@ -1,0 +1,127 @@
+gene_set_id: MYGENESET:C030956_6239
+gene_set_name: CTD_BT_CRYSTAL_PROTEIN_CELEGANS
+collection: CTD:chem_gene_ixns
+taxon:
+  id: NCBITaxon:6239
+  label: Caenorhabditis elegans
+direction: NA
+description: >-
+  The 111 C. elegans genes with CTD-curated interactions with Bacillus
+  thuringiensis insecticidal crystal protein (MeSH C030956; mygeneset.info
+  C030956_6239; membership snapshot in curation/genesets/model_organism_members.gmt).
+  In C. elegans this literature is dominated by the nematicidal pore-forming toxin
+  Cry5B and by genetic screens for host genes that alter intoxication. About a quarter
+  of the members (29) are "hpo" genes (hypersensitive to pore-forming toxin; hpo-2 through hpo-42),
+  found in RNAi screens as genes whose knockdown makes worms hypersensitive, so the
+  set is a host-defence (cellular toxin response) list and is undirected. Its
+  mechanistic content: intestinal epithelial defence against membrane pores
+  requires the p38 MAPK (tir-1, nsy-1, sek-1) and JNK-like (mek-1, kgb-1, jun-1)
+  cascades plus let-60/Ras; membrane-trafficking and repair machinery (exocyst
+  exoc-8 and sec-8, ESCRT-III vps-20 and vps-32.2, syx-17); and
+  glycoconjugate biosynthesis (GPI anchor pigk-1, pigs-1, pigw-1, gpaa-1;
+  N-glycan/dolichol alg-5, algn-13, algn-14, dpm-3). The classic Cry5B receptor
+  genes (bre-1 to bre-5, glycosphingolipid synthesis) are absent. This is a
+  poorly annotated set: in a WB-GOA run only two GO terms reach significance
+  (positive regulation of gene expression and MAPK cascade, 6/45), so it mainly
+  benchmarks annotation gaps.
+contexts:
+  - term:
+      id: MESH:C030956
+      label: insecticidal crystal protein, Bacillus Thuringiensis
+    context_type: chemical_perturbagen
+associations:
+  - term:
+      id: GO:0009636
+      label: response to toxic substance
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Entailed by construction (genes that modify toxin sensitivity), hence
+      confirmatory. Only 4/111 members are annotated (jun-1, sek-1 direct; kgb-1,
+      nsy-1 via closure). The 29 hpo genes, defined by Cry5B hypersensitivity, are
+      in the set but carry no annotation to this or any toxin-response term in
+      WormBase GOA, so enrichment cannot recover the set's defining process. A
+      clear GO-annotation gap (phenotype-to-process curation of the hpo screen).
+  - term:
+      id: GO:0038066
+      label: p38MAPK cascade
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      The p38 pathway is the central intestinal defence against pore-forming toxins
+      in C. elegans. The set contains the upstream module tir-1/SARM, nsy-1/MAP3K
+      and sek-1/MAP2K (nsy-1 and sek-1 directly annotated; mek-1 too); pmk-1
+      itself is not in this CTD set. 3/111 against an 8-gene term is a strong
+      fraction, but three genes rarely survive genome-wide correction, so recovery
+      is method-dependent. Mechanistic: a specific signalling route, not entailed
+      by "toxin response".
+  - term:
+      id: GO:0007254
+      label: JNK cascade
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      The parallel JNK-like arm (mek-1 -> kgb-1, with jun-1 downstream; kgb-1, mek-1,
+      nsy-1 directly annotated, 3/10). Supporting alongside p38; same small-term
+      caveat.
+  - term:
+      id: GO:0006506
+      label: GPI anchor biosynthetic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      pigk-1, pigs-1 and pigw-1 are directly annotated (3/31); gpaa-1, the
+      remaining GPI-transamidase subunit, is also in the set. GPI-anchored proteins
+      are toxin receptors for several bacterial pore-forming toxins, so this is a
+      specific mechanistic lead about the host surface. Medium confidence: CTD
+      does not say whether these genes alter sensitivity up or down.
+  - term:
+      id: GO:0001778
+      label: plasma membrane repair
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: mechanistic
+    curator_note: >-
+      Cells survive pore-forming toxins by repairing the plasma membrane, through
+      ESCRT-mediated budding and exocytosis/endocytosis. The set has ESCRT-III
+      (vps-20, vps-32.2) and exocyst (exoc-8, sec-8) subunits and the SNARE syx-17,
+      but none is annotated to plasma membrane repair (a 5-gene term in WB GOA). A
+      plausible annotation gap; medium confidence because some of these genes may
+      act in the toxin response through general trafficking.
+  - term:
+      id: GO:0000145
+      label: exocyst
+    aspect: cellular_component
+    category: marker_driven_plausible
+    confidence: medium
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    curator_note: >-
+      exoc-8 and sec-8 are directly annotated (2/8). Two subunits only; included
+      to record the trafficking component behind the membrane-repair term above,
+      not as an independent finding.

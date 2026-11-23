@@ -1,0 +1,137 @@
+gene_set_id: MYGENESET:D010269_6239
+gene_set_name: CTD_PARAQUAT_CELEGANS
+collection: CTD:chem_gene_ixns
+taxon:
+  id: NCBITaxon:6239
+  label: Caenorhabditis elegans
+direction: NA
+description: >-
+  The 76 C. elegans genes with CTD-curated interactions with paraquat (MeSH
+  D010269; mygeneset.info D010269_6239; membership snapshot in
+  curation/genesets/model_organism_members.gmt). Paraquat redox-cycles to generate
+  superoxide, largely at mitochondrial complex I, and is the standard
+  oxidative-stress challenge in worm ageing genetics. Members are mostly genes
+  whose mutation alters paraquat resistance (undirected). GO enrichment resolves
+  three mechanisms. (1) Detoxification and stress transcription (sod-1, gsr-1,
+  gst-10, gsto-1, skn-1/Nrf, hsf-1). (2) Insulin/IGF signalling (daf-2, age-1,
+  pdk-1, daf-18, daf-16), the longevity pathway whose reduction confers stress
+  resistance. (3) Mitochondria: the electron transport chain (mev-1/SDHC, gas-1,
+  isp-1, nuo-4, ndua-5, ndub-6, ndus-8, cyc-2.1, cox-6C) together with fusion and
+  fission (fzo-1, eat-3, drp-1). The less expected finding is a block of
+  sensory-cilium intraflagellar transport genes (che-3, che-11, che-13, osm-1,
+  osm-3, osm-5, osm-6, dyf-3, dyf-13): loss of amphid sensory cilia extends
+  lifespan and raises stress resistance through neuroendocrine control of DAF-16.
+contexts:
+  - term:
+      id: CHEBI:34905
+      label: paraquat
+    context_type: chemical_perturbagen
+associations:
+  - term:
+      id: GO:0006979
+      label: response to oxidative stress
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Top hit in a WB-GOA run (15/97, p ~3e-18). age-1, cep-1, che-11, daf-16,
+      daf-2, gsto-1, mev-1, sek-1, skn-1 directly; atf-7, eat-3, gsr-1, gst-10,
+      pdk-1, sod-1 via closure. Entailed by paraquat's mode of action.
+  - term:
+      id: GO:1901562
+      label: response to paraquat
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      The set's defining process, and almost unannotated: only skn-1 is annotated to
+      it in WormBase GOA (1/76; the term has 6 annotated worm genes). Many members
+      have published paraquat-sensitivity phenotypes (mev-1, gas-1, isp-1, daf-2,
+      age-1, daf-16, sod-1), the evidence CTD used to put them in the set, but
+      those phenotypes are not propagated to this GO process. An annotation gap on
+      the construction term.
+  - term:
+      id: GO:0022904
+      label: respiratory electron transport chain
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      8/56, p ~6e-10: ndua-5 direct; mev-1, gas-1, isp-1, nuo-4, ndub-6, ndus-8,
+      cyc-2.1 via closure. Mechanistic: it localises the toxicity to the site of
+      superoxide production. Complex I/II mutants (gas-1, mev-1) are paraquat
+      hypersensitive, while the complex III mutant isp-1 is resistant and
+      long-lived, so the chain sets ROS output in both directions.
+  - term:
+      id: GO:0042073
+      label: intraciliary transport
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      9/34, p ~1e-13, among the strongest hits: che-11, che-13, dyf-13, dyf-3,
+      osm-1, osm-3, osm-5, osm-6 direct, che-3 via closure. Mechanistic: nothing
+      about oxidative chemistry implies cilia. The link runs through sensory
+      perception: ciliated amphid neurons regulate insulin-like signalling, and
+      cilium-defective mutants are long-lived and stress resistant in a
+      daf-16-dependent way.
+  - term:
+      id: GO:0008286
+      label: insulin receptor signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      daf-2, pdk-1 and daf-16 are directly annotated (3/15); age-1/PI3K and
+      daf-18/PTEN are also present. The ageing pathway that controls
+      stress-resistance genes; expected in a worm oxidative-stress list, hence
+      confirmatory.
+  - term:
+      id: GO:0008340
+      label: determination of adult lifespan
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      12/227 directly annotated (age-1, ant-1.1, cep-1, che-11, daf-16, daf-18,
+      daf-2, gst-10, hsf-1, mev-1, ral-1, skn-1; p ~3e-9). Reflects that paraquat resistance
+      is mainly studied as a correlate of longevity.
+  - term:
+      id: GO:0008053
+      label: mitochondrial fusion
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      fzo-1/mitofusin and eat-3/OPA1 are directly annotated (2/4), and drp-1
+      (fission) is also present. Mitochondrial dynamics mutants alter paraquat
+      sensitivity. Two genes in a 4-gene term: a strong fraction but marginal
+      genome-wide.

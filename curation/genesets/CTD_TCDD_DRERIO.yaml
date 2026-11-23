@@ -1,0 +1,138 @@
+gene_set_id: MYGENESET:D013749_7955
+gene_set_name: CTD_TCDD_DRERIO
+collection: CTD:chem_gene_ixns
+taxon:
+  id: NCBITaxon:7955
+  label: Danio rerio
+direction: NA
+description: >-
+  The 51 zebrafish genes with CTD-curated interactions with
+  2,3,7,8-tetrachlorodibenzo-p-dioxin (TCDD; MeSH D013749; mygeneset.info
+  D013749_7955; membership snapshot in curation/genesets/model_organism_members.gmt).
+  TCDD acts through the aryl hydrocarbon receptor (AHR); in zebrafish embryos its
+  signature toxicity is cardiovascular (heart malformation, pericardial oedema),
+  mediated by Ahr2/Arnt. The set mixes three kinds of
+  members. (1) The receptor machinery and its classic targets: ahr1a, ahr1b, ahr2,
+  ahrrb (AHR repressor), arnt2, cyp1a, sult6b1. (2) Developmental and cardiac
+  effectors: tcf21 (epicardium), notch1b, bmp4, aldh1a2, and the prostanoid enzymes
+  ptgs2b (COX-2) and tbxas1 (thromboxane synthase), implicated in TCDD-induced
+  circulation failure. (3) Proteomic and abundance-driven changes: glycolysis
+  (aldoaa, aldocb, pgk1, tpi1b, ldhba), proteasome subunits (psma1, psma2a, psma4,
+  psmb7, psmc5) and chaperones (hspa5, hspa8, hspd1, tcp1, stip1). Direction is
+  mixed (NA).
+contexts:
+  - term:
+      id: CHEBI:28119
+      label: 2,3,7,8-tetrachlorodibenzodioxine
+    context_type: chemical_perturbagen
+associations:
+  - term:
+      id: GO:0034751
+      label: aryl hydrocarbon receptor complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      ahr1b, ahr2, ahrrb and arnt2 are directly annotated (4/10, p ~5e-9 in a
+      ZFIN-GOA run; ahr1a is also in the set). TCDD's receptor, so entailed by the
+      chemical: confirmatory, but it is the term that identifies the molecular
+      initiating event.
+  - term:
+      id: GO:0009410
+      label: response to xenobiotic stimulus
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      ahr1a, ahr1b, ahr2, ahrrb and cyp1a directly, sult6b1 via closure (6/111).
+      The AHR-CYP1A battery that is the textbook dioxin response. Recovered (p ~2e-7),
+      as is the cellular-response child term.
+  - term:
+      id: GO:0007507
+      label: heart development
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: mechanistic
+    curator_note: >-
+      The phenotype-defining biology of TCDD in zebrafish embryos. Developmental
+      cardiac regulators are present (tcf21, notch1b, bmp4, aldh1a2), but only
+      bmp4 (direct) and arnt2 and tpm4a (via closure) reach heart development in
+      ZFIN GOA (3/605). tcf21, notch1b and aldh1a2 have zebrafish heart-relevant
+      roles but are annotated to kidney, vasculature, Notch and retinoic-acid
+      terms instead, so the cardiotoxicity mechanism is not recoverable: an
+      annotation gap. Medium confidence, as CTD does not say which interactions
+      come from cardiac studies.
+  - term:
+      id: GO:0001516
+      label: prostaglandin biosynthetic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      ptgs2b (COX-2) is directly annotated (1/10); tbxas1 (thromboxane A synthase)
+      acts downstream on the same prostanoid pathway. COX-2/thromboxane signalling
+      has been implicated in TCDD-induced circulation failure in zebrafish embryos,
+      a specific mechanistic lead. Carried by one or two genes, so not recoverable
+      by set enrichment.
+  - term:
+      id: GO:0031101
+      label: fin regeneration
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      aldh1a2, notch1b, mmp9, hspa8 and hspd1 are directly annotated (5/89, p
+      ~2e-6). TCDD blocks caudal fin regeneration in larval and adult zebrafish
+      through Ahr2, a well-studied zebrafish toxicity endpoint, and the
+      regeneration regulators here (retinoic acid synthesis, Notch, Mmp9) are the
+      kind of developmental targets it disrupts. A specific, non-obvious
+      enrichment for a dioxin list, but part of the signal (hspa8, hspd1) comes
+      from abundant chaperones, so confidence is medium.
+  - term:
+      id: GO:0006096
+      label: glycolytic process
+    aspect: biological_process
+    category: nonspecific
+    confidence: medium
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      aldoaa, aldocb, pgk1 and tpi1b are directly annotated (4/36), and ldhba and
+      mdh2 are also present (p ~1e-6, with stronger ADP and pyruvate metabolic
+      terms). These, with proteasome subunits and chaperones, look
+      like abundant proteins from proteomic comparisons of exposed fish, the usual
+      high-abundance bias of 2D-gel studies, rather than an AHR-specific
+      programme. Nonspecific.
+  - term:
+      id: GO:0000502
+      label: proteasome complex
+    aspect: cellular_component
+    category: nonspecific
+    confidence: medium
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      psmc5 direct; psma1, psma2a, psma4, psmb7 via closure (5/50, p ~1e-7). Same
+      abundant-protein proteomic signal as the glycolysis term; nonspecific.

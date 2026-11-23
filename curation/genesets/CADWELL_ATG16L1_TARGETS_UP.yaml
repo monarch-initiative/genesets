@@ -1,0 +1,124 @@
+gene_set_id: MSIGDB:CADWELL_ATG16L1_TARGETS_UP
+gene_set_name: CADWELL_ATG16L1_TARGETS_UP
+collection: M2:CGP
+msigdb_release: v2025.1.Mm
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: UP
+description: >-
+  MSigDB mouse M2:CGP set (M5688) of ~120 genes up-regulated in ileal Paneth-cell
+  enriched epithelium of Atg16l1 hypomorphic mice (Cadwell et al. 2008,
+  PMID:18849966, Table 1S). ATG16L1 is a Crohn's disease risk gene and an essential
+  autophagy protein; the expected readout of autophagy loss (Paneth granule
+  exocytosis defects) is morphological and is not carried by this transcriptional
+  set. Instead GO enrichment reveals the "unexpected gain of function" the authors
+  describe: a lipid-handling programme (Apoa1, Apoa4, Apoc2, Mttp, Fabp1, Fabp4,
+  Cd36, Lpl, Scarb1, Npc1l1, Dgat2, Cidec, Plin1, Plin4, Scd1), the adipocytokines
+  leptin and adiponectin (Lep, Adipoq), and acute-phase reactants (Saa1, Saa2, Hp).
+  Several of these are PPAR target genes. A small interferon-stimulated component
+  (Isg15, Rsad2, Ifit1bl2) is also present, and some genes look like tissue
+  carry-over (hemoglobins, Amy2b, Krt12).
+contexts:
+  - term:
+      id: PR:000004409
+      label: autophagy-related protein 16-1
+    context_type: genetic_perturbation
+  - term:
+      id: CL:0000510
+      label: paneth cell
+    context_type: cell_type
+  - term:
+      id: UBERON:0002116
+      label: ileum
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0055088
+      label: lipid homeostasis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:18849966
+        reference_title: "A key role for autophagy and the autophagy gene Atg16l1 in mouse and human intestinal Paneth cells."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "transcriptional analysis revealed an unexpected gain of function specific to ATG16L1-deficient Paneth cells including increased expression of genes involved in peroxisome proliferator-activated receptor (PPAR) signalling and lipid metabolism"
+        explanation: >-
+          The authors themselves identify the lipid-metabolism programme as the
+          unexpected transcriptional consequence of Atg16l1 deficiency.
+    curator_note: >-
+      The headline enrichment (13/206, p ~3e-12; with the more specific
+      regulation of plasma lipoprotein particle levels at p ~2e-15). Carriers in
+      MGI GOA: Apoa4, Scd1, Bloc1s6, Etnppl directly; Apoa1, Apoc2, Dgat2, Fabp1,
+      Fabp4, Lpl, Mttp, Npc1l1, Scarb1 via closure. Mechanistic: the perturbation is
+      an autophagy gene, so a lipid-transport/storage signature is not entailed by
+      construction and points to a metabolic (PPAR-linked) gain of function in
+      autophagy-deficient Paneth cells.
+  - term:
+      id: GO:0097006
+      label: regulation of plasma lipoprotein particle levels
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The most significant single term (11/66, p ~2e-15): apolipoproteins
+      (Apoa1, Apoa4, Apoc2), Mttp, Cd36, Scarb1, Lpl, Fabp1, Dgat2, Adipoq,
+      Bloc1s6. A more specific facet of the lipid-homeostasis core, describing the
+      chylomicron/enterocyte-like lipoprotein machinery; supporting because it is a
+      sub-aspect of the core term rather than a separate mechanism.
+  - term:
+      id: GO:0006953
+      label: acute-phase response
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: mechanistic
+    curator_note: >-
+      The authors explicitly report acute-phase reactants among the induced genes,
+      and the set contains the canonical ones: Saa1, Saa2 and Hp. In current MGI GOA none of Saa1, Saa2 or Hp is
+      annotated to acute-phase response or a descendant (only Ptger3 reaches the term
+      via closure), so enrichment cannot recover it. A GO-annotation gap in mouse GOA.
+  - term:
+      id: GO:0045055
+      label: regulated exocytosis
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: membership_gap
+    insight: confirmatory
+    curator_note: >-
+      The primary Paneth-cell phenotype of Atg16l1 deficiency is abnormal granule
+      exocytosis (disorganised, diminished lysozyme granules). This is a cell
+      biological defect and its machinery is not transcriptionally changed: no
+      member is annotated to regulated exocytosis or its descendants, and the
+      granule cargo genes (Lyz1, defensins) are not in the UP set. Recorded so the
+      description of the context is complete; a membership gap.
+  - term:
+      id: GO:0051607
+      label: defense response to virus
+    aspect: biological_process
+    category: marker_driven_plausible
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    curator_note: >-
+      A small interferon-stimulated gene component (Isg15, Rsad2 direct; Ifit1bl2,
+      Trim15 via closure; 4/283). Plausible given later work showing the
+      Atg16l1-hypomorph Paneth phenotype depends on enteric viral infection, but too
+      small to be a robust feature of this set.
