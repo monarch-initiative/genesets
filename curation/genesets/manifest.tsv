@@ -194,3 +194,8 @@ MYGENESET:D000448_6239	CTD:chem_gene_ixns	CHEBI:2555	chemical_perturbagen	aldica
 MYGENESET:D010269_6239	CTD:chem_gene_ixns	CHEBI:34905	chemical_perturbagen	paraquat		
 MYGENESET:D010269_7227	CTD:chem_gene_ixns	CHEBI:34905	chemical_perturbagen	paraquat		
 MYGENESET:D013749_7955	CTD:chem_gene_ixns	CHEBI:28119	chemical_perturbagen	2,3,7,8-tetrachlorodibenzodioxine		
+LIT:YEAST_CADMIUM_SENSITIVE_RUOTOLO	LIT:GENETIC	CHEBI:48775	chemical_perturbagen	cadmium(2+)		
+LIT:YEAST_DTT_SENSITIVE_RAND	LIT:GENETIC	CHEBI:18320	chemical_perturbagen	1,4-dithiothreitol		
+LIT:YEAST_NICKEL_RESISTANT_RUOTOLO	LIT:GENETIC	CHEBI:49786	chemical_perturbagen	nickel(2+)		
+LIT:YEAST_RAPAMYCIN_SENSITIVE_XIE	LIT:GENETIC	CHEBI:9168	chemical_perturbagen	sirolimus		
+LIT:YEAST_RLS_EXTENDED_MCCORMICK	LIT:GENETIC					
