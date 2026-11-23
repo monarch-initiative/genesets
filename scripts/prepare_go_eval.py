@@ -18,6 +18,7 @@ import os
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from collections import defaultdict
 from pathlib import Path
@@ -564,9 +565,11 @@ def main() -> int:
     downloads = args.out_dir / "downloads"
 
     ontology_path = downloads / "go-basic.obo"
-    gaf_path = downloads / "goa_human.gaf.gz"
     if args.go_release:
         args.ontology_url, args.gaf_url = go_release_urls(args.go_release)
+    # Cache under the URL's own file name so species GAFs (mgi, wb, fb, zfin, ...)
+    # passed via --gaf-url do not collide with the default goa_human download.
+    gaf_path = downloads / Path(urllib.parse.urlparse(args.gaf_url).path).name
     ontology_file = download(args.ontology_url, ontology_path, args.force_download)
     data_version = obo_data_version(ontology_path)
     print(f"GO data-version: {data_version} ({args.ontology_url})")
@@ -619,9 +622,9 @@ def main() -> int:
         },
         "annotations": {
             "source": (
-                f"GOA human GAF from GO dated release {args.go_release}"
+                f"GAF from GO dated release {args.go_release} ({gaf_path.name})"
                 if args.go_release
-                else "GOA human official GAF from Gene Ontology current annotations"
+                else f"Official GAF from Gene Ontology current annotations ({gaf_path.name})"
             ),
             "file": gaf_file,
             "gaf_header": gaf_header,
@@ -644,7 +647,7 @@ def main() -> int:
             "stats": annotation_stats,
         },
         "background": {
-            "policy": "Common background from NOT-filtered all-evidence GOA human genes, using the configured GAF gene_id_field.",
+            "policy": f"Common background from NOT-filtered all-evidence genes in {gaf_path.name}, using the configured GAF gene_id_field.",
             "path": annotation_stats["background_path"],
             "gene_count": annotation_stats["background_gene_count"],
         },

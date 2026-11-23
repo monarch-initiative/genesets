@@ -26,6 +26,10 @@ prefixes:
   MSIGDB: https://www.gsea-msigdb.org/gsea/msigdb/cards/
   LIT: https://w3id.org/genesets-rs/lit/
   CGSA: https://w3id.org/genesets-rs/cgsa/
+  # CTD chemical-gene interaction sets as served by mygeneset.info; the local id
+  # is <MeSH chemical id>_<NCBI taxon id>, e.g. MYGENESET:D000448_6239.
+  MYGENESET: https://mygeneset.info/v1/geneset/
+  MESH: http://id.nlm.nih.gov/mesh/
   PMID: http://identifiers.org/pubmed/
   DOI: https://doi.org/
 default_prefix: genesets

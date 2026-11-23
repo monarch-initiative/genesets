@@ -1,0 +1,142 @@
+gene_set_id: MSIGDB:SCHMIDT_POR_TARGETS_IN_LIMB_BUD_UP
+gene_set_name: SCHMIDT_POR_TARGETS_IN_LIMB_BUD_UP
+collection: M2:CGP
+msigdb_release: v2025.1.Mm
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: UP
+description: >-
+  MSigDB mouse M2:CGP set (M2383) of 28 genes up-regulated in E12.5 forelimb buds
+  of mice with a limb-mesenchyme conditional deletion of Por, the obligate electron
+  donor for all microsomal cytochrome P450 enzymes (Schmidt et al. 2009,
+  PMID:19273610, Fig. 7C). The set is native mouse (MOUSE_GENE_SYMBOL). It is a
+  model case of GO enrichment revealing mechanism: the perturbation is a single
+  oxidoreductase with dozens of P450 clients (retinoic acid, arachidonic acid,
+  sterol and xenobiotic metabolism), yet the response is almost entirely the
+  sterol/isoprenoid pathway (Hmgcs1, Mvk, Mvd, Fdps, Idi1, Fdft1, Sqle, Lss, Cyp51,
+  Msmo1, Nsdhl, Tm7sf2, Sc5d, Dhcr7) together with the SREBP-2 feedback machinery
+  (Srebf2, Insig1, Ldlr, Stard4). This pinpoints the POR-dependent sterol enzymes
+  (CYP51 lanosterol demethylase, and squalene epoxidase, which also takes electrons
+  from POR) as the limiting step: loss of POR starves the cell of cholesterol and
+  SREBP-2 up-regulates the whole pathway, the mechanism the authors propose for the
+  Antley-Bixler-like limb phenotype. A small SREBP-1 lipogenic arm (Acly, Elovl6,
+  Scd1) and the retinoic-acid-inducible Cyp26a1 (retinoic acid excess was measured)
+  are also present.
+contexts:
+  - term:
+      id: PR:000013030
+      label: NADPH--cytochrome P450 reductase
+    context_type: genetic_perturbation
+  - term:
+      id: UBERON:0004347
+      label: limb bud
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0006695
+      label: cholesterol biosynthetic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:19273610
+        reference_title: "Cholesterol metabolism: the main pathway acting downstream of cytochrome P450 oxidoreductase in skeletal development of the limb."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "In CKO limbs, expression of genes throughout the whole cholesterol biosynthetic pathway was upregulated, and cholesterol deficiency can explain most aspects of the phenotype."
+        explanation: >-
+          The defining paper reports the same pathway-wide induction this set
+          captures and attributes the limb phenotype to cholesterol deficiency.
+    curator_note: >-
+      The dominant and mechanistically decisive term. 16 of 28 members are directly
+      annotated to cholesterol biosynthesis in MGI GOA (Hmgcs1, Mvk, Mvd, Fdps,
+      Idi1, Fdft1, Sqle, Lss, Cyp51, Msmo1, Nsdhl, Tm7sf2, Sc5d, Dhcr7, Acat2,
+      Insig1); 16/35 of the term's annotated genes, p ~1e-41 in a GOA-mouse run.
+      Marked mechanistic: the set is defined by deleting a generic P450 reductase,
+      not by any sterol gene, so the convergence on sterol synthesis (out of all
+      POR-dependent pathways) is the non-obvious finding that identifies cholesterol
+      deficiency as the operative mechanism.
+  - term:
+      id: GO:0042632
+      label: cholesterol homeostasis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      The induction is a homeostatic feedback response: Srebf2 itself, its retention
+      partner Insig1 (an SREBP target), the LDL receptor Ldlr and the sterol
+      transporter Stard4 are all present, i.e. the SREBP-2 sterol-sensing loop
+      responding to low ER cholesterol. Insig1, Ldlr, Scd1, Soat2 and Srebf2 are
+      directly annotated to cholesterol homeostasis in MGI GOA (5/28 of a 117-gene
+      term; p ~1e-7), so the term is recovered, though far less strongly than the
+      biosynthesis term. It carries the regulatory mechanism.
+  - term:
+      id: GO:0005789
+      label: endoplasmic reticulum membrane
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Post-squalene sterol enzymes, SREBP-2/INSIG and POR itself reside in the ER
+      membrane, where POR transfers electrons to CYP51 and squalene epoxidase. 15/28
+      members are directly annotated here (Cyp51, Sqle, Lss, Msmo1, Nsdhl, Sc5d,
+      Dhcr7, Tm7sf2, Fdft1, Srebf2, Insig1, Soat2, Scd1, Elovl6, Cyp26a1). The
+      compartment is generic, hence confirmatory.
+  - term:
+      id: GO:0008299
+      label: isoprenoid biosynthetic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The pre-squalene mevalonate arm (Hmgcs1, Mvk, Mvd, Idi1, Fdps; plus Acat2 and
+      Lss via closure) that also supplies farnesyl/geranylgeranyl diphosphate for
+      prenylation. Co-induced by SREBP-2 with the sterol branch; supporting rather
+      than core because the sterol endpoint is what POR loss limits.
+  - term:
+      id: GO:0006633
+      label: fatty acid biosynthetic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      A minor SREBP-1-type lipogenic component (Acly, Elovl6, Scd1, all directly
+      annotated). Only 3 members against a 120-gene term, so it is not expected to
+      reach significance; recorded because it shows the SREBP response extends
+      beyond sterols, consistent with general SREBP activation.
+  - term:
+      id: GO:0034653
+      label: retinoic acid catabolic process
+    aspect: biological_process
+    category: marker_driven_plausible
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    curator_note: >-
+      Carried by a single member, Cyp26a1 (directly annotated). Its induction is a
+      readout of the retinoic acid excess the authors measured in POR-deficient
+      limbs (CYP26 enzymes are themselves POR-dependent, so RA clearance fails and
+      RA-inducible Cyp26a1 rises). Biologically real but a one-gene signal,
+      hence marker_driven_plausible; not recoverable by set enrichment.

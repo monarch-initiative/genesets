@@ -51,17 +51,23 @@ from genesets_workflows.curation import model  # noqa: E402
 CORE = {"core_process", "core_component"}
 
 
-def load_gold(genesets_dir: Path) -> dict[str, dict[str, dict[str, set[str]]]]:
+def load_gold(genesets_dir: Path, taxon: str | None = None) -> dict[str, dict[str, dict[str, set[str]]]]:
     """name -> {'rec': {recovery_status: CORE term ids},
                'ins': {insight: core+supporting term ids}}.
 
     `rec` drives the recovery_status metrics (CORE terms only). `ins` drives the
     confirmatory-vs-mechanistic split over every asserted-real term (all
     insight-tagged = core + supporting; nonspecific/false carry no insight tag).
+
+    With `taxon` (an NCBITaxon CURIE), only interpretations of sets defined in that
+    species are loaded, so a species-specific GAF is never scored against another
+    species' gold.
     """
     gold: dict[str, dict[str, dict[str, set[str]]]] = {}
     for path in sorted(genesets_dir.glob("*.yaml")):
         interp = model.load_interpretation(path)
+        if taxon and (interp.taxon is None or interp.taxon.id != taxon):
+            continue
         rec: dict[str, set[str]] = defaultdict(set)
         ins: dict[str, set[str]] = defaultdict(set)
         for assoc in interp.associations:
@@ -134,12 +140,17 @@ def main() -> int:
     parser.add_argument("--variants", default="all,no_contributes_to,iba_iea,iba")
     parser.add_argument("--baseline", default="all", help="Variant used for unique-vs-baseline diagnostics.")
     parser.add_argument("--out", type=Path, default=None, help="Optional summary TSV path.")
+    parser.add_argument(
+        "--taxon",
+        default=None,
+        help="Only score gold sets of this NCBITaxon CURIE (e.g. NCBITaxon:10090); use with a species GAF.",
+    )
     parser.add_argument("--strict", action="store_true",
                         help="Fail if any gold GO term is obsolete/unknown in the eval's GO release.")
     args = parser.parse_args()
 
     variants = [v.strip() for v in args.variants.split(",") if v.strip()]
-    gold = load_gold(args.genesets_dir)
+    gold = load_gold(args.genesets_dir, args.taxon)
     names = evaluable_sets(args.eval_dir / "queries.gmt", gold)
     hits = {v: load_hits(args.eval_dir / v / "results.tsv") for v in variants}
 

@@ -1,0 +1,92 @@
+gene_set_id: LIT:YEAST_NICKEL_RESISTANT_RUOTOLO
+gene_set_name: YEAST_NICKEL_RESISTANT_RUOTOLO
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:559292
+  label: Saccharomyces cerevisiae S288C
+direction: UP
+description: >-
+  The 71 Saccharomyces cerevisiae deletion strains with increased nickel tolerance
+  (3.5 mM Ni2+) in the genome-wide metal phenotyping study of Ruotolo et al. (2008,
+  PMID:18394190). Membership is the set of null mutants SGD curated from this paper
+  as "metal resistance: increased" with nickel(2+) (snapshot in
+  curation/genesets/model_organism_members.gmt). A compact, highly coherent set:
+  nearly the whole ESCRT machinery (16 of 18 annotated subunits) plus the MVB
+  sorting pathway and retromer. The authors' interpretation is that these deletions,
+  by affecting transporter downregulation and protein traffic, protect against
+  nickel while sensitising to cadmium (see YEAST_CADMIUM_SENSITIVE_RUOTOLO). Gain of
+  resistance from loss of a trafficking machine is a mechanistic signal that GO
+  enrichment surfaces almost perfectly. No yeast gene is annotated to any
+  nickel-response GO term.
+contexts:
+  - term:
+      id: CHEBI:49786
+      label: nickel(2+)
+    context_type: chemical_perturbagen
+associations:
+  - term:
+      id: GO:0036452
+      label: ESCRT complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      16/18, p ~2e-31, the top hit: DID2, DID4, MVB12, SNF7, SNF8, SRN2, STP22, VPS20,
+      VPS24, VPS25, VPS27, VPS28, VPS36, VPS4, VPS60, VTA1 (all via ESCRT subcomplex
+      annotations). Mechanistic: resistance arises from losing endosomal sorting,
+      consistent with transporter downregulation being the lever.
+  - term:
+      id: GO:0071985
+      label: multivesicular body sorting pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:18394190
+        reference_title: "Membrane transporters and protein traffic networks differentially affecting metal tolerance: a genomic phenotyping study in yeast."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "by affecting transporter downregulation and intracellular protein traffic - cause cadmium sensitivity but nickel resistance"
+        explanation: >-
+          The defining paper's mechanistic reading of this deletion class.
+    curator_note: >-
+      18/59, p ~5e-23: SNF8, VPS25, VPS27, VPS4 directly; BRO1, DID2, DID4, MVB12,
+      SNF7, SRN2, TRE1, VPS20, VPS24, VPS28, VPS36, VPS60, VPS8, VTA1 via closure. The
+      process by which ubiquitinated membrane proteins (including nutrient and metal
+      transporters) are sorted into intraluminal vesicles for vacuolar degradation.
+  - term:
+      id: GO:0030904
+      label: retromer complex
+    aspect: cellular_component
+    category: supporting_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      6/7 directly annotated (VPS5, VPS17, VPS29, VPS35, PEP8, SNX3), p ~6e-12. The
+      endosome-to-Golgi recycling arm of the same protein-traffic network.
+  - term:
+      id: GO:1904669
+      label: ATP export
+    aspect: biological_process
+    category: false_association
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      15/17, p ~3e-29, the second-strongest hit, and an annotation artefact: the
+      ESCRT genes carry IMP annotations to ATP export from a separate screen of
+      extracellular ATP (PMID:26585826). Nothing links ATP efflux to nickel
+      tolerance. A strong negative control: a method that reports this as the
+      mechanism is reading screen provenance, not biology.

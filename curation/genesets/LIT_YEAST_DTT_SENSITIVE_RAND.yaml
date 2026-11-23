@@ -1,0 +1,121 @@
+gene_set_id: LIT:YEAST_DTT_SENSITIVE_RAND
+gene_set_name: YEAST_DTT_SENSITIVE_RAND
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:559292
+  label: Saccharomyces cerevisiae S288C
+direction: DN
+description: >-
+  Saccharomyces cerevisiae deletion strains sensitive to the reductant
+  dithiothreitol (DTT, 32 mM) in the genome-wide screen of Rand and Grant (2006,
+  PMID:16251355). The paper reports 195 mutants; SGD curates 174 of them as null
+  mutants with "resistance to chemicals: decreased" with DTT, and that is the
+  membership used here (snapshot in curation/genesets/model_organism_members.gmt).
+  DTT causes reductive stress and, by blocking disulfide formation, ER protein
+  folding stress. GO enrichment recovers the secretory pathway (Golgi; the
+  Golgi mannosyltransferases ANP1, MNN9 and OCH1; OST3), and the ER unfolded
+  protein response regulators IRE1 and HAC1 are present. The single strongest hit,
+  the vacuolar V-ATPase, is a known multidrug-sensitivity class rather than a
+  DTT-specific mechanism. The paper's own mechanism, that the peroxiredoxin TSA1
+  chaperones ribosomal proteins against stress-induced aggregation, is carried by
+  TSA1 and a few RPL genes but is not visible to set enrichment.
+contexts:
+  - term:
+      id: CHEBI:18320
+      label: 1,4-dithiothreitol
+    context_type: chemical_perturbagen
+associations:
+  - term:
+      id: GO:0005794
+      label: Golgi apparatus
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:16251355
+        reference_title: "The thioredoxin system protects ribosomes against stress-induced aggregation."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "DTT-sensitive mutants were distributed among most major biological processes, but they particularly affected gene expression, metabolism, and the secretory pathway."
+        explanation: >-
+          The authors highlight the secretory pathway among DTT-sensitive mutants.
+    curator_note: >-
+      30/360, p ~2e-9: AKR1, ARV1, GLO3, GYP1, MON2, PEP12, TRS33, VPS34, VPS45, VPS54
+      and others directly; Golgi mannosyltransferases ANP1, MNN9, OCH1 and V-ATPase
+      subunits via closure. DTT disrupts oxidative folding of secretory proteins,
+      so a secretory-pathway signature is expected: confirmatory.
+  - term:
+      id: GO:0030968
+      label: endoplasmic reticulum unfolded protein response
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      IRE1 and HAC1, the entire yeast UPR signalling axis, are both in the set and
+      directly annotated (2/21). DTT is a classic UPR inducer, so a requirement for
+      the UPR is expected. Two genes are not enough for genome-wide
+      significance.
+  - term:
+      id: GO:0006487
+      label: protein N-linked glycosylation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      ANP1, MNN9 and OCH1 (Golgi mannan polymerase/initiating mannosyltransferase) and
+      OST3 (oligosaccharyltransferase) are directly annotated (4/57). Glycosylation
+      defects increase the folding load in the secretory pathway and weaken the cell
+      wall, a plausible specific route to reductive-stress sensitivity. Not
+      significant; medium confidence.
+  - term:
+      id: GO:0022625
+      label: cytosolic large ribosomal subunit
+    aspect: cellular_component
+    category: supporting_process
+    confidence: medium
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      RPL1B, RPL13B, RPL27A, RPL31A, RPL35A, RPL39 and RPP1B are directly annotated
+      (7/93, not significant). The paper's mechanism, Tsa1 chaperoning misassembled
+      ribosomal proteins whose aggregation is toxic under DTT, implies that
+      ribosome-assembly imbalance sensitises to DTT. TSA1 is in the set (annotated to
+      protein folding, not to this term). A real but under-powered mechanistic
+      signal.
+  - term:
+      id: GO:0016471
+      label: vacuolar proton-transporting V-type ATPase complex
+    aspect: cellular_component
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    evidence:
+      - reference: PMID:14661025
+        reference_title: "Integration of chemical-genetic and genetic interaction data links bioactive compounds to cellular target pathways."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "yeast mutants lacking a functional vacuolar H(+)-ATPase show multidrug sensitivity"
+        explanation: >-
+          V-ATPase loss sensitises yeast to many unrelated compounds, so its
+          enrichment is not specific to DTT.
+    curator_note: >-
+      7/17, p ~7e-8 (VMA2, VMA3, VMA7, VMA8, VMA10, VMA13, VMA16), with vacuolar
+      acidification (11/30, p ~4e-11) the top hit. Nonspecific: V-ATPase mutants are
+      hypersensitive to many chemically unrelated compounds, so this is the
+      generic multidrug-sensitivity class.
