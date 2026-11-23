@@ -84,10 +84,17 @@ and optional `evidence`. Aim for ~5–7 associations: the cell/state's defining
 core terms (a process + a component), 1–2 supporting, at most one `nonspecific`
 *only if* the membership clearly carries it (don't invent a housekeeping hit).
 
+**Exception: fully adjudicated sets.** When the set is being made scoreable for
+precision, label *every* pooled hit of the compared variants instead, however
+many there are, give every noise term an `artifact_cause`, and add a
+`hit_adjudication` block. Label blind to which variant reported each hit. See
+"Noise labels and precision" in `curation/README.md`.
+
 1. **`category` — the biology** (authoritative; NOT driven by annotation state).
    `core_process` / `core_component` / `supporting_process` /
    `marker_driven_plausible` / `nonspecific` / `false_association`. A term that is
-   biologically core stays core even if no annotation supports it.
+   biologically core stays core even if no annotation supports it. Noise terms
+   (`nonspecific`, `false_association`) also get an `artifact_cause`.
 
 2. **`recovery_status` — grounded in the actual membership** (orthogonal to
    category). Name the specific present/absent genes in the `curator_note`:

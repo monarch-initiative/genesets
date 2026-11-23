@@ -1,0 +1,432 @@
+gene_set_id: LIT:BRADI_ARBUSCULAR_MYCORRHIZAL_SYMBIOSIS
+gene_set_name: BRADI_ARBUSCULAR_MYCORRHIZAL_SYMBIOSIS
+collection: LIT:DOE_BER_BIOENERGY
+taxon:
+  id: NCBITaxon:15368
+  label: Brachypodium distachyon
+direction: UP
+n_genes: 34
+description: The Brachypodium distachyon root arbuscular mycorrhizal (AM) endosymbiosis, strigolactone
+  rhizosphere hyphal-branching signal synthesis, common symbiosis signaling pathway (SYMRK/DMI2, CCaMK/DMI3,
+  CYCLOPS/IPD3), and periarbuscular membrane phosphate (BdPT4/PT11) and ammonium (BdAMT2) nutrient-exchange
+  module (Hong et al. 2012 Plant Cell PMID:22669881; brachypodium-Glomus intraradices symbiosis; Bravo
+  et al. 2016 New Phytol PMID:26749197). Unlike Arabidopsis thaliana (a non-mycorrhizal Brassicaceae species
+  that lost the AM host gene toolkit), bioenergy grasses (Brachypodium, switchgrass, sorghum) and poplar
+  form obligate arbuscular mycorrhizal symbioses critical for low-input phosphorus and nitrogen acquisition
+  on marginal soils.
+contexts:
+- term:
+    id: PO:0009005
+    label: root
+  context_type: anatomical_structure
+  role_note: Brachypodium root cortex cells hosting fungal arbuscules surrounded by the specialized periarbuscular
+    membrane.
+associations:
+- term:
+    id: GO:0009610
+    label: response to symbiotic fungus
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.5236e-16
+    p_adjust: 3.795e-12
+    overlap: 6
+    query_size: 34
+    target_size: 8
+    overlap_genes:
+    - LOC100821348
+    - LOC100821651
+    - LOC100825475
+    - LOC100846547
+    - LOC100846857
+    - LOC112269990
+  evidence:
+  - reference: PMID:22669881
+    reference_title: 'Arbuscular mycorrhizal symbiosis in Brachypodium distachyon: conservation of the
+      periarbuscular phosphate transport pathway.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Six Brachypodium symbiosis signaling and receptor paralogs mediate the host root response
+      to symbiotic arbuscular mycorrhizal fungi.
+  curator_note: Core symbiotic process carried by 6/34 set members (recovered in all and iba_iea, 0 in
+    IBA-only because Arabidopsis lost AM symbiosis genes!).
+- term:
+    id: GO:0006817
+    label: phosphate ion transport
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 6.2261e-19
+    p_adjust: 9.3629e-15
+    overlap: 8
+    query_size: 34
+    target_size: 18
+    overlap_genes:
+    - LOC100824021
+    - LOC100827190
+    - LOC100835606
+    - LOC100839834
+    - LOC100839916
+    - LOC100842873
+    - LOC100844504
+    - LOC112269811
+  evidence:
+  - reference: PMID:22669881
+    reference_title: 'Arbuscular mycorrhizal symbiosis in Brachypodium distachyon: conservation of the
+      periarbuscular phosphate transport pathway.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Eight Brachypodium PHT1-family phosphate transporters (including mycorrhiza-specific
+      BdPT4/PT8) import fungal-delivered inorganic phosphate across the periarbuscular membrane.
+  curator_note: Primary nutritional benefit of arbuscular mycorrhizal symbiosis (8/34 members; recovered
+    in all and iba_iea).
+- term:
+    id: GO:0016036
+    label: cellular response to phosphate starvation
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.7886e-18
+    p_adjust: 2.6897e-14
+    overlap: 8
+    query_size: 34
+    target_size: 20
+    overlap_genes:
+    - LOC100821897
+    - LOC100822174
+    - LOC100826186
+    - LOC100829071
+    - LOC100831716
+    - LOC100840599
+    - LOC100841819
+    - LOC100841892
+  evidence:
+  - reference: PMID:22669881
+    reference_title: 'Arbuscular mycorrhizal symbiosis in Brachypodium distachyon: conservation of the
+      periarbuscular phosphate transport pathway.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Eight Brachypodium PHR1/SPX phosphate-starvation regulators control mycorrhizal permissiveness
+      and Pi transporter induction under low soil Pi.
+  curator_note: Captures the PHR1-centered phosphate-starvation gate that licenses AM fungal colonization
+    (8/34 members; recovered in all and iba_iea).
+- term:
+    id: GO:0072488
+    label: ammonium transmembrane transport
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.5236e-16
+    p_adjust: 3.795e-12
+    overlap: 6
+    query_size: 34
+    target_size: 8
+    overlap_genes:
+    - LOC100824541
+    - LOC100828386
+    - LOC100829578
+    - LOC100830191
+    - LOC100834472
+    - LOC104583779
+  evidence:
+  - reference: PMID:26749197
+    reference_title: Genes conserved exclusively in arbuscular mycorrhizal host plants.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Six Brachypodium AMT2-family ammonium transporters import ammonium released by arbuscular
+      hyphae in the periarbuscular apoplast.
+  curator_note: Mechanistically resolves the mycorrhizal ammonium-acquisition pathway alongside phosphate
+    uptake (6/34 members; recovered across all 4 variants including IBA-only).
+- term:
+    id: GO:0005315
+    label: phosphate transmembrane transporter activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.268e-20
+    p_adjust: 7.922e-16
+    overlap: 9
+    query_size: 34
+    target_size: 26
+    overlap_genes:
+    - LOC100824021
+    - LOC100827190
+    - LOC100831716
+    - LOC100835606
+    - LOC100839834
+    - LOC100839916
+    - LOC100842873
+    - LOC100844504
+    - LOC112269811
+  evidence:
+  - reference: PMID:22669881
+    reference_title: 'Arbuscular mycorrhizal symbiosis in Brachypodium distachyon: conservation of the
+      periarbuscular phosphate transport pathway.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Nine Brachypodium PHT1/PHO1 proteins catalyze inorganic phosphate transmembrane transport.
+  curator_note: Molecular Pi transporter activity (9/34 members; recovered in all and iba_iea).
+- term:
+    id: GO:0008519
+    label: ammonium channel activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.5236e-16
+    p_adjust: 3.795e-12
+    overlap: 6
+    query_size: 34
+    target_size: 8
+    overlap_genes:
+    - LOC100824541
+    - LOC100828386
+    - LOC100829578
+    - LOC100830191
+    - LOC100834472
+    - LOC104583779
+  evidence:
+  - reference: PMID:26749197
+    reference_title: Genes conserved exclusively in arbuscular mycorrhizal host plants.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Six Brachypodium AMT paralogs exhibit ammonium channel/transporter activity.
+  curator_note: Molecular ammonium transporter activity (6/34 members; recovered across all 4 variants).
+- term:
+    id: GO:0016117
+    label: carotenoid biosynthetic process
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 7.7714e-11
+    p_adjust: 1.1687e-06
+    overlap: 5
+    query_size: 34
+    target_size: 19
+    overlap_genes:
+    - LOC100832896
+    - LOC100836583
+    - LOC100838443
+    - LOC100844630
+    - PDS
+  evidence:
+  - reference: PMID:26749197
+    reference_title: Genes conserved exclusively in arbuscular mycorrhizal host plants.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Five Brachypodium carotenoid/apocarotenoid biosynthetic enzymes supply precursors for
+      strigolactone exudation into the rhizosphere to stimulate AM fungal hyphal branching.
+  curator_note: Resolves the pre-symbiotic rhizosphere strigolactone/apocarotenoid precursor pathway (5/34
+    members; recovered across all 4 variants).
+- term:
+    id: GO:0005886
+    label: plasma membrane
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.4655e-12
+    p_adjust: 3.7076e-08
+    overlap: 20
+    query_size: 34
+    target_size: 2149
+    overlap_genes:
+    - LOC100821348
+    - LOC100821651
+    - LOC100824021
+    - LOC100824541
+    - LOC100825475
+    - LOC100827190
+    - LOC100828386
+    - LOC100829578
+    - LOC100830191
+    - LOC100834472
+    - LOC100835606
+    - LOC100839834
+    - LOC100839916
+    - LOC100842873
+    - LOC100844504
+    - LOC100846547
+    - LOC100846857
+    - LOC104583779
+    - LOC112269811
+    - LOC112269990
+  evidence:
+  - reference: PMID:22669881
+    reference_title: 'Arbuscular mycorrhizal symbiosis in Brachypodium distachyon: conservation of the
+      periarbuscular phosphate transport pathway.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: 20 Brachypodium PHT1, AMT2, and symbiosis receptor proteins localize to the root plasma
+      / periarbuscular membrane.
+  curator_note: Membrane interface of plant-fungal nutrient exchange (20/34 members; recovered across
+    all 4 variants).
+- term:
+    id: GO:0036377
+    label: arbuscular mycorrhizal association
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: confirmatory
+  evidence:
+  - reference: PMID:22669881
+    reference_title: 'Arbuscular mycorrhizal symbiosis in Brachypodium distachyon: conservation of the
+      periarbuscular phosphate transport pathway.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: This module defines arbuscular mycorrhizal association (GO:0036377) in Brachypodium distachyon.
+  curator_note: 'Striking ''Arabidopsis blind spot'' in plant GOA: because Arabidopsis thaliana is a non-mycorrhizal
+    Brassicaceae species that evolutionarily lost the AM symbiosis toolkit (RAM1, RAD1, STR1/STR2, PT4,
+    CCaMK, CYCLOPS), PANTHER IBA trees anchored on Arabidopsis cannot project GO:0036377 (arbuscular mycorrhizal
+    association) or GO:0085042 (periarbuscular membrane) onto grass or tree orthologs, leaving 0 annotations
+    in Brachypodium GOA.'
+- term:
+    id: GO:0085042
+    label: periarbuscular membrane
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: mechanistic
+  evidence:
+  - reference: PMID:22669881
+    reference_title: 'Arbuscular mycorrhizal symbiosis in Brachypodium distachyon: conservation of the
+      periarbuscular phosphate transport pathway.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Mycorrhiza-inducible phosphate (BdPT4) and ammonium (BdAMT2) transporters localize specifically
+      to the host-derived periarbuscular membrane (GO:0085042) enveloping fungal arbuscules.
+  curator_note: Completely unannotated in Brachypodium EBI GOA (0 genes) due to the Arabidopsis non-mycorrhizal
+    reference bias; transporters are annotated only to generic GO:0005886 (plasma membrane).
+- term:
+    id: GO:0051179
+    label: localization
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.2696e-06
+    p_adjust: 0.019092
+    overlap: 15
+    query_size: 34
+    target_size: 2450
+    overlap_genes:
+    - LOC100824021
+    - LOC100824541
+    - LOC100827190
+    - LOC100828386
+    - LOC100829578
+    - LOC100830191
+    - LOC100831716
+    - LOC100834472
+    - LOC100835606
+    - LOC100839834
+    - LOC100839916
+    - LOC100842873
+    - LOC100844504
+    - LOC104583779
+    - LOC112269811
+  evidence:
+  - reference: PMID:22669881
+    reference_title: 'Arbuscular mycorrhizal symbiosis in Brachypodium distachyon: conservation of the
+      periarbuscular phosphate transport pathway.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Top-level localization roll-up.
+  curator_note: Overly broad root-adjacent localization term (15/34 members).
+- term:
+    id: GO:0070417
+    label: cellular response to cold
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.1294e-07
+    p_adjust: 0.0062098
+    overlap: 3
+    query_size: 34
+    target_size: 10
+    overlap_genes:
+    - LOC100829071
+    - LOC100840599
+    - LOC100841892
+  evidence:
+  - reference: PMID:22669881
+    reference_title: 'Arbuscular mycorrhizal symbiosis in Brachypodium distachyon: conservation of the
+      periarbuscular phosphate transport pathway.'
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: In this root mycorrhizal module, SPX/PHR1-family proteins regulate phosphate starvation
+      and fungal colonization rather than foliar freezing tolerance; GO:0070417 (cellular response to
+      cold) is projected onto 3 Brachypodium SPX paralogs via UniRule IEA.
+  curator_note: UniRule IEA cross-stress projection artifact on 3 Brachypodium SPX genes (p_adj=6.21e-03
+    in all and iba_iea, eliminated by iba).

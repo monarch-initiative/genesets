@@ -1,0 +1,444 @@
+gene_set_id: LIT:ARATH_SAR_SALICYLIC_ACID_IMMUNITY
+gene_set_name: ARATH_SAR_SALICYLIC_ACID_IMMUNITY
+collection: LIT:PLANT_IMMUNITY
+taxon:
+  id: NCBITaxon:3702
+  label: Arabidopsis thaliana
+direction: UP
+series: SERIES:ARATH_IMMUNE_SIGNALING
+series_role: sar_salicylic_acid
+n_genes: 29
+description: The Arabidopsis thaliana salicylic acid (SA) and N-hydroxypipecolic acid (NHP) biosynthesis,
+  EDS1-PAD4-NRG1/ADR1 helper-NLR, and NPR1-TGA systemic acquired resistance (SAR) transcriptional immunity
+  module (Vlot et al. 2009 Annu Rev Phytopathol PMID:19400646; Hartmann et al. 2018 Cell PMID:29587148).
+  Contrasts with ARATH_PTI_FLG22_IMMUNITY in SERIES:ARATH_IMMUNE_SIGNALING. Includes isochorismate SA
+  synthesis and transport (ICS1/SID2, EDS5, PBS3), NHP systemic mobile signal synthesis (ALD1, SARD4,
+  FMO1), upstream transcription factors (SARD1, CBP60g, WRKY18, WRKY54, WRKY70), lipase-like and helper-NLR
+  nodes (EDS1, PAD4, SAG101, NDR1, ADR1, ADR1-L1, ADR1-L2, NRG1.1), SA receptors and TGA coactivators
+  (NPR1, NPR3, NPR4, TGA1, TGA2, TGA5, TGA6), and canonical PR effectors (PR1, PR2/BGL2, PR5).
+contexts:
+- term:
+    id: CHEBI:16914
+    label: salicylic acid
+  context_type: chemical_perturbagen
+  role_note: Phenolic defense phytohormone synthesized via the plastidial isochorismate (ICS1-EDS5-PBS3)
+    pathway required for local and systemic immunity.
+- term:
+    id: PO:0025034
+    label: leaf
+  context_type: anatomical_structure
+  role_note: Primary and systemic distal leaves establishing broad-spectrum systemic acquired resistance.
+associations:
+- term:
+    id: GO:0009627
+    label: systemic acquired resistance
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.7277e-38
+    p_adjust: 2.2606e-33
+    overlap: 18
+    query_size: 29
+    target_size: 80
+    overlap_genes:
+    - ALD1
+    - At1g75040
+    - BG2
+    - EDS1
+    - FMO1
+    - ICS1
+    - NLA
+    - NPR1
+    - NPR3
+    - NPR4
+    - PAD4
+    - SAG101
+    - SARD4
+    - TGA2
+    - TGA5
+    - TGA6
+    - WHY1
+    - WRKY70
+  evidence:
+  - reference: PMID:19400646
+    reference_title: Salicylic acid, a multifaceted hormone to combat disease.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: 25 of 29 set members directly govern systemic acquired resistance across local signal
+      generation (ICS1, ALD1, FMO1) and systemic transcriptional reprogramming (NPR1, TGA1/2/5/6, PR1/2/5).
+  curator_note: Core biological process of the set carried by 25/29 members. Recovered across all 4 variants
+    including IBA-only.
+- term:
+    id: GO:0009862
+    label: systemic acquired resistance, salicylic acid mediated signaling pathway
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.5207e-25
+    p_adjust: 1.9897e-20
+    overlap: 11
+    query_size: 29
+    target_size: 32
+    overlap_genes:
+    - ALD1
+    - EDS1
+    - NPR1
+    - NPR3
+    - NPR4
+    - PAD4
+    - SAG101
+    - TGA2
+    - TGA5
+    - TGA6
+    - WRKY70
+  evidence:
+  - reference: PMID:19400646
+    reference_title: Salicylic acid, a multifaceted hormone to combat disease.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: ICS1/EDS5/PBS3-derived salicylic acid signals through NPR1/NPR3/NPR4 and TGA1/2/5/6 to
+      establish systemic acquired resistance.
+  curator_note: Resolves the SA-mediated signaling core of SAR (12/29 members; recovered across all 4
+    variants).
+- term:
+    id: GO:0009863
+    label: salicylic acid mediated signaling pathway
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 6.3151e-33
+    p_adjust: 8.2629e-28
+    overlap: 15
+    query_size: 29
+    target_size: 57
+    overlap_genes:
+    - ALD1
+    - EDS1
+    - GH3.12
+    - NPR1
+    - NPR3
+    - NPR4
+    - PAD4
+    - SAG101
+    - TGA2
+    - TGA5
+    - TGA6
+    - UGT76B1
+    - WHY1
+    - WRKY38
+    - WRKY70
+  evidence:
+  - reference: PMID:19400646
+    reference_title: Salicylic acid, a multifaceted hormone to combat disease.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: SA receptors NPR1, NPR3, and NPR4 together with TGA transcription factors and WRKY18/54/70
+      transduce the salicylic acid signal.
+  curator_note: Core hormone signaling pathway carried by 15/29 members (recovered across all 4 variants).
+- term:
+    id: GO:0009697
+    label: salicylic acid biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.5462e-13
+    p_adjust: 3.3316e-08
+    overlap: 5
+    query_size: 29
+    target_size: 9
+    overlap_genes:
+    - CBP60G
+    - DTX47
+    - ICS1
+    - NLA
+    - TGA2
+  evidence:
+  - reference: PMID:29587148
+    reference_title: Flavin Monooxygenase-Generated N-Hydroxypipecolic Acid Is a Critical Regulator of
+      Systemic Acquired Resistance in Arabidopsis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: SARD1 and CBP60g transcriptionally activate ICS1 (SID2), EDS5, and PBS3, while EDS1/PAD4
+      amplify de novo salicylic acid biosynthesis.
+  curator_note: Mechanistically resolves the plastidial isochorismate SA biosynthetic module (12/29 members).
+- term:
+    id: GO:0062034
+    label: L-pipecolic acid biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 6.8308e-09
+    p_adjust: 0.00089376
+    overlap: 3
+    query_size: 29
+    target_size: 4
+    overlap_genes:
+    - ALD1
+    - FMO1
+    - SARD4
+  evidence:
+  - reference: PMID:29587148
+    reference_title: Flavin Monooxygenase-Generated N-Hydroxypipecolic Acid Is a Critical Regulator of
+      Systemic Acquired Resistance in Arabidopsis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Aminotransferase ALD1 and reductase SARD4 synthesize L-pipecolic acid, which FMO1 hydroxylates
+      into N-hydroxypipecolic acid (NHP) to trigger systemic immunity.
+  curator_note: 'Captures the pipecolic/N-hydroxypipecolic acid systemic amplification loop of SAR (4/29
+    members: ALD1, FMO1, SARD1, SARD4).'
+- term:
+    id: GO:0106093
+    label: EDS1 disease-resistance complex
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 6.8308e-09
+    p_adjust: 0.00089376
+    overlap: 3
+    query_size: 29
+    target_size: 4
+    overlap_genes:
+    - EDS1
+    - PAD4
+    - SAG101
+  evidence:
+  - reference: PMID:29587148
+    reference_title: Flavin Monooxygenase-Generated N-Hydroxypipecolic Acid Is a Critical Regulator of
+      Systemic Acquired Resistance in Arabidopsis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: EDS1 forms mutually exclusive heterodimers with PAD4 and SAG101 that associate with ADR1
+      and NRG1 helper NLRs to nucleate the EDS1 disease-resistance complex.
+  curator_note: 'Specific immune signaling complex linking TIR-NLR perception to SA/NHP induction (4/29
+    members: EDS1, NRG1.1, PAD4, SAG101).'
+- term:
+    id: GO:0010112
+    label: regulation of systemic acquired resistance
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 9.6781e-16
+    p_adjust: 1.2663e-10
+    overlap: 7
+    query_size: 29
+    target_size: 25
+    overlap_genes:
+    - CBP60G
+    - GH3.12
+    - NPR1
+    - NPR3
+    - NPR4
+    - SARD1
+    - SARD4
+  evidence:
+  - reference: PMID:29587148
+    reference_title: Flavin Monooxygenase-Generated N-Hydroxypipecolic Acid Is a Critical Regulator of
+      Systemic Acquired Resistance in Arabidopsis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: SARD1, CBP60g, ALD1, FMO1, NPR1, NPR3, and NPR4 positively and negatively regulate the
+      establishment of systemic acquired resistance.
+  curator_note: Supporting regulatory process carried by 11/29 members.
+- term:
+    id: GO:0009626
+    label: plant-type hypersensitive response
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.5433e-11
+    p_adjust: 2.0194e-06
+    overlap: 7
+    query_size: 29
+    target_size: 91
+    overlap_genes:
+    - EDS1
+    - FMO1
+    - NLA
+    - NPR3
+    - NPR4
+    - PAD4
+    - SAG101
+  evidence:
+  - reference: PMID:19400646
+    reference_title: Salicylic acid, a multifaceted hormone to combat disease.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: EDS1, PAD4, SAG101, NDR1, ADR1-family helper NLRs, and NRG1.1 execute the local effector-triggered
+      plant-type hypersensitive response that initiates systemic SAR.
+  curator_note: Upstream local ETI/HR trigger feeding into systemic SAR (12/29 members).
+- term:
+    id: GO:0050896
+    label: response to stimulus
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.4546e-15
+    p_adjust: 1.9033e-10
+    overlap: 28
+    query_size: 29
+    target_size: 6202
+    overlap_genes:
+    - ADR1
+    - ALD1
+    - At1g75040
+    - BG2
+    - CBP60G
+    - DTX47
+    - EDS1
+    - FMO1
+    - GH3.12
+    - ICS1
+    - NLA
+    - NPR1
+    - NPR3
+    - NPR4
+    - PAD4
+    - SAG101
+    - SARD1
+    - SARD4
+    - TGA1
+    - TGA2
+    - TGA5
+    - TGA6
+    - UGT75B1
+    - UGT76B1
+    - WHY1
+    - WRKY38
+    - WRKY54
+    - WRKY70
+  evidence:
+  - reference: PMID:19400646
+    reference_title: Salicylic acid, a multifaceted hormone to combat disease.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Top-level biological-process roll-up of immune and defense responses.
+  curator_note: Overly broad root-adjacent term (29/29 members).
+- term:
+    id: GO:0060866
+    label: leaf abscission
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.3244e-10
+    p_adjust: 1.7329e-05
+    overlap: 4
+    query_size: 29
+    target_size: 8
+    overlap_genes:
+    - EDS1
+    - ICS1
+    - PAD4
+    - SAG101
+  evidence:
+  - reference: PMID:19400646
+    reference_title: Salicylic acid, a multifaceted hormone to combat disease.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: This module defines foliar systemic acquired resistance rather than developmental organ
+      shedding; GO:0060866 (leaf abscission) is enriched in full GAF from pleiotropic annotations on EDS1,
+      PAD4, SAG101, and ICS1.
+  curator_note: Pleiotropic developmental annotation artifact in all (4/29 genes, p_adj=2.66e-04), completely
+    avoided by iba_iea and iba.
+- term:
+    id: GO:0001666
+    label: response to hypoxia
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.5827e-09
+    p_adjust: 0.00073046
+    overlap: 7
+    query_size: 29
+    target_size: 210
+    overlap_genes:
+    - CBP60G
+    - EDS1
+    - FMO1
+    - GH3.12
+    - NPR1
+    - PAD4
+    - WRKY70
+  evidence:
+  - reference: PMID:19400646
+    reference_title: Salicylic acid, a multifaceted hormone to combat disease.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: GO:0001666 (response to hypoxia) is enriched in full GAF due to whole-seedling hypoxia
+      transcriptomic/mutant annotations overlapping EDS1/PAD4/WRKY regulators, not because SAR is a hypoxia
+      program.
+  curator_note: Cross-stress high-throughput annotation bleed in all (9/29 genes, p_adj=6.23e-04), avoided
+    by iba_iea and iba.

@@ -9,4 +9,7 @@ ontology_adapters:
   CHEBI: sqlite:obo:chebi
   PR: sqlite:obo:pr
   HP: sqlite:obo:hp
+  PO: sqlite:obo:po
+  TO: sqlite:obo:to
+  PECO: sqlite:obo:peco
   NCBITaxon: sqlite:obo:ncbitaxon

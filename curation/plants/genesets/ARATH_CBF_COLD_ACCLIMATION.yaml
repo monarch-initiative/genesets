@@ -1,0 +1,395 @@
+gene_set_id: LIT:ARATH_CBF_COLD_ACCLIMATION
+gene_set_name: ARATH_CBF_COLD_ACCLIMATION
+collection: LIT:PLANT_STRESS_RESPONSE
+taxon:
+  id: NCBITaxon:3702
+  label: Arabidopsis thaliana
+direction: UP
+series: SERIES:ARATH_ABIOTIC_STRESS
+series_role: cold_cbf
+n_genes: 23
+description: The Arabidopsis thaliana ICE1-CAMTA3-CBF1/2/3 (DREB1B/C/A) cold acclimation and freezing
+  tolerance regulon (Park et al. 2015 Plant J PMID:25754474; Jia et al. 2016 New Phytol PMID:27159328;
+  Thomashow 2010 Plant Physiol PMID:20592040). Contrasts with ARATH_ABA_DROUGHT_RESPONSE in SERIES:ARATH_ABIOTIC_STRESS.
+  Includes upstream regulators (ICE1, ICE2, CAMTA3, SIZ1, HOS1, OST1, BZR1, ZAT12, DEAR1), the AP2/ERF
+  master factors (CBF1/DREB1B, CBF2/DREB1C, CBF3/DREB1A, CBF4), and canonical cold-regulated (COR) dehydrin
+  and cryoprotective targets (COR15A, COR15B, COR47, COR78/RD29A, KIN1, KIN2, LTI30, ERD10, GOLS3, DEAR1).
+contexts:
+- term:
+    id: TO:0000303
+    label: low temperature stress response
+  context_type: phenotype
+  role_note: Transcriptional and cryoprotective reprogramming induced by non-freezing low temperatures
+    to confer freezing tolerance.
+associations:
+- term:
+    id: GO:0009409
+    label: response to cold
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 7.752e-41
+    p_adjust: 1.0143e-35
+    overlap: 23
+    query_size: 23
+    target_size: 433
+    overlap_genes:
+    - CAMTA3
+    - COR15A
+    - COR15B
+    - COR413IM1
+    - COR47
+    - DREB1A
+    - DREB1B
+    - DREB1C
+    - ENO2
+    - ERD10
+    - ESK1
+    - GOLS3
+    - HOS1
+    - KIN1
+    - KIN2
+    - RCI2A
+    - RCI2B
+    - RD29A
+    - SCRM
+    - SFR2
+    - SIZ1
+    - ZAT10
+    - ZAT12
+  evidence:
+  - reference: PMID:25754474
+    reference_title: Regulation of the Arabidopsis CBF regulon by sequential waves of transcription factors.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: All 23 set members are core regulators or direct COR effector targets of the Arabidopsis
+      response to cold.
+  curator_note: Primary environmental response carried by 23/23 set members. Recovered across all 4 variants
+    including IBA-only.
+- term:
+    id: GO:0009631
+    label: cold acclimation
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 6.977e-23
+    p_adjust: 9.129e-18
+    overlap: 11
+    query_size: 23
+    target_size: 68
+    overlap_genes:
+    - COR15A
+    - COR15B
+    - COR413IM1
+    - COR47
+    - DREB1A
+    - DREB1B
+    - DREB1C
+    - ERD10
+    - KIN1
+    - KIN2
+    - ZAT12
+  evidence:
+  - reference: PMID:27159328
+    reference_title: The CBFs:three Arabidopsis transcription factors that have a major role in cold acclimation.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: CBF1, CBF2, and CBF3 activate COR15A/B, KIN1/2, COR47, LTI30, and GOLS3 to establish
+      cold acclimation prior to sub-zero exposure.
+  curator_note: Signature adaptive process of the CBF regulon carried by 14/23 members. Recovered across
+    all 4 variants including IBA-only.
+- term:
+    id: GO:0050826
+    label: response to freezing
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.7289e-11
+    p_adjust: 4.879e-06
+    overlap: 5
+    query_size: 23
+    target_size: 26
+    overlap_genes:
+    - COR15A
+    - ESK1
+    - SCRM
+    - SFR2
+    - SIZ1
+  evidence:
+  - reference: PMID:27159328
+    reference_title: The CBFs:three Arabidopsis transcription factors that have a major role in cold acclimation.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Cryoprotective proteins (COR15A, COR15B, LTI30, ERD10, COR47) and galactinol synthase
+      (GOLS3) stabilize chloroplast and plasma membranes against freezing injury.
+  curator_note: Captures the downstream physiological protection against freezing (9/23 members).
+- term:
+    id: GO:0009414
+    label: response to water deprivation
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 6.2251e-14
+    p_adjust: 8.1451e-09
+    overlap: 11
+    query_size: 23
+    target_size: 421
+    overlap_genes:
+    - COR15A
+    - COR413IM1
+    - COR47
+    - DREB1A
+    - DREB1B
+    - ERD10
+    - KIN1
+    - KIN2
+    - RD29A
+    - SIZ1
+    - ZAT10
+  evidence:
+  - reference: PMID:20592040
+    reference_title: 'Molecular basis of plant cold acclimation: insights gained from studying the CBF
+      cold response pathway.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Extracellular ice crystal formation imposes severe cellular dehydration, and DRE/CRT-containing
+      COR genes (RD29A, COR47, ERD10, KIN1, KIN2) protect cells against water deprivation.
+  curator_note: Biophysically shared dehydration-protection program between freezing and drought (15/23
+    members; recovered in all and iba).
+- term:
+    id: GO:0006970
+    label: response to osmotic stress
+  aspect: biological_process
+  category: supporting_process
+  confidence: medium
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.7786e-08
+    p_adjust: 0.0062525
+    overlap: 8
+    query_size: 23
+    target_size: 580
+    overlap_genes:
+    - COR15A
+    - COR47
+    - KIN1
+    - KIN2
+    - RCI2A
+    - RD29A
+    - ZAT10
+    - ZAT12
+  evidence:
+  - reference: PMID:20592040
+    reference_title: 'Molecular basis of plant cold acclimation: insights gained from studying the CBF
+      cold response pathway.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Accumulation of raffinose-family oligosaccharides (via GOLS3) and LEA/dehydrin proteins
+      (COR47, ERD10, LTI30) mitigates freezing-induced osmotic stress.
+  curator_note: Supporting osmotic protection mechanism (10/23 members).
+- term:
+    id: GO:0050896
+    label: response to stimulus
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.2355e-14
+    p_adjust: 6.8503e-09
+    overlap: 23
+    query_size: 23
+    target_size: 6202
+    overlap_genes:
+    - CAMTA3
+    - COR15A
+    - COR15B
+    - COR413IM1
+    - COR47
+    - DREB1A
+    - DREB1B
+    - DREB1C
+    - ENO2
+    - ERD10
+    - ESK1
+    - GOLS3
+    - HOS1
+    - KIN1
+    - KIN2
+    - RCI2A
+    - RCI2B
+    - RD29A
+    - SCRM
+    - SFR2
+    - SIZ1
+    - ZAT10
+    - ZAT12
+  evidence:
+  - reference: PMID:25754474
+    reference_title: Regulation of the Arabidopsis CBF regulon by sequential waves of transcription factors.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Top-level biological-process roll-up of stress response terms.
+  curator_note: Overly broad root-adjacent term (23/23 members).
+- term:
+    id: GO:0009737
+    label: response to abscisic acid
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.8635e-14
+    p_adjust: 3.7467e-09
+    overlap: 12
+    query_size: 23
+    target_size: 553
+    overlap_genes:
+    - COR15A
+    - COR15B
+    - COR413IM1
+    - COR47
+    - ENO2
+    - ERD10
+    - KIN1
+    - KIN2
+    - RCI2A
+    - RD29A
+    - SCRM
+    - ZAT10
+  evidence:
+  - reference: PMID:20592040
+    reference_title: 'Molecular basis of plant cold acclimation: insights gained from studying the CBF
+      cold response pathway.'
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: The ICE1-CBF1/2/3 cold acclimation pathway is the classic ABA-independent abiotic stress
+      signaling pathway; GO:0009737 (response to abscisic acid) is enriched in full GAF because downstream
+      COR promoters (RD29A, COR47, KIN1, KIN2, ERD10) contain both ABA-independent DRE/CRT motifs and
+      ABA-responsive ABRE motifs.
+  curator_note: 'Contrasting pole trap against ARATH_ABA_DROUGHT_RESPONSE in SERIES:ARATH_ABIOTIC_STRESS:
+    enriched in all (14/23 genes, p_adj=2.99e-09) due to dual-promoter COR target genes, but avoided by
+    iba_iea and iba.'
+- term:
+    id: GO:0097305
+    label: response to alcohol
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.6179e-14
+    p_adjust: 4.7338e-09
+    overlap: 12
+    query_size: 23
+    target_size: 564
+    overlap_genes:
+    - COR15A
+    - COR15B
+    - COR413IM1
+    - COR47
+    - ENO2
+    - ERD10
+    - KIN1
+    - KIN2
+    - RCI2A
+    - RD29A
+    - SCRM
+    - ZAT10
+  evidence:
+  - reference: PMID:20592040
+    reference_title: 'Molecular basis of plant cold acclimation: insights gained from studying the CBF
+      cold response pathway.'
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: GO:0097305 (response to alcohol) is an ontology-hierarchy artifact caused by GO-ChEBI
+      logical definitions classifying (+)-abscisic acid (CHEBI:2365) as a tertiary alcohol, rolling up
+      ABA annotations on COR genes to 'response to alcohol'.
+  curator_note: 'Famous plant GO-ChEBI cross-product artifact: every gene annotated to ''response to abscisic
+    acid'' automatically inherits ''response to alcohol'' (GO:0097305) and ''response to lipid'' (GO:0033993)
+    via true-path propagation. Enriched in all (14/23 genes), eliminated by iba_iea and iba.'
+- term:
+    id: GO:0033993
+    label: response to lipid
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.1565e-11
+    p_adjust: 6.747e-06
+    overlap: 12
+    query_size: 23
+    target_size: 1047
+    overlap_genes:
+    - COR15A
+    - COR15B
+    - COR413IM1
+    - COR47
+    - ENO2
+    - ERD10
+    - KIN1
+    - KIN2
+    - RCI2A
+    - RD29A
+    - SCRM
+    - ZAT10
+  evidence:
+  - reference: PMID:20592040
+    reference_title: 'Molecular basis of plant cold acclimation: insights gained from studying the CBF
+      cold response pathway.'
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: GO:0033993 (response to lipid) is an ontology-hierarchy artifact caused by GO-ChEBI logical
+      definitions classifying (+)-abscisic acid as an isoprenoid/sesquiterpenoid lipid.
+  curator_note: Companion GO-ChEBI ontology roll-up artifact alongside GO:0097305 (response to alcohol);
+    enriched in all (14/23 genes), eliminated by iba_iea and iba.
