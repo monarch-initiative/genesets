@@ -75,6 +75,13 @@ def main() -> int:
     args = parser.parse_args()
 
     taxa = taxa_by_set(args.genesets_dir)
+    # Non-human sets whose taxon has no GO Consortium GAF (e.g. Poeciliidae, mapped
+    # to human orthologs and scored in the goa_human eval via lit_members.gmt) are
+    # not this runner's: report and skip them rather than fail.
+    skipped = sorted(n for n, t in taxa.items() if t not in SPECIES_GAF)
+    if skipped:
+        print(f"skipping {len(skipped)} set(s) with no species GAF configured: {', '.join(skipped)}")
+    taxa = {n: t for n, t in taxa.items() if t in SPECIES_GAF}
     lines_by_taxon: dict[str, list[str]] = {}
     for line in args.members.read_text().splitlines():
         name = line.split("\t", 1)[0]
