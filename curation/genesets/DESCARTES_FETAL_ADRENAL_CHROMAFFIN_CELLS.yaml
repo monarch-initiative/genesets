@@ -114,10 +114,11 @@ associations:
     curator_note: >-
       SLC6A2 (the noradrenaline / norepinephrine transporter, NET) is the single
       catecholamine-handling gene present in this signature and is directly
-      annotated to norepinephrine uptake in GOA-human (IDA), making this
-      annotation_supported. (Was GO:0015874 norepinephrine transport, obsoleted
-      by GO as an unnecessary grouping term; uptake is the mechanism-specific
-      replacement matching NET reuptake.) It mediates reuptake / recapture of noradrenaline
+      annotated (IDA) to norepinephrine uptake in GOA-human, making this
+      annotation_supported. (Migrated 2026-11-14 from the grouping term
+      GO:0015874 norepinephrine transport, which GO obsoleted without a
+      replacement, go-ontology#31143; uptake is the mechanism-specific child that
+      matches SLC6A2's reuptake function. See curation/ontology_migrations.tsv.) It mediates reuptake / recapture of noradrenaline
       rather than its synthesis. Categorised supporting_process: handling of an
       already-synthesised transmitter is a real enabling part of the noradrenergic
       phenotype, but it is downstream of, and secondary to, the defining

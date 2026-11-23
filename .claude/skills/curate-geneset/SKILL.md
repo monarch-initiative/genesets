@@ -119,11 +119,16 @@ many there are, give every noise term an `artifact_cause`, and add a
   Use the OLS MCP (`mcp__claude_ai_OLS__search` / `fetch`). Confirm the id resolves
   to the *exact* label and is **not obsolete**. Never invent ids; if unsure, search
   by label and use the returned id.
-- **Reject obsolete terms.** The validator's 4th gate sweeps OAK `obsoletes()` and
-  fails the build. The `sqlite:obo` builds retain labels for obsolete classes, so
-  an obsolete id paired with its old label passes id+label validation but fails
-  here (e.g. `GO:0062023` collagen-containing ECM → `GO:0031012`; `GO:0050663`
-  cytokine secretion → `GO:0032635`).
+- **Reject obsolete terms.** The validator's 4th gate (ontology drift) fails on
+  obsolete, merged or unknown ids. The `sqlite:obo` builds retain labels for
+  obsolete classes, so an obsolete id paired with its old label passes id+label
+  validation but fails here. When GO changes under existing files, don't
+  hand-edit: `just curate-drift` reports and `just curate-migrate` applies what GO
+  declares. For an obsoletion with no single replacement, pick the replacement
+  from the members' actual annotations and record it with
+  `genesets-workflows curate drift FILE --map OLD=NEW --note "..."`, then update
+  the `curator_note` and re-check `recovery_status`. Every change lands in
+  `curation/ontology_migrations.tsv`.
 - **Evidence snippets are verbatim or absent.** Include an `evidence` item with a
   `snippet` ONLY if you retrieved the exact text from the cited paper (PubMed MCP)
   and copied it character-for-character — the reference-validator substring-checks
