@@ -1,0 +1,187 @@
+gene_set_id: LIT:GILMAN_2011_AUTISM_CNV
+gene_set_name: GILMAN_2011_AUTISM_CNV
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 72
+description: 'Genes in the functional network cluster of rare de novo copy-number
+  variants in autism spectrum disorder (Gilman et al. 2011 Neuron, PMID:21658583,
+  Table S2; 72 genes). The cluster was found with NETBAG, which builds its gene network
+  from functional evidence that includes GO, so synapse terms are partly entailed
+  by how the set was made. Ballouz, Pavlidis and Gillis (2017, PMID:28204549) used
+  this list as a case study of enrichment driven by multifunctional genes: 11 members
+  (FLNA, NRXN1, DLG1, MAPK3, CRHR1, DLG4, DKK1, AXIN1, WNT3, NLGN3, STUB1) carry a
+  large share of the annotations, and ''learning or memory'' disappears once that
+  is corrected for, while ''neuron migration'' is unaffected.'
+contexts:
+- term:
+    id: MONDO:0005258
+    label: autism spectrum disorder
+  context_type: disease
+associations:
+- term:
+    id: GO:0071840
+    label: cellular component organization or biogenesis
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0016043
+    label: cellular component organization
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0032502
+    label: developmental process
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0048856
+    label: anatomical structure development
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0048468
+    label: cell development
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: medium
+  specificity: broadly_expressed
+  artifact_cause: overly_general_term
+  curator_note: 'Cell development: generic parent of neuron development.'
+- term:
+    id: GO:0099173
+    label: postsynapse organization
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: core_process
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Postsynapse organization: CHRNA7, CRKL, CTNND2, DLG1, DLG2, DLG4,
+    NLGN3, NRXN1. Matches the paper''s synapse-development network and the PAN-GO
+    result (Feuermann et al. 2025). Medium confidence: four carriers (DLG1, DLG4,
+    NLGN3, NRXN1) are among the 11 multifunctional genes Ballouz et al. flag, and
+    NETBAG used GO-like evidence to build the cluster.'
+- term:
+    id: GO:0098794
+    label: postsynapse
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: core_component
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Postsynapse: 17 members including DLG1, DLG2, DLG4, NLGN3, CHRNA7,
+    BAIAP2, CYFIP1. Same caveat as postsynapse organization.'
+- term:
+    id: GO:0019904
+    label: protein domain specific binding
+  seed_source: enrichment_recovered
+  aspect: molecular_function
+  category: nonspecific
+  confidence: high
+  specificity: broadly_expressed
+  artifact_cause: overly_general_term
+  curator_note: Protein-domain binding is a generic molecular-function grouping; the
+    carriers (AXIN1, DLG1, DLG4, DVL2, MAPT, NSF, STUB1, ...) share no specific activity.
+- term:
+    id: GO:0001764
+    label: neuron migration
+  seed_source: curator_added
+  aspect: biological_process
+  category: core_process
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: mechanistic
+  evidence:
+  - reference: PMID:28204549
+    reference_title: Using predictive specificity to determine when gene set analysis
+      is biologically meaningful.
+    supports: SUPPORT
+    evidence_source: COMPUTATIONAL
+    snippet: neuron migration might be even more relevant to ASD than learning and
+      memory
+    explanation: Source authors' judgement under multifunctionality-corrected enrichment.
+  curator_note: 'Ballouz et al. single out neuron migration as unaffected by multifunctionality
+    correction and possibly more relevant to ASD than learning and memory. Carriers
+    in current GOA: BAIAP2, DCC, NDE1 (only 3, so it does not reach significance).'
+- term:
+    id: GO:0007611
+    label: learning or memory
+  seed_source: curator_added
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: lineage_shared
+  recovery_status: false_association
+  evidence:
+  - reference: PMID:28204549
+    reference_title: Using predictive specificity to determine when gene set analysis
+      is biologically meaningful.
+    supports: REFUTE
+    evidence_source: COMPUTATIONAL
+    snippet: we prefer to think of it as non-robust and, most importantly, non-specific
+    explanation: Source authors' judgement under multifunctionality-corrected enrichment.
+  artifact_cause: multifunctional_gene_bias
+  curator_note: 'Ballouz et al. show this enrichment is driven by multifunctional
+    genes: of six carriers, four (NRXN1, NLGN3, DLG4, CRHR1) are among the 11 most
+    multifunctional members, and it loses significance after correction. Current carriers:
+    CHRNA7, DKK1, DLG4, MAPT, NLGN3, NRXN1. Recorded so that any variant reporting
+    it is penalised.'
+- term:
+    id: GO:0023056
+    label: positive regulation of signaling
+  seed_source: curator_added
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: multifunctional_gene_bias
+  curator_note: Named by Ballouz et al. (Supplementary Fig. 7) among the non-specific
+    groups that lose significance after multifunctionality correction. 21 carriers
+    in current GOA, many of them the flagged multifunctional genes.
+hit_adjudication:
+  pooled_variants:
+  - all
+  - iba
+  - iba_iea
+  - aigr_prune
+  - aigr_full
+  method: fisher
+  p_adjust_method: bonferroni
+  max_p_adjust: 0.05
+  correction_scope: 'matrix: every benchmark query set x GO terms (genesets-rs default)'
+  annotation_release: goa_human 2026-05-21T08:10; go-basic releases/2026-07-26
+  adjudicated_on: '2026-11-18'
+  note: 8 pooled hits, each labelled blind to which variant reported it; background
+    = UniProtKB proteins in goa_human, direct GO:0005515 dropped.
