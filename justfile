@@ -63,12 +63,24 @@ curate-build-rankings:
       {{gw}} genesets-workflows curate build-ranking "$r" || exit 1; \
     done
 
-# Validate every interpretation YAML under curation/genesets.
+# Validate every interpretation YAML under curation/genesets; report every failing file, not just the first.
 curate-validate: curate-build-rankings
+    failed=(); \
     for f in curation/genesets/*.yaml; do \
       echo "== $f =="; \
-      {{gw}} genesets-workflows curate validate "$f" || exit 1; \
-    done
+      {{gw}} genesets-workflows curate validate "$f" || failed+=("$f"); \
+    done; \
+    if (( ${#failed[@]} )); then \
+      printf 'FAILED (%d):\n' "${#failed[@]}"; printf '  %s\n' "${failed[@]}"; exit 1; \
+    fi
+
+# Report ontology drift (obsolete / merged / relabelled terms) across the corpus against the current ontologies.
+curate-drift:
+    {{gw}} genesets-workflows curate drift
+
+# Migrate the drift the ontology itself declares (relabels, merges, single replaced_by); log to curation/ontology_migrations.tsv.
+curate-migrate:
+    {{gw}} genesets-workflows curate drift --apply
 
 # Validate the schema's own ontology-term meanings.
 curate-validate-schema:

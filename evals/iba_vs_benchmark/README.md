@@ -53,8 +53,12 @@ a real evaluation.
 2. **Annotation variants** —
    ```bash
    python3 scripts/prepare_go_eval.py --out-dir /tmp/iba_eval \
-     --variants all,iba,iba_iea,no_contributes_to
+     --variants all,iba,iba_iea,no_contributes_to --go-release YYYY-MM-DD
    ```
+   `--go-release` pins a dated GO release; omit it for the moving `current`
+   release. Either way the OBO `data-version` is recorded in `metadata.json` and
+   printed by the scorer, which also flags gold GO terms that are obsolete in
+   that release.
    downloads GO + GOA, and writes per-variant `gene_terms.tsv` (evidence-filtered),
    shared `terms.tsv`/`closure.tsv`, a common all-GOA background, and a
    `genesets-rs matrix` config per variant (Bonferroni, `max_p_adjust 0.05`).

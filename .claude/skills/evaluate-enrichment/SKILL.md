@@ -36,7 +36,7 @@ NOT committed; rerun to regenerate.
    a common background, and a `genesets-rs` config per variant (Bonferroni, `max_p_adjust 0.05`):
    ```bash
    python3 scripts/prepare_go_eval.py --out-dir /tmp/iba_eval \
-     --variants all,iba,iba_iea,no_contributes_to
+     --variants all,iba,iba_iea,no_contributes_to --go-release YYYY-MM-DD
    ```
    Place `queries.gmt` (step 1) at `/tmp/iba_eval/queries.gmt`.
 
@@ -53,6 +53,12 @@ NOT committed; rerun to regenerate.
      python scripts/score_method_vs_benchmark.py --eval-dir /tmp/iba_eval \
      --out /tmp/iba_eval/benchmark_scores.tsv
    ```
+
+The scorer prints the eval's GO `data-version` and warns when a gold GO term is
+obsolete or unknown in that release (`--strict` fails). Such a term is
+unrecoverable, so fix the skew with `just curate-drift` or a matching
+`--go-release`; never treat it as a method's recall loss. Quote the GO version
+next to any numbers you report.
 
 ## Metrics (per variant)
 

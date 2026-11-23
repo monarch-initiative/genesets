@@ -3,7 +3,9 @@ from pathlib import Path
 from genesets_workflows.curation import model, validate
 
 
-def test_term_ids_by_prefix_groups_and_skips_taxon():
+def test_drift_scan_covers_contexts_and_associations_but_not_taxon(tmp_path):
+    from genesets_workflows.curation import ontology_drift
+
     interp = model.GeneSetInterpretation(
         gene_set_id="LIT:X",
         gene_set_name="X",
@@ -25,9 +27,12 @@ def test_term_ids_by_prefix_groups_and_skips_taxon():
             ),
         ],
     )
-    by = validate.term_ids_by_prefix(interp)
-    assert by == {"MONDO": {"MONDO:0004976"}, "GO": {"GO:0006909", "GO:0005764"}}
-    assert "NCBITaxon" not in by
+    path = tmp_path / "x.yaml"
+    model.dump_interpretation(interp, path)
+    terms = dict(ontology_drift.asserted_terms(path))
+    assert terms == {"MONDO:0004976": "amyotrophic lateral sclerosis",
+                     "GO:0006909": "phagocytosis", "GO:0005764": "lysosome"}
+    assert "NCBITaxon" in ontology_drift.SKIP_PREFIXES
 
 
 def test_build_commands():

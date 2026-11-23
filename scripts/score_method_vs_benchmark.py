@@ -36,6 +36,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import json
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -97,6 +98,35 @@ def _tally(hits: dict[str, set[str]], gold: dict, names: list[str], axis: str, k
     return total, recov
 
 
+def gold_terms_missing_from_eval(eval_dir: Path, gold: dict, names: list[str]) -> list[str]:
+    """Gold GO ids absent from the eval's live-term table (obsolete or unknown there).
+
+    Such a term can never be recovered, so it lowers recall for a reason that has
+    nothing to do with the method: the eval's GO release and the gold have
+    drifted apart (fix with `just curate-drift`/`curate-migrate`, or prepare the
+    eval with a matching --go-release).
+    """
+    terms_tsv = eval_dir / "terms.tsv"
+    if not terms_tsv.exists():
+        return []
+    with terms_tsv.open() as handle:
+        live = {row["term_id"] for row in csv.DictReader(handle, delimiter="\t")}
+    ids = set()
+    for n in names:
+        for axis in ("rec", "ins"):
+            for bucket in gold[n][axis].values():
+                ids |= {t for t in bucket if t.startswith("GO:")}
+    return sorted(ids - live)
+
+
+def eval_go_version(eval_dir: Path) -> str:
+    meta = eval_dir / "metadata.json"
+    if not meta.exists():
+        return "unknown (no metadata.json)"
+    ontology = json.loads(meta.read_text()).get("ontology", {})
+    return ontology.get("data_version") or ontology.get("file", {}).get("url", "unknown")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--eval-dir", required=True, type=Path, help="Prepared dir: <variant>/results.tsv + queries.gmt")
@@ -104,6 +134,8 @@ def main() -> int:
     parser.add_argument("--variants", default="all,no_contributes_to,iba_iea,iba")
     parser.add_argument("--baseline", default="all", help="Variant used for unique-vs-baseline diagnostics.")
     parser.add_argument("--out", type=Path, default=None, help="Optional summary TSV path.")
+    parser.add_argument("--strict", action="store_true",
+                        help="Fail if any gold GO term is obsolete/unknown in the eval's GO release.")
     args = parser.parse_args()
 
     variants = [v.strip() for v in args.variants.split(",") if v.strip()]
@@ -113,6 +145,16 @@ def main() -> int:
 
     # only count sets that produced any enrichment under the baseline
     scored = [n for n in names if hits.get(args.baseline, {}).get(n)]
+
+    print(f"eval GO version: {eval_go_version(args.eval_dir)}")
+    missing = gold_terms_missing_from_eval(args.eval_dir, gold, scored)
+    if missing:
+        print(f"WARNING: {len(missing)} gold GO term(s) are obsolete or unknown in the eval's GO "
+              f"release and can never be recovered: {', '.join(missing)}. Run `just curate-drift`, "
+              "or prepare the eval with a --go-release matching the validation ontology.",
+              file=sys.stderr)
+        if args.strict:
+            return 1
 
     def core_total(n):  # all CORE terms regardless of recovery_status
         return sum(len(b) for b in gold[n]["rec"].values())

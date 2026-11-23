@@ -1,0 +1,282 @@
+gene_set_id: LIT:PPARG_INVERSE_AGONIST_PHENOCOPY_TARGETS
+gene_set_name: PPARG_INVERSE_AGONIST_PHENOCOPY_TARGETS
+collection: LIT:PHENOTYPIC_PROFILING
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 14
+description: >-
+  Literature-defined set of the annotated protein TARGETS of reference compounds
+  whose Cell Painting morphological profiles best match those of five novel
+  covalent PPARG inverse agonists (BAY-4931, BAY-0069, BAY-5516, BAY-5094,
+  BAY-9683), from the JUMP Cell Painting chemical dataset paper (Chandrasekaran,
+  Seal et al., bioRxiv preprint DOI:10.1101/2023.03.23.534023, version 4 posted
+  November 3, 2026; Figure 4C). The preprint has no PMID, so no evidence snippet is
+  quoted from it; its content is summarized in curator notes only, and the verbatim
+  evidence below comes from the PubMed-indexed papers it cites for the biology.
+  CONSTRUCTION: the BAY compounds were profiled in duplicate alongside the
+  JUMP-Target-2 reference plate in PPARG-amplified UM-UC-9 bladder cancer cells
+  (and in U2OS), aligned to the 112,462-compound JUMP reference (U2OS cells, 10 uM),
+  and the Drug Repurposing Hub target annotations of the best-matching,
+  phenotypically active and phenotypically consistent JUMP compounds were scored.
+  Each target's "cumulative composite score" sums the mean average precision of
+  the matching compounds annotated to it. MEMBERSHIP: captured verbatim, in rank
+  order, from the bar chart of Figure 4C (read from a 300-dpi render of the
+  figure): TOP2A 0.22, CDK6 0.16, RRM1 0.09, CDK4 0.08, RRM2 0.07, ROCK1 0.07,
+  ROCK2 0.04, JAK2 0.03, CDK2 0.02, JAK3 0.01, AKT3 0.01, MDM2 0.01, HDAC10 0.00,
+  HDAC6 0.00. All 14 are current HGNC symbols. Supplementary Figures 19/20A, which
+  extend this analysis, were not available in the retrieved PDF, so nothing beyond
+  the 14 charted targets was added. PPARG itself is NOT a member: the authors note
+  that most PPARG-targeting JUMP compounds were filtered out for low phenotypic
+  activity in U2OS cells. WHAT KIND OF SET THIS IS: neither an expression readout
+  nor a genetic convergence. It is a connectivity / guilt-by-similarity set, the
+  image-based analogue of a CMap query: the members are the targets whose
+  pharmacological inhibition PHENOCOPIES the query compounds. Two construction
+  biases follow and are recorded below. (1) Annotated compound libraries are
+  dominated by kinase inhibitors, so 8/14 members are protein kinases and the
+  strongest raw enrichments are kinase/ATP-binding molecular-function terms
+  (recorded as nonspecific). (2) A Cell Painting match can be driven by a shared
+  cell shape rather than a shared mechanism (the ROCK1/ROCK2 entries; recorded as
+  marker_driven_plausible). INTERPRETATION: the paper's synthesis is that the top
+  three target families (CDK, RRM, TOP2A) all act on S-phase entry and DNA
+  synthesis. Blocking them causes G1 arrest. The authors then validated this for
+  the PPARG inverse agonists directly in UM-UC-9 cells: G1 accumulation with fewer
+  S- and M-phase cells by flow cytometry, reduced phospho-Rb (S780), induced SASP
+  genes (TNF, CXCL10, CCL5, IL6), more senescence-associated beta-galactosidase-
+  positive cells, and an enlarged, flattened "fried-egg" morphology matching that
+  of the CDK4/6 inhibitor palbociclib. The interpretive value of the set is
+  therefore the non-obvious link from a nuclear-receptor (PPARG) inverse agonist to
+  the CDK4/6-Rb G1/S checkpoint and senescence, reached purely by image matching.
+  SEED_SOURCE SEMANTICS: `enrichment_recovered` means the term was significant
+  (Bonferroni adjusted p < 0.05) in a genesets-rs Fisher run of these 14 genes
+  against the current GOA human GAF (all evidence codes, is_a/part_of closure,
+  background of 38,821 GOA-annotated symbols, min_overlap 2); `curator_added`
+  means it was not.
+contexts:
+  - term:
+      id: PR:P37231
+      label: peroxisome proliferator-activated receptor gamma (human)
+    context_type: chemical_perturbagen
+    role_note: >-
+      Molecular target of the query perturbagens, the covalent BAY PPARG inverse
+      agonists. The members are targets of OTHER compounds whose morphology
+      matches these queries; PPARG itself is not a member.
+  - term:
+      id: MONDO:0004986
+      label: urinary bladder carcinoma
+    context_type: disease
+    role_note: >-
+      The query profiles came from the PPARG-amplified UM-UC-9 bladder cancer cell
+      line, chosen for high PPARG expression and a strong antiproliferative
+      response to PPARG perturbation. The reference profiles are from U2OS
+      osteosarcoma cells.
+associations:
+  - term:
+      id: GO:0000082
+      label: G1/S transition of mitotic cell cycle
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:19874578
+        reference_title: "PD 0332991, a selective cyclin D kinase 4/6 inhibitor, preferentially inhibits proliferation of luminal estrogen receptor-positive human breast cancer cell lines in vitro."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Cell cycle analysis showed G0/G1 arrest in sensitive cell lines and Western blot analysis demonstrated that Rb phosphorylation is blocked in sensitive lines but not resistant lines."
+        explanation: >-
+          Cited by the JUMP paper (its ref. 46) for the mechanism of palbociclib (PD
+          0332991), the CDK4/6 inhibitor whose morphology the PPARG inverse agonists
+          match: blocking CDK4/6 prevents Rb phosphorylation and arrests cells
+          before the G1/S transition. The JUMP authors reproduced both read-outs for
+          the BAY compounds in UM-UC-9 cells (G1 accumulation; reduced p-Rb S780).
+    curator_note: >-
+      The defining process and the set's key insight. CDK4, CDK6 and CDK2, the
+      kinases that phosphorylate Rb to license S-phase entry, are members and carry
+      the annotation (annotation_supported). Even so, Bonferroni-corrected Fisher
+      enrichment narrowly MISSES it: 3/14 against 79 annotated background genes,
+      nominal p = 2.9e-6, adjusted p of about 0.06. The run DOES recover G2/M
+      transition (recorded below), the wrong phase for this biology, because the
+      same three CDKs carry G2/M annotations and that term is smaller. So this is
+      an honest recall miss caused by multiple-testing burden on a 14-gene set,
+      not an annotation gap. Scored mechanistic: the set was built by querying
+      with PPARG inverse agonists, and nothing in that construction implies a
+      CDK4/6-Rb G1/S checkpoint. The link is the non-obvious finding, and the
+      authors validated it experimentally.
+  - term:
+      id: GO:0000307
+      label: cyclin-dependent protein kinase holoenzyme complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The component carrying the G1/S signal: CDK4, CDK6 and CDK2 (3/14; Bonferroni
+      adjusted p = 0.042), the catalytic subunits of the cyclin D-CDK4/6 and cyclin
+      E/A-CDK2 holoenzymes. Confirmatory: once the CDK family is the top match, its
+      complex follows from membership. The process-level insight is carried by the
+      G1/S term above.
+  - term:
+      id: GO:0006260
+      label: DNA replication
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      The paper's unifying statement is that the CDK, RRM and TOP2A target
+      families are all involved in DNA replication during S phase. The relevant
+      genes are members: RRM1/RRM2 supply dNTPs, TOP2A relieves topological
+      constraints at replication forks, and CDK2 fires origins. But only RRM1 and
+      CDK2 carry DNA replication under is_a/part_of propagation (2/14 against 235;
+      nominal p = 3.2e-3). TOP2A is annotated to DNA topological change and
+      chromosome segregation, and RRM2 to deoxyribonucleotide biosynthesis, but
+      neither to DNA replication. The gap is GO's (annotation_gap). Medium
+      confidence because the JUMP authors infer this from target identity, not
+      from a replication assay. Confirmatory: proliferation/DNA synthesis is a
+      generic hallmark.
+  - term:
+      id: GO:0009263
+      label: deoxyribonucleotide biosynthetic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      RRM1 and RRM2, the large and small subunits of ribonucleotide reductase
+      (2/14 against 3; Bonferroni adjusted p = 7.6e-3; the
+      ribonucleoside-diphosphate reductase complex is also recovered). In the
+      paper's words, RRMs provide the building blocks for DNA synthesis. dNTP
+      depletion stalls S phase, which explains why ribonucleotide reductase
+      inhibitors morphologically resemble G1-arresting compounds. Supporting
+      rather than core: it feeds the replication/G1-S axis rather than defining it.
+  - term:
+      id: GO:0090398
+      label: cellular senescence
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    evidence:
+      - reference: PMID:34722291
+        reference_title: "Palbociclib Induces Senescence in Melanoma and Breast Cancer Cells and Leads to Additive Growth Arrest in Combination With Irradiation."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Palbociclib induces permanent G0/G1 cell cycle arrest by inducing senescence in fibroblasts, breast cancer, and melanoma cells."
+        explanation: >-
+          Cited by the JUMP paper (its ref. 47) for palbociclib-induced senescence.
+          The authors then showed that the PPARG inverse agonists likewise increase
+          SASP gene expression (TNF, CXCL10, CCL5, IL6) and senescence-associated
+          beta-galactosidase-positive cells in UM-UC-9.
+    curator_note: >-
+      The downstream outcome the authors validated. Only CDK2 carries cellular
+      senescence by is_a/part_of propagation. CDK6 is annotated to negative
+      regulation of cellular senescence, which is linked to senescence by a
+      regulates relation and not reached by the eval's closure. CDK4 has no
+      senescence annotation. Inhibiting CDK4/6 is the canonical route to
+      therapy-induced senescence, but GO does not capture it on these members, so
+      the term is an annotation_gap. Supporting rather than core: senescence is
+      the consequence of the G1 arrest that defines the set. Confirmatory: once
+      the match is to CDK4/6 inhibitors, senescence is the expected outcome.
+  - term:
+      id: GO:0035357
+      label: peroxisome proliferator activated receptor signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: membership_gap
+    insight: confirmatory
+    evidence:
+      - reference: PMID:28923856
+        reference_title: "Genomic Activation of PPARG Reveals a Candidate Therapeutic Axis in Bladder Cancer."
+        supports: SUPPORT
+        evidence_source: IN_VITRO
+        snippet: "Reducing PPARG activity, whether by pharmacologic inhibition or genetic ablation, inhibited proliferation of PPARG-activated bladder cancer cells."
+        explanation: >-
+          Cited by the JUMP paper (its ref. 41) as the rationale for using UM-UC-9:
+          in PPARG-activated bladder cancer, lowering PPARG signaling is
+          antiproliferative. This is the upstream cause of the G1 arrest that the
+          members phenocopy.
+    curator_note: >-
+      The query perturbagens' own pathway. In a complete description it is the
+      upstream event: inverse agonism of PPARG suppresses PPARG-driven
+      proliferation and leads to the G1 arrest. PPARG is NOT a member. The authors
+      report that most PPARG-targeting JUMP compounds were filtered out for low
+      phenotypic activity in U2OS cells, and none of the 14 targets carries this
+      annotation, so the term is a membership_gap. A connectivity set recovers the
+      phenotype's executors (the cell-cycle machinery) rather than the query's own
+      target. Benchmark value: a method should not find this term from the
+      membership. lineage_shared because PPARG signaling is prominent in
+      adipocytes and luminal urothelium rather than ubiquitous.
+  - term:
+      id: GO:0031032
+      label: actomyosin structure organization
+    aspect: biological_process
+    category: marker_driven_plausible
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    curator_note: >-
+      ROCK1 and ROCK2 (ranks 6 and 7) carry it (2/14 against 113; nominal p =
+      7.5e-4; not significant after Bonferroni). Their kinase-activity term,
+      Rho-dependent protein serine/threonine kinase activity, IS recovered. ROCK
+      inhibition loosens actomyosin contractility and lets cells spread and
+      flatten, which plausibly matches the enlarged "fried-egg" morphology that
+      defines the PPARG inverse agonist / palbociclib phenotype, without sharing
+      its cell-cycle mechanism. Recorded as marker_driven_plausible: a
+      morphology-level co-match that the image-similarity construction can
+      produce, not part of the mechanism the paper validates.
+  - term:
+      id: GO:0000086
+      label: G2/M transition of mitotic cell cycle
+    aspect: biological_process
+    category: marker_driven_plausible
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Recovered (3/14 against 47; Bonferroni adjusted p = 0.013) from the same
+      three CDKs (CDK4, CDK6, CDK2), which also carry G2/M annotations. Biologically
+      it is the wrong phase for this set. The BAY compounds increase the
+      G1-phase fraction and decrease S- and M-phase cells (Figure 4D), the
+      palbociclib-like pattern of arrest BEFORE S phase. The term is recorded
+      because enrichment returns it, and it is kept out of the core so that a
+      method recovering only G2/M, and not G1/S, scores as a miss on this set's
+      defining biology.
+  - term:
+      id: GO:0006468
+      label: protein phosphorylation
+    aspect: biological_process
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      Recovered (5/14; Bonferroni adjusted p = 1.2e-3; carried by ROCK1, ROCK2,
+      JAK2, JAK3, CDK2), alongside the strongest raw hits of the whole run: ATP
+      binding, protein kinase activity and other nucleotide-binding molecular
+      functions. This is a construction artefact. Target-annotated compound
+      libraries are dominated by kinase inhibitors, so any phenotypic-match target
+      list over-represents protein kinases (8/14 here) whatever the phenotype.
+      nonspecific: it describes the druggable genome, not the morphology matched.
