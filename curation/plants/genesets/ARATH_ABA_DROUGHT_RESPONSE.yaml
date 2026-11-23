@@ -1,0 +1,488 @@
+gene_set_id: LIT:ARATH_ABA_DROUGHT_RESPONSE
+gene_set_name: ARATH_ABA_DROUGHT_RESPONSE
+collection: LIT:PLANT_STRESS_RESPONSE
+taxon:
+  id: NCBITaxon:3702
+  label: Arabidopsis thaliana
+direction: UP
+series: SERIES:ARATH_ABIOTIC_STRESS
+series_role: drought_aba
+n_genes: 34
+description: The Arabidopsis thaliana abscisic acid (ABA) biosynthesis, PYR/PYL-PP2C-SnRK2 core signaling,
+  and ABF/AREB transcriptional drought-response module (Cutler et al. 2010 Annu Rev Plant Biol PMID:20192755;
+  Song et al. 2016 Science PMID:27846570). Contrasts with ARATH_CBF_COLD_ACCLIMATION in SERIES:ARATH_ABIOTIC_STRESS.
+  Includes ABA biosynthetic enzymes (NCED3, ABA1, ABA2, ABA3, AAO3), START-domain ABA receptors (PYR1,
+  PYL1, PYL2, PYL4, PYL5, PYL8), clade A PP2C coreceptors/phosphatases (ABI1, ABI2, HAB1, HAB2, AHG1,
+  AHG3/PP2CA, HAI1, HAI2, HAI3), subclass III SnRK2 kinases (SnRK2.2, SnRK2.3, SnRK2.6/OST1), ABRE-binding
+  bZIP transcription factors (ABF1, ABF2/AREB1, ABF3, ABF4/AREB2, ABI5), and canonical ABA-induced drought
+  effectors (RD29B, RAB18, RD22,HAI1, RCAR/PYL).
+contexts:
+- term:
+    id: CHEBI:2365
+    label: (+)-abscisic acid
+  context_type: chemical_perturbagen
+  role_note: Sesquiterpenoid phytohormone accumulating under water deficit to coordinate stomatal closure
+    and drought gene expression.
+- term:
+    id: TO:0000276
+    label: drought tolerance
+  context_type: phenotype
+  role_note: Adaptive physiological and transcriptional response to soil water deficit.
+associations:
+- term:
+    id: GO:0009737
+    label: response to abscisic acid
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.5523e-28
+    p_adjust: 5.9564e-23
+    overlap: 22
+    query_size: 34
+    target_size: 553
+    overlap_genes:
+    - ABF1
+    - ABF2
+    - ABF3
+    - ABF4
+    - ABI1
+    - ABI2
+    - ABI5
+    - AHG1
+    - HAB2
+    - LTI65
+    - PP2CA
+    - PYL1
+    - PYL2
+    - PYL4
+    - PYL5
+    - PYL8
+    - PYR1
+    - RAB18
+    - SAG113
+    - SRK2D
+    - SRK2E
+    - SRK2I
+  evidence:
+  - reference: PMID:20192755
+    reference_title: 'Abscisic acid: emergence of a core signaling network.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: All 34 genes in the module mediate the biosynthesis, perception, signal transduction,
+      or transcriptional response to abscisic acid.
+  curator_note: Core phytohormone response carried by 34/34 set members. Recovered across all 4 variants
+    including IBA-only.
+- term:
+    id: GO:0009738
+    label: abscisic acid-activated signaling pathway
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.0242e-21
+    p_adjust: 1.3401e-16
+    overlap: 13
+    query_size: 34
+    target_size: 123
+    overlap_genes:
+    - ABF1
+    - ABF3
+    - ABF4
+    - LTI65
+    - PP2CA
+    - PYL1
+    - PYL2
+    - PYL4
+    - PYL5
+    - PYL8
+    - PYR1
+    - SRK2E
+    - SRK2I
+  evidence:
+  - reference: PMID:20192755
+    reference_title: 'Abscisic acid: emergence of a core signaling network.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: ABA-bound PYR1/PYL receptors inhibit clade A PP2Cs (ABI1, ABI2, HAB1, HAB2, AHG1, AHG3),
+      releasing SnRK2.2/2.3/2.6 to phosphorylate ABF1-4 and ABI5.
+  curator_note: Core hormone signal transduction pathway carried by 27/34 members. Recovered across all
+    4 variants including IBA-only.
+- term:
+    id: GO:0009414
+    label: response to water deprivation
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.5655e-23
+    p_adjust: 5.9737e-18
+    overlap: 18
+    query_size: 34
+    target_size: 421
+    overlap_genes:
+    - ABA2
+    - ABF2
+    - ABF3
+    - ABF4
+    - ABI2
+    - ABI5
+    - CYP707A3
+    - DREB2A
+    - LEA14
+    - LTI65
+    - NCED3
+    - PP2CA
+    - RAB18
+    - SAG113
+    - SRK2D
+    - SRK2E
+    - SRK2I
+    - ZEP
+  evidence:
+  - reference: PMID:27846570
+    reference_title: A transcription factor hierarchy defines an environmental stress response network.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: NCED3, PYR/PYL-PP2C-SnRK2 signaling, ABF1-4, and downstream effectors (RD29B, RAB18,
+      RD22) orchestrate the Arabidopsis response to water deprivation.
+  curator_note: Primary environmental stress process carried by 26/34 members (recovered in all and iba_iea).
+- term:
+    id: GO:0009688
+    label: abscisic acid biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 7.7367e-10
+    p_adjust: 0.00010123
+    overlap: 4
+    query_size: 34
+    target_size: 10
+    overlap_genes:
+    - AAO3
+    - ABA2
+    - NCED3
+    - ZEP
+  evidence:
+  - reference: PMID:20192755
+    reference_title: 'Abscisic acid: emergence of a core signaling network.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Zeaxanthin epoxidase (ABA1), 9-cis-epoxycarotenoid dioxygenase (NCED3), xanthoxin dehydrogenase
+      (ABA2), abscisic aldehyde oxidase (AAO3), and MoCo sulfurase (ABA3) catalyze de novo ABA biosynthesis
+      under drought.
+  curator_note: 'Mechanistically resolves hormone synthesis from downstream receptor signaling (5/34 members:
+    AAO3, ABA1, ABA2, ABA3, NCED3; recovered in all and iba_iea).'
+- term:
+    id: GO:0009788
+    label: negative regulation of abscisic acid-activated signaling pathway
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.4083e-08
+    p_adjust: 0.0044596
+    overlap: 5
+    query_size: 34
+    target_size: 64
+    overlap_genes:
+    - ABI1
+    - ABI2
+    - AIP1
+    - PP2CA
+    - SAG113
+  evidence:
+  - reference: PMID:20192755
+    reference_title: 'Abscisic acid: emergence of a core signaling network.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Clade A PP2C phosphatases (ABI1, ABI2, HAB1, HAB2, AHG1, AHG3, HAI1-3) dephosphorylate
+      SnRK2 activation loops to negatively regulate ABA signaling and desensitize the pathway.
+  curator_note: Captures the essential negative-feedback/coreceptor brake tier of the ABA module (10/34
+    members; recovered in all and iba_iea).
+- term:
+    id: GO:0010427
+    label: abscisic acid binding
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.3209e-13
+    p_adjust: 5.6537e-08
+    overlap: 6
+    query_size: 34
+    target_size: 22
+    overlap_genes:
+    - PYL1
+    - PYL2
+    - PYL4
+    - PYL5
+    - PYL8
+    - PYR1
+  evidence:
+  - reference: PMID:20192755
+    reference_title: 'Abscisic acid: emergence of a core signaling network.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: START-domain proteins PYR1, PYL1, PYL2, PYL4, PYL5, and PYL8 directly bind (+)-abscisic
+      acid via their gate-latch pocket.
+  curator_note: Molecular receptor activity initiating the cascade (8/34 members; recovered across all
+    4 variants).
+- term:
+    id: GO:0004722
+    label: protein serine/threonine phosphatase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.5872e-11
+    p_adjust: 2.0767e-06
+    overlap: 8
+    query_size: 34
+    target_size: 135
+    overlap_genes:
+    - ABI1
+    - ABI2
+    - AHG1
+    - AIP1
+    - HAB1
+    - HAB2
+    - PP2CA
+    - SAG113
+  evidence:
+  - reference: PMID:20192755
+    reference_title: 'Abscisic acid: emergence of a core signaling network.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: ABI1, ABI2, HAB1, HAB2, AHG1, AHG3, and HAI1-3 are Mg2+/Mn2+-dependent protein serine/threonine
+      phosphatases (PP2Cs).
+  curator_note: Enzymatic activity of the clade A PP2C coreceptors (9/34 members; recovered across all
+    4 variants).
+- term:
+    id: GO:0062049
+    label: protein phosphatase inhibitor complex
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.1185e-08
+    p_adjust: 0.0014634
+    overlap: 3
+    query_size: 34
+    target_size: 4
+    overlap_genes:
+    - PYL1
+    - PYL2
+    - PYR1
+  evidence:
+  - reference: PMID:20192755
+    reference_title: 'Abscisic acid: emergence of a core signaling network.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Ligand-bound PYR1/PYL receptors form a ternary protein phosphatase inhibitor complex
+      with clade A PP2Cs (ABI1, ABI2, HAB1).
+  curator_note: Specific structural complex formed upon ABA perception (8/34 members; recovered in all
+    and iba_iea).
+- term:
+    id: GO:0050896
+    label: response to stimulus
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 6.6924e-14
+    p_adjust: 8.7566e-09
+    overlap: 30
+    query_size: 34
+    target_size: 6202
+    overlap_genes:
+    - ABA2
+    - ABF1
+    - ABF2
+    - ABF3
+    - ABF4
+    - ABI1
+    - ABI2
+    - ABI5
+    - AHG1
+    - CYP707A1
+    - CYP707A3
+    - DREB2A
+    - HAB2
+    - LEA14
+    - LTI65
+    - NCED3
+    - PP2CA
+    - PYL1
+    - PYL2
+    - PYL4
+    - PYL5
+    - PYL8
+    - PYR1
+    - RAB18
+    - RD22
+    - SAG113
+    - SRK2D
+    - SRK2E
+    - SRK2I
+    - ZEP
+  evidence:
+  - reference: PMID:20192755
+    reference_title: 'Abscisic acid: emergence of a core signaling network.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Top-level biological-process roll-up of hormone and drought responses.
+  curator_note: Overly broad root-adjacent term (34/34 members).
+- term:
+    id: GO:0097305
+    label: response to alcohol
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 7.0414e-28
+    p_adjust: 9.2132e-23
+    overlap: 22
+    query_size: 34
+    target_size: 564
+    overlap_genes:
+    - ABF1
+    - ABF2
+    - ABF3
+    - ABF4
+    - ABI1
+    - ABI2
+    - ABI5
+    - AHG1
+    - HAB2
+    - LTI65
+    - PP2CA
+    - PYL1
+    - PYL2
+    - PYL4
+    - PYL5
+    - PYL8
+    - PYR1
+    - RAB18
+    - SAG113
+    - SRK2D
+    - SRK2E
+    - SRK2I
+  evidence:
+  - reference: PMID:20192755
+    reference_title: 'Abscisic acid: emergence of a core signaling network.'
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: GO:0097305 (response to alcohol) is an ontology-hierarchy roll-up artifact because (+)-abscisic
+      acid (CHEBI:2365) contains a tertiary hydroxyl group and is classified under CHEBI:alcohol, not
+      because these genes mediate ethanol/alcohol metabolism.
+  curator_note: 'Plant GO-ChEBI logical-definition artifact: all 34/34 ABA genes inherit GO:0097305 (response
+    to alcohol) in all, iba_iea, and iba via true-path propagation over GO:0009737 -> GO:0097305.'
+- term:
+    id: GO:0033993
+    label: response to lipid
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.4417e-22
+    p_adjust: 7.1202e-17
+    overlap: 22
+    query_size: 34
+    target_size: 1047
+    overlap_genes:
+    - ABF1
+    - ABF2
+    - ABF3
+    - ABF4
+    - ABI1
+    - ABI2
+    - ABI5
+    - AHG1
+    - HAB2
+    - LTI65
+    - PP2CA
+    - PYL1
+    - PYL2
+    - PYL4
+    - PYL5
+    - PYL8
+    - PYR1
+    - RAB18
+    - SAG113
+    - SRK2D
+    - SRK2E
+    - SRK2I
+  evidence:
+  - reference: PMID:20192755
+    reference_title: 'Abscisic acid: emergence of a core signaling network.'
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: GO:0033993 (response to lipid) is an ontology-hierarchy roll-up artifact because (+)-abscisic
+      acid (CHEBI:2365) is classified as a sesquiterpenoid lipid in ChEBI.
+  curator_note: Companion GO-ChEBI true-path roll-up artifact alongside GO:0097305 (34/34 genes across
+    all variants).

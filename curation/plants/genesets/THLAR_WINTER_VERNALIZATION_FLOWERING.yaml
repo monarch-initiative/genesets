@@ -1,0 +1,392 @@
+gene_set_id: LIT:THLAR_WINTER_VERNALIZATION_FLOWERING
+gene_set_name: THLAR_WINTER_VERNALIZATION_FLOWERING
+collection: LIT:DOE_BER_BIOENERGY
+taxon:
+  id: NCBITaxon:13288
+  label: Thlaspi arvense
+direction: UP
+n_genes: 33
+description: The Thlaspi arvense (field pennycress) winter-annual vernalization requirement, epigenetic
+  Polycomb/chromatin silencing of FLOWERING LOCUS C (TaFLC), photoperiodic CO-FT-SOC1-AP1 floral transition,
+  and cold-hardiness dehydrin module (Dorn et al. 2018 Biotechnol Biofuels PMID:29371883; Geng et al.
+  2021 Plant Physiol PMID:34618056; Nunn et al. 2022 Nat Commun PMID:35610221). Winter vs spring growth
+  habit (controlled by loss-of-function mutations in TaFLC or FRI) and early spring flowering time are
+  critical agronomic traits enabling pennycress to fit as a winter cash cover crop between autumn corn
+  harvest and spring soybean planting in the US Midwest Corn Belt.
+contexts:
+- term:
+    id: PO:0009047
+    label: stem
+  context_type: anatomical_structure
+  role_note: Overwintering pennycress rosette shoot apical meristem undergoing vernalization and bolting
+    into a reproductive inflorescence stem in early spring.
+- term:
+    id: TO:0000303
+    label: low temperature stress response
+  context_type: phenotype
+  role_note: Prolonged winter chilling required both for freezing survival and for vernalization-induced
+    floral competence in winter pennycress.
+associations:
+- term:
+    id: GO:0010048
+    label: vernalization response
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.7104e-17
+    p_adjust: 3.344e-13
+    overlap: 6
+    query_size: 33
+    target_size: 6
+    overlap_genes:
+    - TAV2_LOCUS11582
+    - TAV2_LOCUS12055
+    - TAV2_LOCUS21233
+    - TAV2_LOCUS24361
+    - TAV2_LOCUS8339
+    - TAV2_LOCUS8780
+  evidence:
+  - reference: PMID:29371883
+    reference_title: Vernalization requirement in winter pennycress (Thlaspi arvense) is governed by FLOWERING
+      LOCUS C.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Six pennycress vernalization regulators (VRN/VIN3/FLC-clade and cold-sensing factors)
+      mediate acquisition of floral competence by prolonged winter cold.
+  curator_note: Defining physiological process of winter-annual pennycress (6/33 members; recovered in
+    all and iba_iea, 0 in IBA-only because Thlaspi arvense lacks PANTHER IBA in EBI GOA).
+- term:
+    id: GO:0009909
+    label: regulation of flower development
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.3751e-20
+    p_adjust: 2.6884e-16
+    overlap: 10
+    query_size: 33
+    target_size: 36
+    overlap_genes:
+    - TAV2_LOCUS11213
+    - TAV2_LOCUS131
+    - TAV2_LOCUS3315
+    - TAV2_LOCUS4178
+    - TAV2_LOCUS4933
+    - TAV2_LOCUS5606
+    - TAV2_LOCUS5729
+    - TAV2_LOCUS6208
+    - TAV2_LOCUS6468
+    - TAV2_LOCUS6900
+  evidence:
+  - reference: PMID:29371883
+    reference_title: Vernalization requirement in winter pennycress (Thlaspi arvense) is governed by FLOWERING
+      LOCUS C.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Ten pennycress MADS-box (FLC, SOC1, SVP, AP1) and floral-integrator paralogs regulate
+      the timing of flower development.
+  curator_note: Core developmental regulatory process carried by 10/33 members (recovered in all and iba_iea).
+- term:
+    id: GO:0009908
+    label: flower development
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.4717e-19
+    p_adjust: 1.0698e-14
+    overlap: 10
+    query_size: 33
+    target_size: 50
+    overlap_genes:
+    - TAV2_LOCUS12797
+    - TAV2_LOCUS13466
+    - TAV2_LOCUS15716
+    - TAV2_LOCUS15931
+    - TAV2_LOCUS1654
+    - TAV2_LOCUS17877
+    - TAV2_LOCUS20478
+    - TAV2_LOCUS4537
+    - TAV2_LOCUS7412
+    - TAV2_LOCUS7856
+  evidence:
+  - reference: PMID:35610221
+    reference_title: Chromosome-level reference genome of Thlaspi arvense (field pennycress).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Ten pennycress floral homeotic and meristem-identity factors drive flower development
+      following vernalization.
+  curator_note: Core reproductive developmental process (10/33 members; recovered in all and iba_iea).
+- term:
+    id: GO:0010228
+    label: vegetative to reproductive phase transition of meristem
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.0885e-13
+    p_adjust: 4.0833e-09
+    overlap: 6
+    query_size: 33
+    target_size: 17
+    overlap_genes:
+    - TAV2_LOCUS15981
+    - TAV2_LOCUS2052
+    - TAV2_LOCUS3882
+    - TAV2_LOCUS5476
+    - TAV2_LOCUS5606
+    - TAV2_LOCUS7856
+  evidence:
+  - reference: PMID:29371883
+    reference_title: Vernalization requirement in winter pennycress (Thlaspi arvense) is governed by FLOWERING
+      LOCUS C.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Six pennycress floral integrators and squamosa-promoter-binding-like (SPL) factors convert
+      the overwintered vegetative rosette meristem into an inflorescence meristem.
+  curator_note: Mechanistically resolves the meristem phase transition from vegetative rosette to bolting
+    reproductive apex (6/33 members; recovered in all and iba_iea).
+- term:
+    id: GO:0040029
+    label: epigenetic regulation of gene expression
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.7183e-09
+    p_adjust: 7.2696e-05
+    overlap: 6
+    query_size: 33
+    target_size: 77
+    overlap_genes:
+    - TAV2_LOCUS11582
+    - TAV2_LOCUS12055
+    - TAV2_LOCUS21233
+    - TAV2_LOCUS24361
+    - TAV2_LOCUS8339
+    - TAV2_LOCUS8780
+  evidence:
+  - reference: PMID:35610221
+    reference_title: Chromosome-level reference genome of Thlaspi arvense (field pennycress).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Six pennycress Polycomb/VRN/chromatin-remodeling factors epigenetically silence the floral
+      repressor FLC during prolonged cold.
+  curator_note: Captures the epigenetic chromatin-memory mechanism of vernalization (6/33 members; recovered
+    in all and iba_iea).
+- term:
+    id: GO:0009409
+    label: response to cold
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.9718e-18
+    p_adjust: 7.7653e-14
+    overlap: 10
+    query_size: 33
+    target_size: 60
+    overlap_genes:
+    - TAV2_LOCUS1152
+    - TAV2_LOCUS11582
+    - TAV2_LOCUS12055
+    - TAV2_LOCUS21233
+    - TAV2_LOCUS24361
+    - TAV2_LOCUS3315
+    - TAV2_LOCUS3710
+    - TAV2_LOCUS3721
+    - TAV2_LOCUS8339
+    - TAV2_LOCUS8780
+  evidence:
+  - reference: PMID:34618056
+    reference_title: Transcriptomic and metabolomic analysis of cold acclimation in winter pennycress.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Ten pennycress cold-responsive and vernalization genes mediate the overwintering response
+      to cold.
+  curator_note: Supporting winter cold-hardiness program (10/33 members; recovered in all and iba_iea).
+- term:
+    id: GO:0048573
+    label: photoperiodism, flowering
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 7.5796e-12
+    p_adjust: 1.4819e-07
+    overlap: 4
+    query_size: 33
+    target_size: 4
+    overlap_genes:
+    - TAV2_LOCUS15981
+    - TAV2_LOCUS2052
+    - TAV2_LOCUS3882
+    - TAV2_LOCUS5476
+  evidence:
+  - reference: PMID:35610221
+    reference_title: Chromosome-level reference genome of Thlaspi arvense (field pennycress).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Four pennycress CONSTANS/GIGANTEA/FKF1 photoperiodic regulators integrate lengthening
+      spring daylengths once FLC repression is lifted by winter vernalization.
+  curator_note: Resolves the spring long-day photoperiodic flowering gate (4/33 members; recovered in
+    all and iba_iea).
+- term:
+    id: GO:0005634
+    label: nucleus
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.8655e-13
+    p_adjust: 3.6472e-09
+    overlap: 27
+    query_size: 33
+    target_size: 4036
+    overlap_genes:
+    - TAV2_LOCUS11213
+    - TAV2_LOCUS11582
+    - TAV2_LOCUS12055
+    - TAV2_LOCUS12797
+    - TAV2_LOCUS131
+    - TAV2_LOCUS13466
+    - TAV2_LOCUS15716
+    - TAV2_LOCUS15981
+    - TAV2_LOCUS1654
+    - TAV2_LOCUS17877
+    - TAV2_LOCUS20478
+    - TAV2_LOCUS2052
+    - TAV2_LOCUS21233
+    - TAV2_LOCUS24361
+    - TAV2_LOCUS3315
+    - TAV2_LOCUS3710
+    - TAV2_LOCUS3882
+    - TAV2_LOCUS4178
+    - TAV2_LOCUS4537
+    - TAV2_LOCUS5476
+    - TAV2_LOCUS5606
+    - TAV2_LOCUS5729
+    - TAV2_LOCUS6208
+    - TAV2_LOCUS6468
+    - TAV2_LOCUS6900
+    - TAV2_LOCUS8339
+    - TAV2_LOCUS8780
+  evidence:
+  - reference: PMID:29371883
+    reference_title: Vernalization requirement in winter pennycress (Thlaspi arvense) is governed by FLOWERING
+      LOCUS C.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: MADS-box transcription factors (FLC, SOC1, AP1), SPLs, and VRN/Polycomb chromatin modifiers
+      localize to the nucleus.
+  curator_note: Nuclear compartment where vernalization chromatin silencing and floral transcription occur
+    (20/33 members; recovered in all and iba_iea).
+- term:
+    id: GO:0008150
+    label: biological_process
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.2945e-06
+    p_adjust: 0.04486
+    overlap: 33
+    query_size: 33
+    target_size: 12807
+    overlap_genes:
+    - TAV2_LOCUS11213
+    - TAV2_LOCUS1152
+    - TAV2_LOCUS11582
+    - TAV2_LOCUS12055
+    - TAV2_LOCUS12797
+    - TAV2_LOCUS131
+    - TAV2_LOCUS13466
+    - TAV2_LOCUS15716
+    - TAV2_LOCUS15931
+    - TAV2_LOCUS15981
+    - TAV2_LOCUS1654
+    - TAV2_LOCUS17877
+    - TAV2_LOCUS20478
+    - TAV2_LOCUS2052
+    - TAV2_LOCUS21233
+    - TAV2_LOCUS24361
+    - TAV2_LOCUS3315
+    - TAV2_LOCUS3710
+    - TAV2_LOCUS3721
+    - TAV2_LOCUS3882
+    - TAV2_LOCUS4178
+    - TAV2_LOCUS4537
+    - TAV2_LOCUS4933
+    - TAV2_LOCUS5476
+    - TAV2_LOCUS5606
+    - TAV2_LOCUS5729
+    - TAV2_LOCUS6208
+    - TAV2_LOCUS6468
+    - TAV2_LOCUS6900
+    - TAV2_LOCUS7412
+    - TAV2_LOCUS7856
+    - TAV2_LOCUS8339
+    - TAV2_LOCUS8780
+  evidence:
+  - reference: PMID:29371883
+    reference_title: Vernalization requirement in winter pennycress (Thlaspi arvense) is governed by FLOWERING
+      LOCUS C.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Top-level biological_process root term.
+  curator_note: Overly broad root term (33/33 members).

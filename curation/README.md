@@ -252,3 +252,7 @@ term-validator misses — the `sqlite:obo:*` builds retain labels for obsolete
 classes, so an obsolete id paired with its old label still passes id+label
 validation. An obsolete `id:` now fails the build (e.g. `GO:0050663` cytokine
 secretion → use `GO:0032635`; `GO:0062023` → `GO:0031012`).
+
+## Domain & Multi-Species Sub-Corpora
+- [`curation/cgsa/`](cgsa/README.md) — Curated GO interpretations for the Hu et al. 2024 Nature Methods LLM gene set evaluation panel (`evals/cgsa/`).
+- [`curation/plants/`](plants/README.md) — Multi-species plant GO-interpretation gold standard (30 gene sets across 6 vascular plant species) spanning *Arabidopsis thaliana* (`NCBITaxon:3702`) and five DOE/BER bioenergy & oilseed species (*Populus trichocarpa* `NCBITaxon:3694`, *Panicum virgatum* `NCBITaxon:38727`, *Sorghum bicolor* `NCBITaxon:4558`, *Thlaspi arvense* `NCBITaxon:13288`, and *Brachypodium distachyon* `NCBITaxon:15368`), paired with the multi-species GOA evidence variant benchmark in [`evals/plants/`](../evals/plants/README.md).

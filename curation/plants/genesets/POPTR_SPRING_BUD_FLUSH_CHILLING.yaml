@@ -1,0 +1,398 @@
+gene_set_id: LIT:POPTR_SPRING_BUD_FLUSH_CHILLING
+gene_set_name: POPTR_SPRING_BUD_FLUSH_CHILLING
+collection: LIT:DOE_BER_BIOENERGY
+taxon:
+  id: NCBITaxon:3694
+  label: Populus trichocarpa
+direction: UP
+series: SERIES:POPTR_SEASONAL_BUD_DORMANCY
+series_role: spring_bud_flush_ga_glucanase
+n_genes: 34
+description: The Populus trichocarpa winter-chilling-induced dormancy release, gibberellin (GA) biosynthesis
+  and signaling, glycoside hydrolase family 17 (GH17) 1,3-beta-glucanase plasmodesmatal callose-plug degradation,
+  and cyclin/CDK meristem reactivation program (Rinne et al. 2011 Plant Cell PMID:21282524; Singh et al.
+  2018 Plant Cell PMID:30150313; Conde et al. 2019 New Phytol PMID:30536606). Contrasts with POPTR_AUTUMN_BUD_DORMANCY_ABA
+  in SERIES:POPTR_SEASONAL_BUD_DORMANCY. Prolonged winter chilling represses SVL/ABA and induces GA1/GA4
+  biosynthesis and GH17 beta-1,3-glucanases that hydrolyze plasmodesmatal callose sphincters, reopening
+  symplastic transport of FT1 to trigger spring bud flush.
+contexts:
+- term:
+    id: PO:0009047
+    label: stem
+  context_type: anatomical_structure
+  role_note: Chilling-fulfilled Populus apical and axillary shoot buds reopening symplastic connectivity
+    and flushing in spring.
+associations:
+- term:
+    id: GO:0009739
+    label: response to gibberellin
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.5247e-29
+    p_adjust: 1.6594e-24
+    overlap: 14
+    query_size: 34
+    target_size: 93
+    overlap_genes:
+    - POPTR_002G199200
+    - POPTR_004G076800
+    - POPTR_004G097900
+    - POPTR_008G131700
+    - POPTR_008G193400
+    - POPTR_010G036400v4
+    - POPTR_010G039300
+    - POPTR_012G073900
+    - POPTR_013G113300
+    - POPTR_015G069000
+    - POPTR_016G060600
+    - POPTR_017G116300
+    - POPTR_017G134350v4
+    - POPTR_018G074200
+  evidence:
+  - reference: PMID:21282524
+    reference_title: Chilling of dormant buds hyperinduces FLOWERING LOCUS T and recruits GA-inducible
+      1,3-beta-glucanases to reopen signal conduits and release dormancy in Populus.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: 14 of 34 set members mediate gibberellin biosynthesis, perception, or signaling during
+      chilling-induced dormancy release.
+  curator_note: Core phytohormone response driving dormancy break and spring bud flush (14/34 members;
+    recovered across all 4 variants including IBA-only).
+- term:
+    id: GO:0009686
+    label: gibberellin biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 7.9453e-19
+    p_adjust: 2.3864e-14
+    overlap: 8
+    query_size: 34
+    target_size: 31
+    overlap_genes:
+    - POPTR_002G129700
+    - POPTR_005G184400
+    - POPTR_005G210300
+    - POPTR_006G247700
+    - POPTR_007G103800
+    - POPTR_008G082700
+    - POPTR_008G082800v4
+    - POPTR_014G179100
+  evidence:
+  - reference: PMID:21282524
+    reference_title: Chilling of dormant buds hyperinduces FLOWERING LOCUS T and recruits GA-inducible
+      1,3-beta-glucanases to reopen signal conduits and release dormancy in Populus.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Eight poplar ent-kaurenoic acid oxidase (KAO), GA 20-oxidase (GA20ox), and GA 3-oxidase
+      (GA3ox) paralogs synthesize bioactive gibberellins upon winter chilling and warm spring temperatures.
+  curator_note: Mechanistically resolves de novo gibberellin biosynthesis in flushing buds (8/34 members;
+    recovered across all 4 variants).
+- term:
+    id: GO:0009740
+    label: gibberellic acid mediated signaling pathway
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 7.9453e-19
+    p_adjust: 2.3864e-14
+    overlap: 8
+    query_size: 34
+    target_size: 31
+    overlap_genes:
+    - POPTR_002G199200
+    - POPTR_004G076800
+    - POPTR_004G097900
+    - POPTR_008G131700
+    - POPTR_008G193400
+    - POPTR_010G036400v4
+    - POPTR_017G116300
+    - POPTR_018G074200
+  evidence:
+  - reference: PMID:30150313
+    reference_title: A genetic network mediating the control of bud dormancy in poplar.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Eight poplar GID1 receptor and DELLA/GIS transcriptional regulators transduce the gibberellic
+      acid signal to promote bud flush.
+  curator_note: Core GA-mediated signaling pathway (8/34 members; recovered across all 4 variants).
+- term:
+    id: GO:0042973
+    label: glucan endo-1,3-beta-D-glucosidase activity
+  aspect: molecular_function
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.2778e-13
+    p_adjust: 3.838e-09
+    overlap: 8
+    query_size: 34
+    target_size: 127
+    overlap_genes:
+    - POPTR_015G010100
+    - POPTR_016G057400
+    - POPTR_016G135900
+    - POPTR_017G130200
+    - POPTR_018G072300
+    - POPTR_018G077000
+    - POPTR_018G129500
+    - POPTR_019G032900
+  evidence:
+  - reference: PMID:21282524
+    reference_title: Chilling of dormant buds hyperinduces FLOWERING LOCUS T and recruits GA-inducible
+      1,3-beta-glucanases to reopen signal conduits and release dormancy in Populus.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Eight chilling- and GA-recruited GH17 glucan endo-1,3-beta-D-glucosidase paralogs hydrolyze
+      the (1->3)-beta-D-glucan (callose) dormancy sphincters at shoot-meristem plasmodesmata.
+  curator_note: Captures the exact enzymatic mechanism that removes plasmodesmatal callose plugs to restore
+    cell-to-cell communication in spring (8/34 members; recovered in all and iba_iea).
+- term:
+    id: GO:0009736
+    label: cytokinin-activated signaling pathway
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.9395e-08
+    p_adjust: 0.00088292
+    overlap: 5
+    query_size: 34
+    target_size: 106
+    overlap_genes:
+    - POPTR_002G199200
+    - POPTR_004G097900
+    - POPTR_008G193400
+    - POPTR_010G036400v4
+    - POPTR_017G116300
+  evidence:
+  - reference: PMID:30536606
+    reference_title: Chilling-induced DNA demethylation and cell-cycle reactivation during poplar bud
+      dormancy release.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Cytokinin signaling regulators cooperate with gibberellin during bud burst to reactivate
+      meristem cell division.
+  curator_note: Supporting hormone pathway reactivating shoot apical meristem proliferation (5/34 members;
+    recovered across all 4 variants).
+- term:
+    id: GO:0004693
+    label: cyclin-dependent protein serine/threonine kinase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.0056e-08
+    p_adjust: 0.00090277
+    overlap: 4
+    query_size: 34
+    target_size: 38
+    overlap_genes:
+    - POPTR_014G079100
+    - POPTR_015G092100
+    - POPTR_016G012800
+    - POPTR_018G083300
+  evidence:
+  - reference: PMID:30536606
+    reference_title: Chilling-induced DNA demethylation and cell-cycle reactivation during poplar bud
+      dormancy release.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Four poplar cyclin-dependent kinases (CDKs) and D-type cyclins resume cell-cycle progression
+      in the reactivated shoot apex during bud burst.
+  curator_note: Captures cell-cycle resumption at bud flush (4/34 members; recovered in all and iba_iea).
+- term:
+    id: GO:0097438
+    label: exit from dormancy
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: confirmatory
+  evidence:
+  - reference: PMID:21282524
+    reference_title: Chilling of dormant buds hyperinduces FLOWERING LOCUS T and recruits GA-inducible
+      1,3-beta-glucanases to reopen signal conduits and release dormancy in Populus.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Chilling-induced GA synthesis and GH17 callose hydrolysis drive exit from dormancy (GO:0097438)
+      in perennial Populus buds.
+  curator_note: Zero genes in Populus trichocarpa EBI GOA are annotated to GO:0097438 (exit from dormancy)
+    or GO:0097207 (bud dormancy process).
+- term:
+    id: GO:0042221
+    label: response to chemical
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 6.494e-10
+    p_adjust: 1.9505e-05
+    overlap: 14
+    query_size: 34
+    target_size: 2138
+    overlap_genes:
+    - POPTR_002G199200
+    - POPTR_004G076800
+    - POPTR_004G097900
+    - POPTR_008G131700
+    - POPTR_008G193400
+    - POPTR_010G036400v4
+    - POPTR_010G039300
+    - POPTR_012G073900
+    - POPTR_013G113300
+    - POPTR_015G069000
+    - POPTR_016G060600
+    - POPTR_017G116300
+    - POPTR_017G134350v4
+    - POPTR_018G074200
+  evidence:
+  - reference: PMID:21282524
+    reference_title: Chilling of dormant buds hyperinduces FLOWERING LOCUS T and recruits GA-inducible
+      1,3-beta-glucanases to reopen signal conduits and release dormancy in Populus.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Broad biological-process roll-up of hormone and chemical responses.
+  curator_note: Overly broad chemical-response roll-up (14/34 members).
+- term:
+    id: GO:0010090
+    label: trichome morphogenesis
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.035e-13
+    p_adjust: 3.1087e-09
+    overlap: 6
+    query_size: 34
+    target_size: 29
+    overlap_genes:
+    - POPTR_002G199200
+    - POPTR_004G097900
+    - POPTR_008G193400
+    - POPTR_010G036400v4
+    - POPTR_016G060600
+    - POPTR_017G116300
+  evidence:
+  - reference: PMID:30150313
+    reference_title: A genetic network mediating the control of bud dormancy in poplar.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: In Populus winter buds, GA-responsive C2H2 transcription factors mediate shoot meristem
+      dormancy release rather than leaf epidermal hair branching; GO:0010090 (trichome morphogenesis)
+      and GO:0010026 (trichome differentiation) are projected via PANTHER IBA and UniRule IEA from Arabidopsis
+      GIS/ZFP8 trichome regulators.
+  curator_note: Herbaceous Arabidopsis organ-identity projection error onto perennial tree bud regulators
+    across all 4 variants including IBA-only (6/34 genes, p_adj=3.11e-09).
+- term:
+    id: GO:0033993
+    label: response to lipid
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 7.7992e-19
+    p_adjust: 2.3426e-14
+    overlap: 14
+    query_size: 34
+    target_size: 471
+    overlap_genes:
+    - POPTR_002G199200
+    - POPTR_004G076800
+    - POPTR_004G097900
+    - POPTR_008G131700
+    - POPTR_008G193400
+    - POPTR_010G036400v4
+    - POPTR_010G039300
+    - POPTR_012G073900
+    - POPTR_013G113300
+    - POPTR_015G069000
+    - POPTR_016G060600
+    - POPTR_017G116300
+    - POPTR_017G134350v4
+    - POPTR_018G074200
+  evidence:
+  - reference: PMID:21282524
+    reference_title: Chilling of dormant buds hyperinduces FLOWERING LOCUS T and recruits GA-inducible
+      1,3-beta-glucanases to reopen signal conduits and release dormancy in Populus.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: GO:0033993 (response to lipid) is a GO-ChEBI chemical-classification roll-up artifact
+      because gibberellins are tetracyclic diterpenoid acids classified under CHEBI:lipid.
+  curator_note: GO-ChEBI hormone-to-lipid roll-up artifact on all 14 GA-response poplar genes across all
+    4 variants (p_adj=2.34e-14).
+- term:
+    id: GO:0006075
+    label: (1->3)-beta-D-glucan biosynthetic process
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: false_association
+  evidence:
+  - reference: PMID:21282524
+    reference_title: Chilling of dormant buds hyperinduces FLOWERING LOCUS T and recruits GA-inducible
+      1,3-beta-glucanases to reopen signal conduits and release dormancy in Populus.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: (1->3)-beta-D-glucan (callose) biosynthesis (GO:0006075) seals plasmodesmata during autumn
+      dormancy induction and defines the contrasting POPTR_AUTUMN_BUD_DORMANCY_ABA pole of SERIES:POPTR_SEASONAL_BUD_DORMANCY.
+  curator_note: Contrasting pole trap against POPTR_AUTUMN_BUD_DORMANCY_ABA in SERIES:POPTR_SEASONAL_BUD_DORMANCY.
