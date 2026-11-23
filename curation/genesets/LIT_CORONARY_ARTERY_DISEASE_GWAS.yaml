@@ -117,8 +117,8 @@ associations:
       this PMID (the 1p13/SORT1 locus is reported here as CELSR2/PSRC1, both present), so
       they were not padded in from memory.
   - term:
-      id: GO:0007263
-      label: nitric oxide mediated signal transduction
+      id: GO:0038060
+      label: nitric oxide-cGMP-mediated signaling
     aspect: biological_process
     category: supporting_process
     confidence: medium
@@ -130,14 +130,18 @@ associations:
       The endothelial nitric-oxide / vasomotor-tone arm of the vascular-wall mechanism.
       Captured members NOS3 (endothelial NO synthase), GUCY1A1 (soluble guanylate
       cyclase alpha-1; reported under the legacy symbol GUCY1A3) and PRKG1 (cGMP-
-      dependent protein kinase) constitute the NO-sGC-cGMP vasodilatory axis and carry
-      NO-mediated signal-transduction annotations (annotation_supported); EDNRA, EDN1
+      dependent protein kinase) constitute the NO-sGC-cGMP vasodilatory axis; NOS3
+      (IBA) and GUCY1A1 (IDA) carry the annotation directly (annotation_supported),
+      PRKG1 does not; EDNRA, EDN1
       and PHACTR1 contribute the opposing vasoconstrictor/vascular-tone signal. Tagged
       mechanistic because regulation of vascular tone via NO signalling — as opposed to
       plasma-lipid handling — is a non-obvious, vessel-intrinsic route to CAD risk, part
       of the same artery-wall insight as the matrix arm. Scored supporting rather than
       core because it rests on a smaller, though biologically coherent, block of genes
-      than the matrix and lipid axes.
+      than the matrix and lipid axes. TERM UPDATE: originally curated as GO:0007263
+      nitric oxide mediated signal transduction, which GO obsoleted
+      (go-ontology#26613) in favour of this cGMP-specific replacement; category,
+      seed, recovery_status and insight are unchanged.
   - term:
       id: GO:0042632
       label: cholesterol homeostasis
