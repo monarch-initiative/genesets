@@ -72,3 +72,57 @@ def test_skip_references_drops_third_command():
         skip_references=True,
     )
     assert len(cmds) == 2
+
+
+def _assoc(term_id, label, category=None, artifact_cause=None):
+    return model.TermAssociation(
+        term=model.Term(id=term_id, label=label),
+        seed_source="enrichment_recovered",
+        category=category,
+        artifact_cause=artifact_cause,
+    )
+
+
+def test_noise_label_errors_artifact_cause_only_on_noise():
+    interp = model.GeneSetInterpretation(
+        gene_set_id="LIT:X",
+        gene_set_name="X",
+        associations=[
+            _assoc("GO:0007611", "learning or memory", "false_association", "multifunctional_gene_bias"),
+            _assoc("GO:0001764", "neuron migration", "core_process", "wrong_biology"),
+        ],
+    )
+    errors = validate.noise_label_errors(interp)
+    assert len(errors) == 1 and errors[0].startswith("GO:0001764")
+
+
+def test_noise_label_errors_adjudicated_set_needs_every_category():
+    interp = model.GeneSetInterpretation(
+        gene_set_id="LIT:X",
+        gene_set_name="X",
+        hit_adjudication=model.HitAdjudication(pooled_variants=["all", "iba"]),
+        associations=[
+            _assoc("GO:0001764", "neuron migration", "core_process"),
+            _assoc("GO:0005488", "binding"),
+        ],
+    )
+    errors = validate.noise_label_errors(interp)
+    assert errors == [
+        "GO:0005488: no category, but hit_adjudication says every hit was labelled"
+    ]
+
+
+def test_hit_adjudication_round_trips(tmp_path):
+    interp = model.GeneSetInterpretation(
+        gene_set_id="LIT:X",
+        gene_set_name="X",
+        hit_adjudication=model.HitAdjudication(
+            pooled_variants=["all", "iba"], max_p_adjust=0.05, adjudicated_on="2026-11-18"
+        ),
+        associations=[_assoc("GO:0005488", "binding", "nonspecific", "overly_general_term")],
+    )
+    path = tmp_path / "x.yaml"
+    model.dump_interpretation(interp, path)
+    back = model.load_interpretation(path)
+    assert back.hit_adjudication.pooled_variants == ["all", "iba"]
+    assert back.associations[0].artifact_cause == "overly_general_term"

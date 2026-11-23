@@ -46,6 +46,44 @@ current state of GO annotations. A term that is biologically core stays core
 even when no annotation supports it — we never downgrade truth to match
 incomplete data.
 
+## Noise labels and precision
+
+`nonspecific` (true but uninformative for this set) and `false_association`
+(an artefact, or wrong for the set) are the noise categories. Give each noise
+term an `artifact_cause`, which says why it is noise:
+
+| `artifact_cause` | meaning |
+|---|---|
+| `multifunctional_gene_bias` | driven by a few highly annotated genes; disappears under a multifunctionality correction (Ballouz et al. 2017, PMID:28204549) |
+| `over_annotation` | carried by annotations that are themselves wrong or over-propagated |
+| `housekeeping_contamination` | driven by housekeeping or ribosomal genes that entered the set for technical reasons |
+| `overly_general_term` | true of the genes but too general to say anything about the set |
+| `screen_or_assay_artifact` | fitness genes, shared guides, batch effects and the like |
+| `wrong_biology` | wrong for the set, with none of the causes above |
+
+**Scoring precision needs every hit labelled.** A curated set normally lists
+a handful of terms, so a reported hit with no association is ambiguous: it is
+unreviewed, not necessarily noise. To make precision scoreable for a set:
+
+1. Run every annotation variant you want to compare (e.g. `all`, `iba`,
+   `iba_iea`, `aigr_prune`, `aigr_full`) and take the **union** of their
+   significant hits for the set (pooling). A variant that surfaces new noise
+   is then penalised for it.
+2. Label every pooled hit, **blind to which variant reported it**. Judge the
+   term, its size and the member genes that carry it; never "this variant is
+   expected to be better".
+3. Record the pool in the set's `hit_adjudication` block (variants, test,
+   cutoff, correction scope, GOA/GO release, date).
+
+The validator then requires a category on every association of that set, and
+the eval reports per-variant precision (`signal / (signal + noise)`, with
+noise broken down by `artifact_cause`) over adjudicated sets only. Terms the
+source authors call artefacts can also be added as curator-added
+`false_association` terms, so that any variant reporting them is penalised.
+The Ballouz 2017 case studies (`LIT_GILMAN_2011_AUTISM_CNV`,
+`LIT_MANALO_2005_HYPOXIA_HIF1_UP`, `LIT_SCHMIDT_KASTNER_2012_SCHIZOPHRENIA`;
+sources in `curation/sources/ballouz2017/`) are the first adjudicated sets.
+
 ## Recovery status (gap analysis)
 `recovery_status` is **orthogonal** to `category`. It records whether a
 biologically-asserted term is actually supported by the gene set's current GO
@@ -302,3 +340,7 @@ layout, and every run records the OBO `data-version` in `metadata.json`.
 `--strict`, when a gold GO term is obsolete or unknown in the eval's release,
 so version skew between the gold and the eval is never mistaken for a recall
 change.
+
+## Domain & Multi-Species Sub-Corpora
+- [`curation/cgsa/`](cgsa/README.md) — Curated GO interpretations for the Hu et al. 2024 Nature Methods LLM gene set evaluation panel (`evals/cgsa/`).
+- [`curation/plants/`](plants/README.md) — Multi-species plant GO-interpretation gold standard (30 gene sets across 6 vascular plant species) spanning *Arabidopsis thaliana* (`NCBITaxon:3702`) and five DOE/BER bioenergy & oilseed species (*Populus trichocarpa* `NCBITaxon:3694`, *Panicum virgatum* `NCBITaxon:38727`, *Sorghum bicolor* `NCBITaxon:4558`, *Thlaspi arvense* `NCBITaxon:13288`, and *Brachypodium distachyon* `NCBITaxon:15368`), paired with the multi-species GOA evidence variant benchmark in [`evals/plants/`](../evals/plants/README.md).

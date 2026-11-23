@@ -1,0 +1,466 @@
+# Does applying AI Gene Review to GOA improve enrichment of external gene sets?
+
+**Question:** if the review decisions in
+[ai-gene-review](https://github.com/ai4curation/ai-gene-review) (AIGR) were
+applied to GOA human (over-annotations removed, terms corrected, new terms
+added), would GO enrichment of *external* gene sets get better?
+
+The test sets are external gene sets, not GO-derived ones:
+
+| arm | sets | gold | what "better" means |
+|---|---|---|---|
+| **curated** | the 128 evaluable benchmark sets (MSigDB H/C2/C8 + `LIT:` GWAS/CRISPR) | CORE terms in `curation/genesets/*.yaml` | recover as many CORE terms, with the same or stronger p-values |
+| **chem** | 270 MSigDB C2:CGP chemical-exposure signatures (`description:PubChem`, 10–1000 genes) | none | fewer hits, and the hits removed are uninformative |
+| **onco** | 189 MSigDB C6 oncogenic signatures | none | as for chem |
+
+The benchmark sets are also run through the no-gold metrics as `benchmark`.
+
+## Variants
+
+Built by `scripts/prepare_aigr_changeset_eval.py` from the AIGR change set
+(`scripts/export_goa_changeset.py` in ai-gene-review). Edits are applied **row
+by row** to the current `goa_human.gaf`, matching on (UniProt accession, GO
+term, evidence code, reference). A (gene, term) pair survives if any of its
+supporting rows survives.
+
+| variant | edit |
+|---|---|
+| `all` | current GOA, unchanged (baseline; also defines the common background) |
+| `aigr_base` | REMOVE rows dropped, MODIFY → GO replacement term(s), NEW annotations added. Every AIGR variant includes this |
+| `aigr_drop_moa` | `aigr_base` + MARK_AS_OVER_ANNOTATED rows dropped |
+| `aigr_drop_noncore` | `aigr_base` + KEEP_AS_NON_CORE rows dropped |
+| `aigr_drop_both` | `aigr_base` + both dropped |
+| `null_moa_00..09`, `null_noncore_00..09` | negative controls: from `aigr_base`, drop a random sample of the other reviewed rows it keeps unchanged, with the factor's per-evidence-code row counts |
+
+`aigr_base` is compared with `all`; each drop is compared with `aigr_base` and
+with its own null. ACCEPT, TOO_GENERAL, UNDECIDED and PENDING rows are kept in
+every variant. Results before 2026-11-22 used an earlier set of arms
+(`aigr_remove`, `aigr_prune` = REMOVE + MARK_AS_OVER_ANNOTATED, `aigr_full`,
+`aigr_core` = also KEEP_AS_NON_CORE, UNDECIDED and PENDING dropped), and the
+sections below keep those names.
+
+The null is what makes the result interpretable: any removal of annotations
+shrinks enrichment output, so the question is whether **AIGR's** removals do
+something different from removing the same number of rows at random.
+
+## Pipeline
+
+```bash
+E=/tmp/aigr_eval
+# 1. change set (in ai-gene-review)
+uv run python scripts/export_goa_changeset.py --organism human -o exports/goa_changeset_human.tsv
+# 2. variants + nulls (downloads GO + GOA)
+python3 scripts/prepare_aigr_changeset_eval.py --out-dir $E \
+  --changeset ../ai-gene-review/exports/goa_changeset_human.tsv
+# 3. query sets
+python3 scripts/fetch_benchmark_queries.py --out $E/queries.gmt
+cd python/genesets-workflows
+uv run python -m genesets_workflows.sources.mygeneset --query 'msigdb.subcategory.code:CGP AND description:PubChem' \
+  --out-dir $E/breadth/chem --source-filter msigdb --min-genes 10 --max-genes 1000
+uv run python -m genesets_workflows.sources.mygeneset --query 'msigdb.category.code:C6' \
+  --out-dir $E/breadth/onco --source-filter msigdb --min-genes 10 --max-genes 1000
+mkdir -p $E/breadth/benchmark && cp $E/queries.gmt $E/breadth/benchmark/
+# optional: the rest of human MSigDB except C5 (GO-derived), ~16k sets
+f(){ uv run python -m genesets_workflows.sources.mygeneset --query "$2" --out-dir $E/breadth/$1 \
+       --source-filter msigdb --min-genes 10 --max-genes 1000; }
+f hallmark 'msigdb.category.code:H'
+f cgp_other 'msigdb.subcategory.code:CGP AND NOT description:PubChem'
+f cp_pathways 'msigdb.subcategory.code:("cp:biocarta" OR "cp:pid" OR "cp:wikipathways" OR "cp:kegg_legacy" OR "cp:kegg_medicus")'
+f reactome 'msigdb.subcategory.code:"cp:reactome"'
+f c3_regulatory 'msigdb.category.code:C3'
+f c4_cancer_modules 'msigdb.category.code:C4'
+f c7_immunologic 'msigdb.category.code:C7'
+f c8_celltype 'msigdb.category.code:C8'
+# 4. run genesets-rs for every variant x arm, and score
+cargo build --release
+uv run --extra curation python ../../scripts/run_aigr_changeset_eval.py --eval-dir $E
+```
+
+Outputs are in `$E/report/`:
+- `curated_summary.tsv`
+- `curated_per_set_deltas.tsv`
+- `curated_core_term_changes.tsv`: each CORE term gained or lost, with the set members whose annotation changed.
+- `breadth_summary.tsv`
+- `report.json`: includes the paired tests and the null comparison.
+
+Generated files are not committed.
+
+## Result (2026-10-03; AIGR `4b945bf`, 2,215 human reviews; GOA `goa_human` current)
+
+All numbers below use the default inputs: direct `protein binding`
+(GO:0005515) annotations are dropped from every variant, baseline included.
+The section "With protein binding kept" compares this with the earlier run.
+
+**Change-set coverage.** 105,086 reviewed (non-NOT) annotation rows; 98,195
+(93%) match a row in current GOA, 82,990 of them outside `protein binding`.
+1,470 NEW rows. Reviewed genes make up a median **17%** of the members of a
+benchmark set (16% chem, 12% onco).
+
+Row removals mostly do not remove pairs. REMOVE + MARK_AS_OVER_ANNOTATED
+drop 5,417 non-`protein binding` rows, but only 4,324 (gene, term) pairs.
+In most cases another row, unreviewed or accepted, still asserts the same
+pair, or a kept descendant term still implies it.
+
+### 1. Recall of the curated biology: no gain, a small loss at the edge of the null
+
+| variant | recall_core (125 sets) | recall_confirm | recall_mechan | significant terms |
+|---|---|---|---|---|
+| all | 0.565 (221/391) | 0.568 | 0.351 | 28,915 |
+| aigr_remove | 0.563 (220) | 0.568 | 0.351 | 28,841 |
+| **aigr_prune** | **0.558 (218)** | 0.565 | 0.351 | **28,062** |
+| aigr_full | 0.560 (219) | 0.562 | 0.338 | 28,001 |
+| aigr_core | 0.535 (209) | 0.531 | 0.312 | 23,595 |
+| null_prune (mean of 20) | 0.562 (219.6; range 218–221) | 0.565 | 0.348 | 28,550 (28,483–28,615) |
+
+- `aigr_prune` loses 3 CORE terms:
+  - DESCARTES hepatoblasts → *liver development*: BAAT and HMGCS2 lost the term.
+  - KEGG Alzheimer's → *neuron apoptotic process*: GAPDH lost the term.
+  - WP non-alcoholic fatty liver disease → *lipid metabolic process*: TNFRSF1A lost the term.
+- `aigr_full` adds back 1: TRAVAGLINI airway smooth muscle → *smooth muscle contraction*, through new ACTA2/ACTG2 annotations.
+- The 218 recovered under `aigr_prune` equals the lowest of the 20 null runs; only 2 of 20 nulls do as badly. That is a small loss, roughly equal to random removal of the same number of rows. The mean −log10 p of CORE terms falls by 0.12, about the same as the null.
+- **The curated gold cannot show a precision gain.** Its `nonspecific` terms are hit only 3 times in any variant, so it cannot score noise reduction.
+
+### 2. Pruning removes more hits than random removal, and the hits it removes are uninformative
+
+The no-gold measure is: of the significant hits a variant loses relative to
+`all`, how specific were they? Specificity is the mean information content
+(IC) of the term, from baseline term sizes. "General" means the term annotates
+more than 1,000 genes.
+
+| arm | `aigr_prune` hits lost (net) | null hits lost (range over 20) | lost-hit mean IC: prune vs null | lost hits general: prune vs null |
+|---|---|---|---|---|
+| benchmark | 853 | 300–432 | **6.49** vs 6.76–7.68 | **32%** vs 17–29% |
+| chem | 339 | 130–191 | **4.95** vs 5.02–5.67 | **61%** vs 46–60% |
+| onco | 129 | 70–107 | 4.35 vs 4.26–4.96 | 72% vs 61–81% |
+
+- **Benchmark and chemical exposures:** AIGR pruning removes about twice as many significant hits as random removal of the same rows. Its lost hits are more general than in every one of the 20 null runs. In chem, 102 sets end up with fewer terms and 28 with more.
+- **Oncogenic (C6):** more hits are lost than in any null run, but their specificity falls inside the null range. These sets have the lowest reviewed-gene coverage (12%).
+- **What is lost:** broad terms, e.g. *response to chemical*, *cellular response to chemical stimulus*, *response to endogenous stimulus*, *regulation of gene expression*, *regulation of catabolic process*, *protein-containing complex binding* and *membrane-bounded organelle*.
+- **Sets whose result changes completely:**
+  - One set, MASRI_…TAMOXIFEN_UP, loses its only hits (two broad developmental terms).
+  - Two fenretinide sets (FERRARI_… and APPIERTO_RESPONSE_TO_FENRETINIDE_UP) gain hits they did not have. Pruning shrinks term sizes, which can sharpen a real signal.
+
+### 3. Dropping non-core annotations hurts
+
+Under `aigr_core`, recall_core falls from 0.565 to 0.535. Per set, 14 sets get worse and 2 get better (sign test p = 0.004). The mean −log10 p of CORE terms falls by 1.27. KEEP_AS_NON_CORE annotations carry real biology for enrichment, so a "core functions only" GOA would be a worse enrichment resource.
+
+### 4. Scaled up: 16,622 MSigDB sets, split by review coverage
+
+Every human MSigDB collection on MyGeneset except C5 (C5 is built from GO).
+Sets have 10–1,000 genes. No gold: these are scored on hit counts and on how
+specific the removed hits are, against the 20 random-removal nulls.
+
+Breadth collections use a **per-set** threshold: raw p < 0.05 / 21,062 GO
+terms (2.4e-6), the same for every collection and variant. genesets-rs's own
+Bonferroni is matrix-wide (sets × terms), which would judge a 5,000-set
+collection about 40× more strictly than the 128-set benchmark. The curated
+benchmark in section 1 keeps the matrix-wide correction, so it stays
+comparable with `evals/iba_vs_benchmark`. Outputs: `breadth_summary.tsv` and
+`breadth_by_exposure.tsv`. The run takes about 80 minutes on 4 cores.
+
+**The effect grows with review coverage.** Sets are pooled across all
+collections and split by the share of their genes that AIGR has reviewed:
+
+| reviewed share of set | sets | hits removed by `aigr_prune` (net) | by random removal (20 runs) | lost-hit mean IC: prune vs null | lost hits general: prune vs null |
+|---|---|---|---|---|---|
+| < 10% | 3,398 | 852 (0.25%) | 454–827 (0.13–0.24%) | **5.56** vs 5.85–6.26 | **51%** vs 38–46% |
+| 10–25% | 11,374 | 37,148 (2.2%) | 14,605–18,313 (0.9–1.1%) | **5.67** vs 5.82–6.17 | **47%** vs 40–47% |
+| ≥ 25% | 1,810 | 14,257 (**4.9%**) | 5,107–6,841 (1.7–2.3%) | **6.59** vs 7.07–7.63 | **37%** vs 22–30% |
+
+Where AIGR has reviewed at least a quarter of a set's genes, pruning removes
+about 5% of significant hits, 2–3× what random removal of the same rows does.
+The removed hits are more general than in every null run. Below 10% coverage
+the effect almost disappears. This supports the conclusion that the overall
+effect is limited by coverage, not by the quality of the edits.
+
+**By collection** (`aigr_prune` net hits lost vs the null range; specificity of the lost hits vs the null):
+
+| collection | sets | median reviewed share | hits lost: prune vs null | lost-hit mean IC: prune vs null | lost hits general: prune vs null |
+|---|---|---|---|---|---|
+| Reactome | 1,497 | 16% | 5,658 vs 2,529–3,321 | **6.79** vs 7.38–7.88 | **34%** vs 18–26% |
+| C2 pathways (BioCarta, PID, WikiPathways, KEGG) | 1,863 | 22% | 12,668 vs 4,497–6,413 | **6.81** vs 7.17–7.96 | **32%** vs 15–27% |
+| C8 cell type | 829 | 11% | 1,955 vs 774–1,217 | **6.24** vs 6.56–6.94 | **35%** vs 25–32% |
+| C3 TF/miRNA targets | 3,454 | 12% | 5,341 vs 2,183–3,133 | **5.12** vs 5.31–5.63 | **54%** vs 42–51% |
+| C2 CGP (non-chemical) | 2,148 | 15% | 5,784 vs 2,223–3,045 | **5.99** vs 6.05–6.46 | 40% vs 31–40% |
+| Hallmark | 50 | 20% | 444 vs 143–245 | 6.88 vs 6.73–7.70 | 27% vs 16–28% |
+| benchmark (per-set threshold) | 128 | 17% | 1,269 vs 456–629 | 7.12 vs 7.05–7.80 | 24% vs 15–25% |
+| C2 chemical exposure | 270 | 16% | 656 vs 216–361 | 5.69 vs 5.56–6.37 | 49% vs 36–50% |
+| C4 cancer modules | 1,006 | 14% | 2,959 vs 941–1,327 | 6.16 vs 6.07–6.57 | 39% vs 32–42% |
+| C7 immunologic | 5,148 | 14% | 15,322 vs 5,091–6,511 | 5.07 vs 5.04–5.37 | 59% vs 55–64% |
+| C6 oncogenic | 189 | 12% | 201 vs 102–209 | 5.26 vs 5.04–5.72 | 52% vs 43–59% |
+
+- **Volume:** in 10 of 11 collections pruning removes 2–3× more hits than random removal. C6, the smallest and least reviewed, is the exception.
+- **Specificity:** the removed hits are more general than in every null run in Reactome, the C2 pathway databases, C8 and C3. C2 CGP passes on IC only. Hallmark, the benchmark and C2 chemical exposure sit at the edge of the null range on the per-set threshold (the chemical-exposure result in section 2 used the matrix-wide threshold). C4, C7 and C6 fall inside the null range.
+- **Reactome caveat:** GOA carries Reactome-derived annotations, so the Reactome collection is not fully independent of GOA.
+- **`aigr_full`** loses slightly more hits than `aigr_prune`, and the hits it loses are more specific. MODIFY swaps general terms for specific ones, which moves significance down the ontology.
+- **`aigr_core`** removes 15–20% of all hits. Combined with its loss of CORE recall (section 3), that is too aggressive.
+
+### 5. Recent single-cell marker sets
+
+Recent single-cell atlases come from Enrichr (`scripts/fetch_enrichr_library.py`),
+with the same per-set threshold and 20 nulls as section 4:
+
+- Tabula Sapiens: 469 sets.
+- CellMarker 2024: 551 human sets.
+- Allen Brain 10x 2021: 104 human, up-regulated sets.
+- HuBMAP ASCT+B 2022: 777 sets, extended by co-expression.
+- Azimuth 2023 is excluded: it gives only about 9 markers per cell type.
+
+```bash
+F="python3 scripts/fetch_enrichr_library.py"
+$F Tabula_Sapiens --out $E/breadth/sc_tabula_sapiens/queries.gmt
+$F CellMarker_2024 --include 'Human$' --out $E/breadth/sc_cellmarker2024/queries.gmt
+$F Allen_Brain_Atlas_10x_scRNA_2021 --include '^Human .* up$' --out $E/breadth/sc_allen_brain_human/queries.gmt
+$F HuBMAP_ASCTplusB_augmented_2022 --out $E/breadth/sc_hubmap_augmented/queries.gmt
+```
+
+| collection | sets | median reviewed share | hits lost: prune vs null | lost-hit mean IC: prune vs null | lost hits general: prune vs null |
+|---|---|---|---|---|---|
+| MSigDB C8 cell type | 829 | 11% | 1,955 (1.3%) vs 774–1,217 | **6.24** vs 6.56–6.94 | **35%** vs 25–32% |
+| Allen Brain human | 104 | 11% | **236 (5.1%)** vs 36–111 | 5.38 vs 5.00–5.93 | 45% vs 41–63% |
+| CellMarker 2024 | 551 | 12% | 166 (0.3%) vs 109–417 | **5.80** vs 6.16–6.87 | 40% vs 25–41% |
+| HuBMAP (augmented) | 777 | 8% | 385 (0.4%) vs 130–453 | 5.57 vs 5.39–6.34 | 49% vs 36–55% |
+| Tabula Sapiens | 469 | **7%** | −66 (net gain) vs −291–103 | within null | within null |
+
+Pooled over these five collections and split by review coverage:
+- **≥ 25% reviewed (81 sets):** 3.5% of hits are removed, against 1.2–2.5% for random removal. The removed hits are more general than in every null (IC 5.72 vs 6.37–7.64).
+- **10–25% reviewed (1,111 sets):** 1.5% removed against 0.7–1.0%, again more general than every null.
+- **Under 10% reviewed (1,538 sets):** no effect.
+
+**Single-cell sets are not a better test yet, because coverage is lower.**
+Their markers are cell-type-specific genes (surface receptors, chemokines,
+ECM, keratins), which AIGR has rarely reviewed. Tabula Sapiens has a median
+reviewed share of 7%, and only 108 of the 2,730 sets reach 25% coverage.
+Where coverage is there, the pattern matches section 4: in C8 and Allen Brain
+the removals are larger, and more targeted at general terms, than random
+removal.
+
+The most frequent unreviewed marker genes are ribosomal proteins, EEF1A1,
+TPT1, B2M and similar housekeeping genes. These are a known contaminant of
+single-cell marker lists, and reviewing them would add coverage without adding
+information. Excluding the 202 genes that are housekeeping-like or appear in
+more than 5% of sets, reviewing the most frequent unreviewed markers would
+lift the number of sets with ≥ 25% coverage from 269 to:
+
+| extra reviews | sets ≥ 25% reviewed |
+|---|---|
+| 100 | 918 |
+| 250 | 1,406 |
+| 500 | 1,769 |
+| 1,000 | 2,159 |
+
+The top of that list is S100A10, KRT19, CD86, CD5, COL1A2, CD52, CCL4, VSIG4,
+FCER1G, SLPI, HLA-DPA1, ANXA1, IGFBP5, VWF, MS4A1, CSF1R, C7, CD63, CYBB and
+CD93.
+
+### With protein binding kept (`--drop-direct-terms ""`)
+
+The first run of this eval kept `protein binding`. Dropping it matters a great deal for GOA and very little for the conclusions:
+
+- It removes 278k of 905k NOT-filtered GAF rows (31%), but only 14k (gene, term) pairs. Most rows are IPI, many rows per pair.
+- **About 85% of AIGR's removal rows were `protein binding`:** 10,311 of 11,421 REMOVE rows and 20,434 of 24,741 MARK_AS_OVER_ANNOTATED rows. Few of those deleted a pair, because a descendant binding term or an unreviewed row kept `protein binding` alive.
+- 12 chem sets, 3 onco sets and 1 benchmark set (HP_SPINAL_MUSCULAR_ATROPHY) had `protein binding` (or `binding`) as their only significant result. Those sets now have none.
+- **The AIGR effect does not depend on it.** With `protein binding` kept, pruning lost 912 benchmark hits against 368–507 for random removal, and 374 chem hits against 167–272. The specificity gap to the null was the same.
+- CORE recall with `protein binding` kept was 221/394 for `all`, 219 for `aigr_prune` and 210 for `aigr_core`, over 126 scored sets.
+
+## Update (2026-11-18): protein-coding background, precision on the Ballouz case studies
+
+AIGR main at `ca908e2`, 3,782 human reviews; `goa_human` 2026-05-21; GO
+2026-07-26. Sections 1–5 above are the October run and are left as they were.
+
+### The background contained ncRNAs and complexes
+
+`goa_human` also annotates 16,854 RNAcentral ncRNAs and 2,274 ComplexPortal
+complexes, next to 19,425 UniProtKB proteins. Every eval used all of them as
+the background. They carry few annotations, so any protein-coding query list
+looked enriched for broad terms merely for being protein-coding. Even
+`biological_process` itself came out significant for a 72-gene list.
+`prepare_go_eval.py` and `prepare_aigr_changeset_eval.py` now keep UniProtKB
+rows only (`--gaf-db ""` restores the old behaviour).
+
+Effect on the existing benchmark, all-GOA variant, on the same 125 sets:
+
+| background | recall_core | significant hits |
+|---|---|---|
+| all GAF entities (old) | 0.577 (228/395) | 29,928 |
+| UniProtKB proteins (new) | 0.491 (194/395) | 15,863 |
+
+About half of all significant hits, and 34 recovered CORE terms, came from the
+diluted background. Five sets lose every hit; their whole result had been
+root-level terms (`molecular_function`, `binding`, `response to stimulus`).
+
+### Benchmark with the protein background and current AIGR
+
+128 scored sets, CORE total 408 (now including the Ballouz sets):
+
+| variant | recall_core | significant hits | hits on labelled noise terms |
+|---|---|---|---|
+| all | 0.503 (205) | 15,967 | 61 |
+| iba | 0.284 (116) | 5,323 | 9 |
+| iba_iea | 0.390 (159) | 8,874 | 20 |
+| aigr_prune | 0.503 (205) | 15,079 | 63 |
+| aigr_full | 0.507 (207) | 14,967 | 62 |
+| aigr_core | 0.431 (176) | 10,520 | 26 |
+| null_prune (mean of 20) | 0.500 (204.1) | 15,605 | 62 |
+
+Pruning again removes more hits than random removal of the same rows (888
+against 362 on average) at no cost to recall, and `aigr_full` recovers two
+more CORE terms. The labelled-noise column only covers terms curators have
+labelled, so it is mostly a count over the three adjudicated sets below.
+
+### Precision on the Ballouz 2017 case studies
+
+`LIT_GILMAN_2011_AUTISM_CNV`, `LIT_MANALO_2005_HYPOXIA_HIF1_UP` and
+`LIT_SCHMIDT_KASTNER_2012_SCHIZOPHRENIA` are the first fully adjudicated sets:
+every significant hit of `all`, `iba`, `iba_iea`, `aigr_prune` and `aigr_full`
+(118 terms in total) was labelled, blind to which variant reported it. They
+also carry the terms Ballouz et al. call meaningful or artefactual as
+curator-added terms. AIGR has reviewed about 30% of each set's genes (24/72,
+60/202, 25/77).
+
+Precision is `signal / (signal + noise)`, summed over the three sets
+(`report/curated_precision.tsv`). Core recall counts the 13 CORE terms,
+including curator-added ones:
+
+| variant | signal | noise | precision | CORE recovered |
+|---|---|---|---|---|
+| all | 47 | 57 | 0.45 | 11/13 |
+| iba | 9 | 5 | 0.64 | 4/13 |
+| iba_iea | 33 | 16 | 0.67 | 6/13 |
+| aigr_prune | 48 | 59 | 0.45 | 11/13 |
+| aigr_full | 45 | 57 | 0.44 | 11/13 |
+| aigr_core | 24 | 21 | 0.53 | 6/13 (+1 unlabelled hit) |
+
+- **Every noise hit here is `overly_general_term`.** These are broad ancestors
+  such as *developmental process*, *biological regulation* and *plasma
+  membrane*. None of the artefacts Ballouz et al. name (*learning or memory*,
+  *positive regulation of signaling*, *inflammatory response*, *response to
+  stress*) is significant in any variant once the background is protein-coding
+  and the correction is matrix-wide. Their multifunctionality artefact largely
+  does not arise under these settings.
+- **IBA and IBA+IEA have the highest precision, at a large cost in recall.**
+  IBA-only recovers 4 of 13 CORE terms and nothing at all for the autism set.
+  Higher precision here comes mostly from reporting fewer terms, the same
+  trade-off as the recall benchmark.
+- **AIGR pruning leaves precision where it was.** Broad ancestors are carried
+  by many correct annotations, so removing a few wrong rows cannot remove
+  them; that kind of noise is a property of the test, not of annotation
+  errors. AIGR's effect, removing hits more general than random removal does
+  (sections 2 and 4), operates on the large collections, not on these three
+  small sets.
+- **Two biology findings for GO curation.** *Peptidyl-proline hydroxylation*,
+  one of Ballouz's four meaningful hypoxia terms, has no carriers in the
+  current release, although P4HA1, P4HA2, EGLN1 and EGLN3 are in the set; it
+  is recorded as an `annotation_gap`. *Neuron migration*, their meaningful
+  autism term, has only three carriers (BAIAP2, DCC, NDE1) and does not reach
+  significance in any variant.
+
+Three small sets are too few to rank methods; they establish the labelling
+and scoring machinery. The next step is to adjudicate more sets, ideally ones
+with high AIGR coverage.
+
+## Update (2026-11-22): base + 2x2 on over-annotation and non-core
+
+REMOVE, MODIFY and NEW are now always applied, and the two "true but" actions
+are crossed on top. AIGR at `43f54f7` (3,817 human reviews); GO and GOA as in
+the 2026-11-18 update; protein background; direct protein binding dropped.
+
+Row and pair counts (pairs before closure):
+
+| step | rows | pairs |
+|---|---|---|
+| `aigr_base` vs `all` | 1,446 REMOVE dropped (most REMOVE rows are already gone from GOA), 9,783 MODIFY replaced, 2,220 NEW | 6,762 removed, 3,612 added |
+| over-annotation, on top of base | 7,343 dropped | 5,875 removed (a size-matched null removes 2,620) |
+| non-core, on top of base | 38,545 dropped | 24,352 removed |
+
+**`aigr_base` is neutral.** Same CORE recall as `all` (205/408), 1% fewer
+significant terms, precision on the Ballouz sets unchanged (0.45).
+
+**Curated benchmark (128 sets)**, each drop against `aigr_base` and its null (mean, range of 10):
+
+| | CORE recovered | nonspecific hits | sig. terms |
+|---|---|---|---|
+| `aigr_base` | 205 | 60 | 15,774 |
+| `aigr_drop_moa` | 206 | 62 | 14,964 |
+| `null_moa` | 205.6 (204–207) | 58.8 (56–62) | 15,482 |
+| `aigr_drop_noncore` | **187** | **33** | 11,573 |
+| `null_noncore` | 197.9 (193–201) | 52.7 (46–58) | 14,121 |
+| `aigr_drop_both` | 179 | 34 | 10,868 |
+
+**Ballouz case studies (all pooled hits adjudicated):**
+
+| | precision | CORE (of 13) | hits |
+|---|---|---|---|
+| `aigr_base` | 0.45 | 11 | 100 |
+| `aigr_drop_moa` | 0.44 | 11 | 102 |
+| `aigr_drop_noncore` | 0.55 | 7 | 63 (1 unlabelled) |
+| `aigr_drop_both` | 0.51 | 6 | 61 (2 unlabelled) |
+| `iba_iea` | 0.67 | 6 | 49 |
+
+**MSigDB + single-cell (18,491 sets), sets with ≥25% of members reviewed (7,802 sets):**
+
+| | hits lost vs base | lost-hit mean IC | lost hits general (>1000 genes) |
+|---|---|---|---|
+| `aigr_drop_moa` | 36,356 (5.8%) | **5.62** | **35%** |
+| `null_moa` | 14,701–17,023 | 5.84–6.18 | 26–34% |
+| `aigr_drop_noncore` | 175,927 (28%) | 5.99 | 29% |
+| `null_noncore` | 73,858–78,194 | 6.21–6.37 | 24–27% |
+
+Below 10% coverage both drops change almost nothing.
+
+### Reading
+
+- **Drop over-annotation: yes.** It removes 2–2.5× as many hits as dropping the
+  same number of other reviewed rows, and the hits it removes are more general
+  than the null's, with no loss of CORE recall. It does not raise precision on
+  the adjudicated sets: the noise there is broad ancestor terms, which many
+  rows support, not the over-annotated rows.
+- **Drop non-core: no, not as a blanket rule.** It is the only edit that
+  changes precision (noise hits on the benchmark fall from 60 to 33, against
+  53 for the null), but it costs CORE recall well beyond the null (187 vs
+  193–201; 11 → 7 of 13 on the Ballouz sets). The losses show why: external
+  gene sets are often explained by a gene's peripheral roles. Examples are
+  `regulation of cell population proliferation` for AKT1, KRAS and MAPK1 in
+  the KEGG cancer sets, `T cell activation` for CD3E and ZAP70, `platelet
+  aggregation` for TLN1 and FLNA, and `angiogenesis` in the hypoxia set.
+  KEEP_AS_NON_CORE means "true, not this gene's core function", and enrichment
+  needs the true annotations. A core-only GOA is a different product, worth
+  offering as a separate option, but not a replacement.
+- Some losses look like non-core calls worth a second look (`T cell
+  activation` on CD3E/ZAP70, `T cell receptor complex` marked over-annotated on
+  CD8A/CD8B). `report/curated_core_term_changes.tsv` lists every CORE term
+  gained or lost, with the genes responsible.
+
+## Interpretation
+
+Applying AIGR's over-annotation removals to GOA makes enrichment results
+**cleaner at little cost to recall of curated biology**. AIGR selectively strips
+uninformative hits (broad response, regulation and compartment terms), well
+beyond what random removal of the same number of annotations does. It does
+**not** recover more CORE biology, and it loses about as much as random
+removal does (3 of 391 terms). Across 16.6k MSigDB sets the effect scales
+with coverage: about 5% of hits are removed where AIGR has reviewed a quarter
+or more of a set's genes, and almost none below 10%. The overall effect is
+modest because the median set has only about 15% of its genes reviewed, and
+because most removed rows are backed by other rows asserting the same term.
+
+## Review queue (not auto-applied)
+
+`curated_core_term_changes.tsv` lists CORE terms lost through AIGR edits.
+Check each against the review before deciding whether the review or the
+enrichment expectation is wrong:
+
+- BAAT and HMGCS2 → *liver development*. This is DESCARTES hepatoblasts; it is lost through MARK_AS_OVER_ANNOTATED.
+- GAPDH → *neuron apoptotic process* (KEGG Alzheimer's).
+- TNFRSF1A → *lipid metabolic process* (WP non-alcoholic fatty liver disease).
+- *Lipid kinase activity* (`GO:0001727`) drops out of 12 KEGG cancer and diabetes sets. It is not a CORE term, and the PI3K biology is not lost. Take KEGG_GLIOMA:
+  - In baseline the term rests on 6 members: PIK3CA, PIK3CB, PIK3CD, PIK3CG, PIK3R1 and PIK3R3 (p_adj 2.9e-3).
+  - AIGR REMOVEs PIK3R1 (p85α) → *phosphatidylinositol kinase activity* (ISS). p85α is the regulatory subunit, not the kinase. With 5 members left the term misses the matrix-wide Bonferroni cutoff.
+  - Under `aigr_prune` the specific signal is unchanged: *PI3K complex, class IA* (p_adj 1e-15), *PI3K/AKT signal transduction* (1e-19), *1-phosphatidylinositol-3-kinase activity* and *…regulator activity* all stay significant.
+  - Follow-up: PIK3R3, also a regulatory subunit, still carries *1-phosphatidylinositol-3-kinase activity* (TAS, PMID:9524259, 2003). It has no AIGR review yet.
+
+## Guardrail
+
+As in `evals/iba_vs_benchmark`, the gold is never edited to match a variant.
+A CORE term that an AIGR edit removes is either a review error or an
+expectation error. Each one is a curator review item.

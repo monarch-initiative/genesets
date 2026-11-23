@@ -36,6 +36,35 @@ def ontology_drift_errors(path: Path, oak_config: Path) -> tuple[list[str], list
     return errors, warnings
 
 
+NOISE_CATEGORIES = {"nonspecific", "false_association"}
+
+
+def noise_label_errors(interp) -> list[str]:
+    """Consistency of the noise labels used for precision scoring.
+
+    `artifact_cause` explains why a term is noise, so it is only meaningful on
+    `nonspecific` / `false_association` terms. A set that declares
+    `hit_adjudication` claims every pooled hit was labelled, so none of its
+    associations may be left without a category.
+    """
+    errors = []
+    for assoc in interp.associations:
+        if assoc.artifact_cause and assoc.category not in NOISE_CATEGORIES:
+            errors.append(
+                f"{assoc.term.id}: artifact_cause set on category {assoc.category!r}; "
+                "it is only for nonspecific / false_association"
+            )
+    if interp.hit_adjudication is not None:
+        if not interp.hit_adjudication.pooled_variants:
+            errors.append("hit_adjudication has no pooled_variants")
+        for assoc in interp.associations:
+            if not assoc.category:
+                errors.append(
+                    f"{assoc.term.id}: no category, but hit_adjudication says every hit was labelled"
+                )
+    return errors
+
+
 def build_commands(
     path: Path,
     *,
@@ -111,7 +140,10 @@ def validate_file(
     from genesets_workflows.curation import model
     from genesets_workflows.curation.ranking import ranking_errors
 
-    errors = ranking_errors(model.load_interpretation(path), Path(path).parent)
+    interp = model.load_interpretation(path)
+    errors = ranking_errors(interp, Path(path).parent)
+    print("$ noise-label check (artifact_cause, hit_adjudication)")
+    errors += noise_label_errors(interp)
     for error in errors:
         print(f"  ERROR: {error}")
     return 1 if errors else 0

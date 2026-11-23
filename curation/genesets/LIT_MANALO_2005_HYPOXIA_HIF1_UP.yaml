@@ -1,0 +1,587 @@
+gene_set_id: LIT:MANALO_2005_HYPOXIA_HIF1_UP
+gene_set_name: MANALO_2005_HYPOXIA_HIF1_UP
+collection: LIT:PERTURBATION
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: UP
+n_genes: 202
+description: 'Genes induced in human pulmonary artery endothelial cells both by hypoxia
+  and by a constitutively active form of HIF-1alpha (Manalo et al. 2005 Blood, PMID:15374877;
+  202 genes). Ballouz, Pavlidis and Gillis (2017, PMID:28204549) used it as a case
+  study: 70 GO terms were significant before multifunctionality correction and four
+  after (peptidyl-proline modification, cellular response to hypoxia, collagen fibril
+  organization, cellular response to oxygen levels). The membership is dominated by
+  HIF targets in oxygen sensing (EGLN1, EGLN3, BNIP3, BNIP3L, DDIT4, NDRG1), angiogenesis
+  (VEGFA, VEGFC, PGF, ADM, EDN1, ANGPTL4) and collagen synthesis and cross-linking
+  (P4HA1, P4HA2, PLOD1, PLOD2, LOX, LOXL2). Classical glycolytic HIF targets are mostly
+  absent (only SLC2A3, ENO2, PGM1).'
+contexts:
+- term:
+    id: GO:0001666
+    label: response to hypoxia
+  context_type: experimental_condition
+associations:
+- term:
+    id: GO:0048519
+    label: negative regulation of biological process
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0048523
+    label: negative regulation of cellular process
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0032502
+    label: developmental process
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0048856
+    label: anatomical structure development
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0160108
+    label: animal gross anatomical part developmental process
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0007275
+    label: multicellular organism development
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0048731
+    label: system development
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0051239
+    label: regulation of multicellular organismal process
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0050793
+    label: regulation of developmental process
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0048513
+    label: animal organ development
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0009653
+    label: anatomical structure morphogenesis
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0042127
+    label: regulation of cell population proliferation
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: medium
+  specificity: broadly_expressed
+  artifact_cause: overly_general_term
+  curator_note: 'Regulation of cell population proliferation: 39 carriers in both
+    directions; a generic hallmark, not the hypoxia program.'
+- term:
+    id: GO:0045595
+    label: regulation of cell differentiation
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0043067
+    label: regulation of programmed cell death
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: marker_driven_plausible
+  confidence: medium
+  specificity: broadly_expressed
+  recovery_status: annotation_supported
+  curator_note: 'Regulation of programmed cell death: carried partly by genuine HIF
+    targets in hypoxic cell death and mitophagy (BNIP3, BNIP3L, IGFBP3, IER3), but
+    broad (1,324 genes).'
+- term:
+    id: GO:0042981
+    label: regulation of apoptotic process
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: marker_driven_plausible
+  confidence: medium
+  specificity: broadly_expressed
+  recovery_status: annotation_supported
+  curator_note: 'Regulation of apoptotic process: as for programmed cell death (BNIP3,
+    BNIP3L, IGFBP3, IER3).'
+- term:
+    id: GO:2000026
+    label: regulation of multicellular organismal development
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0009888
+    label: tissue development
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0051241
+    label: negative regulation of multicellular organismal process
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0009628
+    label: response to abiotic stimulus
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: medium
+  specificity: broadly_expressed
+  artifact_cause: overly_general_term
+  curator_note: 'Response to abiotic stimulus: a broad parent of response to hypoxia;
+    adds nothing beyond it.'
+- term:
+    id: GO:0072359
+    label: circulatory system development
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Circulatory system development: angiogenic and vascular genes (VEGFA,
+    PGF, ADM, EDN1, NOTCH4, PDGFB, GJA5).'
+- term:
+    id: GO:0007167
+    label: enzyme-linked receptor protein signaling pathway
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: medium
+  specificity: broadly_expressed
+  artifact_cause: overly_general_term
+  curator_note: 'Enzyme-linked receptor signaling: generic signaling grouping of growth-factor
+    and receptor genes.'
+- term:
+    id: GO:0035295
+    label: tube development
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: medium
+  specificity: broadly_expressed
+  artifact_cause: overly_general_term
+  curator_note: 'Tube development: a general parent of vasculature development.'
+- term:
+    id: GO:0043068
+    label: positive regulation of programmed cell death
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: marker_driven_plausible
+  confidence: medium
+  specificity: broadly_expressed
+  recovery_status: annotation_supported
+  curator_note: 'Positive regulation of programmed cell death: BNIP3 and BNIP3L are
+    hypoxia-induced pro-death BH3-only proteins; the rest of the carriers are generic.'
+- term:
+    id: GO:0043065
+    label: positive regulation of apoptotic process
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: marker_driven_plausible
+  confidence: medium
+  specificity: broadly_expressed
+  recovery_status: annotation_supported
+  curator_note: 'Positive regulation of apoptotic process: BNIP3 and BNIP3L are hypoxia-induced
+    pro-death BH3-only proteins; the rest of the carriers are generic.'
+- term:
+    id: GO:0035239
+    label: tube morphogenesis
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: medium
+  specificity: broadly_expressed
+  artifact_cause: overly_general_term
+  curator_note: 'Tube morphogenesis: a general parent of blood vessel morphogenesis.'
+- term:
+    id: GO:0001944
+    label: vasculature development
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Vasculature development: VEGFA, PGF, ADM, EDN1, ACKR3, PDGFB, NOTCH4,
+    LOX, LOXL2.'
+- term:
+    id: GO:0001568
+    label: blood vessel development
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Blood vessel development: same carriers as vasculature development.'
+- term:
+    id: GO:0070482
+    label: response to oxygen levels
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Response to oxygen levels: parent of response to hypoxia (EGLN1,
+    EGLN3, BNIP3, DDIT4, NDRG1, VEGFA, ...).'
+- term:
+    id: GO:0048514
+    label: blood vessel morphogenesis
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Blood vessel morphogenesis: same carriers as vasculature development.'
+- term:
+    id: GO:0036293
+    label: response to decreased oxygen levels
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Response to decreased oxygen levels: near-synonymous parent of response
+    to hypoxia.'
+- term:
+    id: GO:0001666
+    label: response to hypoxia
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Response to hypoxia: the set''s construction. 24 carriers including
+    EGLN1, EGLN3, BNIP3, BNIP3L, DDIT4, NDRG1, ERO1A, VEGFA, ANGPTL4, PLOD2.'
+- term:
+    id: GO:0001525
+    label: angiogenesis
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Angiogenesis: VEGFA, VEGFC, PGF, PDGFB, SERPINE1, ACKR3, COL18A1,
+    LOXL2. The canonical endothelial response to hypoxia. Ballouz et al. list regulation
+    of angiogenesis among terms that drop out under multifunctionality correction;
+    we keep angiogenesis itself as core because the carriers are bona fide HIF targets,
+    not the multifunctional hubs.'
+- term:
+    id: GO:0071453
+    label: cellular response to oxygen levels
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Cellular response to oxygen levels: named as meaningful by Ballouz
+    et al.; near-synonymous parent of cellular response to hypoxia.'
+- term:
+    id: GO:0036294
+    label: cellular response to decreased oxygen levels
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Cellular response to decreased oxygen levels: near-synonymous parent
+    of cellular response to hypoxia.'
+- term:
+    id: GO:0043062
+    label: extracellular structure organization
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: mechanistic
+  curator_note: 'Extracellular structure organization: collagens and the collagen-modifying
+    enzymes HIF induces (P4HA1, PLOD1, PLOD2, LOX, LOXL2).'
+- term:
+    id: GO:0030198
+    label: extracellular matrix organization
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: mechanistic
+  curator_note: 'Extracellular matrix organization: same carriers as extracellular
+    structure organization.'
+- term:
+    id: GO:0045229
+    label: external encapsulating structure organization
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: mechanistic
+  curator_note: 'External encapsulating structure organization: identical carrier
+    set to ECM organization.'
+- term:
+    id: GO:0071456
+    label: cellular response to hypoxia
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Cellular response to hypoxia: named as meaningful by Ballouz et al.
+    Carriers AK4, BNIP3, BNIP3L, EDN1, EGLN1, EGLN3, ERO1A, NDRG1, STC1, STC2, VEGFA.'
+- term:
+    id: GO:0030199
+    label: collagen fibril organization
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: mechanistic
+  curator_note: 'Collagen fibril organization: named as meaningful by Ballouz et al.
+    Carriers COL1A2, COL4A1, COL4A2, COL5A1, LOX, LOXL2, P4HA1, PLOD1, PLOD2. HIF-driven
+    collagen hydroxylation and cross-linking is a specific, non-obvious output of
+    the hypoxic endothelium.'
+- term:
+    id: GO:0005576
+    label: extracellular region
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: 'Extracellular region: generic location of any secreted protein.'
+- term:
+    id: GO:0030312
+    label: external encapsulating structure
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: nonspecific
+  confidence: medium
+  specificity: broadly_expressed
+  artifact_cause: overly_general_term
+  curator_note: 'External encapsulating structure: a generic parent of extracellular
+    matrix with the same carriers.'
+- term:
+    id: GO:0031012
+    label: extracellular matrix
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: mechanistic
+  curator_note: 'Extracellular matrix: 29 carriers including collagens, LOX, LOXL2,
+    BGN, LAMB1, HTRA1, ANGPTL4; the destination of the collagen-modification program.'
+- term:
+    id: GO:0005788
+    label: endoplasmic reticulum lumen
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: marker_driven_plausible
+  confidence: medium
+  specificity: broadly_expressed
+  recovery_status: annotation_supported
+  curator_note: 'Endoplasmic reticulum lumen: where P4HA1, P4HA2 and the PLODs hydroxylate
+    procollagen, alongside the collagens themselves.'
+- term:
+    id: GO:0005581
+    label: collagen trimer
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: marker_driven_plausible
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  curator_note: 'Collagen trimer: COL18A1, COL1A2, COL4A1, COL4A2, COL5A1, COL9A1
+    (and LOX). Collagens are present but the stronger hypoxia signal is in the modifying
+    enzymes.'
+- term:
+    id: GO:0005488
+    label: binding
+  seed_source: enrichment_recovered
+  aspect: molecular_function
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: 'Binding: root-level molecular function.'
+- term:
+    id: GO:0031418
+    label: L-ascorbic acid binding
+  seed_source: enrichment_recovered
+  aspect: molecular_function
+  category: marker_driven_plausible
+  confidence: high
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  curator_note: 'L-ascorbic acid binding: exactly the 2-oxoglutarate/Fe(II) dioxygenases
+    EGLN1, EGLN3, P4HA1, P4HA2, PLOD1, PLOD2. A reliable proxy for the prolyl/lysyl
+    hydroxylase signal, not a function in its own right.'
+- term:
+    id: GO:0019511
+    label: peptidyl-proline hydroxylation
+  seed_source: curator_added
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: lineage_shared
+  recovery_status: annotation_gap
+  insight: mechanistic
+  evidence:
+  - reference: PMID:28204549
+    reference_title: Using predictive specificity to determine when gene set analysis
+      is biologically meaningful.
+    supports: SUPPORT
+    evidence_source: COMPUTATIONAL
+    snippet: peptidyl-proline modification
+    explanation: Source authors' judgement under multifunctionality-corrected enrichment.
+  curator_note: 'Ballouz et al. name peptidyl-proline modification as one of the four
+    terms that survive correction. The carriers are in the set (P4HA1, P4HA2: collagen
+    prolyl 4-hydroxylases; EGLN1, EGLN3: HIF prolyl hydroxylases), but in the current
+    GOA release no member is annotated to this process or its parent peptidyl-proline
+    modification: the signal is visible only through MF terms such as L-ascorbic acid
+    binding.'
+hit_adjudication:
+  pooled_variants:
+  - all
+  - iba
+  - iba_iea
+  - aigr_prune
+  - aigr_full
+  method: fisher
+  p_adjust_method: bonferroni
+  max_p_adjust: 0.05
+  correction_scope: 'matrix: every benchmark query set x GO terms (genesets-rs default)'
+  annotation_release: goa_human 2026-05-21T08:10; go-basic releases/2026-07-26
+  adjudicated_on: '2026-11-18'
+  note: 46 pooled hits, each labelled blind to which variant reported it; background
+    = UniProtKB proteins in goa_human, direct GO:0005515 dropped.

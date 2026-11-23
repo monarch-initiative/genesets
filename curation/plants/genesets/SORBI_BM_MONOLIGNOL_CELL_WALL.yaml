@@ -1,0 +1,545 @@
+gene_set_id: LIT:SORBI_BM_MONOLIGNOL_CELL_WALL
+gene_set_name: SORBI_BM_MONOLIGNOL_CELL_WALL
+collection: LIT:DOE_BER_BIOENERGY
+taxon:
+  id: NCBITaxon:4558
+  label: Sorghum bicolor
+direction: UP
+series: SERIES:SORBI_STEM_CARBON_PARTITIONING
+series_role: stem_lignin_cell_wall
+n_genes: 40
+description: The Sorghum bicolor brown midrib (bmr) monolignol biosynthesis, tricin/ferulate grass cell-wall
+  cross-linking, and secondary cell wall CESA/laccase module (Saballos et al. 2008 Genetics PMID:18562666;
+  Sattler et al. 2010 Plant Sci PMID:20185057; Hennet et al. 2020 Front Plant Sci PMID:32373138). Includes
+  the classical sorghum brown midrib loci Bmr2 (4CL), Bmr6 (CAD), and Bmr12 (COMT) along with their stem-expressed
+  paralogs across PAL (6), C4H (2), 4CL (3), HCT (2), C3H, CCoAOMT (2), CCR (2), F5H (2), COMT (3), CAD
+  (3), apoplastic laccases (7), and secondary cell wall cellulose synthases (7).
+contexts:
+- term:
+    id: PO:0009047
+    label: stem
+  context_type: anatomical_structure
+  role_note: Culm internode vascular bundles and sclerenchyma fibers of bioenergy sorghum.
+- term:
+    id: TO:0000731
+    label: lignin content
+  context_type: phenotype
+  role_note: Agronomic and bioenergy trait controlled by the sorghum brown midrib (bmr2, bmr6, bmr12)
+    monolignol pathway.
+associations:
+- term:
+    id: GO:0009809
+    label: lignin biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.1885e-20
+    p_adjust: 2.6722e-16
+    overlap: 9
+    query_size: 40
+    target_size: 20
+    overlap_genes:
+    - SORBI_3001G414800
+    - SORBI_3001G507100
+    - SORBI_3002G195400
+    - SORBI_3002G195600
+    - SORBI_3002G195700
+    - SORBI_3006G014700
+    - SORBI_3006G211900
+    - SORBI_3007G047300
+    - SORBI_3007G076000
+  evidence:
+  - reference: PMID:18562666
+    reference_title: Allelic mutations of brown midrib12 (bmr12) in sorghum encode caffeic acid O-methyltransferase.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Bmr12 (COMT), Bmr6 (CAD), CCoAOMT, CCR, and F5H synthesize G- and S-monolignols in sorghum
+      stems.
+  curator_note: Core monolignol biosynthetic pathway carried by 7/40 set members in Sorghum GOA. Recovered
+    across all 4 variants including IBA-only.
+- term:
+    id: GO:0009808
+    label: lignin metabolic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.0258e-31
+    p_adjust: 2.3064e-27
+    overlap: 15
+    query_size: 40
+    target_size: 45
+    overlap_genes:
+    - CYP73A33
+    - SORBI_3001G414800
+    - SORBI_3001G507100
+    - SORBI_3002G195400
+    - SORBI_3002G195600
+    - SORBI_3002G195700
+    - SORBI_3003G337400
+    - SORBI_3004G236100
+    - SORBI_3004G314200
+    - SORBI_3004G314300
+    - SORBI_3005G156700
+    - SORBI_3006G014700
+    - SORBI_3006G211900
+    - SORBI_3007G047300
+    - SORBI_3007G076000
+  evidence:
+  - reference: PMID:20185057
+    reference_title: Brown midrib mutations and their importance to the utilization of grasses for bioenergy.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Monolignol enzymes together with the 7 stem laccases govern lignin metabolism in sorghum
+      culms.
+  curator_note: Core lignin metabolic process carried by 14/40 members (recovered across all 4 variants).
+- term:
+    id: GO:0009699
+    label: phenylpropanoid biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.3749e-32
+    p_adjust: 3.0914e-28
+    overlap: 16
+    query_size: 40
+    target_size: 56
+    overlap_genes:
+    - SORBI_3001G160500
+    - SORBI_3001G414800
+    - SORBI_3001G507100
+    - SORBI_3002G195400
+    - SORBI_3002G195600
+    - SORBI_3002G195700
+    - SORBI_3004G220300
+    - SORBI_3004G220400
+    - SORBI_3004G220500
+    - SORBI_3004G220700
+    - SORBI_3006G014700
+    - SORBI_3006G148800
+    - SORBI_3006G148900
+    - SORBI_3006G211900
+    - SORBI_3007G047300
+    - SORBI_3007G076000
+  evidence:
+  - reference: PMID:20185057
+    reference_title: Brown midrib mutations and their importance to the utilization of grasses for bioenergy.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: PAL, C4H, Bmr2 (4CL), HCT, C3H, and CCoAOMT execute general phenylpropanoid biosynthesis
+      supplying monolignol and ferulate precursors.
+  curator_note: Upstream phenylpropanoid pathway carried by 12/40 members (recovered across all 4 variants).
+- term:
+    id: GO:0009834
+    label: plant-type secondary cell wall biogenesis
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.5537e-07
+    p_adjust: 0.0057419
+    overlap: 5
+    query_size: 40
+    target_size: 77
+    overlap_genes:
+    - SORBI_3002G118700
+    - SORBI_3002G194800
+    - SORBI_3003G049600
+    - SORBI_3006G241900
+    - SORBI_3010G238800
+  evidence:
+  - reference: PMID:32373138
+    reference_title: Transcriptional regulation of secondary cell wall biosynthesis in grasses.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Secondary-wall CESA paralogs and monolignol/laccase enzymes assemble the lignified secondary
+      cell wall of sorghum stem fibers and vessels.
+  curator_note: Core secondary cell wall biogenesis process carried by 8/40 members (recovered in all
+    and iba_iea).
+- term:
+    id: GO:0045551
+    label: cinnamyl-alcohol dehydrogenase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 6.6131e-14
+    p_adjust: 1.487e-09
+    overlap: 6
+    query_size: 40
+    target_size: 14
+    overlap_genes:
+    - SORBI_3002G195400
+    - SORBI_3002G195600
+    - SORBI_3002G195700
+    - SORBI_3006G014700
+    - SORBI_3006G211900
+    - SORBI_3007G076000
+  evidence:
+  - reference: PMID:20185057
+    reference_title: Brown midrib mutations and their importance to the utilization of grasses for bioenergy.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Bmr6 (SORBI_3004G071000) and its two CAD paralogs catalyze cinnamyl-alcohol dehydrogenase
+      activity.
+  curator_note: Enzymatic activity mutated in sorghum bmr6 (3/40 members; recovered across all 4 variants).
+- term:
+    id: GO:0008171
+    label: O-methyltransferase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 6.194e-13
+    p_adjust: 1.3927e-08
+    overlap: 8
+    query_size: 40
+    target_size: 73
+    overlap_genes:
+    - SORBI_3001G346800
+    - SORBI_3001G456650
+    - SORBI_3002G242300
+    - SORBI_3002G325000
+    - SORBI_3007G043200
+    - SORBI_3007G047300
+    - SORBI_3007G218700
+    - SORBI_3010G052200
+  evidence:
+  - reference: PMID:18562666
+    reference_title: Allelic mutations of brown midrib12 (bmr12) in sorghum encode caffeic acid O-methyltransferase.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Bmr12 (SORBI_3007G047300), COMT paralogs, and CCoAOMT paralogs catalyze O-methyltransferase
+      activity required for guaiacyl (G) and syringyl (S) lignin synthesis.
+  curator_note: Enzymatic O-methylation activity mutated in sorghum bmr12 (8/40 members; recovered across
+    all 4 variants including IBA-only).
+- term:
+    id: GO:0045548
+    label: phenylalanine ammonia-lyase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.3878e-20
+    p_adjust: 7.6175e-16
+    overlap: 7
+    query_size: 40
+    target_size: 7
+    overlap_genes:
+    - SORBI_3001G160500
+    - SORBI_3004G220300
+    - SORBI_3004G220400
+    - SORBI_3004G220500
+    - SORBI_3004G220700
+    - SORBI_3006G148800
+    - SORBI_3006G148900
+  evidence:
+  - reference: PMID:20185057
+    reference_title: Brown midrib mutations and their importance to the utilization of grasses for bioenergy.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Six sorghum PAL paralogs catalyze phenylalanine/tyrosine ammonia-lyase entry into the
+      grass phenylpropanoid pathway.
+  curator_note: Entry enzymatic step of grass monolignol synthesis (6/40 members; recovered in all and
+    iba_iea).
+- term:
+    id: GO:0016207
+    label: 4-coumarate-CoA ligase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.2986e-08
+    p_adjust: 0.00051684
+    overlap: 5
+    query_size: 40
+    target_size: 48
+    overlap_genes:
+    - SORBI_3005G020300
+    - SORBI_3006G079500
+    - SORBI_3008G051300
+    - SORBI_3009G031400
+    - SORBI_3010G045400
+  evidence:
+  - reference: PMID:20185057
+    reference_title: Brown midrib mutations and their importance to the utilization of grasses for bioenergy.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Bmr2 (SORBI_3004G062500) and its two 4CL paralogs catalyze 4-coumarate-CoA ligase activity.
+  curator_note: Enzymatic activity mutated in sorghum bmr2 (3/40 members; recovered in all and iba_iea).
+- term:
+    id: GO:0048046
+    label: apoplast
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.7871e-06
+    p_adjust: 0.040184
+    overlap: 6
+    query_size: 40
+    target_size: 208
+    overlap_genes:
+    - SORBI_3001G414800
+    - SORBI_3001G507100
+    - SORBI_3004G236100
+    - SORBI_3004G314200
+    - SORBI_3004G314300
+    - SORBI_3005G156700
+  evidence:
+  - reference: PMID:32373138
+    reference_title: Transcriptional regulation of secondary cell wall biosynthesis in grasses.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: The seven sorghum stem laccases localize to the cell wall apoplast where they oxidize
+      monolignols for polymerization.
+  curator_note: Extracellular compartment of monolignol polymerization (7/40 members; recovered in all
+    and iba_iea).
+- term:
+    id: GO:0003824
+    label: catalytic activity
+  aspect: molecular_function
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.1412e-10
+    p_adjust: 4.8145e-06
+    overlap: 37
+    query_size: 40
+    target_size: 10007
+    overlap_genes:
+    - CYP73A33
+    - SORBI_3001G160500
+    - SORBI_3001G346800
+    - SORBI_3001G456650
+    - SORBI_3002G118700
+    - SORBI_3002G194800
+    - SORBI_3002G195400
+    - SORBI_3002G195600
+    - SORBI_3002G195700
+    - SORBI_3002G242300
+    - SORBI_3002G325000
+    - SORBI_3003G049600
+    - SORBI_3003G337400
+    - SORBI_3004G220300
+    - SORBI_3004G220400
+    - SORBI_3004G220500
+    - SORBI_3004G220700
+    - SORBI_3004G236100
+    - SORBI_3004G314200
+    - SORBI_3004G314300
+    - SORBI_3005G020300
+    - SORBI_3005G156700
+    - SORBI_3006G014700
+    - SORBI_3006G079500
+    - SORBI_3006G148800
+    - SORBI_3006G148900
+    - SORBI_3006G211900
+    - SORBI_3007G043200
+    - SORBI_3007G047300
+    - SORBI_3007G076000
+    - SORBI_3007G218700
+    - SORBI_3008G051300
+    - SORBI_3009G031400
+    - SORBI_3010G045400
+    - SORBI_3010G052200
+    - SORBI_3010G196300
+    - SORBI_3010G238800
+  evidence:
+  - reference: PMID:20185057
+    reference_title: Brown midrib mutations and their importance to the utilization of grasses for bioenergy.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Top-level molecular-function roll-up across all 40 sorghum cell-wall and monolignol enzymes.
+  curator_note: Generic catalytic activity roll-up (38/40 members).
+- term:
+    id: GO:0004397
+    label: histidine ammonia-lyase activity
+  aspect: molecular_function
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.3878e-20
+    p_adjust: 7.6175e-16
+    overlap: 7
+    query_size: 40
+    target_size: 7
+    overlap_genes:
+    - SORBI_3001G160500
+    - SORBI_3004G220300
+    - SORBI_3004G220400
+    - SORBI_3004G220500
+    - SORBI_3004G220700
+    - SORBI_3006G148800
+    - SORBI_3006G148900
+  evidence:
+  - reference: PMID:20185057
+    reference_title: Brown midrib mutations and their importance to the utilization of grasses for bioenergy.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Sorghum PAL paralogs are phenylalanine/tyrosine ammonia-lyases (GO:0045548), not histidine
+      ammonia-lyases (GO:0004397); InterPro2GO maps the shared aromatic lyase domain to histidine ammonia-lyase
+      activity.
+  curator_note: Domain-level IEA false positive on all 6 Sorghum PAL paralogs (p_adj=3.14e-13 in all and
+    iba_iea, avoided by iba).
+- term:
+    id: GO:0046274
+    label: lignin catabolic process
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 7.6123e-08
+    p_adjust: 0.0017116
+    overlap: 4
+    query_size: 40
+    target_size: 23
+    overlap_genes:
+    - SORBI_3004G236100
+    - SORBI_3004G314200
+    - SORBI_3004G314300
+    - SORBI_3005G156700
+  evidence:
+  - reference: PMID:20185057
+    reference_title: Brown midrib mutations and their importance to the utilization of grasses for bioenergy.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Sorghum stem laccases polymerize monolignols into lignin rather than depolymerizing lignin;
+      GO:0046274 (lignin catabolic process) is an IEA over-projection from fungal degradative laccases.
+  curator_note: Same fungal-to-plant laccase IEA error observed in Populus (7/40 genes, p_adj=4.01e-14
+    in all and iba_iea, avoided by iba).
+- term:
+    id: GO:0046271
+    label: phenylpropanoid catabolic process
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 7.6123e-08
+    p_adjust: 0.0017116
+    overlap: 4
+    query_size: 40
+    target_size: 23
+    overlap_genes:
+    - SORBI_3004G236100
+    - SORBI_3004G314200
+    - SORBI_3004G314300
+    - SORBI_3005G156700
+  evidence:
+  - reference: PMID:20185057
+    reference_title: Brown midrib mutations and their importance to the utilization of grasses for bioenergy.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: GO:0046271 (phenylpropanoid catabolic process) is the parent roll-up of the erroneous
+      fungal laccase IEA annotation GO:0046274.
+  curator_note: Parent IEA roll-up false positive on the 7 sorghum laccases (p_adj=4.01e-14 in all and
+    iba_iea, avoided by iba).
+- term:
+    id: GO:0004467
+    label: long-chain fatty acid-CoA ligase activity
+  aspect: molecular_function
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.2089e-11
+    p_adjust: 9.4637e-07
+    overlap: 5
+    query_size: 40
+    target_size: 15
+    overlap_genes:
+    - SORBI_3005G020300
+    - SORBI_3006G079500
+    - SORBI_3008G051300
+    - SORBI_3009G031400
+    - SORBI_3010G045400
+  evidence:
+  - reference: PMID:20185057
+    reference_title: Brown midrib mutations and their importance to the utilization of grasses for bioenergy.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Bmr2 and its 4CL paralogs ligate CoA to hydroxycinnamic acids (4-coumarate-CoA ligase,
+      GO:0016207), not to long-chain aliphatic fatty acids (GO:0004467); PANTHER IBA over-projects GO:0004467
+      across the adenylate-forming acyl-CoA synthetase superfamily.
+  curator_note: PANTHER IBA superfamily over-projection onto the 3 sorghum 4CL genes across all 4 variants
+    including IBA-only (p_adj=1.74e-02).

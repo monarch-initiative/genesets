@@ -1,0 +1,458 @@
+gene_set_id: LIT:SORBI_SWEET_STEM_SUCROSE_ACCUMULATION
+gene_set_name: SORBI_SWEET_STEM_SUCROSE_ACCUMULATION
+collection: LIT:DOE_BER_BIOENERGY
+taxon:
+  id: NCBITaxon:4558
+  label: Sorghum bicolor
+direction: UP
+series: SERIES:SORBI_STEM_CARBON_PARTITIONING
+series_role: stem_soluble_sucrose
+n_genes: 31
+description: The Sorghum bicolor sweet-sorghum stem internode sucrose biosynthesis (SPS, SPP), reversible
+  cleavage (SUS), apoplastic phloem unloading (SbSUT1, SbSUT2, SbSUT4, SWEET), and vacuolar tonoplast
+  sugar storage (SbTST1, SbTST2) module (Bihmidine et al. 2015 Front Plant Sci PMID:26904046; McKinley
+  et al. 2016 Plant J PMID:27132116; Brenton et al. 2016 Genetics PMID:27356614). Contrasts with SORBI_BM_MONOLIGNOL_CELL_WALL
+  in SERIES:SORBI_STEM_CARBON_PARTITIONING. Whereas grain/forage sorghums partition stem carbon into insoluble
+  lignocellulosic secondary cell walls or starch, sweet sorghum cultivars (e.g. Rio, Della, Wray) accumulate
+  molar concentrations of soluble fermentable sucrose in stem parenchyma vacuoles for direct bioethanol
+  and bioproduct fermentation.
+contexts:
+- term:
+    id: PO:0009047
+    label: stem
+  context_type: anatomical_structure
+  role_note: Juicy pith parenchyma and vascular bundles of sweet sorghum culm internodes storing soluble
+    sucrose.
+associations:
+- term:
+    id: GO:0005985
+    label: sucrose metabolic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.2115e-44
+    p_adjust: 2.724e-40
+    overlap: 18
+    query_size: 31
+    target_size: 37
+    overlap_genes:
+    - SORBI_3001G254000
+    - SORBI_3001G344500
+    - SORBI_3001G378300
+    - SORBI_3001G425400
+    - SORBI_3001G488700
+    - SORBI_3003G367500
+    - SORBI_3004G068400
+    - SORBI_3004G151800
+    - SORBI_3004G357600
+    - SORBI_3005G089600
+    - SORBI_3008G193300
+    - SORBI_3009G040900
+    - SORBI_3009G041000
+    - SORBI_3009G152700
+    - SORBI_3009G233200
+    - SORBI_3010G072300
+    - SORBI_3010G205100
+    - SORBI_3010G276700
+  evidence:
+  - reference: PMID:27132116
+    reference_title: Dynamics of non-structural carbohydrate accumulation in sweet sorghum stems.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: 18 of 31 sorghum genes (SPS, SPP, SUS, and sucrose transporters) govern stem sucrose
+      metabolism.
+  curator_note: Core metabolic process carried by 18/31 set members. Recovered across all 4 variants including
+    IBA-only (p_adj=2.72e-40).
+- term:
+    id: GO:0005986
+    label: sucrose biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.4865e-27
+    p_adjust: 3.3424e-23
+    overlap: 10
+    query_size: 31
+    target_size: 13
+    overlap_genes:
+    - SORBI_3001G425400
+    - SORBI_3003G367500
+    - SORBI_3004G068400
+    - SORBI_3004G151800
+    - SORBI_3005G089600
+    - SORBI_3009G040900
+    - SORBI_3009G041000
+    - SORBI_3009G152700
+    - SORBI_3009G233200
+    - SORBI_3010G205100
+  evidence:
+  - reference: PMID:27132116
+    reference_title: Dynamics of non-structural carbohydrate accumulation in sweet sorghum stems.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Ten sorghum sucrose-phosphate synthase (SPS) and sucrose-phosphate phosphatase (SPP)
+      paralogs catalyze de novo sucrose synthesis.
+  curator_note: Mechanistically resolves the anabolic SPS-SPP sucrose synthesis branch (10/31 members;
+    recovered across all 4 variants).
+- term:
+    id: GO:0015770
+    label: sucrose transport
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.1353e-24
+    p_adjust: 1.1547e-19
+    overlap: 8
+    query_size: 31
+    target_size: 8
+    overlap_genes:
+    - SORBI_3001G254000
+    - SORBI_3001G488700
+    - SORBI_3004G190500
+    - SORBI_3004G353600
+    - SORBI_3005G123500
+    - SORBI_3007G191200
+    - SORBI_3007G214500
+    - SORBI_3008G193300
+  evidence:
+  - reference: PMID:26904046
+    reference_title: 'Regulation of assimilate partitioning in sweet sorghum stems: role of sucrose transporters.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Eight sorghum SUT (SbSUT1, SbSUT2, SbSUT4) and SWEET paralogs mediate phloem loading,
+      stem apoplastic unloading, and parenchymal import of sucrose.
+  curator_note: Core physiological transport process driving stem sugar accumulation (8/31 members; recovered
+    in all and iba_iea).
+- term:
+    id: GO:0008643
+    label: carbohydrate transport
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.367e-31
+    p_adjust: 7.5707e-27
+    overlap: 16
+    query_size: 31
+    target_size: 90
+    overlap_genes:
+    - SORBI_3001G254000
+    - SORBI_3001G362500
+    - SORBI_3001G488700
+    - SORBI_3003G038800
+    - SORBI_3003G110800
+    - SORBI_3003G111000
+    - SORBI_3003G149000
+    - SORBI_3003G182800
+    - SORBI_3003G377700
+    - SORBI_3004G190500
+    - SORBI_3004G353600
+    - SORBI_3005G123500
+    - SORBI_3007G191200
+    - SORBI_3007G214500
+    - SORBI_3008G193300
+    - SORBI_3009G080900
+  evidence:
+  - reference: PMID:26904046
+    reference_title: 'Regulation of assimilate partitioning in sweet sorghum stems: role of sucrose transporters.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: 16 sorghum SUT, SWEET, and tonoplast sugar transporter (TST) paralogs mediate intercellular
+      and vacuolar carbohydrate transport.
+  curator_note: Captures combined plasma-membrane and tonoplast sugar transport (16/31 members; recovered
+    across all 4 variants including IBA-only).
+- term:
+    id: GO:0008515
+    label: sucrose transmembrane transporter activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.1353e-24
+    p_adjust: 1.1547e-19
+    overlap: 8
+    query_size: 31
+    target_size: 8
+    overlap_genes:
+    - SORBI_3001G254000
+    - SORBI_3001G488700
+    - SORBI_3004G190500
+    - SORBI_3004G353600
+    - SORBI_3005G123500
+    - SORBI_3007G191200
+    - SORBI_3007G214500
+    - SORBI_3008G193300
+  evidence:
+  - reference: PMID:26904046
+    reference_title: 'Regulation of assimilate partitioning in sweet sorghum stems: role of sucrose transporters.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Eight sorghum SUT and clade-III SWEET proteins catalyze sucrose transmembrane transport.
+  curator_note: Molecular sucrose transporter activity (8/31 members; recovered across all 4 variants
+    including IBA-only).
+- term:
+    id: GO:0016157
+    label: sucrose synthase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.6667e-15
+    p_adjust: 8.2446e-11
+    overlap: 5
+    query_size: 31
+    target_size: 5
+    overlap_genes:
+    - SORBI_3001G344500
+    - SORBI_3001G378300
+    - SORBI_3004G357600
+    - SORBI_3010G072300
+    - SORBI_3010G276700
+  evidence:
+  - reference: PMID:27132116
+    reference_title: Dynamics of non-structural carbohydrate accumulation in sweet sorghum stems.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Five sorghum sucrose synthase (SbSUS) paralogs catalyze UDP-dependent reversible cleavage
+      of sucrose in stem sink tissues.
+  curator_note: Resolves sink-strength sucrose synthase activity (5/31 members; recovered across all 4
+    variants).
+- term:
+    id: GO:0046524
+    label: sucrose-phosphate synthase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.5151e-11
+    p_adjust: 3.4068e-07
+    overlap: 4
+    query_size: 31
+    target_size: 5
+    overlap_genes:
+    - SORBI_3004G068400
+    - SORBI_3005G089600
+    - SORBI_3009G233200
+    - SORBI_3010G205100
+  evidence:
+  - reference: PMID:27132116
+    reference_title: Dynamics of non-structural carbohydrate accumulation in sweet sorghum stems.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Four sorghum sucrose-phosphate synthase (SbSPS) paralogs catalyze the rate-limiting transfer
+      of UDP-glucose to fructose-6-phosphate.
+  curator_note: Rate-limiting enzymatic step of sucrose synthesis (4/31 members; recovered across all
+    4 variants).
+- term:
+    id: GO:0005886
+    label: plasma membrane
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.7274e-07
+    p_adjust: 0.01063
+    overlap: 14
+    query_size: 31
+    target_size: 2227
+    overlap_genes:
+    - SORBI_3001G254000
+    - SORBI_3001G488700
+    - SORBI_3003G038800
+    - SORBI_3003G110800
+    - SORBI_3003G149000
+    - SORBI_3003G182800
+    - SORBI_3003G377700
+    - SORBI_3004G190500
+    - SORBI_3004G353600
+    - SORBI_3005G123500
+    - SORBI_3007G191200
+    - SORBI_3007G214500
+    - SORBI_3008G193300
+    - SORBI_3009G080900
+  evidence:
+  - reference: PMID:26904046
+    reference_title: 'Regulation of assimilate partitioning in sweet sorghum stems: role of sucrose transporters.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: SbSUT1, SbSUT2, and SWEET efflux/influx carriers operate at the sieve-element/companion-cell
+      and pith parenchyma plasma membranes.
+  curator_note: Membrane compartment mediating apoplastic stem sucrose unloading (9/31 members; recovered
+    across all 4 variants).
+- term:
+    id: GO:0051179
+    label: localization
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.9389e-10
+    p_adjust: 1.1105e-05
+    overlap: 18
+    query_size: 31
+    target_size: 2553
+    overlap_genes:
+    - SORBI_3001G254000
+    - SORBI_3001G362500
+    - SORBI_3001G488700
+    - SORBI_3003G038800
+    - SORBI_3003G110800
+    - SORBI_3003G111000
+    - SORBI_3003G149000
+    - SORBI_3003G182800
+    - SORBI_3003G377700
+    - SORBI_3004G190500
+    - SORBI_3004G353600
+    - SORBI_3004G357600
+    - SORBI_3005G123500
+    - SORBI_3007G191200
+    - SORBI_3007G214500
+    - SORBI_3008G193300
+    - SORBI_3009G080900
+    - SORBI_3010G276700
+  evidence:
+  - reference: PMID:27132116
+    reference_title: Dynamics of non-structural carbohydrate accumulation in sweet sorghum stems.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Top-level localization roll-up.
+  curator_note: Broad localization roll-up (18/31 members).
+- term:
+    id: GO:0042948
+    label: salicin transport
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.0332e-12
+    p_adjust: 6.8201e-08
+    overlap: 4
+    query_size: 31
+    target_size: 4
+    overlap_genes:
+    - SORBI_3001G488700
+    - SORBI_3004G190500
+    - SORBI_3004G353600
+    - SORBI_3007G214500
+  evidence:
+  - reference: PMID:26904046
+    reference_title: 'Regulation of assimilate partitioning in sweet sorghum stems: role of sucrose transporters.'
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Sorghum bicolor is a Poaceae grass that does not synthesize Salicaceae phenolic salicin
+      glycosides; UniRule/InterPro IEA projects GO:0042948 (salicin transport) and GO:0005364 (maltose:proton
+      symporter activity) onto 4 sorghum SUT sucrose transporters from heterologous Xenopus oocyte substrate-promiscuity
+      assays on dicot SUT1.
+  curator_note: 'Classic heterologous in vitro substrate-promiscuity IEA artifact: 4 sorghum SUT sucrose
+    transporters are annotated to salicin transport (GO:0042948, p_adj=6.82e-08 in all and iba_iea), cleanly
+    eliminated by iba!'
+- term:
+    id: GO:0005364
+    label: maltose:proton symporter activity
+  aspect: molecular_function
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.0332e-12
+    p_adjust: 6.8201e-08
+    overlap: 4
+    query_size: 31
+    target_size: 4
+    overlap_genes:
+    - SORBI_3001G488700
+    - SORBI_3004G190500
+    - SORBI_3004G353600
+    - SORBI_3007G214500
+  evidence:
+  - reference: PMID:26904046
+    reference_title: 'Regulation of assimilate partitioning in sweet sorghum stems: role of sucrose transporters.'
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Sorghum SUT transporters physiologically transport sucrose in phloem and stem parenchyma
+      rather than maltose; GO:0005364 (maltose:proton symporter activity) is co-projected with salicin
+      transport by UniRule IEA.
+  curator_note: Companion in vitro substrate-promiscuity IEA artifact on the same 4 sorghum SUT genes
+    (p_adj=6.82e-08 in all and iba_iea, eliminated by iba).
+- term:
+    id: GO:0009809
+    label: lignin biosynthetic process
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: false_association
+  evidence:
+  - reference: PMID:27132116
+    reference_title: Dynamics of non-structural carbohydrate accumulation in sweet sorghum stems.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Insoluble monolignol/lignin biosynthesis (GO:0009809) defines the contrasting structural
+      cell-wall pole (SORBI_BM_MONOLIGNOL_CELL_WALL) of SERIES:SORBI_STEM_CARBON_PARTITIONING.
+  curator_note: Contrasting pole trap against SORBI_BM_MONOLIGNOL_CELL_WALL in SERIES:SORBI_STEM_CARBON_PARTITIONING.

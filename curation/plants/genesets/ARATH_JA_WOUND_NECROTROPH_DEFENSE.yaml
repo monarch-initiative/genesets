@@ -1,0 +1,558 @@
+gene_set_id: LIT:ARATH_JA_WOUND_NECROTROPH_DEFENSE
+gene_set_name: ARATH_JA_WOUND_NECROTROPH_DEFENSE
+collection: LIT:PLANT_IMMUNITY
+taxon:
+  id: NCBITaxon:3702
+  label: Arabidopsis thaliana
+direction: UP
+series: SERIES:ARATH_IMMUNE_SIGNALING
+series_role: ja_wound_necrotroph
+n_genes: 34
+description: The Arabidopsis thaliana jasmonic acid (JA) / oxylipin biosynthesis, SCF-COI1-JAZ-MYC2/3/4
+  wound and insect herbivory signaling, and ERF1/ORA59-PDF1.2 necrotrophic fungal defense regulon (Howe
+  et al. 2018 Annu Rev Plant Biol PMID:29539269; Wasternack & Hause 2013 Ann Bot PMID:23558912). Contrasts
+  with ARATH_PTI_FLG22_IMMUNITY and ARATH_SAR_SALICYLIC_ACID_IMMUNITY in SERIES:ARATH_IMMUNE_SIGNALING.
+  Includes plastidial and peroxisomal JA-Ile biosynthetic enzymes (LOX2, LOX3, LOX4, LOX6, AOS/CYP74A,
+  AOC1-4, OPR3, ACX1, JAR1, JMT), coreceptor and bHLH/JAZ signaling nodes (COI1, MYC2, MYC3, MYC4, JAZ1/TIFY10A,
+  JAZ3/TIFY6B, JAZ10/TIFY9), ethylene-synergistic AP2/ERFs (ORA59/ERF094, ERF1B), canonical defensin/thionin/VSP
+  effectors (PDF1.2A, PDF1.2B, PDF1.2C, VSP1, VSP2, THI2.1, CORI3), and JA-induced indolic glucosinolate/camalexin
+  enzymes (CYP79B2, CYP79B3, SUR1, UGT74B1, PAD3/CYP71B15).
+contexts:
+- term:
+    id: PO:0025034
+    label: leaf
+  context_type: anatomical_structure
+  role_note: Wounded or herbivore/necrotroph-challenged foliar tissue activating the oxylipin-jasmonate
+    defense cascade.
+associations:
+- term:
+    id: GO:0009753
+    label: response to jasmonic acid
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.185e-31
+    p_adjust: 1.5504e-26
+    overlap: 21
+    query_size: 34
+    target_size: 307
+    overlap_genes:
+    - AOC1
+    - AOC2
+    - AOC3
+    - AOC4
+    - COI1
+    - CORI3
+    - CYP74A
+    - ERF094
+    - ERF1B
+    - JAR1
+    - JMT
+    - LOX2
+    - LOX3
+    - MYC2
+    - MYC3
+    - PDF1.2A
+    - TIFY10A
+    - TIFY6B
+    - TIFY9
+    - VSP1
+    - VSP2
+  evidence:
+  - reference: PMID:29539269
+    reference_title: 'Modularizer of plant immunity and development: the jasmonate signaling pathway.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: 21 of 34 set members mediate the biosynthesis, perception, or transcriptional response
+      to jasmonic acid.
+  curator_note: Core hormone response carried by 21/34 set members. Recovered in all and iba (p_adj=1.55e-26).
+- term:
+    id: GO:0009695
+    label: jasmonic acid biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 9.2768e-29
+    p_adjust: 1.2138e-23
+    overlap: 12
+    query_size: 34
+    target_size: 26
+    overlap_genes:
+    - ACX1
+    - AOC1
+    - AOC2
+    - AOC3
+    - AOC4
+    - CYP74A
+    - JMT
+    - LOX2
+    - LOX3
+    - LOX4
+    - LOX6
+    - OPR3
+  evidence:
+  - reference: PMID:23558913
+    reference_title: 'Jasmonates: biosynthesis, perception, signal transduction and action in plant stress
+      response, growth and development.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Plastidial 13-lipoxygenases (LOX2/3/4/6), allene oxide synthase (CYP74A), allene oxide
+      cyclases (AOC1-4), and peroxisomal OPR3/ACX1 synthesize jasmonic acid from alpha-linolenic acid.
+  curator_note: Mechanistically resolves the plastid-to-peroxisome octadecanoid biosynthetic pathway (12/34
+    members; recovered in all and iba_iea).
+- term:
+    id: GO:0009611
+    label: response to wounding
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.6859e-26
+    p_adjust: 2.2059e-21
+    overlap: 18
+    query_size: 34
+    target_size: 273
+    overlap_genes:
+    - ACX1
+    - COI1
+    - CORI3
+    - CYP74A
+    - CYP79B3
+    - ERF094
+    - JAR1
+    - JMT
+    - LOX2
+    - LOX3
+    - LOX4
+    - LOX6
+    - MYC2
+    - PDF1.2A
+    - TIFY10A
+    - TIFY6B
+    - TIFY9
+    - VSP2
+  evidence:
+  - reference: PMID:29539269
+    reference_title: 'Modularizer of plant immunity and development: the jasmonate signaling pathway.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Mechanical tissue damage and herbivory trigger rapid LOX6/AOC-dependent JA-Ile bursts
+      and MYC2/VSP1/VSP2 wound response transcription.
+  curator_note: Core physiological wound-response program carried by 18/34 members (recovered in all and
+    iba_iea).
+- term:
+    id: GO:0009867
+    label: jasmonic acid mediated signaling pathway
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.722e-14
+    p_adjust: 6.1785e-09
+    overlap: 10
+    query_size: 34
+    target_size: 175
+    overlap_genes:
+    - AOC1
+    - AOC2
+    - AOC3
+    - AOC4
+    - COI1
+    - ERF1B
+    - JAR1
+    - JMT
+    - TIFY10A
+    - TIFY6B
+  evidence:
+  - reference: PMID:29539269
+    reference_title: 'Modularizer of plant immunity and development: the jasmonate signaling pathway.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: JA-Ile promotes SCF-COI1 ubiquitination of JAZ repressors (TIFY10A, TIFY6B, TIFY9), derepressing
+      MYC2/3/4 and ORA59/ERF1B.
+  curator_note: Core receptor-to-transcription-factor signal transduction pathway carried by 10/34 members.
+- term:
+    id: GO:0031408
+    label: oxylipin biosynthetic process
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.699e-15
+    p_adjust: 2.223e-10
+    overlap: 7
+    query_size: 34
+    target_size: 23
+    overlap_genes:
+    - CYP74A
+    - JMT
+    - LOX2
+    - LOX3
+    - LOX4
+    - LOX6
+    - OPR3
+  evidence:
+  - reference: PMID:23558913
+    reference_title: 'Jasmonates: biosynthesis, perception, signal transduction and action in plant stress
+      response, growth and development.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: LOX2, LOX3, LOX4, LOX6, CYP74A, and AOC1-4 catalyze oxygenated fatty acid (oxylipin)
+      synthesis in the chloroplast.
+  curator_note: Upstream plastidial oxylipin pathway feeding jasmonate synthesis (7/34 members).
+- term:
+    id: GO:0009682
+    label: induced systemic resistance
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.9753e-13
+    p_adjust: 6.5099e-08
+    overlap: 7
+    query_size: 34
+    target_size: 48
+    overlap_genes:
+    - AOC1
+    - AOC2
+    - AOC3
+    - AOC4
+    - CYP79B2
+    - CYP79B3
+    - JAR1
+  evidence:
+  - reference: PMID:29539269
+    reference_title: 'Modularizer of plant immunity and development: the jasmonate signaling pathway.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: COI1, MYC2, ORA59, and ERF1B mediate rhizobacteria-primed induced systemic resistance
+      (ISR), which depends on JA/ethylene signaling rather than salicylic acid.
+  curator_note: Distinguishes JA/ET-dependent induced systemic resistance (ISR, GO:0009682) from SA-dependent
+    systemic acquired resistance (SAR, GO:0009627) (7/34 members).
+- term:
+    id: GO:0009625
+    label: response to insect
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.9095e-12
+    p_adjust: 3.8069e-07
+    overlap: 7
+    query_size: 34
+    target_size: 61
+    overlap_genes:
+    - COI1
+    - CYP71B15
+    - CYP79B2
+    - CYP79B3
+    - LOX4
+    - PDF1.2A
+    - VSP2
+  evidence:
+  - reference: PMID:29539269
+    reference_title: 'Modularizer of plant immunity and development: the jasmonate signaling pathway.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: The MYC2/MYC3/MYC4 branch activates VSP1, VSP2, THI2.1, and glucosinolate synthesis (CYP79B2/B3,
+      SUR1) to deter chewing insect herbivores.
+  curator_note: Captures the MYC2-regulated anti-insect herbivory branch of JA defense (7/34 members).
+- term:
+    id: GO:0009620
+    label: response to fungus
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.8356e-09
+    p_adjust: 0.00024018
+    overlap: 9
+    query_size: 34
+    target_size: 365
+    overlap_genes:
+    - ACX1
+    - AOC3
+    - COI1
+    - CYP71B15
+    - CYP74A
+    - LOX2
+    - LOX3
+    - OPR3
+    - SUR1
+  evidence:
+  - reference: PMID:29539269
+    reference_title: 'Modularizer of plant immunity and development: the jasmonate signaling pathway.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: The ORA59/ERF1B branch activates plant defensins PDF1.2A, PDF1.2B, and PDF1.2C to restrict
+      necrotrophic fungal pathogens such as Botrytis cinerea.
+  curator_note: Captures the ERF-PDF1.2 antifungal defense branch (9/34 members).
+- term:
+    id: GO:0016165
+    label: linoleate 13S-lipoxygenase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.7069e-12
+    p_adjust: 4.8502e-07
+    overlap: 4
+    query_size: 34
+    target_size: 4
+    overlap_genes:
+    - LOX2
+    - LOX3
+    - LOX4
+    - LOX6
+  evidence:
+  - reference: PMID:23558913
+    reference_title: 'Jasmonates: biosynthesis, perception, signal transduction and action in plant stress
+      response, growth and development.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: LOX2, LOX3, LOX4, and LOX6 catalyze regiospecific 13S-dioxygenation of alpha-linolenic
+      acid.
+  curator_note: Entry enzymatic step of plastidial oxylipin/jasmonate biosynthesis (4/34 members; recovered
+    across all 4 variants).
+- term:
+    id: GO:0046423
+    label: allene-oxide cyclase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.7069e-12
+    p_adjust: 4.8502e-07
+    overlap: 4
+    query_size: 34
+    target_size: 4
+    overlap_genes:
+    - AOC1
+    - AOC2
+    - AOC3
+    - AOC4
+  evidence:
+  - reference: PMID:23558913
+    reference_title: 'Jasmonates: biosynthesis, perception, signal transduction and action in plant stress
+      response, growth and development.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: AOC1, AOC2, AOC3, and AOC4 stereospecifically cyclize 12,13(S)-epoxy-octadecatrienoic
+      acid into cis-(+)-12-oxophytodienoic acid (OPDA).
+  curator_note: Enzymatic step establishing the cyclopentenone ring of jasmonates (4/34 members; recovered
+    across all 4 variants).
+- term:
+    id: GO:0050896
+    label: response to stimulus
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.2777e-20
+    p_adjust: 2.9802e-15
+    overlap: 34
+    query_size: 34
+    target_size: 6202
+    overlap_genes:
+    - ACX1
+    - AOC1
+    - AOC2
+    - AOC3
+    - AOC4
+    - COI1
+    - CORI3
+    - CYP71B15
+    - CYP74A
+    - CYP79B2
+    - CYP79B3
+    - ERF094
+    - ERF1B
+    - JAR1
+    - JMT
+    - LOX2
+    - LOX3
+    - LOX4
+    - LOX6
+    - MYC2
+    - MYC3
+    - MYC4
+    - OPR3
+    - PDF1.2A
+    - PDF1.2B
+    - PDF1.2C
+    - SUR1
+    - THI2.1
+    - TIFY10A
+    - TIFY6B
+    - TIFY9
+    - UGT74B1
+    - VSP1
+    - VSP2
+  evidence:
+  - reference: PMID:29539269
+    reference_title: 'Modularizer of plant immunity and development: the jasmonate signaling pathway.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Top-level biological-process roll-up of hormone and defense responses.
+  curator_note: Overly broad root-adjacent term (34/34 members).
+- term:
+    id: GO:0042759
+    label: long-chain fatty acid biosynthetic process
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.1576e-27
+    p_adjust: 2.8231e-22
+    overlap: 12
+    query_size: 34
+    target_size: 32
+    overlap_genes:
+    - ACX1
+    - AOC1
+    - AOC2
+    - AOC3
+    - AOC4
+    - CYP74A
+    - JMT
+    - LOX2
+    - LOX3
+    - LOX4
+    - LOX6
+    - OPR3
+  evidence:
+  - reference: PMID:23558913
+    reference_title: 'Jasmonates: biosynthesis, perception, signal transduction and action in plant stress
+      response, growth and development.'
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: LOX2/3/4/6, AOS (CYP74A), AOC1-4, OPR3, and ACX1 oxidatively cleave and beta-oxidize
+      C18 alpha-linolenic acid into a C12 cyclopentanone hormone (jasmonic acid) rather than elongating
+      or synthesizing long-chain aliphatic fatty acids (C13-C21; GO:0042759).
+  curator_note: 'GO-ChEBI chemical ontology artifact: GO classifies jasmonic acid biosynthesis (GO:0009695)
+    under long-chain fatty acid biosynthetic process (GO:0042759) and fatty acid biosynthetic process
+    (GO:0006633), causing 12/34 oxylipin genes to enrich for fatty acid synthesis (p_adj=2.82e-22 in all
+    and iba_iea).'
+- term:
+    id: GO:0106167
+    label: extracellular ATP signaling
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.5842e-10
+    p_adjust: 3.3813e-05
+    overlap: 4
+    query_size: 34
+    target_size: 8
+    overlap_genes:
+    - COI1
+    - MYC2
+    - MYC3
+    - MYC4
+  evidence:
+  - reference: PMID:29539269
+    reference_title: 'Modularizer of plant immunity and development: the jasmonate signaling pathway.'
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: COI1, MYC2, MYC3, and MYC4 form the core jasmonate receptor-transcription factor complex,
+      not the plasma-membrane purinergic receptor DORN1/P2K1; GO:0106167 (extracellular ATP signaling)
+      is enriched in full GAF from a cross-talk study showing eATP-induced transcription partially requires
+      COI1/MYC2.
+  curator_note: 'Downstream epistatic mutant annotation bleed in all (4/34 genes: COI1, MYC2, MYC3, MYC4,
+    p_adj=3.38e-05), completely avoided by iba_iea and iba.'
+- term:
+    id: GO:0009627
+    label: systemic acquired resistance
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: false_association
+  evidence:
+  - reference: PMID:29539269
+    reference_title: 'Modularizer of plant immunity and development: the jasmonate signaling pathway.'
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Salicylic-acid-dependent systemic acquired resistance (GO:0009627) is mutually antagonistic
+      with the MYC2 jasmonate wound/necrotroph pathway and defines the contrasting ARATH_SAR_SALICYLIC_ACID_IMMUNITY
+      pole of SERIES:ARATH_IMMUNE_SIGNALING.
+  curator_note: Contrasting pole trap against ARATH_SAR_SALICYLIC_ACID_IMMUNITY in SERIES:ARATH_IMMUNE_SIGNALING.
