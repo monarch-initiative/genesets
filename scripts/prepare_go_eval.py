@@ -17,6 +17,7 @@ import json
 import os
 import sys
 import time
+import urllib.parse
 import urllib.request
 from collections import defaultdict
 from pathlib import Path
@@ -460,7 +461,9 @@ def main() -> int:
     downloads = args.out_dir / "downloads"
 
     ontology_path = downloads / "go-basic.obo"
-    gaf_path = downloads / "goa_human.gaf.gz"
+    # Cache under the URL's own file name so species GAFs (mgi, wb, fb, zfin, ...)
+    # passed via --gaf-url do not collide with the default goa_human download.
+    gaf_path = downloads / Path(urllib.parse.urlparse(args.gaf_url).path).name
     ontology_file = download(args.ontology_url, ontology_path, args.force_download)
     gaf_file = download(args.gaf_url, gaf_path, args.force_download)
 
@@ -502,7 +505,7 @@ def main() -> int:
             "tables": table_stats,
         },
         "annotations": {
-            "source": "GOA human official GAF from Gene Ontology current annotations",
+            "source": f"Official GAF from Gene Ontology current annotations ({gaf_path.name})",
             "file": gaf_file,
             "gaf_header": gaf_header,
             "gene_id_field": args.gene_id_field,
@@ -522,7 +525,7 @@ def main() -> int:
             "stats": annotation_stats,
         },
         "background": {
-            "policy": "Common background from NOT-filtered all-evidence GOA human genes, using the configured GAF gene_id_field.",
+            "policy": f"Common background from NOT-filtered all-evidence genes in {gaf_path.name}, using the configured GAF gene_id_field.",
             "path": annotation_stats["background_path"],
             "gene_count": annotation_stats["background_gene_count"],
         },

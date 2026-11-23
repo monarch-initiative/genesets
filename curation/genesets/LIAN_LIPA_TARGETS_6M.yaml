@@ -1,0 +1,122 @@
+gene_set_id: MSIGDB:LIAN_LIPA_TARGETS_6M
+gene_set_name: LIAN_LIPA_TARGETS_6M
+collection: M2:CGP
+msigdb_release: v2025.1.Mm
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: UP
+description: >-
+  MSigDB mouse M2:CGP set (M4345) of ~96 genes at least 2-fold up in lungs of
+  6-month-old lysosomal acid lipase knockout (Lipa-/-, lal-/-) mice (Lian et al.
+  2005, PMID:16127159, Table 1S). Blocking lysosomal hydrolysis of cholesteryl
+  esters and triglycerides causes foamy macrophage accumulation, neutrophil
+  infiltration and emphysema. The membership is a myeloid inflammatory programme:
+  lipid-laden/lysosome-rich macrophage genes (Cd68, Ctsb, Atp6v0d2, Acp5, Gpnmb,
+  Trem2, Galc, Neu1, Msr1, Marco, Cd5l, C1qa/b/c), neutrophil genes (S100a9, Camp,
+  Clec4d, Clec4e, Cxcl3), an expanded paired-Ig-like receptor cluster (Pira1-12,
+  Pirb, Lilra6, Fcgr2b, Fcgr4, Fcer1g), and matrix metalloproteinases (Mmp12, Mmp8,
+  Mmp13, Mmp19). GO enrichment links the lysosomal storage defect to
+  tissue-destructive mechanism: lysosome-laden macrophages and collagen-degrading
+  MMPs (Mmp12 rose ~100-fold) account for the emphysema. Note the authors
+  localised the strongest increases (Mmp12, Api-6/Cd5l, Spic, Mafb) mainly to
+  alveolar type II cells; assigning the rest of the programme to myeloid cells is
+  the curator's inference from marker identity.
+contexts:
+  - term:
+      id: PR:000009832
+      label: lysosomal acid lipase/cholesteryl ester hydrolase
+    context_type: genetic_perturbation
+  - term:
+      id: UBERON:0002048
+      label: lung
+    context_type: anatomical_structure
+  - term:
+      id: CL:0000235
+      label: macrophage
+    context_type: cell_type
+associations:
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Recovered in a GOA-mouse run (15/551, p ~2e-10). Adam8, C3ar1, Ccr1,
+      Pla2g7, Slc11a1 direct; C1qa, Camp, Cd68, Fcer1g, Fcgr2b, Fcgr4, Hmox1,
+      S100a9, Trem2 via closure. The described pathology (neutrophil infiltration,
+      foamy macrophages) makes it expected, hence confirmatory.
+  - term:
+      id: GO:0005764
+      label: lysosome
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      The organelle whose failure defines the model, and the signature of the
+      lipid-laden macrophages it produces. 13 members are annotated (Acp5, Cd68,
+      Ctsb, Galc, Neu1, Rab7b, Slc11a1, Snx6, Tlr7, Myo5a direct; Adam8, Mpeg1,
+      Slc15a3 via closure); Atp6v0d2, Gpnmb and Trem2, markers of
+      lysosome-expanded "foamy" macrophages, are also present. 13/664 (p ~1e-7)
+      is a modest fraction of a large term; it passes Bonferroni in the
+      per-species run but only just, so recovery is method- and
+      batch-sensitive. Mechanistic: it ties the inflammatory signature
+      back to compensatory lysosomal expansion in cells that cannot clear
+      neutral lipid.
+  - term:
+      id: GO:0030574
+      label: collagen catabolic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      Mmp12, Mmp8, Mmp13, Mmp19 and Ctsb are all directly annotated (5/39, p ~1e-7). The
+      paper reports Mmp12 as the most strongly induced gene (~100-fold), and
+      macrophage elastase/collagenase activity is the accepted mechanism of
+      emphysema. Mechanistic: it explains the tissue phenotype (emphysema) rather
+      than restating the inflammation. The related extracellular matrix
+      disassembly term is weakly annotated in MGI (only Mmp13), so this
+      collagen term is the GO handle that captures the MMP arm.
+  - term:
+      id: GO:0030593
+      label: neutrophil chemotaxis
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The neutrophil influx is reflected by Cxcl3, S100a9 and Fcer1g (direct; 3/59)
+      plus the neutrophil-associated Camp, Clec4d and Clec4e, which are annotated
+      elsewhere. Supporting: neutrophils are recruited downstream of the
+      macrophage defect.
+  - term:
+      id: GO:0019865
+      label: immunoglobulin binding
+    aspect: molecular_function
+    category: marker_driven_plausible
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The top enrichment (9/32, p ~5e-16), carried by Fcgr2b plus C1q chains,
+      Fcer1g, Lilra6 and the paired-Ig-like receptors Pira2, Pira12, Pirb. It
+      mostly reflects the expansion of the mouse-specific Pira/Pirb cluster on
+      infiltrating myeloid cells, i.e. a myeloid marker signal rather than an
+      immunoglobulin-driven process; real cells, peripheral mechanism.
