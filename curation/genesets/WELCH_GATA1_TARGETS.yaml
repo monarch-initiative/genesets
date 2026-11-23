@@ -1,0 +1,98 @@
+gene_set_id: MSIGDB:WELCH_GATA1_TARGETS
+gene_set_name: WELCH_GATA1_TARGETS
+collection: M2:CGP
+msigdb_release: v2025.1.Mm
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: UP
+description: >-
+  MSigDB mouse M2:CGP set (M1407) of 29 genes induced when GATA-1 activity is
+  restored in G1E-ER4 cells, a GATA-1-null erythroblast line that then matures
+  synchronously (Welch et al. 2004, PMID:15297311, Fig. 2). The set is the erythroid
+  maturation programme GATA-1 drives. It includes nearly the whole heme biosynthetic
+  pathway (Alas2, Alad, Hmbs, Uros, Urod, Ppox, plus the mitochondrial transporter
+  Abcb10) and globins (Hba-a1, Hba-x, Hbb-y). It also has the red-cell membrane
+  skeleton (Ank1, Slc4a1, Gypa, Dmtn, Stom) and iron uptake/storage (Tfrc, Ftl1).
+  Its regulators are Klf1, the GATA-1 cofactor Zfpm1/Fog1, and the heme-responsive
+  Nfe2-Maf/Bach1 axis (Nfe2, Mafk, Mafg, Bach1). Largely confirmatory. The
+  heme-sensing Bach1/Maf/Nfe2 module is the mechanistic layer: it couples globin
+  transcription to heme supply.
+contexts:
+  - term:
+      id: PR:000007857
+      label: erythroid transcription factor
+    context_type: genetic_perturbation
+  - term:
+      id: CL:0000765
+      label: erythroblast
+    context_type: cell_type
+associations:
+  - term:
+      id: GO:0006783
+      label: heme biosynthetic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      7/23, p ~1e-16: Abcb10, Alad, Alas2, Hmbs, Ppox, Urod, Uros, all directly
+      annotated; six of the eight enzymatic steps. Erythroid heme synthesis is a
+      defining GATA-1 output (Alas2 is a direct GATA-1 target), so confirmatory.
+  - term:
+      id: GO:0030218
+      label: erythrocyte differentiation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:15297311
+        reference_title: "Global regulation of erythroid gene expression by transcription factor GATA-1."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "In contrast, the gene encoding Fog1, which cooperates with GATA-1 in beta globin transcription, was rapidly induced independently of protein synthesis."
+        explanation: >-
+          Zfpm1 (Fog1), a member of this set, is the paper's worked example of a
+          rapidly induced GATA-1 target.
+    curator_note: >-
+      11/136, p ~5e-19, the top hit: Alas2, Exoc6, Klf1, Zfpm1 directly; Abcb10,
+      Ank1, Dmtn, globins and Slc4a1 via closure. The identity term of the
+      maturation the cells undergo.
+  - term:
+      id: GO:0005833
+      label: hemoglobin complex
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Hba-a1, Hba-x and Hbb-y directly annotated (3/11, p ~1e-7). Hba-x and Hbb-y are
+      embryonic globins, consistent with the G1E line. Notably beta-major globin
+      (Hbb-b1), the paper's late-induced direct target, is not in this set.
+  - term:
+      id: GO:0006879
+      label: intracellular iron ion homeostasis
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      Iron supply for heme: Tfrc (transferrin receptor), Ftl1 (ferritin light
+      chain) and Alas2 are directly annotated (3/82, not significant). The Nfe2-Mafk/Mafg and Bach1 factors in the set form the heme-sensing
+      switch: Bach1 represses globin genes until heme accumulates. The
+      Bach1/Maf/Nfe2 module is the set's mechanistic layer. These genes are
+      annotated mainly to transcription terms rather than to iron or heme
+      homeostasis, so this term recovers only the iron-uptake half.

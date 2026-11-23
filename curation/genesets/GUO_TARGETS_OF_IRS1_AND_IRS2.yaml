@@ -1,0 +1,111 @@
+gene_set_id: MSIGDB:GUO_TARGETS_OF_IRS1_AND_IRS2
+gene_set_name: GUO_TARGETS_OF_IRS1_AND_IRS2
+collection: M2:CGP
+msigdb_release: v2025.1.Mm
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: NA
+description: >-
+  MSigDB mouse M2:CGP set (M2434) of 105 hepatic transcripts dysregulated in livers
+  lacking Irs1 and Irs2 (Guo et al. 2009, PMID:19596788, Fig. 1), the two insulin
+  receptor substrates that relay hepatic insulin signalling. The set mixes directions
+  and is undirected. It has a known FOXO1 gluconeogenic arm (Pck1, G6pc1, Igfbp1,
+  Ppargc1a) and lost glucokinase (Gck). GO enrichment shows that the dominant
+  programme is the cholesterol biosynthetic pathway: Hmgcr, Mvk, Mvd, Fdps, Fdft1,
+  Sqle, Lss, Cyp51, Msmo1, Nsdhl, Sc5d, Dhcr7, Dhcr24, Acat2, together with Pcsk9 and
+  the Abcg5/Abcg8 sterol exporters. This mirrors the insulin → mTORC1 → SREBP route
+  that hepatic insulin signalling uses to sustain lipogenic and sterol gene
+  expression.
+contexts:
+  - term:
+      id: PR:000009107
+      label: insulin receptor substrate 1
+    context_type: genetic_perturbation
+  - term:
+      id: PR:000009108
+      label: insulin receptor substrate 2
+    context_type: genetic_perturbation
+  - term:
+      id: UBERON:0002107
+      label: liver
+    context_type: anatomical_structure
+associations:
+  - term:
+      id: GO:0006695
+      label: cholesterol biosynthetic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      14/35, p ~9e-26, the top hit: Acat2, Cyp51, Dhcr24, Dhcr7, Fdft1, Fdps, Hmgcr,
+      Lss, Msmo1, Mvd, Mvk, Nsdhl, Sc5d, Sqle, all directly annotated. Mechanistic:
+      the perturbation is an insulin-signalling adaptor, and recovering the sterol
+      pathway rather than glucose metabolism identifies insulin's SREBP-dependent
+      control of hepatic sterol synthesis as a major output lost with Irs1/Irs2.
+  - term:
+      id: GO:0006094
+      label: gluconeogenesis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:19596788
+        reference_title: "The Irs1 branch of the insulin signaling cascade plays a dominant role in hepatic nutrient homeostasis."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "We conclude that Irs1 is the principal mediator of hepatic insulin action that maintains glucose homeostasis."
+        explanation: >-
+          The paper frames the knockout around hepatic glucose homeostasis.
+    curator_note: >-
+      Pck1, G6pc1 and Ppargc1a are directly annotated (3/51). Insulin suppresses these
+      FOXO1-driven gluconeogenic genes, and their dysregulation is what the paper
+      measures (with Igfbp1, another FOXO1 target, and Gck). Expected, so
+      confirmatory, and too few genes to be enriched against a 51-gene term.
+  - term:
+      id: GO:0008299
+      label: isoprenoid biosynthetic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      6/35, p ~3e-9 (Mvk, Mvd, Fdps, Acat2 and others): the mevalonate arm of the
+      same SREBP-2 programme.
+  - term:
+      id: GO:0055088
+      label: lipid homeostasis
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      9/206, p ~8e-8: Abcb4, Acaca, G6pc1, Gck directly; the biliary sterol exporters
+      Abcg5/Abcg8, Pcsk9, Scarb1 and Soat2 via closure, the sterol-handling half of hepatic lipid homeostasis.
+  - term:
+      id: GO:0008286
+      label: insulin receptor signaling pathway
+    aspect: biological_process
+    category: marker_driven_plausible
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    curator_note: >-
+      Insr, Igfbp1 and Hmga1 are directly annotated (3/92). The pathway is the
+      perturbation itself, and its members' transcripts are only incidentally in a
+      list of downstream targets.

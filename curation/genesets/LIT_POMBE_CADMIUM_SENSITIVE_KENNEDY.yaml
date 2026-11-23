@@ -1,0 +1,124 @@
+gene_set_id: LIT:POMBE_CADMIUM_SENSITIVE_KENNEDY
+gene_set_name: POMBE_CADMIUM_SENSITIVE_KENNEDY
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:4896
+  label: Schizosaccharomyces pombe
+direction: DN
+description: >-
+  The 238 Schizosaccharomyces pombe deletion mutants sensitive to cadmium in the
+  genome-wide screen of the fission yeast haploid deletion collection by Kennedy et
+  al. (2008, PMID:18684775; the paper reports 237). Membership is the set of
+  deletion alleles PomBase curated from this paper with the FYPO phenotype
+  "sensitive to cadmium" (FYPO:0000096); snapshot in
+  curation/genesets/model_organism_members.gmt. A cross-species counterpart of
+  YEAST_CADMIUM_SENSITIVE_RUOTOLO with a different mechanism. Budding yeast detoxifies
+  cadmium mainly as glutathione conjugates pumped into the vacuole by YCF1. Fission
+  yeast instead makes phytochelatins: pcs2 (phytochelatin synthase) and gcs1
+  (glutathione synthesis) are in the set. It also imports phytochelatin-cadmium into
+  the vacuole through the ABC transporter hmt1, and builds sulfide-rich complexes from
+  sulfate assimilation (met1, met10, met14, met16, sua1). The strongest specific
+  enrichment is ubiquinone (CoQ) biosynthesis, one of the paper's headline results.
+  The set also contains hmt2, the mitochondrial sulfide:quinone oxidoreductase, which
+  plausibly links CoQ to sulfide handling.
+contexts:
+  - term:
+      id: CHEBI:48775
+      label: cadmium(2+)
+    context_type: chemical_perturbagen
+associations:
+  - term:
+      id: GO:0010038
+      label: response to metal ion
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      8/16, p ~2e-7: pcs2 directly; gcs1, hmt1, hmt2, zhf1, zym1, rav2 and ade2 via
+      closure (mostly cellular response to cadmium ion). Entailed by the screen
+      (cadmium-sensitive mutants), so confirmatory, but it does gather the
+      dedicated detoxification genes.
+  - term:
+      id: GO:0046938
+      label: phytochelatin biosynthetic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      pcs2, the phytochelatin synthase, is in the set and directly annotated (1/2).
+      gcs1, which makes the glutathione substrate, and hmt1, the vacuolar
+      phytochelatin-cadmium transporter, are also present. Phytochelatin chelation is
+      what distinguishes fission-yeast cadmium tolerance from budding yeast's
+      glutathione/YCF1 route. That makes it a specific mechanism, but a single-gene
+      term that set enrichment cannot recover.
+  - term:
+      id: GO:0000103
+      label: sulfate assimilation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:18684775
+        reference_title: "A genome-wide screen of genes involved in cadmium tolerance in Schizosaccharomyces pombe."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "The 237 genes represent a number of pathways including sulfate assimilation, phytochelatin synthesis and transport, ubiquinone (Coenzyme Q10) biosynthesis"
+        explanation: >-
+          The defining paper lists sulfate assimilation, phytochelatins and
+          ubiquinone as pathways the cadmium-sensitive genes fall into.
+    curator_note: >-
+      met1, met10, met14, met16 and sua1 are directly annotated (5/8). Sulfate
+      assimilation supplies the cysteine for glutathione and phytochelatins and the
+      sulfide that forms high-molecular-weight cadmium sulfide complexes. 5/8 is a
+      strong fraction, but too few genes for genome-wide significance.
+  - term:
+      id: GO:0006744
+      label: ubiquinone biosynthetic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:18684775
+        reference_title: "A genome-wide screen of genes involved in cadmium tolerance in Schizosaccharomyces pombe."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "The ubiquinone biosynthesis mutants are acutely sensitive to cadmium but only mildly sensitive to hydrogen peroxide, indicating that Coenzyme Q10 plays a larger role in cadmium tolerance than just as an antioxidant."
+        explanation: >-
+          The paper's headline: CoQ acts in cadmium tolerance beyond antioxidant
+          defence.
+    curator_note: >-
+      7/14, p ~1e-6 (coq3, coq4, coq5, coq7, coq11, coq12 and ppt1, all directly
+      annotated); quinone metabolic process is 8/15. Mechanistic, the specific
+      non-obvious enrichment of this set. One plausible route is via hmt2, a
+      sulfide:quinone oxidoreductase that is also in the set and needs ubiquinone
+      as its electron acceptor.
+  - term:
+      id: GO:0071276
+      label: cellular response to cadmium ion
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      pcs2, gcs1, hmt2 and ade2 directly, hmt1 via closure (5/7). The
+      cadmium-specific child of the core response term. Not significant on its own
+      because the term is small.
