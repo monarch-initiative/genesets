@@ -1,0 +1,173 @@
+gene_set_id: LIT:POECILIID_PLACENTATION_LFC_GENES
+gene_set_name: POECILIID_PLACENTATION_LFC_GENES
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:8079
+  label: Poeciliidae
+direction: NA
+series: SERIES:POECILIID_PLACENTA_INTERFACE
+series_role: maternal_late_follicle_cell
+n_genes: 41
+description: >-
+  Literature-defined evolutionary-convergence panel: the maternal-side genes the
+  authors highlight in Fig. 6D of Safian, Kraunsoe et al. (bioRxiv 2026,
+  doi:10.64898/2026.11.11.765921; no PMID yet) as carrying two or more kinds of
+  placentation-associated molecular change in the late follicle cell (LFC). The
+  four kinds are differential expression in placental species, positive
+  selection, placental-specific parallel amino-acid substitution, and LFC marker
+  status. Genes qualify by appearing in at least two analyses in two or more
+  placental species, or in one analysis across all placental species
+  (P. bifurca, P. prolifica, P. turneri, H. formosa). The LFC is the new
+  maternal cell type that forms the maternal follicular wall of the placenta in
+  all five independent poeciliid placenta origins. MEMBERSHIP CAPTURE: the 48
+  gene labels were transcribed from the figure, which the authors group as
+  cytoskeleton organization, metabolic regulation, vesicle, signalling,
+  transcription regulation, immune regulation, transporters/channels and
+  membrane receptors, plus the LFC marker a2ml. Three labels needed reading:
+  "ldldr" is read as ldlr (the annotations carry ldlra), "slc29a" as slc29a1a
+  (the only slc29a1 paralog annotated), and the bare P. bifurca id g6532 was
+  named through its orthogroup (ENSDARG00000076534, which has no ZFIN 1:1
+  mapping). Mapping to human by scripts/capture_poeciliid_placenta_sets.py: 34
+  by ZFIN orthology and 7 by upper-cased zebrafish symbol, giving 41 HGNC
+  symbols. Seven labels are unmappable and dropped: cldn3d, irfg3, vps26bl, a2ml
+  and rca2.1 (no ZFIN human ortholog; fish-specific paralogs or families),
+  g6532, and g1066 (unnamed in every annotation). The losses matter: a2ml is the
+  LFC's defining marker, used for all in situ localization in the paper, and
+  cldn3d is its tight-junction claudin. Neither reaches the human-GO benchmark.
+  This is a small, author-selected panel, not a statistical gene list, so only
+  broad components pass Bonferroni. Several core terms below are recorded with
+  raw p-values to measure what a small curated panel can and cannot recover.
+  SEED_SOURCE SEMANTICS: `enrichment_recovered` means genesets-rs (Fisher,
+  Bonferroni < 0.05, GOA background) recovered the term for this membership;
+  `curator_added` means it did not.
+contexts:
+  - term:
+      id: UBERON:0001987
+      label: placenta
+    context_type: anatomical_structure
+    role_note: >-
+      Maternal side of the poeciliid placenta (the maternal follicular wall),
+      across four independent placenta origins.
+  - term:
+      id: UBERON:0001305
+      label: ovarian follicle
+    context_type: anatomical_structure
+    role_note: >-
+      The maternal follicular wall is the late ovarian follicle; embryos develop
+      inside it.
+  - term:
+      id: CL:0000501
+      label: granulosa cell
+    context_type: cell_type
+    role_note: >-
+      Nearest CL term; the LFC has no CL class and is thought to derive from
+      granulosa cells by terminal differentiation.
+associations:
+  - term:
+      id: GO:0098590
+      label: plasma membrane region
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The panel is a cell-surface panel: 13 of 41 members (Bonferroni 8e-5):
+      ANXA13, CAV2, CD9, CXADR, LDLR, PLEKHA1, RHOC, SEMA4B, SLC11A2, SLC1A3,
+      SLC26A6, SLC29A1 and SSH1. Confirmatory: a panel chosen for a nutrient
+      exchange surface is expected to sit at the membrane.
+  - term:
+      id: GO:0045178
+      label: basal part of cell
+    aspect: cellular_component
+    category: core_component
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      The most specific term recovered (7 of 333 annotated genes, Bonferroni
+      5e-3): ANXA13, CXADR, LDLR, SLC11A2, SLC1A3, SLC26A6 and SLC29A1. Most
+      of the panel's transporters are annotated to the basolateral face of
+      polarized epithelia, and the same genes also carry apical annotations
+      (five members, raw p 1e-4). The point is a polarized, transporter-loaded
+      epithelium: the non-placental LFC's barrier polarity (Fig. 3) is co-opted
+      for directional transport. Mechanistic, with medium confidence, because
+      GO's side assignment comes from mammalian epithelia and the LFC's
+      orientation toward the yolk sac is not established at gene level.
+  - term:
+      id: GO:0055085
+      label: transmembrane transport
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The panel's "Transporters/channels" group, which the authors annotate by
+      substrate: nucleosides (SLC29A1), iron (SLC11A2), amino acids (SLC1A3) and
+      ions (PIEZO2, SLC26A6), plus XKRX. All but XKRX carry the annotation
+      (5 of 41, raw p 0.016), but in a 41-gene panel this does not survive
+      Bonferroni, hence curator_added with annotation_supported: the carriers
+      are present and annotated, and only power is lacking. Core because the
+      paper's conclusion is that parallel changes in membrane transporters built
+      a nutrient exchange surface.
+  - term:
+      id: GO:0006629
+      label: lipid metabolic process
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      The panel's "Metabolic regulation" group and the lipid convergence of
+      Fig. 5B. Six members carry the annotation (raw p 9e-4, not significant
+      after Bonferroni): HSD17B12 (fatty-acid elongation), DEGS2 (sphingolipid
+      desaturase), PTGS2 (prostaglandin synthesis), LDLR, PLEKHA1 and FUT9.
+      PAPSS2, PDHB, ABAT and PDE1C complete the group without lipid
+      annotation. Mechanistic for the same reason as in the DEG pole: lipid
+      handling is the inferred function of the new exchange surface, not
+      something the construction entails.
+  - term:
+      id: GO:0003707
+      label: nuclear steroid receptor activity
+    aspect: molecular_function
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      ESR2 (esr2a) is one of the eight GRN-defining transcription factors of the
+      LFC (Fig. 4C), shared with the germinal epithelium, and PAQR7 (paqr7a, a
+      membrane progestin receptor) is in the panel's "membrane receptors"
+      group. Both carry the term (raw p 4e-4, Bonferroni 1). RORC (rorcb), a
+      nuclear receptor in the transcription group, binds oxysterols and is not
+      annotated here. A steroid-hormone-responsive placenta links the LFC GRN
+      (pgr, esr2a) to maternal endocrine control of gestation. Supporting, not
+      core.
+  - term:
+      id: GO:0031410
+      label: cytoplasmic vesicle
+    aspect: cellular_component
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The panel's "Vesicle" group (CD63, CD9, GOLGA7, CAV2, RGL1, SHISA4, with
+      CAV2 and WBP1 drawn at the lipoprotein vesicle) and the vesicle
+      convergence of Fig. 5B. Twelve members carry the annotation (raw p 1e-5,
+      Bonferroni 1). VPS26B is lost to the orthology step (vps26bl has no ZFIN
+      ortholog). Supporting.

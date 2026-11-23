@@ -141,7 +141,10 @@ associations:
       plasma-lipid handling — is a non-obvious, vessel-intrinsic route to CAD risk, part
       of the same artery-wall insight as the matrix arm. Scored supporting rather than
       core because it rests on a smaller, though biologically coherent, block of genes
-      than the matrix and lipid axes.
+      than the matrix and lipid axes. TERM UPDATE: originally curated as GO:0007263
+      nitric oxide mediated signal transduction, which GO obsoleted
+      (go-ontology#26613) in favour of this cGMP-specific replacement; category,
+      seed, recovery_status and insight are unchanged.
   - term:
       id: GO:0042632
       label: cholesterol homeostasis

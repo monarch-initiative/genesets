@@ -785,7 +785,7 @@ requires-dist = [
     { name = "ipython", marker = "extra == 'notebooks'", specifier = ">=8.0" },
     { name = "jupyter", marker = "extra == 'notebooks'", specifier = ">=1.0" },
     { name = "linkml", marker = "extra == 'curation'", specifier = ">=1.8" },
-    { name = "linkml-reference-validator", marker = "extra == 'curation'", specifier = ">=0.2.1" },
+    { name = "linkml-reference-validator", marker = "extra == 'curation'", specifier = ">=0.5.1" },
     { name = "linkml-term-validator", marker = "extra == 'curation'", specifier = ">=0.4.5" },
     { name = "nbconvert", marker = "extra == 'notebooks'", specifier = ">=7.0" },
     { name = "oaklib", marker = "extra == 'curation'", specifier = ">=0.7.4" },
@@ -1592,7 +1592,7 @@ wheels = [
 
 [[package]]
 name = "linkml-reference-validator"
-version = "0.2.1"
+version = "0.5.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "beautifulsoup4" },
@@ -1607,9 +1607,9 @@ dependencies = [
     { name = "ruamel-yaml" },
     { name = "typer" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/93/4d/f03e952e2435faef11adeb16044e03fed71bdac03ef3511245ced0ce6ea1/linkml_reference_validator-0.2.1.tar.gz", hash = "sha256:ea4cf1145462d12984bf1c484958e8561ec863e7d3eafd8d54e2824cf0d65300", size = 1151372, upload-time = "2026-08-07T00:48:48.94Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/f4/0a/6b3323a82aa655410da5aeb9727afe26f66bc8b7cb3467f1160544727e9e/linkml_reference_validator-0.5.1.tar.gz", hash = "sha256:e0d05ff0302676f5f9a9310db6f503aabf353c5cfd40c937867d605f19fc866b", size = 1489110, upload-time = "2026-11-02T18:45:57.091Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d0/12/ca4455eec18adb3a2d840f4c5df651b3422fc2d3bf1ab532c3476cfeb4ae/linkml_reference_validator-0.2.1-py3-none-any.whl", hash = "sha256:91d19a3b51001f467b6fb8f6e0968739df81c9b159c5928581fbab4d28c3876c", size = 130650, upload-time = "2026-08-07T00:48:47.285Z" },
+    { url = "https://files.pythonhosted.org/packages/66/82/5fb275d4799a12df19a22d47889a1b6f9ac2318ea257b29f3e0056c59aaf/linkml_reference_validator-0.5.1-py3-none-any.whl", hash = "sha256:e65571b0a83ed02fff9de5dce47e9ade8312f8d7c1d5854ebb75e75df03d3834", size = 257676, upload-time = "2026-11-02T18:45:55.618Z" },
 ]
 
 [[package]]
