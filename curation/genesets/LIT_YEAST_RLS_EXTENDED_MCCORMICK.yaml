@@ -1,0 +1,95 @@
+gene_set_id: LIT:YEAST_RLS_EXTENDED_MCCORMICK
+gene_set_name: YEAST_RLS_EXTENDED_MCCORMICK
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:559292
+  label: Saccharomyces cerevisiae S288C
+direction: UP
+description: >-
+  The 237 Saccharomyces cerevisiae single-gene deletions with increased replicative
+  lifespan (RLS) in the genome-wide RLS screen of 4,698 viable deletion strains by
+  McCormick et al. (2015, PMID:26456335). Membership is the set of null mutants SGD
+  curated from this paper with the phenotype "replicative lifespan: increased"
+  (snapshot in curation/genesets/model_organism_members.gmt). GO enrichment gives a
+  sharp mechanistic answer: the dominant signal is cytosolic large (60S) ribosomal
+  subunit proteins (30 RPL/RPP genes, often both paralogues of a duplicated pair), while
+  the small subunit is barely represented (RPS6A, RPS12). This 60S-specific
+  asymmetry is the known mechanism of yeast ribosomal lifespan extension: reduced 60S
+  subunit levels induce translation of the Gcn4 transcription factor, which is
+  required for the extension. The same paper's headline mechanism, deletion of
+  the tRNA exporter LOS1, converges on Gcn4 via TORC1 and the DNA damage response.
+  Note that GO has obsoleted its aging terms (replicative cell aging, cell aging), so
+  the phenotype that defines this set has no GO process.
+associations:
+  - term:
+      id: GO:0022625
+      label: cytosolic large ribosomal subunit
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      30 of 237 members are directly annotated in SGD GOA (RPL1B, RPL2B, RPL6A,
+      RPL6B, RPL7A, RPL9A, RPL12A/B, RPL13A/B, RPL16B, RPL19A/B, RPL20A/B, RPL21B,
+      RPL22A, RPL23A, RPL26A, RPL29, RPL31A, RPL34A/B, RPL35A, RPL37B, RPL43B,
+      RPP1A/B, RPP2A/B); 30/93, p ~7e-23, the top hit. Mechanistic rather than
+      housekeeping: deleting a ribosomal protein normally just slows growth, but here
+      the enrichment is specific to the 60S subunit (only 2 of 62 annotated 40S genes
+      are in the set). That points to the 60S-deficiency/Gcn4 route, not to a
+      generic reduction in translation.
+  - term:
+      id: GO:0002181
+      label: cytoplasmic translation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The ribosomal-protein genes plus DOM34, HBS1, TMA19 and TIF1 (35/206, p ~1e-16).
+      That reduced translation extends lifespan is the expected, conserved theme
+      (TOR/S6K/translation), so confirmatory. The 60S component term carries
+      the mechanism.
+  - term:
+      id: GO:0038202
+      label: TORC1 signaling
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      TOR1 (directly annotated; AAG1 also annotated, 2/5). tor1 deletion is a
+      canonical long-lived mutant, and TORC1 inhibition/dietary restriction is the
+      pathway the paper links to LOS1 and Gcn4. Too few genes to be enriched;
+      recorded because it is the upstream pathway, expected for an RLS screen.
+  - term:
+      id: GO:0071528
+      label: tRNA re-export from nucleus
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:26456335
+        reference_title: "A Comprehensive Analysis of Replicative Lifespan in 4,698 Single-Gene Deletion Strains Uncovers Conserved Mechanisms of Aging."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "Among the mechanisms of aging identified, deletion of tRNA exporter LOS1 robustly extended lifespan."
+        explanation: >-
+          The defining paper's lead mechanistic finding from this screen.
+    curator_note: >-
+      Carried by one member, LOS1 (exportin-t; directly annotated to this term and to
+      tRNA export from nucleus). The paper shows that DR and mTOR inhibition exclude
+      Los1 from the nucleus and that los1 deletion activates Gcn4. A single-gene
+      mechanism, so not recoverable by set enrichment.

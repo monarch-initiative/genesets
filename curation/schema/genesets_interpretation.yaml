@@ -18,11 +18,18 @@ prefixes:
   CHEBI: http://purl.obolibrary.org/obo/CHEBI_
   PR: http://purl.obolibrary.org/obo/PR_
   HP: http://purl.obolibrary.org/obo/HP_
+  PO: http://purl.obolibrary.org/obo/PO_
+  TO: http://purl.obolibrary.org/obo/TO_
+  PECO: http://purl.obolibrary.org/obo/PECO_
   NCBITaxon: http://purl.obolibrary.org/obo/NCBITaxon_
   EFO: http://www.ebi.ac.uk/efo/EFO_
   MSIGDB: https://www.gsea-msigdb.org/gsea/msigdb/cards/
   LIT: https://w3id.org/genesets-rs/lit/
   CGSA: https://w3id.org/genesets-rs/cgsa/
+  # CTD chemical-gene interaction sets as served by mygeneset.info; the local id
+  # is <MeSH chemical id>_<NCBI taxon id>, e.g. MYGENESET:D000448_6239.
+  MYGENESET: https://mygeneset.info/v1/geneset/
+  MESH: http://id.nlm.nih.gov/mesh/
   PMID: http://identifiers.org/pubmed/
   DOI: https://doi.org/
 default_prefix: genesets
@@ -101,6 +108,16 @@ classes:
         inlined_as_list: true
         recommended: true
         description: Per-GO-term curator judgments.
+      hit_adjudication:
+        range: HitAdjudication
+        inlined: true
+        description: >-
+          Present when the curator labelled EVERY significant hit of the named
+          annotation variants, not just a chosen handful. Only then can
+          precision be scored for this set: a hit with no association is
+          otherwise ambiguous (unreviewed, not necessarily noise). Labelling
+          the union of the variants' hits (pooling) keeps the comparison fair,
+          since a variant that surfaces new noise is penalised for it.
 
   RankedSignature:
     description: >-
@@ -160,6 +177,36 @@ classes:
         required: true
         pattern: "^[0-9a-f]{64}$"
         description: SHA-256 of the ranking file as stored, compressed.
+
+  HitAdjudication:
+    description: >-
+      Which enrichment runs were pooled and fully labelled for a set, so the
+      eval knows the set's associations cover every hit those runs report.
+    attributes:
+      pooled_variants:
+        multivalued: true
+        required: true
+        description: >-
+          Annotation variants whose significant hits were pooled and labelled,
+          as named by the eval scripts (e.g. all, iba, iba_iea, aigr_prune).
+      method:
+        range: EnrichmentMethodEnum
+        description: The enrichment test used.
+      p_adjust_method:
+        range: PAdjustMethodEnum
+      max_p_adjust:
+        range: float
+        description: Significance cutoff applied to the pooled runs.
+      correction_scope:
+        description: >-
+          What the multiple-testing correction counted, e.g. "matrix: all
+          benchmark sets x GO terms" or "per set: GO terms".
+      annotation_release:
+        description: GOA / GO release the pooled runs used (GAF date-generated, GO version).
+      adjudicated_on:
+        range: date
+      note:
+        description: Free text, e.g. how many hits were pooled and from which run.
 
   BiologicalContext:
     description: An ontology term describing what the gene set is about.
@@ -246,6 +293,14 @@ classes:
         multivalued: true
         inlined_as_list: true
         recommended: true
+      artifact_cause:
+        range: ArtifactCauseEnum
+        description: >-
+          For `nonspecific` and `false_association` terms only: why the term
+          is noise for this set. Lets the eval ask which kind of noise an
+          annotation variant removes (for example, IBA against
+          multifunctional-gene bias, AI Gene Review pruning against
+          over-annotation).
       curator_note:
 
   Term:
@@ -461,6 +516,37 @@ enums:
         description: Housekeeping or broadly expressed; not informative here.
       false_association:
         description: Artifactual or biologically wrong for this set.
+
+  ArtifactCauseEnum:
+    description: Why an enriched term is noise for a set.
+    permissible_values:
+      multifunctional_gene_bias:
+        description: >-
+          Driven by a few highly annotated (multifunctional) genes rather
+          than by the set's biology; disappears under a multifunctionality
+          correction (Ballouz, Pavlidis and Gillis 2017, PMID:28204549).
+      over_annotation:
+        description: >-
+          Carried by annotations that are themselves wrong or over-propagated
+          (the genes do not really do this), e.g. annotations an AI Gene Review
+          marks REMOVE or MARK_AS_OVER_ANNOTATED.
+      housekeeping_contamination:
+        description: >-
+          Driven by housekeeping or ubiquitously expressed genes that entered
+          the set for technical reasons, e.g. ribosomal proteins in
+          single-cell marker lists.
+      overly_general_term:
+        description: >-
+          True of the genes but too general to say anything about this set
+          (e.g. binding, response to stimulus, cellular process).
+      screen_or_assay_artifact:
+        description: >-
+          An artefact of how the set was measured, e.g. fitness genes or
+          shared-guide hits in a CRISPR screen, or batch-driven genes.
+      wrong_biology:
+        description: >-
+          The association is simply wrong for this set's biology, with none
+          of the specific causes above.
 
   ConfidenceLevelEnum:
     permissible_values:

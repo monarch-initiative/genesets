@@ -130,9 +130,12 @@ associations:
       The endothelial nitric-oxide / vasomotor-tone arm of the vascular-wall mechanism.
       Captured members NOS3 (endothelial NO synthase), GUCY1A1 (soluble guanylate
       cyclase alpha-1; reported under the legacy symbol GUCY1A3) and PRKG1 (cGMP-
-      dependent protein kinase) constitute the NO-sGC-cGMP vasodilatory axis; NOS3
-      (IBA) and GUCY1A1 (IDA) carry the annotation directly (annotation_supported),
-      PRKG1 does not; EDNRA, EDN1
+      dependent protein kinase) constitute the NO-sGC-cGMP vasodilatory axis; NOS3 and
+      GUCY1A1 (with AGT and APOE) carry nitric oxide-cGMP-mediated signaling
+      annotations in current GOA (annotation_supported). Migrated 2026-11-14 from
+      GO:0007263 nitric oxide mediated signal transduction, which GO obsoleted with
+      this term as its replacement (go-ontology#26613); no member was still annotated
+      to the obsolete term, so the old id could no longer be recovered. EDNRA, EDN1
       and PHACTR1 contribute the opposing vasoconstrictor/vascular-tone signal. Tagged
       mechanistic because regulation of vascular tone via NO signalling — as opposed to
       plasma-lipid handling — is a non-obvious, vessel-intrinsic route to CAD risk, part

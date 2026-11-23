@@ -19,6 +19,7 @@ future curated gene set browser.
 ## Layout
 - `schema/genesets_interpretation.yaml` - LinkML schema (source of truth).
 - `conf/` - OAK adapters and reference-validator config.
+- `ontology_migrations.tsv` - audit log of every ontology-drift migration (see "Ontology drift").
 - `genesets/manifest.tsv` - index of curated sets (id, collection, biological context term, series, series_role).
 - `genesets/<SET>.yaml` - one interpretation per gene set or ranked signature.
 - `rankings/<NAME>.rnk.gz` - scores of ranked signatures (gzipped `gene`/`score` TSV).
@@ -31,8 +32,9 @@ future curated gene set browser.
    `genesets-workflows curate draft MSIGDB:<SET> --enrichment-tsv <tsv> -o genesets/<SET>.yaml`
 3. Adjudicate: set each association's `category`, `confidence`, `specificity`;
    add `curator_added` core terms the tool missed; add `evidence`.
-4. `just curate-validate` - structural + term + reference + obsolescence +
-   ranking validation.
+4. `just curate-validate` - structural + term + reference + ontology-drift +
+   ranking validation (reports every failing file). After a GO release, run
+   `just curate-drift` / `just curate-migrate` (see "Ontology drift").
 5. `just curate-report` - precision/recall/F1.
 
 ## Categories (biology)
@@ -43,6 +45,44 @@ The `category` is an assertion about the **biology** and is *not* driven by the
 current state of GO annotations. A term that is biologically core stays core
 even when no annotation supports it — we never downgrade truth to match
 incomplete data.
+
+## Noise labels and precision
+
+`nonspecific` (true but uninformative for this set) and `false_association`
+(an artefact, or wrong for the set) are the noise categories. Give each noise
+term an `artifact_cause`, which says why it is noise:
+
+| `artifact_cause` | meaning |
+|---|---|
+| `multifunctional_gene_bias` | driven by a few highly annotated genes; disappears under a multifunctionality correction (Ballouz et al. 2017, PMID:28204549) |
+| `over_annotation` | carried by annotations that are themselves wrong or over-propagated |
+| `housekeeping_contamination` | driven by housekeeping or ribosomal genes that entered the set for technical reasons |
+| `overly_general_term` | true of the genes but too general to say anything about the set |
+| `screen_or_assay_artifact` | fitness genes, shared guides, batch effects and the like |
+| `wrong_biology` | wrong for the set, with none of the causes above |
+
+**Scoring precision needs every hit labelled.** A curated set normally lists
+a handful of terms, so a reported hit with no association is ambiguous: it is
+unreviewed, not necessarily noise. To make precision scoreable for a set:
+
+1. Run every annotation variant you want to compare (e.g. `all`, `iba`,
+   `iba_iea`, `aigr_prune`, `aigr_full`) and take the **union** of their
+   significant hits for the set (pooling). A variant that surfaces new noise
+   is then penalised for it.
+2. Label every pooled hit, **blind to which variant reported it**. Judge the
+   term, its size and the member genes that carry it; never "this variant is
+   expected to be better".
+3. Record the pool in the set's `hit_adjudication` block (variants, test,
+   cutoff, correction scope, GOA/GO release, date).
+
+The validator then requires a category on every association of that set, and
+the eval reports per-variant precision (`signal / (signal + noise)`, with
+noise broken down by `artifact_cause`) over adjudicated sets only. Terms the
+source authors call artefacts can also be added as curator-added
+`false_association` terms, so that any variant reporting them is penalised.
+The Ballouz 2017 case studies (`LIT_GILMAN_2011_AUTISM_CNV`,
+`LIT_MANALO_2005_HYPOXIA_HIF1_UP`, `LIT_SCHMIDT_KASTNER_2012_SCHIZOPHRENIA`;
+sources in `curation/sources/ballouz2017/`) are the first adjudicated sets.
 
 ## Recovery status (gap analysis)
 `recovery_status` is **orthogonal** to `category`. It records whether a
@@ -135,6 +175,38 @@ annotations for the processes they read out. The RFX6-knockdown pair
 (`LIT:RFX6_KNOCKDOWN_BETA_CELL_UP` / `_DN`, Walker et al. Nature 2023) is the
 worked example, and it shows why the perturbed gene must not be confused with
 the membership: RFX6 itself is not a member of either arm.
+
+A fourth, `LIT:PHENOTYPIC_PROFILING`, holds **connectivity (guilt-by-similarity)
+sets** from image-based or other phenotypic profiling: the members are the
+annotated targets of reference compounds whose profiles match a query
+perturbagen, so they are the genes whose inhibition *phenocopies* the query.
+The query's own target is the `chemical_perturbagen` context, not a member, and
+the pathway it drives is typically a `membership_gap`. These sets carry
+construction biases worth recording as negative controls. Annotated compound
+libraries are dominated by kinase inhibitors, so kinase/phosphorylation terms
+are `nonspecific`. A morphological match can also come from a shared cell shape
+rather than a shared mechanism, which makes such co-matches at most
+`marker_driven_plausible`. The worked example is
+`LIT:PPARG_INVERSE_AGONIST_PHENOCOPY_TARGETS`: the JUMP Cell Painting compound
+targets that phenocopy covalent PPARG inverse agonists (CDK4/6, RRM1/2, TOP2A,
+…), which resolve to the CDK4/6-Rb G1/S checkpoint and senescence.
+
+### Model-organism sets
+A set is curated in the species it was defined in (`taxon`), and must be scored
+against that species' GAF, never `goa_human`. Three non-human sources are in use:
+native-mouse MSigDB M2 perturbation sets (`MSIGDB:` ids, `collection: M2:CGP`,
+`msigdb_release: v2025.1.Mm`), and CTD chemical-gene interaction sets for worm,
+fly and zebrafish as served by mygeneset.info (`MYGENESET:<MeSH>_<taxid>`,
+`collection: CTD:chem_gene_ixns`; context is the chemical's `CHEBI:` or `MESH:`
+term); and yeast genome-wide deletion screens as `LIT:GENETIC` sets, whose
+membership is SGD's curated null-mutant phenotypes from the one defining paper
+(`taxon: NCBITaxon:559292`). CTD sets pool mixed-direction literature (sensitivity phenotypes,
+expression, proteomics), so they are `direction: NA` and have no single defining
+paper to quote. Membership for every non-human set is snapshotted in
+`genesets/model_organism_members.gmt`. Ground and adjudicate `recovery_status`
+on the species' GOA (MGI, WormBase, FlyBase, ZFIN, SGD), which often has different
+gaps from human GOA. For example, mouse Saa1, Saa2 and Hp are not annotated to
+acute-phase response. Eval: `evals/model_organism_benchmark/`.
 
 ## Pairs and series
 Related signatures are linked with two optional fields: `series` (a shared id,
@@ -245,10 +317,47 @@ ranking, `direction` agrees with the sign of NES, and ranked methods appear
 only on ranked interpretations. `LIT:SCHIZOPHRENIA_SCHEMA_EXOME` is the first
 example.
 
-## Term obsolescence
-`curate validate` adds a fourth gate: every ontology term id is swept against
-its ontology's OAK `obsoletes()` set. This catches obsolete terms the
-term-validator misses — the `sqlite:obo:*` builds retain labels for obsolete
-classes, so an obsolete id paired with its old label still passes id+label
-validation. An obsolete `id:` now fails the build (e.g. `GO:0050663` cytokine
-secretion → use `GO:0032635`; `GO:0062023` → `GO:0031012`).
+## Ontology drift (obsolescence, merges, relabels)
+GO and the other cited ontologies change underneath the gold standard. Each
+change costs something different. An obsolete term can never be recovered, because GOA stops
+annotating to it, so a core term that went obsolete silently lowers recall. A
+merged id stops resolving. A relabel passes the term-validator, which accepts
+synonyms, but leaves the file out of date. The repo treats these changes as routine
+maintenance with an audit trail, not as surprise build failures:
+
+- **Gate.** `curate validate`'s drift check (gate 4) classifies every context and
+  association term against the current OAK ontology. Obsolete, merged and
+  unknown ids are errors; a relabel of a live term is a warning, so a GO rename
+  never breaks the build. Each message names its fix.
+- **Report.** `just curate-drift` scans the whole corpus, prints each ontology's
+  version, and exits 1 while anything is unresolved (usable as a CI check).
+- **Migrate.** `just curate-migrate` rewrites what the ontology itself declares:
+  relabels, merges (alt ids → primary) and obsoletions with exactly one live
+  `replaced_by`. Only the term's `id:`/`label:` lines change, and each rewrite is
+  re-read and verified. A fix whose target is already asserted in the same file
+  is held back as `needs_review` so associations are never silently duplicated.
+- **Curator decisions.** An obsoletion with only `consider` suggestions or no
+  replacement needs a curator:
+  `genesets-workflows curate drift FILE --map OLD=NEW --note "why"`. Choose
+  from the members' actual annotations, then update the `curator_note`.
+- **Audit log.** Every applied change is appended to
+  `curation/ontology_migrations.tsv` (old/new id and label, kind, ontology
+  version, GO tracker issue, note).
+
+Migration never edits `category`, `recovery_status` or `insight`. It follows
+the ontology's declarations and keeps the curator's judgment. When the
+replacement is narrower or broader, re-check `recovery_status` against GOA as
+part of the review. For example, on 2026-11-14 no CAD member was still annotated
+to obsolete `GO:0007263`, while four carry its replacement `GO:0038060`.
+
+The eval side pins and records its GO version: `prepare_go_eval.py
+--go-release YYYY-MM-DD` uses a dated release, resolving that release's archive
+layout, and every run records the OBO `data-version` in `metadata.json`.
+`score_method_vs_benchmark.py` prints that version and warns, or fails with
+`--strict`, when a gold GO term is obsolete or unknown in the eval's release,
+so version skew between the gold and the eval is never mistaken for a recall
+change.
+
+## Domain & Multi-Species Sub-Corpora
+- [`curation/cgsa/`](cgsa/README.md) — Curated GO interpretations for the Hu et al. 2024 Nature Methods LLM gene set evaluation panel (`evals/cgsa/`).
+- [`curation/plants/`](plants/README.md) — Multi-species plant GO-interpretation gold standard (30 gene sets across 6 vascular plant species) spanning *Arabidopsis thaliana* (`NCBITaxon:3702`) and five DOE/BER bioenergy & oilseed species (*Populus trichocarpa* `NCBITaxon:3694`, *Panicum virgatum* `NCBITaxon:38727`, *Sorghum bicolor* `NCBITaxon:4558`, *Thlaspi arvense* `NCBITaxon:13288`, and *Brachypodium distachyon* `NCBITaxon:15368`), paired with the multi-species GOA evidence variant benchmark in [`evals/plants/`](../evals/plants/README.md).

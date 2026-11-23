@@ -48,7 +48,7 @@ a real evaluation.
    (357 and 558 members, captured from the Supplementary Table S3/S4 PDFs; the
    parsed counts reproduce the paper's stated 357/558/915 exactly). Four of the
    five form `SERIES:RFX6_KNOCKDOWN_ISLET_CELL` with roles `beta_up`,
-   `beta_down`, `alpha_up`, `alpha_down`. The first non-human sets are four
+   `beta_down`, `alpha_up`, `alpha_down`. Four non-human sets are
    Poeciliidae placenta sets from Safian, Kraunsoe et al. (bioRxiv 2026,
    doi:10.64898/2026.11.11.765921). Two are LFC DEG unions
    (`POECILIID_PLACENTAL_LFC_UP` / `_DN`, 794 and 927 human symbols) and two are
@@ -63,8 +63,12 @@ a real evaluation.
 2. **Annotation variants** —
    ```bash
    python3 scripts/prepare_go_eval.py --out-dir /tmp/iba_eval \
-     --variants all,iba,iba_iea,no_contributes_to
+     --variants all,iba,iba_iea,no_contributes_to --go-release YYYY-MM-DD
    ```
+   `--go-release` pins a dated GO release; omit it for the moving `current`
+   release. Either way the OBO `data-version` is recorded in `metadata.json` and
+   printed by the scorer, which also flags gold GO terms that are obsolete in
+   that release.
    downloads GO + GOA, and writes per-variant `gene_terms.tsv` (evidence-filtered),
    shared `terms.tsv`/`closure.tsv`, a common all-GOA background, and a
    `genesets-rs matrix` config per variant (Bonferroni, `max_p_adjust 0.05`).
@@ -121,6 +125,21 @@ with identical gap_recovered counts throughout. The movement is therefore the
 new core terms, not drift. Note the direction: recall_core *fell* from 0.565 to
 0.559 because the RFX6 sets are hard — of their 16 core terms, all-GOA recovers
 8.
+
+These numbers were produced with direct `protein binding` (GO:0005515)
+annotations included. Since `prepare_go_eval.py` now drops those by default,
+recovered counts are unchanged (all 221, no_contributes_to 220, iba_iea 172,
+iba 133). Only 125 sets are scored (CORE total 391), because
+HP_SPINAL_MUSCULAR_ATROPHY's only significant term was `protein binding`.
+Pass `--drop-direct-terms ""` to reproduce the table exactly.
+
+**Background (2026-11-18).** These numbers also used every entity in
+`goa_human` as the background, including about 19k RNAcentral ncRNAs and
+ComplexPortal complexes. `prepare_go_eval.py` now keeps UniProtKB proteins
+only (`--gaf-db ""` restores the old behaviour). On a protein-coding
+background, over 125 comparable sets, recall_core is 0.491 for all, 0.395 for
+iba_iea (122 sets) and 0.323 for iba (108 sets), against 0.577, 0.463 and
+0.392 before. The ordering is unchanged. See `evals/aigr_changeset/README.md`.
 
 1. **IBA carries ~2/3 of the core biology full GOA does** (recall_core 0.34 vs
    0.56); IEA recovers much of the difference (iba_iea 0.44).

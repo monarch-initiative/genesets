@@ -43,8 +43,15 @@ categories, and the findings. Don't duplicate — extend.
 - **Ground in the real membership.** Curate a set from its actual gene list, not
   the cell type's textbook markers. This is what makes `recovery_status` honest.
 - **OLS-verify every ontology id+label and reject obsolete terms.** The validator's
-  4th gate sweeps OAK `obsoletes()`; the `sqlite:obo` builds retain labels for
-  obsolete classes, so id+label validation alone is not enough.
+  4th gate (ontology drift) checks every term for obsolescence, merges and
+  relabels; the `sqlite:obo` builds retain labels for obsolete classes, so
+  id+label validation alone is not enough.
+- **GO changes are maintenance, not emergencies.** After a GO release, run
+  `just curate-drift`, then `just curate-migrate` for what GO declares
+  (relabels, merges, single `replaced_by`). Obsoletions without a single
+  replacement need a curator `--map OLD=NEW` decision grounded in the members'
+  annotations. Every change is logged to `curation/ontology_migrations.tsv`.
+  Never hand-edit ids to silence the gate.
 - **Evidence snippets are verbatim or absent.** The reference-validator
   substring-checks every `snippet` against the cited paper. Never fabricate a
   quote, a gene, or a PMID.
@@ -57,7 +64,8 @@ categories, and the findings. Don't duplicate — extend.
 
 ## Before you open / extend a PR
 
-1. `just curate-validate` — all interpretation YAMLs pass the 5 gates.
+1. `just curate-validate` — all interpretation YAMLs pass the 5 gates
+   (`just curate-drift` must report no unresolved drift).
 2. `just curate-test` — unit + doctests pass.
 3. Regenerate `curation/genesets/manifest.tsv` if you added/changed sets.
 4. If you added evaluable sets, re-run the **evaluate-enrichment** pipeline and
@@ -83,7 +91,21 @@ analyzed with `genesets-rs gsea`) carry a `ranking` block pointing at
 `curation/rankings/<NAME>.rnk.gz`; see "Ranked signatures" in
 `curation/README.md`.
 
+Non-human sets (mouse MSigDB M2, CTD chemical-gene sets for worm/fly/zebrafish
+as `MYGENESET:` ids, and yeast deletion screens as `LIT:YEAST_*` from SGD
+phenotypes) carry their own `taxon`. Their membership is in
+`curation/genesets/model_organism_members.gmt`, and they are scored per species
+against that species' GAF by `scripts/run_model_organism_eval.py`; see
+`evals/model_organism_benchmark/README.md`. Never put them in a `goa_human` run.
+
 ## Gotchas
+
+- Two GO versions are in play: OAK's `sqlite:obo:go` build (validation) and the
+  release `prepare_go_eval.py` downloads (eval). Pin the eval with
+  `--go-release YYYY-MM-DD` and check the scorer's `eval GO version` line.
+  The dated-release archive moved the human GAF to
+  `annotations/gaf/HUMAN-uniprot.gaf.gz` in mid-2026; `go_release_urls()`
+  resolves either layout.
 
 - `origin` (`cmungall/genesets-rs`) **redirects to `monarch-initiative/genesets`**;
   pushes print a "repository moved" notice but succeed, and PRs land there.

@@ -1,0 +1,134 @@
+gene_set_id: LIT:YEAST_CADMIUM_SENSITIVE_RUOTOLO
+gene_set_name: YEAST_CADMIUM_SENSITIVE_RUOTOLO
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:559292
+  label: Saccharomyces cerevisiae S288C
+direction: DN
+description: >-
+  The 303 Saccharomyces cerevisiae deletion strains with decreased cadmium tolerance
+  (40 uM Cd2+) in the genome-wide metal phenotyping study of Ruotolo et al. (2008,
+  PMID:18394190). Membership is the set of null mutants SGD curated from this paper
+  as "metal resistance: decreased" with cadmium(2+) (snapshot in
+  curation/genesets/model_organism_members.gmt). GO enrichment recovers the
+  detoxification route. Cadmium is chelated by glutathione (GSH1, GSH2, induced via
+  YAP1) and pumped into the vacuole as a glutathione conjugate by the ABC
+  transporter YCF1. Sequestration needs an acidified vacuole, and the set contains
+  12 of the V-ATPase subunits plus VPH2, VMA22 and NHX1. A second, larger block is
+  ESCRT and retromer, which the authors show affects metal tolerance through
+  transporter downregulation and protein traffic. These same deletions make cells
+  cadmium-sensitive but nickel-resistant (see YEAST_NICKEL_RESISTANT_RUOTOLO).
+contexts:
+  - term:
+      id: CHEBI:48775
+      label: cadmium(2+)
+    context_type: chemical_perturbagen
+associations:
+  - term:
+      id: GO:0007035
+      label: vacuolar acidification
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:18394190
+        reference_title: "Membrane transporters and protein traffic networks differentially affecting metal tolerance: a genomic phenotyping study in yeast."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "Although the vacuole emerged as a major hot spot for metal detoxification"
+        explanation: >-
+          The authors identify the vacuole as the main detoxification compartment.
+    curator_note: >-
+      19/30, p ~2e-19: 12 V-ATPase subunits (VMA1-VMA11, VMA13) plus VPH2, VMA22,
+      NHX1, PFK2, DBF2, VPS3, VPS45, all directly annotated. Vacuolar acidification
+      drives sequestration of Cd-glutathione conjugates, so it is core here.
+      Confirmatory rather than mechanistic: V-ATPase mutants are also
+      hypersensitive to many unrelated drugs (see the DTT set), so this hit alone
+      does not distinguish cadmium.
+  - term:
+      id: GO:0006750
+      label: glutathione biosynthetic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      GSH1 (gamma-glutamylcysteine synthetase) and GSH2 (glutathione synthetase), the
+      entire biosynthetic pathway, are in the set and directly annotated (2/3).
+      Together with YCF1 and the transcription factor YAP1, also present, they
+      form the cadmium-specific detoxification route: chelation by glutathione,
+      then vacuolar import. Two genes cannot survive genome-wide correction, so the
+      cadmium-specific mechanism is invisible to set enrichment.
+  - term:
+      id: GO:0015431
+      label: ABC-type glutathione S-conjugate transporter activity
+    aspect: molecular_function
+    category: supporting_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      YCF1 (yeast cadmium factor), the vacuolar ABC transporter that imports
+      bis(glutathionato)cadmium, directly annotated (1/2). Also reaches cadmium ion
+      transport via closure. The single most cadmium-specific gene in the set,
+      but a one-gene signal.
+  - term:
+      id: GO:0036452
+      label: ESCRT complex
+    aspect: cellular_component
+    category: supporting_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:18394190
+        reference_title: "Membrane transporters and protein traffic networks differentially affecting metal tolerance: a genomic phenotyping study in yeast."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "A strikingly differential effect was observed for a large set of deletions, the majority of which centered on the ESCRT (endosomal sorting complexes required for transport) and retromer complexes"
+        explanation: >-
+          ESCRT and retromer deletions are the paper's main differential finding.
+    curator_note: >-
+      14/18, p ~1e-16, all via closure from ESCRT-0/I/II/III subcomplexes (VPS27,
+      STP22, SRN2, MVB12, VPS28, SNF8, VPS25, VPS36, VPS20, SNF7, VPS24, DID4, DID2,
+      VPS4). Mechanistic: ESCRT-dependent downregulation of plasma-membrane
+      transporters sets metal uptake.
+  - term:
+      id: GO:0030904
+      label: retromer complex
+    aspect: cellular_component
+    category: supporting_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      6/7 directly annotated (VPS5, VPS17, VPS29, VPS35, PEP8/VPS26, SNX3), p ~4e-8.
+      Retromer recycles membrane proteins from endosomes; with ESCRT it forms the
+      protein-traffic network the paper identifies.
+  - term:
+      id: GO:1904669
+      label: ATP export
+    aspect: biological_process
+    category: false_association
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      15/17, p ~2e-19, an artefact. The ESCRT/MVB genes carry IMP annotations to ATP
+      export from an unrelated deletion screen of extracellular ATP
+      (PMID:26585826), so any ESCRT-rich list "enriches" for ATP export. Negative
+      control.

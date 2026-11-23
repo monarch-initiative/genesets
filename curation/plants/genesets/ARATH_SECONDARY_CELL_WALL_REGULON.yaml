@@ -1,0 +1,391 @@
+gene_set_id: LIT:ARATH_SECONDARY_CELL_WALL_REGULON
+gene_set_name: ARATH_SECONDARY_CELL_WALL_REGULON
+collection: LIT:PLANT_PATHWAY_REGULON
+taxon:
+  id: NCBITaxon:3702
+  label: Arabidopsis thaliana
+direction: UP
+series: SERIES:ARATH_VASCULAR_TISSUES
+series_role: xylem_secondary_wall
+n_genes: 38
+description: The Arabidopsis thaliana secondary cell wall transcriptional network and biosynthetic effector
+  regulon active in xylem vessels and interfascicular fibers (Taylor-Teeples et al. 2015 Nature PMID:25533953;
+  Zhong et al. 2008 Plant Cell PMID:18952777). Comprises first-tier NAC master switches (VND6, VND7, NST1,
+  NST2, SND1/NST3), second-tier MYB/NAC regulators (MYB46, MYB83, MYB58, MYB63, MYB103, SND2, SND3, KNAT7),
+  secondary-wall cellulose synthase complex subunits (CESA4/IRX5, CESA7/IRX3, CESA8/IRX1, COBL4/IRX6,
+  KOR1), glucuronoxylan biosynthetic enzymes (IRX7/FRA8, IRX8/GAUT12, IRX9, IRX10, IRX14, IRX15, IRX15-L,
+  GUX1, GUX2, RWA1), and monolignol/lignin polymerization enzymes (PAL1, C4H, 4CL1, HCT, C3H1, CCOAOMT1,
+  CCR1, F5H1, COMT1, CAD4, CAD5, LAC4/IRX12, LAC17).
+contexts:
+- term:
+    id: PO:0005352
+    label: xylem
+  context_type: anatomical_structure
+  role_note: Vascular water-conducting and mechanical support tissue depositing lignified secondary cell
+    walls.
+- term:
+    id: CHEBI:6457
+    label: lignin
+  context_type: chemical_perturbagen
+  role_note: Phenolic biopolymer cross-linking secondary cell wall cellulose and glucuronoxylan.
+associations:
+- term:
+    id: GO:0009834
+    label: plant-type secondary cell wall biogenesis
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.9718e-28
+    p_adjust: 3.8884e-23
+    overlap: 15
+    query_size: 38
+    target_size: 79
+    overlap_genes:
+    - CESA4
+    - CESA7
+    - CESA8
+    - COBL4
+    - GUX1
+    - GUX2
+    - IRX10
+    - IRX12
+    - IRX14
+    - IRX7
+    - IRX9
+    - MYB46
+    - NAC012
+    - NAC043
+    - NAC066
+  evidence:
+  - reference: PMID:25533953
+    reference_title: An Arabidopsis gene regulatory network for secondary cell wall synthesis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: VND6/7, SND1, NST1/2, MYB46/83, CESA4/7/8, IRX7-15, and LAC4/17 form the core regulatory
+      and biosynthetic module for plant-type secondary cell wall biogenesis.
+  curator_note: Defining biological process of the regulon carried by 30/38 set members. Recovered across
+    all 4 variants including IBA-only.
+- term:
+    id: GO:2000652
+    label: regulation of secondary cell wall biogenesis
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.9533e-16
+    p_adjust: 3.8642e-11
+    overlap: 8
+    query_size: 38
+    target_size: 33
+    overlap_genes:
+    - KNAT7
+    - MYB46
+    - MYB58
+    - MYB63
+    - MYB83
+    - NAC010
+    - NAC073
+    - NAC101
+  evidence:
+  - reference: PMID:18952777
+    reference_title: A battery of transcription factors involved in the regulation of secondary cell wall
+      biosynthesis in Arabidopsis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: The hierarchical NAC-MYB feed-forward loop (SND1, NST1, NST2, VND6, VND7 -> MYB46, MYB83
+      -> MYB58, MYB63, MYB103, SND2, SND3, KNAT7) regulates secondary cell wall biogenesis.
+  curator_note: Captures the transcriptional regulatory tier of the regulon (13/38 members; recovered
+    in all and iba_iea).
+- term:
+    id: GO:0009809
+    label: lignin biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.7234e-22
+    p_adjust: 2.255e-17
+    overlap: 11
+    query_size: 38
+    target_size: 42
+    overlap_genes:
+    - CAD4
+    - CAD5
+    - CCOAOMT1
+    - CCR1
+    - CYP84A1
+    - HST
+    - IRX12
+    - LAC17
+    - MYB58
+    - MYB63
+    - OMT1
+  evidence:
+  - reference: PMID:25533953
+    reference_title: An Arabidopsis gene regulatory network for secondary cell wall synthesis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: MYB58/63 and monolignol enzymes (PAL1, C4H, 4CL1, HCT, C3H1, CCOAOMT1, CCR1, F5H1, COMT1,
+      CAD4, CAD5) plus laccases (LAC4, LAC17) drive lignin biosynthesis.
+  curator_note: Core lignin biopolymer pathway carried by 19/38 members (recovered in all and iba_iea).
+- term:
+    id: GO:0010417
+    label: glucuronoxylan biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.301e-17
+    p_adjust: 1.7023e-12
+    overlap: 7
+    query_size: 38
+    target_size: 12
+    overlap_genes:
+    - GAUT12
+    - GUX1
+    - GUX2
+    - IRX10
+    - IRX14
+    - IRX7
+    - IRX9
+  evidence:
+  - reference: PMID:25533953
+    reference_title: An Arabidopsis gene regulatory network for secondary cell wall synthesis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: IRX7 (FRA8), IRX8 (GAUT12), IRX9, IRX10, IRX14, IRX15, GUX1, and GUX2 synthesize the
+      glucuronoxylan hemicellulose backbone and glucuronic acid side chains of secondary walls.
+  curator_note: Mechanistically resolves the hemicellulose (glucuronoxylan) branch of secondary wall assembly
+    (12/38 members; recovered across all 4 variants).
+- term:
+    id: GO:0030244
+    label: cellulose biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.3878e-08
+    p_adjust: 0.0057411
+    overlap: 5
+    query_size: 38
+    target_size: 60
+    overlap_genes:
+    - CESA4
+    - CESA7
+    - CESA8
+    - COBL4
+    - KOR
+  evidence:
+  - reference: PMID:25533953
+    reference_title: An Arabidopsis gene regulatory network for secondary cell wall synthesis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: The heterotrimeric secondary-wall cellulose synthase complex (CESA4, CESA7, CESA8) together
+      with COBL4 and KOR1 synthesizes secondary cell wall cellulose microfibrils.
+  curator_note: Resolves the cellulose microfibril synthesis branch of secondary wall formation (10/38
+    members; recovered in all and iba).
+- term:
+    id: GO:0009699
+    label: phenylpropanoid biosynthetic process
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.4215e-23
+    p_adjust: 1.86e-18
+    overlap: 14
+    query_size: 38
+    target_size: 113
+    overlap_genes:
+    - CAD4
+    - CAD5
+    - CCOAOMT1
+    - CCR1
+    - CYP73A5
+    - CYP84A1
+    - HST
+    - IRX12
+    - LAC17
+    - MYB58
+    - MYB63
+    - OMT1
+    - PAL1
+    - PAL2
+  evidence:
+  - reference: PMID:25533953
+    reference_title: An Arabidopsis gene regulatory network for secondary cell wall synthesis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: General phenylpropanoid enzymes (PAL1, C4H, 4CL1, HCT, C3H1, CCOAOMT1, CCR1, F5H1, COMT1)
+      supply hydroxycinnamoyl-CoA intermediates for monolignol synthesis.
+  curator_note: Upstream aromatic metabolic pathway feeding lignin biosynthesis (13/38 members).
+- term:
+    id: GO:0045893
+    label: positive regulation of DNA-templated transcription
+  aspect: biological_process
+  category: supporting_process
+  confidence: medium
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.0676e-10
+    p_adjust: 4.0137e-05
+    overlap: 11
+    query_size: 38
+    target_size: 506
+    overlap_genes:
+    - MYB46
+    - MYB58
+    - MYB63
+    - MYB83
+    - NAC010
+    - NAC012
+    - NAC030
+    - NAC043
+    - NAC066
+    - NAC073
+    - NAC101
+  evidence:
+  - reference: PMID:18952777
+    reference_title: A battery of transcription factors involved in the regulation of secondary cell wall
+      biosynthesis in Arabidopsis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: NAC and MYB transcription factors (SND1, NST1/2, VND6/7, MYB46/83/58/63/103) act as transcriptional
+      activators of cell wall biosynthetic target genes.
+  curator_note: Supporting transcriptional activation mechanism (14/38 members).
+- term:
+    id: GO:0009531
+    label: secondary cell wall
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: confirmatory
+  evidence:
+  - reference: PMID:25533953
+    reference_title: An Arabidopsis gene regulatory network for secondary cell wall synthesis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: LAC4, LAC17, COBL4, and the products of CESA4/7/8 localize to or deposit the lignified
+      secondary cell wall.
+  curator_note: GO:0009531 (secondary cell wall) is the exact cellular component target of this regulon,
+    but TAIR GAF annotates most CESA/LAC/IRX proteins to Golgi, plasma membrane, or generic apoplast/cell
+    wall rather than GO:0009531.
+- term:
+    id: GO:0008152
+    label: metabolic process
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.0921e-08
+    p_adjust: 0.0040458
+    overlap: 30
+    query_size: 38
+    target_size: 8138
+    overlap_genes:
+    - 4CL1
+    - CAD4
+    - CAD5
+    - CCOAOMT1
+    - CCR1
+    - CESA4
+    - CESA7
+    - CESA8
+    - COBL4
+    - CYP73A5
+    - CYP84A1
+    - GAUT12
+    - GUX1
+    - GUX2
+    - HST
+    - IRX10
+    - IRX12
+    - IRX14
+    - IRX7
+    - IRX9
+    - KNAT7
+    - KOR
+    - LAC17
+    - MYB58
+    - MYB63
+    - NAC030
+    - NAC101
+    - OMT1
+    - PAL1
+    - PAL2
+  evidence:
+  - reference: PMID:25533953
+    reference_title: An Arabidopsis gene regulatory network for secondary cell wall synthesis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Top-level metabolic process roll-up across cellulose, xylan, and phenylpropanoid enzymes.
+  curator_note: Broad metabolic roll-up (31/38 members).
+- term:
+    id: GO:0009833
+    label: plant-type primary cell wall biogenesis
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: false_association
+  evidence:
+  - reference: PMID:25533953
+    reference_title: An Arabidopsis gene regulatory network for secondary cell wall synthesis.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: CESA4/IRX5, CESA7/IRX3, and CESA8/IRX1 specifically form the secondary cell wall cellulose
+      synthase complex, distinct from the CESA1/CESA3/CESA6 primary cell wall complex (GO:0009833).
+  curator_note: Negative control term testing discrimination between secondary cell wall biogenesis (GO:0009834)
+    and primary cell wall biogenesis (GO:0009833). Note that in non-model plants (e.g., POPTR_TENSION_WOOD_G_LAYER),
+    PANTHER IBA over-projects GO:0009833 onto secondary-wall CESAs.

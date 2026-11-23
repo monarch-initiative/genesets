@@ -63,12 +63,24 @@ curate-build-rankings:
       {{gw}} genesets-workflows curate build-ranking "$r" || exit 1; \
     done
 
-# Validate every interpretation YAML under curation/genesets.
+# Validate every interpretation YAML under curation/genesets; report every failing file, not just the first.
 curate-validate: curate-build-rankings
+    failed=(); \
     for f in curation/genesets/*.yaml; do \
       echo "== $f =="; \
-      {{gw}} genesets-workflows curate validate "$f" || exit 1; \
-    done
+      {{gw}} genesets-workflows curate validate "$f" || failed+=("$f"); \
+    done; \
+    if (( ${#failed[@]} )); then \
+      printf 'FAILED (%d):\n' "${#failed[@]}"; printf '  %s\n' "${failed[@]}"; exit 1; \
+    fi
+
+# Report ontology drift (obsolete / merged / relabelled terms) across the corpus against the current ontologies.
+curate-drift:
+    {{gw}} genesets-workflows curate drift
+
+# Migrate the drift the ontology itself declares (relabels, merges, single replaced_by); log to curation/ontology_migrations.tsv.
+curate-migrate:
+    {{gw}} genesets-workflows curate drift --apply
 
 # Validate the schema's own ontology-term meanings.
 curate-validate-schema:
@@ -77,6 +89,17 @@ curate-validate-schema:
 # Build the precision/recall report over all curated C8 interpretations.
 curate-report out="curation/report.tsv":
     {{gw}} genesets-workflows curate report --dir curation/genesets -o {{out}}
+
+# Validate every plant interpretation YAML under curation/plants/genesets.
+curate-validate-plants:
+    for f in curation/plants/genesets/*.yaml; do \
+      echo "== $f =="; \
+      {{gw}} genesets-workflows curate validate "$f" --skip-references || exit 1; \
+    done
+
+# Build the precision/recall report over all curated plant interpretations.
+curate-report-plants out="curation/plants/report.tsv":
+    {{gw}} genesets-workflows curate report --dir curation/plants/genesets -o {{out}}
 
 # --- Metabolite (chemical-to-GO) enrichment ----------------------------------
 

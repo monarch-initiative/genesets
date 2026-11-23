@@ -84,10 +84,17 @@ and optional `evidence`. Aim for ~5–7 associations: the cell/state's defining
 core terms (a process + a component), 1–2 supporting, at most one `nonspecific`
 *only if* the membership clearly carries it (don't invent a housekeeping hit).
 
+**Exception: fully adjudicated sets.** When the set is being made scoreable for
+precision, label *every* pooled hit of the compared variants instead, however
+many there are, give every noise term an `artifact_cause`, and add a
+`hit_adjudication` block. Label blind to which variant reported each hit. See
+"Noise labels and precision" in `curation/README.md`.
+
 1. **`category` — the biology** (authoritative; NOT driven by annotation state).
    `core_process` / `core_component` / `supporting_process` /
    `marker_driven_plausible` / `nonspecific` / `false_association`. A term that is
-   biologically core stays core even if no annotation supports it.
+   biologically core stays core even if no annotation supports it. Noise terms
+   (`nonspecific`, `false_association`) also get an `artifact_cause`.
 
 2. **`recovery_status` — grounded in the actual membership** (orthogonal to
    category). Name the specific present/absent genes in the `curator_note`:
@@ -112,11 +119,16 @@ core terms (a process + a component), 1–2 supporting, at most one `nonspecific
   Use the OLS MCP (`mcp__claude_ai_OLS__search` / `fetch`). Confirm the id resolves
   to the *exact* label and is **not obsolete**. Never invent ids; if unsure, search
   by label and use the returned id.
-- **Reject obsolete terms.** The validator's 4th gate sweeps OAK `obsoletes()` and
-  fails the build. The `sqlite:obo` builds retain labels for obsolete classes, so
-  an obsolete id paired with its old label passes id+label validation but fails
-  here (e.g. `GO:0062023` collagen-containing ECM → `GO:0031012`; `GO:0050663`
-  cytokine secretion → `GO:0032635`).
+- **Reject obsolete terms.** The validator's 4th gate (ontology drift) fails on
+  obsolete, merged or unknown ids. The `sqlite:obo` builds retain labels for
+  obsolete classes, so an obsolete id paired with its old label passes id+label
+  validation but fails here. When GO changes under existing files, don't
+  hand-edit: `just curate-drift` reports and `just curate-migrate` applies what GO
+  declares. For an obsoletion with no single replacement, pick the replacement
+  from the members' actual annotations and record it with
+  `genesets-workflows curate drift FILE --map OLD=NEW --note "..."`, then update
+  the `curator_note` and re-check `recovery_status`. Every change lands in
+  `curation/ontology_migrations.tsv`.
 - **Evidence snippets are verbatim or absent.** Include an `evidence` item with a
   `snippet` ONLY if you retrieved the exact text from the cited paper (PubMed MCP)
   and copied it character-for-character — the reference-validator substring-checks
