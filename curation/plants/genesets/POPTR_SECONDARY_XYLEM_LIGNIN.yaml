@@ -1,0 +1,548 @@
+gene_set_id: LIT:POPTR_SECONDARY_XYLEM_LIGNIN
+gene_set_name: POPTR_SECONDARY_XYLEM_LIGNIN
+collection: LIT:DOE_BER_BIOENERGY
+taxon:
+  id: NCBITaxon:3694
+  label: Populus trichocarpa
+direction: UP
+series: SERIES:POPTR_WOOD_FORMATION
+series_role: normal_xylem_lignin
+n_genes: 35
+description: The Populus trichocarpa (black cottonwood) developing secondary xylem monolignol biosynthesis
+  and apoplastic laccase polymerization program (Shi et al. 2010 Plant Cell PMID:20023196; Wang et al.
+  2018 Plant Cell PMID:29967048; Sundell et al. 2017 New Phytol PMID:28493306). Contrasts with POPTR_TENSION_WOOD_G_LAYER
+  in SERIES:POPTR_WOOD_FORMATION. Comprises the complete wood-expressed monolignol enzymatic pathway —
+  PAL (5 paralogs), C4H (2), 4CL (3), HCT (2), C3H, CCoAOMT (3), CCR, F5H/CAld5H (2), COMT (2), and CAD
+  (2) — together with apoplastic monolignol-oxidizing laccases (10 paralogs) and secondary-wall MYB regulators.
+contexts:
+- term:
+    id: PO:0005848
+    label: secondary xylem
+  context_type: anatomical_structure
+  role_note: Woody vascular tissue formed by the vascular cambium in Populus stems.
+- term:
+    id: CHEBI:6457
+    label: lignin
+  context_type: chemical_perturbagen
+  role_note: Guaiacyl-syringyl (G/S) phenolic polymer providing mechanical strength and hydrophobicity
+    to normal wood secondary walls, and the primary barrier to lignocellulosic biofuel conversion.
+associations:
+- term:
+    id: GO:0009809
+    label: lignin biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.4748e-27
+    p_adjust: 1.3441e-22
+    overlap: 11
+    query_size: 35
+    target_size: 32
+    overlap_genes:
+    - POPTR_001G045100
+    - POPTR_001G045900
+    - POPTR_003G174300
+    - POPTR_003G181400
+    - POPTR_005G072800
+    - POPTR_007G096200
+    - POPTR_009G062800
+    - POPTR_009G062901
+    - POPTR_009G063100
+    - POPTR_010G211800
+    - POPTR_016G065300
+  evidence:
+  - reference: PMID:29967048
+    reference_title: Systems analysis of monolithic and multi-enzyme complexes in Populus trichocarpa
+      monolignol biosynthesis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Xylem-specific CCoAOMT, CCR, F5H, COMT, and CAD enzymes synthesize G- and S-monolignols,
+      and apoplastic laccases polymerize them into wood lignin.
+  curator_note: Core wood-lignification pathway carried by 9/35 members in GOA (CCoAOMT, CCR, COMT, F5H
+    paralogs). Recovered across all 4 variants including IBA-only.
+- term:
+    id: GO:0009808
+    label: lignin metabolic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.6362e-43
+    p_adjust: 4.9145e-39
+    overlap: 20
+    query_size: 35
+    target_size: 108
+    overlap_genes:
+    - POPTR_001G045100
+    - POPTR_001G045900
+    - POPTR_003G174300
+    - POPTR_003G181400
+    - POPTR_005G072800
+    - POPTR_007G096200
+    - POPTR_009G062800
+    - POPTR_009G062901
+    - POPTR_009G063100
+    - POPTR_010G211800
+    - POPTR_016G065300
+    - POPTR_016G106100
+    - POPTR_016G106300
+    - POPTR_016G107500
+    - POPTR_016G107900
+    - POPTR_019G088500
+    - POPTR_019G088600
+    - POPTR_019G088700
+    - POPTR_019G088900
+    - POPTR_019G130700
+  evidence:
+  - reference: PMID:20023196
+    reference_title: 'Towards a systems approach for lignin biosynthesis in Populus trichocarpa: transcript
+      abundance and specificity of the monolignol biosynthetic genes.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Monolignol enzymes and xylem laccases together execute lignin metabolic processing during
+      secondary wood formation.
+  curator_note: Core lignin metabolism term carried by 19/35 members (including the 10 xylem laccases
+    and 9 monolignol enzymes; recovered across all 4 variants).
+- term:
+    id: GO:0009699
+    label: phenylpropanoid biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.7453e-24
+    p_adjust: 1.4253e-19
+    overlap: 12
+    query_size: 35
+    target_size: 89
+    overlap_genes:
+    - POPTR_001G045100
+    - POPTR_001G045900
+    - POPTR_003G174300
+    - POPTR_003G181400
+    - POPTR_005G072800
+    - POPTR_007G096200
+    - POPTR_009G062800
+    - POPTR_009G062901
+    - POPTR_009G063100
+    - POPTR_010G211800
+    - POPTR_010G224200
+    - POPTR_016G065300
+  evidence:
+  - reference: PMID:20023196
+    reference_title: 'Towards a systems approach for lignin biosynthesis in Populus trichocarpa: transcript
+      abundance and specificity of the monolignol biosynthetic genes.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: PAL, C4H, 4CL, HCT, C3H, and CCoAOMT convert L-phenylalanine into hydroxycinnamoyl-CoA
+      thioesters feeding the monolignol pathway.
+  curator_note: Upstream general phenylpropanoid pathway carried by 14/35 members (recovered across all
+    4 variants).
+- term:
+    id: GO:0045548
+    label: phenylalanine ammonia-lyase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 7.0277e-12
+    p_adjust: 2.1109e-07
+    overlap: 4
+    query_size: 35
+    target_size: 6
+    overlap_genes:
+    - POPTR_006G126800
+    - POPTR_008G038200
+    - POPTR_010G224200
+    - POPTR_016G091100
+  evidence:
+  - reference: PMID:20023196
+    reference_title: 'Towards a systems approach for lignin biosynthesis in Populus trichocarpa: transcript
+      abundance and specificity of the monolignol biosynthetic genes.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Five xylem-expressed PAL paralogs (POPTR_0006s126800, POPTR_0008s038200, POPTR_0010s224100,
+      POPTR_0010s224200, POPTR_0016s091100) catalyze the entry-point deamination of L-phenylalanine to
+      trans-cinnamate.
+  curator_note: First committed enzymatic step of wood phenylpropanoid/monolignol flux (5/35 members;
+    recovered in all and iba_iea, absent in IBA-only).
+- term:
+    id: GO:0016207
+    label: 4-coumarate-CoA ligase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.8925e-11
+    p_adjust: 1.7699e-06
+    overlap: 4
+    query_size: 35
+    target_size: 9
+    overlap_genes:
+    - POPTR_001G036900
+    - POPTR_003G188500v4
+    - POPTR_006G169700
+    - POPTR_018G094200v4
+  evidence:
+  - reference: PMID:29967048
+    reference_title: Systems analysis of monolithic and multi-enzyme complexes in Populus trichocarpa
+      monolignol biosynthesis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Three xylem 4CL paralogs (POPTR_0001s075400, POPTR_0003s188500, POPTR_0019s049500) activate
+      hydroxycinnamic acids into CoA thioesters.
+  curator_note: Key CoA-activation enzymatic step of monolignol synthesis (3/35 members; recovered in
+    all and iba_iea).
+- term:
+    id: GO:0045551
+    label: cinnamyl-alcohol dehydrogenase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.6669e-10
+    p_adjust: 1.4017e-05
+    overlap: 4
+    query_size: 35
+    target_size: 14
+    overlap_genes:
+    - POPTR_009G062800
+    - POPTR_009G062901
+    - POPTR_009G063100
+    - POPTR_016G065300
+  evidence:
+  - reference: PMID:20023196
+    reference_title: 'Towards a systems approach for lignin biosynthesis in Populus trichocarpa: transcript
+      abundance and specificity of the monolignol biosynthetic genes.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Xylem CAD paralogs (POPTR_0009s095800, POPTR_0016s067800) catalyze the final reduction
+      of hydroxycinnamaldehydes into p-coumaryl, coniferyl, and sinapyl alcohols.
+  curator_note: Terminal enzymatic step generating monolignol alcohols (2/35 members; recovered across
+    all 4 variants).
+- term:
+    id: GO:0016621
+    label: cinnamoyl-CoA reductase (NADP+) activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.9638e-08
+    p_adjust: 0.0014909
+    overlap: 3
+    query_size: 35
+    target_size: 9
+    overlap_genes:
+    - POPTR_001G045100
+    - POPTR_001G045900
+    - POPTR_003G181400
+  evidence:
+  - reference: PMID:29967048
+    reference_title: Systems analysis of monolithic and multi-enzyme complexes in Populus trichocarpa
+      monolignol biosynthesis.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Cinnamoyl-CoA reductase (POPTR_0003s181400) and related reductase paralogs catalyze the
+      first committed step specific to monolignol synthesis.
+  curator_note: Committed reductive step converting hydroxycinnamoyl-CoA esters to aldehydes (3/35 members;
+    recovered in all and iba_iea).
+- term:
+    id: GO:0048046
+    label: apoplast
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.2045e-12
+    p_adjust: 3.6178e-08
+    overlap: 10
+    query_size: 35
+    target_size: 401
+    overlap_genes:
+    - POPTR_003G174300
+    - POPTR_010G211800
+    - POPTR_016G106100
+    - POPTR_016G106300
+    - POPTR_016G107500
+    - POPTR_016G107900
+    - POPTR_019G088500
+    - POPTR_019G088600
+    - POPTR_019G088700
+    - POPTR_019G088900
+  evidence:
+  - reference: PMID:28493306
+    reference_title: 'AspWood: high-spatial-resolution transcriptomics of wood formation in Populus tremula.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: The 10 xylem multicopper oxidases/laccases are secreted into the cell wall apoplast where
+      they oxidize monolignols into radical intermediates for radical-coupling polymerization.
+  curator_note: Extracellular compartment where monolignol radical polymerization occurs (10/35 members;
+    recovered in all and iba_iea).
+- term:
+    id: GO:0009834
+    label: plant-type secondary cell wall biogenesis
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: confirmatory
+  evidence:
+  - reference: PMID:28493306
+    reference_title: 'AspWood: high-spatial-resolution transcriptomics of wood formation in Populus tremula.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: All 35 monolignol enzymes, xylem laccases, and wood MYBs are core executors of secondary
+      xylem cell wall biogenesis in Populus.
+  curator_note: In EBI GOA for Populus trichocarpa, only 2 MYB regulators in this set carry GO:0009834
+    (plant-type secondary cell wall biogenesis), while the 33 monolignol/laccase enzymes are annotated
+    only to biochemical metabolic terms, leaving GO:0009834 below the Bonferroni threshold.
+- term:
+    id: GO:0003824
+    label: catalytic activity
+  aspect: molecular_function
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.2125e-09
+    p_adjust: 3.642e-05
+    overlap: 33
+    query_size: 35
+    target_size: 18553
+    overlap_genes:
+    - POPTR_001G036900
+    - POPTR_001G045100
+    - POPTR_001G045900
+    - POPTR_001G304800
+    - POPTR_003G181400
+    - POPTR_003G188500v4
+    - POPTR_005G072800
+    - POPTR_006G126800
+    - POPTR_006G169700
+    - POPTR_007G096200
+    - POPTR_008G038200
+    - POPTR_008G136600
+    - POPTR_009G062800
+    - POPTR_009G062901
+    - POPTR_009G063100
+    - POPTR_009G099800
+    - POPTR_010G104400
+    - POPTR_010G224200
+    - POPTR_012G006400
+    - POPTR_014G106600
+    - POPTR_015G003100
+    - POPTR_016G065300
+    - POPTR_016G091100
+    - POPTR_016G106100
+    - POPTR_016G106300
+    - POPTR_016G107500
+    - POPTR_016G107900
+    - POPTR_018G094200v4
+    - POPTR_019G088500
+    - POPTR_019G088600
+    - POPTR_019G088700
+    - POPTR_019G088900
+    - POPTR_019G130700
+  evidence:
+  - reference: PMID:20023196
+    reference_title: 'Towards a systems approach for lignin biosynthesis in Populus trichocarpa: transcript
+      abundance and specificity of the monolignol biosynthetic genes.'
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Top-level molecular-function roll-up across all 33 enzymes in the set.
+  curator_note: Overly broad root-adjacent catalytic activity roll-up (33/35 members).
+- term:
+    id: GO:0046274
+    label: lignin catabolic process
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.9171e-15
+    p_adjust: 5.7583e-11
+    overlap: 8
+    query_size: 35
+    target_size: 74
+    overlap_genes:
+    - POPTR_016G106100
+    - POPTR_016G106300
+    - POPTR_016G107500
+    - POPTR_016G107900
+    - POPTR_019G088500
+    - POPTR_019G088600
+    - POPTR_019G088700
+    - POPTR_019G088900
+  evidence:
+  - reference: PMID:20023196
+    reference_title: 'Towards a systems approach for lignin biosynthesis in Populus trichocarpa: transcript
+      abundance and specificity of the monolignol biosynthetic genes.'
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Vascular plants do not catabolize or depolymerize lignin in secondary xylem; instead,
+      plant xylem laccases polymerize monolignols into lignin. GO:0046274 (lignin catabolic process) is
+      a classic InterPro2GO/UniRule IEA over-projection from wood-rot fungal degradative laccases onto
+      plant multicopper laccases.
+  curator_note: 'Signature non-model plant IEA domain-projection error: all 10 Populus xylem laccases
+    carry IEA annotations to GO:0046274 (lignin catabolic process, p_adj=4.41e-21 in all and iba_iea),
+    whereas PANTHER IBA-only cleanly avoids it.'
+- term:
+    id: GO:0046271
+    label: phenylpropanoid catabolic process
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.3957e-15
+    p_adjust: 7.1956e-11
+    overlap: 8
+    query_size: 35
+    target_size: 76
+    overlap_genes:
+    - POPTR_016G106100
+    - POPTR_016G106300
+    - POPTR_016G107500
+    - POPTR_016G107900
+    - POPTR_019G088500
+    - POPTR_019G088600
+    - POPTR_019G088700
+    - POPTR_019G088900
+  evidence:
+  - reference: PMID:20023196
+    reference_title: 'Towards a systems approach for lignin biosynthesis in Populus trichocarpa: transcript
+      abundance and specificity of the monolignol biosynthetic genes.'
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: GO:0046271 (phenylpropanoid catabolic process) is the parent roll-up of the erroneous
+      fungal laccase IEA annotation GO:0046274 (lignin catabolic process) on the 10 xylem laccases.
+  curator_note: Companion IEA roll-up false positive on the 10 Populus xylem laccases (p_adj=4.41e-21
+    in all and iba_iea, avoided by iba).
+- term:
+    id: GO:0004397
+    label: histidine ammonia-lyase activity
+  aspect: molecular_function
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 7.0277e-12
+    p_adjust: 2.1109e-07
+    overlap: 4
+    query_size: 35
+    target_size: 6
+    overlap_genes:
+    - POPTR_006G126800
+    - POPTR_008G038200
+    - POPTR_010G224200
+    - POPTR_016G091100
+  evidence:
+  - reference: PMID:20023196
+    reference_title: 'Towards a systems approach for lignin biosynthesis in Populus trichocarpa: transcript
+      abundance and specificity of the monolignol biosynthetic genes.'
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Populus PAL1-5 are L-phenylalanine ammonia-lyases (GO:0045548), not histidine ammonia-lyases
+      (GO:0004397); InterPro2GO maps the shared aromatic amino acid lyase domain (IPR001106) to histidine
+      ammonia-lyase activity.
+  curator_note: Domain-level IEA false positive on all 5 Populus PAL paralogs (p_adj=3.14e-11 in all and
+    iba_iea, avoided by iba).
+- term:
+    id: GO:0046029
+    label: mannitol dehydrogenase activity
+  aspect: molecular_function
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.2977e-07
+    p_adjust: 0.0038979
+    overlap: 3
+    query_size: 35
+    target_size: 12
+    overlap_genes:
+    - POPTR_009G062800
+    - POPTR_009G063100
+    - POPTR_016G065300
+  evidence:
+  - reference: PMID:20023196
+    reference_title: 'Towards a systems approach for lignin biosynthesis in Populus trichocarpa: transcript
+      abundance and specificity of the monolignol biosynthetic genes.'
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Populus CAD genes reduce hydroxycinnamaldehydes to monolignol alcohols (GO:0045551) rather
+      than oxidizing mannitol (GO:0046029, mannitol dehydrogenase activity); IEA projects GO:0046029 across
+      the zinc-dependent alcohol dehydrogenase domain.
+  curator_note: Domain-level IEA false positive on CAD paralogs (p_adj=1.75e-02 in all and iba_iea, avoided
+    by iba).

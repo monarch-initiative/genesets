@@ -125,7 +125,7 @@ associations:
       phenotype, hence supporting_process.
   - term:
       id: GO:0034063
-      label: stress granule assembly
+      label: cytoplasmic stress granule assembly
     aspect: biological_process
     category: supporting_process
     confidence: medium

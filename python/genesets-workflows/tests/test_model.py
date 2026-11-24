@@ -41,7 +41,7 @@ def test_build_minimal_interpretation():
     assert interp.to_dict()["associations"][0]["term"]["id"] == "GO:0006955"
 
 
-PUBLISHED = ROOT / "curation" / "genesets" / "MANALO_HYPOXIA_UP.yaml"
+PUBLISHED = ROOT / "curation" / "genesets" / "LIT_MANALO_2005_HYPOXIA_HIF1_UP.yaml"
 
 
 def test_published_analyses_load():

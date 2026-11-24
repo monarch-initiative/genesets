@@ -41,6 +41,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--skip-fetch", action="store_true")
     parser.add_argument("--skip-prepare", action="store_true")
     parser.add_argument(
+        "--go-release",
+        help="Dated GO release (YYYY-MM-DD) passed to prepare_go_eval.py; overrides the URLs.",
+    )
+    parser.add_argument(
         "--ontology-url",
         default=prepare_go_eval.DEFAULT_ONTOLOGY_URL,
         help="GO ontology URL passed to prepare_go_eval.py.",
@@ -146,6 +150,8 @@ def main() -> int:
             "--gaf-url",
             args.gaf_url,
         ]
+        if args.go_release:
+            prepare_command += ["--go-release", args.go_release]
         if args.force_download:
             prepare_command.append("--force-download")
         commands.append(run_command(prepare_command, repo))
@@ -183,6 +189,7 @@ def main() -> int:
         },
         "go_prep_metadata": str(args.out_dir / "metadata.yaml"),
         "go_inputs": {
+            "go_release": args.go_release,
             "ontology_url": args.ontology_url,
             "gaf_url": args.gaf_url,
         },

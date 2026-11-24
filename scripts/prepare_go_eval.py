@@ -17,6 +17,8 @@ import json
 import os
 import sys
 import time
+import urllib.error
+import urllib.parse
 import urllib.request
 from collections import defaultdict
 from pathlib import Path
@@ -24,6 +26,21 @@ from pathlib import Path
 
 DEFAULT_ONTOLOGY_URL = "https://current.geneontology.org/ontology/go-basic.obo"
 DEFAULT_GAF_URL = "https://current.geneontology.org/annotations/goa_human.gaf.gz"
+RELEASE_BASE = "https://release.geneontology.org"
+# The dated-release archive moved the human GAF in mid-2026; newer layout first.
+RELEASE_GAF_PATHS = ("annotations/gaf/HUMAN-uniprot.gaf.gz", "annotations/goa_human.gaf.gz")
+# Terms whose *direct* annotations are dropped from every variant. GO is
+# obsoleting `protein binding` as a direct annotation target; its annotations
+# carry no functional information and only add noise to enrichment. The term can
+# still be reached through informative descendants (e.g. enzyme binding) via
+# the closure. Pass --drop-direct-terms "" to keep them.
+DEFAULT_DROP_DIRECT_TERMS = ("GO:0005515",)
+# GAF DB column values kept. goa_human also carries RNAcentral ncRNAs and
+# ComplexPortal complexes (about half of all entities, sparsely annotated).
+# Queries here are protein-coding gene lists, so keeping them in the background
+# makes any such list look enriched for broad terms merely for being
+# protein-coding. Pass --gaf-db "" to keep every entity type.
+DEFAULT_GAF_DBS = ("UniProtKB",)
 VARIANTS = {
     "all": {
         "description": "NOT-filtered GOA human annotations, all evidence codes, contributes_to retained.",
@@ -51,6 +68,14 @@ VARIANTS = {
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out-dir", required=True, type=Path)
+    parser.add_argument(
+        "--go-release",
+        help=(
+            "Pin a dated GO release (YYYY-MM-DD, a directory of "
+            f"{RELEASE_BASE}) so the eval is reproducible; overrides "
+            "--ontology-url/--gaf-url. Default: the moving 'current' release."
+        ),
+    )
     parser.add_argument("--ontology-url", default=DEFAULT_ONTOLOGY_URL)
     parser.add_argument("--gaf-url", default=DEFAULT_GAF_URL)
     parser.add_argument(
@@ -58,6 +83,18 @@ def parse_args() -> argparse.Namespace:
         choices=["db_object_id", "db_object_symbol"],
         default="db_object_symbol",
         help="GAF column to use as the gene ID. MyGeneset query evals use symbols.",
+    )
+    parser.add_argument(
+        "--drop-direct-terms",
+        default=",".join(DEFAULT_DROP_DIRECT_TERMS),
+        help="Comma-separated GO ids whose direct annotations are dropped from all variants "
+        "(default: protein binding). Empty string keeps everything.",
+    )
+    parser.add_argument(
+        "--gaf-db",
+        default=",".join(DEFAULT_GAF_DBS),
+        help="Comma-separated GAF DB column values to keep (default: UniProtKB, i.e. proteins). "
+        "Empty string keeps RNAcentral and ComplexPortal entities too.",
     )
     parser.add_argument(
         "--relations",
@@ -83,19 +120,77 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def drop_direct_terms(value: str) -> frozenset[str]:
+    return frozenset(term.strip() for term in value.split(",") if term.strip())
+
+
 def utc_now() -> str:
     return dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat()
 
 
+def url_exists(url: str) -> bool:
+    request = urllib.request.Request(
+        url, method="HEAD", headers={"User-Agent": "genesets-rs-eval/0.1"}
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=60) as response:
+            return response.status == 200
+    except urllib.error.HTTPError as error:
+        if error.code == 404:
+            return False
+        raise
+
+
+def go_release_urls(date: str, exists=url_exists) -> tuple[str, str]:
+    """(ontology_url, gaf_url) for a dated GO release, whatever its archive layout.
+
+    >>> new = lambda url: "HUMAN-uniprot" in url
+    >>> go_release_urls("2026-08-05", exists=new)[1]
+    'https://release.geneontology.org/2026-08-05/annotations/gaf/HUMAN-uniprot.gaf.gz'
+    >>> go_release_urls("2025-10-10", exists=lambda url: "goa_human" in url)[1]
+    'https://release.geneontology.org/2025-10-10/annotations/goa_human.gaf.gz'
+    >>> go_release_urls("1999-01-01", exists=lambda url: False)
+    Traceback (most recent call last):
+    ...
+    SystemExit: no human GAF found for GO release 1999-01-01 (tried annotations/gaf/HUMAN-uniprot.gaf.gz, annotations/goa_human.gaf.gz)
+    """
+    base = f"{RELEASE_BASE}/{date}"
+    for gaf_path in RELEASE_GAF_PATHS:
+        if exists(f"{base}/{gaf_path}"):
+            return f"{base}/ontology/go-basic.obo", f"{base}/{gaf_path}"
+    raise SystemExit(
+        f"no human GAF found for GO release {date} (tried {', '.join(RELEASE_GAF_PATHS)})"
+    )
+
+
+def obo_data_version(path: Path) -> str | None:
+    """The OBO header's data-version (e.g. 'releases/2026-07-26'), or None."""
+    with path.open(encoding="utf-8") as handle:
+        for line in handle:
+            if not line.strip():
+                return None
+            if line.startswith("data-version:"):
+                return line.partition(":")[2].strip()
+    return None
+
+
 def download(url: str, path: Path, force: bool) -> dict:
+    """Download url to path, re-downloading when the cached copy came from another URL.
+
+    A sidecar ``<file>.url`` records the source, so switching --go-release in an
+    existing out-dir cannot silently reuse the previous release's files.
+    """
     path.parent.mkdir(parents=True, exist_ok=True)
-    if force or not path.exists():
+    source = path.with_name(path.name + ".url")
+    stale = not source.exists() or source.read_text().strip() != url
+    if force or not path.exists() or stale:
         request = urllib.request.Request(
             url,
             headers={"User-Agent": "genesets-rs-eval/0.1"},
         )
         with urllib.request.urlopen(request, timeout=120) as response:
             path.write_bytes(response.read())
+        source.write_text(url + "\n")
     return file_metadata(path, url)
 
 
@@ -285,6 +380,8 @@ def write_annotations(
     selected_variants: list[str],
     gene_id_field: str,
     valid_terms: set[str],
+    drop_direct_terms: frozenset[str] = frozenset(DEFAULT_DROP_DIRECT_TERMS),
+    gaf_dbs: frozenset[str] = frozenset(DEFAULT_GAF_DBS),
 ) -> tuple[dict, dict[str, set[str]]]:
     for name in selected_variants:
         (out_dir / name).mkdir(parents=True, exist_ok=True)
@@ -307,6 +404,8 @@ def write_annotations(
         "raw_annotation_lines": 0,
         "malformed_lines": 0,
         "unknown_go_terms": 0,
+        "dropped_direct_term_lines": 0,
+        "dropped_db_lines": 0,
         "not_qualified_lines": 0,
         "contributes_to_lines": 0,
         "variant_rows": {},
@@ -326,9 +425,15 @@ def write_annotations(
             if len(fields) < 15:
                 stats["malformed_lines"] += 1
                 continue
+            if gaf_dbs and fields[0] not in gaf_dbs:
+                stats["dropped_db_lines"] += 1
+                continue
             term_id = fields[4]
             if term_id not in valid_terms:
                 stats["unknown_go_terms"] += 1
+                continue
+            if term_id in drop_direct_terms:
+                stats["dropped_direct_term_lines"] += 1
                 continue
             gene_id = fields[gene_index].strip()
             if not gene_id:
@@ -460,8 +565,14 @@ def main() -> int:
     downloads = args.out_dir / "downloads"
 
     ontology_path = downloads / "go-basic.obo"
-    gaf_path = downloads / "goa_human.gaf.gz"
+    if args.go_release:
+        args.ontology_url, args.gaf_url = go_release_urls(args.go_release)
+    # Cache under the URL's own file name so species GAFs (mgi, wb, fb, zfin, ...)
+    # passed via --gaf-url do not collide with the default goa_human download.
+    gaf_path = downloads / Path(urllib.parse.urlparse(args.gaf_url).path).name
     ontology_file = download(args.ontology_url, ontology_path, args.force_download)
+    data_version = obo_data_version(ontology_path)
+    print(f"GO data-version: {data_version} ({args.ontology_url})")
     gaf_file = download(args.gaf_url, gaf_path, args.force_download)
 
     relation_names = {name.strip() for name in args.relations.split(",") if name.strip()}
@@ -474,6 +585,8 @@ def main() -> int:
         selected_variants,
         args.gene_id_field,
         set(terms),
+        drop_direct_terms(args.drop_direct_terms),
+        drop_direct_terms(args.gaf_db),
     )
 
     queries_path = args.out_dir / "queries.gmt"
@@ -495,19 +608,31 @@ def main() -> int:
         "runtime_seconds": round(time.perf_counter() - started, 3),
         "prep_strategy": "native_python_obo_gaf_parser",
         "ontology": {
-            "source": "Gene Ontology official current release",
+            "source": (
+                f"Gene Ontology dated release {args.go_release}"
+                if args.go_release
+                else "Gene Ontology official current release"
+            ),
+            "go_release": args.go_release,
+            "data_version": data_version,
             "file": ontology_file,
             "relations_for_closure": sorted(relation_names),
             "stats": ontology_stats,
             "tables": table_stats,
         },
         "annotations": {
-            "source": "GOA human official GAF from Gene Ontology current annotations",
+            "source": (
+                f"GAF from GO dated release {args.go_release} ({gaf_path.name})"
+                if args.go_release
+                else f"Official GAF from Gene Ontology current annotations ({gaf_path.name})"
+            ),
             "file": gaf_file,
             "gaf_header": gaf_header,
             "gene_id_field": args.gene_id_field,
             "filters": {
                 "always_exclude_qualifier": "NOT",
+                "dropped_direct_terms": sorted(drop_direct_terms(args.drop_direct_terms)),
+                "gaf_db_kept": sorted(drop_direct_terms(args.gaf_db)) or "all",
                 "variant_definitions": {
                     name: {
                         "description": VARIANTS[name]["description"],
@@ -522,7 +647,7 @@ def main() -> int:
             "stats": annotation_stats,
         },
         "background": {
-            "policy": "Common background from NOT-filtered all-evidence GOA human genes, using the configured GAF gene_id_field.",
+            "policy": f"Common background from NOT-filtered all-evidence genes in {gaf_path.name}, using the configured GAF gene_id_field.",
             "path": annotation_stats["background_path"],
             "gene_count": annotation_stats["background_gene_count"],
         },

@@ -1,0 +1,387 @@
+gene_set_id: LIT:GILMAN_2011_AUTISM_CNV
+gene_set_name: GILMAN_2011_AUTISM_CNV
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 72
+description: 'Genes in the functional network cluster of rare de novo copy-number
+  variants in autism spectrum disorder (Gilman et al. 2011 Neuron, PMID:21658583,
+  Table S2; 72 genes). The cluster was found with NETBAG, which builds its gene network
+  from functional evidence that includes GO, so synapse terms are partly entailed
+  by how the set was made. Ballouz, Pavlidis and Gillis (2017, PMID:28204549) used
+  this list as a case study of enrichment driven by multifunctional genes: 11 members
+  (FLNA, NRXN1, DLG1, MAPK3, CRHR1, DLG4, DKK1, AXIN1, WNT3, NLGN3, STUB1) carry a
+  large share of the annotations, and ''learning or memory'' disappears once that
+  is corrected for, while ''neuron migration'' is unaffected.'
+contexts:
+- term:
+    id: MONDO:0005258
+    label: autism spectrum disorder
+  context_type: disease
+associations:
+- term:
+    id: GO:0071840
+    label: cellular component organization or biogenesis
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0016043
+    label: cellular component organization
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0032502
+    label: developmental process
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0048856
+    label: anatomical structure development
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0048468
+    label: cell development
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: medium
+  specificity: broadly_expressed
+  artifact_cause: overly_general_term
+  curator_note: 'Cell development: generic parent of neuron development.'
+- term:
+    id: GO:0099173
+    label: postsynapse organization
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: core_process
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Postsynapse organization: CHRNA7, CRKL, CTNND2, DLG1, DLG2, DLG4,
+    NLGN3, NRXN1. Matches the paper''s synapse-development network and the PAN-GO
+    result (Feuermann et al. 2025). Medium confidence: four carriers (DLG1, DLG4,
+    NLGN3, NRXN1) are among the 11 multifunctional genes Ballouz et al. flag, and
+    NETBAG used GO-like evidence to build the cluster.'
+- term:
+    id: GO:0098794
+    label: postsynapse
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: core_component
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Postsynapse: 17 members including DLG1, DLG2, DLG4, NLGN3, CHRNA7,
+    BAIAP2, CYFIP1. Same caveat as postsynapse organization.'
+- term:
+    id: GO:0019904
+    label: protein domain specific binding
+  seed_source: enrichment_recovered
+  aspect: molecular_function
+  category: nonspecific
+  confidence: high
+  specificity: broadly_expressed
+  artifact_cause: overly_general_term
+  curator_note: Protein-domain binding is a generic molecular-function grouping; the
+    carriers (AXIN1, DLG1, DLG4, DVL2, MAPT, NSF, STUB1, ...) share no specific activity.
+- term:
+    id: GO:0001764
+    label: neuron migration
+  seed_source: curator_added
+  aspect: biological_process
+  category: core_process
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: mechanistic
+  evidence:
+  - reference: PMID:28204549
+    reference_title: Using predictive specificity to determine when gene set analysis
+      is biologically meaningful.
+    supports: SUPPORT
+    evidence_source: COMPUTATIONAL
+    snippet: neuron migration might be even more relevant to ASD than learning and
+      memory
+    explanation: Source authors' judgement under multifunctionality-corrected enrichment.
+  curator_note: 'Ballouz et al. single out neuron migration as unaffected by multifunctionality
+    correction and possibly more relevant to ASD than learning and memory. Carriers
+    in current GOA: BAIAP2, DCC, NDE1 (only 3, so it does not reach significance).'
+- term:
+    id: GO:0007611
+    label: learning or memory
+  seed_source: curator_added
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: lineage_shared
+  recovery_status: false_association
+  evidence:
+  - reference: PMID:28204549
+    reference_title: Using predictive specificity to determine when gene set analysis
+      is biologically meaningful.
+    supports: REFUTE
+    evidence_source: COMPUTATIONAL
+    snippet: we prefer to think of it as non-robust and, most importantly, non-specific
+    explanation: Source authors' judgement under multifunctionality-corrected enrichment.
+  artifact_cause: multifunctional_gene_bias
+  curator_note: 'Ballouz et al. show this enrichment is driven by multifunctional
+    genes: of six carriers, four (NRXN1, NLGN3, DLG4, CRHR1) are among the 11 most
+    multifunctional members, and it loses significance after correction. Current carriers:
+    CHRNA7, DKK1, DLG4, MAPT, NLGN3, NRXN1. Recorded so that any variant reporting
+    it is penalised.'
+- term:
+    id: GO:0023056
+    label: positive regulation of signaling
+  seed_source: curator_added
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: multifunctional_gene_bias
+  curator_note: Named by Ballouz et al. (Supplementary Fig. 7) among the non-specific
+    groups that lose significance after multifunctionality correction. 21 carriers
+    in current GOA, many of them the flagged multifunctional genes.
+hit_adjudication:
+  pooled_variants:
+  - all
+  - iba
+  - iba_iea
+  - aigr_prune
+  - aigr_full
+  method: fisher
+  p_adjust_method: bonferroni
+  max_p_adjust: 0.05
+  correction_scope: 'matrix: every benchmark query set x GO terms (genesets-rs default)'
+  annotation_release: goa_human 2026-05-21T08:10; go-basic releases/2026-07-26
+  adjudicated_on: '2026-11-18'
+  note: 8 pooled hits, each labelled blind to which variant reported it; background
+    = UniProtKB proteins in goa_human, direct GO:0005515 dropped.
+published_analyses:
+  - reference: PMID:21658583
+    reference_title: "Rare de novo variants associated with autism implicate a large functional network of genes involved in formation and function of synapses."
+    analysis_role: original
+    tool: NETBAG
+    method: >-
+      Not over-representation. For each of 1,454 MSigDB GO categories, the
+      average background-network log-likelihood interaction between its genes
+      and the cluster genes, with empirical p-values from random CNV sets of
+      matched gene count and FDR across categories.
+    annotation_source: MSigDB GO gene sets (2010-era) and a GO-derived likelihood network
+    membership_note: >-
+      Gilman report two clusters, 45 genes when one gene per CNV is allowed
+      and 72 when two are allowed. This entry's membership is the 72-gene
+      cluster (Table S2).
+    correction: FDR over GO categories (empirical p-values)
+    summary: >-
+      The 25 categories most strongly connected to the cluster concern actin
+      network dynamics, synaptogenesis, axonogenesis, cell-cell adhesion,
+      small GTPase signalling and neurite development. Gilman also note that
+      plain over-representation of GO terms across all 433 CNV genes does not
+      give the same result.
+    snippet: "The genes forming the network are primarily related to synapse development, axon targeting, and neuron motility."
+  - reference: PMID:28204549
+    reference_title: "Using predictive specificity to determine when gene set analysis is biologically meaningful."
+    analysis_role: reanalysis
+    tool: ErmineJ 3.0
+    method: Over-representation analysis of GO groups, as described in the paper's case study.
+    annotation_source: GO (ErmineJ Generic_human annotations, 2013)
+    annotation_date: "2013"
+    membership_size: 70
+    membership_note: >-
+      The paper text describes a 70-gene hit list. This entry's 72-gene
+      Table S2 list contains all 11 multifunctional genes the paper names
+      (see curation/sources/ballouz2017/README.md). The deposited ErmineJ
+      files are for a 44-gene cluster instead (next entry).
+    correction: Benjamini-Hochberg FDR; then multifunctionality correction
+    significance_threshold: 0.05
+    n_significant: 30
+    significant_unit: GO groups
+    summary: >-
+      The list is strongly biased toward multifunctional genes (MF score
+      0.86). Removing the 11 most multifunctional genes down-weights learning
+      or memory (four of its six cluster genes have 186-289 GO annotations
+      each) and lets neuron migration rise. Ballouz et al. argue such terms
+      are non-specific rather than false positives.
+    snippet: "Repeating their analysis using ErmineJ on their hit list of 70 genes, we arrive at a list of 30 GO gene sets (FDR < 0.05) similar but not identical to those reported."
+    reported_terms:
+      - reported_label: learning or memory
+        term:
+          id: GO:0007611
+          label: learning or memory
+        significant: true
+        authors_stance: discounted
+        note: Driven by four highly multifunctional genes; down-weighted after correction.
+      - reported_label: neuron migration
+        term:
+          id: GO:0001764
+          label: neuron migration
+        authors_stance: highlighted
+        note: >-
+          Ranked 28th before correction and unaffected by it, so it rises;
+          Ballouz et al. suggest it may be more relevant to autism than
+          learning and memory.
+  - reference: PMID:28204549
+    reference_title: "Using predictive specificity to determine when gene set analysis is biologically meaningful."
+    analysis_role: reanalysis
+    tool: ErmineJ 3.0
+    method: >-
+      Over-representation (ErmineJ ORA), GO groups of 20-200 genes, hit list
+      scored with a dummy-score threshold.
+    annotation_source: GO (ErmineJ Generic_human_noParents annotations)
+    annotation_date: 2013-04
+    membership_size: 44
+    membership_note: >-
+      The 44-gene quicklist deposited on the companion page
+      (QuickList.vitkup-cluster1.txt, the one-gene-per-CNV cluster). All 44
+      genes, after HGNC normalization (ADAM5P -> ADAM5), are in this entry's
+      72-gene list.
+    correction: >-
+      Benjamini-Hochberg FDR (p_adjust); multifunctionality-corrected FDR
+      (p_adjust_corrected)
+    significance_threshold: 0.05
+    n_significant: 16
+    significant_unit: GO groups (0 after multifunctionality correction)
+    data_url: http://home.pavlab.msl.ubc.ca/ermineJ/supplement-files/vitkup-cluster1.erminej.txt
+    summary: >-
+      The deposited result file for the 44-gene subset. Sixteen groups
+      pass FDR < 0.05, mostly synaptic transmission and behaviour terms, and
+      none survive multifunctionality correction.
+    reported_terms:
+      - reported_id: GO:0051899
+        reported_label: membrane depolarization
+        term:
+          id: GO:0051899
+          label: membrane depolarization
+        p_value: 2.737e-05
+        p_adjust: 0.0310
+        p_adjust_corrected: 1.0
+        significant: true
+      - reported_id: GO:0007611
+        reported_label: learning or memory
+        term:
+          id: GO:0007611
+          label: learning or memory
+        p_value: 3.66e-05
+        p_adjust: 0.0277
+        p_adjust_corrected: 1.0
+        significant: true
+        authors_stance: discounted
+      - reported_id: GO:0050804
+        reported_label: regulation of synaptic transmission
+        term:
+          id: GO:0050804
+          label: modulation of chemical synaptic transmission
+        p_value: 6.729e-05
+        p_adjust: 0.0254
+        p_adjust_corrected: 1.0
+        significant: true
+      - reported_id: GO:0035176
+        reported_label: social behavior
+        term:
+          id: GO:0035176
+          label: social behavior
+        p_value: 7.182e-05
+        p_adjust: 0.0204
+        p_adjust_corrected: 1.0
+        significant: true
+      - reported_id: GO:0007416
+        reported_label: synapse assembly
+        term:
+          id: GO:0007416
+          label: synapse assembly
+        p_value: 2.084e-04
+        p_adjust: 0.0363
+        p_adjust_corrected: 1.0
+        significant: true
+  - reference: PMID:40011791
+    reference_title: "A compendium of human gene functions derived from evolutionary modelling."
+    analysis_role: reanalysis
+    tool: PANTHER gene list analysis (functionome.geneontology.org)
+    method: Over-representation, GO biological process; related terms grouped
+    annotation_source: all GO annotations (experimental, computational and PAN-GO)
+    membership_size: 72
+    membership_note: >-
+      Gilman's 72-gene cluster, the same list as this entry. Reported in the
+      paper's Supplementary Information, case study 1.
+    correction: FDR
+    significance_threshold: 0.05
+    n_significant: 47
+    significant_unit: groups of related GO biological process terms
+    summary: >-
+      Includes a learning and memory group, as in the original paper and in
+      Ballouz et al.
+    reported_terms:
+      - reported_label: learning and memory
+        term:
+          id: GO:0007611
+          label: learning or memory
+        significant: true
+        authors_stance: discounted
+  - reference: PMID:40011791
+    reference_title: "A compendium of human gene functions derived from evolutionary modelling."
+    analysis_role: reanalysis
+    tool: PANTHER gene list analysis (functionome.geneontology.org)
+    method: Over-representation, GO biological process; related terms grouped
+    annotation_source: PAN-GO annotations only
+    membership_size: 72
+    membership_note: Gilman's 72-gene cluster, as in the previous entry.
+    correction: FDR
+    significance_threshold: 0.05
+    n_significant: 6
+    significant_unit: groups of related GO biological process terms
+    summary: >-
+      Learning and memory is no longer enriched. Three of the six groups are
+      synaptic, which supports the original paper's conclusion without the
+      dozens of other clusters. The postsynapse organization association
+      above is the same term.
+    reported_terms:
+      - reported_label: receptor clustering
+        significant: true
+        authors_stance: highlighted
+      - reported_label: postsynapse organization
+        term:
+          id: GO:0099173
+          label: postsynapse organization
+        significant: true
+        authors_stance: highlighted
+      - reported_label: chemical synaptic transmission
+        term:
+          id: GO:0007268
+          label: chemical synaptic transmission
+        significant: true
+        authors_stance: highlighted
+      - reported_label: learning and memory
+        term:
+          id: GO:0007611
+          label: learning or memory
+        significant: false
+        authors_stance: discounted

@@ -31,7 +31,7 @@ a real evaluation.
    proliferation regulators; Manguso 2017 in-vivo melanoma immunotherapy screen),
    plus one short curated mechanism panel (Bersuker/Doll 2019 FSP1-CoQ ferroptosis
    suppressors). All HGNC-normalized into `curation/genesets/lit_members.gmt` and
-   folded into `queries.gmt`. Total evaluable: **136** (134 producing
+   folded into `queries.gmt`. Total evaluable: **133** (131 producing
    enrichment) — including 44 MSigDB C8 single-cell cell-type signatures
    (membership fetched from mygeneset.info). The two interferon sets added with
    the gene-set-informed factor-model docs are here too: the MSigDB pathway set
@@ -48,13 +48,27 @@ a real evaluation.
    (357 and 558 members, captured from the Supplementary Table S3/S4 PDFs; the
    parsed counts reproduce the paper's stated 357/558/915 exactly). Four of the
    five form `SERIES:RFX6_KNOCKDOWN_ISLET_CELL` with roles `beta_up`,
-   `beta_down`, `alpha_up`, `alpha_down`.
+   `beta_down`, `alpha_up`, `alpha_down`. Four non-human sets are
+   Poeciliidae placenta sets from Safian, Kraunsoe et al. (bioRxiv 2026,
+   doi:10.64898/2026.11.11.765921). Two are LFC DEG unions
+   (`POECILIID_PLACENTAL_LFC_UP` / `_DN`, 794 and 927 human symbols) and two are
+   the Fig. 6D multi-evidence panels (`POECILIID_PLACENTATION_LFC_GENES` /
+   `_YOLK_SAC_GENES`, 41 and 19). Fish genes are mapped to human through
+   ZFIN's curated orthology by `scripts/capture_poeciliid_placenta_sets.py`, so
+   they score against human GOA like every other query. They carry
+   `taxon: NCBITaxon:8079` and two series (`SERIES:POECILIID_PLACENTAL_LFC`,
+   `SERIES:POECILIID_PLACENTA_INTERFACE`). They are not yet in the numbers
+   below.
 
 2. **Annotation variants** —
    ```bash
    python3 scripts/prepare_go_eval.py --out-dir /tmp/iba_eval \
-     --variants all,iba,iba_iea,no_contributes_to
+     --variants all,iba,iba_iea,no_contributes_to --go-release YYYY-MM-DD
    ```
+   `--go-release` pins a dated GO release; omit it for the moving `current`
+   release. Either way the OBO `data-version` is recorded in `metadata.json` and
+   printed by the scorer, which also flags gold GO terms that are obsolete in
+   that release.
    downloads GO + GOA, and writes per-variant `gene_terms.tsv` (evidence-filtered),
    shared `terms.tsv`/`closure.tsv`, a common all-GOA background, and a
    `genesets-rs matrix` config per variant (Bonferroni, `max_p_adjust 0.05`).
@@ -93,32 +107,16 @@ output (see "Guardrail").
 - **`unique_vs_baseline`** — supported-core terms a variant recovers that `all`
   does not.
 
-## Headline result (2026, 136 evaluable / 134 scored sets, GOA `goa_human` current)
+## Headline result (2026, 133 evaluable / 131 scored sets, GOA `goa_human` current)
 
 | variant | recall_core | gap_recovered (disagreements) |
 |---|---|---|
-| all | 0.565 (236/418) | 7 |
-| no_contributes_to | 0.562 (235/418) | 7 |
-| iba_iea | 0.445 (186/418) | 4 |
-| iba | 0.342 (143/418) | 3 |
+| all | 0.559 (229/410) | 7 |
+| no_contributes_to | 0.556 (228/410) | 7 |
+| iba_iea | 0.437 (179/410) | 4 |
+| iba | 0.334 (137/410) | 3 |
 
-Latest refresh (GO and GOA downloaded 2026-11-13): the three Ballouz et
-al. / PAN-GO functionome case studies were added (see "Published analyses"
-in `curation/README.md`). All three are evaluable: `MANALO_HYPOXIA_UP` with
-its membership from mygeneset.info, `AUTISM_DENOVO_CNV_NETWORK_GILMAN` and
-`SCHIZOPHRENIA_CANDIDATES_SCHMIDT_KASTNER` from `lit_members.gmt`. Together
-they add 8 core terms.
-Re-scoring the same run against the previous 131-set gold reproduces the
-figures above it exactly (0.559 / 0.556 / 0.437 / 0.334 on 229, 228, 179, 137
-of 410), so the movement is the new sets. They are easy for all-GOA (7 of 8
-core terms; only the autism set's postsynaptic density misses the
-matrix-wide Bonferroni) and for IBA (6 of 8), which is why recall rose.
-That fits their history: their core biology is the part that survives
-multifunctionality correction or PAN-GO, while the multifunctionality
-artefacts recorded under `published_analyses` (learning or memory, response
-to lipopolysaccharide) are scored as non-core.
-
-The previous refresh added the five RFX6-knockdown sets. Each refresh re-scored the
+Refreshed as the five RFX6-knockdown sets were added. Each refresh re-scored the
 same enrichment run against the previous gold to separate the new sets from GOA
 drift, and both times the earlier figures reproduced exactly: 0.561 / 0.558 /
 0.437 / 0.338 on 221, 220, 172, 133 of 394 core terms for the 128-set gold, and
@@ -128,10 +126,25 @@ new core terms, not drift. Note the direction: recall_core *fell* from 0.565 to
 0.559 because the RFX6 sets are hard — of their 16 core terms, all-GOA recovers
 8.
 
+These numbers were produced with direct `protein binding` (GO:0005515)
+annotations included. Since `prepare_go_eval.py` now drops those by default,
+recovered counts are unchanged (all 221, no_contributes_to 220, iba_iea 172,
+iba 133). Only 125 sets are scored (CORE total 391), because
+HP_SPINAL_MUSCULAR_ATROPHY's only significant term was `protein binding`.
+Pass `--drop-direct-terms ""` to reproduce the table exactly.
+
+**Background (2026-11-18).** These numbers also used every entity in
+`goa_human` as the background, including about 19k RNAcentral ncRNAs and
+ComplexPortal complexes. `prepare_go_eval.py` now keeps UniProtKB proteins
+only (`--gaf-db ""` restores the old behaviour). On a protein-coding
+background, over 125 comparable sets, recall_core is 0.491 for all, 0.395 for
+iba_iea (122 sets) and 0.323 for iba (108 sets), against 0.577, 0.463 and
+0.392 before. The ordering is unchanged. See `evals/aigr_changeset/README.md`.
+
 1. **IBA carries ~2/3 of the core biology full GOA does** (recall_core 0.34 vs
    0.56); IEA recovers much of the difference (iba_iea 0.44).
 2. **IBA is nearly a strict subset of all-GOA — it does not fill experimental
-   gaps here.** Restricting to IBA loses 95 core terms and uniquely recovers
+   gaps here.** Restricting to IBA loses 90 core terms and uniquely recovers
    only 2, both conserved-housekeeping cellular components (ribosome
    `GO:0005840`, nucleolus `GO:0005730`).
 3. **The eval surfaces a review queue — it does not edit the gold.** 7
@@ -151,17 +164,12 @@ With the corpus-wide `insight` tags, recall splits by whether a term is
 `confirmatory` (restates the set's construction) or `mechanistic` (a non-obvious
 process — a genuine enrichment insight). Over the evaluable sets:
 
-| variant | recall_confirm (n=670) | recall_mechan (n=89) |
+| variant | recall_confirm (n=659) | recall_mechan (n=86) |
 |---|---|---|
-| all | 0.564 | 0.348 |
-| no_contributes_to | 0.563 | 0.348 |
-| iba_iea | 0.434 | 0.247 |
-| iba | 0.315 | 0.236 |
-
-(Re-scoring this run against the previous gold gives
-0.561 / 0.560 / 0.431 / 0.313 confirmatory and 0.349 / 0.349 / 0.244 / 0.221
-mechanistic, so the confirmatory column of the earlier table had drifted
-slightly before this refresh.)
+| all | 0.563 | 0.349 |
+| no_contributes_to | 0.561 | 0.349 |
+| iba_iea | 0.431 | 0.244 |
+| iba | 0.316 | 0.221 |
 
 **Mechanistic insight is ~2x harder to recover than confirmatory biology** —
 even all-GOA recovers only ~35% of mechanistic terms vs ~56% of confirmatory

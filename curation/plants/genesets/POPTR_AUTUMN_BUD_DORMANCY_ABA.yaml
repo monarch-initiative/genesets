@@ -1,0 +1,477 @@
+gene_set_id: LIT:POPTR_AUTUMN_BUD_DORMANCY_ABA
+gene_set_name: POPTR_AUTUMN_BUD_DORMANCY_ABA
+collection: LIT:DOE_BER_BIOENERGY
+taxon:
+  id: NCBITaxon:3694
+  label: Populus trichocarpa
+direction: UP
+series: SERIES:POPTR_SEASONAL_BUD_DORMANCY
+series_role: autumn_endodormancy_aba_callose
+n_genes: 34
+description: The Populus trichocarpa short-day photoperiodic growth cessation, abscisic acid (ABA) biosynthesis
+  and PYR/PYL-PP2C-ABI3/SVL signaling, and callose synthase (CALS/GSL) plasmodesmatal-sealing autumn bud
+  endodormancy program (Tylewicz et al. 2018 Science PMID:29519917; Singh et al. 2018 Plant Cell PMID:30150313;
+  Rinne et al. 2011 Plant Cell PMID:21282524). Contrasts with POPTR_SPRING_BUD_FLUSH_CHILLING in SERIES:POPTR_SEASONAL_BUD_DORMANCY.
+  In perennial boreal/temperate trees, autumn short days induce ABA accumulation and SVL (SHORT VEGETATIVE
+  PHASE-LIKE), which upregulates 1,3-beta-D-glucan (callose) synthases to plug shoot apical meristem plasmodesmata
+  and isolate the dormant bud from growth-promoting signals over winter.
+contexts:
+- term:
+    id: PO:0009047
+    label: stem
+  context_type: anatomical_structure
+  role_note: Apical and axillary shoot buds of perennial Populus stems entering winter endodormancy.
+- term:
+    id: CHEBI:2365
+    label: (+)-abscisic acid
+  context_type: chemical_perturbagen
+  role_note: Phytohormone induced by autumn short days to trigger plasmodesmatal callose sphincters and
+    bud endodormancy.
+associations:
+- term:
+    id: GO:0009737
+    label: response to abscisic acid
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.6539e-35
+    p_adjust: 1.3978e-30
+    overlap: 19
+    query_size: 34
+    target_size: 215
+    overlap_genes:
+    - POPTR_008G073400
+    - POPTR_008G117300
+    - POPTR_008G212300
+    - POPTR_008G212600
+    - POPTR_008G213100
+    - POPTR_009G072933v4
+    - POPTR_010G047600
+    - POPTR_011G026200
+    - POPTR_011G127800
+    - POPTR_012G105800v4
+    - POPTR_014G039800
+    - POPTR_014G058900
+    - POPTR_014G080800
+    - POPTR_014G152800
+    - POPTR_015G041000
+    - POPTR_015G105000
+    - POPTR_018G062400
+    - POPTR_018G107800
+    - POPTR_019G045900
+  evidence:
+  - reference: PMID:29519917
+    reference_title: Photoperiodic control of seasonal growth is mediated by ABA acting on cell-cell communication.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: 19 of 34 poplar bud-dormancy set members mediate ABA biosynthesis, perception, or downstream
+      response.
+  curator_note: Core phytohormone response driving autumn endodormancy (19/34 members; recovered across
+    all 4 variants including IBA-only).
+- term:
+    id: GO:0009738
+    label: abscisic acid-activated signaling pathway
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.9754e-19
+    p_adjust: 5.9335e-15
+    overlap: 10
+    query_size: 34
+    target_size: 89
+    overlap_genes:
+    - POPTR_008G073400
+    - POPTR_008G212300
+    - POPTR_008G212600
+    - POPTR_008G213100
+    - POPTR_009G072933v4
+    - POPTR_010G047600
+    - POPTR_011G026200
+    - POPTR_011G127800
+    - POPTR_014G058900
+    - POPTR_014G152800
+  evidence:
+  - reference: PMID:29519917
+    reference_title: Photoperiodic control of seasonal growth is mediated by ABA acting on cell-cell communication.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Poplar PYR/PYL receptors and clade A PP2C phosphatases transduce the autumn ABA signal
+      to activate SVL and callose synthesis.
+  curator_note: Core ABA signal transduction pathway carried by 10/34 members (recovered across all 4
+    variants).
+- term:
+    id: GO:0009688
+    label: abscisic acid biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.2088e-19
+    p_adjust: 6.6344e-15
+    overlap: 6
+    query_size: 34
+    target_size: 6
+    overlap_genes:
+    - POPTR_001G024300
+    - POPTR_001G229100
+    - POPTR_004G099500
+    - POPTR_005G138400
+    - POPTR_005G138400v4
+    - POPTR_007G044300
+  evidence:
+  - reference: PMID:30150313
+    reference_title: A genetic network mediating the control of bud dormancy in poplar.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Six poplar zeaxanthin epoxidase (ABA1/ZEP) and short-chain dehydrogenase/reductase (ABA2)
+      paralogs synthesize abscisic acid in short-day apical buds.
+  curator_note: Mechanistically resolves de novo bud ABA synthesis (6/34 members; recovered across all
+    4 variants).
+- term:
+    id: GO:0006075
+    label: (1->3)-beta-D-glucan biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 8.4905e-15
+    p_adjust: 2.5502e-10
+    overlap: 6
+    query_size: 34
+    target_size: 20
+    overlap_genes:
+    - POPTR_001G012200
+    - POPTR_002G058700
+    - POPTR_002G058700v4
+    - POPTR_003G214200
+    - POPTR_005G203500
+    - POPTR_011G095100
+  evidence:
+  - reference: PMID:29519917
+    reference_title: Photoperiodic control of seasonal growth is mediated by ABA acting on cell-cell communication.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Six poplar callose synthase (CALS/GSL) paralogs synthesize (1->3)-beta-D-glucan (callose)
+      dormancy sphincters that seal shoot-apical-meristem plasmodesmata.
+  curator_note: Captures the biophysical mechanism of symplastic meristem isolation during tree bud endodormancy
+    (6/34 members; recovered in all and iba_iea).
+- term:
+    id: GO:0003843
+    label: 1,3-beta-D-glucan synthase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 8.4905e-15
+    p_adjust: 2.5502e-10
+    overlap: 6
+    query_size: 34
+    target_size: 20
+    overlap_genes:
+    - POPTR_001G012200
+    - POPTR_002G058700
+    - POPTR_002G058700v4
+    - POPTR_003G214200
+    - POPTR_005G203500
+    - POPTR_011G095100
+  evidence:
+  - reference: PMID:29519917
+    reference_title: Photoperiodic control of seasonal growth is mediated by ABA acting on cell-cell communication.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Six poplar CALS/GSL enzymes catalyze UDP-glucose-dependent 1,3-beta-D-glucan synthase
+      activity at plasmodesmatal necks.
+  curator_note: Enzymatic activity synthesizing plasmodesmatal callose plugs (6/34 members; recovered
+    across all 4 variants including IBA-only).
+- term:
+    id: GO:0010427
+    label: abscisic acid binding
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.4892e-14
+    p_adjust: 4.473e-10
+    overlap: 7
+    query_size: 34
+    target_size: 50
+    overlap_genes:
+    - POPTR_008G073400
+    - POPTR_008G212300
+    - POPTR_008G212600
+    - POPTR_008G213100
+    - POPTR_011G026200
+    - POPTR_011G127800
+    - POPTR_014G152800
+  evidence:
+  - reference: PMID:29519917
+    reference_title: Photoperiodic control of seasonal growth is mediated by ABA acting on cell-cell communication.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Seven poplar PYR/PYL START-domain receptor paralogs directly bind (+)-abscisic acid.
+  curator_note: Molecular hormone receptor activity (7/34 members; recovered across all 4 variants).
+- term:
+    id: GO:0048573
+    label: photoperiodism, flowering
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.007e-09
+    p_adjust: 9.0317e-05
+    overlap: 4
+    query_size: 34
+    target_size: 22
+    overlap_genes:
+    - POPTR_008G117300
+    - POPTR_009G161300
+    - POPTR_011G148800
+    - POPTR_017G061200
+  evidence:
+  - reference: PMID:30150313
+    reference_title: A genetic network mediating the control of bud dormancy in poplar.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Photoperiod-sensing regulators (ELF3/CO/FT2/SVL module) detect autumn short daylengths
+      to initiate bud set and dormancy.
+  curator_note: Upstream environmental daylength cue triggering autumn dormancy in Populus (4/34 members;
+    recovered in all and iba_iea).
+- term:
+    id: GO:0097207
+    label: bud dormancy process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: confirmatory
+  evidence:
+  - reference: PMID:29519917
+    reference_title: Photoperiodic control of seasonal growth is mediated by ABA acting on cell-cell communication.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: This module defines seasonal bud dormancy (GO:0097207, bud dormancy process) in Populus
+      trichocarpa.
+  curator_note: Zero genes in the Populus trichocarpa EBI GOA proteome are annotated to GO:0097207 (bud
+    dormancy process), because automated PANTHER IBA and InterPro IEA pipelines project annotations from
+    annual Arabidopsis (which forms dormant seeds rather than perennial overwintering winter buds).
+- term:
+    id: GO:0009506
+    label: plasmodesma
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: mechanistic
+  evidence:
+  - reference: PMID:29519917
+    reference_title: Photoperiodic control of seasonal growth is mediated by ABA acting on cell-cell communication.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Poplar callose synthases deposit dormancy callose plugs specifically at shoot apical
+      meristem plasmodesmata (GO:0009506) to block symplastic trafficking.
+  curator_note: In Populus EBI GOA, the 6 callose synthases are annotated only to generic GO:0016020 (membrane)
+    rather than GO:0009506 (plasmodesma).
+- term:
+    id: GO:0050896
+    label: response to stimulus
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 7.1926e-10
+    p_adjust: 2.1604e-05
+    overlap: 22
+    query_size: 34
+    target_size: 6862
+    overlap_genes:
+    - POPTR_008G073400
+    - POPTR_008G117300
+    - POPTR_008G212300
+    - POPTR_008G212600
+    - POPTR_008G213100
+    - POPTR_009G072933v4
+    - POPTR_009G161300
+    - POPTR_010G047600
+    - POPTR_011G026200
+    - POPTR_011G127800
+    - POPTR_011G148800
+    - POPTR_012G105800v4
+    - POPTR_014G039800
+    - POPTR_014G058900
+    - POPTR_014G080800
+    - POPTR_014G152800
+    - POPTR_015G041000
+    - POPTR_015G105000
+    - POPTR_017G061200
+    - POPTR_018G062400
+    - POPTR_018G107800
+    - POPTR_019G045900
+  evidence:
+  - reference: PMID:29519917
+    reference_title: Photoperiodic control of seasonal growth is mediated by ABA acting on cell-cell communication.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Top-level biological-process roll-up of hormone and photoperiod responses.
+  curator_note: Overly broad root-adjacent term (28/34 members).
+- term:
+    id: GO:0097305
+    label: response to alcohol
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 6.6988e-35
+    p_adjust: 2.0121e-30
+    overlap: 19
+    query_size: 34
+    target_size: 219
+    overlap_genes:
+    - POPTR_008G073400
+    - POPTR_008G117300
+    - POPTR_008G212300
+    - POPTR_008G212600
+    - POPTR_008G213100
+    - POPTR_009G072933v4
+    - POPTR_010G047600
+    - POPTR_011G026200
+    - POPTR_011G127800
+    - POPTR_012G105800v4
+    - POPTR_014G039800
+    - POPTR_014G058900
+    - POPTR_014G080800
+    - POPTR_014G152800
+    - POPTR_015G041000
+    - POPTR_015G105000
+    - POPTR_018G062400
+    - POPTR_018G107800
+    - POPTR_019G045900
+  evidence:
+  - reference: PMID:29519917
+    reference_title: Photoperiodic control of seasonal growth is mediated by ABA acting on cell-cell communication.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: GO:0097305 (response to alcohol) and GO:1902645 (tertiary alcohol biosynthetic process)
+      are GO-ChEBI logical-definition roll-up artifacts because (+)-abscisic acid (CHEBI:2365) possesses
+      a tertiary hydroxyl group.
+  curator_note: Cross-species propagation of the GO-ChEBI ABA->alcohol artifact into Populus trichocarpa
+    across all 4 variants including IBA-only (19/34 genes, p_adj=2.01e-30).
+- term:
+    id: GO:0033993
+    label: response to lipid
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.9742e-28
+    p_adjust: 5.9298e-24
+    overlap: 19
+    query_size: 34
+    target_size: 471
+    overlap_genes:
+    - POPTR_008G073400
+    - POPTR_008G117300
+    - POPTR_008G212300
+    - POPTR_008G212600
+    - POPTR_008G213100
+    - POPTR_009G072933v4
+    - POPTR_010G047600
+    - POPTR_011G026200
+    - POPTR_011G127800
+    - POPTR_012G105800v4
+    - POPTR_014G039800
+    - POPTR_014G058900
+    - POPTR_014G080800
+    - POPTR_014G152800
+    - POPTR_015G041000
+    - POPTR_015G105000
+    - POPTR_018G062400
+    - POPTR_018G107800
+    - POPTR_019G045900
+  evidence:
+  - reference: PMID:29519917
+    reference_title: Photoperiodic control of seasonal growth is mediated by ABA acting on cell-cell communication.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: GO:0033993 (response to lipid) is a companion GO-ChEBI roll-up artifact classifying sesquiterpenoid
+      ABA under CHEBI:lipid.
+  curator_note: Propagates to all 19 ABA-annotated poplar genes across all 4 variants (p_adj=5.93e-24).
+- term:
+    id: GO:0009739
+    label: response to gibberellin
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: false_association
+  evidence:
+  - reference: PMID:30150313
+    reference_title: A genetic network mediating the control of bud dormancy in poplar.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Gibberellin biosynthesis and response (GO:0009739) are repressed by SVL during autumn
+      endodormancy and define the contrasting POPTR_SPRING_BUD_FLUSH_CHILLING pole of SERIES:POPTR_SEASONAL_BUD_DORMANCY.
+  curator_note: Contrasting pole trap against POPTR_SPRING_BUD_FLUSH_CHILLING in SERIES:POPTR_SEASONAL_BUD_DORMANCY.

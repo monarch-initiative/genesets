@@ -1,0 +1,421 @@
+gene_set_id: LIT:ARATH_LEAF_GUARD_CELL
+gene_set_name: ARATH_LEAF_GUARD_CELL
+collection: LIT:PLANT_CELL_TYPE
+taxon:
+  id: NCBITaxon:3702
+  label: Arabidopsis thaliana
+direction: UP
+series: SERIES:ARATH_LEAF_CELL_TYPES
+series_role: guard_cell
+n_genes: 29
+description: Stomatal lineage specification and mature guard cell aperture control program in Arabidopsis
+  thaliana leaves (Bauer et al. 2013 Curr Biol PMID:23219726; Lopez-Anido et al. 2021 Dev Cell PMID:33823130;
+  Kim et al. 2021 Plant Cell PMID:33793811). Contrasts with ARATH_LEAF_MESOPHYLL in SERIES:ARATH_LEAF_CELL_TYPES.
+  Includes master bHLH/MYB stomatal transcription factors (SPCH, MUTE, FAMA, SCRM/ICE1, SCRM2, FLP, MYB88,MYB60),
+  epidermal patterning peptides and receptors (EPF1, EPF2, TMM, ERL1), and guard-cell ion channels, CO2/ABA/blue-light
+  signaling kinases, and turgor effectors (SLAC1, SLAH3, QUAC1/ALMT12, KAT1, KAT2, GORK, AKT1, AHA1, AHA2,
+  OST1, HT1, BLUS1, PHOT1, PHOT2, GCA2, RBOHD, RBOHF).
+contexts:
+- term:
+    id: PO:0000293
+    label: guard cell
+  context_type: cell_type
+  role_note: Paired kidney-shaped epidermal cells bordering the stomatal pore that regulate gas exchange
+    and transpiration.
+- term:
+    id: PO:0025034
+    label: leaf
+  context_type: anatomical_structure
+  role_note: Photosynthetic aerial organ whose epidermis contains stomata.
+associations:
+- term:
+    id: GO:0010374
+    label: stomatal complex development
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.0941e-21
+    p_adjust: 2.74e-16
+    overlap: 11
+    query_size: 29
+    target_size: 69
+    overlap_genes:
+    - EPF1
+    - EPF2
+    - ERECTA
+    - ERL1
+    - ERL2
+    - FAMA
+    - MUTE
+    - SCRM
+    - SCRM2
+    - SPCH
+    - TMM
+  evidence:
+  - reference: PMID:33823130
+    reference_title: Single-cell resolution of lineage trajectories in the Arabidopsis stomatal lineage
+      and developing leaf.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Sequential bHLH transcription factors SPCH, MUTE, and FAMA together with SCRM/SCRM2 and
+      EPF1/EPF2-TMM-ERL1 signaling direct stomatal complex development.
+  curator_note: Core developmental program carried by 11/29 set members (EPF1, EPF2, ERL1, FAMA, FLP,
+    MUTE, MYB88, SCRM, SCRM2, SPCH, TMM). Recovered across all 4 variants including IBA-only.
+- term:
+    id: GO:0010052
+    label: guard cell differentiation
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 8.4798e-11
+    p_adjust: 1.1095e-05
+    overlap: 5
+    query_size: 29
+    target_size: 24
+    overlap_genes:
+    - EPF1
+    - EPF2
+    - FAMA
+    - MUTE
+    - SPCH
+  evidence:
+  - reference: PMID:33823130
+    reference_title: Single-cell resolution of lineage trajectories in the Arabidopsis stomatal lineage
+      and developing leaf.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: MUTE, FAMA, FLP, and MYB88 control the symmetric division of guard mother cells and terminal
+      differentiation of guard cells.
+  curator_note: Terminal cell-type differentiation process carried by 10/29 members. Recovered in all
+    and iba_iea, absent in IBA-only.
+- term:
+    id: GO:0010118
+    label: stomatal movement
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.0523e-15
+    p_adjust: 3.9938e-10
+    overlap: 8
+    query_size: 29
+    target_size: 57
+    overlap_genes:
+    - AHA1
+    - ALMT12
+    - GORK
+    - KAT2
+    - MYB60
+    - PHOT2
+    - SLAC1
+    - SRK2E
+  evidence:
+  - reference: PMID:23219726
+    reference_title: The guard cell-specific kinase OST1 and anion channel SLAC1 control stomatal aperture.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Mature guard cells regulate stomatal pore aperture through reversible turgor changes
+      driven by SLAC1, SLAH3, QUAC1, KAT1, KAT2, GORK, AHA1, OST1, HT1, and BLUS1.
+  curator_note: Signature physiological function of mature guard cells carried by 20/29 members. Enriched
+    in all (p_adj=2.66e-35), absent in iba_iea and iba because physiological stomatal movement annotations
+    rely on experimental mutant assays rather than InterPro/PANTHER homology rules.
+- term:
+    id: GO:0010119
+    label: regulation of stomatal movement
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.1685e-18
+    p_adjust: 1.5289e-13
+    overlap: 11
+    query_size: 29
+    target_size: 119
+    overlap_genes:
+    - AHA1
+    - AKT1
+    - BCA1
+    - BCA4
+    - BLUS1
+    - GORK
+    - HT1
+    - MYB61
+    - PHOT1
+    - SLAC1
+    - SRK2E
+  evidence:
+  - reference: PMID:23219726
+    reference_title: The guard cell-specific kinase OST1 and anion channel SLAC1 control stomatal aperture.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: OST1, HT1, BLUS1, PHOT1/2, MYB60, and guard-cell channels integrate light, CO2, and ABA
+      signals to regulate stomatal movement.
+  curator_note: Mechanistic signaling control over stomatal aperture (14/29 members).
+- term:
+    id: GO:0090333
+    label: regulation of stomatal closure
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.2661e-07
+    p_adjust: 0.02965
+    overlap: 4
+    query_size: 29
+    target_size: 43
+    overlap_genes:
+    - AKT1
+    - HT1
+    - SLAC1
+    - SRK2E
+  evidence:
+  - reference: PMID:23219726
+    reference_title: The guard cell-specific kinase OST1 and anion channel SLAC1 control stomatal aperture.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: OST1 phosphorylates SLAC1, SLAH3, QUAC1, and RBOHF to trigger anion efflux, membrane
+      depolarization, K+ efflux via GORK, and stomatal closure.
+  curator_note: Dissects the closing branch of stomatal regulation (9/29 members).
+- term:
+    id: GO:1902456
+    label: regulation of stomatal opening
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.1198e-08
+    p_adjust: 0.0014652
+    overlap: 4
+    query_size: 29
+    target_size: 21
+    overlap_genes:
+    - BLUS1
+    - GORK
+    - SLAC1
+    - SRK2E
+  evidence:
+  - reference: PMID:23219726
+    reference_title: The guard cell-specific kinase OST1 and anion channel SLAC1 control stomatal aperture.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Blue-light photoreceptors PHOT1/PHOT2 activate BLUS1 and plasma-membrane H+-ATPases AHA1/AHA2,
+      driving K+ uptake through KAT1/KAT2/AKT1 and stomatal opening.
+  curator_note: 'Dissects the blue-light-driven opening branch of stomatal regulation (6/29 members: AHA1,
+    AHA2, BLUS1, HT1, PHOT1, PHOT2).'
+- term:
+    id: GO:0010037
+    label: response to carbon dioxide
+  aspect: biological_process
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.3298e-11
+    p_adjust: 3.0484e-06
+    overlap: 5
+    query_size: 29
+    target_size: 19
+    overlap_genes:
+    - BCA1
+    - BCA4
+    - HT1
+    - SLAC1
+    - SRK2E
+  evidence:
+  - reference: PMID:23219726
+    reference_title: The guard cell-specific kinase OST1 and anion channel SLAC1 control stomatal aperture.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: The guard-cell kinase HT1, OST1, SLAC1, and GCA2 mediate stomatal closure in response
+      to elevated intercellular CO2.
+  curator_note: Supporting environmental sensing pathway specific to guard cells (8/29 members).
+- term:
+    id: GO:0005249
+    label: voltage-gated potassium channel activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.654e-08
+    p_adjust: 0.0021642
+    overlap: 4
+    query_size: 29
+    target_size: 23
+    overlap_genes:
+    - AKT1
+    - GORK
+    - KAT1
+    - KAT2
+  evidence:
+  - reference: PMID:23219726
+    reference_title: The guard cell-specific kinase OST1 and anion channel SLAC1 control stomatal aperture.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Shaker-family voltage-gated potassium channels KAT1, KAT2, AKT1 (inward-rectifying),
+      and GORK (outward-rectifying) mediate K+ fluxes across the guard cell plasma membrane.
+  curator_note: Core biophysical ion-transport activity enabling guard cell turgor osmoregulation (4/29
+    members; recovered across all variants including IBA-only).
+- term:
+    id: GO:0005886
+    label: plasma membrane
+  aspect: cellular_component
+  category: core_component
+  confidence: high
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.301e-10
+    p_adjust: 6.936e-05
+    overlap: 19
+    query_size: 29
+    target_size: 3401
+    overlap_genes:
+    - AHA1
+    - AHA2
+    - AKT1
+    - ALMT12
+    - BCA1
+    - BCA4
+    - ERECTA
+    - ERL1
+    - ERL2
+    - GORK
+    - HT1
+    - KAT1
+    - KAT2
+    - PHOT1
+    - PHOT2
+    - SLAC1
+    - SLAH3
+    - SRK2E
+    - TMM
+  evidence:
+  - reference: PMID:23219726
+    reference_title: The guard cell-specific kinase OST1 and anion channel SLAC1 control stomatal aperture.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Guard cell ion channels (SLAC1, SLAH3, QUAC1, KAT1, KAT2, GORK, AKT1), H+-ATPases (AHA1,
+      AHA2), NADPH oxidases (RBOHD, RBOHF), and stomatal receptors (TMM, ERL1) operate at the plasma membrane.
+  curator_note: Primary membrane compartment where guard-cell osmoregulatory transport and peptide perception
+    occur (18/29 members).
+- term:
+    id: GO:0005515
+    label: protein binding
+  aspect: molecular_function
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.3893e-11
+    p_adjust: 3.1263e-06
+    overlap: 24
+    query_size: 29
+    target_size: 5483
+    overlap_genes:
+    - AHA1
+    - AHA2
+    - AKT1
+    - BCA4
+    - BLUS1
+    - EPF2
+    - ERECTA
+    - ERL1
+    - ERL2
+    - FAMA
+    - GORK
+    - HT1
+    - KAT1
+    - KAT2
+    - MUTE
+    - PHOT1
+    - PHOT2
+    - SCRM
+    - SCRM2
+    - SLAC1
+    - SLAH3
+    - SPCH
+    - SRK2E
+    - TMM
+  evidence:
+  - reference: PMID:33823130
+    reference_title: Single-cell resolution of lineage trajectories in the Arabidopsis stomatal lineage
+      and developing leaf.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Generic molecular-function parent across bHLH heterodimers and kinase-channel complexes.
+  curator_note: Broad molecular-function roll-up (21/29 members).
+- term:
+    id: GO:0019253
+    label: reductive pentose-phosphate cycle
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: false_association
+  evidence:
+  - reference: PMID:33793811
+    reference_title: Single-cell RNA-seq analysis in Arabidopsis leaf tissues reveals distinct cell-type
+      programs.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Bulk photosynthetic Calvin-Benson-Bassham carbon assimilation (GO:0019253, reductive
+      pentose-phosphate cycle) defines the contrasting ARATH_LEAF_MESOPHYLL pole of SERIES:ARATH_LEAF_CELL_TYPES.
+  curator_note: Contrasting pole trap against ARATH_LEAF_MESOPHYLL in SERIES:ARATH_LEAF_CELL_TYPES.

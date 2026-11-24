@@ -1,0 +1,135 @@
+gene_set_id: LIT:POECILIID_PLACENTATION_YOLK_SAC_GENES
+gene_set_name: POECILIID_PLACENTATION_YOLK_SAC_GENES
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:8079
+  label: Poeciliidae
+direction: NA
+series: SERIES:POECILIID_PLACENTA_INTERFACE
+series_role: embryonic_yolk_sac_cell
+n_genes: 19
+description: >-
+  Literature-defined evolutionary-convergence panel: the embryonic-side genes
+  the authors highlight in Fig. 6D of Safian, Kraunsoe et al. (bioRxiv 2026,
+  doi:10.64898/2026.11.11.765921; no PMID yet) as carrying two or more kinds of
+  placentation-associated molecular change in the yolk sac cell: differential
+  expression, positive selection, placental-specific parallel substitution, or
+  marker status across P. bifurca, P. prolifica, P. turneri and H. formosa. A
+  single yolk sac cell type forms the embryonic side of the placenta in all five
+  independent poeciliid placenta origins. Unlike the maternal LFC, it changed
+  little in expression (58-85 DEGs per species) but is enriched for recently
+  duplicated, poeciliid-specific genes, which the 1:1-ortholog analyses behind
+  this panel cannot see. MEMBERSHIP CAPTURE: 21 labels transcribed from the
+  figure, grouped there as immune regulation, cytoskeleton organization,
+  metabolic regulation, vesicle, transcription regulation and signalling, and
+  transporters/channels. "slc29a" is read as slc29a1a, as on the maternal side.
+  Mapping to human by scripts/capture_poeciliid_placenta_sets.py: 14 by ZFIN
+  orthology and 5 by upper-cased zebrafish symbol, giving 19 HGNC symbols.
+  irfg3 (no ZFIN human ortholog) and g1066 (unnamed) are dropped. Eleven of the 19
+  are shared with the maternal panel (LIT:POECILIID_PLACENTATION_LFC_GENES): the
+  transporters SLC29A1, SLC1A3, PIEZO2, SLC26A6 and XKRX, the tetraspanins CD63
+  and CD9, and RHOC, FUT9, TNFRSF9 and VRK2. The paper's point is that both
+  halves of the placenta changed the same kinds of genes. The two poles of this
+  series therefore contrast mainly in what each lacks: the maternal panel's
+  steroid-receptor, lipid-enzyme and basolateral arm is absent here, and this
+  panel adds the amino-acid exchanger SLC3A2, SLC24A1, NOS1, HSD11B2, ESYT2,
+  TBX3, MACROD2 and ALCAM.
+  SEED_SOURCE SEMANTICS: `enrichment_recovered` means genesets-rs (Fisher,
+  Bonferroni < 0.05, GOA background) recovered the term for this membership;
+  `curator_added` means it did not.
+contexts:
+  - term:
+      id: UBERON:0001040
+      label: yolk sac
+    context_type: anatomical_structure
+    role_note: >-
+      The yolk-pericardial sac of the poeciliid embryo, whose membrane is the
+      embryonic component of the placenta and is highly vascularized.
+  - term:
+      id: UBERON:0001987
+      label: placenta
+    context_type: anatomical_structure
+    role_note: >-
+      Embryonic side of the poeciliid placenta across four independent origins.
+associations:
+  - term:
+      id: GO:0055085
+      label: transmembrane transport
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The defining function of an absorptive yolk sac taking up maternally
+      supplied nutrients, and the panel's largest group: SLC29A1 (nucleosides),
+      SLC3A2 and SLC1A3 (amino acids), SLC24A1 and SLC26A6 (ions), PIEZO2 and
+      XKRX. Six of 19 carry the annotation (raw p 4e-5). With 19 genes and
+      several thousand GO tests this misses Bonferroni, hence curator_added
+      with annotation_supported: carriers present and annotated, power lacking.
+      Confirmatory: transport is what a nutrient-uptake epithelium is expected
+      to do.
+  - term:
+      id: GO:0005886
+      label: plasma membrane
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      14 of 19 members (Bonferroni 3e-3): ALCAM, CD63, CD9, ESYT2, NOS1, PIEZO2,
+      RHOC, SLC1A3, SLC24A1, SLC26A6, SLC29A1, SLC3A2, TNFRSF9 and XKRX. Broad,
+      but it is the panel's correct component: an epithelial surface panel.
+      Confirmatory.
+  - term:
+      id: GO:0006865
+      label: amino acid transport
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      SLC3A2 (the heavy chain of the LAT1/LAT2 system L exchangers) and SLC1A3
+      (an excitatory amino-acid transporter) carry it (raw p 2e-3). SLC3A2 is
+      present only on this, embryonic, side of Fig. 6D and is the classic
+      mammalian placental amino-acid transporter subunit. Its recurrence in fish
+      placentas is the kind of specific, non-entailed convergence the series is
+      meant to test. Mechanistic, supporting, medium confidence (two genes).
+  - term:
+      id: GO:0003013
+      label: circulatory system process
+    aspect: biological_process
+    category: marker_driven_plausible
+    confidence: low
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The only process term recovered (6 of 19, Bonferroni 6e-3): HSD11B2, NOS1,
+      PIEZO2, SLC1A3, SLC29A1 and SLC3A2. Plausible in that the yolk sac
+      membrane is densely vascularized (Fig. 1D), but the carriers are
+      annotated through mammalian vascular-tone and renal physiology (NOS1,
+      HSD11B2 and PIEZO2 baroreception), not through yolk sac circulation. The
+      term is driven by a few multi-annotated markers rather than describing
+      the set.
+  - term:
+      id: GO:0031410
+      label: cytoplasmic vesicle
+    aspect: cellular_component
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The panel's "Vesicle" group (ESYT2, CD63, CD9), shared in kind with the
+      maternal side. Five members carry the annotation (raw p 8e-3). Supporting.

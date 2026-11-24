@@ -1,0 +1,359 @@
+gene_set_id: LIT:THLAR_GLUCOSINOLATE_BIOSYNTHESIS
+gene_set_name: THLAR_GLUCOSINOLATE_BIOSYNTHESIS
+collection: LIT:DOE_BER_BIOENERGY
+taxon:
+  id: NCBITaxon:13288
+  label: Thlaspi arvense
+direction: UP
+series: SERIES:THLAR_SEED_DOMESTICATION
+series_role: glucosinolate_defense
+n_genes: 30
+description: The Thlaspi arvense (field pennycress) aliphatic and indolic glucosinolate (sinigrin) core
+  biosynthesis, sulfotransferase, and myrosinase-ESP glucosinolate-mustard oil bomb hydrolysis pathway
+  (Dorn et al. 2015 Plant J PMID:25641109; Chopra et al. 2020 Plant Direct PMID:32128489; Nunn et al.
+  2022 Nat Commun PMID:35610221). Contrasts with THLAR_SEED_ERUCIC_ACID_OIL in SERIES:THLAR_SEED_DOMESTICATION.
+  Wild pennycress seeds accumulate high levels of the allyl-glucosinolate sinigrin (~100 umol/g), which
+  renders defatted seed meal pungent and goitrogenic to livestock; knocking out glucosinolate biosynthesis/transport
+  genes alongside FAE1 yields 'double-low' canola-quality pennycress.
+contexts:
+- term:
+    id: CHEBI:24279
+    label: glucosinolate
+  context_type: chemical_perturbagen
+  role_note: Sulfur- and nitrogen-containing Brassicaceae specialized defense metabolites (predominantly
+    sinigrin in Thlaspi arvense seeds) targeted for reduction in domesticated meal.
+- term:
+    id: PO:0009010
+    label: seed
+  context_type: anatomical_structure
+  role_note: Pennycress seed meal sink where glucosinolates accumulate.
+associations:
+- term:
+    id: GO:0019760
+    label: glucosinolate metabolic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 7.518e-35
+    p_adjust: 1.4698e-30
+    overlap: 15
+    query_size: 30
+    target_size: 36
+    overlap_genes:
+    - TAV2_LOCUS10429
+    - TAV2_LOCUS10956
+    - TAV2_LOCUS11412
+    - TAV2_LOCUS13090
+    - TAV2_LOCUS228
+    - TAV2_LOCUS3008
+    - TAV2_LOCUS3885
+    - TAV2_LOCUS3990
+    - TAV2_LOCUS5368
+    - TAV2_LOCUS671
+    - TAV2_LOCUS676
+    - TAV2_LOCUS677
+    - TAV2_LOCUS6842
+    - TAV2_LOCUS9487
+    - TAV2_LOCUS9988
+  evidence:
+  - reference: PMID:35610221
+    reference_title: Chromosome-level reference genome of Thlaspi arvense (field pennycress).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: All 30 pennycress genes in the set execute glucosinolate biosynthesis, side-chain modification,
+      sulfation, or myrosinase/ESP hydrolysis.
+  curator_note: Core specialized metabolic pathway carried by 24/30 set members. Recovered in all and
+    iba_iea, 0 in IBA-only because Thlaspi arvense lacks PANTHER IBA coverage in EBI GOA.
+- term:
+    id: GO:0019761
+    label: glucosinolate biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.5667e-09
+    p_adjust: 6.9733e-05
+    overlap: 3
+    query_size: 30
+    target_size: 3
+    overlap_genes:
+    - TAV2_LOCUS13090
+    - TAV2_LOCUS3008
+    - TAV2_LOCUS6842
+  evidence:
+  - reference: PMID:32128489
+    reference_title: Identification and characterization of Thlaspi arvense mutants with altered seed
+      oil composition.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: MAM1/3, CYP79F1/B2, CYP83A1/B1, SUR1, UGT74B1, SOT16/17/18, and AOP2/FMOGS-OX paralogs
+      synthesize aliphatic (sinigrin) and indolic glucosinolates.
+  curator_note: Core anabolic branch of the glucosinolate pathway (10/30 members; recovered in all and
+    iba_iea).
+- term:
+    id: GO:0019762
+    label: glucosinolate catabolic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.9354e-08
+    p_adjust: 0.0003784
+    overlap: 4
+    query_size: 30
+    target_size: 19
+    overlap_genes:
+    - TAV2_LOCUS10429
+    - TAV2_LOCUS228
+    - TAV2_LOCUS3990
+    - TAV2_LOCUS9988
+  evidence:
+  - reference: PMID:35610221
+    reference_title: Chromosome-level reference genome of Thlaspi arvense (field pennycress).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Fourteen thioglucoside glucohydrolase (myrosinase, TGG) and epithiospecifier protein
+      (ESP/NSP) paralogs hydrolyze glucosinolates upon tissue damage ('mustard oil bomb').
+  curator_note: Mechanistically resolves the catabolic bioactivation wing of the glucosinolate defense
+    system (14/30 members; recovered in all and iba_iea).
+- term:
+    id: GO:0080028
+    label: nitrile biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.2649e-22
+    p_adjust: 2.473e-18
+    overlap: 8
+    query_size: 30
+    target_size: 9
+    overlap_genes:
+    - TAV2_LOCUS10956
+    - TAV2_LOCUS11412
+    - TAV2_LOCUS3885
+    - TAV2_LOCUS5368
+    - TAV2_LOCUS671
+    - TAV2_LOCUS676
+    - TAV2_LOCUS677
+    - TAV2_LOCUS9487
+  evidence:
+  - reference: PMID:35610221
+    reference_title: Chromosome-level reference genome of Thlaspi arvense (field pennycress).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Five nitrile-specifier / epithiospecifier protein (NSP/ESP) paralogs redirect myrosinase-generated
+      aglycones into simple nitriles and epithionitriles.
+  curator_note: Resolves product-specifier diversion of glucosinolate hydrolysis toward nitriles (5/30
+    members; recovered in all and iba_iea).
+- term:
+    id: GO:0008146
+    label: sulfotransferase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 9.3913e-14
+    p_adjust: 1.8361e-09
+    overlap: 7
+    query_size: 30
+    target_size: 36
+    overlap_genes:
+    - TAV2_LOCUS21
+    - TAV2_LOCUS2567
+    - TAV2_LOCUS2616
+    - TAV2_LOCUS4137
+    - TAV2_LOCUS4138
+    - TAV2_LOCUS415
+    - TAV2_LOCUS772
+  evidence:
+  - reference: PMID:25641109
+    reference_title: De novo assembly of the pennycress (Thlaspi arvense) transcriptome provides tools
+      for the development of a biofuel and industrial oilseed crop.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Eight desulfoglucosinolate sulfotransferase (SOT16/17/18) paralogs transfer a sulfate
+      group from PAPS to desulfoglucosinolates in the final step of core glucosinolate synthesis.
+  curator_note: Terminal sulfation enzymatic activity of glucosinolate synthesis (8/30 members; recovered
+    in all and iba_iea).
+- term:
+    id: GO:0008422
+    label: beta-glucosidase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 9.7526e-17
+    p_adjust: 1.9067e-12
+    overlap: 11
+    query_size: 30
+    target_size: 138
+    overlap_genes:
+    - TAV2_LOCUS10429
+    - TAV2_LOCUS1558
+    - TAV2_LOCUS228
+    - TAV2_LOCUS3089
+    - TAV2_LOCUS3697
+    - TAV2_LOCUS3863
+    - TAV2_LOCUS3990
+    - TAV2_LOCUS5258
+    - TAV2_LOCUS5741
+    - TAV2_LOCUS8000
+    - TAV2_LOCUS9988
+  evidence:
+  - reference: PMID:35610221
+    reference_title: Chromosome-level reference genome of Thlaspi arvense (field pennycress).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Nine pennycress myrosinase (TGG) paralogs belong to glycoside hydrolase family 1 and
+      cleave the S-glycosidic bond of glucosinolates.
+  curator_note: Enzymatic hydrolase activity driving glucosinolate breakdown (9/30 members; recovered
+    in all and iba_iea).
+- term:
+    id: GO:0080027
+    label: response to herbivore
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: mechanistic
+  evidence:
+  - reference: PMID:35610221
+    reference_title: Chromosome-level reference genome of Thlaspi arvense (field pennycress).
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: The glucosinolate-myrosinase-ESP system is the primary chemical defense response to insect
+      herbivores (GO:0080027) in Brassicaceae.
+  curator_note: Because Thlaspi arvense is annotated solely by automated InterPro/UniRule IEA in EBI GOA,
+    its glucosinolate and myrosinase genes receive metabolic/catalytic terms but 0 annotations to the
+    ecological function GO:0080027 (response to herbivore).
+- term:
+    id: GO:0044281
+    label: small molecule metabolic process
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.5101e-11
+    p_adjust: 2.9523e-07
+    overlap: 15
+    query_size: 30
+    target_size: 1089
+    overlap_genes:
+    - TAV2_LOCUS10429
+    - TAV2_LOCUS10956
+    - TAV2_LOCUS11412
+    - TAV2_LOCUS13090
+    - TAV2_LOCUS228
+    - TAV2_LOCUS3008
+    - TAV2_LOCUS3885
+    - TAV2_LOCUS3990
+    - TAV2_LOCUS5368
+    - TAV2_LOCUS671
+    - TAV2_LOCUS676
+    - TAV2_LOCUS677
+    - TAV2_LOCUS6842
+    - TAV2_LOCUS9487
+    - TAV2_LOCUS9988
+  evidence:
+  - reference: PMID:25641109
+    reference_title: De novo assembly of the pennycress (Thlaspi arvense) transcriptome provides tools
+      for the development of a biofuel and industrial oilseed crop.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Broad metabolic ancestor of glucosinolate metabolism.
+  curator_note: High-level small molecule metabolic process roll-up (24/30 members).
+- term:
+    id: GO:0009651
+    label: response to salt stress
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.8919e-06
+    p_adjust: 0.036989
+    overlap: 4
+    query_size: 30
+    target_size: 57
+    overlap_genes:
+    - TAV2_LOCUS10429
+    - TAV2_LOCUS228
+    - TAV2_LOCUS3990
+    - TAV2_LOCUS9988
+  evidence:
+  - reference: PMID:35610221
+    reference_title: Chromosome-level reference genome of Thlaspi arvense (field pennycress).
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Pennycress myrosinases (TGGs) hydrolyze glucosinolates for anti-herbivore defense rather
+      than mediating abiotic salt stress signaling; UniRule IEA projects GO:0009651 (response to salt
+      stress) onto all 9 GH1 myrosinase paralogs.
+  curator_note: UniRule/InterPro IEA over-projection onto Brassicaceae GH1 beta-glucosidases/myrosinases
+    (9/30 genes, p_adj=2.66e-12 in all and iba_iea).
+- term:
+    id: GO:0019432
+    label: triglyceride biosynthetic process
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: false_association
+  evidence:
+  - reference: PMID:32128489
+    reference_title: Identification and characterization of Thlaspi arvense mutants with altered seed
+      oil composition.
+    supports: REFUTE
+    evidence_source: MODEL_ORGANISM
+    explanation: Triacylglycerol storage oil biosynthesis (GO:0019432) defines the contrasting THLAR_SEED_ERUCIC_ACID_OIL
+      pole of SERIES:THLAR_SEED_DOMESTICATION.
+  curator_note: Contrasting pole trap against THLAR_SEED_ERUCIC_ACID_OIL in SERIES:THLAR_SEED_DOMESTICATION.

@@ -61,6 +61,7 @@ class TermAssociation:
     insight: str | None = None
     enrichment_stats: EnrichmentStats | None = None
     evidence: list[EvidenceItem] = field(default_factory=list)
+    artifact_cause: str | None = None
     curator_note: str | None = None
 
 
@@ -76,6 +77,18 @@ class RankedSignature:
     source_detail: str | None = None
     download_url: str | None = None
     score_description: str | None = None
+
+
+@dataclass
+class HitAdjudication:
+    pooled_variants: list[str] = field(default_factory=list)
+    method: str | None = None
+    p_adjust_method: str | None = None
+    max_p_adjust: float | None = None
+    correction_scope: str | None = None
+    annotation_release: str | None = None
+    adjudicated_on: str | None = None
+    note: str | None = None
 
 
 @dataclass
@@ -135,6 +148,7 @@ class GeneSetInterpretation:
     description: str | None = None
     contexts: list[BiologicalContext] = field(default_factory=list)
     associations: list[TermAssociation] = field(default_factory=list)
+    hit_adjudication: HitAdjudication | None = None
     published_analyses: list[PublishedAnalysis] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
@@ -199,6 +213,11 @@ def from_dict(data: dict[str, Any]) -> GeneSetInterpretation:
         data["ranking"] = RankedSignature(**data["ranking"])
     data["contexts"] = [_context(c) for c in data.get("contexts", [])]
     data["associations"] = [_association(a) for a in data.get("associations", [])]
+    if data.get("hit_adjudication") is not None:
+        adj = dict(data["hit_adjudication"])
+        if adj.get("adjudicated_on") is not None:
+            adj["adjudicated_on"] = str(adj["adjudicated_on"])
+        data["hit_adjudication"] = HitAdjudication(**adj)
     data["published_analyses"] = [
         _published_analysis(p) for p in data.get("published_analyses", [])
     ]

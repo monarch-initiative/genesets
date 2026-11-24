@@ -102,27 +102,32 @@ associations:
       the defining effector function the set omits. This is the headline honest
       call for this signature.
   - term:
-      id: GO:0015874
-      label: norepinephrine transport
+      id: GO:0051620
+      label: norepinephrine uptake
     aspect: biological_process
     category: supporting_process
     confidence: high
     specificity: cell_type_specific
-    seed_source: enrichment_recovered
+    seed_source: curator_added
     recovery_status: annotation_supported
     insight: confirmatory
     curator_note: >-
       SLC6A2 (the noradrenaline / norepinephrine transporter, NET) is the single
       catecholamine-handling gene present in this signature and is directly
-      annotated to norepinephrine transport in GOA-human, making this
-      annotation_supported. It mediates reuptake / recapture of noradrenaline
+      annotated (IDA) to norepinephrine uptake in GOA-human, making this
+      annotation_supported. (Migrated 2026-11-14 from the grouping term
+      GO:0015874 norepinephrine transport, which GO obsoleted without a
+      replacement, go-ontology#31143; uptake is the mechanism-specific child that
+      matches SLC6A2's reuptake function. See curation/ontology_migrations.tsv.) It mediates reuptake / recapture of noradrenaline
       rather than its synthesis. Categorised supporting_process: handling of an
       already-synthesised transmitter is a real enabling part of the noradrenergic
       phenotype, but it is downstream of, and secondary to, the defining
       catecholamine-biosynthesis function (which is itself a membership_gap here).
       Its presence without the synthesis enzymes is consistent with the
       developmental ordering of the noradrenergic effector program in this fetal
-      cell.
+      cell. Under the new term, as a single-gene hit (1 of 89 annotated members, raw p 0.016) it
+      does not pass Bonferroni, so the seed is now curator_added; category,
+      confidence and recovery_status are unchanged.
   - term:
       id: GO:0042583
       label: chromaffin granule

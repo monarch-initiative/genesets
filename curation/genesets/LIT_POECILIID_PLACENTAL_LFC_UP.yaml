@@ -1,0 +1,195 @@
+gene_set_id: LIT:POECILIID_PLACENTAL_LFC_UP
+gene_set_name: POECILIID_PLACENTAL_LFC_UP
+collection: LIT:DISEASE_ACTIVITY
+taxon:
+  id: NCBITaxon:8079
+  label: Poeciliidae
+direction: UP
+series: SERIES:POECILIID_PLACENTAL_LFC
+series_role: placental_up
+n_genes: 794
+description: >-
+  Literature-defined cell-state program: the genes UP-regulated in the late
+  follicle cell (LFC) of placental poeciliid fishes relative to each species'
+  non-placental sister, from Safian, Kraunsoe et al. (bioRxiv 2026,
+  doi:10.64898/2026.11.11.765921, Fig. 5A-B; no PMID yet). The LFC is a new
+  maternal cell type, absent from zebrafish and killifish, that replaces granulosa
+  cells around late-stage oocytes and embryos and forms the maternal follicular
+  wall. In every one of the five independent placenta origins studied, the
+  maternal side of the placenta is made of LFCs. For four placental/non-placental
+  pairs (P. turneri/P. gracilis, P. prolifica/P. infans, P. bifurca/P. picta,
+  H. formosa/B. rhabdophora) the authors called snRNA-seq pseudobulk DEGs in LFCs
+  over 1:1 orthologs and polarized each change with a third, non-placental
+  outgroup. This set is the UNION over the four placental lineages of genes whose
+  change was polarized to the placental species and is upward. MEMBERSHIP
+  CAPTURE: rows with `lineage` equal to the placental species and
+  `direction: up` in data/reference/rna/DEGs/*_LFC.csv of
+  github.com/cardosomoreiralab/fish-placentas-2026 (commit 96536fe). Per-lineage
+  counts reproduce Fig. 5A to within a few genes (turneri 168 vs 167 printed,
+  prolifica 219 vs 217, bifurca 368 vs 365, formosa 299 vs 299). The 1,054
+  lineage rows (974 distinct fish genes) were mapped to human orthologs by
+  scripts/capture_poeciliid_placenta_sets.py: 709 through ZFIN's curated
+  zebrafish-human orthology, 135 whose fish annotation already carries an HGNC
+  symbol, and 19 whose upper-cased zebrafish symbol is itself an approved HGNC
+  symbol. 191 rows have no ZFIN ortholog or no name (fish-specific paralogs such
+  as cldn3d and a2ml, si:/zgc: clones and unnamed models) and are dropped. The
+  result is 794 approved HGNC symbols (pinned 2026-10-06 release). Lineage
+  overlap is low (Fig. 5C), so this union mostly sums four lineage-specific
+  programs. That is the paper's point: the pathways converge, the genes mostly
+  do not. ANALYSIS CAVEAT: the true universe is the roughly 10,000 human
+  orthologs of fish genes testable as 1:1 orthologs. Against the genome-wide GOA
+  background the benchmark uses, expressed-gene annotation bias inflates broad
+  terms. Re-run against that ortholog universe, UP keeps extracellular vesicle,
+  ER lumen, apical plasma membrane, cell surface and extracellular matrix
+  (Bonferroni < 0.05). Lipid metabolic process no longer passes, consistent with
+  the authors' own lineage-level topGO, where it reaches BH < 0.05 only in
+  P. bifurca and P. prolifica and is absent in H. formosa (whose up genes enrich
+  for translation instead).
+  SEED_SOURCE SEMANTICS: `enrichment_recovered` means genesets-rs (Fisher,
+  Bonferroni < 0.05, GOA background) recovered the term for this membership;
+  `curator_added` means it did not.
+contexts:
+  - term:
+      id: UBERON:0001305
+      label: ovarian follicle
+    context_type: anatomical_structure
+    role_note: >-
+      The LFC is a somatic cell of the late ovarian follicle; poeciliid embryos
+      develop inside the follicle (intrafollicular gestation), so the follicle
+      wall is the maternal tissue of the placenta.
+  - term:
+      id: UBERON:0001987
+      label: placenta
+    context_type: anatomical_structure
+    role_note: >-
+      Contrast axis: placental vs non-placental (egg-retaining, lecithotrophic)
+      sister species, across four independent placenta origins.
+  - term:
+      id: CL:0000501
+      label: granulosa cell
+    context_type: cell_type
+    role_note: >-
+      Nearest CL term. The LFC itself has no CL class. The authors favour
+      terminal differentiation of granulosa cells into LFCs, with a gene
+      regulatory network (pgr, esr2a, wt1a, gata6) partly redeployed from the
+      germinal epithelium; LFCs lack the vitellogenesis and ovulation programs
+      of granulosa cells.
+associations:
+  - term:
+      id: GO:0006629
+      label: lipid metabolic process
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      The paper's headline functional convergence: in three of four placental
+      lineages the placental-specific LFC changes enrich for lipid metabolism
+      (Fig. 5B), matching earlier bulk RNA-seq of the maternal follicular wall
+      of P. prolifica and P. presidionis. 77 members carry the annotation
+      (Bonferroni 2e-16 against GOA), among them sterol synthesis (HMGCR,
+      MSMO1, HSD3B1), fatty-acid elongation and desaturation (ELOVL6, FADS2,
+      ACSL3, CPT2), sphingolipids (CERS3, CERS5, DEGS2, ASAH1, GBA1, GALC,
+      ORMDL1), lipoprotein handling (MTTP, LDLR, APOD, APOF, ANGPTL3) and
+      eicosanoids (PTGS2). Confidence medium. The enrichment does not survive
+      Bonferroni against the 1:1-ortholog universe, the term is also enriched
+      in the DN pole against GOA, and H. formosa contributes none of it.
+      Mechanistic: nothing in "genes up in a placental vs non-placental follicle
+      epithelium" entails lipid metabolism. It is the inference that the new
+      nutrient-exchange surface handles lipid.
+  - term:
+      id: GO:0031982
+      label: vesicle
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The second convergence the authors report: all four placental lineages
+      enrich for vesicle- and membrane-related components (Fig. 5B). They read
+      it as a recurrent feature of placental evolution, also seen in mammals and
+      placental rockfish. Recovered against GOA (255 members) and still
+      significant against the ortholog universe (Bonferroni 6e-4, extracellular
+      vesicle 2e-8), carried by CD63-type tetraspanins, CAV1/CAV3, the
+      ER-to-Golgi and endocytic machinery (LMAN2, TMED1, RER1, RAB11B, RAB15,
+      AP1M2, AP1S1), LDLR and TFRC. Confirmatory rather than mechanistic: a
+      broad compartment recovered for most secretory-epithelium signatures.
+  - term:
+      id: GO:0016324
+      label: apical plasma membrane
+    aspect: cellular_component
+    category: core_component
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      The epithelial barrier remodeled into an absorptive and secretory surface.
+      47 members (Bonferroni 2e-15 against GOA, 6e-4 against the ortholog
+      universe) are mostly solute carriers and ABC transporters of an apical
+      exchange membrane: amino-acid transporters (SLC3A1, SLC3A2, SLC6A18,
+      SLC6A19, SLC38A3, SLC1A1), nucleoside and monocarboxylate carriers
+      (SLC29A1, SLC5A8, SLC16A2), ABCB1, ABCB4, ABCC1 and ABCG8, with MTTP, CA4,
+      RHCG and the polarity proteins PARD6B, PRKCZ and CRB1. The paper's LFC
+      in non-placental species is defined by apical-basal polarity and tight
+      junctions (Fig. 3). This pole shows that polarity being loaded with
+      nutrient transporters in placental lineages. Mechanistic: transporter
+      loading of the apical face is not entailed by the set's construction.
+  - term:
+      id: GO:0005788
+      label: endoplasmic reticulum lumen
+    aspect: cellular_component
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      A secretory load signature: ER chaperones and folding enzymes (HSPA5,
+      HYOU1, PDIA3, PDIA6, P4HB, DNAJB9, DNAJB11, SDF2L1, MANF, ERO1B, CALU),
+      collagen processing (SERPINH1, COL4A1, COL6A2, COL12A1, COL18A1) and
+      MTTP, the ER-luminal lipid-transfer protein that loads apolipoprotein B
+      lipoproteins. Bonferroni 4e-21 against GOA and 1e-7 against the ortholog
+      universe, so it is one of the most robust signals in the pole. Supporting
+      rather than core: it is the machinery behind the secretory and vesicle
+      program, not the program itself.
+  - term:
+      id: GO:0006869
+      label: lipid transport
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The transfer arm of the lipid convergence: MTTP, LDLR, APOD, APOF, STRA6,
+      RBP5, FABP7, OSBPL5, VAPA, ABCG8, ABCB4 and ABCB1 (29 members, Bonferroni
+      2e-5 against GOA). Supporting, and confirmatory given the core lipid
+      metabolic process term. Like that term, it is also enriched in the DN
+      pole, so it does not by itself distinguish the poles.
+  - term:
+      id: GO:0005515
+      label: protein binding
+    aspect: molecular_function
+    category: nonspecific
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    curator_note: >-
+      The top hit by p-value (689 of 794 members, Bonferroni 1e-170) and
+      biologically empty. The fish-to-human orthology step keeps only
+      conserved, well-annotated genes, and the GOA background contains many
+      sparsely annotated genes, so annotation-density terms dominate. Recorded
+      as a negative control: a method that ranks this first has not adjusted
+      for the universe.

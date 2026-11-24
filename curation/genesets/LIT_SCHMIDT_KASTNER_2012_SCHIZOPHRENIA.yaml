@@ -1,0 +1,939 @@
+gene_set_id: LIT:SCHMIDT_KASTNER_2012_SCHIZOPHRENIA
+gene_set_name: SCHMIDT_KASTNER_2012_SCHIZOPHRENIA
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 77
+description: 'Schizophrenia candidate genes compiled from the association literature
+  by Schmidt-Kastner et al. (2012 Mol Psychiatry, PMID:22290124; 77 genes as used
+  by Ballouz et al.). A pre-GWAS candidate-gene list: many members (COMT, DISC1, DTNBP1,
+  NRG1, BDNF, AKT1) were chosen for prior biological hypotheses and several are no
+  longer considered robustly associated, so the list is biased toward well-studied,
+  heavily annotated genes. Ballouz, Pavlidis and Gillis (2017, PMID:28204549) found
+  enrichment related to stress and inflammation, and no significant terms at all after
+  multifunctionality correction, with synaptic transmission at the top of the corrected
+  ranking. Synaptic labels here are therefore medium or low confidence.'
+contexts:
+- term:
+    id: MONDO:0005090
+    label: schizophrenia
+  context_type: disease
+associations:
+- term:
+    id: GO:0065007
+    label: biological regulation
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0050789
+    label: regulation of biological process
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0050896
+    label: response to stimulus
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0051716
+    label: cellular response to stimulus
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0032501
+    label: multicellular organismal process
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0007154
+    label: cell communication
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0023052
+    label: signaling
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0032502
+    label: developmental process
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0007165
+    label: signal transduction
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0048856
+    label: anatomical structure development
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0160108
+    label: animal gross anatomical part developmental process
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0048518
+    label: positive regulation of biological process
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0010646
+    label: regulation of cell communication
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0023051
+    label: regulation of signaling
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0007275
+    label: multicellular organism development
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0065008
+    label: regulation of biological quality
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0048731
+    label: system development
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0051239
+    label: regulation of multicellular organismal process
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0051128
+    label: regulation of cellular component organization
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0048513
+    label: animal organ development
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0032879
+    label: regulation of localization
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0007166
+    label: cell surface receptor signaling pathway
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: medium
+  specificity: broadly_expressed
+  artifact_cause: overly_general_term
+  curator_note: 'Cell surface receptor signaling pathway: generic grouping of receptors
+    and ligands.'
+- term:
+    id: GO:0007399
+    label: nervous system development
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: low
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Nervous system development: reflects the neurodevelopmental hypotheses
+    the candidates were chosen under (DISC1, NRG1, ERBB4, RELN, BDNF). Ballouz et
+    al. note it as a top all-GO term that does not survive correction.'
+- term:
+    id: GO:0048468
+    label: cell development
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: medium
+  specificity: broadly_expressed
+  artifact_cause: overly_general_term
+  curator_note: 'Cell development: generic parent of neuron development.'
+- term:
+    id: GO:0051049
+    label: regulation of transport
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:2000026
+    label: regulation of multicellular organismal development
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0048699
+    label: generation of neurons
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: low
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Generation of neurons: as for nervous system development.'
+- term:
+    id: GO:0030182
+    label: neuron differentiation
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: low
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Neuron differentiation: one of the PAN-GO results in Feuermann et
+    al. 2025; carriers DISC1, NRG1, ERBB4, RELN, BDNF, NEUROG1, OLIG2.'
+- term:
+    id: GO:0007267
+    label: cell-cell signaling
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: medium
+  specificity: broadly_expressed
+  artifact_cause: overly_general_term
+  curator_note: 'Cell-cell signaling: generic parent of synaptic signaling.'
+- term:
+    id: GO:0022603
+    label: regulation of anatomical structure morphogenesis
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0048666
+    label: neuron development
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: low
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Neuron development: as for neuron differentiation.'
+- term:
+    id: GO:0060322
+    label: head development
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: nonspecific
+  confidence: medium
+  specificity: broadly_expressed
+  artifact_cause: overly_general_term
+  curator_note: 'Head development: a general anatomical parent of brain development.'
+- term:
+    id: GO:0099177
+    label: regulation of trans-synaptic signaling
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Regulation of trans-synaptic signaling: same carriers as modulation
+    of chemical synaptic transmission.'
+- term:
+    id: GO:0050804
+    label: modulation of chemical synaptic transmission
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: core_process
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Modulation of chemical synaptic transmission: BDNF, DTNBP1, GRIN2B,
+    GRM3, GRID1, NRG3, RELN, RGS4, PICK1. Glutamatergic modulation is the leading
+    candidate-era hypothesis and later GWAS support synaptic biology; medium confidence
+    because the list was built around it.'
+- term:
+    id: GO:0099536
+    label: synaptic signaling
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Synaptic signaling: parent of chemical synaptic transmission.'
+- term:
+    id: GO:0042391
+    label: regulation of membrane potential
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: marker_driven_plausible
+  confidence: medium
+  specificity: broadly_expressed
+  recovery_status: annotation_supported
+  curator_note: 'Regulation of membrane potential: receptor and channel genes (GABRA1,
+    GABRB2, GRIN2B, GRIK3, CHRNA7).'
+- term:
+    id: GO:0099537
+    label: trans-synaptic signaling
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Trans-synaptic signaling: parent of chemical synaptic transmission.'
+- term:
+    id: GO:0007268
+    label: chemical synaptic transmission
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: core_process
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Chemical synaptic transmission: GABRA1, GABRB2, GAD1, GRIN2B, GRIK3,
+    GRM3, GRID1, SNAP25, SYN2, CHRNA7, NPY. Ballouz et al. report synaptic transmission
+    at the top of the corrected (non-significant) ranking.'
+- term:
+    id: GO:0098916
+    label: anterograde trans-synaptic signaling
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Anterograde trans-synaptic signaling: same carriers as chemical synaptic
+    transmission.'
+- term:
+    id: GO:0050803
+    label: regulation of synapse structure or activity
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: low
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Regulation of synapse structure or activity: DISC1, DTNBP1, RELN,
+    BDNF, GRIN2B, ZDHHC8, RTN4, RTN4R.'
+- term:
+    id: GO:0050807
+    label: regulation of synapse organization
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: low
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Regulation of synapse organization: same carriers as regulation of
+    synapse structure or activity.'
+- term:
+    id: GO:0099175
+    label: regulation of postsynapse organization
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: low
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Regulation of postsynapse organization: DISC1, DTNBP1, GRIN2B, GRID1,
+    RELN, ZDHHC8.'
+- term:
+    id: GO:0060078
+    label: regulation of postsynaptic membrane potential
+  seed_source: enrichment_recovered
+  aspect: biological_process
+  category: supporting_process
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Regulation of postsynaptic membrane potential: GABRA1, GABRB2, GRIN2B,
+    GRIK3, GRID1, CHRNA7.'
+- term:
+    id: GO:0071944
+    label: cell periphery
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0005886
+    label: plasma membrane
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: Root-level or near-root term. True of most protein-coding genes; says
+    nothing about this set.
+- term:
+    id: GO:0042995
+    label: cell projection
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: nonspecific
+  confidence: medium
+  specificity: broadly_expressed
+  artifact_cause: overly_general_term
+  curator_note: 'Cell projection: generic parent of neuron projection.'
+- term:
+    id: GO:0120025
+    label: plasma membrane bounded cell projection
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: nonspecific
+  confidence: medium
+  specificity: broadly_expressed
+  artifact_cause: overly_general_term
+  curator_note: 'Plasma membrane bounded cell projection: generic parent of neuron
+    projection.'
+- term:
+    id: GO:0030054
+    label: cell junction
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: nonspecific
+  confidence: medium
+  specificity: broadly_expressed
+  artifact_cause: overly_general_term
+  curator_note: 'Cell junction: generic parent of synapse.'
+- term:
+    id: GO:0045202
+    label: synapse
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: core_component
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Synapse: 34 carriers including the glutamate and GABA receptor genes,
+    SNAP25, SYN2, DTNBP1, DISC1.'
+- term:
+    id: GO:0098590
+    label: plasma membrane region
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: nonspecific
+  confidence: medium
+  specificity: broadly_expressed
+  artifact_cause: overly_general_term
+  curator_note: 'Plasma membrane region: generic location.'
+- term:
+    id: GO:0043005
+    label: neuron projection
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: marker_driven_plausible
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  curator_note: 'Neuron projection: neuronal genes generally.'
+- term:
+    id: GO:0036477
+    label: somatodendritic compartment
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: marker_driven_plausible
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  curator_note: 'Somatodendritic compartment: neuronal genes generally.'
+- term:
+    id: GO:0098794
+    label: postsynapse
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: marker_driven_plausible
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  curator_note: 'Postsynapse: receptor and scaffold genes (GRIN2B, GRM3, GRID1, GABRA1,
+    DTNBP1, PICK1).'
+- term:
+    id: GO:0098793
+    label: presynapse
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: marker_driven_plausible
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  curator_note: 'Presynapse: SNAP25, SNAP29, SYN2, NPY, GAD1, CNR1.'
+- term:
+    id: GO:0097447
+    label: dendritic tree
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: marker_driven_plausible
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  curator_note: 'Dendritic tree: same carriers as dendrite.'
+- term:
+    id: GO:0030425
+    label: dendrite
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: marker_driven_plausible
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  curator_note: 'Dendrite: neuronal receptor and scaffold genes generally.'
+- term:
+    id: GO:0098978
+    label: glutamatergic synapse
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: core_component
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: 'Glutamatergic synapse: GRID1, GRIK3, GRM3, NRG1, NRG3, ERBB4, DISC1,
+    SNAP25, SYN2. The glutamate hypothesis is the main thread of the candidate list.'
+- term:
+    id: GO:0097060
+    label: synaptic membrane
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: marker_driven_plausible
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  curator_note: 'Synaptic membrane: receptor genes.'
+- term:
+    id: GO:0098984
+    label: neuron to neuron synapse
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: marker_driven_plausible
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  curator_note: 'Neuron to neuron synapse: parent of asymmetric synapse with the same
+    carriers.'
+- term:
+    id: GO:0099572
+    label: postsynaptic specialization
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: marker_driven_plausible
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  curator_note: 'Postsynaptic specialization: receptor and scaffold genes.'
+- term:
+    id: GO:0032279
+    label: asymmetric synapse
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: marker_driven_plausible
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  curator_note: 'Asymmetric synapse: excitatory postsynaptic genes.'
+- term:
+    id: GO:0014069
+    label: postsynaptic density
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: marker_driven_plausible
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  curator_note: 'Postsynaptic density: DISC1, DTNBP1, GRIN2B, GRM3, GRID1, PICK1,
+    ERBB4, NOS1.'
+- term:
+    id: GO:0098982
+    label: GABA-ergic synapse
+  seed_source: enrichment_recovered
+  aspect: cellular_component
+  category: marker_driven_plausible
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_supported
+  curator_note: 'GABA-ergic synapse: GABRA1, GABRB2, GAD1, ERBB4, NPY, CNR1.'
+- term:
+    id: GO:0005515
+    label: protein binding
+  seed_source: enrichment_recovered
+  aspect: molecular_function
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  curator_note: 'Protein binding (reached through descendant terms; direct annotations
+    are dropped): uninformative.'
+- term:
+    id: GO:0006954
+    label: inflammatory response
+  seed_source: curator_added
+  aspect: biological_process
+  category: false_association
+  confidence: medium
+  specificity: broadly_expressed
+  recovery_status: false_association
+  evidence:
+  - reference: PMID:28204549
+    reference_title: Using predictive specificity to determine when gene set analysis
+      is biologically meaningful.
+    supports: REFUTE
+    evidence_source: COMPUTATIONAL
+    snippet: related to stress and inflammation
+    explanation: Source authors' judgement under multifunctionality-corrected enrichment.
+  artifact_cause: multifunctional_gene_bias
+  curator_note: Ballouz et al. describe the uncorrected enrichment as related to stress
+    and inflammation and show it does not survive correction. Inflammatory response
+    stands for that group; carriers here are CHI3L1, RTN4, TNF (with IL10, LTA, IL3RA
+    nearby).
+- term:
+    id: GO:0006950
+    label: response to stress
+  seed_source: curator_added
+  aspect: biological_process
+  category: nonspecific
+  confidence: medium
+  specificity: ubiquitous
+  artifact_cause: multifunctional_gene_bias
+  curator_note: The stress half of Ballouz et al.'s stress-and-inflammation artefact;
+    21 carriers, many of them heavily annotated candidate genes (AKT1, NOS1, NRG1,
+    NPY, MTHFR).
+hit_adjudication:
+  pooled_variants:
+  - all
+  - iba
+  - iba_iea
+  - aigr_prune
+  - aigr_full
+  method: fisher
+  p_adjust_method: bonferroni
+  max_p_adjust: 0.05
+  correction_scope: 'matrix: every benchmark query set x GO terms (genesets-rs default)'
+  annotation_release: goa_human 2026-05-21T08:10; go-basic releases/2026-07-26
+  adjudicated_on: '2026-11-18'
+  note: 64 pooled hits, each labelled blind to which variant reported it; background
+    = UniProtKB proteins in goa_human, direct GO:0005515 dropped.
+published_analyses:
+  - reference: PMID:22290124
+    reference_title: "An environmental analysis of genes associated with schizophrenia: hypoxia and vascular factors as interacting elements in the neurodevelopmental model."
+    analysis_role: original
+    method: >-
+      Overlap of the candidate genes with genes from microarray studies of
+      the brain's ischemia-hypoxia response (IHR), plus four criteria applied
+      by hand to link each gene to ischemia-hypoxia or vascular factors.
+    annotation_source: Published IHR microarray gene lists (not GO)
+    membership_note: >-
+      The full candidate collection, of which 42 genes met the hypoxia or
+      vascular criteria.
+    summary: >-
+      A threefold enrichment of schizophrenia candidates among IHR genes,
+      taken as support for hypoxia and vascular factors in the
+      neurodevelopmental model. PAN-GO's supplement reports that the paper's
+      own GO enrichment had synaptic transmission and developmental process
+      as its two smallest p-values.
+    snippet: "Genes associated with schizophrenia showed a significant, threefold enrichment among genes that were derived from microarray studies of the ischemia-hypoxia response (IHR) in the brain."
+  - reference: PMID:28204549
+    reference_title: "Using predictive specificity to determine when gene set analysis is biologically meaningful."
+    analysis_role: reanalysis
+    tool: ErmineJ 3.0
+    method: >-
+      Over-representation (ErmineJ ORA), GO groups of 20-200 genes, hit list
+      scored with a dummy-score threshold.
+    annotation_source: GO (ErmineJ Generic_human_noParents annotations)
+    annotation_date: 2013-04
+    membership_size: 77
+    membership_note: >-
+      Identical to this entry's membership (the deposited
+      QuickList.schmidt-kastner-szgwas.txt), before HGNC normalization.
+    correction: >-
+      Benjamini-Hochberg FDR (p_adjust); multifunctionality-corrected FDR
+      (p_adjust_corrected)
+    significance_threshold: 0.05
+    n_significant: 83
+    significant_unit: GO groups (0 after multifunctionality correction)
+    data_url: http://home.pavlab.msl.ubc.ca/ermineJ/supplement-files/schmidt-kastner-szgwas.erminej.txt
+    summary: >-
+      Eighty-three groups before correction, mixing synaptic, developmental,
+      stress and inflammation terms; none after. Ballouz et al. use it to
+      show that a multifunctional list supports several narratives at once.
+    snippet: "Our re-analysis of this list shows it is also strongly multifunctionality-biased"
+    reported_terms:
+      - reported_id: GO:0050804
+        reported_label: regulation of synaptic transmission
+        term:
+          id: GO:0050804
+          label: modulation of chemical synaptic transmission
+        p_value: 5.82e-08
+        p_adjust: 1.319e-04
+        p_adjust_corrected: 0.806
+        significant: true
+        authors_stance: highlighted
+        note: At the top both before and after correction.
+      - reported_id: GO:0032496
+        reported_label: response to lipopolysaccharide
+        term:
+          id: GO:0032496
+          label: response to lipopolysaccharide
+        p_value: 1.837e-06
+        p_adjust: 1.041e-03
+        p_adjust_corrected: 1.0
+        significant: true
+        authors_stance: discounted
+      - reported_id: GO:0001764
+        reported_label: neuron migration
+        term:
+          id: GO:0001764
+          label: neuron migration
+        p_value: 3.667e-06
+        p_adjust: 1.385e-03
+        p_adjust_corrected: 0.451
+        significant: true
+        authors_stance: reported
+      - reported_id: GO:0050890
+        reported_label: cognition
+        term:
+          id: GO:0050890
+          label: cognition
+        p_value: 7.312e-06
+        p_adjust: 1.658e-03
+        p_adjust_corrected: 1.0
+        significant: true
+        authors_stance: reported
+      - reported_id: GO:0021987
+        reported_label: cerebral cortex development
+        term:
+          id: GO:0021987
+          label: cerebral cortex development
+        p_value: 7.896e-06
+        p_adjust: 1.627e-03
+        p_adjust_corrected: 0.368
+        significant: true
+        authors_stance: reported
+  - reference: PMID:40011791
+    reference_title: "A compendium of human gene functions derived from evolutionary modelling."
+    analysis_role: reanalysis
+    tool: PANTHER gene list analysis (functionome.geneontology.org)
+    method: Over-representation, GO biological process; related terms grouped
+    annotation_source: all GO annotations (experimental, computational and PAN-GO)
+    membership_size: 42
+    membership_note: >-
+      42 genes, matching Schmidt-Kastner's hypoxia- or vascular-linked subset
+      rather than this entry's 77 (the subset was not obtained).
+      Supplementary Information, case study 3.
+    correction: FDR
+    significance_threshold: 0.05
+    n_significant: 140
+    significant_unit: groups of related GO biological process terms
+    summary: >-
+      Very broad results. The two smallest p-values are synaptic
+      transmission and nervous system development, consistent with the
+      original paper.
+    reported_terms:
+      - reported_label: synaptic transmission
+        term:
+          id: GO:0007268
+          label: chemical synaptic transmission
+        significant: true
+        authors_stance: highlighted
+      - reported_label: nervous system development
+        term:
+          id: GO:0007399
+          label: nervous system development
+        significant: true
+        authors_stance: reported
+  - reference: PMID:40011791
+    reference_title: "A compendium of human gene functions derived from evolutionary modelling."
+    analysis_role: reanalysis
+    tool: PANTHER gene list analysis (functionome.geneontology.org)
+    method: Over-representation, GO biological process; related terms grouped
+    annotation_source: PAN-GO annotations only
+    membership_size: 42
+    membership_note: As in the previous entry.
+    correction: FDR
+    significance_threshold: 0.05
+    n_significant: 6
+    significant_unit: groups of related GO biological process terms
+    summary: >-
+      Six groups, three of them more specific neural terms than the all-GO
+      run gives.
+    reported_terms:
+      - reported_label: anterograde trans-synaptic transmission
+        term:
+          id: GO:0098916
+          label: anterograde trans-synaptic signaling
+        significant: true
+        authors_stance: highlighted
+      - reported_label: modulation of trans-synaptic signaling
+        term:
+          id: GO:0099177
+          label: regulation of trans-synaptic signaling
+        significant: true
+        authors_stance: highlighted
+      - reported_label: neuron differentiation
+        term:
+          id: GO:0030182
+          label: neuron differentiation
+        significant: true
+        authors_stance: highlighted

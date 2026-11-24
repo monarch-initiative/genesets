@@ -1,0 +1,128 @@
+gene_set_id: MYGENESET:D000448_6239
+gene_set_name: CTD_ALDICARB_CELEGANS
+collection: CTD:chem_gene_ixns
+taxon:
+  id: NCBITaxon:6239
+  label: Caenorhabditis elegans
+direction: NA
+description: >-
+  The 198 C. elegans genes with literature-curated chemical-gene interactions with
+  aldicarb in the Comparative Toxicogenomics Database (CTD; served by
+  mygeneset.info as D000448_6239, "Chemical-gene interactions of Aldicarb in
+  worm"; membership snapshot in curation/genesets/model_organism_members.gmt).
+  Aldicarb is a carbamate acetylcholinesterase inhibitor. In C. elegans, the time
+  it takes to paralyse the animal is the standard assay of cholinergic release at
+  the neuromuscular junction: mutants resistant to aldicarb (Ric) release less
+  acetylcholine, hypersensitive mutants (Hic) release more. CTD records most of
+  these genes as altering the response to aldicarb, often from large RNAi
+  screens for synaptic genes, so the set mixes both directions and is undirected.
+  It is the canonical case where GO enrichment of a behavioural-pharmacology gene
+  list recovers mechanism. The core is the presynaptic release machinery (unc-13,
+  unc-18, unc-10/RIM, unc-64/syntaxin, snb-1/synaptobrevin, snt-1/synaptotagmin,
+  rab-3, aex-3, unc-2/CaV2, unc-17/VAChT, cho-1). Beyond that it resolves
+  modulatory layers: Gq/Go signalling that sets release probability (egl-30, egl-8,
+  dgk-1, goa-1, egl-10, gsa-1, acy-1, ric-8, pkc-1); dense-core-vesicle neuropeptide
+  release (unc-31/CAPS, egl-3, egl-21, sbt-1, ida-1, flp-1, nlp-12); and on the
+  muscle side the dystrophin complex (dys-1, dyb-1, stn-1), whose loss causes
+  aldicarb hypersensitivity.
+contexts:
+  - term:
+      id: CHEBI:2555
+      label: aldicarb
+    context_type: chemical_perturbagen
+associations:
+  - term:
+      id: GO:0007268
+      label: chemical synaptic transmission
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Entailed by the assay, which measures cholinergic transmission, hence
+      confirmatory. 29/198 annotated in WormBase GOA (directly unc-13, unc-17,
+      unc-2, unc-64, aex-3, ccb-1, gar-1, ser-7, lnp-1, cab-1, dys-1; via closure
+      unc-18, unc-10, unc-31, snb-1, snt-1, rab-3, egl-3, egl-21, dgk-1, pkc-1, ace-1,
+      and others). 29/204, p ~3e-21 in a WB-GOA run.
+  - term:
+      id: GO:0098793
+      label: presynapse
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      25/198 annotated (unc-13, unc-18, unc-2, unc-64, unc-31, egl-21, fsn-1, itsn-1,
+      pkc-1, rab-10, ric-4, tom-1 direct; rab-3, snb-1, snt-1, unc-10, unc-17,
+      cho-1, syd-2 via closure), 25/111, p ~1e-23. The release site.
+  - term:
+      id: GO:0016079
+      label: synaptic vesicle exocytosis
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The specific step aldicarb resistance reports on: SNARE assembly and
+      calcium-triggered fusion. 10/26 annotated (unc-13, snb-1, snt-1, pkc-1, unc-31
+      direct; unc-18, unc-10, ric-4/SNAP-25, rab-10, rbf-1 via closure). Small term,
+      high fraction (p ~1e-12 in a WB-GOA run).
+  - term:
+      id: GO:0007218
+      label: neuropeptide signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: mechanistic
+    curator_note: >-
+      A non-obvious layer: neuropeptides released from dense-core vesicles
+      potentiate cholinergic release, so DCV-pathway mutants are aldicarb resistant.
+      The set has the DCV release and processing machinery (unc-31/CAPS, egl-3/PC2,
+      egl-21/carboxypeptidase E, sbt-1/7B2, ida-1/IA-2) and peptides flp-1 and
+      nlp-12, but only flp-1, nlp-12, pkc-1 and sbt-1 are annotated to this term
+      (4/80). egl-3 and egl-21 are annotated to peptide processing and
+      presynaptic terms, unc-31 and ida-1 to vesicle exocytosis, so the
+      neuropeptide pathway is under-recovered: an annotation gap.
+  - term:
+      id: GO:0007186
+      label: G protein-coupled receptor signaling pathway
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      The Gq (egl-30 -> egl-8/PLCbeta -> DAG -> unc-13) versus Go (goa-1, opposed by
+      dgk-1 and the RGS egl-10) network that sets acetylcholine release is a
+      classic mechanistic product of aldicarb genetics. 15/198 annotated (egl-10,
+      fshr-1, gar-1, goa-1, gsa-1, ric-8, ser-7 direct; acy-1, dgk-1, egl-30, egl-8,
+      flp-1, nlp-12, pkc-1, sbt-1 via closure). Against a 662-gene term the
+      enrichment is modest; the mechanism lives in the specific Gq/Go genes.
+  - term:
+      id: GO:0016010
+      label: dystrophin-associated glycoprotein complex
+    aspect: cellular_component
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      A postsynaptic, muscle-side contribution: dys-1, dyb-1 and stn-1 are directly
+      annotated (3/11). Loss of dys-1 makes worms hypersensitive to aldicarb,
+      so this term shows the set is not only presynaptic. Small, so recovery is method-dependent.
