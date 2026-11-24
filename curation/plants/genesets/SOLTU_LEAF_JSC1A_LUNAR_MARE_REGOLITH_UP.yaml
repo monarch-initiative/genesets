@@ -1,0 +1,479 @@
+gene_set_id: LIT:SOLTU_LEAF_JSC1A_LUNAR_MARE_REGOLITH_UP
+gene_set_name: SOLTU_LEAF_JSC1A_LUNAR_MARE_REGOLITH_UP
+collection: LIT:PLANT_STRESS_RESPONSE
+taxon:
+  id: NCBITaxon:4113
+  label: Solanum tuberosum
+direction: UP
+series: SERIES:SOLTU_LUNAR_REGOLITH_LEAF
+series_role: jsc1a_mare_up
+n_genes: 431
+description: 'Genes up-regulated in leaves of potato grown in the NASA lunar mare reference simulant JSC-1A versus
+  Adkins soil; 431 of 958 JSC-1A DEGs, largely distinct from the LMS-1E list (Fig. 5). Its clearest axis is the
+  copper-replete half of the SPL7 copper switch: Cu/Zn superoxide dismutases CSD1 and CSD2 (miR398 targets) are
+  up, together with metal-responsive genes (ALS3-like, a ZIP5-like zinc transporter, tau GSTs, CYP82C). This matches
+  JSC-1A being the only simulant with significantly raised tuber Cu (Table 1). Receptor-like kinases are up as in
+  every simulant. Source: Data S5 of Handy et al. 2026 (npj Microgravity, PMID:43058136), DESeq2 padj < 0.05, upper-canopy
+  leaves at 39 DAP, n = 5 per substrate, all substrates amended with 5% v/v vermicompost plus Osmocote. Direction:
+  Data S5 does not state the sign convention; log2FoldChange is read as regolith relative to Adkins (DESeq2 default
+  reference, alphabetically first level ADK). This is confirmed by the copper switch tracking the measured copper:
+  FSD1 falls and CSD1/CSD2 rise most in JSC-1A, the simulant with significantly higher tuber Cu (Table 1). Gene
+  ids are DM v6.1 (Soltu.DM) as in the paper; GO enrichment uses the SpudDB DM v6.1 GO annotation (TAIR best-hit
+  projection, all IEA, the annotation the authors used), with the annotated genome as background because only DEGs
+  were released.'
+contexts:
+- term:
+    id: PO:0025034
+    label: leaf
+  context_type: anatomical_structure
+- term:
+    id: CHEBI:28694
+    label: copper atom
+  context_type: chemical_perturbagen
+associations:
+- term:
+    id: GO:0010038
+    label: response to metal ion
+  aspect: biological_process
+  category: core_process
+  confidence: medium
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.1515e-08
+    p_adjust: 0.0012028
+    overlap: 30
+    query_size: 412
+    target_size: 678
+    overlap_genes:
+    - Soltu.DM.01G022650
+    - Soltu.DM.01G029100
+    - Soltu.DM.01G051980
+    - Soltu.DM.02G002870
+    - Soltu.DM.02G005390
+    - Soltu.DM.02G022960
+    - Soltu.DM.02G026440
+    - Soltu.DM.02G034100
+    - Soltu.DM.04G034610
+    - Soltu.DM.05G003540
+    - Soltu.DM.05G003650
+    - Soltu.DM.05G003670
+    - Soltu.DM.05G004320
+    - Soltu.DM.06G033570
+    - Soltu.DM.06G034180
+    - Soltu.DM.07G006080
+    - Soltu.DM.07G014000
+    - Soltu.DM.08G006260
+    - Soltu.DM.09G001300
+    - Soltu.DM.09G001440
+    - Soltu.DM.09G031030
+    - Soltu.DM.10G018890
+    - Soltu.DM.10G021270
+    - Soltu.DM.11G001060
+    - Soltu.DM.11G020830
+    - Soltu.DM.11G022410
+    - Soltu.DM.12G000810
+    - Soltu.DM.12G001860
+    - Soltu.DM.12G006400
+    - Soltu.DM.12G006430
+  evidence:
+  - reference: PMID:43058136
+    reference_title: Growth and molecular responses of potato to lunar regolith simulants.
+    snippet: Heavy metals, including Cu, Zn, and Al, were modestly elevated in tubers from certain LRS treatments,
+      warranting continued monitoring in future studies.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Cu was significantly elevated in tubers of JSC-1A plants (Table 1).
+  curator_note: '30 carriers: CSD1 (01G022650), CSD2 (11G020830), ALS3-like (10G021270), zinc transporter (07G014000),
+    tau GSTs (01G029100, 09G001300, 09G001440), CYP82C (06G033570, 04G034610), basic chitinases. Several are annotated
+    only through Cd/Zn/Al responses in Arabidopsis, so the general term is right and the specific metal is copper
+    (next association).'
+- term:
+    id: GO:0046688
+    label: response to copper ion
+  aspect: biological_process
+  category: core_process
+  confidence: medium
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 0.014387
+    p_adjust: 1.0
+    overlap: 2
+    query_size: 412
+    target_size: 14
+    overlap_genes:
+    - Soltu.DM.01G022650
+    - Soltu.DM.11G020830
+  evidence:
+  - reference: PMID:19122104
+    reference_title: SQUAMOSA Promoter Binding Protein-Like7 Is a Central Regulator for Copper Homeostasis in Arabidopsis.
+    snippet: SPL7 is also required for the expression of multiple microRNAs, miR397, miR408, and miR857, involved
+      in copper homeostasis and of genes encoding several copper transporters and a copper chaperone, indicating
+      its central role in response to copper deficiency.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: SPL7 drives miR398 (CSD1/CSD2 repression), COPT transporters and a copper chaperone under Cu deficiency.
+      The reverse pattern here indicates Cu sufficiency.
+  curator_note: CSD1 and CSD2 up (2/14, nominal p = 0.014). In Arabidopsis and Solanaceae these are miR398 targets
+    that SPL7 represses under copper deficiency, so their rise, with FSD1/COPT1/CCH falling in the paired DN set,
+    reads out a copper-replete leaf. Too few genes for Bonferroni; added because it is the specific mechanism behind
+    the metal-response hit.
+- term:
+    id: GO:0016301
+    label: kinase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: medium
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 9.0105e-08
+    p_adjust: 0.0094123
+    overlap: 58
+    query_size: 412
+    target_size: 2095
+    overlap_genes:
+    - Soltu.DM.01G004040
+    - Soltu.DM.01G004700
+    - Soltu.DM.01G004790
+    - Soltu.DM.01G004830
+    - Soltu.DM.01G004860
+    - Soltu.DM.01G004970
+    - Soltu.DM.01G006570
+    - Soltu.DM.01G034100
+    - Soltu.DM.01G037810
+    - Soltu.DM.02G019650
+    - Soltu.DM.02G021000
+    - Soltu.DM.02G021040
+    - Soltu.DM.02G021140
+    - Soltu.DM.02G021320
+    - Soltu.DM.02G026090
+    - Soltu.DM.02G026890
+    - Soltu.DM.03G001390
+    - Soltu.DM.03G001450
+    - Soltu.DM.03G001460
+    - Soltu.DM.03G001710
+    - Soltu.DM.03G017970
+    - Soltu.DM.03G025180
+    - Soltu.DM.03G027300
+    - Soltu.DM.03G028160
+    - Soltu.DM.03G031710
+    - Soltu.DM.03G034660
+    - Soltu.DM.04G009570
+    - Soltu.DM.04G009940
+    - Soltu.DM.04G029330
+    - Soltu.DM.04G029340
+    - Soltu.DM.04G029370
+    - Soltu.DM.04G029400
+    - Soltu.DM.04G031990
+    - Soltu.DM.04G033640
+    - Soltu.DM.05G003430
+    - Soltu.DM.05G003450
+    - Soltu.DM.05G003730
+    - Soltu.DM.05G003780
+    - Soltu.DM.05G009380
+    - Soltu.DM.05G025420
+    - Soltu.DM.06G000390
+    - Soltu.DM.06G001620
+    - Soltu.DM.07G000270
+    - Soltu.DM.07G005310
+    - Soltu.DM.07G020020
+    - Soltu.DM.08G006070
+    - Soltu.DM.09G005600
+    - Soltu.DM.09G009230
+    - Soltu.DM.09G009260
+    - Soltu.DM.09G025630
+    - Soltu.DM.12G000840
+    - Soltu.DM.12G000880
+    - Soltu.DM.12G000890
+    - Soltu.DM.12G000930
+    - Soltu.DM.12G006900
+    - Soltu.DM.12G025460
+    - Soltu.DM.S001780
+    - Soltu.DM.S001790
+  curator_note: Receptor-like and cytoplasmic kinases (including a three-gene AT5G39020 malectin-like RLK cluster
+    05G003540/650/670). This is the cross-simulant kinase signal the authors report in Fig. 6.
+- term:
+    id: GO:0045239
+    label: tricarboxylic acid cycle heteromeric enzyme complex
+  aspect: cellular_component
+  category: marker_driven_plausible
+  confidence: low
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.0576e-09
+    p_adjust: 0.00011048
+    overlap: 6
+    query_size: 412
+    target_size: 10
+    overlap_genes:
+    - Soltu.DM.01G003320
+    - Soltu.DM.02G000940
+    - Soltu.DM.06G034180
+    - Soltu.DM.07G026480
+    - Soltu.DM.12G001860
+    - Soltu.DM.12G021570
+  curator_note: Six mitochondrial TCA subunits (succinyl-CoA ligase alpha x2 and beta, 2-oxoglutarate dehydrogenase
+    E2 x2, lipoamide dehydrogenase), all with small fold changes (log2FC 0.26-0.51). Plausible respiratory adjustment,
+    but too modest to call a programme.
+- term:
+    id: GO:0003824
+    label: catalytic activity
+  aspect: molecular_function
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.0244e-09
+    p_adjust: 0.00010701
+    overlap: 224
+    query_size: 412
+    target_size: 12329
+    overlap_genes:
+    - Soltu.DM.01G003320
+    - Soltu.DM.01G004040
+    - Soltu.DM.01G004700
+    - Soltu.DM.01G004790
+    - Soltu.DM.01G004830
+    - Soltu.DM.01G004860
+    - Soltu.DM.01G004970
+    - Soltu.DM.01G005170
+    - Soltu.DM.01G005180
+    - Soltu.DM.01G005240
+    - Soltu.DM.01G006570
+    - Soltu.DM.01G008560
+    - Soltu.DM.01G014700
+    - Soltu.DM.01G019390
+    - Soltu.DM.01G022650
+    - Soltu.DM.01G025740
+    - Soltu.DM.01G026450
+    - Soltu.DM.01G028850
+    - Soltu.DM.01G029090
+    - Soltu.DM.01G029100
+    - Soltu.DM.01G032400
+    - Soltu.DM.01G033960
+    - Soltu.DM.01G034100
+    - Soltu.DM.01G034860
+    - Soltu.DM.01G036420
+    - Soltu.DM.01G037810
+    - Soltu.DM.01G038150
+    - Soltu.DM.01G040710
+    - Soltu.DM.01G044420
+    - Soltu.DM.01G045280
+    - Soltu.DM.01G045660
+    - Soltu.DM.01G048090
+    - Soltu.DM.01G049140
+    - Soltu.DM.01G050380
+    - Soltu.DM.01G051980
+    - Soltu.DM.02G000940
+    - Soltu.DM.02G002870
+    - Soltu.DM.02G005390
+    - Soltu.DM.02G008360
+    - Soltu.DM.02G010350
+    - Soltu.DM.02G013550
+    - Soltu.DM.02G014620
+    - Soltu.DM.02G016230
+    - Soltu.DM.02G016310
+    - Soltu.DM.02G016320
+    - Soltu.DM.02G016880
+    - Soltu.DM.02G019650
+    - Soltu.DM.02G021000
+    - Soltu.DM.02G021040
+    - Soltu.DM.02G021140
+    - Soltu.DM.02G021320
+    - Soltu.DM.02G021780
+    - Soltu.DM.02G022960
+    - Soltu.DM.02G024900
+    - Soltu.DM.02G025210
+    - Soltu.DM.02G025560
+    - Soltu.DM.02G026090
+    - Soltu.DM.02G026440
+    - Soltu.DM.02G026880
+    - Soltu.DM.02G026890
+    - Soltu.DM.02G030640
+    - Soltu.DM.02G031920
+    - Soltu.DM.02G032080
+    - Soltu.DM.02G034170
+    - Soltu.DM.03G001390
+    - Soltu.DM.03G001450
+    - Soltu.DM.03G001460
+    - Soltu.DM.03G001710
+    - Soltu.DM.03G005260
+    - Soltu.DM.03G005400
+    - Soltu.DM.03G006260
+    - Soltu.DM.03G013680
+    - Soltu.DM.03G015280
+    - Soltu.DM.03G017970
+    - Soltu.DM.03G025110
+    - Soltu.DM.03G025180
+    - Soltu.DM.03G027300
+    - Soltu.DM.03G028160
+    - Soltu.DM.03G031710
+    - Soltu.DM.03G034660
+    - Soltu.DM.04G006480
+    - Soltu.DM.04G009570
+    - Soltu.DM.04G009940
+    - Soltu.DM.04G010630
+    - Soltu.DM.04G011090
+    - Soltu.DM.04G012440
+    - Soltu.DM.04G028480
+    - Soltu.DM.04G029330
+    - Soltu.DM.04G029340
+    - Soltu.DM.04G029370
+    - Soltu.DM.04G029400
+    - Soltu.DM.04G029950
+    - Soltu.DM.04G031990
+    - Soltu.DM.04G033640
+    - Soltu.DM.04G034610
+    - Soltu.DM.04G037270
+    - Soltu.DM.05G001210
+    - Soltu.DM.05G003430
+    - Soltu.DM.05G003450
+    - Soltu.DM.05G003730
+    - Soltu.DM.05G003780
+    - Soltu.DM.05G003920
+    - Soltu.DM.05G004320
+    - Soltu.DM.05G005690
+    - Soltu.DM.05G009380
+    - Soltu.DM.05G012450
+    - Soltu.DM.05G019640
+    - Soltu.DM.05G019730
+    - Soltu.DM.05G019950
+    - Soltu.DM.05G022170
+    - Soltu.DM.05G025270
+    - Soltu.DM.05G025420
+    - Soltu.DM.05G026860
+    - Soltu.DM.06G000390
+    - Soltu.DM.06G000450
+    - Soltu.DM.06G001620
+    - Soltu.DM.06G007230
+    - Soltu.DM.06G010240
+    - Soltu.DM.06G012040
+    - Soltu.DM.06G015470
+    - Soltu.DM.06G017330
+    - Soltu.DM.06G017340
+    - Soltu.DM.06G018780
+    - Soltu.DM.06G021110
+    - Soltu.DM.06G022320
+    - Soltu.DM.06G024440
+    - Soltu.DM.06G026650
+    - Soltu.DM.06G028390
+    - Soltu.DM.06G028410
+    - Soltu.DM.06G032060
+    - Soltu.DM.06G032280
+    - Soltu.DM.06G033440
+    - Soltu.DM.06G033570
+    - Soltu.DM.06G034180
+    - Soltu.DM.07G000250
+    - Soltu.DM.07G000270
+    - Soltu.DM.07G000310
+    - Soltu.DM.07G001200
+    - Soltu.DM.07G005310
+    - Soltu.DM.07G006080
+    - Soltu.DM.07G006480
+    - Soltu.DM.07G015060
+    - Soltu.DM.07G020020
+    - Soltu.DM.07G026480
+    - Soltu.DM.08G005650
+    - Soltu.DM.08G006070
+    - Soltu.DM.08G010200
+    - Soltu.DM.08G010990
+    - Soltu.DM.08G012240
+    - Soltu.DM.08G018430
+    - Soltu.DM.08G020030
+    - Soltu.DM.08G023320
+    - Soltu.DM.08G023350
+    - Soltu.DM.08G025750
+    - Soltu.DM.08G026440
+    - Soltu.DM.08G026480
+    - Soltu.DM.08G026520
+    - Soltu.DM.08G026550
+    - Soltu.DM.08G026590
+    - Soltu.DM.08G026700
+    - Soltu.DM.08G027630
+    - Soltu.DM.08G028440
+    - Soltu.DM.08G029560
+    - Soltu.DM.09G001300
+    - Soltu.DM.09G001440
+    - Soltu.DM.09G005600
+    - Soltu.DM.09G007440
+    - Soltu.DM.09G007470
+    - Soltu.DM.09G008130
+    - Soltu.DM.09G009230
+    - Soltu.DM.09G009260
+    - Soltu.DM.09G015660
+    - Soltu.DM.09G018820
+    - Soltu.DM.09G018890
+    - Soltu.DM.09G020520
+    - Soltu.DM.09G025040
+    - Soltu.DM.09G025630
+    - Soltu.DM.09G026290
+    - Soltu.DM.09G028050
+    - Soltu.DM.09G028890
+    - Soltu.DM.09G030260
+    - Soltu.DM.10G003300
+    - Soltu.DM.10G003690
+    - Soltu.DM.10G003860
+    - Soltu.DM.10G003920
+    - Soltu.DM.10G016710
+    - Soltu.DM.10G018890
+    - Soltu.DM.10G020910
+    - Soltu.DM.10G026820
+    - Soltu.DM.11G001060
+    - Soltu.DM.11G002170
+    - Soltu.DM.11G003510
+    - Soltu.DM.11G005010
+    - Soltu.DM.11G005530
+    - Soltu.DM.11G005540
+    - Soltu.DM.11G005960
+    - Soltu.DM.11G010850
+    - Soltu.DM.11G020830
+    - Soltu.DM.11G020990
+    - Soltu.DM.11G021000
+    - Soltu.DM.11G021510
+    - Soltu.DM.11G022410
+    - Soltu.DM.11G022420
+    - Soltu.DM.11G023640
+    - Soltu.DM.12G000840
+    - Soltu.DM.12G000880
+    - Soltu.DM.12G000890
+    - Soltu.DM.12G000930
+    - Soltu.DM.12G001800
+    - Soltu.DM.12G001860
+    - Soltu.DM.12G002520
+    - Soltu.DM.12G004910
+    - Soltu.DM.12G006400
+    - Soltu.DM.12G006430
+    - Soltu.DM.12G006900
+    - Soltu.DM.12G007470
+    - Soltu.DM.12G009520
+    - Soltu.DM.12G020620
+    - Soltu.DM.12G021570
+    - Soltu.DM.12G025460
+    - Soltu.DM.S001780
+    - Soltu.DM.S001790
+    - Soltu.DM.S002200
+    - Soltu.DM.S002220
+  curator_note: Catalytic activity; uninformative.

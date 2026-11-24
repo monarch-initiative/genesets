@@ -1,0 +1,318 @@
+gene_set_id: LIT:SOLTU_LEAF_JSC1A_LUNAR_MARE_REGOLITH_DN
+gene_set_name: SOLTU_LEAF_JSC1A_LUNAR_MARE_REGOLITH_DN
+collection: LIT:PLANT_STRESS_RESPONSE
+taxon:
+  id: NCBITaxon:4113
+  label: Solanum tuberosum
+direction: DN
+series: SERIES:SOLTU_LUNAR_REGOLITH_LEAF
+series_role: jsc1a_mare_down
+n_genes: 527
+description: 'Genes down-regulated in leaves of potato grown in the lunar mare simulant JSC-1A versus Adkins soil;
+  527 of 958 JSC-1A DEGs. Light-harvesting antenna genes (LHCA/LHCB) and a phenylalanine ammonia-lyase (PAL) gene
+  cluster are lower, as is the copper-deficiency half of the SPL7 switch: FSD1 (-4.1 log2), the high-affinity copper
+  transporters COPT1 and COPT5, and the copper chaperone CCH. With CSD1/CSD2 up in the paired UP set, this is a
+  copper-replete leaf, matching the significantly raised tuber Cu of JSC-1A plants. Source: Data S5 of Handy et
+  al. 2026 (npj Microgravity, PMID:43058136), DESeq2 padj < 0.05, upper-canopy leaves at 39 DAP, n = 5 per substrate,
+  all substrates amended with 5% v/v vermicompost plus Osmocote. Direction: Data S5 does not state the sign convention;
+  log2FoldChange is read as regolith relative to Adkins (DESeq2 default reference, alphabetically first level ADK).
+  This is confirmed by the copper switch tracking the measured copper: FSD1 falls and CSD1/CSD2 rise most in JSC-1A,
+  the simulant with significantly higher tuber Cu (Table 1). Gene ids are DM v6.1 (Soltu.DM) as in the paper; GO
+  enrichment uses the SpudDB DM v6.1 GO annotation (TAIR best-hit projection, all IEA, the annotation the authors
+  used), with the annotated genome as background because only DEGs were released.'
+contexts:
+- term:
+    id: PO:0025034
+    label: leaf
+  context_type: anatomical_structure
+- term:
+    id: CHEBI:28694
+    label: copper atom
+  context_type: chemical_perturbagen
+associations:
+- term:
+    id: GO:0009768
+    label: photosynthesis, light harvesting in photosystem I
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: cell_type_specific
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.8036e-10
+    p_adjust: 1.8841e-05
+    overlap: 10
+    query_size: 498
+    target_size: 36
+    overlap_genes:
+    - Soltu.DM.02G014000
+    - Soltu.DM.02G014020
+    - Soltu.DM.02G014030
+    - Soltu.DM.02G014040
+    - Soltu.DM.02G014050
+    - Soltu.DM.03G000820
+    - Soltu.DM.03G000830
+    - Soltu.DM.03G000900
+    - Soltu.DM.07G024910
+    - Soltu.DM.12G029100
+  evidence:
+  - reference: PMID:43058136
+    reference_title: Growth and molecular responses of potato to lunar regolith simulants.
+    snippet: At low amendment levels, all LRS types reduced canopy size and tuber yield relative to a terrestrial
+      soil control, with responses varying by simulant type.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: JSC-1A plants had reduced canopy and tuber yield relative to soil.
+  curator_note: 'Ten LHC antenna genes: eight LHCA/LHCB-like (02G014000-02G014050, 03G000820/30/900) and two LHCB
+    (07G024910, 12G029100), log2FC -0.5 to -2.0. Reduced antenna expression fits the smaller, stressed canopy of
+    JSC-1A plants.'
+- term:
+    id: GO:0006878
+    label: intracellular copper ion homeostasis
+  aspect: biological_process
+  category: core_process
+  confidence: medium
+  specificity: cell_type_specific
+  seed_source: curator_added
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 0.0019664
+    p_adjust: 1.0
+    overlap: 3
+    query_size: 498
+    target_size: 16
+    overlap_genes:
+    - Soltu.DM.02G021950
+    - Soltu.DM.06G003660
+    - Soltu.DM.11G006190
+  evidence:
+  - reference: PMID:19122104
+    reference_title: SQUAMOSA Promoter Binding Protein-Like7 Is a Central Regulator for Copper Homeostasis in Arabidopsis.
+    snippet: SPL7 is also required for the expression of multiple microRNAs, miR397, miR408, and miR857, involved
+      in copper homeostasis and of genes encoding several copper transporters and a copper chaperone, indicating
+      its central role in response to copper deficiency.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: COPT transporters, the CCH chaperone and FSD1 are SPL7 targets induced under Cu deficiency; their
+      coordinated drop indicates Cu sufficiency.
+  - reference: PMID:43058136
+    reference_title: Growth and molecular responses of potato to lunar regolith simulants.
+    snippet: Heavy metals, including Cu, Zn, and Al, were modestly elevated in tubers from certain LRS treatments,
+      warranting continued monitoring in future studies.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Cu was significantly elevated in tubers of JSC-1A plants (Table 1).
+  curator_note: COPT1 (06G003660, -3.2), COPT5-like (02G021950) and CCH (11G006190, -1.3); 3/16, nominal p = 0.002.
+    These, with FSD1 (06G012170, -4.1; 06G012180), are the SPL7-activated copper-deficiency genes. All falling means
+    the SPL7 regulon is off and the leaf is copper-replete. FSD1 carries no copper-homeostasis annotation, so part
+    of the signal sits outside the term.
+- term:
+    id: GO:0009699
+    label: phenylpropanoid biosynthetic process
+  aspect: biological_process
+  category: supporting_process
+  confidence: medium
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.0189e-08
+    p_adjust: 0.0052427
+    overlap: 21
+    query_size: 498
+    target_size: 315
+    overlap_genes:
+    - Soltu.DM.01G044660
+    - Soltu.DM.02G024980
+    - Soltu.DM.02G028530
+    - Soltu.DM.03G011440
+    - Soltu.DM.03G011450
+    - Soltu.DM.03G011480
+    - Soltu.DM.03G011490
+    - Soltu.DM.05G004710
+    - Soltu.DM.06G017290
+    - Soltu.DM.06G032850
+    - Soltu.DM.06G032860
+    - Soltu.DM.06G034500
+    - Soltu.DM.07G024580
+    - Soltu.DM.07G024630
+    - Soltu.DM.08G028540
+    - Soltu.DM.09G005700
+    - Soltu.DM.09G005710
+    - Soltu.DM.10G015830
+    - Soltu.DM.10G020990
+    - Soltu.DM.11G002650
+    - Soltu.DM.12G024900
+  curator_note: 'Seven PAL paralogues (03G011440-03G011490, 09G005700/10, 10G020990) plus C4H/4CL/CHS-like genes:
+    a modest, coordinated drop in entry-point phenylpropanoid flux (log2FC -0.4 to -1.1). It recurs in the LHS-1E
+    and OPRH4W30 lists.'
+- term:
+    id: GO:0046274
+    label: lignin catabolic process
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: broadly_expressed
+  artifact_cause: over_annotation
+  seed_source: enrichment_recovered
+  recovery_status: false_association
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.5088e-09
+    p_adjust: 0.00015761
+    overlap: 7
+    query_size: 498
+    target_size: 15
+    overlap_genes:
+    - Soltu.DM.03G011440
+    - Soltu.DM.03G011450
+    - Soltu.DM.03G011480
+    - Soltu.DM.03G011490
+    - Soltu.DM.09G005700
+    - Soltu.DM.09G005710
+    - Soltu.DM.10G020990
+  curator_note: Carried only by the seven PAL genes. PAL makes lignin precursors; it does not degrade lignin. The
+    term reaches potato by best-hit projection of an Arabidopsis PAL annotation, the same PAL artefact recorded
+    in evals/plants for poplar and sorghum.
+- term:
+    id: GO:0009819
+    label: drought recovery
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: broadly_expressed
+  artifact_cause: multifunctional_gene_bias
+  seed_source: enrichment_recovered
+  recovery_status: false_association
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 7.1603e-08
+    p_adjust: 0.0074796
+    overlap: 7
+    query_size: 498
+    target_size: 24
+    overlap_genes:
+    - Soltu.DM.03G011440
+    - Soltu.DM.03G011450
+    - Soltu.DM.03G011480
+    - Soltu.DM.03G011490
+    - Soltu.DM.09G005700
+    - Soltu.DM.09G005710
+    - Soltu.DM.10G020990
+  curator_note: Only the seven PAL genes, through a pleiotropic Arabidopsis pal mutant phenotype. Nothing in these
+    plants concerns recovery from drought; the simulants were, if anything, wetter than the soil.
+- term:
+    id: GO:0046244
+    label: salicylic acid catabolic process
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: broadly_expressed
+  artifact_cause: over_annotation
+  seed_source: enrichment_recovered
+  recovery_status: false_association
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.7622e-07
+    p_adjust: 0.018408
+    overlap: 7
+    query_size: 498
+    target_size: 27
+    overlap_genes:
+    - Soltu.DM.03G011440
+    - Soltu.DM.03G011450
+    - Soltu.DM.03G011480
+    - Soltu.DM.03G011490
+    - Soltu.DM.09G005700
+    - Soltu.DM.09G005710
+    - Soltu.DM.10G020990
+  curator_note: Again only the PAL paralogues, whose TAIR best hits carry a salicylic-acid catabolism annotation.
+    PAL is an upstream SA-synthesis enzyme in some routes, not an SA-degrading one.
+- term:
+    id: GO:0009416
+    label: response to light stimulus
+  aspect: biological_process
+  category: nonspecific
+  confidence: medium
+  specificity: broadly_expressed
+  artifact_cause: overly_general_term
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.3611e-11
+    p_adjust: 2.4664e-06
+    overlap: 54
+    query_size: 498
+    target_size: 1225
+    overlap_genes:
+    - Soltu.DM.01G026940
+    - Soltu.DM.01G041140
+    - Soltu.DM.01G041980
+    - Soltu.DM.02G007730
+    - Soltu.DM.02G010500
+    - Soltu.DM.02G014000
+    - Soltu.DM.02G014020
+    - Soltu.DM.02G014030
+    - Soltu.DM.02G014040
+    - Soltu.DM.02G014050
+    - Soltu.DM.02G016980
+    - Soltu.DM.02G018080
+    - Soltu.DM.02G031820
+    - Soltu.DM.02G031830
+    - Soltu.DM.03G000820
+    - Soltu.DM.03G000830
+    - Soltu.DM.03G000900
+    - Soltu.DM.03G004150
+    - Soltu.DM.03G011440
+    - Soltu.DM.03G011450
+    - Soltu.DM.03G011480
+    - Soltu.DM.03G011490
+    - Soltu.DM.03G033110
+    - Soltu.DM.04G001110
+    - Soltu.DM.04G027480
+    - Soltu.DM.04G027540
+    - Soltu.DM.04G027560
+    - Soltu.DM.04G034990
+    - Soltu.DM.05G004710
+    - Soltu.DM.05G004900
+    - Soltu.DM.05G006430
+    - Soltu.DM.05G026990
+    - Soltu.DM.06G000090
+    - Soltu.DM.06G009240
+    - Soltu.DM.06G012170
+    - Soltu.DM.06G012180
+    - Soltu.DM.06G016260
+    - Soltu.DM.06G017770
+    - Soltu.DM.06G032850
+    - Soltu.DM.06G032860
+    - Soltu.DM.07G024910
+    - Soltu.DM.09G003720
+    - Soltu.DM.09G005700
+    - Soltu.DM.09G005710
+    - Soltu.DM.09G013070
+    - Soltu.DM.10G000040
+    - Soltu.DM.10G000090
+    - Soltu.DM.10G004380
+    - Soltu.DM.10G020990
+    - Soltu.DM.10G022880
+    - Soltu.DM.11G002330
+    - Soltu.DM.11G003500
+    - Soltu.DM.11G026410
+    - Soltu.DM.12G029100
+  curator_note: Response to light stimulus, carried by the LHC genes and PALs; restates the antenna and phenylpropanoid
+    hits at a coarser, less informative level.

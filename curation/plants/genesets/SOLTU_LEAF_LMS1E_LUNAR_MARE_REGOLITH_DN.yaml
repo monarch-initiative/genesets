@@ -1,0 +1,709 @@
+gene_set_id: LIT:SOLTU_LEAF_LMS1E_LUNAR_MARE_REGOLITH_DN
+gene_set_name: SOLTU_LEAF_LMS1E_LUNAR_MARE_REGOLITH_DN
+collection: LIT:PLANT_STRESS_RESPONSE
+taxon:
+  id: NCBITaxon:4113
+  label: Solanum tuberosum
+direction: DN
+series: SERIES:SOLTU_LUNAR_REGOLITH_LEAF
+series_role: lms1e_mare_down
+n_genes: 831
+description: 'Genes down-regulated in leaves of potato grown in the lunar mare simulant LMS-1E versus Adkins soil;
+  831 of the 1,397 LMS-1E DEGs. Two programmes dominate. (1) Growth and cell-wall synthesis: CESA4, CSLG, COBRA-like,
+  DUF828/TBL, expansins EXPA4/6/15 and DIM/DWF1, matching the reduced canopy. (2) The jasmonate wound-defence module,
+  strongly lower in regolith than in soil: potato type I and II proteinase inhibitors, Kunitz trypsin inhibitors,
+  cystatins, JAZ1, AOS, AOC and 13-LOX. The lower JA module is shared with the LHS-1E and OPRH4W30 lists (JAZ1 Soltu.DM.12G008980
+  down 5.5-8.6 log2 in all three), so lunar regolith did not raise leaf wound signalling relative to soil. Source:
+  Data S5 of Handy et al. 2026 (npj Microgravity, PMID:43058136), DESeq2 padj < 0.05, upper-canopy leaves at 39
+  DAP, n = 5 per substrate, all substrates amended with 5% v/v vermicompost plus Osmocote. Direction: Data S5 does
+  not state the sign convention; log2FoldChange is read as regolith relative to Adkins (DESeq2 default reference,
+  alphabetically first level ADK). This is confirmed by the copper switch tracking the measured copper: FSD1 falls
+  and CSD1/CSD2 rise most in JSC-1A, the simulant with significantly higher tuber Cu (Table 1). Gene ids are DM
+  v6.1 (Soltu.DM) as in the paper; GO enrichment uses the SpudDB DM v6.1 GO annotation (TAIR best-hit projection,
+  all IEA, the annotation the authors used), with the annotated genome as background because only DEGs were released.'
+contexts:
+- term:
+    id: PO:0025034
+    label: leaf
+  context_type: anatomical_structure
+associations:
+- term:
+    id: GO:0071669
+    label: plant-type cell wall organization or biogenesis
+  aspect: biological_process
+  category: core_process
+  confidence: medium
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.0958e-08
+    p_adjust: 0.0042785
+    overlap: 30
+    query_size: 775
+    target_size: 382
+    overlap_genes:
+    - Soltu.DM.01G018790
+    - Soltu.DM.01G027070
+    - Soltu.DM.02G009140
+    - Soltu.DM.02G012480
+    - Soltu.DM.02G015410
+    - Soltu.DM.02G030660
+    - Soltu.DM.02G031050
+    - Soltu.DM.03G028860
+    - Soltu.DM.04G000320
+    - Soltu.DM.04G036990
+    - Soltu.DM.05G005190
+    - Soltu.DM.06G004100
+    - Soltu.DM.06G010280
+    - Soltu.DM.06G017080
+    - Soltu.DM.06G021870
+    - Soltu.DM.06G024660
+    - Soltu.DM.06G025360
+    - Soltu.DM.06G031540
+    - Soltu.DM.07G000930
+    - Soltu.DM.07G016150
+    - Soltu.DM.08G005070
+    - Soltu.DM.08G012010
+    - Soltu.DM.08G029580
+    - Soltu.DM.09G007590
+    - Soltu.DM.09G022110
+    - Soltu.DM.10G020060
+    - Soltu.DM.10G026840
+    - Soltu.DM.11G003750
+    - Soltu.DM.11G022620
+    - Soltu.DM.12G021490
+  evidence:
+  - reference: PMID:43058136
+    reference_title: Growth and molecular responses of potato to lunar regolith simulants.
+    snippet: At low amendment levels, all LRS types reduced canopy size and tuber yield relative to a terrestrial
+      soil control, with responses varying by simulant type.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: LMS-1E plants had reduced canopy size relative to Adkins soil.
+  curator_note: 30 carriers spanning primary-wall synthesis and loosening (CESA/CSL, COBRA-like, expansins, pectin
+    lyase-like, polygalacturonase). Lower cell-wall biogenesis is the transcriptional correlate of the reduced canopy
+    biomass of LMS-1E plants (Fig. 3).
+- term:
+    id: GO:0030244
+    label: cellulose biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: medium
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.4535e-07
+    p_adjust: 0.025629
+    overlap: 12
+    query_size: 775
+    target_size: 73
+    overlap_genes:
+    - Soltu.DM.01G027070
+    - Soltu.DM.02G009140
+    - Soltu.DM.02G015410
+    - Soltu.DM.02G030660
+    - Soltu.DM.06G009750
+    - Soltu.DM.06G017080
+    - Soltu.DM.07G000930
+    - Soltu.DM.08G029580
+    - Soltu.DM.09G007590
+    - Soltu.DM.09G022110
+    - Soltu.DM.10G026840
+    - Soltu.DM.12G021490
+  curator_note: 'Cellulose synthesis specifically: CESA4-like (09G022110), CESA-family (02G015410, 07G000930), CSLG3-like
+    (12G021490 at -4.8, 08G029580), COBRA-like (02G009140, 02G030660), DUF828 (09G007590 at -5.6, 10G026840). It
+    points to the cellulose machinery, not just to "growth".'
+- term:
+    id: GO:0009611
+    label: response to wounding
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.7119e-07
+    p_adjust: 0.028328
+    overlap: 35
+    query_size: 775
+    target_size: 534
+    overlap_genes:
+    - Soltu.DM.01G002140
+    - Soltu.DM.01G038890
+    - Soltu.DM.01G044650
+    - Soltu.DM.01G044660
+    - Soltu.DM.03G018450
+    - Soltu.DM.03G018670
+    - Soltu.DM.03G024660
+    - Soltu.DM.05G011130
+    - Soltu.DM.05G023610
+    - Soltu.DM.06G024540
+    - Soltu.DM.06G032860
+    - Soltu.DM.07G016990
+    - Soltu.DM.08G005470
+    - Soltu.DM.08G005480
+    - Soltu.DM.08G007100
+    - Soltu.DM.08G024190
+    - Soltu.DM.09G025880
+    - Soltu.DM.09G025890
+    - Soltu.DM.09G025910
+    - Soltu.DM.09G025920
+    - Soltu.DM.09G025930
+    - Soltu.DM.09G025940
+    - Soltu.DM.09G025950
+    - Soltu.DM.09G028560
+    - Soltu.DM.09G028600
+    - Soltu.DM.10G005280
+    - Soltu.DM.10G020990
+    - Soltu.DM.11G001520
+    - Soltu.DM.11G003560
+    - Soltu.DM.11G005050
+    - Soltu.DM.11G023180
+    - Soltu.DM.12G003420
+    - Soltu.DM.12G007810
+    - Soltu.DM.12G008980
+    - Soltu.DM.12G024130
+  curator_note: '35 carriers forming the potato wound/JA defence module: potato inhibitor I (09G025880-09G025950),
+    Kunitz (03G018450, 03G018670), JAZ1 (12G008980), JAZ-like (08G007100), AOS (07G016990, 11G023180), 13-LOX (01G002140,
+    08G005470/80), MYC2-like bHLH (10G005280), CYP94B. All are lower in regolith than in soil. The authors suggested
+    glassy particles abrade tissues, which would predict wound signalling rising in regolith; the leaves show the
+    opposite.'
+- term:
+    id: GO:0009695
+    label: jasmonic acid biosynthetic process
+  aspect: biological_process
+  category: supporting_process
+  confidence: medium
+  specificity: broadly_expressed
+  seed_source: curator_added
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.4142e-05
+    p_adjust: 1.0
+    overlap: 10
+    query_size: 775
+    target_size: 78
+    overlap_genes:
+    - Soltu.DM.01G002140
+    - Soltu.DM.01G038890
+    - Soltu.DM.02G025590
+    - Soltu.DM.05G011130
+    - Soltu.DM.07G016990
+    - Soltu.DM.08G005470
+    - Soltu.DM.08G005480
+    - Soltu.DM.09G028600
+    - Soltu.DM.11G001520
+    - Soltu.DM.11G023180
+  curator_note: 'The biosynthetic arm of the module: AOS x2, AOC (02G025590), 13-LOX x5, JMT-like methyltransferase
+    (09G028600); 10/78, nominal p = 2.4e-5, not Bonferroni-significant. Added because the coordinated drop of JA
+    synthesis enzymes explains the downstream proteinase-inhibitor drop.'
+- term:
+    id: GO:0030414
+    label: peptidase inhibitor activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.0229e-07
+    p_adjust: 0.031577
+    overlap: 10
+    query_size: 775
+    target_size: 49
+    overlap_genes:
+    - Soltu.DM.03G018450
+    - Soltu.DM.03G018510
+    - Soltu.DM.03G018520
+    - Soltu.DM.03G018600
+    - Soltu.DM.03G018670
+    - Soltu.DM.03G023500
+    - Soltu.DM.03G023520
+    - Soltu.DM.03G023540
+    - Soltu.DM.06G028910
+    - Soltu.DM.06G028940
+  curator_note: 'Kunitz trypsin inhibitors (03G023500/20/40, 03G018450-03G018670) and cystatins (06G028910 at -7.9,
+    06G028940): the abundant secreted defence effectors of the JA module in Solanaceae leaves.'
+- term:
+    id: GO:0099503
+    label: secretory vesicle
+  aspect: cellular_component
+  category: false_association
+  confidence: medium
+  specificity: broadly_expressed
+  artifact_cause: over_annotation
+  seed_source: enrichment_recovered
+  recovery_status: false_association
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 4.1144e-12
+    p_adjust: 4.2979e-07
+    overlap: 38
+    query_size: 775
+    target_size: 407
+    overlap_genes:
+    - Soltu.DM.02G004190
+    - Soltu.DM.02G031050
+    - Soltu.DM.02G033060
+    - Soltu.DM.03G000360
+    - Soltu.DM.03G012710
+    - Soltu.DM.03G018450
+    - Soltu.DM.03G018510
+    - Soltu.DM.03G018520
+    - Soltu.DM.03G018600
+    - Soltu.DM.03G018670
+    - Soltu.DM.03G022200
+    - Soltu.DM.03G023500
+    - Soltu.DM.03G023520
+    - Soltu.DM.03G023540
+    - Soltu.DM.04G018800
+    - Soltu.DM.04G021550
+    - Soltu.DM.04G036710
+    - Soltu.DM.05G013560
+    - Soltu.DM.05G025890
+    - Soltu.DM.06G003270
+    - Soltu.DM.07G012720
+    - Soltu.DM.07G014280
+    - Soltu.DM.07G016150
+    - Soltu.DM.07G022840
+    - Soltu.DM.08G016150
+    - Soltu.DM.08G029760
+    - Soltu.DM.09G009010
+    - Soltu.DM.09G025140
+    - Soltu.DM.10G018740
+    - Soltu.DM.10G018780
+    - Soltu.DM.10G018790
+    - Soltu.DM.10G018810
+    - Soltu.DM.10G018820
+    - Soltu.DM.10G018830
+    - Soltu.DM.10G018840
+    - Soltu.DM.10G026030
+    - Soltu.DM.11G020470
+    - Soltu.DM.12G026740
+  curator_note: Carried by secreted/apoplastic defence and lipid-transfer proteins (Kunitz inhibitors, nsLTPs 10G018740-10G018840,
+    aspartic proteinases, thaumatin) and ER chaperones (PDI-like, HSP70). These are apoplast or ER residents. The
+    secretory-vesicle labels come from Arabidopsis high-throughput organelle proteomics projected by best hit, not
+    from vesicle biology.
+- term:
+    id: GO:0003824
+    label: catalytic activity
+  aspect: molecular_function
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.878e-08
+    p_adjust: 0.0019618
+    overlap: 383
+    query_size: 775
+    target_size: 12329
+    overlap_genes:
+    - Soltu.DM.01G000030
+    - Soltu.DM.01G001920
+    - Soltu.DM.01G002140
+    - Soltu.DM.01G002170
+    - Soltu.DM.01G002180
+    - Soltu.DM.01G002210
+    - Soltu.DM.01G002240
+    - Soltu.DM.01G002270
+    - Soltu.DM.01G004840
+    - Soltu.DM.01G006390
+    - Soltu.DM.01G013680
+    - Soltu.DM.01G018790
+    - Soltu.DM.01G021480
+    - Soltu.DM.01G025230
+    - Soltu.DM.01G027070
+    - Soltu.DM.01G028080
+    - Soltu.DM.01G029600
+    - Soltu.DM.01G029760
+    - Soltu.DM.01G030820
+    - Soltu.DM.01G031820
+    - Soltu.DM.01G031960
+    - Soltu.DM.01G031970
+    - Soltu.DM.01G035080
+    - Soltu.DM.01G035560
+    - Soltu.DM.01G035580
+    - Soltu.DM.01G035630
+    - Soltu.DM.01G038210
+    - Soltu.DM.01G038770
+    - Soltu.DM.01G038890
+    - Soltu.DM.01G039740
+    - Soltu.DM.01G040980
+    - Soltu.DM.01G041440
+    - Soltu.DM.01G042280
+    - Soltu.DM.01G044650
+    - Soltu.DM.01G044660
+    - Soltu.DM.01G045140
+    - Soltu.DM.01G048050
+    - Soltu.DM.01G048490
+    - Soltu.DM.01G048820
+    - Soltu.DM.01G049900
+    - Soltu.DM.01G050020
+    - Soltu.DM.01G051740
+    - Soltu.DM.01G051770
+    - Soltu.DM.02G004190
+    - Soltu.DM.02G005740
+    - Soltu.DM.02G008430
+    - Soltu.DM.02G008560
+    - Soltu.DM.02G010430
+    - Soltu.DM.02G011000
+    - Soltu.DM.02G012480
+    - Soltu.DM.02G013480
+    - Soltu.DM.02G014780
+    - Soltu.DM.02G014790
+    - Soltu.DM.02G014860
+    - Soltu.DM.02G014900
+    - Soltu.DM.02G015410
+    - Soltu.DM.02G016290
+    - Soltu.DM.02G016610
+    - Soltu.DM.02G016720
+    - Soltu.DM.02G016740
+    - Soltu.DM.02G016750
+    - Soltu.DM.02G017020
+    - Soltu.DM.02G018320
+    - Soltu.DM.02G019450
+    - Soltu.DM.02G019900
+    - Soltu.DM.02G019910
+    - Soltu.DM.02G020130
+    - Soltu.DM.02G020310
+    - Soltu.DM.02G020320
+    - Soltu.DM.02G021540
+    - Soltu.DM.02G022230
+    - Soltu.DM.02G023580
+    - Soltu.DM.02G023590
+    - Soltu.DM.02G023650
+    - Soltu.DM.02G024450
+    - Soltu.DM.02G024530
+    - Soltu.DM.02G024980
+    - Soltu.DM.02G024990
+    - Soltu.DM.02G025540
+    - Soltu.DM.02G025590
+    - Soltu.DM.02G025970
+    - Soltu.DM.02G029440
+    - Soltu.DM.02G029450
+    - Soltu.DM.02G029920
+    - Soltu.DM.02G030630
+    - Soltu.DM.02G031050
+    - Soltu.DM.02G033060
+    - Soltu.DM.02G034050
+    - Soltu.DM.03G000360
+    - Soltu.DM.03G001860
+    - Soltu.DM.03G003310
+    - Soltu.DM.03G012710
+    - Soltu.DM.03G012920
+    - Soltu.DM.03G014810
+    - Soltu.DM.03G015760
+    - Soltu.DM.03G016520
+    - Soltu.DM.03G017650
+    - Soltu.DM.03G018760
+    - Soltu.DM.03G019040
+    - Soltu.DM.03G019080
+    - Soltu.DM.03G019110
+    - Soltu.DM.03G019800
+    - Soltu.DM.03G019830
+    - Soltu.DM.03G019900
+    - Soltu.DM.03G021450
+    - Soltu.DM.03G022200
+    - Soltu.DM.03G022500
+    - Soltu.DM.03G022710
+    - Soltu.DM.03G022970
+    - Soltu.DM.03G024130
+    - Soltu.DM.03G024560
+    - Soltu.DM.03G024660
+    - Soltu.DM.03G025320
+    - Soltu.DM.03G027530
+    - Soltu.DM.03G027720
+    - Soltu.DM.03G028860
+    - Soltu.DM.03G033230
+    - Soltu.DM.03G034950
+    - Soltu.DM.03G035900
+    - Soltu.DM.03G036920
+    - Soltu.DM.04G000180
+    - Soltu.DM.04G000320
+    - Soltu.DM.04G001340
+    - Soltu.DM.04G001930
+    - Soltu.DM.04G002560
+    - Soltu.DM.04G003970
+    - Soltu.DM.04G006770
+    - Soltu.DM.04G006780
+    - Soltu.DM.04G014270
+    - Soltu.DM.04G018800
+    - Soltu.DM.04G019850
+    - Soltu.DM.04G021550
+    - Soltu.DM.04G021800
+    - Soltu.DM.04G023430
+    - Soltu.DM.04G026280
+    - Soltu.DM.04G028470
+    - Soltu.DM.04G030090
+    - Soltu.DM.04G031320
+    - Soltu.DM.04G031730
+    - Soltu.DM.04G031900
+    - Soltu.DM.04G035640
+    - Soltu.DM.04G035920
+    - Soltu.DM.04G036420
+    - Soltu.DM.04G036710
+    - Soltu.DM.04G038140
+    - Soltu.DM.05G000380
+    - Soltu.DM.05G002140
+    - Soltu.DM.05G002460
+    - Soltu.DM.05G005390
+    - Soltu.DM.05G005540
+    - Soltu.DM.05G005560
+    - Soltu.DM.05G007630
+    - Soltu.DM.05G007640
+    - Soltu.DM.05G009050
+    - Soltu.DM.05G009060
+    - Soltu.DM.05G010020
+    - Soltu.DM.05G011130
+    - Soltu.DM.05G013560
+    - Soltu.DM.05G013640
+    - Soltu.DM.05G013880
+    - Soltu.DM.05G015790
+    - Soltu.DM.05G016690
+    - Soltu.DM.05G018170
+    - Soltu.DM.05G021870
+    - Soltu.DM.05G022190
+    - Soltu.DM.05G023380
+    - Soltu.DM.05G023610
+    - Soltu.DM.05G025320
+    - Soltu.DM.05G026420
+    - Soltu.DM.06G000970
+    - Soltu.DM.06G002190
+    - Soltu.DM.06G003120
+    - Soltu.DM.06G003130
+    - Soltu.DM.06G003270
+    - Soltu.DM.06G003300
+    - Soltu.DM.06G003760
+    - Soltu.DM.06G006740
+    - Soltu.DM.06G009750
+    - Soltu.DM.06G010280
+    - Soltu.DM.06G012170
+    - Soltu.DM.06G013500
+    - Soltu.DM.06G014480
+    - Soltu.DM.06G014590
+    - Soltu.DM.06G016880
+    - Soltu.DM.06G016930
+    - Soltu.DM.06G018370
+    - Soltu.DM.06G018380
+    - Soltu.DM.06G018880
+    - Soltu.DM.06G021870
+    - Soltu.DM.06G022960
+    - Soltu.DM.06G023750
+    - Soltu.DM.06G024540
+    - Soltu.DM.06G024660
+    - Soltu.DM.06G025360
+    - Soltu.DM.06G026160
+    - Soltu.DM.06G028240
+    - Soltu.DM.06G029140
+    - Soltu.DM.06G029480
+    - Soltu.DM.06G030000
+    - Soltu.DM.06G031950
+    - Soltu.DM.06G032860
+    - Soltu.DM.06G033250
+    - Soltu.DM.06G033320
+    - Soltu.DM.06G033330
+    - Soltu.DM.06G033820
+    - Soltu.DM.06G034020
+    - Soltu.DM.07G000730
+    - Soltu.DM.07G000930
+    - Soltu.DM.07G001780
+    - Soltu.DM.07G001790
+    - Soltu.DM.07G001800
+    - Soltu.DM.07G001810
+    - Soltu.DM.07G001820
+    - Soltu.DM.07G001840
+    - Soltu.DM.07G004760
+    - Soltu.DM.07G007010
+    - Soltu.DM.07G009580
+    - Soltu.DM.07G012720
+    - Soltu.DM.07G013630
+    - Soltu.DM.07G014040
+    - Soltu.DM.07G014170
+    - Soltu.DM.07G014190
+    - Soltu.DM.07G015460
+    - Soltu.DM.07G016620
+    - Soltu.DM.07G016950
+    - Soltu.DM.07G016960
+    - Soltu.DM.07G016990
+    - Soltu.DM.07G017900
+    - Soltu.DM.07G017930
+    - Soltu.DM.07G019250
+    - Soltu.DM.07G020810
+    - Soltu.DM.07G020920
+    - Soltu.DM.07G022040
+    - Soltu.DM.07G022490
+    - Soltu.DM.07G022530
+    - Soltu.DM.07G023270
+    - Soltu.DM.07G023990
+    - Soltu.DM.07G025190
+    - Soltu.DM.07G026260
+    - Soltu.DM.07G027720
+    - Soltu.DM.08G001570
+    - Soltu.DM.08G001640
+    - Soltu.DM.08G002190
+    - Soltu.DM.08G003140
+    - Soltu.DM.08G005470
+    - Soltu.DM.08G005480
+    - Soltu.DM.08G006010
+    - Soltu.DM.08G012010
+    - Soltu.DM.08G014270
+    - Soltu.DM.08G015410
+    - Soltu.DM.08G015420
+    - Soltu.DM.08G022800
+    - Soltu.DM.08G022820
+    - Soltu.DM.08G024050
+    - Soltu.DM.08G024190
+    - Soltu.DM.08G026840
+    - Soltu.DM.08G027950
+    - Soltu.DM.08G028990
+    - Soltu.DM.08G029580
+    - Soltu.DM.08G029760
+    - Soltu.DM.08G030020
+    - Soltu.DM.09G000860
+    - Soltu.DM.09G001980
+    - Soltu.DM.09G002760
+    - Soltu.DM.09G003340
+    - Soltu.DM.09G004250
+    - Soltu.DM.09G004270
+    - Soltu.DM.09G004660
+    - Soltu.DM.09G005510
+    - Soltu.DM.09G005620
+    - Soltu.DM.09G006560
+    - Soltu.DM.09G006790
+    - Soltu.DM.09G007590
+    - Soltu.DM.09G008210
+    - Soltu.DM.09G008700
+    - Soltu.DM.09G009010
+    - Soltu.DM.09G017200
+    - Soltu.DM.09G018390
+    - Soltu.DM.09G019390
+    - Soltu.DM.09G020230
+    - Soltu.DM.09G022110
+    - Soltu.DM.09G023670
+    - Soltu.DM.09G024180
+    - Soltu.DM.09G025140
+    - Soltu.DM.09G028430
+    - Soltu.DM.09G028560
+    - Soltu.DM.09G028590
+    - Soltu.DM.09G028600
+    - Soltu.DM.10G000390
+    - Soltu.DM.10G000500
+    - Soltu.DM.10G000510
+    - Soltu.DM.10G000600
+    - Soltu.DM.10G001030
+    - Soltu.DM.10G001690
+    - Soltu.DM.10G002820
+    - Soltu.DM.10G004230
+    - Soltu.DM.10G004380
+    - Soltu.DM.10G006300
+    - Soltu.DM.10G007310
+    - Soltu.DM.10G011240
+    - Soltu.DM.10G018350
+    - Soltu.DM.10G018520
+    - Soltu.DM.10G019440
+    - Soltu.DM.10G019450
+    - Soltu.DM.10G020250
+    - Soltu.DM.10G020990
+    - Soltu.DM.10G021930
+    - Soltu.DM.10G022530
+    - Soltu.DM.10G022570
+    - Soltu.DM.10G023620
+    - Soltu.DM.10G023640
+    - Soltu.DM.10G023860
+    - Soltu.DM.10G025430
+    - Soltu.DM.10G026030
+    - Soltu.DM.10G026550
+    - Soltu.DM.10G026560
+    - Soltu.DM.10G026840
+    - Soltu.DM.10G027030
+    - Soltu.DM.10G027470
+    - Soltu.DM.10G027830
+    - Soltu.DM.10G028070
+    - Soltu.DM.10G028110
+    - Soltu.DM.10G028270
+    - Soltu.DM.10G029740
+    - Soltu.DM.10G029760
+    - Soltu.DM.10G029800
+    - Soltu.DM.10G029820
+    - Soltu.DM.11G001520
+    - Soltu.DM.11G002650
+    - Soltu.DM.11G002770
+    - Soltu.DM.11G002840
+    - Soltu.DM.11G003560
+    - Soltu.DM.11G004150
+    - Soltu.DM.11G004470
+    - Soltu.DM.11G004680
+    - Soltu.DM.11G005050
+    - Soltu.DM.11G006370
+    - Soltu.DM.11G009710
+    - Soltu.DM.11G010950
+    - Soltu.DM.11G012120
+    - Soltu.DM.11G012900
+    - Soltu.DM.11G012920
+    - Soltu.DM.11G013590
+    - Soltu.DM.11G019830
+    - Soltu.DM.11G019840
+    - Soltu.DM.11G021280
+    - Soltu.DM.11G022840
+    - Soltu.DM.11G023180
+    - Soltu.DM.11G023500
+    - Soltu.DM.11G024380
+    - Soltu.DM.11G024450
+    - Soltu.DM.11G024460
+    - Soltu.DM.11G025090
+    - Soltu.DM.11G026250
+    - Soltu.DM.12G001660
+    - Soltu.DM.12G001690
+    - Soltu.DM.12G002630
+    - Soltu.DM.12G003570
+    - Soltu.DM.12G003610
+    - Soltu.DM.12G003620
+    - Soltu.DM.12G004190
+    - Soltu.DM.12G005770
+    - Soltu.DM.12G005850
+    - Soltu.DM.12G007560
+    - Soltu.DM.12G008090
+    - Soltu.DM.12G016890
+    - Soltu.DM.12G021490
+    - Soltu.DM.12G024040
+    - Soltu.DM.12G024050
+    - Soltu.DM.12G024130
+    - Soltu.DM.12G024280
+    - Soltu.DM.12G024900
+    - Soltu.DM.12G025230
+    - Soltu.DM.12G025450
+    - Soltu.DM.12G025500
+    - Soltu.DM.12G025930
+    - Soltu.DM.12G026090
+    - Soltu.DM.12G026390
+    - Soltu.DM.12G027320
+    - Soltu.DM.12G028560
+    - Soltu.DM.12G028570
+    - Soltu.DM.12G028600
+    - Soltu.DM.12G028680
+  curator_note: Catalytic activity; true of a metabolic DEG list but uninformative.
