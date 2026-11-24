@@ -1,0 +1,113 @@
+gene_set_id: MSIGDB:MA_RAT_AGING_UP
+gene_set_name: MA_RAT_AGING_UP
+collection: M2:CGP
+msigdb_release: v2025.1.Mm
+taxon:
+  id: NCBITaxon:10116
+  label: Rattus norvegicus
+direction: UP
+series: SERIES:MA_RAT_AGING
+series_role: up
+description: >-
+  MSigDB set (M46418; rat gene symbols) of 110 genes up-regulated with age in at least
+  five cell types across a multi-tissue single-cell and single-nucleus atlas of rat
+  aging (Ma et al. 2020, PMID:32109414, Table S2). Because it requires concordant change
+  across many cell types, it captures the shared, tissue-independent aging program
+  rather than any one tissue. GO enrichment shows that the program is
+  inflammatory/innate-immune: cytokines and chemokines (Il1b, Il6, Ccl3, Ccl6, Cxcl2),
+  alarmins and antimicrobials (S100a8, S100a9, Lyz2, Defa5, Pglyrp1, Slpi), acute-phase
+  proteins (Hp, Lrg1, Tf), interferon-stimulated genes (Ifit3, Oas1a, Oasl, Ifitm1,
+  Ifi27l2a), MHC (RT1-A1/A2, RT1-Db1, B2m) and myeloid adaptors (Tyrobp, Fcer1g,
+  Clec7a). There is also an antioxidant/stress layer (Sod2, Mt1f, Mt2, Nqo1, Txnip,
+  Gadd45a, Ucp2). This is the cell-intrinsic counterpart of the paper's finding that
+  immune cells accumulate with age. A block of ribosomal-protein genes rides along
+  and is treated as a technical, not biological, signal (see the paired
+  MA_RAT_AGING_DN). Rat GO annotation is largely inferred from human and mouse
+  orthologues (ISO), so recovery here mostly tests orthology-propagated
+  annotation.
+associations:
+  - term:
+      id: GO:0006954
+      label: inflammatory response
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:32109414
+        reference_title: "Caloric Restriction Reprograms the Single-Cell Transcriptional Landscape of Rattus Norvegicus Aging."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "Immune cells were increased during aging"
+        explanation: >-
+          The atlas identifies inflammation and immune expansion as the dominant
+          aging change, which this cross-cell-type UP set reflects.
+    curator_note: >-
+      19/479, p ~3e-13 (Anxa1, Ccl3, Ccl6, Chi3l1, Hp, Il1b, Il6, Serpinb1a and others
+      directly; S100a8, S100a9, Fcer1g, Tyrobp, Tf, Timp1 via closure). "Inflammaging"
+      is the expected hallmark of a multi-tissue aging signature, hence
+      confirmatory.
+  - term:
+      id: GO:0019730
+      label: antimicrobial humoral response
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      10/141, p ~7e-10, all via closure (B2m, Ccl3, Ccl6, Cxcl2, Defa5, Lgals3,
+      Pglyrp1, S100a9, Tf, plus Gapdh). An induced antimicrobial/alarmin layer
+      (S100a8/a9, Defa5, Pglyrp1, Lyz2) across many cell types is more specific than
+      generic inflammation. It points to an innate-defence state that caloric
+      restriction reverses. The Gapdh carrier is a moonlighting annotation.
+  - term:
+      id: GO:0051607
+      label: defense response to virus
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      Ifitm1, Il6, Oas1a directly; Ifit3, Oasl via closure (5/249, not significant).
+      A type-I-interferon-stimulated component (also Ifi27l2a, B2m) consistent with the
+      chronic interferon signalling reported in aging tissues. Too small against a
+      large term to be recovered.
+  - term:
+      id: GO:0002474
+      label: antigen processing and presentation of peptide antigen via MHC class I
+    aspect: biological_process
+    category: marker_driven_plausible
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    curator_note: >-
+      B2m, Fcer1g and RT1-M5 via closure (3/51); the classical class I genes RT1-A1 and
+      RT1-A2 are present but not annotated here. MHC up-regulation follows interferon
+      exposure; plausible, but a marker-level signal.
+  - term:
+      id: GO:0002181
+      label: cytoplasmic translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: medium
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    artifact_cause: housekeeping_contamination
+    curator_note: >-
+      12/297, p ~8e-9 (Rpl5, Rpl7, Rpl8, Rpl12, Rpl17, Rpl18a, Rplp0, Rplp1, Rps6,
+      Rps24, Rack1). Ribosomal-protein genes go in opposite directions in the paired
+      sets: larger RPL transcripts here, the very small Rpl37-39 and Rps21/28/29 in
+      MA_RAT_AGING_DN. That split by transcript rather than by subunit reads as a
+      single-cell technical composition effect, not a biological change in
+      translation. Housekeeping contamination.
