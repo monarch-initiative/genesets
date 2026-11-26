@@ -122,15 +122,108 @@ associations:
     (12G021490 at -4.8, 08G029580), COBRA-like (02G009140, 02G030660), DUF828 (09G007590 at -5.6, 10G026840). It
     points to the cellulose machinery, not just to "growth".'
 - term:
+    id: GO:0009695
+    label: jasmonic acid biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: medium
+  specificity: broadly_expressed
+  seed_source: curator_added
+  recovery_status: annotation_supported
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.4142e-05
+    p_adjust: 1.0
+    overlap: 10
+    query_size: 775
+    target_size: 78
+    overlap_genes:
+    - Soltu.DM.01G002140
+    - Soltu.DM.01G038890
+    - Soltu.DM.02G025590
+    - Soltu.DM.05G011130
+    - Soltu.DM.07G016990
+    - Soltu.DM.08G005470
+    - Soltu.DM.08G005480
+    - Soltu.DM.09G028600
+    - Soltu.DM.11G001520
+    - Soltu.DM.11G023180
+  curator_note: 'The mechanism of the lower defence module: the JA biosynthesis enzymes AOS x2 (07G016990, 11G023180),
+    AOC (02G025590), 13-LOX x5 and a JMT-like methyltransferase (09G028600) all fall together; 10/78, nominal p
+    = 2.4e-5, not Bonferroni-significant. Lower JA synthesis explains why JAZ1 (12G008980) and the proteinase inhibitors
+    fall. The authors suggested glassy particles abrade tissues, which would predict JA rising in regolith; the
+    leaves show the opposite.'
+- term:
+    id: GO:0010466
+    label: negative regulation of peptidase activity
+  aspect: biological_process
+  category: supporting_process
+  confidence: medium
+  specificity: lineage_shared
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 0.00010252
+    p_adjust: 1.0
+    overlap: 6
+    query_size: 775
+    target_size: 31
+    overlap_genes:
+    - Soltu.DM.03G018510
+    - Soltu.DM.03G018520
+    - Soltu.DM.03G018600
+    - Soltu.DM.03G023500
+    - Soltu.DM.03G023520
+    - Soltu.DM.03G023540
+  curator_note: 'The effector mechanism: inhibiting herbivore digestive proteases. Only six Kunitz inhibitors (03G023500/20/40,
+    03G018510/20/600) carry this BP (6/31, nominal p = 1e-4). Six potato inhibitor I genes (09G025880-09G025950),
+    the type II inhibitors (03G023550/580/620) and two cystatins (06G028910, 06G028940) are in the set too, but
+    have only an MF annotation or none.'
+- term:
+    id: GO:0030414
+    label: peptidase inhibitor activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.0229e-07
+    p_adjust: 0.031577
+    overlap: 10
+    query_size: 775
+    target_size: 49
+    overlap_genes:
+    - Soltu.DM.03G018450
+    - Soltu.DM.03G018510
+    - Soltu.DM.03G018520
+    - Soltu.DM.03G018600
+    - Soltu.DM.03G018670
+    - Soltu.DM.03G023500
+    - Soltu.DM.03G023520
+    - Soltu.DM.03G023540
+    - Soltu.DM.06G028910
+    - Soltu.DM.06G028940
+  curator_note: 'Kunitz trypsin inhibitors (03G023500/20/40, 03G018450-03G018670) and cystatins (06G028910 at -7.9,
+    06G028940): the abundant secreted defence effectors of the JA module in Solanaceae leaves.'
+- term:
     id: GO:0009611
     label: response to wounding
   aspect: biological_process
-  category: core_process
+  category: marker_driven_plausible
   confidence: high
   specificity: broadly_expressed
   seed_source: enrichment_recovered
   recovery_status: annotation_supported
-  insight: confirmatory
   enrichment_stats:
     method: fisher
     p_adjust_method: bonferroni
@@ -175,74 +268,9 @@ associations:
     - Soltu.DM.12G007810
     - Soltu.DM.12G008980
     - Soltu.DM.12G024130
-  curator_note: '35 carriers forming the potato wound/JA defence module: potato inhibitor I (09G025880-09G025950),
-    Kunitz (03G018450, 03G018670), JAZ1 (12G008980), JAZ-like (08G007100), AOS (07G016990, 11G023180), 13-LOX (01G002140,
-    08G005470/80), MYC2-like bHLH (10G005280), CYP94B. All are lower in regolith than in soil. The authors suggested
-    glassy particles abrade tissues, which would predict wound signalling rising in regolith; the leaves show the
-    opposite.'
-- term:
-    id: GO:0009695
-    label: jasmonic acid biosynthetic process
-  aspect: biological_process
-  category: supporting_process
-  confidence: medium
-  specificity: broadly_expressed
-  seed_source: curator_added
-  recovery_status: annotation_supported
-  insight: mechanistic
-  enrichment_stats:
-    method: fisher
-    p_adjust_method: bonferroni
-    p_value: 2.4142e-05
-    p_adjust: 1.0
-    overlap: 10
-    query_size: 775
-    target_size: 78
-    overlap_genes:
-    - Soltu.DM.01G002140
-    - Soltu.DM.01G038890
-    - Soltu.DM.02G025590
-    - Soltu.DM.05G011130
-    - Soltu.DM.07G016990
-    - Soltu.DM.08G005470
-    - Soltu.DM.08G005480
-    - Soltu.DM.09G028600
-    - Soltu.DM.11G001520
-    - Soltu.DM.11G023180
-  curator_note: 'The biosynthetic arm of the module: AOS x2, AOC (02G025590), 13-LOX x5, JMT-like methyltransferase
-    (09G028600); 10/78, nominal p = 2.4e-5, not Bonferroni-significant. Added because the coordinated drop of JA
-    synthesis enzymes explains the downstream proteinase-inhibitor drop.'
-- term:
-    id: GO:0030414
-    label: peptidase inhibitor activity
-  aspect: molecular_function
-  category: supporting_process
-  confidence: high
-  specificity: lineage_shared
-  seed_source: enrichment_recovered
-  recovery_status: annotation_supported
-  insight: confirmatory
-  enrichment_stats:
-    method: fisher
-    p_adjust_method: bonferroni
-    p_value: 3.0229e-07
-    p_adjust: 0.031577
-    overlap: 10
-    query_size: 775
-    target_size: 49
-    overlap_genes:
-    - Soltu.DM.03G018450
-    - Soltu.DM.03G018510
-    - Soltu.DM.03G018520
-    - Soltu.DM.03G018600
-    - Soltu.DM.03G018670
-    - Soltu.DM.03G023500
-    - Soltu.DM.03G023520
-    - Soltu.DM.03G023540
-    - Soltu.DM.06G028910
-    - Soltu.DM.06G028940
-  curator_note: 'Kunitz trypsin inhibitors (03G023500/20/40, 03G018450-03G018670) and cystatins (06G028910 at -7.9,
-    06G028940): the abundant secreted defence effectors of the JA module in Solanaceae leaves.'
+  curator_note: A stimulus term that restates the JA module rather than naming its mechanism. Its 35 carriers are
+    potato inhibitor I (09G025880-09G025950), Kunitz, JAZ1/JAZ-like, AOS, 13-LOX, a MYC2-like bHLH and CYP94B. The
+    mechanisms are recorded as JA biosynthesis and peptidase inhibition.
 - term:
     id: GO:0099503
     label: secretory vesicle

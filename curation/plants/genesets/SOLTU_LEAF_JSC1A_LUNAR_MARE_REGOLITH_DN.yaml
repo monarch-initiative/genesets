@@ -157,6 +157,34 @@ associations:
     a modest, coordinated drop in entry-point phenylpropanoid flux (log2FC -0.4 to -1.1). It recurs in the LHS-1E
     and OPRH4W30 lists.'
 - term:
+    id: GO:0009800
+    label: cinnamic acid biosynthetic process
+  aspect: biological_process
+  category: supporting_process
+  confidence: medium
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.6954e-08
+    p_adjust: 0.001771
+    overlap: 7
+    query_size: 498
+    target_size: 20
+    overlap_genes:
+    - Soltu.DM.03G011440
+    - Soltu.DM.03G011450
+    - Soltu.DM.03G011480
+    - Soltu.DM.03G011490
+    - Soltu.DM.09G005700
+    - Soltu.DM.09G005710
+    - Soltu.DM.10G020990
+  curator_note: 'The PAL step itself, phenylalanine deamination to trans-cinnamate, named as a process: the seven
+    PAL paralogues.'
+- term:
     id: GO:0046274
     label: lignin catabolic process
   aspect: biological_process

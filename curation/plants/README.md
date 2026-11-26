@@ -85,11 +85,11 @@ upper-canopy leaves were profiled by RNA-seq at 39 days after planting. Membersh
 
 | Gene set | Simulant | Dir | n | What the curation records |
 |---|---|---|---:|---|
-| `SOLTU_LEAF_LMS1E_LUNAR_MARE_REGOLITH_UP` | LMS-1E (mare) | UP | 566 | Rapid general-stress regulon (WRKY33/40, ZAT10, ERF, CML37/38) and an S-lectin / S-domain-2 receptor-kinase expansion; the "hypoxia" hit is that shared regulon, and leaf PDC1 goes the other way |
-| `SOLTU_LEAF_LMS1E_LUNAR_MARE_REGOLITH_DN` | LMS-1E (mare) | DN | 831 | Cell-wall and cellulose synthesis (CESA, CSLG, COBRA-like, expansins); the JA wound-defence module (JAZ1, AOS, AOC, LOX, proteinase inhibitors) |
-| `SOLTU_LEAF_JSC1A_LUNAR_MARE_REGOLITH_UP` | JSC-1A (mare) | UP | 431 | Metal response; CSD1/CSD2 up, the copper-replete half of the SPL7 switch |
+| `SOLTU_LEAF_LMS1E_LUNAR_MARE_REGOLITH_UP` | LMS-1E (mare) | UP | 566 | Receptor-kinase signalling (protein phosphorylation) and the Ca2+- and ethylene-signalling arms of the general stress regulon (CML37/38, WRKY33/40, ZAT10, ERF). "Response to chitin" and "hypoxia" are kept only as labelled stimulus hits |
+| `SOLTU_LEAF_LMS1E_LUNAR_MARE_REGOLITH_DN` | LMS-1E (mare) | DN | 831 | Cell-wall and cellulose synthesis (CESA, CSLG, COBRA-like, expansins); JA biosynthesis (AOS, AOC, LOX) and peptidase inhibition (Kunitz, potato inhibitor I/II, cystatins) |
+| `SOLTU_LEAF_JSC1A_LUNAR_MARE_REGOLITH_UP` | JSC-1A (mare) | UP | 431 | Intracellular copper ion homeostasis (CSD1/CSD2 up, the copper-replete half of the SPL7 switch; a GO gap on this pole) and the Fe-to-Cu/Zn SOD swap |
 | `SOLTU_LEAF_JSC1A_LUNAR_MARE_REGOLITH_DN` | JSC-1A (mare) | DN | 527 | Light-harvesting antenna; FSD1, COPT1/5 and CCH down (SPL7 copper-deficiency regulon off); PAL cluster |
-| `SOLTU_LEAF_OPRH4W30_LUNAR_HIGHLAND_REGOLITH_DN` | OPRH4W30 (highland) | DN | 79 | JA wound-defence effectors and a nine-gene PAL cluster |
+| `SOLTU_LEAF_OPRH4W30_LUNAR_HIGHLAND_REGOLITH_DN` | OPRH4W30 (highland) | DN | 79 | Cinnamic acid biosynthesis (nine PALs) and peptidase inhibition with threonine deaminase and LAP, the Solanaceae JA anti-nutritive defence (mostly a GO gap) |
 
 **Direction.** Data S5 does not say which way its log2FoldChange runs. It is read here as regolith
 relative to soil, which is DESeq2's default because `ADK` is the alphabetically first level. The copper
@@ -108,7 +108,14 @@ not the expressed genes. Statistics are `genesets-rs` Fisher with Bonferroni, `m
 fires `lignin catabolic process`, `drought recovery`, `salicylic acid catabolic process` and `response to
 UV-B` on any potato PAL cluster. In OPRH4W30 they are the top-ranked hits (p_adj ~ 1e-15), so they are
 recorded as `false_association` traps. The copper mechanism carries only 2-3 genes per set, so it is a
-curator-added core term that whole-term enrichment misses (core recall 0.5 on both JSC-1A sets).
+curator-added core term that whole-term enrichment misses.
+
+**Mechanism terms, not stimulus terms.** Following the house rule ("Name the mechanism, not the stimulus" in
+[`curation/README.md`](../README.md)), no set uses a "response to X" term as its core biology. Response to
+wounding, metal ion and chitin are kept only as labelled `marker_driven_plausible` hits. The mechanism terms
+that replace them are harder to recover, largely because the carrier genes lack the annotation: potato type II
+proteinase inhibitors have no GO annotation, and threonine deaminase and LAP lack their defence role. Core
+recall is therefore 0.0 on LMS-1E UP and JSC-1A UP, 0.5 on JSC-1A DN and OPRH4W30 DN, and 0.67 on LMS-1E DN.
 
 **Not curated.** The LHS-1E list (360 DEGs) largely repeats the LMS-1E down-regulated JA module and the
 PAL cluster, so it adds no new pole. The authors' Data S6 GSEA table for OPRH4W30 is a near-verbatim copy of

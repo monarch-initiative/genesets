@@ -32,87 +32,15 @@ contexts:
   context_type: chemical_perturbagen
 associations:
 - term:
-    id: GO:0010038
-    label: response to metal ion
-  aspect: biological_process
-  category: core_process
-  confidence: medium
-  specificity: broadly_expressed
-  seed_source: enrichment_recovered
-  recovery_status: annotation_supported
-  insight: confirmatory
-  enrichment_stats:
-    method: fisher
-    p_adjust_method: bonferroni
-    p_value: 1.1515e-08
-    p_adjust: 0.0012028
-    overlap: 30
-    query_size: 412
-    target_size: 678
-    overlap_genes:
-    - Soltu.DM.01G022650
-    - Soltu.DM.01G029100
-    - Soltu.DM.01G051980
-    - Soltu.DM.02G002870
-    - Soltu.DM.02G005390
-    - Soltu.DM.02G022960
-    - Soltu.DM.02G026440
-    - Soltu.DM.02G034100
-    - Soltu.DM.04G034610
-    - Soltu.DM.05G003540
-    - Soltu.DM.05G003650
-    - Soltu.DM.05G003670
-    - Soltu.DM.05G004320
-    - Soltu.DM.06G033570
-    - Soltu.DM.06G034180
-    - Soltu.DM.07G006080
-    - Soltu.DM.07G014000
-    - Soltu.DM.08G006260
-    - Soltu.DM.09G001300
-    - Soltu.DM.09G001440
-    - Soltu.DM.09G031030
-    - Soltu.DM.10G018890
-    - Soltu.DM.10G021270
-    - Soltu.DM.11G001060
-    - Soltu.DM.11G020830
-    - Soltu.DM.11G022410
-    - Soltu.DM.12G000810
-    - Soltu.DM.12G001860
-    - Soltu.DM.12G006400
-    - Soltu.DM.12G006430
-  evidence:
-  - reference: PMID:43058136
-    reference_title: Growth and molecular responses of potato to lunar regolith simulants.
-    snippet: Heavy metals, including Cu, Zn, and Al, were modestly elevated in tubers from certain LRS treatments,
-      warranting continued monitoring in future studies.
-    supports: SUPPORT
-    evidence_source: MODEL_ORGANISM
-    explanation: Cu was significantly elevated in tubers of JSC-1A plants (Table 1).
-  curator_note: '30 carriers: CSD1 (01G022650), CSD2 (11G020830), ALS3-like (10G021270), zinc transporter (07G014000),
-    tau GSTs (01G029100, 09G001300, 09G001440), CYP82C (06G033570, 04G034610), basic chitinases. Several are annotated
-    only through Cd/Zn/Al responses in Arabidopsis, so the general term is right and the specific metal is copper
-    (next association).'
-- term:
-    id: GO:0046688
-    label: response to copper ion
+    id: GO:0006878
+    label: intracellular copper ion homeostasis
   aspect: biological_process
   category: core_process
   confidence: medium
   specificity: cell_type_specific
   seed_source: curator_added
-  recovery_status: annotation_supported
+  recovery_status: annotation_gap
   insight: mechanistic
-  enrichment_stats:
-    method: fisher
-    p_adjust_method: bonferroni
-    p_value: 0.014387
-    p_adjust: 1.0
-    overlap: 2
-    query_size: 412
-    target_size: 14
-    overlap_genes:
-    - Soltu.DM.01G022650
-    - Soltu.DM.11G020830
   evidence:
   - reference: PMID:19122104
     reference_title: SQUAMOSA Promoter Binding Protein-Like7 Is a Central Regulator for Copper Homeostasis in Arabidopsis.
@@ -123,10 +51,40 @@ associations:
     evidence_source: MODEL_ORGANISM
     explanation: SPL7 drives miR398 (CSD1/CSD2 repression), COPT transporters and a copper chaperone under Cu deficiency.
       The reverse pattern here indicates Cu sufficiency.
-  curator_note: CSD1 and CSD2 up (2/14, nominal p = 0.014). In Arabidopsis and Solanaceae these are miR398 targets
-    that SPL7 represses under copper deficiency, so their rise, with FSD1/COPT1/CCH falling in the paired DN set,
-    reads out a copper-replete leaf. Too few genes for Bonferroni; added because it is the specific mechanism behind
-    the metal-response hit.
+  - reference: PMID:43058136
+    reference_title: Growth and molecular responses of potato to lunar regolith simulants.
+    snippet: Heavy metals, including Cu, Zn, and Al, were modestly elevated in tubers from certain LRS treatments,
+      warranting continued monitoring in future studies.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Cu was significantly elevated in tubers of JSC-1A plants (Table 1).
+  curator_note: The copper-economy switch. CSD1 (01G022650) and CSD2 (11G020830) are miR398 targets that SPL7 represses
+    under copper deficiency. Their rise here, with FSD1, COPT1/5 and CCH falling in the paired DN set, reads out
+    a copper-replete leaf. Neither CSD carries a copper-homeostasis annotation (only SOD activity and response to
+    copper ion), so the mechanism is a GO gap on this pole. The same term is recovered from COPT/CCH on the DN pole.
+- term:
+    id: GO:0019430
+    label: removal of superoxide radicals
+  aspect: biological_process
+  category: supporting_process
+  confidence: medium
+  specificity: broadly_expressed
+  seed_source: curator_added
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 0.010619
+    p_adjust: 1.0
+    overlap: 2
+    query_size: 412
+    target_size: 12
+    overlap_genes:
+    - Soltu.DM.01G022650
+    - Soltu.DM.11G020830
+  curator_note: CSD1 and CSD2 (2/12, nominal p = 0.011). With FSD1 down on the DN pole, chloroplast superoxide scavenging
+    swaps from the Fe to the Cu/Zn isoform rather than changing in capacity.
 - term:
     id: GO:0016301
     label: kinase activity
@@ -233,6 +191,57 @@ associations:
   curator_note: Six mitochondrial TCA subunits (succinyl-CoA ligase alpha x2 and beta, 2-oxoglutarate dehydrogenase
     E2 x2, lipoamide dehydrogenase), all with small fold changes (log2FC 0.26-0.51). Plausible respiratory adjustment,
     but too modest to call a programme.
+- term:
+    id: GO:0010038
+    label: response to metal ion
+  aspect: biological_process
+  category: marker_driven_plausible
+  confidence: medium
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.1515e-08
+    p_adjust: 0.0012028
+    overlap: 30
+    query_size: 412
+    target_size: 678
+    overlap_genes:
+    - Soltu.DM.01G022650
+    - Soltu.DM.01G029100
+    - Soltu.DM.01G051980
+    - Soltu.DM.02G002870
+    - Soltu.DM.02G005390
+    - Soltu.DM.02G022960
+    - Soltu.DM.02G026440
+    - Soltu.DM.02G034100
+    - Soltu.DM.04G034610
+    - Soltu.DM.05G003540
+    - Soltu.DM.05G003650
+    - Soltu.DM.05G003670
+    - Soltu.DM.05G004320
+    - Soltu.DM.06G033570
+    - Soltu.DM.06G034180
+    - Soltu.DM.07G006080
+    - Soltu.DM.07G014000
+    - Soltu.DM.08G006260
+    - Soltu.DM.09G001300
+    - Soltu.DM.09G001440
+    - Soltu.DM.09G031030
+    - Soltu.DM.10G018890
+    - Soltu.DM.10G021270
+    - Soltu.DM.11G001060
+    - Soltu.DM.11G020830
+    - Soltu.DM.11G022410
+    - Soltu.DM.12G000810
+    - Soltu.DM.12G001860
+    - Soltu.DM.12G006400
+    - Soltu.DM.12G006430
+  curator_note: A stimulus term. Its 30 carriers are CSD1/CSD2, ALS3-like (10G021270), a ZIP5-like transporter (07G014000),
+    tau GSTs, CYP82C and basic chitinases, many annotated through Cd/Zn/Al responses in Arabidopsis. The specific
+    mechanism is recorded as intracellular copper ion homeostasis.
 - term:
     id: GO:0003824
     label: catalytic activity

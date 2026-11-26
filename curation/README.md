@@ -119,6 +119,19 @@ value for this set*, relative to how the set was derived (`collection`,
 - `mechanistic` — a non-obvious process that illuminates how/why and is not
   entailed by the set's construction; a genuine enrichment insight.
 
+**Name the mechanism, not the stimulus.** A "response to X" term whose X is
+the experiment itself (response to wounding for a wound-defence set, response
+to metal ion for a metal-exposure set, response to chitin used as a proxy for a
+stress regulon) restates how the set was made. Do not use it as a set's core or
+supporting biology. Find the mechanism the genes carry out and name the BP for
+that: jasmonic acid biosynthesis and peptidase inhibition rather than response
+to wounding; intracellular copper ion homeostasis rather than response to
+copper. If the mechanism term lacks annotation on the carrier genes, record it
+anyway as a curator-added `annotation_gap`. When a stimulus term is enriched,
+keep it as a labelled hit (`marker_driven_plausible`, or `nonspecific` if it is
+also too general), so the eval can still score it. Example:
+`plants/genesets/SOLTU_LEAF_OPRH4W30_LUNAR_HIGHLAND_REGOLITH_DN.yaml`.
+
 Free text is allowed (not a closed enum), so curators can record nuance. The
 point is to let the eval separate *recall of mechanistic insight* from raw
 recall of correct terms — a method that returns only confirmatory terms is

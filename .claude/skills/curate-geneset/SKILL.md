@@ -109,6 +109,12 @@ many there are, give every noise term an `artifact_cause`, and add a
    - `confirmatory` — entailed by the set's construction/identity (the default for
      a marker signature; ALL generic hallmarks — proliferation, apoptosis, generic
      PI3K/MAPK, known disease OXPHOS, expected immune terms).
+   - Do not name a set's biology with a "response to X" term that restates the
+     experiment (response to wounding, metal ion, chitin...). Name the mechanism
+     BP instead (JA biosynthesis, peptidase inhibition, copper ion homeostasis).
+     Add it as a curator-added `annotation_gap` if the genes lack it. Keep an
+     enriched stimulus term only as `marker_driven_plausible`/`nonspecific`. See
+     "Name the mechanism, not the stimulus" in `curation/README.md`.
    - `mechanistic` — a SPECIFIC, non-obvious process not entailed by construction;
      a genuine enrichment insight. Use sparingly (~10% of terms corpus-wide). When
      in doubt, it's confirmatory.

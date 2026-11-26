@@ -27,59 +27,85 @@ contexts:
   context_type: anatomical_structure
 associations:
 - term:
-    id: GO:0010200
-    label: response to chitin
+    id: GO:0006468
+    label: protein phosphorylation
   aspect: biological_process
   category: core_process
   confidence: medium
   specificity: broadly_expressed
-  seed_source: enrichment_recovered
+  seed_source: curator_added
   recovery_status: annotation_supported
   insight: confirmatory
   enrichment_stats:
     method: fisher
     p_adjust_method: bonferroni
-    p_value: 1.7468e-13
-    p_adjust: 1.8247e-08
-    overlap: 26
+    p_value: 5.1366e-07
+    p_adjust: 0.053657
+    overlap: 60
     query_size: 542
-    target_size: 241
+    target_size: 1749
     overlap_genes:
-    - Soltu.DM.01G021450
-    - Soltu.DM.01G039930
-    - Soltu.DM.01G047400
-    - Soltu.DM.02G004200
+    - Soltu.DM.01G004900
+    - Soltu.DM.02G003300
+    - Soltu.DM.02G003320
+    - Soltu.DM.02G011150
+    - Soltu.DM.02G011770
+    - Soltu.DM.02G019150
+    - Soltu.DM.02G019660
+    - Soltu.DM.02G020990
+    - Soltu.DM.02G021050
+    - Soltu.DM.02G023260
     - Soltu.DM.02G029910
-    - Soltu.DM.03G014560
-    - Soltu.DM.03G036130
-    - Soltu.DM.04G007660
-    - Soltu.DM.04G007680
-    - Soltu.DM.04G026330
-    - Soltu.DM.04G032780
-    - Soltu.DM.05G022070
-    - Soltu.DM.06G003960
-    - Soltu.DM.06G018840
-    - Soltu.DM.06G024270
-    - Soltu.DM.07G017160
-    - Soltu.DM.08G002290
-    - Soltu.DM.08G013100
-    - Soltu.DM.08G024170
-    - Soltu.DM.08G028850
-    - Soltu.DM.09G009490
-    - Soltu.DM.10G005000
-    - Soltu.DM.10G005890
-    - Soltu.DM.10G017860
-    - Soltu.DM.12G004050
-    - Soltu.DM.12G006170
+    - Soltu.DM.03G003170
+    - Soltu.DM.03G022670
+    - Soltu.DM.03G025950
+    - Soltu.DM.03G027300
+    - Soltu.DM.03G031870
+    - Soltu.DM.03G037560
+    - Soltu.DM.04G002260
+    - Soltu.DM.04G025590
+    - Soltu.DM.04G031990
+    - Soltu.DM.04G032100
+    - Soltu.DM.04G033170
+    - Soltu.DM.04G033640
+    - Soltu.DM.05G003730
+    - Soltu.DM.05G025420
+    - Soltu.DM.06G000710
+    - Soltu.DM.06G001620
+    - Soltu.DM.06G014530
+    - Soltu.DM.06G015680
+    - Soltu.DM.06G017820
+    - Soltu.DM.06G030430
+    - Soltu.DM.06G031000
+    - Soltu.DM.07G000510
+    - Soltu.DM.07G021320
+    - Soltu.DM.07G021560
+    - Soltu.DM.07G021600
+    - Soltu.DM.07G021620
+    - Soltu.DM.07G021630
+    - Soltu.DM.07G021660
+    - Soltu.DM.07G025050
+    - Soltu.DM.07G026950
+    - Soltu.DM.08G006070
+    - Soltu.DM.08G014550
+    - Soltu.DM.09G000260
+    - Soltu.DM.09G001580
+    - Soltu.DM.09G001590
+    - Soltu.DM.09G001890
+    - Soltu.DM.09G009180
+    - Soltu.DM.09G009260
+    - Soltu.DM.09G024240
+    - Soltu.DM.10G022760
+    - Soltu.DM.10G023210
+    - Soltu.DM.11G001180
+    - Soltu.DM.11G007650
+    - Soltu.DM.11G012150
+    - Soltu.DM.11G018650
+    - Soltu.DM.11G022670
+    - Soltu.DM.12G011910
+    - Soltu.DM.12G023450
+    - Soltu.DM.S001790
   evidence:
-  - reference: PMID:17953483
-    reference_title: Mechanical stress induces biotic and abiotic stress responses via a novel cis-element.
-    snippet: Comparison of RWR genes with published abiotic and biotic stress microarray datasets demonstrates a
-      large overlap across a wide range of environmental stresses.
-    supports: SUPPORT
-    evidence_source: MODEL_ORGANISM
-    explanation: The chitin-responsive WRKY/ZAT/ERF/CML genes here are the rapid wound responsive (RWR) regulon
-      that is shared across many abiotic and biotic stresses.
   - reference: PMID:43058136
     reference_title: Growth and molecular responses of potato to lunar regolith simulants.
     snippet: Whole-transcriptome profiling of leaves revealed that each simulant elicited a distinct pattern of
@@ -87,11 +113,74 @@ associations:
     supports: SUPPORT
     evidence_source: MODEL_ORGANISM
     explanation: LMS-1E elicited its own, largest DEG set (1,397 genes).
-  curator_note: '26 carriers, almost all transcription factors and E3 ligases of the Arabidopsis rapid wound/general
-    stress regulon: WRKY33-like (Soltu.DM.09G009490, 06G018840), WRKY40-like (06G024270), ZAT10/STZ-like (12G006170,
-    04G032780), ERF105-like (05G022070, 03G014560), ERF5-like (08G024170), CMPG1-like (04G026330), ATL/TOXICOS EN
-    LEVADURA (01G021450). No chitin is involved: in TAIR this term is the expression-based proxy for that shared
-    regulon, so it is kept as the core term with medium confidence.'
+  curator_note: 'The mechanism behind the receptor-kinase expansion: 60 kinases, mostly S-locus lectin RLKs (07G025050,
+    04G033170, 04G031990, 09G001590), a tandem S-domain-2 cluster on chr07 (07G021320-07G021660), LRR-RLKs, wall-associated
+    kinases and two MAPK-pathway kinases. Just misses Bonferroni (p_adj 0.054); the matching MF, protein serine/threonine
+    kinase activity, is recovered. Kinase activity was the one GO term the authors found in all four simulants (Fig.
+    6).'
+- term:
+    id: GO:0019722
+    label: calcium-mediated signaling
+  aspect: biological_process
+  category: supporting_process
+  confidence: medium
+  specificity: broadly_expressed
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 0.13141
+    p_adjust: 1.0
+    overlap: 3
+    query_size: 542
+    target_size: 72
+    overlap_genes:
+    - Soltu.DM.01G007760
+    - Soltu.DM.11G024620
+    - Soltu.DM.S002490
+  evidence:
+  - reference: PMID:17953483
+    reference_title: Mechanical stress induces biotic and abiotic stress responses via a novel cis-element.
+    snippet: Comparison of RWR genes with published abiotic and biotic stress microarray datasets demonstrates a
+      large overlap across a wide range of environmental stresses.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: The WRKY/ZAT/ERF/CML genes here are the rapid wound responsive (RWR) regulon that is shared across
+      many abiotic and biotic stresses, driven through the RSRE cis-element.
+  curator_note: 'How the general stress regulon is switched on: a Ca2+ signal decoded by calmodulin-like sensors
+    and CAMTA-type activators. Five CML37/38-like genes are up about 5 log2 (11G024590-11G024620, 02G034080), but
+    only one carries this term. The three carriers are CML37-like 11G024620, an EF-hand protein and GLR2.8; the
+    other CMLs are annotated only to hypoxia and wounding responses.'
+- term:
+    id: GO:0009873
+    label: ethylene-activated signaling pathway
+  aspect: biological_process
+  category: supporting_process
+  confidence: medium
+  specificity: broadly_expressed
+  seed_source: curator_added
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 0.0047484
+    p_adjust: 1.0
+    overlap: 7
+    query_size: 542
+    target_size: 118
+    overlap_genes:
+    - Soltu.DM.01G020840
+    - Soltu.DM.04G029170
+    - Soltu.DM.06G018860
+    - Soltu.DM.07G020090
+    - Soltu.DM.08G024170
+    - Soltu.DM.12G007120
+    - Soltu.DM.12G022800
+  curator_note: 'The ERF arm of the regulon: ERF5-like (08G024170), ERF-domain (12G022800, 07G020090), RAP2-like
+    (04G029170, 12G007120), EBP (01G020840); 7/118, nominal p = 0.0047.'
 - term:
     id: GO:0004674
     label: protein serine/threonine kinase activity
@@ -150,9 +239,56 @@ associations:
     - Soltu.DM.10G023210
     - Soltu.DM.11G001180
     - Soltu.DM.11G022670
-  curator_note: 'Receptor-like kinase signalling layer: S-locus lectin kinases (07G025050, 04G033170, 04G031990,
-    09G001590) and a tandem S-domain-2 cluster on chr07 (07G021320-07G021660), plus LRR-RLK and cysteine-rich RLKs.
-    Kinase activity was the one GO term the authors found in all four simulants (Fig. 6).'
+  curator_note: MF counterpart of the kinase layer (see protein phosphorylation).
+- term:
+    id: GO:0010200
+    label: response to chitin
+  aspect: biological_process
+  category: marker_driven_plausible
+  confidence: medium
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.7468e-13
+    p_adjust: 1.8247e-08
+    overlap: 26
+    query_size: 542
+    target_size: 241
+    overlap_genes:
+    - Soltu.DM.01G021450
+    - Soltu.DM.01G039930
+    - Soltu.DM.01G047400
+    - Soltu.DM.02G004200
+    - Soltu.DM.02G029910
+    - Soltu.DM.03G014560
+    - Soltu.DM.03G036130
+    - Soltu.DM.04G007660
+    - Soltu.DM.04G007680
+    - Soltu.DM.04G026330
+    - Soltu.DM.04G032780
+    - Soltu.DM.05G022070
+    - Soltu.DM.06G003960
+    - Soltu.DM.06G018840
+    - Soltu.DM.06G024270
+    - Soltu.DM.07G017160
+    - Soltu.DM.08G002290
+    - Soltu.DM.08G013100
+    - Soltu.DM.08G024170
+    - Soltu.DM.08G028850
+    - Soltu.DM.09G009490
+    - Soltu.DM.10G005000
+    - Soltu.DM.10G005890
+    - Soltu.DM.10G017860
+    - Soltu.DM.12G004050
+    - Soltu.DM.12G006170
+  curator_note: 'A stimulus term, not a mechanism, and no chitin is involved. The 26 carriers are the transcription
+    factors and E3 ligases of the rapid general-stress regulon: WRKY33-like (09G009490, 06G018840), WRKY40-like
+    (06G024270), ZAT10/STZ-like (12G006170, 04G032780), ERF105-like (05G022070, 03G014560), ERF5-like (08G024170),
+    CMPG1-like (04G026330), ATL (01G021450). TAIR uses the term as an expression proxy for that regulon; the mechanism
+    is recorded as calcium-mediated signaling and ethylene-activated signaling.'
 - term:
     id: GO:0005516
     label: calmodulin binding
