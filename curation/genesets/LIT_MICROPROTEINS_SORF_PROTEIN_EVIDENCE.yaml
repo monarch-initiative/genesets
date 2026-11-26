@@ -1,0 +1,157 @@
+gene_set_id: LIT:MICROPROTEINS_SORF_PROTEIN_EVIDENCE
+gene_set_name: MICROPROTEINS_SORF_PROTEIN_EVIDENCE
+collection: LIT:PROTEIN_CLASS
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 64
+series: SERIES:MICROPROTEIN_EVIDENCE
+series_role: protein_evidence
+description: >-
+  Human microproteins encoded by small open reading frames (sORFs) that UniProt
+  supports at the protein level. Membership comes from the ai-gene-review
+  MICROPROTEINS census (projects/MICROPROTEINS/data/human_microproteins.tsv,
+  ai4curation/ai-gene-review, census of 2026-09-30, produced by
+  projects/MICROPROTEINS/scripts/microprotein_census.py from UniProt REST). It is
+  the census class "sORF-class microprotein, protein-level evidence": Swiss-Prot
+  human entries of 100 aa or less, protein existence level 1, that a rule-based
+  classifier assigned to the sORF class (peptides from lncRNAs, upstream ORFs,
+  alternative frames and short uncharacterized ORFs such as the SMIM series),
+  as opposed to long-known short proteins (OXPHOS subunits, ribosomal proteins,
+  hormones, metallothioneins, keratin-associated proteins). The class has 69
+  entries. Five were dropped from this gene-symbol set. SHMOOSE (C0HM83) has no
+  gene symbol. Four alternative-ORF peptides are filed by UniProt and GOA under
+  their host gene's symbol: DDIT3 (P0DPQ6), MIEF1 (L0R8F8, AltMIEF1), PRKCH
+  (C0HM02) and ZNF689 (C0HLU2). In a symbol-keyed analysis they would
+  bring in the host protein's annotations, which have nothing to do with the
+  peptide. 47 of the 64 symbols carry at least one GOA annotation on a UniProtKB
+  protein; the other 17 have none. This is a gene CLASS defined by how the genes were found
+  (short ORFs that genome annotation missed), not by a shared biology, so it is
+  a test of whether GO enrichment finds convergence in a heterogeneous set and
+  of how far GO coverage of these proteins lags the literature. The literature
+  shows recurring themes rather than one program. The best-studied theme is the
+  regulins, single-pass transmembrane micropeptides that bind the SERCA calcium
+  pump and change its activity (myoregulin MRLN, endoregulin ERLN, DWORF
+  STRIT1, TUNAR). A second is mitochondrial membrane proteins and assembly
+  factors (MTLN, PIGBOS1, SMIM26, MICOS10, MLDHR, CEBPZOS). Others act in
+  myoblast fusion (MYMX), mRNA decapping (NBDY) or lysosomal mTORC1 signalling
+  (SPAAR). Most of the set is membrane-embedded, and many members carry only an
+  IEA membrane term from a predicted helix. Enrichment of the full membership
+  against human GOA (UniProtKB background, 2026-07-26 GO release, GOA current
+  on 2026-11-26) finds no term significant after Bonferroni correction under the
+  all, IBA-only or IBA+IEA variants. The strongest nominal hit is regulation of
+  calcium ion import into sarcoplasmic reticulum (MRLN, STRIT1; p = 5.7e-5).
+  So the core biology here is curator-asserted and mostly NOT recovered.
+  The SERCA-regulation term is an annotation gap: of the four regulins only STRIT1 carries it in GOA,
+  although MRLN, ERLN and TUNAR have direct evidence. A caveat on membership:
+  protein-level evidence in UniProt is not proof of a functional gene. Ribo-seq
+  and peptide evidence for sORFs that overlap a host gene can come from
+  alternative isoforms of the host (Ji and Salzberg, PMID:39565752), although
+  the members here are mostly lncRNA-derived or stand-alone loci with HGNC
+  symbols. The putative pole of the series is LIT:MICROPROTEINS_SORF_PUTATIVE.
+associations:
+- term:
+    id: GO:1901894
+    label: regulation of ATPase-coupled calcium transmembrane transporter activity
+  seed_source: curator_added
+  aspect: biological_process
+  category: core_process
+  confidence: medium
+  specificity: lineage_shared
+  recovery_status: annotation_gap
+  insight: confirmatory
+  evidence:
+  - reference: PMID:27923914
+    reference_title: Widespread control of calcium signaling by a family of SERCA-inhibiting
+      micropeptides.
+    supports: SUPPORT
+    evidence_source: IN_VITRO
+    snippet: function as direct inhibitors of SERCA pump activity
+    explanation: >-
+      Endoregulin (ERLN) and another-regulin are shown to inhibit SERCA directly,
+      extending the muscle regulins (myoregulin, phospholamban, sarcolipin) to
+      non-muscle cells.
+  curator_note: >-
+    The regulin theme: MRLN, ERLN, STRIT1 and TUNAR are all members, and each
+    binds SERCA and changes its pumping (MRLN and ERLN inhibit, STRIT1/DWORF
+    activates by displacing the inhibitors, TUNAR's sign depends on cell type).
+    Four of 64 is a theme, not the set's identity, so confidence is medium. In
+    current GOA only STRIT1 is annotated to this term or a descendant; MRLN
+    carries the narrower SR-import term GO:1902080 instead, and ERLN and TUNAR
+    have no SERCA-regulation term at all. The ai-gene-review reviews of these
+    genes propose the missing rows (ERLN: negative regulation of
+    ATPase-coupled calcium transmembrane transporter activity, GO:1901895), so
+    a review-informed annotation variant should recover this term where GOA
+    does not. Insight is confirmatory because the regulins are the textbook
+    exemplars of sORF microproteins.
+- term:
+    id: GO:1902080
+    label: regulation of calcium ion import into sarcoplasmic reticulum
+  seed_source: curator_added
+  aspect: biological_process
+  category: supporting_process
+  confidence: medium
+  specificity: cell_type_specific
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    p_value: 5.703512e-05
+    p_adjust: 1.0
+    target_size: 5
+  curator_note: >-
+    The muscle side of the regulin theme. Carriers in GOA: MRLN and STRIT1
+    (2 of the 47 annotated members; 5 annotated genes in the background). The
+    strongest nominal hit for the set, but not significant after Bonferroni.
+    ERLN and TUNAR act in non-muscle ER, so they do not belong here.
+- term:
+    id: GO:0005739
+    label: mitochondrion
+  seed_source: curator_added
+  aspect: cellular_component
+  category: core_component
+  confidence: medium
+  specificity: ubiquitous
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: >-
+    The second recurring theme. Carriers in GOA: CEBPZOS, MICOS10, MLDHR, MTLN,
+    PIGBOS1, SMIM10L1, SMIM12, SMIM26, SMIM8 (9 of 47 annotated members), not
+    enough to reach significance against a background in which mitochondrion
+    is a large term. Several (MTLN, MICOS10, SMIM26) act in the inner membrane
+    on respiratory complexes or cristae; PIGBOS1 sits in the outer membrane at
+    ER contacts. Kept at the organelle because the members sit in different
+    mitochondrial sub-compartments.
+- term:
+    id: GO:0005789
+    label: endoplasmic reticulum membrane
+  seed_source: curator_added
+  aspect: cellular_component
+  category: core_component
+  confidence: medium
+  specificity: ubiquitous
+  recovery_status: annotation_supported
+  insight: confirmatory
+  curator_note: >-
+    Where the regulins act (SERCA is an ER/SR pump). Carriers in GOA: C8orf17,
+    ERLN, MRLN, MYMX, SMIM14, STRIT1, TUNAR (7 of 47 annotated members). Not
+    nominally significant at p < 0.01.
+- term:
+    id: GO:0016020
+    label: membrane
+  seed_source: curator_added
+  aspect: cellular_component
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  enrichment_stats:
+    p_value: 8.572515e-03
+    p_adjust: 1.0
+    target_size: 9673
+  curator_note: >-
+    True of most members (32 of the 47 annotated ones), and for the SMIM series
+    (SMIM2, 5, 10, 11, 13, 15, 18, 36, 40, 41) an IEA membrane term from a
+    predicted transmembrane helix is the only annotation. It says only that
+    these are small single-pass membrane peptides, which is how many were
+    found, so it is uninformative about function.

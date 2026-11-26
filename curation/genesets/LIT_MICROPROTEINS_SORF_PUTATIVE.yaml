@@ -1,0 +1,99 @@
+gene_set_id: LIT:MICROPROTEINS_SORF_PUTATIVE
+gene_set_name: MICROPROTEINS_SORF_PUTATIVE
+collection: LIT:PROTEIN_CLASS
+taxon:
+  id: NCBITaxon:9606
+  label: Homo sapiens
+direction: NA
+n_genes: 106
+series: SERIES:MICROPROTEIN_EVIDENCE
+series_role: putative
+description: >-
+  Putative human microproteins: Swiss-Prot entries of 100 aa or less that a
+  rule-based classifier assigned to the sORF class but that UniProt does not
+  support at the protein level (protein existence 2 to 5, mostly 5,
+  "uncertain"). Membership comes from the ai-gene-review MICROPROTEINS census
+  (projects/MICROPROTEINS/data/human_microproteins.tsv, ai4curation/ai-gene-review,
+  census of 2026-09-30, from UniProt REST), class "sORF-class microprotein,
+  putative (no protein-level evidence)", 125 entries. The 19 entries without a
+  gene symbol were dropped, leaving 106 symbols, of which 37 carry a GOA
+  annotation on a UniProtKB protein after protein-binding rows are dropped.
+  Most members are ORFs annotated in lncRNAs (LINC*, *-AS1, *-DT), pseudogene
+  products (SNRPGP15, PMCHL1, PMCHL2, DPH3P1, PIN1P1, PSPHP1) and short
+  uncharacterized ORFs; none of them has a demonstrated function. There is
+  therefore no core biology to recover: this set is a NEGATIVE CONTROL, the
+  putative pole of SERIES:MICROPROTEIN_EVIDENCE whose other pole is
+  LIT:MICROPROTEINS_SORF_PROTEIN_EVIDENCE. Its value is in what a method should
+  NOT report. Enrichment of the membership against human GOA (UniProtKB
+  background, 2026-07-26 GO release, GOA current on 2026-11-26) finds nothing
+  significant after Bonferroni under the all, IBA-only or IBA+IEA variants. Every
+  nominal hit, however, is carried by the same two genes, PMCHL1 and PMCHL2,
+  through melanin-concentrating hormone terms (p = 1.1e-5; Bonferroni-adjusted
+  0.12 under IBA-only). These are inherited by phylogenetic propagation (IBA
+  from a PANTHER node seeded by rat Pmch) and by InterPro2GO from a prepro-MCH
+  signature onto two primate pseudogene copies of PMCH that lack a signal
+  peptide and for which no protein has been detected. The ai-gene-review
+  MICROPROTEINS Tier 3 audit removed all 13 of their GO rows. The set is
+  therefore a precision test for evidence variants: one that keeps IBA/IEA
+  propagation onto PE5 pseudogene products is liable to report these terms, and a
+  review-pruned variant should not. A second hazard, too small to reach even
+  nominal significance, is SNRPGP15, an SNRPG pseudogene with 13 IBA
+  spliceosome terms.
+associations:
+- term:
+    id: GO:0030354
+    label: melanin-concentrating hormone activity
+  seed_source: curator_added
+  aspect: molecular_function
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  recovery_status: false_association
+  artifact_cause: over_annotation
+  enrichment_stats:
+    p_value: 1.0578e-05
+    p_adjust: 0.2215351
+    target_size: 3
+  curator_note: >-
+    Carriers: PMCHL1, PMCHL2 (both IEA in the all and IBA+IEA variants). Both
+    are 5'-truncated primate copies of PMCH with no signal peptide, so a
+    secreted hormone activity cannot apply; an antiserum found no product in
+    testis or brain. The ai-gene-review reviews REMOVE every row. Recorded so
+    that any variant reporting it is penalised.
+- term:
+    id: GO:0031777
+    label: type 1 melanin-concentrating hormone receptor binding
+  seed_source: curator_added
+  aspect: molecular_function
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  recovery_status: false_association
+  artifact_cause: over_annotation
+  enrichment_stats:
+    p_value: 1.0578e-05
+    p_adjust: 0.2215351
+    target_size: 3
+  curator_note: >-
+    Carriers: PMCHL1, PMCHL2, by IBA from PANTHER node PTN002636265 (seeded by
+    rat Pmch). The same over-propagation as the hormone-activity row; the
+    ai-gene-review reviews REMOVE it on both genes. This is the hit an
+    IBA-only variant reports most strongly (Bonferroni-adjusted 0.12).
+- term:
+    id: GO:0032227
+    label: negative regulation of synaptic transmission, dopaminergic
+  seed_source: curator_added
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: cell_type_specific
+  recovery_status: false_association
+  artifact_cause: over_annotation
+  enrichment_stats:
+    p_value: 3.517536e-05
+    p_adjust: 0.7366776
+    target_size: 5
+  curator_note: >-
+    Carriers: PMCHL1, PMCHL2, by IBA from the same PMCH node. A process of the
+    MCH neuropeptide, propagated onto pseudogene products that are not
+    secreted; REMOVEd on both genes by the ai-gene-review reviews.

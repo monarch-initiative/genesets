@@ -191,6 +191,25 @@ rather than a shared mechanism, which makes such co-matches at most
 targets that phenocopy covalent PPARG inverse agonists (CDK4/6, RRM1/2, TOP2A,
 …), which resolve to the CDK4/6-Rb G1/S checkpoint and senescence.
 
+A fifth, `LIT:PROTEIN_CLASS`, holds **construction-defined protein classes**:
+genes grouped by how they were found or what kind of product they encode, not
+by a shared biology. Membership comes from a reproducible catalogue query
+rather than a paper's hit list, and the interpretation asks whether such a
+heterogeneous class converges on any GO biology. The worked example is
+`SERIES:MICROPROTEIN_EVIDENCE`, two classes from the ai-gene-review
+MICROPROTEINS census of human small-ORF microproteins (Swiss-Prot entries of
+100 aa or less). `LIT:MICROPROTEINS_SORF_PROTEIN_EVIDENCE` (protein-level
+evidence) carries real but scattered themes, such as SERCA regulation by the
+regulins and mitochondrial membrane proteins. Nothing reaches significance, and
+its SERCA term is an `annotation_gap`. `LIT:MICROPROTEINS_SORF_PUTATIVE` (no
+protein-level evidence) has no core biology at all. It is a negative control:
+its only nominal hits come from IBA and InterPro2GO propagation onto two
+pseudogene products (PMCHL1, PMCHL2), recorded as `false_association` /
+`over_annotation`. For classes like these, drop alternative-ORF peptides that
+UniProt files under their host gene's symbol (e.g. DDIT3 P0DPQ6, MIEF1
+L0R8F8): in a symbol-keyed GMT they would bring in the host protein's
+annotations.
+
 ### Model-organism sets
 A set is curated in the species it was defined in (`taxon`), and must be scored
 against that species' GAF, never `goa_human`. Three non-human sources are in use:
