@@ -95,7 +95,7 @@ analyzed with `genesets-rs gsea`) carry a `ranking` block pointing at
 `curation/rankings/<NAME>.rnk.gz`; see "Ranked signatures" in
 `curation/README.md`.
 
-Non-human sets (mouse MSigDB M2, CTD chemical-gene sets for worm/fly/zebrafish
+Non-human sets (mouse MSigDB M2 and rat-symbol MSigDB sets, CTD chemical-gene sets for worm/fly/zebrafish
 as `MYGENESET:` ids, and budding/fission yeast deletion screens as `LIT:YEAST_*` /
 `LIT:POMBE_*` from SGD / PomBase phenotypes) carry their own `taxon`. Their membership is in
 `curation/genesets/model_organism_members.gmt`, and they are scored per species

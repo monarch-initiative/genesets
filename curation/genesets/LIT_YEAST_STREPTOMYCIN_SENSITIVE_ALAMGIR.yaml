@@ -1,0 +1,83 @@
+gene_set_id: LIT:YEAST_STREPTOMYCIN_SENSITIVE_ALAMGIR
+gene_set_name: YEAST_STREPTOMYCIN_SENSITIVE_ALAMGIR
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:559292
+  label: Saccharomyces cerevisiae S288C
+direction: DN
+description: >-
+  The 377 Saccharomyces cerevisiae deletion strains with decreased resistance to the
+  aminoglycoside streptomycin (40 mg/ml) in the colony-size chemical-genetic screen of
+  Alamgir et al. (2010, PMID:20691087). Membership is the set of null mutants SGD
+  curated from this paper as "resistance to chemicals: decreased" with streptomycin;
+  snapshot in curation/genesets/model_organism_members.gmt. The paper summarises its
+  aminoglycoside profiles as dominated by protein-biosynthesis genes, but the curated
+  membership does not carry that signal under GO. Translation is 22/377 against a
+  717-gene term, and cytoplasmic translation 12/206, both near chance, so no GO
+  term is significant. One specific mechanism is visible in the genes: the
+  ribosome-associated chaperone system that folds nascent chains at the ribosome exit
+  tunnel (SSB1, SSZ1, ZUO1), whose loss is known to cause aminoglycoside
+  hypersensitivity through reduced decoding fidelity. The set is a second
+  "mechanism present, nothing enriched" case after POMBE_CLS_EXTENDED_ROMILA. Its
+  membership is noisier than its paper's summary suggests.
+contexts:
+  - term:
+      id: CHEBI:17076
+      label: streptomycin
+    context_type: chemical_perturbagen
+associations:
+  - term:
+      id: GO:0051083
+      label: "'de novo' cotranslational protein folding"
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      SSB1, SSZ1, ZUO1 and ACL4 are directly annotated (4/13, not significant). Ssb
+      (Hsp70) with its RAC partners Ssz1 and Zuo1 binds nascent chains at the exit
+      tunnel. RAC/Ssb mutants have reduced translational fidelity and are
+      hypersensitive to aminoglycosides, which act by inducing misreading. A specific,
+      complete module in a small term; medium confidence because the set is
+      otherwise diffuse.
+  - term:
+      id: GO:0002181
+      label: cytoplasmic translation
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:20691087
+        reference_title: "Chemical-genetic profile analysis of five inhibitory compounds in yeast."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "As expected, the overall profiles of the tested compounds were similar, with deletions for genes involved in protein biosynthesis being the major category followed by metabolism."
+        explanation: >-
+          The paper's claim that protein biosynthesis dominates. In the
+          SGD-curated streptomycin membership it holds only weakly; see the note.
+    curator_note: >-
+      12/206, near what chance predicts for 377 genes: HCR1, RPL12B, RPL13B, RPP1B,
+      RPS0B, RPS10A, RPS7A, SSB1, SSZ1, TRM7 directly; CUE2, UBC4 via closure.
+      Aminoglycosides target the ribosome, so translation is the expected core
+      process (confirmatory). The carriers that are present are annotated, but they
+      are too few relative to the set's size to stand out.
+  - term:
+      id: GO:0101031
+      label: protein folding chaperone complex
+    aspect: cellular_component
+    category: supporting_process
+    confidence: medium
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      SSZ1 and ZUO1 (the RAC complex), with IRC25, POC4 and PUF6 (5/17). The component
+      side of the cotranslational folding module above.

@@ -1,0 +1,99 @@
+gene_set_id: MSIGDB:MA_RAT_AGING_DN
+gene_set_name: MA_RAT_AGING_DN
+collection: M2:CGP
+msigdb_release: v2025.1.Mm
+taxon:
+  id: NCBITaxon:10116
+  label: Rattus norvegicus
+direction: DN
+series: SERIES:MA_RAT_AGING
+series_role: down
+description: >-
+  MSigDB set (M46419; rat gene symbols) of 170 genes down-regulated with age in at
+  least five cell types of the rat multi-tissue single-cell aging atlas (Ma et al.
+  2020, PMID:32109414, Table S2), the opposite pole of MA_RAT_AGING_UP. The programme
+  lost with age is structural and proteostatic. The dominant signal is extracellular
+  matrix and collagen: Col1a1, Col1a2, Col3a1, Col4a1, Col6a2, Col15a1, Col18a1, Eln,
+  Fbn1, Fn1, Lox, Lum, Dcn, Bgn, Ogn, Postn, Sparc, Serpinh1. Next is the heat-shock
+  chaperone response (Hspa1a, Hspa8, Hsph1, Hsp90aa1, Hspb1, Dnaja1, Dnajb1), then
+  smooth-muscle contractile genes (Acta1, Actg2, Cnn1, Myh11, Myl9, Tagln, Des) and
+  epidermal keratinization (Krt1, Krt10, Krt14, Krt16, Krtdap). Immediate-early genes
+  (Fos, Jun, Jund, Egr1, Atf3, Klf4, Zfp36, Dusp1) are also down; in
+  single-cell data these partly reflect dissociation stress. The pair contrasts
+  rising inflammation (UP) with declining matrix and proteostasis capacity (DN).
+associations:
+  - term:
+      id: GO:0031012
+      label: extracellular matrix
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      29/378, p ~2e-22, the top specific hit: Bgn, Col1a1, Col1a2, Col3a1, Col4a1,
+      Col6a2, Col18a1, Eln, Fbn1, Fn1, Lox, Lum, Ogn, Postn, Sparc, Tgfbi, Timp2 and
+      others directly; Dcn, Col15a1, Mfap2 via closure. Declining matrix synthesis
+      with age is a known hallmark, hence confirmatory.
+  - term:
+      id: GO:0030199
+      label: collagen fibril organization
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Col1a1, Col1a2, Col3a1, Dpt, Lox and Serpinh1 (the collagen chaperone Hsp47)
+      directly annotated (6/65, not significant alone). It is the process behind the
+      matrix component: fibrillar collagen production and cross-linking fall with
+      age.
+  - term:
+      id: GO:0009408
+      label: response to heat
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      Dnaja1, Hsp90aa1, Hspa1a, Hspb1 directly; Dnajb1, Hspa8 via closure (6/106, not
+      significant). Hsph1 is also present. A coordinated loss of inducible
+      chaperones across cell types matches the decline of heat-shock
+      response capacity with age, a proteostasis mechanism of aging. Medium
+      confidence, because heat-shock genes are also sensitive to tissue handling in
+      single-cell protocols.
+  - term:
+      id: GO:0031424
+      label: keratinization
+    aspect: biological_process
+    category: marker_driven_plausible
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    curator_note: >-
+      Krt1, Krt16 directly; Krt10 via closure (3/43); Krt14 and Krtdap are also
+      present. Reflects the skin component of the multi-tissue atlas, and is
+      tissue-specific rather than part of a shared aging mechanism.
+  - term:
+      id: GO:0002181
+      label: cytoplasmic translation
+    aspect: biological_process
+    category: nonspecific
+    confidence: medium
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    artifact_cause: housekeeping_contamination
+    curator_note: >-
+      Rpl37, Rpl37l1, Rpl38, Rpl39, Rps21, Rps28, Rps29 and Eif4a1 (8/297). These are
+      the smallest ribosomal-protein transcripts, while larger RPL genes go up in
+      MA_RAT_AGING_UP. The split follows transcript size, not ribosome
+      biology, so this is treated as a single-cell technical effect.

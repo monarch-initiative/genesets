@@ -1,10 +1,10 @@
 # Model-organism gold standard: GO enrichment for mechanism
 
-**Question:** When a gene list comes from a mouse, worm, fly, zebrafish, budding
-yeast or fission yeast experiment, does GO enrichment against that species' own annotations recover
+**Question:** When a gene list comes from a mouse, rat, worm, fly, zebrafish,
+budding yeast or fission yeast experiment, does GO enrichment against that species' own annotations recover
 the curated biology, and in particular the *mechanism* behind the phenotype?
 
-The rest of the gold standard is human. These 20 sets were chosen because their
+The rest of the gold standard is human. These 23 sets were chosen because their
 enrichment should point to a mechanism rather than restate how the set was
 built. For example, deleting a generic P450 reductase turns out to act through
 cholesterol synthesis; an autophagy mutant reveals a lipid programme; and
@@ -23,6 +23,8 @@ Each set is grounded in its real membership.
 | `GUO_TARGETS_OF_IRS1_AND_IRS2` | mouse | MSigDB M2:CGP | Hepatic insulin signalling sustains the sterol programme (cholesterol synthesis 14/35) |
 | `ZHENG_IL22_SIGNALING_UP` | mouse | MSigDB M2:CGP | IL-22 drives epithelial antimicrobial defence; Reg3b/Reg3g missing (membership gap) |
 | `WELCH_GATA1_TARGETS` | mouse | MSigDB M2:CGP | GATA-1 drives heme synthesis and erythroid maturation (largely confirmatory) |
+| `MA_RAT_AGING_UP` | rat | MSigDB (rat symbols) / Ma 2020 | Shared multi-tissue aging program: inflammation, antimicrobial/alarmin and interferon genes |
+| `MA_RAT_AGING_DN` | rat | MSigDB (rat symbols) / Ma 2020 | Lost with age: extracellular matrix/collagen, heat-shock chaperones, contractile genes |
 | `CTD_ALDICARB_CELEGANS` | worm | CTD | Release machinery, plus Gq/Go, neuropeptide and dystrophin layers |
 | `CTD_BT_CRYSTAL_PROTEIN_CELEGANS` | worm | CTD | p38/JNK toxin defence, GPI anchors, membrane repair (mostly GO gaps) |
 | `CTD_PARAQUAT_CELEGANS` | worm | CTD | ETC, insulin/DAF-16, and sensory-cilium IFT |
@@ -35,6 +37,7 @@ Each set is grounded in its real membership.
 | `YEAST_DTT_SENSITIVE_RAND` | yeast | SGD / Rand & Grant 2006 | Secretory pathway and UPR; V-ATPase as a nonspecific multidrug class |
 | `POMBE_CADMIUM_SENSITIVE_KENNEDY` | fission yeast | PomBase / Kennedy 2008 | Phytochelatins, sulfate assimilation and ubiquinone, not budding yeast's GSH/YCF1 route |
 | `POMBE_CLS_EXTENDED_ROMILA` | fission yeast | PomBase / Romila 2021 | PKA and TORC1 longevity genes present, but no GO term significant (hard case) |
+| `YEAST_STREPTOMYCIN_SENSITIVE_ALAMGIR` | yeast | SGD / Alamgir 2010 | RAC/Ssb cotranslational folding module present; translation not enriched despite the paper's summary (hard case) |
 
 **Sources.** The mouse sets are native-mouse MSigDB M2 chemical/genetic
 perturbation sets (`MSIGDB:` ids, `msigdb_release: v2025.1.Mm`). The worm, fly
@@ -57,7 +60,7 @@ PomBase's curated deletion phenotypes (FYPO terms) from one paper each, keeping
 only screens whose PomBase count matches the paper's. That rule excluded two
 candidates: bortezomib (255 curated vs 19 reported) and hydroxyurea (302 vs 52).
 
-**Membership** for all 20 is snapshotted in
+**Membership** for all 23 is snapshotted in
 `curation/genesets/model_organism_members.gmt` (gene symbols as used by each
 species' GAF; yeast uses SGD standard names, or the systematic ORF name when a
 gene has no standard name). This is the analogue of `lit_members.gmt`, and makes the eval
@@ -74,14 +77,14 @@ uv run --project python/genesets-workflows --extra curation \
 For each taxon, the runner writes that taxon's sets to `queries.gmt` and runs
 `scripts/prepare_go_eval.py` with the species GAF (`mgi`, `wb`, `fb`, `zfin`;
 all evidence, NOT-filtered, symbol ids, a species-wide GOA background; `sgd` and
-`pombase` for the yeasts). Non-human sets whose taxon has no GO Consortium GAF
+`pombase` for the yeasts, `rgd` for rat). Non-human sets whose taxon has no GO Consortium GAF
 (e.g. the Poeciliidae sets, which are mapped to human orthologs and scored in the
 `goa_human` eval) are reported and skipped. It then
 runs `genesets-rs run` (Bonferroni, `max_p_adjust 0.05`) and scores with
 `scripts/score_method_vs_benchmark.py --taxon <NCBITaxon>`.
 
 The runner passes `--gaf-db` with each resource's own DB column (`MGI`, `WB`, `FB`,
-`ZFIN`, `SGD`, `PomBase`). `prepare_go_eval.py` keeps only `UniProtKB` rows by default, which
+`ZFIN`, `SGD`, `PomBase`, `RGD`). `prepare_go_eval.py` keeps only `UniProtKB` rows by default, which
 suits `goa_human` but would load almost nothing from a model-organism GAF: 311 of
 MGI's ~707,000 rows, and none at all for SGD. Like the human default, this excludes
 ComplexPortal complexes, and direct *protein binding* annotations are dropped.
@@ -99,33 +102,35 @@ therefore depend on how many sets run together, so the curator notes quote
 | species | sets | recall_core | confirmatory | recall_confirm | mechanistic | recall_mechan |
 |---|---|---|---|---|---|---|
 | mouse (mgi) | 8 | 0.850 (17/20) | 19 | 0.684 | 13 | 0.692 |
+| rat (rgd) | 2 | 0.667 (2/3) | 3 | 0.667 | 3 | 0.333 |
 | worm (wb) | 3 | 0.667 (6/9) | 8 | 0.625 | 10 | 0.200 |
 | fly (fb) | 1 | 0.750 (3/4) | 4 | 0.750 | 2 | 0.500 |
 | zebrafish (zfin) | 1 | 0.667 (2/3) | 2 | 1.000 | 3 | 0.333 |
-| budding yeast (sgd) | 5 | 0.600 (6/10) | 7 | 0.571 | 13 | 0.538 |
+| budding yeast (sgd) | 5 of 6 | 0.600 (6/10) | 7 | 0.571 | 13 | 0.538 |
 | fission yeast (pombase) | 1 of 2 | 0.500 (2/4) | 2 | 0.500 | 3 | 0.333 |
-| **pooled** | 19 of 20 | **0.720 (36/50)** | 42 | 0.667 | 44 | 0.477 |
+| **pooled** | 21 of 23 | **0.717 (38/53)** | 45 | 0.667 | 47 | 0.468 |
 
 `gap_recovered` is 0 in every species: no curator `annotation_gap` call was
 contradicted by a tool run.
 
-The scorer counts only sets with at least one significant hit. `POMBE_CLS_EXTENDED_ROMILA` has none, so it is not in the table and its three
-unrecovered core and supporting terms do not lower recall. Read it as a failure
-that recall does not show (finding 8).
+The scorer counts only sets with at least one significant hit. `POMBE_CLS_EXTENDED_ROMILA` and `YEAST_STREPTOMYCIN_SENSITIVE_ALAMGIR` have none, so
+they are not in the table and their unrecovered core terms do not lower recall.
+Read them as failures that recall does not show (findings 8 and 10).
 
 ### Findings
 
 1. **When the carrier genes are annotated, enrichment recovers the mechanism.**
-   Outside the yeasts, 28 of the 30 core terms predicted `annotation_supported`
-   are recovered. The two misses are both small-term cases. One is the worm p38
-   MAPK cascade, with 3 annotated carriers in an 8-gene term. The other is mouse
-   gluconeogenesis in the IRS1/2 set (Pck1, G6pc1, Ppargc1a: 3/51). Each is a
-   strong fraction with too few genes to survive genome-wide correction. Yeast shows the same failure mode at scale
+   Outside the yeasts, 30 of the 33 core terms predicted `annotation_supported`
+   are recovered. All three misses are small-term cases: the worm p38 MAPK
+   cascade (3 annotated carriers in an 8-gene term), mouse gluconeogenesis in the
+   IRS1/2 set (Pck1, G6pc1, Ppargc1a: 3/51), and rat collagen fibril organization
+   (6/65). Each is a real signal with too few genes to survive genome-wide
+   correction. Yeast shows the same failure mode at scale
    (finding 5). The mouse mechanistic terms (sterol synthesis behind POR loss and
    Egr2 loss, lipid homeostasis behind Atg16l1 loss, TOP-mRNA ribosome behind
    rapamycin) and the worm cilium/IFT and ETC terms behind paraquat resistance
    are all recovered.
-2. **Outside the yeasts, six of the eight missed core terms are gaps:** five in
+2. **Outside the yeasts, six of the nine missed core terms are gaps:** five in
    species annotation, one in membership.
    These are biology the membership carries but species GOA does not: mouse
    acute-phase response (Saa1, Saa2, Hp present but unannotated, and again Hp,
@@ -181,11 +186,26 @@ that recall does not show (finding 8).
    term passes Bonferroni. The pathways sit in 9- and 12-gene terms, and the
    remaining ~300 members are diffuse. It contrasts with the budding-yeast
    replicative-lifespan set, whose 60S signal is concentrated enough to recover.
+9. **Single-cell aging signatures carry a technical ribosomal split.** In the rat
+   aging pair, larger ribosomal-protein transcripts (Rpl5, Rpl7, Rpl8, Rplp0) are
+   in the UP set and the very smallest (Rpl37-39, Rps21/28/29) in the DN set.
+   *Cytoplasmic translation* is therefore significant in UP (p ~8e-9) without
+   any coherent change in translation. Both are recorded as `nonspecific`
+   with `artifact_cause: housekeeping_contamination`. The biology is recovered
+   cleanly: inflammation up (19/479, p ~3e-13), extracellular matrix down (29/378,
+   p ~2e-22).
+10. **A paper's summary is not its curated membership.** Alamgir et al. describe
+   their aminoglycoside profiles as dominated by protein-biosynthesis genes. In
+   SGD's 377-gene streptomycin list, translation is at chance (22/717), and no GO
+   term is significant. The one specific mechanism, the RAC/Ssb nascent-chain
+   chaperones (SSB1, SSZ1, ZUO1), is a complete module in a 13-gene term.
+   Grounding in the actual membership, not the abstract, is what makes this
+   visible.
 
 ### Caveats
 
-- 20 sets (19 scored), 50 core terms: this is a pilot, not a benchmark-scale estimate.
-- Because these sets were *selected* for mechanistic enrichment, 44 of 86
+- 23 sets (21 scored), 53 core terms: this is a pilot, not a benchmark-scale estimate.
+- Because these sets were *selected* for mechanistic enrichment, 47 of 92
   scored insight-tagged terms are `mechanistic`, far above the ~10% corpus norm. Do
   not pool their mechanistic recall with the human corpus without saying so.
 - CTD sets are aggregates; a few members may be artefacts of the underlying
