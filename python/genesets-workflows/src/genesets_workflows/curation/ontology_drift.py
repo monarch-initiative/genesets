@@ -248,18 +248,43 @@ class OakView:
 
 
 def asserted_terms(path: Path) -> list[tuple[str, str]]:
-    """(id, label) of every context and association term in an interpretation.
+    """(id, label) of every validated term asserted in an interpretation.
+
+    Covers context and association terms, and the current-term mapping
+    (``term``) of each published analysis's reported terms. A reported term's
+    ``reported_id`` / ``reported_label`` are a historical record copied as
+    printed and are deliberately not included (nor rewritten by ``apply``:
+    ``rewrite_text`` only matches plain ``id:`` / ``label:`` lines).
 
     Read straight from the YAML so drift can be scanned even in files the
     pydantic model would reject.
+
+    >>> import tempfile, textwrap
+    >>> body = textwrap.dedent('''
+    ...     associations:
+    ...       - term: {id: GO:1, label: a}
+    ...     published_analyses:
+    ...       - reference: PMID:1
+    ...         reported_terms:
+    ...           - reported_id: GO:9
+    ...             reported_label: retired name
+    ...             term: {id: GO:2, label: b}
+    ...           - reported_label: unmapped
+    ... ''')
+    >>> with tempfile.TemporaryDirectory() as d:
+    ...     p = Path(d, "x.yaml"); _ = p.write_text(body)
+    ...     asserted_terms(p)
+    [('GO:1', 'a'), ('GO:2', 'b')]
     """
     data = yaml.safe_load(Path(path).read_text()) or {}
+    items = [*(data.get("contexts") or []), *(data.get("associations") or [])]
+    for analysis in data.get("published_analyses") or []:
+        items.extend(analysis.get("reported_terms") or [])
     terms = []
-    for key in ("contexts", "associations"):
-        for item in data.get(key) or []:
-            term = item.get("term") or {}
-            if term.get("id"):
-                terms.append((str(term["id"]), str(term.get("label", ""))))
+    for item in items:
+        term = item.get("term") or {}
+        if term.get("id"):
+            terms.append((str(term["id"]), str(term.get("label", ""))))
     return terms
 
 

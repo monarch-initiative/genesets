@@ -118,6 +118,136 @@ classes:
           otherwise ambiguous (unreviewed, not necessarily noise). Labelling
           the union of the variants' hits (pooling) keeps the comparison fair,
           since a variant that surfaces new noise is penalised for it.
+      published_analyses:
+        range: PublishedAnalysis
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          Enrichment analyses that earlier papers ran on this set, or on a
+          close variant of its membership, recorded as the papers reported
+          them. This is a historical record, not part of the gold: it is
+          never scored, and it never seeds or overrides `category`. A
+          mechanism a paper asserts belongs in `associations` with
+          `evidence`; what its enrichment run returned belongs here.
+
+  PublishedAnalysis:
+    description: >-
+      One enrichment analysis reported in the literature: the paper, the
+      tool, annotation source and settings it used, the membership it ran on,
+      and the terms it reported. Different papers often reanalyze the same
+      list with different annotations or corrections and reach different
+      conclusions; one entry per paper and setting keeps those runs apart.
+    attributes:
+      reference:
+        range: uriorcurie
+        required: true
+        description: The paper that reports the analysis (PMID/DOI).
+        implements:
+          - linkml:authoritative_reference
+      reference_title:
+        recommended: true
+      analysis_role:
+        range: AnalysisRoleEnum
+        required: true
+        description: >-
+          Whether this is the defining paper's own analysis or a later
+          reanalysis of the same list by others.
+      tool:
+        description: Software used, with version when stated, e.g. "ErmineJ 3.0", "PANTHER".
+      method:
+        description: >-
+          The test and how the ontology was used, e.g. "over-representation
+          (hypergeometric), GO biological process, 20-200 gene classes".
+      annotation_source:
+        description: >-
+          The annotation set tested against, e.g. "all GO annotations",
+          "PAN-GO", "GO biological process (ErmineJ Generic_human, 2013)".
+      annotation_date:
+        description: Release or date of the ontology and annotations, as stated or inferred from the paper.
+      membership_size:
+        range: integer
+        minimum_value: 1
+        description: Number of genes the analysis was run on.
+      membership_note:
+        description: >-
+          How that membership relates to this interpretation's membership:
+          identical, a subset, a larger cluster from the same study, and so on.
+          Say which, and why, whenever membership_size differs from n_genes.
+      correction:
+        description: >-
+          Multiple-testing or bias correction applied, e.g. "Benjamini-Hochberg
+          FDR", "multifunctionality-corrected FDR (Ballouz et al. 2017)".
+      significance_threshold:
+        range: float
+        minimum_value: 0.0
+        maximum_value: 1.0
+        description: The adjusted p-value or FDR cut-off the paper used.
+      n_significant:
+        range: integer
+        minimum_value: 0
+        description: Number of significant results the paper reports at that threshold.
+      significant_unit:
+        description: >-
+          What n_significant counts, e.g. "GO terms" or "groups of related GO
+          terms" (PANTHER clusters related terms).
+      data_url:
+        range: uri
+        description: Where the paper's input list or full result table can be downloaded.
+      summary:
+        description: >-
+          The paper's conclusion from this analysis, and how it relates to
+          the curated interpretation.
+      snippet:
+        description: >-
+          Optional verbatim excerpt from the reference stating the result.
+          Substring-checked against the reference like an EvidenceItem
+          snippet; omit rather than paraphrase.
+        implements:
+          - linkml:excerpt
+      reported_terms:
+        range: ReportedTerm
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          Terms the paper reports or discusses, with stats as printed. List
+          the ones the paper's argument rests on, not every row of a table.
+
+  ReportedTerm:
+    description: >-
+      A term as a paper reported it. `reported_id` and `reported_label` are
+      copied as printed and not validated, because a paper from an older GO
+      release may cite an id that has since been renamed, merged or made
+      obsolete. `term` is the curator's mapping of it to a current,
+      non-obsolete term, and is validated.
+    attributes:
+      reported_id:
+        description: The term id as printed, when the paper gives one.
+      reported_label:
+        required: true
+        description: The term name as printed.
+      term:
+        range: Term
+        inlined: true
+        description: >-
+          The current GO term it corresponds to (validated id+label, not
+          obsolete). Omit when no current term fits.
+      p_value:
+        range: float
+      p_adjust:
+        range: float
+        description: The adjusted p-value or FDR, under the analysis's `correction`.
+      p_adjust_corrected:
+        range: float
+        description: >-
+          For an analysis that reports results both before and after a bias
+          correction (e.g. multifunctionality), the adjusted p-value after it.
+      significant:
+        range: boolean
+        description: Whether the term passed the analysis's threshold.
+      authors_stance:
+        range: AuthorsStanceEnum
+        description: How the paper treated the term.
+      note:
 
   RankedSignature:
     description: >-
@@ -416,6 +546,26 @@ classes:
               value_presence: PRESENT
 
 enums:
+
+  AnalysisRoleEnum:
+    description: Whose analysis of the list a PublishedAnalysis records.
+    permissible_values:
+      original:
+        description: The analysis in the paper that defined the gene list.
+      reanalysis:
+        description: A later analysis of the same (or a close variant) list by others.
+
+  AuthorsStanceEnum:
+    description: How a paper treated a term its enrichment analysis returned.
+    permissible_values:
+      highlighted:
+        description: The paper builds its interpretation on this term.
+      reported:
+        description: Listed among the results without particular weight.
+      discounted:
+        description: >-
+          The paper argues the result is an artefact, e.g. driven by highly
+          annotated (multifunctional) genes, or lost after a correction.
 
   DirectionEnum:
     permissible_values:

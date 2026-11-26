@@ -39,3 +39,34 @@ def test_build_minimal_interpretation():
         ],
     )
     assert interp.to_dict()["associations"][0]["term"]["id"] == "GO:0006955"
+
+
+PUBLISHED = ROOT / "curation" / "genesets" / "LIT_MANALO_2005_HYPOXIA_HIF1_UP.yaml"
+
+
+def test_published_analyses_load():
+    interp = model.load_interpretation(PUBLISHED)
+    roles = [a.analysis_role for a in interp.published_analyses]
+    assert roles[0] == "original"
+    assert "reanalysis" in roles
+    ballouz = next(a for a in interp.published_analyses if a.tool == "ErmineJ 3.0")
+    assert ballouz.membership_size == 202
+    by_label = {r.reported_label: r for r in ballouz.reported_terms}
+    hypoxia = by_label["cellular response to hypoxia"]
+    assert hypoxia.term.id == "GO:0071456"
+    assert hypoxia.p_adjust_corrected < 0.05
+    # A term no longer in GO keeps its printed id and label but has no mapping.
+    retired = by_label[
+        "regulation of transcription from RNA polymerase II promoter in response to hypoxia"
+    ]
+    assert retired.reported_id == "GO:0061418"
+    assert retired.term is None
+
+
+def test_published_analyses_roundtrip(tmp_path):
+    interp = model.load_interpretation(PUBLISHED)
+    out = tmp_path / "rt.yaml"
+    model.dump_interpretation(interp, out)
+    reloaded = model.load_interpretation(out)
+    assert reloaded.published_analyses == interp.published_analyses
+    assert "null" not in out.read_text()

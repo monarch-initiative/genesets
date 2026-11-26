@@ -228,6 +228,49 @@ OTHER — mirrors dismech for interoperability). A schema rule enforces that any
 item with a `snippet` also has a `reference`, so a quote can never bypass
 reference validation.
 
+## Published analyses (prior enrichment results)
+
+`evidence` records the mechanisms a paper asserts. `published_analyses`
+records what enrichment analyses of the set returned in the literature: the
+defining paper's own run (`analysis_role: original`) and later reanalyses by
+others (`reanalysis`). Each entry gives the reference, tool, method,
+`annotation_source` and `annotation_date`, the `membership_size` it ran on
+with a `membership_note` relating it to this entry's membership, the
+`correction` and `significance_threshold`, `n_significant` with its
+`significant_unit` (GO terms, or PANTHER's groups of related terms), a
+`data_url` for deposited inputs or results, a `summary`, and an optional
+verbatim `snippet`, which the reference validator checks like an evidence
+snippet.
+
+`reported_terms` lists the terms the paper's argument rests on, with the
+stats as printed (`p_value`, `p_adjust`, and `p_adjust_corrected` when the
+paper also reports a bias-corrected value, e.g. Ballouz et al.'s
+multifunctionality correction), whether each was `significant`, and the
+`authors_stance` (`highlighted` / `reported` / `discounted`). Papers from
+older GO releases cite ids that have since been renamed or retired, so
+`reported_id` and `reported_label` are copied as printed and not validated;
+`term` is the curator's mapping to a current GO term, which goes through the
+id+label gate and the ontology-drift gate (and is rewritten by
+`just curate-migrate` like any other term; the `reported_*` lines are never
+touched). Leave `term` out when nothing current fits.
+
+Keep one entry per paper and setting: the same list analysed with all GO
+annotations and with PAN-GO alone is two entries. Record membership
+differences explicitly. Reanalyses often run on a different version of the
+list (an older MSigDB mapping, a larger cluster from the same study), and
+results are not comparable without that context.
+
+Published analyses are a historical record, not gold. They are never scored
+and never set `category`, `recovery_status` or `insight`. A curator may cite
+them in a `curator_note`, and should check whether a reported result still
+holds under current GOA. For example, the peptidyl-proline modification
+result in `LIT_MANALO_2005_HYPOXIA_HIF1_UP` has no carriers today, because the
+prolyl hydroxylases are now annotated with molecular-function terms instead.
+The three case studies of Ballouz et al. (NAR 2017) and the PAN-GO
+functionome paper (Nature 2025) carry this block: `LIT_GILMAN_2011_AUTISM_CNV`,
+`LIT_MANALO_2005_HYPOXIA_HIF1_UP` and `LIT_SCHMIDT_KASTNER_2012_SCHIZOPHRENIA`
+(sources in `curation/sources/ballouz2017/`).
+
 ## Ranked signatures
 
 Some sources give a score for every measured gene rather than a list: a

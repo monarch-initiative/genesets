@@ -185,3 +185,203 @@ hit_adjudication:
   adjudicated_on: '2026-11-18'
   note: 8 pooled hits, each labelled blind to which variant reported it; background
     = UniProtKB proteins in goa_human, direct GO:0005515 dropped.
+published_analyses:
+  - reference: PMID:21658583
+    reference_title: "Rare de novo variants associated with autism implicate a large functional network of genes involved in formation and function of synapses."
+    analysis_role: original
+    tool: NETBAG
+    method: >-
+      Not over-representation. For each of 1,454 MSigDB GO categories, the
+      average background-network log-likelihood interaction between its genes
+      and the cluster genes, with empirical p-values from random CNV sets of
+      matched gene count and FDR across categories.
+    annotation_source: MSigDB GO gene sets (2010-era) and a GO-derived likelihood network
+    membership_note: >-
+      Gilman report two clusters, 45 genes when one gene per CNV is allowed
+      and 72 when two are allowed. This entry's membership is the 72-gene
+      cluster (Table S2).
+    correction: FDR over GO categories (empirical p-values)
+    summary: >-
+      The 25 categories most strongly connected to the cluster concern actin
+      network dynamics, synaptogenesis, axonogenesis, cell-cell adhesion,
+      small GTPase signalling and neurite development. Gilman also note that
+      plain over-representation of GO terms across all 433 CNV genes does not
+      give the same result.
+    snippet: "The genes forming the network are primarily related to synapse development, axon targeting, and neuron motility."
+  - reference: PMID:28204549
+    reference_title: "Using predictive specificity to determine when gene set analysis is biologically meaningful."
+    analysis_role: reanalysis
+    tool: ErmineJ 3.0
+    method: Over-representation analysis of GO groups, as described in the paper's case study.
+    annotation_source: GO (ErmineJ Generic_human annotations, 2013)
+    annotation_date: "2013"
+    membership_size: 70
+    membership_note: >-
+      The paper text describes a 70-gene hit list. This entry's 72-gene
+      Table S2 list contains all 11 multifunctional genes the paper names
+      (see curation/sources/ballouz2017/README.md). The deposited ErmineJ
+      files are for a 44-gene cluster instead (next entry).
+    correction: Benjamini-Hochberg FDR; then multifunctionality correction
+    significance_threshold: 0.05
+    n_significant: 30
+    significant_unit: GO groups
+    summary: >-
+      The list is strongly biased toward multifunctional genes (MF score
+      0.86). Removing the 11 most multifunctional genes down-weights learning
+      or memory (four of its six cluster genes have 186-289 GO annotations
+      each) and lets neuron migration rise. Ballouz et al. argue such terms
+      are non-specific rather than false positives.
+    snippet: "Repeating their analysis using ErmineJ on their hit list of 70 genes, we arrive at a list of 30 GO gene sets (FDR < 0.05) similar but not identical to those reported."
+    reported_terms:
+      - reported_label: learning or memory
+        term:
+          id: GO:0007611
+          label: learning or memory
+        significant: true
+        authors_stance: discounted
+        note: Driven by four highly multifunctional genes; down-weighted after correction.
+      - reported_label: neuron migration
+        term:
+          id: GO:0001764
+          label: neuron migration
+        authors_stance: highlighted
+        note: >-
+          Ranked 28th before correction and unaffected by it, so it rises;
+          Ballouz et al. suggest it may be more relevant to autism than
+          learning and memory.
+  - reference: PMID:28204549
+    reference_title: "Using predictive specificity to determine when gene set analysis is biologically meaningful."
+    analysis_role: reanalysis
+    tool: ErmineJ 3.0
+    method: >-
+      Over-representation (ErmineJ ORA), GO groups of 20-200 genes, hit list
+      scored with a dummy-score threshold.
+    annotation_source: GO (ErmineJ Generic_human_noParents annotations)
+    annotation_date: 2013-04
+    membership_size: 44
+    membership_note: >-
+      The 44-gene quicklist deposited on the companion page
+      (QuickList.vitkup-cluster1.txt, the one-gene-per-CNV cluster). All 44
+      genes, after HGNC normalization (ADAM5P -> ADAM5), are in this entry's
+      72-gene list.
+    correction: >-
+      Benjamini-Hochberg FDR (p_adjust); multifunctionality-corrected FDR
+      (p_adjust_corrected)
+    significance_threshold: 0.05
+    n_significant: 16
+    significant_unit: GO groups (0 after multifunctionality correction)
+    data_url: http://home.pavlab.msl.ubc.ca/ermineJ/supplement-files/vitkup-cluster1.erminej.txt
+    summary: >-
+      The deposited result file for the 44-gene subset. Sixteen groups
+      pass FDR < 0.05, mostly synaptic transmission and behaviour terms, and
+      none survive multifunctionality correction.
+    reported_terms:
+      - reported_id: GO:0051899
+        reported_label: membrane depolarization
+        term:
+          id: GO:0051899
+          label: membrane depolarization
+        p_value: 2.737e-05
+        p_adjust: 0.0310
+        p_adjust_corrected: 1.0
+        significant: true
+      - reported_id: GO:0007611
+        reported_label: learning or memory
+        term:
+          id: GO:0007611
+          label: learning or memory
+        p_value: 3.66e-05
+        p_adjust: 0.0277
+        p_adjust_corrected: 1.0
+        significant: true
+        authors_stance: discounted
+      - reported_id: GO:0050804
+        reported_label: regulation of synaptic transmission
+        term:
+          id: GO:0050804
+          label: modulation of chemical synaptic transmission
+        p_value: 6.729e-05
+        p_adjust: 0.0254
+        p_adjust_corrected: 1.0
+        significant: true
+      - reported_id: GO:0035176
+        reported_label: social behavior
+        term:
+          id: GO:0035176
+          label: social behavior
+        p_value: 7.182e-05
+        p_adjust: 0.0204
+        p_adjust_corrected: 1.0
+        significant: true
+      - reported_id: GO:0007416
+        reported_label: synapse assembly
+        term:
+          id: GO:0007416
+          label: synapse assembly
+        p_value: 2.084e-04
+        p_adjust: 0.0363
+        p_adjust_corrected: 1.0
+        significant: true
+  - reference: PMID:40011791
+    reference_title: "A compendium of human gene functions derived from evolutionary modelling."
+    analysis_role: reanalysis
+    tool: PANTHER gene list analysis (functionome.geneontology.org)
+    method: Over-representation, GO biological process; related terms grouped
+    annotation_source: all GO annotations (experimental, computational and PAN-GO)
+    membership_size: 72
+    membership_note: >-
+      Gilman's 72-gene cluster, the same list as this entry. Reported in the
+      paper's Supplementary Information, case study 1.
+    correction: FDR
+    significance_threshold: 0.05
+    n_significant: 47
+    significant_unit: groups of related GO biological process terms
+    summary: >-
+      Includes a learning and memory group, as in the original paper and in
+      Ballouz et al.
+    reported_terms:
+      - reported_label: learning and memory
+        term:
+          id: GO:0007611
+          label: learning or memory
+        significant: true
+        authors_stance: discounted
+  - reference: PMID:40011791
+    reference_title: "A compendium of human gene functions derived from evolutionary modelling."
+    analysis_role: reanalysis
+    tool: PANTHER gene list analysis (functionome.geneontology.org)
+    method: Over-representation, GO biological process; related terms grouped
+    annotation_source: PAN-GO annotations only
+    membership_size: 72
+    membership_note: Gilman's 72-gene cluster, as in the previous entry.
+    correction: FDR
+    significance_threshold: 0.05
+    n_significant: 6
+    significant_unit: groups of related GO biological process terms
+    summary: >-
+      Learning and memory is no longer enriched. Three of the six groups are
+      synaptic, which supports the original paper's conclusion without the
+      dozens of other clusters. The postsynapse organization association
+      above is the same term.
+    reported_terms:
+      - reported_label: receptor clustering
+        significant: true
+        authors_stance: highlighted
+      - reported_label: postsynapse organization
+        term:
+          id: GO:0099173
+          label: postsynapse organization
+        significant: true
+        authors_stance: highlighted
+      - reported_label: chemical synaptic transmission
+        term:
+          id: GO:0007268
+          label: chemical synaptic transmission
+        significant: true
+        authors_stance: highlighted
+      - reported_label: learning and memory
+        term:
+          id: GO:0007611
+          label: learning or memory
+        significant: false
+        authors_stance: discounted
