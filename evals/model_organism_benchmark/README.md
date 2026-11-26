@@ -4,7 +4,7 @@
 budding yeast or fission yeast experiment, does GO enrichment against that species' own annotations recover
 the curated biology, and in particular the *mechanism* behind the phenotype?
 
-The rest of the gold standard is human. These 23 sets were chosen because their
+The rest of the gold standard is human. These 27 sets were chosen because their
 enrichment should point to a mechanism rather than restate how the set was
 built. For example, deleting a generic P450 reductase turns out to act through
 cholesterol synthesis; an autophagy mutant reveals a lipid programme; and
@@ -23,6 +23,7 @@ Each set is grounded in its real membership.
 | `GUO_TARGETS_OF_IRS1_AND_IRS2` | mouse | MSigDB M2:CGP | Hepatic insulin signalling sustains the sterol programme (cholesterol synthesis 14/35) |
 | `ZHENG_IL22_SIGNALING_UP` | mouse | MSigDB M2:CGP | IL-22 drives epithelial antimicrobial defence; Reg3b/Reg3g missing (membership gap) |
 | `WELCH_GATA1_TARGETS` | mouse | MSigDB M2:CGP | GATA-1 drives heme synthesis and erythroid maturation (largely confirmatory) |
+| `LEE_AGING_CEREBELLUM_UP` | mouse | MSigDB M2:CGP | Classical complement (C1q, C4) recovered; primed-microglia markers present but unannotated to microglial activation |
 | `MA_RAT_AGING_UP` | rat | MSigDB (rat symbols) / Ma 2020 | Shared multi-tissue aging program: inflammation, antimicrobial/alarmin and interferon genes |
 | `MA_RAT_AGING_DN` | rat | MSigDB (rat symbols) / Ma 2020 | Lost with age: extracellular matrix/collagen, heat-shock chaperones, contractile genes |
 | `CTD_ALDICARB_CELEGANS` | worm | CTD | Release machinery, plus Gq/Go, neuropeptide and dystrophin layers |
@@ -30,6 +31,9 @@ Each set is grounded in its real membership.
 | `CTD_PARAQUAT_CELEGANS` | worm | CTD | ETC, insulin/DAF-16, and sensory-cilium IFT |
 | `CTD_PARAQUAT_DMEL` | fly | CTD | Detoxification, JNK signalling, dopamine/Parkinson's module |
 | `CTD_TCDD_DRERIO` | zebrafish | CTD | AHR complex, fin regeneration, cardiac targets (a GO gap) |
+| `CTD_BISPHENOL_A_DRERIO` | zebrafish | CTD | Estrogen-receptor signaling (4/5) names BPA's mode of action; aromatase present but unannotated to estrogen synthesis |
+| `CTD_ROTENONE_DRERIO` | zebrafish | CTD | Complex I recovered from a noisy, tissue-abundance-heavy list; th/pink1/uchl1 Parkinson's layer |
+| `CTD_PHENOBARBITAL_DMEL` | fly | CTD | GSTs recovered (11/38); inducible P450s and the CncC/Keap1/Hr96 regulators are an annotation gap |
 | `YEAST_RLS_EXTENDED_MCCORMICK` | yeast | SGD / McCormick 2015 | Lifespan extension is 60S-specific (30 RPL vs 2 RPS genes), pointing to Gcn4 |
 | `YEAST_RAPAMYCIN_SENSITIVE_XIE` | yeast | SGD / Xie 2005 | The vacuole as TORC1 hub: full EGO (Ragulator) complex, vacuolar sorting, autophagy |
 | `YEAST_CADMIUM_SENSITIVE_RUOTOLO` | yeast | SGD / Ruotolo 2008 | Glutathione chelation, YCF1 vacuolar import, V-ATPase, ESCRT/retromer |
@@ -60,7 +64,7 @@ PomBase's curated deletion phenotypes (FYPO terms) from one paper each, keeping
 only screens whose PomBase count matches the paper's. That rule excluded two
 candidates: bortezomib (255 curated vs 19 reported) and hydroxyurea (302 vs 52).
 
-**Membership** for all 23 is snapshotted in
+**Membership** for all 27 is snapshotted in
 `curation/genesets/model_organism_members.gmt` (gene symbols as used by each
 species' GAF; yeast uses SGD standard names, or the systematic ORF name when a
 gene has no standard name). This is the analogue of `lit_members.gmt`, and makes the eval
@@ -101,14 +105,14 @@ therefore depend on how many sets run together, so the curator notes quote
 
 | species | sets | recall_core | confirmatory | recall_confirm | mechanistic | recall_mechan |
 |---|---|---|---|---|---|---|
-| mouse (mgi) | 8 | 0.850 (17/20) | 19 | 0.684 | 13 | 0.692 |
+| mouse (mgi) | 9 | 0.818 (18/22) | 21 | 0.667 | 14 | 0.714 |
 | rat (rgd) | 2 | 0.667 (2/3) | 3 | 0.667 | 3 | 0.333 |
 | worm (wb) | 3 | 0.667 (6/9) | 8 | 0.625 | 10 | 0.200 |
-| fly (fb) | 1 | 0.750 (3/4) | 4 | 0.750 | 2 | 0.500 |
-| zebrafish (zfin) | 1 | 0.667 (2/3) | 2 | 1.000 | 3 | 0.333 |
+| fly (fb) | 2 | 0.714 (5/7) | 7 | 0.714 | 3 | 0.333 |
+| zebrafish (zfin) | 3 | 0.750 (6/8) | 6 | 0.833 | 7 | 0.143 |
 | budding yeast (sgd) | 5 of 6 | 0.600 (6/10) | 7 | 0.571 | 13 | 0.538 |
 | fission yeast (pombase) | 1 of 2 | 0.500 (2/4) | 2 | 0.500 | 3 | 0.333 |
-| **pooled** | 21 of 23 | **0.717 (38/53)** | 45 | 0.667 | 47 | 0.468 |
+| **pooled** | 25 of 27 | **0.714 (45/63)** | 54 | 0.667 | 53 | 0.434 |
 
 `gap_recovered` is 0 in every species: no curator `annotation_gap` call was
 contradicted by a tool run.
@@ -120,18 +124,19 @@ Read them as failures that recall does not show (findings 8 and 10).
 ### Findings
 
 1. **When the carrier genes are annotated, enrichment recovers the mechanism.**
-   Outside the yeasts, 30 of the 33 core terms predicted `annotation_supported`
-   are recovered. All three misses are small-term cases: the worm p38 MAPK
-   cascade (3 annotated carriers in an 8-gene term), mouse gluconeogenesis in the
-   IRS1/2 set (Pck1, G6pc1, Ppargc1a: 3/51), and rat collagen fibril organization
-   (6/65). Each is a real signal with too few genes to survive genome-wide
+   Outside the yeasts, 37 of the 41 core terms predicted `annotation_supported`
+   are recovered. All four misses are small-term cases: the worm p38 MAPK cascade
+   (3 annotated carriers in an 8-gene term), mouse gluconeogenesis in the IRS1/2
+   set (Pck1, G6pc1, Ppargc1a: 3/51), rat collagen fibril organization (6/65), and
+   zebrafish NADH-to-ubiquinone electron transport (3/21; the other complex I
+   subunits carry only the component annotation, which is recovered). Each is a real signal with too few genes to survive genome-wide
    correction. Yeast shows the same failure mode at scale
    (finding 5). The mouse mechanistic terms (sterol synthesis behind POR loss and
    Egr2 loss, lipid homeostasis behind Atg16l1 loss, TOP-mRNA ribosome behind
    rapamycin) and the worm cilium/IFT and ETC terms behind paraquat resistance
    are all recovered.
-2. **Outside the yeasts, six of the nine missed core terms are gaps:** five in
-   species annotation, one in membership.
+2. **Outside the yeasts, eight of the twelve missed core terms are gaps:** seven
+   in species annotation, one in membership.
    These are biology the membership carries but species GOA does not: mouse
    acute-phase response (Saa1, Saa2, Hp present but unannotated, and again Hp,
    Trf, Lrg1 in the IL-22 set, so the gap is systematic in MGI); worm response
@@ -140,7 +145,12 @@ Read them as failures that recall does not show (findings 8 and 10).
    members entered CTD on paraquat phenotypes); and zebrafish heart
    development (tcf21, notch1b, aldh1a2 annotated elsewhere). Each names a
    concrete GO-annotation target. The paraquat cases show phenotype screens
-   whose results never become process annotations. The membership gap is
+   whose results never become process annotations. Batch 4 adds two more. In
+   the fly phenobarbital set, the inducible P450s (Cyp6a2, Cyp6d5, Cyp12d1) and
+   the CncC/Keap1/Hr96 regulators are unannotated to xenobiotic response. In mouse
+   cerebellar aging, Cd68, Cst7, Ctss, Hexb, Lgals3, Spp1, Axl and Apoe are present
+   but only C1qa reaches microglial cell activation: the genes are curated as
+   markers, not as participants. The membership gap is
    IL-22's Gram-negative defence: the paper's Reg3b and Reg3g are absent from the
    MSigDB set.
 3. **Mechanistic recall is much worse in worm** (0.2) than in mouse (0.78) or
@@ -201,11 +211,19 @@ Read them as failures that recall does not show (findings 8 and 10).
    chaperones (SSB1, SSZ1, ZUO1), is a complete module in a 13-gene term.
    Grounding in the actual membership, not the abstract, is what makes this
    visible.
+11. **For a chemical, enrichment can name the mode of action.** In zebrafish BPA
+    exposure, *estrogen receptor signaling pathway* is 4/5 (esr1, esr2a, esr2b,
+    gper1; p ~4e-11), the xenoestrogen mechanism, read straight off a 34-gene
+    list. The same set's two aromatase genes are not annotated to their own
+    enzymatic pathway (estrogen biosynthesis, 0/8). In zebrafish rotenone,
+    complex I (9/44) is recovered from a 213-gene list dominated by lens
+    crystallins, zona pellucida and vitellogenin proteins, which are recorded as
+    `nonspecific` (`screen_or_assay_artifact`).
 
 ### Caveats
 
-- 23 sets (21 scored), 53 core terms: this is a pilot, not a benchmark-scale estimate.
-- Because these sets were *selected* for mechanistic enrichment, 47 of 92
+- 27 sets (25 scored), 63 core terms: this is a pilot, not a benchmark-scale estimate.
+- Because these sets were *selected* for mechanistic enrichment, 53 of 107
   scored insight-tagged terms are `mechanistic`, far above the ~10% corpus norm. Do
   not pool their mechanistic recall with the human corpus without saying so.
 - CTD sets are aggregates; a few members may be artefacts of the underlying

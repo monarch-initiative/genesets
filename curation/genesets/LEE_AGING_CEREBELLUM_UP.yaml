@@ -1,0 +1,97 @@
+gene_set_id: MSIGDB:LEE_AGING_CEREBELLUM_UP
+gene_set_name: LEE_AGING_CEREBELLUM_UP
+collection: M2:CGP
+msigdb_release: v2025.1.Mm
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: UP
+description: >-
+  MSigDB mouse M2:CGP set (M1599) of 90 genes up-regulated in the cerebellum of aged
+  versus young mice (Lee, Weindruch and Prolla 2000, PMID:10888876, Table 5S), one of
+  the first genome-scale brain-aging profiles. The membership is a glial
+  inflammatory program. It has the classical complement cascade (C1qa, C1qb, C1qc,
+  C4a, C4b) and primed or disease-associated microglia (Cd68, Ctss, Ctsd, Ctsz,
+  Hexb, Cst7, Lgals3, Lgals3bp, Spp1, Axl, Apoe, Mpeg1). It also has interferon
+  response genes (Irf7, Ifi27, Ifit1bl2, Irgm1, Trim5) and reactive astrocytes
+  (Gfap), plus oxidative-stress genes (Hmox1). GO enrichment recovers complement
+  activation and the lysosome, but not microglial activation, whose marker genes
+  are present but mostly unannotated to it.
+contexts:
+  - term:
+      id: UBERON:0002037
+      label: cerebellum
+    context_type: anatomical_structure
+  - term:
+      id: CL:0000129
+      label: microglial cell
+    context_type: cell_type
+associations:
+  - term:
+      id: GO:0006958
+      label: complement activation, classical pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:10888876
+        reference_title: "Gene-expression profile of the ageing brain in mice."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "Ageing resulted in a gene-expression profile indicative of an inflammatory response, oxidative stress and reduced neurotrophic support in both brain regions."
+        explanation: >-
+          The defining paper characterises the aging profile as inflammatory.
+    curator_note: >-
+      C1qa, C1qb, C1qc, C4a, C4b directly annotated (5/23, p ~1e-8). Mechanistic:
+      beyond "inflammation", the specific rise of C1q and C4 points to the classical
+      complement pathway, later shown to accumulate at aging synapses and tag them
+      for microglial elimination.
+  - term:
+      id: GO:0001774
+      label: microglial cell activation
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      Expected in an aging-brain signature, hence confirmatory. The
+      activated/disease-associated microglial genes are present: Cd68, Ctss, Hexb,
+      Cst7, Lgals3, Spp1, Axl, Apoe, Mpeg1. Yet only C1qa is annotated to microglial
+      cell activation in MGI GOA (1/39), so enrichment cannot recover the cell state
+      that drives the signature. An annotation gap: these genes are curated as
+      markers, not as participants in the process.
+  - term:
+      id: GO:0005764
+      label: lysosome
+    aspect: cellular_component
+    category: supporting_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      14/652, p ~2e-8 (Capn2, Cd68, Cst7, Ctsd, Ctsh, Ctss, Ctsz, Hexb, Irgm1, Slc11a1
+      directly; B2m, Gfap, Hspa8, Mpeg1 via closure). The expanded lysosomal
+      compartment of primed microglia: the recoverable proxy for the activation
+      state above.
+  - term:
+      id: GO:0035456
+      label: response to interferon-beta
+    aspect: biological_process
+    category: marker_driven_plausible
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    curator_note: >-
+      Capn2 and Irgm1 via closure (2/78); Irf7, Ifi27, Ifit1bl2 and Trim5 are also
+      present. A type I interferon component of brain aging; plausible but weakly
+      carried.

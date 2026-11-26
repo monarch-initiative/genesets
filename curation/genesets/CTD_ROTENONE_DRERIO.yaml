@@ -1,0 +1,88 @@
+gene_set_id: MYGENESET:D012402_7955
+gene_set_name: CTD_ROTENONE_DRERIO
+collection: CTD:chem_gene_ixns
+taxon:
+  id: NCBITaxon:7955
+  label: Danio rerio
+direction: NA
+description: >-
+  The 213 zebrafish genes with CTD-curated interactions with rotenone (MeSH D012402;
+  mygeneset.info D012402_7955; membership snapshot in
+  curation/genesets/model_organism_members.gmt). Rotenone is a mitochondrial
+  complex I inhibitor used to model Parkinson's disease. Much of the membership looks
+  like protein-level changes from several profiled zebrafish tissues (judging by
+  which genes are present; CTD does not label the assays), so it mixes mechanism
+  with tissue abundance. The mechanistic core is complex I itself: ndufa2,
+  ndufa6, ndufa9a, ndufa10, ndufa12, ndufa13, ndufb10, ndufs1, ndufv1, ndufv2, plus
+  other respiratory and TCA enzymes (uqcrfs1, uqcrh, cox4i1, dlat, dlst, sucla2). The
+  Parkinson's-relevant layer includes th (tyrosine hydroxylase), pink1, uchl1 and
+  neurofilaments (nefla, neflb, nefma). The abundant tissue proteins come from eye
+  lens (cryaa, crybb1l1, crygm2a/2b/4/6/7), ovary (zona pellucida zp2/zp3 genes,
+  vitellogenins vtg3/4/7) and muscle (myoz, mybpc, tnnc), and are treated as
+  nonspecific.
+contexts:
+  - term:
+      id: CHEBI:28201
+      label: rotenone
+    context_type: chemical_perturbagen
+associations:
+  - term:
+      id: GO:0045271
+      label: respiratory chain complex I
+    aspect: cellular_component
+    category: core_component
+    confidence: high
+    specificity: ubiquitous
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      9/44, p ~5e-10: ndufa2, ndufa6, ndufa10, ndufa12, ndufa13, ndufb10, ndufs1,
+      ndufv1, ndufv2 directly annotated (ndufa9a also present). Rotenone's molecular
+      target, so confirmatory, but it is what makes this noisy 213-gene list
+      interpretable.
+  - term:
+      id: GO:0006120
+      label: mitochondrial electron transport, NADH to ubiquinone
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      Only ndufa10, ndufv1 and ndufv2 are annotated to the process (3/21); the other
+      complex I subunits carry the component annotation alone. The inhibited step.
+      The process annotation is thinner than the component annotation in ZFIN, so
+      the process is not recovered.
+  - term:
+      id: GO:0042416
+      label: dopamine biosynthetic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      th, the rate-limiting enzyme, is directly annotated (1/3). With pink1 and uchl1
+      (Parkinson's genes) and the neurofilaments, it marks the dopaminergic
+      vulnerability that makes rotenone a Parkinson's model. A single-gene term,
+      not recoverable by set enrichment.
+  - term:
+      id: GO:0005212
+      label: structural constituent of eye lens
+    aspect: molecular_function
+    category: nonspecific
+    confidence: medium
+    specificity: cell_type_specific
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    artifact_cause: screen_or_assay_artifact
+    curator_note: >-
+      cryaa, crybb1l1, crygm2a, crygm2b, crygm4, crygm6, crygm7 (7/64). Lens
+      crystallins are among the most abundant proteins in any eye proteome, and
+      their presence reflects which tissues were profiled, not a rotenone mechanism.
+      The zona pellucida and vitellogenin genes are the ovarian counterpart.

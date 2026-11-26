@@ -1,0 +1,95 @@
+gene_set_id: MYGENESET:C006780_7955
+gene_set_name: CTD_BISPHENOL_A_DRERIO
+collection: CTD:chem_gene_ixns
+taxon:
+  id: NCBITaxon:7955
+  label: Danio rerio
+direction: NA
+description: >-
+  The 34 zebrafish genes with CTD-curated interactions with bisphenol A (BPA; MeSH
+  C006780; mygeneset.info C006780_7955; membership snapshot in
+  curation/genesets/model_organism_members.gmt). BPA is an endocrine disruptor, and GO
+  enrichment identifies its mechanism directly. The set contains the estrogen
+  receptors (esr1, esr2a, esr2b, gper1), the estrogen-responsive biomarker vtg1, and
+  both aromatase genes (cyp19a1a gonadal, cyp19a1b brain). It also has the thyroid
+  hormone receptors (thraa, thrb), the second axis BPA disrupts, and the androgen
+  and gonadotropin side (lhcgr, inhbab). The rest is oxidative-stress and
+  conjugation enzymes (cat, gpx1b, gsr, sult1st2, ugt1b1, ugt1b3) and kinases
+  (mapk1, mapk3, mapk14a).
+contexts:
+  - term:
+      id: CHEBI:33216
+      label: bisphenol A
+    context_type: chemical_perturbagen
+associations:
+  - term:
+      id: GO:0030520
+      label: estrogen receptor signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      esr1, esr2a, esr2b and gper1 directly annotated: 4/5 of the zebrafish term, p
+      ~4e-11. Mechanistic: the set is defined by a chemical, and enrichment names its
+      molecular mode of action, nuclear and membrane estrogen-receptor agonism.
+  - term:
+      id: GO:0032355
+      label: response to estradiol
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      7/18, p ~7e-16 (cyp19a1a, cyp19a1b, esr1, vtg1 directly; esr2a, esr2b, gper1 via
+      closure). The estrogenic response readout, including vitellogenin induction, the
+      standard fish biomarker of xenoestrogen exposure.
+  - term:
+      id: GO:0030284
+      label: nuclear estrogen receptor activity
+    aspect: molecular_function
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      esr1, esr2a, esr2b: all three zebrafish nuclear estrogen receptors (3/3, p
+      ~5e-9). The molecular target BPA binds.
+  - term:
+      id: GO:0006703
+      label: estrogen biosynthetic process
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: mechanistic
+    curator_note: >-
+      Both aromatase genes, cyp19a1a and cyp19a1b, are in the set. BPA alters
+      aromatase expression, especially brain cyp19a1b, an ER-responsive gene in
+      radial glia, so BPA also perturbs local estrogen synthesis. Neither aromatase
+      is annotated to estrogen biosynthetic process in ZFIN GOA (0/8 here; both carry
+      response to estradiol instead). An annotation gap on the enzyme's own pathway.
+  - term:
+      id: GO:0070324
+      label: thyroid hormone binding
+    aspect: molecular_function
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      thrb is directly annotated (1/4), and thraa is also present. BPA is a
+      thyroid-receptor antagonist, a second endocrine axis beyond estrogen. Too few
+      genes to be recovered, and thraa lacks this annotation.

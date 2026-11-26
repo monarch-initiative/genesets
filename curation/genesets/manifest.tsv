@@ -215,3 +215,7 @@ MSIGDB:ZHENG_IL22_SIGNALING_UP	M2:CGP	PR:000001383	genetic_perturbation	interleu
 LIT:YEAST_STREPTOMYCIN_SENSITIVE_ALAMGIR	LIT:GENETIC	CHEBI:17076	chemical_perturbagen	streptomycin		
 MSIGDB:MA_RAT_AGING_DN	M2:CGP				SERIES:MA_RAT_AGING	down
 MSIGDB:MA_RAT_AGING_UP	M2:CGP				SERIES:MA_RAT_AGING	up
+MYGENESET:C006780_7955	CTD:chem_gene_ixns	CHEBI:33216	chemical_perturbagen	bisphenol A		
+MYGENESET:D010634_7227	CTD:chem_gene_ixns	CHEBI:8069	chemical_perturbagen	phenobarbital		
+MYGENESET:D012402_7955	CTD:chem_gene_ixns	CHEBI:28201	chemical_perturbagen	rotenone		
+MSIGDB:LEE_AGING_CEREBELLUM_UP	M2:CGP	UBERON:0002037	anatomical_structure	cerebellum		
