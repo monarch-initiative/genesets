@@ -585,3 +585,150 @@ hit_adjudication:
   adjudicated_on: '2026-11-18'
   note: 46 pooled hits, each labelled blind to which variant reported it; background
     = UniProtKB proteins in goa_human, direct GO:0005515 dropped.
+published_analyses:
+  - reference: PMID:15374877
+    reference_title: "Transcriptional regulation of vascular endothelial cell responses to hypoxia by HIF-1."
+    analysis_role: original
+    method: Manual assignment of genes to functional categories; no GO enrichment test.
+    membership_note: >-
+      245 up-regulated probes (genes induced by both hypoxia and AdCA5). This
+      entry's 202 genes are the ErmineJ quicklist mapping of them (the MSigDB
+      v3.1-era MANALO_HYPOXIA_UP); current MSigDB maps them to 210 genes.
+    summary: >-
+      Transcription factors were the largest category of HIF-1-regulated
+      genes, with cytokines, growth factors, receptors and other signalling
+      proteins also common among the up-regulated genes.
+    snippet: "Transcription factors accounted for the largest group of HIF-1-regulated genes, indicating that HIF-1 controls a network of transcriptional responses to hypoxia in endothelial cells."
+  - reference: PMID:28204549
+    reference_title: "Using predictive specificity to determine when gene set analysis is biologically meaningful."
+    analysis_role: reanalysis
+    tool: ErmineJ 3.0
+    method: >-
+      Over-representation (ErmineJ ORA), GO groups of 20-200 genes, hit list
+      scored with a dummy-score threshold.
+    annotation_source: GO (ErmineJ Generic_human_noParents annotations)
+    annotation_date: 2013-04
+    membership_size: 202
+    membership_note: >-
+      Identical to this entry's membership (QuickList.MANALO_HYPOXIA_UP.txt),
+      before HGNC normalization.
+    correction: >-
+      Benjamini-Hochberg FDR (p_adjust); multifunctionality-corrected FDR
+      (p_adjust_corrected)
+    significance_threshold: 0.05
+    n_significant: 70
+    significant_unit: GO groups (4 after multifunctionality correction)
+    data_url: http://home.pavlab.msl.ubc.ca/ermineJ/supplement-files/MANALO_HYPOXIA_UP.erminej.txt
+    summary: >-
+      Seventy groups before correction, four after: peptidyl-proline
+      modification, cellular response to hypoxia, collagen fibril
+      organization and cellular response to oxygen levels, which match the
+      themes the original authors emphasised. The cellular response to
+      hypoxia and collagen fibril organization associations above are the
+      same terms.
+    snippet: "only four groups would be significant at an FDR of 0.05 (70 originally)"
+    reported_terms:
+      - reported_id: GO:0008217
+        reported_label: regulation of blood pressure
+        term:
+          id: GO:0008217
+          label: regulation of blood pressure
+        p_value: 6.345e-08
+        p_adjust: 1.438e-04
+        p_adjust_corrected: 1.0
+        significant: true
+        authors_stance: reported
+      - reported_id: GO:0045765
+        reported_label: regulation of angiogenesis
+        term:
+          id: GO:0045765
+          label: regulation of angiogenesis
+        p_value: 2.241e-07
+        p_adjust: 2.54e-04
+        p_adjust_corrected: 0.424
+        significant: true
+        authors_stance: reported
+      - reported_id: GO:0071456
+        reported_label: cellular response to hypoxia
+        term:
+          id: GO:0071456
+          label: cellular response to hypoxia
+        p_value: 3.214e-07
+        p_adjust: 2.428e-04
+        p_adjust_corrected: 0.0409
+        significant: true
+        authors_stance: highlighted
+      - reported_id: GO:0071453
+        reported_label: cellular response to oxygen levels
+        term:
+          id: GO:0071453
+          label: cellular response to oxygen levels
+        p_value: 6.575e-07
+        p_adjust: 3.727e-04
+        p_adjust_corrected: 0.0349
+        significant: true
+        authors_stance: highlighted
+      - reported_id: GO:0018208
+        reported_label: peptidyl-proline modification
+        term:
+          id: GO:0018208
+          label: peptidyl-proline modification
+        p_value: 1.66e-05
+        p_adjust: 3.762e-03
+        p_adjust_corrected: 0.0376
+        significant: true
+        authors_stance: highlighted
+        note: >-
+          Not reproducible with current GOA: no member carries this BP term,
+          because the prolyl hydroxylases (EGLN1, EGLN3, P4HA1, P4HA2) are
+          annotated to peptidyl-proline 4-dioxygenase activity instead.
+      - reported_id: GO:0030199
+        reported_label: collagen fibril organization
+        term:
+          id: GO:0030199
+          label: collagen fibril organization
+        p_value: 5.662e-05
+        p_adjust: 8.022e-03
+        p_adjust_corrected: 0.0428
+        significant: true
+        authors_stance: highlighted
+      - reported_id: GO:0061418
+        reported_label: regulation of transcription from RNA polymerase II promoter in response to hypoxia
+        p_value: 2.607e-04
+        p_adjust: 0.0191
+        p_adjust_corrected: 0.475
+        significant: true
+        authors_stance: reported
+        note: Not in the current GO release; no current term mapped.
+  - reference: PMID:40011791
+    reference_title: "A compendium of human gene functions derived from evolutionary modelling."
+    analysis_role: reanalysis
+    tool: PANTHER gene list analysis (functionome.geneontology.org)
+    method: Over-representation, GO biological process; related terms grouped
+    annotation_source: all GO annotations (experimental, computational and PAN-GO)
+    membership_size: 202
+    membership_note: >-
+      The same 202-gene list as Ballouz et al. and this entry. Supplementary
+      Information, case study 2.
+    correction: FDR
+    significance_threshold: 0.05
+    n_significant: 85
+    significant_unit: groups of related GO biological process terms
+    summary: Too many groups to interpret easily, as in Ballouz et al.'s uncorrected run.
+  - reference: PMID:40011791
+    reference_title: "A compendium of human gene functions derived from evolutionary modelling."
+    analysis_role: reanalysis
+    tool: PANTHER gene list analysis (functionome.geneontology.org)
+    method: Over-representation, GO biological process; related terms grouped
+    annotation_source: PAN-GO annotations only
+    membership_size: 202
+    membership_note: As in the previous entry.
+    correction: FDR
+    significance_threshold: 0.05
+    n_significant: 8
+    significant_unit: groups of related GO biological process terms
+    summary: >-
+      Eight groups, which include terms identical or related to all four of
+      Ballouz et al.'s corrected results, plus transcriptional regulation,
+      reflecting the transcription factors Manalo et al. reported. No
+      correction step was needed.

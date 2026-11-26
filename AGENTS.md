@@ -80,6 +80,10 @@ categories, and the findings. Don't duplicate — extend.
   (mechanistic insight is ~2× harder to recover).
 - `series` / `series_role` — link contrasting poles of one axis (both poles get the
   field) so the eval can check they resolve to contrasting interpretations.
+- `published_analyses` — enrichment runs earlier papers reported on the set
+  (tool, annotations, membership, correction, reported terms and the authors'
+  stance). A historical record, never scored and never used to set the axes
+  above.
 
 ## Sources in the corpus
 
