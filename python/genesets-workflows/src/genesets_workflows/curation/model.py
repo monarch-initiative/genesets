@@ -99,6 +99,40 @@ class BiologicalContext:
 
 
 @dataclass
+class ReportedTerm:
+    reported_label: str
+    reported_id: str | None = None
+    term: Term | None = None
+    p_value: float | None = None
+    p_adjust: float | None = None
+    p_adjust_corrected: float | None = None
+    significant: bool | None = None
+    authors_stance: str | None = None
+    note: str | None = None
+
+
+@dataclass
+class PublishedAnalysis:
+    reference: str
+    analysis_role: str
+    reference_title: str | None = None
+    tool: str | None = None
+    method: str | None = None
+    annotation_source: str | None = None
+    annotation_date: str | None = None
+    membership_size: int | None = None
+    membership_note: str | None = None
+    correction: str | None = None
+    significance_threshold: float | None = None
+    n_significant: int | None = None
+    significant_unit: str | None = None
+    data_url: str | None = None
+    summary: str | None = None
+    snippet: str | None = None
+    reported_terms: list[ReportedTerm] = field(default_factory=list)
+
+
+@dataclass
 class GeneSetInterpretation:
     gene_set_id: str
     gene_set_name: str
@@ -115,6 +149,7 @@ class GeneSetInterpretation:
     contexts: list[BiologicalContext] = field(default_factory=list)
     associations: list[TermAssociation] = field(default_factory=list)
     hit_adjudication: HitAdjudication | None = None
+    published_analyses: list[PublishedAnalysis] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
         return _to_dict(self)
@@ -157,6 +192,20 @@ def _context(value: dict[str, Any]) -> BiologicalContext:
     return BiologicalContext(**value)
 
 
+def _reported_term(value: dict[str, Any]) -> ReportedTerm:
+    value = dict(value)
+    value["term"] = _term(value.get("term"))
+    return ReportedTerm(**value)
+
+
+def _published_analysis(value: dict[str, Any]) -> PublishedAnalysis:
+    value = dict(value)
+    value["reported_terms"] = [
+        _reported_term(r) for r in value.get("reported_terms", [])
+    ]
+    return PublishedAnalysis(**value)
+
+
 def from_dict(data: dict[str, Any]) -> GeneSetInterpretation:
     data = dict(data)
     data["taxon"] = _term(data.get("taxon"))
@@ -169,6 +218,9 @@ def from_dict(data: dict[str, Any]) -> GeneSetInterpretation:
         if adj.get("adjudicated_on") is not None:
             adj["adjudicated_on"] = str(adj["adjudicated_on"])
         data["hit_adjudication"] = HitAdjudication(**adj)
+    data["published_analyses"] = [
+        _published_analysis(p) for p in data.get("published_analyses", [])
+    ]
     return GeneSetInterpretation(**data)
 
 

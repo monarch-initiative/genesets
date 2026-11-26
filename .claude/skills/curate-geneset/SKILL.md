@@ -137,6 +137,19 @@ many there are, give every noise term an `artifact_cause`, and add a
 - **Cite the right paper.** Verify PMIDs. (The Descartes fetal atlas is
   `PMID:33184181`, not `32848094` — a recurring trap.)
 
+## Prior enrichment results (`published_analyses`)
+
+If the defining paper, or a later paper, ran enrichment on the set, record
+each run under `published_analyses`, one entry per paper and setting: tool,
+annotation source and date, membership size and how it differs from yours,
+correction, threshold, number significant, and the terms the argument rests
+on (`reported_terms`, with `authors_stance`). Copy `reported_id` and
+`reported_label` as printed; map each to a current, OLS-verified, non-obsolete
+GO `term`, or leave the mapping out. Fetch deposited result tables when
+available (`data_url`) and take stats from them rather than from prose. This
+block is a record, not gold: it never sets category or recovery_status. See
+"Published analyses" in `curation/README.md`.
+
 ## Pairs / series
 
 Link contrasting poles of one axis with `series` (a shared `SERIES:<NAME>` id) and
