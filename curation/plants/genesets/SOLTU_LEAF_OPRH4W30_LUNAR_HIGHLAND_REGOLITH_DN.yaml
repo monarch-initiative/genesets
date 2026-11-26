@@ -11,9 +11,9 @@ n_genes: 79
 description: 'Genes down-regulated in leaves of potato grown in the lunar south-pole highland simulant OPRH4W30
   versus Adkins soil; 79 of the 124 OPRH4W30 DEGs, the smallest response of the four simulants profiled. It holds
   two compact modules: the jasmonate wound-defence effectors (JAZ1, AOS, potato inhibitor I, Kunitz, cystatins,
-  patatin) and a cluster of eight PAL paralogues, both lower than in soil, as in LHS-1E. Of note, the authors''
-  OPRH4W30 GSEA table in Data S6 repeats the LHS-1E table almost verbatim (identical set sizes and enrichment scores);
-  it was not used here. Source: Data S5 of Handy et al. 2026 (npj Microgravity, PMID:43058136), DESeq2 padj < 0.05,
+  patatin) and a cluster of nine PAL paralogues, both lower than in soil, as in LHS-1E. Of note, the authors'' OPRH4W30
+  GSEA table in Data S6 repeats the LHS-1E table almost verbatim (identical set sizes and enrichment scores); it
+  was not used here. Source: Data S5 of Handy et al. 2026 (npj Microgravity, PMID:43058136), DESeq2 padj < 0.05,
   upper-canopy leaves at 39 DAP, n = 5 per substrate, all substrates amended with 5% v/v vermicompost plus Osmocote.
   Direction: Data S5 does not state the sign convention; log2FoldChange is read as regolith relative to Adkins (DESeq2
   default reference, alphabetically first level ADK). This is confirmed by the copper switch tracking the measured
@@ -98,7 +98,7 @@ associations:
     - Soltu.DM.09G005700
     - Soltu.DM.09G005710
     - Soltu.DM.10G020990
-  curator_note: 'Eight PAL paralogues (03G011440-03G011490, 09G005690-09G005710, 10G020990), log2FC -0.6 to -1.4:
+  curator_note: 'Nine PAL paralogues (03G011440-03G011490, 09G005690-09G005710, 10G020990), log2FC -0.6 to -1.4:
     the entry point of phenylpropanoid synthesis. It is the strongest single signal in this small set.'
 - term:
     id: GO:0030414

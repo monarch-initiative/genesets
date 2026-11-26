@@ -89,7 +89,7 @@ upper-canopy leaves were profiled by RNA-seq at 39 days after planting. Membersh
 | `SOLTU_LEAF_LMS1E_LUNAR_MARE_REGOLITH_DN` | LMS-1E (mare) | DN | 831 | Cell-wall and cellulose synthesis (CESA, CSLG, COBRA-like, expansins); the JA wound-defence module (JAZ1, AOS, AOC, LOX, proteinase inhibitors) |
 | `SOLTU_LEAF_JSC1A_LUNAR_MARE_REGOLITH_UP` | JSC-1A (mare) | UP | 431 | Metal response; CSD1/CSD2 up, the copper-replete half of the SPL7 switch |
 | `SOLTU_LEAF_JSC1A_LUNAR_MARE_REGOLITH_DN` | JSC-1A (mare) | DN | 527 | Light-harvesting antenna; FSD1, COPT1/5 and CCH down (SPL7 copper-deficiency regulon off); PAL cluster |
-| `SOLTU_LEAF_OPRH4W30_LUNAR_HIGHLAND_REGOLITH_DN` | OPRH4W30 (highland) | DN | 79 | JA wound-defence effectors and an eight-gene PAL cluster |
+| `SOLTU_LEAF_OPRH4W30_LUNAR_HIGHLAND_REGOLITH_DN` | OPRH4W30 (highland) | DN | 79 | JA wound-defence effectors and a nine-gene PAL cluster |
 
 **Direction.** Data S5 does not say which way its log2FoldChange runs. It is read here as regolith
 relative to soil, which is DESeq2's default because `ADK` is the alphabetically first level. The copper
