@@ -1,0 +1,320 @@
+gene_set_id: LIT:SOLTU_LEAF_OPRH4W30_LUNAR_HIGHLAND_REGOLITH_DN
+gene_set_name: SOLTU_LEAF_OPRH4W30_LUNAR_HIGHLAND_REGOLITH_DN
+collection: LIT:PLANT_STRESS_RESPONSE
+taxon:
+  id: NCBITaxon:4113
+  label: Solanum tuberosum
+direction: DN
+series: SERIES:SOLTU_LUNAR_REGOLITH_LEAF
+series_role: oprh4w30_highland_down
+n_genes: 79
+description: 'Genes down-regulated in leaves of potato grown in the lunar south-pole highland simulant OPRH4W30
+  versus Adkins soil; 79 of the 124 OPRH4W30 DEGs, the smallest response of the four simulants profiled. It holds
+  two compact modules: the jasmonate wound-defence effectors (JAZ1, AOS, potato inhibitor I, Kunitz, cystatins,
+  patatin) and a cluster of nine PAL paralogues, both lower than in soil, as in LHS-1E. Of note, the authors'' OPRH4W30
+  GSEA table in Data S6 repeats the LHS-1E table almost verbatim (identical set sizes and enrichment scores); it
+  was not used here. Source: Data S5 of Handy et al. 2026 (npj Microgravity, PMID:43058136), DESeq2 padj < 0.05,
+  upper-canopy leaves at 39 DAP, n = 5 per substrate, all substrates amended with 5% v/v vermicompost plus Osmocote.
+  Direction: Data S5 does not state the sign convention; log2FoldChange is read as regolith relative to Adkins (DESeq2
+  default reference, alphabetically first level ADK). This is confirmed by the copper switch tracking the measured
+  copper: FSD1 falls and CSD1/CSD2 rise most in JSC-1A, the simulant with significantly higher tuber Cu (Table 1).
+  Gene ids are DM v6.1 (Soltu.DM) as in the paper; GO enrichment uses the SpudDB DM v6.1 GO annotation (TAIR best-hit
+  projection, all IEA, the annotation the authors used), with the annotated genome as background because only DEGs
+  were released.'
+contexts:
+- term:
+    id: PO:0025034
+    label: leaf
+  context_type: anatomical_structure
+associations:
+- term:
+    id: GO:0009800
+    label: cinnamic acid biosynthetic process
+  aspect: biological_process
+  category: core_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.8997e-19
+    p_adjust: 1.9844e-14
+    overlap: 9
+    query_size: 72
+    target_size: 20
+    overlap_genes:
+    - Soltu.DM.03G011440
+    - Soltu.DM.03G011450
+    - Soltu.DM.03G011460
+    - Soltu.DM.03G011480
+    - Soltu.DM.03G011490
+    - Soltu.DM.09G005690
+    - Soltu.DM.09G005700
+    - Soltu.DM.09G005710
+    - Soltu.DM.10G020990
+  evidence:
+  - reference: PMID:43058136
+    reference_title: Growth and molecular responses of potato to lunar regolith simulants.
+    snippet: Whole-transcriptome profiling of leaves revealed that each simulant elicited a distinct pattern of
+      gene expression changes, indicating that the type and intensity of regolith-induced stress is substrate-dependent.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: OPRH4W30 produced the smallest DEG set (124) of the four simulants profiled.
+  curator_note: Nine PAL paralogues (03G011440-03G011490, 09G005690-09G005710, 10G020990), log2FC -0.6 to -1.4.
+    This is the entry step of phenylpropanoid synthesis, named as the process it performs, and the strongest single
+    signal in this small set.
+- term:
+    id: GO:0010466
+    label: negative regulation of peptidase activity
+  aspect: biological_process
+  category: core_process
+  confidence: medium
+  specificity: lineage_shared
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.1307e-05
+    p_adjust: 1.0
+    overlap: 3
+    query_size: 72
+    target_size: 31
+    overlap_genes:
+    - Soltu.DM.03G018510
+    - Soltu.DM.03G018520
+    - Soltu.DM.03G023520
+  evidence:
+  - reference: PMID:16357201
+    reference_title: Jasmonate-inducible plant enzymes degrade essential amino acids in the herbivore midgut.
+    snippet: We show that two JIPs, arginase and threonine deaminase (TD), act in the M. sexta midgut to catabolize
+      the essential amino acids Arg and Thr, respectively.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: Threonine deaminase, down 8.5 log2 here, is a JA-inducible anti-nutritive defence enzyme in Solanaceae,
+      acting alongside the proteinase inhibitors.
+  curator_note: 'The effector mechanism of the JA module: inhibiting herbivore digestive proteases. Only the three
+    Kunitz inhibitors (03G018510, 03G018520, 03G023520) carry this BP (3/31, nominal p = 5e-5). Three potato inhibitor
+    I genes (09G025890/940/950, -4 to -5.4), two type II inhibitors (03G023580, 03G023620, which have no GO annotation
+    at all) and two cystatins (06G028910 at -7.9, 06G028940) are in the set too, but lack it. Alongside them sit
+    threonine deaminase (09G004660, -8.5) and leucine aminopeptidase (12G027320, -7.4), the tomato JA-inducible
+    anti-nutritive enzymes, which GO annotates only to Thr catabolism and proteolysis.'
+- term:
+    id: GO:0045548
+    label: phenylalanine ammonia-lyase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.5192e-20
+    p_adjust: 5.7654e-15
+    overlap: 9
+    query_size: 72
+    target_size: 18
+    overlap_genes:
+    - Soltu.DM.03G011440
+    - Soltu.DM.03G011450
+    - Soltu.DM.03G011460
+    - Soltu.DM.03G011480
+    - Soltu.DM.03G011490
+    - Soltu.DM.09G005690
+    - Soltu.DM.09G005700
+    - Soltu.DM.09G005710
+    - Soltu.DM.10G020990
+  curator_note: 'MF counterpart of cinnamic acid biosynthesis: the nine PAL paralogues.'
+- term:
+    id: GO:0009611
+    label: response to wounding
+  aspect: biological_process
+  category: marker_driven_plausible
+  confidence: high
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.009e-11
+    p_adjust: 2.0986e-06
+    overlap: 14
+    query_size: 72
+    target_size: 534
+    overlap_genes:
+    - Soltu.DM.03G011440
+    - Soltu.DM.03G011450
+    - Soltu.DM.03G011460
+    - Soltu.DM.03G011480
+    - Soltu.DM.03G011490
+    - Soltu.DM.04G034690
+    - Soltu.DM.09G005690
+    - Soltu.DM.09G005700
+    - Soltu.DM.09G005710
+    - Soltu.DM.09G025890
+    - Soltu.DM.09G025940
+    - Soltu.DM.09G025950
+    - Soltu.DM.10G020990
+    - Soltu.DM.12G008980
+  curator_note: A stimulus term that restates the JA module and the PAL cluster rather than naming a mechanism.
+    Carriers are JAZ1 (12G008980), AOS (04G034690), potato inhibitor I x3 and the nine PALs.
+- term:
+    id: GO:0030414
+    label: peptidase inhibitor activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: high
+  specificity: lineage_shared
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.0259e-07
+    p_adjust: 0.010716
+    overlap: 5
+    query_size: 72
+    target_size: 49
+    overlap_genes:
+    - Soltu.DM.03G018510
+    - Soltu.DM.03G018520
+    - Soltu.DM.03G023520
+    - Soltu.DM.06G028910
+    - Soltu.DM.06G028940
+  curator_note: 'Kunitz (03G018520, 03G023520, 03G018510) and cystatin (06G028910 at -7.9, 06G028940) inhibitors:
+    the secreted effectors of the JA module.'
+- term:
+    id: GO:0046274
+    label: lignin catabolic process
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: broadly_expressed
+  artifact_cause: over_annotation
+  seed_source: enrichment_recovered
+  recovery_status: false_association
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.7128e-21
+    p_adjust: 5.9676e-16
+    overlap: 9
+    query_size: 72
+    target_size: 15
+    overlap_genes:
+    - Soltu.DM.03G011440
+    - Soltu.DM.03G011450
+    - Soltu.DM.03G011460
+    - Soltu.DM.03G011480
+    - Soltu.DM.03G011490
+    - Soltu.DM.09G005690
+    - Soltu.DM.09G005700
+    - Soltu.DM.09G005710
+    - Soltu.DM.10G020990
+  curator_note: Lignin catabolic process carried solely by PAL paralogues through a projected Arabidopsis PAL annotation;
+    PAL does not degrade lignin. Top-ranked hit of the set (p_adj ~ 1e-15), a clean trap.
+- term:
+    id: GO:0009819
+    label: drought recovery
+  aspect: biological_process
+  category: false_association
+  confidence: high
+  specificity: broadly_expressed
+  artifact_cause: multifunctional_gene_bias
+  seed_source: enrichment_recovered
+  recovery_status: false_association
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.4681e-18
+    p_adjust: 1.5335e-13
+    overlap: 9
+    query_size: 72
+    target_size: 24
+    overlap_genes:
+    - Soltu.DM.03G011440
+    - Soltu.DM.03G011450
+    - Soltu.DM.03G011460
+    - Soltu.DM.03G011480
+    - Soltu.DM.03G011490
+    - Soltu.DM.09G005690
+    - Soltu.DM.09G005700
+    - Soltu.DM.09G005710
+    - Soltu.DM.10G020990
+  curator_note: Drought recovery, solely PAL-driven via a pleiotropic Arabidopsis mutant phenotype; no drought biology
+    here.
+- term:
+    id: GO:0010224
+    label: response to UV-B
+  aspect: biological_process
+  category: false_association
+  confidence: medium
+  specificity: broadly_expressed
+  artifact_cause: multifunctional_gene_bias
+  seed_source: enrichment_recovered
+  recovery_status: false_association
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.3183e-10
+    p_adjust: 1.3771e-05
+    overlap: 9
+    query_size: 72
+    target_size: 160
+    overlap_genes:
+    - Soltu.DM.03G011440
+    - Soltu.DM.03G011450
+    - Soltu.DM.03G011460
+    - Soltu.DM.03G011480
+    - Soltu.DM.03G011490
+    - Soltu.DM.09G005690
+    - Soltu.DM.09G005700
+    - Soltu.DM.09G005710
+    - Soltu.DM.10G020990
+  curator_note: Response to UV-B, carried by the PAL paralogues (genuinely UV-B inducible in Arabidopsis) plus two
+    others. The greenhouse light regime was the same across substrates, so UV-B is not the variable; the hit restates
+    the PAL cluster.
+- term:
+    id: GO:0006979
+    label: response to oxidative stress
+  aspect: biological_process
+  category: nonspecific
+  confidence: medium
+  specificity: broadly_expressed
+  artifact_cause: overly_general_term
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 3.248e-09
+    p_adjust: 0.00033929
+    overlap: 14
+    query_size: 72
+    target_size: 790
+    overlap_genes:
+    - Soltu.DM.03G011440
+    - Soltu.DM.03G011450
+    - Soltu.DM.03G011460
+    - Soltu.DM.03G011480
+    - Soltu.DM.03G011490
+    - Soltu.DM.06G012170
+    - Soltu.DM.06G028910
+    - Soltu.DM.06G028940
+    - Soltu.DM.09G005690
+    - Soltu.DM.09G005700
+    - Soltu.DM.09G005710
+    - Soltu.DM.10G020990
+    - Soltu.DM.12G028640
+    - Soltu.DM.12G028680
+  curator_note: Response to oxidative stress, a grab-bag of PALs, cystatins, FSD1 (06G012170) and alkenal reductases;
+    too broad to be informative here.

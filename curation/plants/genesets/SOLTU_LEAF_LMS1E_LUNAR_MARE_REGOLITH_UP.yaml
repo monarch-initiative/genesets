@@ -1,0 +1,781 @@
+gene_set_id: LIT:SOLTU_LEAF_LMS1E_LUNAR_MARE_REGOLITH_UP
+gene_set_name: SOLTU_LEAF_LMS1E_LUNAR_MARE_REGOLITH_UP
+collection: LIT:PLANT_STRESS_RESPONSE
+taxon:
+  id: NCBITaxon:4113
+  label: Solanum tuberosum
+direction: UP
+series: SERIES:SOLTU_LUNAR_REGOLITH_LEAF
+series_role: lms1e_mare_up
+n_genes: 566
+description: 'Genes up-regulated in leaves of potato (Solanum tuberosum cv. Modoc) grown in the lunar mare simulant
+  LMS-1E versus a terrestrial sandy soil (Adkins series); 566 of the 1,397 LMS-1E DEGs. The membership is dominated
+  by the rapid general-stress regulon (WRKY33/40-like, ZAT10/STZ, ERF5/ERF105-like, CML37/38-like calmodulin-like
+  proteins, CMPG1-like PUB E3 ligases, ATL RING ligases) and a large S-locus lectin and S-domain-2 receptor-like
+  kinase expansion, consistent with the stunted canopy of LMS-1E plants. Source: Data S5 of Handy et al. 2026 (npj
+  Microgravity, PMID:43058136), DESeq2 padj < 0.05, upper-canopy leaves at 39 DAP, n = 5 per substrate, all substrates
+  amended with 5% v/v vermicompost plus Osmocote. Direction: Data S5 does not state the sign convention; log2FoldChange
+  is read as regolith relative to Adkins (DESeq2 default reference, alphabetically first level ADK). This is confirmed
+  by the copper switch tracking the measured copper: FSD1 falls and CSD1/CSD2 rise most in JSC-1A, the simulant
+  with significantly higher tuber Cu (Table 1). Gene ids are DM v6.1 (Soltu.DM) as in the paper; GO enrichment uses
+  the SpudDB DM v6.1 GO annotation (TAIR best-hit projection, all IEA, the annotation the authors used), with the
+  annotated genome as background because only DEGs were released.'
+contexts:
+- term:
+    id: PO:0025034
+    label: leaf
+  context_type: anatomical_structure
+associations:
+- term:
+    id: GO:0006468
+    label: protein phosphorylation
+  aspect: biological_process
+  category: core_process
+  confidence: medium
+  specificity: broadly_expressed
+  seed_source: curator_added
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 5.1366e-07
+    p_adjust: 0.053657
+    overlap: 60
+    query_size: 542
+    target_size: 1749
+    overlap_genes:
+    - Soltu.DM.01G004900
+    - Soltu.DM.02G003300
+    - Soltu.DM.02G003320
+    - Soltu.DM.02G011150
+    - Soltu.DM.02G011770
+    - Soltu.DM.02G019150
+    - Soltu.DM.02G019660
+    - Soltu.DM.02G020990
+    - Soltu.DM.02G021050
+    - Soltu.DM.02G023260
+    - Soltu.DM.02G029910
+    - Soltu.DM.03G003170
+    - Soltu.DM.03G022670
+    - Soltu.DM.03G025950
+    - Soltu.DM.03G027300
+    - Soltu.DM.03G031870
+    - Soltu.DM.03G037560
+    - Soltu.DM.04G002260
+    - Soltu.DM.04G025590
+    - Soltu.DM.04G031990
+    - Soltu.DM.04G032100
+    - Soltu.DM.04G033170
+    - Soltu.DM.04G033640
+    - Soltu.DM.05G003730
+    - Soltu.DM.05G025420
+    - Soltu.DM.06G000710
+    - Soltu.DM.06G001620
+    - Soltu.DM.06G014530
+    - Soltu.DM.06G015680
+    - Soltu.DM.06G017820
+    - Soltu.DM.06G030430
+    - Soltu.DM.06G031000
+    - Soltu.DM.07G000510
+    - Soltu.DM.07G021320
+    - Soltu.DM.07G021560
+    - Soltu.DM.07G021600
+    - Soltu.DM.07G021620
+    - Soltu.DM.07G021630
+    - Soltu.DM.07G021660
+    - Soltu.DM.07G025050
+    - Soltu.DM.07G026950
+    - Soltu.DM.08G006070
+    - Soltu.DM.08G014550
+    - Soltu.DM.09G000260
+    - Soltu.DM.09G001580
+    - Soltu.DM.09G001590
+    - Soltu.DM.09G001890
+    - Soltu.DM.09G009180
+    - Soltu.DM.09G009260
+    - Soltu.DM.09G024240
+    - Soltu.DM.10G022760
+    - Soltu.DM.10G023210
+    - Soltu.DM.11G001180
+    - Soltu.DM.11G007650
+    - Soltu.DM.11G012150
+    - Soltu.DM.11G018650
+    - Soltu.DM.11G022670
+    - Soltu.DM.12G011910
+    - Soltu.DM.12G023450
+    - Soltu.DM.S001790
+  evidence:
+  - reference: PMID:43058136
+    reference_title: Growth and molecular responses of potato to lunar regolith simulants.
+    snippet: Whole-transcriptome profiling of leaves revealed that each simulant elicited a distinct pattern of
+      gene expression changes, indicating that the type and intensity of regolith-induced stress is substrate-dependent.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: LMS-1E elicited its own, largest DEG set (1,397 genes).
+  curator_note: 'The mechanism behind the receptor-kinase expansion: 60 kinases, mostly S-locus lectin RLKs (07G025050,
+    04G033170, 04G031990, 09G001590), a tandem S-domain-2 cluster on chr07 (07G021320-07G021660), LRR-RLKs, wall-associated
+    kinases and two MAPK-pathway kinases. Just misses Bonferroni (p_adj 0.054); the matching MF, protein serine/threonine
+    kinase activity, is recovered. Kinase activity was the one GO term the authors found in all four simulants (Fig.
+    6).'
+- term:
+    id: GO:0019722
+    label: calcium-mediated signaling
+  aspect: biological_process
+  category: supporting_process
+  confidence: medium
+  specificity: broadly_expressed
+  seed_source: curator_added
+  recovery_status: annotation_gap
+  insight: mechanistic
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 0.13141
+    p_adjust: 1.0
+    overlap: 3
+    query_size: 542
+    target_size: 72
+    overlap_genes:
+    - Soltu.DM.01G007760
+    - Soltu.DM.11G024620
+    - Soltu.DM.S002490
+  evidence:
+  - reference: PMID:17953483
+    reference_title: Mechanical stress induces biotic and abiotic stress responses via a novel cis-element.
+    snippet: Comparison of RWR genes with published abiotic and biotic stress microarray datasets demonstrates a
+      large overlap across a wide range of environmental stresses.
+    supports: SUPPORT
+    evidence_source: MODEL_ORGANISM
+    explanation: The WRKY/ZAT/ERF/CML genes here are the rapid wound responsive (RWR) regulon that is shared across
+      many abiotic and biotic stresses, driven through the RSRE cis-element.
+  curator_note: 'How the general stress regulon is switched on: a Ca2+ signal decoded by calmodulin-like sensors
+    and CAMTA-type activators. Five CML37/38-like genes are up about 5 log2 (11G024590-11G024620, 02G034080), but
+    only one carries this term. The three carriers are CML37-like 11G024620, an EF-hand protein and GLR2.8; the
+    other CMLs are annotated only to hypoxia and wounding responses.'
+- term:
+    id: GO:0009873
+    label: ethylene-activated signaling pathway
+  aspect: biological_process
+  category: supporting_process
+  confidence: medium
+  specificity: broadly_expressed
+  seed_source: curator_added
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 0.0047484
+    p_adjust: 1.0
+    overlap: 7
+    query_size: 542
+    target_size: 118
+    overlap_genes:
+    - Soltu.DM.01G020840
+    - Soltu.DM.04G029170
+    - Soltu.DM.06G018860
+    - Soltu.DM.07G020090
+    - Soltu.DM.08G024170
+    - Soltu.DM.12G007120
+    - Soltu.DM.12G022800
+  curator_note: 'The ERF arm of the regulon: ERF5-like (08G024170), ERF-domain (12G022800, 07G020090), RAP2-like
+    (04G029170, 12G007120), EBP (01G020840); 7/118, nominal p = 0.0047.'
+- term:
+    id: GO:0004674
+    label: protein serine/threonine kinase activity
+  aspect: molecular_function
+  category: supporting_process
+  confidence: medium
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.5724e-07
+    p_adjust: 0.026871
+    overlap: 39
+    query_size: 542
+    target_size: 903
+    overlap_genes:
+    - Soltu.DM.02G003300
+    - Soltu.DM.02G003320
+    - Soltu.DM.02G011770
+    - Soltu.DM.02G019150
+    - Soltu.DM.02G019660
+    - Soltu.DM.02G021050
+    - Soltu.DM.02G023260
+    - Soltu.DM.03G003170
+    - Soltu.DM.03G025950
+    - Soltu.DM.03G027300
+    - Soltu.DM.03G037560
+    - Soltu.DM.04G002260
+    - Soltu.DM.04G025590
+    - Soltu.DM.04G031990
+    - Soltu.DM.04G032100
+    - Soltu.DM.04G033170
+    - Soltu.DM.04G033640
+    - Soltu.DM.06G014530
+    - Soltu.DM.06G015680
+    - Soltu.DM.06G017820
+    - Soltu.DM.07G021320
+    - Soltu.DM.07G021560
+    - Soltu.DM.07G021600
+    - Soltu.DM.07G021620
+    - Soltu.DM.07G021630
+    - Soltu.DM.07G021660
+    - Soltu.DM.07G025050
+    - Soltu.DM.07G026950
+    - Soltu.DM.08G006070
+    - Soltu.DM.09G000260
+    - Soltu.DM.09G001580
+    - Soltu.DM.09G001590
+    - Soltu.DM.09G001890
+    - Soltu.DM.09G009180
+    - Soltu.DM.09G009260
+    - Soltu.DM.09G024240
+    - Soltu.DM.10G023210
+    - Soltu.DM.11G001180
+    - Soltu.DM.11G022670
+  curator_note: MF counterpart of the kinase layer (see protein phosphorylation).
+- term:
+    id: GO:0010200
+    label: response to chitin
+  aspect: biological_process
+  category: marker_driven_plausible
+  confidence: medium
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.7468e-13
+    p_adjust: 1.8247e-08
+    overlap: 26
+    query_size: 542
+    target_size: 241
+    overlap_genes:
+    - Soltu.DM.01G021450
+    - Soltu.DM.01G039930
+    - Soltu.DM.01G047400
+    - Soltu.DM.02G004200
+    - Soltu.DM.02G029910
+    - Soltu.DM.03G014560
+    - Soltu.DM.03G036130
+    - Soltu.DM.04G007660
+    - Soltu.DM.04G007680
+    - Soltu.DM.04G026330
+    - Soltu.DM.04G032780
+    - Soltu.DM.05G022070
+    - Soltu.DM.06G003960
+    - Soltu.DM.06G018840
+    - Soltu.DM.06G024270
+    - Soltu.DM.07G017160
+    - Soltu.DM.08G002290
+    - Soltu.DM.08G013100
+    - Soltu.DM.08G024170
+    - Soltu.DM.08G028850
+    - Soltu.DM.09G009490
+    - Soltu.DM.10G005000
+    - Soltu.DM.10G005890
+    - Soltu.DM.10G017860
+    - Soltu.DM.12G004050
+    - Soltu.DM.12G006170
+  curator_note: 'A stimulus term, not a mechanism, and no chitin is involved. The 26 carriers are the transcription
+    factors and E3 ligases of the rapid general-stress regulon: WRKY33-like (09G009490, 06G018840), WRKY40-like
+    (06G024270), ZAT10/STZ-like (12G006170, 04G032780), ERF105-like (05G022070, 03G014560), ERF5-like (08G024170),
+    CMPG1-like (04G026330), ATL (01G021450). TAIR uses the term as an expression proxy for that regulon; the mechanism
+    is recorded as calcium-mediated signaling and ethylene-activated signaling.'
+- term:
+    id: GO:0005516
+    label: calmodulin binding
+  aspect: molecular_function
+  category: supporting_process
+  confidence: medium
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  insight: confirmatory
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.4425e-08
+    p_adjust: 0.0015069
+    overlap: 23
+    query_size: 542
+    target_size: 321
+    overlap_genes:
+    - Soltu.DM.02G003300
+    - Soltu.DM.02G003320
+    - Soltu.DM.02G019150
+    - Soltu.DM.03G027300
+    - Soltu.DM.04G031990
+    - Soltu.DM.04G032100
+    - Soltu.DM.04G033170
+    - Soltu.DM.04G033320
+    - Soltu.DM.07G021320
+    - Soltu.DM.07G021560
+    - Soltu.DM.07G021600
+    - Soltu.DM.07G021620
+    - Soltu.DM.07G021630
+    - Soltu.DM.07G021660
+    - Soltu.DM.07G025050
+    - Soltu.DM.08G002290
+    - Soltu.DM.08G013100
+    - Soltu.DM.09G001580
+    - Soltu.DM.09G001590
+    - Soltu.DM.09G024240
+    - Soltu.DM.09G031340
+    - Soltu.DM.10G030170
+    - Soltu.DM.12G004050
+  curator_note: 'Ca2+/calmodulin signalling: the same S-locus lectin RLKs (annotated calmodulin binding through
+    their Arabidopsis best hits), group IId WRKYs (08G002290, 12G004050, 04G033320), a VQ protein and a CAMBP. Together
+    with four CML37/38-like genes (11G024590-11G024620, LFC ~5) this marks Ca2+-decoded stress signalling.'
+- term:
+    id: GO:0071456
+    label: cellular response to hypoxia
+  aspect: biological_process
+  category: marker_driven_plausible
+  confidence: low
+  specificity: broadly_expressed
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 9.2463e-09
+    p_adjust: 0.00096587
+    overlap: 28
+    query_size: 542
+    target_size: 451
+    overlap_genes:
+    - Soltu.DM.01G047100
+    - Soltu.DM.02G013470
+    - Soltu.DM.02G026480
+    - Soltu.DM.02G034080
+    - Soltu.DM.03G021640
+    - Soltu.DM.04G002490
+    - Soltu.DM.04G029160
+    - Soltu.DM.04G032780
+    - Soltu.DM.05G002600
+    - Soltu.DM.05G022450
+    - Soltu.DM.06G029230
+    - Soltu.DM.06G031000
+    - Soltu.DM.07G003570
+    - Soltu.DM.07G018520
+    - Soltu.DM.07G022700
+    - Soltu.DM.07G027810
+    - Soltu.DM.08G004800
+    - Soltu.DM.08G029970
+    - Soltu.DM.10G005000
+    - Soltu.DM.10G005890
+    - Soltu.DM.10G024390
+    - Soltu.DM.10G030170
+    - Soltu.DM.11G003140
+    - Soltu.DM.11G024590
+    - Soltu.DM.11G024600
+    - Soltu.DM.11G024610
+    - Soltu.DM.11G024620
+    - Soltu.DM.12G006170
+  curator_note: 'Carried by genes that Arabidopsis induces under hypoxia but that also belong to the general stress
+    regulon: CML38-like (11G024590-11G024610, 02G034080), HUP-like DUF4228 (02G026480, 04G002490), GA2ox (07G022700),
+    ZAT10, ERF, DREB2A. Waterlogging is plausible because the simulants retained more moisture and cemented after
+    watering (Table 2). But the core anaerobic marker PDC1 (Soltu.DM.10G019440, AT4G33070) goes the other way, down
+    5.1 log2 in LMS-1E leaves, and ADH is unchanged. So this is general stress signalling, not a hypoxia programme
+    in the leaf.'
+- term:
+    id: GO:0050896
+    label: response to stimulus
+  aspect: biological_process
+  category: nonspecific
+  confidence: high
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 2.1326e-07
+    p_adjust: 0.022277
+    overlap: 210
+    query_size: 542
+    target_size: 8894
+    overlap_genes:
+    - Soltu.DM.01G001760
+    - Soltu.DM.01G006740
+    - Soltu.DM.01G006760
+    - Soltu.DM.01G007750
+    - Soltu.DM.01G007760
+    - Soltu.DM.01G016430
+    - Soltu.DM.01G018600
+    - Soltu.DM.01G019850
+    - Soltu.DM.01G020840
+    - Soltu.DM.01G021450
+    - Soltu.DM.01G027750
+    - Soltu.DM.01G030350
+    - Soltu.DM.01G031690
+    - Soltu.DM.01G033120
+    - Soltu.DM.01G037180
+    - Soltu.DM.01G037800
+    - Soltu.DM.01G039060
+    - Soltu.DM.01G039930
+    - Soltu.DM.01G047100
+    - Soltu.DM.01G047400
+    - Soltu.DM.01G051010
+    - Soltu.DM.01G051040
+    - Soltu.DM.02G004200
+    - Soltu.DM.02G011770
+    - Soltu.DM.02G013200
+    - Soltu.DM.02G013470
+    - Soltu.DM.02G015230
+    - Soltu.DM.02G019150
+    - Soltu.DM.02G019660
+    - Soltu.DM.02G021050
+    - Soltu.DM.02G023340
+    - Soltu.DM.02G025700
+    - Soltu.DM.02G026440
+    - Soltu.DM.02G026480
+    - Soltu.DM.02G026810
+    - Soltu.DM.02G029910
+    - Soltu.DM.02G034020
+    - Soltu.DM.02G034080
+    - Soltu.DM.03G000410
+    - Soltu.DM.03G003170
+    - Soltu.DM.03G014560
+    - Soltu.DM.03G015280
+    - Soltu.DM.03G016700
+    - Soltu.DM.03G016730
+    - Soltu.DM.03G016740
+    - Soltu.DM.03G016750
+    - Soltu.DM.03G018440
+    - Soltu.DM.03G021640
+    - Soltu.DM.03G022780
+    - Soltu.DM.03G025950
+    - Soltu.DM.03G027300
+    - Soltu.DM.03G027340
+    - Soltu.DM.03G030690
+    - Soltu.DM.03G036130
+    - Soltu.DM.03G037560
+    - Soltu.DM.04G000230
+    - Soltu.DM.04G002180
+    - Soltu.DM.04G002260
+    - Soltu.DM.04G002380
+    - Soltu.DM.04G002490
+    - Soltu.DM.04G003640
+    - Soltu.DM.04G005520
+    - Soltu.DM.04G007660
+    - Soltu.DM.04G007680
+    - Soltu.DM.04G007720
+    - Soltu.DM.04G008190
+    - Soltu.DM.04G011090
+    - Soltu.DM.04G021200
+    - Soltu.DM.04G021620
+    - Soltu.DM.04G025590
+    - Soltu.DM.04G026270
+    - Soltu.DM.04G026330
+    - Soltu.DM.04G027060
+    - Soltu.DM.04G027140
+    - Soltu.DM.04G027700
+    - Soltu.DM.04G029160
+    - Soltu.DM.04G029170
+    - Soltu.DM.04G030050
+    - Soltu.DM.04G030060
+    - Soltu.DM.04G030070
+    - Soltu.DM.04G031760
+    - Soltu.DM.04G032330
+    - Soltu.DM.04G032780
+    - Soltu.DM.04G033640
+    - Soltu.DM.04G033650
+    - Soltu.DM.04G034340
+    - Soltu.DM.04G034610
+    - Soltu.DM.04G037380
+    - Soltu.DM.05G001210
+    - Soltu.DM.05G002250
+    - Soltu.DM.05G002600
+    - Soltu.DM.05G005680
+    - Soltu.DM.05G005690
+    - Soltu.DM.05G005720
+    - Soltu.DM.05G006420
+    - Soltu.DM.05G012480
+    - Soltu.DM.05G017470
+    - Soltu.DM.05G019950
+    - Soltu.DM.05G022020
+    - Soltu.DM.05G022070
+    - Soltu.DM.05G022450
+    - Soltu.DM.05G022670
+    - Soltu.DM.05G023280
+    - Soltu.DM.05G023350
+    - Soltu.DM.05G025420
+    - Soltu.DM.05G026450
+    - Soltu.DM.06G000140
+    - Soltu.DM.06G000830
+    - Soltu.DM.06G001620
+    - Soltu.DM.06G003960
+    - Soltu.DM.06G013100
+    - Soltu.DM.06G014530
+    - Soltu.DM.06G017820
+    - Soltu.DM.06G018840
+    - Soltu.DM.06G018860
+    - Soltu.DM.06G022200
+    - Soltu.DM.06G024270
+    - Soltu.DM.06G024310
+    - Soltu.DM.06G029030
+    - Soltu.DM.06G029230
+    - Soltu.DM.06G029420
+    - Soltu.DM.06G030910
+    - Soltu.DM.06G031000
+    - Soltu.DM.06G032300
+    - Soltu.DM.07G000250
+    - Soltu.DM.07G000510
+    - Soltu.DM.07G001390
+    - Soltu.DM.07G003570
+    - Soltu.DM.07G007040
+    - Soltu.DM.07G013770
+    - Soltu.DM.07G014100
+    - Soltu.DM.07G017160
+    - Soltu.DM.07G018520
+    - Soltu.DM.07G019630
+    - Soltu.DM.07G019660
+    - Soltu.DM.07G020090
+    - Soltu.DM.07G020610
+    - Soltu.DM.07G021150
+    - Soltu.DM.07G021690
+    - Soltu.DM.07G022400
+    - Soltu.DM.07G022700
+    - Soltu.DM.07G025540
+    - Soltu.DM.07G026950
+    - Soltu.DM.07G027810
+    - Soltu.DM.08G002290
+    - Soltu.DM.08G002910
+    - Soltu.DM.08G003430
+    - Soltu.DM.08G004800
+    - Soltu.DM.08G006070
+    - Soltu.DM.08G013100
+    - Soltu.DM.08G014670
+    - Soltu.DM.08G022980
+    - Soltu.DM.08G024170
+    - Soltu.DM.08G028850
+    - Soltu.DM.08G029970
+    - Soltu.DM.09G000260
+    - Soltu.DM.09G001890
+    - Soltu.DM.09G005970
+    - Soltu.DM.09G006840
+    - Soltu.DM.09G009180
+    - Soltu.DM.09G009260
+    - Soltu.DM.09G009490
+    - Soltu.DM.09G021440
+    - Soltu.DM.09G030260
+    - Soltu.DM.09G031340
+    - Soltu.DM.10G001670
+    - Soltu.DM.10G005000
+    - Soltu.DM.10G005640
+    - Soltu.DM.10G005890
+    - Soltu.DM.10G016190
+    - Soltu.DM.10G016630
+    - Soltu.DM.10G017860
+    - Soltu.DM.10G021270
+    - Soltu.DM.10G023210
+    - Soltu.DM.10G024390
+    - Soltu.DM.10G030170
+    - Soltu.DM.11G001180
+    - Soltu.DM.11G003140
+    - Soltu.DM.11G003510
+    - Soltu.DM.11G004620
+    - Soltu.DM.11G007650
+    - Soltu.DM.11G012170
+    - Soltu.DM.11G017450
+    - Soltu.DM.11G018200
+    - Soltu.DM.11G018350
+    - Soltu.DM.11G020830
+    - Soltu.DM.11G022670
+    - Soltu.DM.11G024590
+    - Soltu.DM.11G024600
+    - Soltu.DM.11G024610
+    - Soltu.DM.11G024620
+    - Soltu.DM.11G026450
+    - Soltu.DM.12G000120
+    - Soltu.DM.12G000840
+    - Soltu.DM.12G000900
+    - Soltu.DM.12G000930
+    - Soltu.DM.12G003480
+    - Soltu.DM.12G004050
+    - Soltu.DM.12G005270
+    - Soltu.DM.12G006170
+    - Soltu.DM.12G007120
+    - Soltu.DM.12G009420
+    - Soltu.DM.12G011190
+    - Soltu.DM.12G011270
+    - Soltu.DM.12G022800
+    - Soltu.DM.12G023450
+    - Soltu.DM.12G024030
+    - Soltu.DM.12G024520
+    - Soltu.DM.12G026660
+    - Soltu.DM.S002490
+  curator_note: Root of the stimulus-response branch; true of a stress DEG list but says nothing about it.
+- term:
+    id: GO:0005886
+    label: plasma membrane
+  aspect: cellular_component
+  category: nonspecific
+  confidence: medium
+  specificity: ubiquitous
+  artifact_cause: overly_general_term
+  seed_source: enrichment_recovered
+  recovery_status: annotation_supported
+  enrichment_stats:
+    method: fisher
+    p_adjust_method: bonferroni
+    p_value: 1.9309e-07
+    p_adjust: 0.02017
+    overlap: 143
+    query_size: 542
+    target_size: 5472
+    overlap_genes:
+    - Soltu.DM.01G002280
+    - Soltu.DM.01G020840
+    - Soltu.DM.01G025960
+    - Soltu.DM.01G033120
+    - Soltu.DM.01G034860
+    - Soltu.DM.01G037180
+    - Soltu.DM.01G037800
+    - Soltu.DM.01G047100
+    - Soltu.DM.01G049140
+    - Soltu.DM.01G049180
+    - Soltu.DM.01G051010
+    - Soltu.DM.01G051570
+    - Soltu.DM.02G000490
+    - Soltu.DM.02G003300
+    - Soltu.DM.02G003320
+    - Soltu.DM.02G011150
+    - Soltu.DM.02G011770
+    - Soltu.DM.02G012720
+    - Soltu.DM.02G019150
+    - Soltu.DM.02G019660
+    - Soltu.DM.02G026440
+    - Soltu.DM.02G026950
+    - Soltu.DM.02G029910
+    - Soltu.DM.02G034080
+    - Soltu.DM.03G003170
+    - Soltu.DM.03G011420
+    - Soltu.DM.03G015450
+    - Soltu.DM.03G015460
+    - Soltu.DM.03G015490
+    - Soltu.DM.03G015500
+    - Soltu.DM.03G015510
+    - Soltu.DM.03G015520
+    - Soltu.DM.03G025950
+    - Soltu.DM.03G027300
+    - Soltu.DM.03G027340
+    - Soltu.DM.03G030560
+    - Soltu.DM.03G030690
+    - Soltu.DM.03G033180
+    - Soltu.DM.03G035150
+    - Soltu.DM.03G035250
+    - Soltu.DM.03G037560
+    - Soltu.DM.04G003640
+    - Soltu.DM.04G005520
+    - Soltu.DM.04G031760
+    - Soltu.DM.04G031990
+    - Soltu.DM.04G032100
+    - Soltu.DM.04G033170
+    - Soltu.DM.04G034480
+    - Soltu.DM.05G001400
+    - Soltu.DM.05G002250
+    - Soltu.DM.05G003730
+    - Soltu.DM.05G003920
+    - Soltu.DM.05G005680
+    - Soltu.DM.05G006420
+    - Soltu.DM.05G010270
+    - Soltu.DM.05G013200
+    - Soltu.DM.05G023350
+    - Soltu.DM.05G025420
+    - Soltu.DM.06G000830
+    - Soltu.DM.06G001620
+    - Soltu.DM.06G017820
+    - Soltu.DM.06G022200
+    - Soltu.DM.06G024440
+    - Soltu.DM.06G029230
+    - Soltu.DM.06G030910
+    - Soltu.DM.06G030920
+    - Soltu.DM.06G031000
+    - Soltu.DM.06G031760
+    - Soltu.DM.06G031770
+    - Soltu.DM.06G032300
+    - Soltu.DM.07G001390
+    - Soltu.DM.07G003570
+    - Soltu.DM.07G012070
+    - Soltu.DM.07G014100
+    - Soltu.DM.07G018520
+    - Soltu.DM.07G020070
+    - Soltu.DM.07G021320
+    - Soltu.DM.07G021560
+    - Soltu.DM.07G021600
+    - Soltu.DM.07G021620
+    - Soltu.DM.07G021630
+    - Soltu.DM.07G021660
+    - Soltu.DM.07G025050
+    - Soltu.DM.07G026950
+    - Soltu.DM.07G027450
+    - Soltu.DM.07G027460
+    - Soltu.DM.07G027860
+    - Soltu.DM.07G028680
+    - Soltu.DM.08G006070
+    - Soltu.DM.08G008230
+    - Soltu.DM.08G012870
+    - Soltu.DM.08G014550
+    - Soltu.DM.08G021340
+    - Soltu.DM.08G022970
+    - Soltu.DM.08G022980
+    - Soltu.DM.08G028460
+    - Soltu.DM.08G028780
+    - Soltu.DM.09G000260
+    - Soltu.DM.09G001890
+    - Soltu.DM.09G002620
+    - Soltu.DM.09G004180
+    - Soltu.DM.09G005970
+    - Soltu.DM.09G009180
+    - Soltu.DM.09G009260
+    - Soltu.DM.09G021440
+    - Soltu.DM.09G030260
+    - Soltu.DM.09G031340
+    - Soltu.DM.10G000230
+    - Soltu.DM.10G015140
+    - Soltu.DM.10G016190
+    - Soltu.DM.10G021270
+    - Soltu.DM.10G022380
+    - Soltu.DM.10G022760
+    - Soltu.DM.10G023210
+    - Soltu.DM.10G024390
+    - Soltu.DM.11G001180
+    - Soltu.DM.11G007650
+    - Soltu.DM.11G012170
+    - Soltu.DM.11G012990
+    - Soltu.DM.11G017450
+    - Soltu.DM.11G018200
+    - Soltu.DM.11G018650
+    - Soltu.DM.11G020720
+    - Soltu.DM.11G022130
+    - Soltu.DM.11G022590
+    - Soltu.DM.11G022670
+    - Soltu.DM.11G022870
+    - Soltu.DM.11G024590
+    - Soltu.DM.11G024600
+    - Soltu.DM.11G024610
+    - Soltu.DM.12G000120
+    - Soltu.DM.12G000840
+    - Soltu.DM.12G000900
+    - Soltu.DM.12G000930
+    - Soltu.DM.12G004430
+    - Soltu.DM.12G009420
+    - Soltu.DM.12G011110
+    - Soltu.DM.12G011190
+    - Soltu.DM.12G023450
+    - Soltu.DM.12G025950
+    - Soltu.DM.12G027950
+    - Soltu.DM.S001790
+    - Soltu.DM.S002490
+  curator_note: Plasma membrane, carried by the receptor-like kinases; true but uninformative at this grain.

@@ -63,6 +63,7 @@ Each gene set in [`curation/plants/genesets/lit_members.gmt`](genesets/lit_membe
 - ***Sorghum bicolor*** (`goa_sorghum_bicolor.gaf.gz`): Phytozome v3 locus symbols (`SORBI_3004G062500` [`Bmr2`], `SORBI_3004G071000` [`Bmr6`], `SORBI_3007G047300` [`Bmr12`], `SORBI_3001G469600` [`SbSUT1`], `SORBI_3004G074000` [`SbSWEET13A`], etc.).
 - ***Thlaspi arvense*** (`goa_thlaspi_arvense.gaf.gz`): TaV2 genome locus symbols (`TAV2_LOCUS4912` [`FAE1`], `TAV2_LOCUS15555` [`CYP79B2`], `TAV2_LOCUS4073` [`FLC`], `TAV2_LOCUS11997` [`VIN3`], etc.).
 - ***Brachypodium distachyon*** (`goa_brachypodium_distachyon.gaf.gz`): Bd21 reference locus symbols (`BRADI_2g36910v3` [`BdPMT1`], `BRADI_1g69327v3` [`BdPT4`], `BRADI_4g33550v3` [`BdSTR1`], etc.).
+- ***Solanum tuberosum*** (SpudDB DM v6.1 GO, built by [`scripts/build_spuddb_potato_gaf.py`](../../scripts/build_spuddb_potato_gaf.py)): DM v6.1 gene ids (`Soltu.DM.06G012170` [`FSD1`], `Soltu.DM.12G008980` [`JAZ1`], etc.). See the potato section below for why this is not a UniProt GOA GAF.
 
 ### 2. Plant Context Ontologies (`PO`, `TO`, `PECO`, `CHEBI`)
 Plant anatomical structures, cell types, and agronomic traits are represented in `contexts` using OLS/OAK-validated terms from:
@@ -70,6 +71,55 @@ Plant anatomical structures, cell types, and agronomic traits are represented in
 - **Plant Trait Ontology (`TO`)**: e.g., `TO:0000303` (`low temperature stress response`), `TO:0000276` (`drought tolerance`), `TO:0000731` (`lignin content`), `TO:0000328` (`sucrose content`).
 - **Plant Experimental Conditions Ontology (`PECO`)**: e.g., `PECO:0007163` (`cold temperature exposure`), `PECO:0007174` (`iron deficiency exposure`), `PECO:0007105` (`phosphate deficiency exposure`).
 - **ChEBI (`CHEBI`)**: e.g., `CHEBI:6457` (`lignin`), `CHEBI:2365` (`(+)-abscisic acid`), `CHEBI:16914` (`salicylic acid`), `CHEBI:18292` (`jasmonic acid`), `CHEBI:24279` (`glucosinolate`), `CHEBI:27623` (`ferulic acid`), `CHEBI:17709` (`scopoletin`), `CHEBI:25520` (`nicotianamine`).
+
+---
+
+## Potato on lunar regolith simulants (`SOLTU_*`, 5 sets)
+
+Five leaf DEG sets from Handy et al. 2026, *Growth and molecular responses of potato to lunar regolith
+simulants* (npj Microgravity, PMID:43058136). Potato cv. Modoc was grown in lunar regolith simulants
+amended with 5% v/v vermicompost, or in a terrestrial sandy soil (Adkins series) as the control, and
+upper-canopy leaves were profiled by RNA-seq at 39 days after planting. Membership is the paper's Data S5
+(DESeq2 padj < 0.05), split by direction and captured in `lit_members.gmt`. They form one series,
+`SERIES:SOLTU_LUNAR_REGOLITH_LEAF`, with the unchanged soil plants as the shared reference.
+
+| Gene set | Simulant | Dir | n | What the curation records |
+|---|---|---|---:|---|
+| `SOLTU_LEAF_LMS1E_LUNAR_MARE_REGOLITH_UP` | LMS-1E (mare) | UP | 566 | Receptor-kinase signalling (protein phosphorylation) and the Ca2+- and ethylene-signalling arms of the general stress regulon (CML37/38, WRKY33/40, ZAT10, ERF). "Response to chitin" and "hypoxia" are kept only as labelled stimulus hits |
+| `SOLTU_LEAF_LMS1E_LUNAR_MARE_REGOLITH_DN` | LMS-1E (mare) | DN | 831 | Cell-wall and cellulose synthesis (CESA, CSLG, COBRA-like, expansins); JA biosynthesis (AOS, AOC, LOX) and peptidase inhibition (Kunitz, potato inhibitor I/II, cystatins) |
+| `SOLTU_LEAF_JSC1A_LUNAR_MARE_REGOLITH_UP` | JSC-1A (mare) | UP | 431 | Intracellular copper ion homeostasis (CSD1/CSD2 up, the copper-replete half of the SPL7 switch; a GO gap on this pole) and the Fe-to-Cu/Zn SOD swap |
+| `SOLTU_LEAF_JSC1A_LUNAR_MARE_REGOLITH_DN` | JSC-1A (mare) | DN | 527 | Light-harvesting antenna; FSD1, COPT1/5 and CCH down (SPL7 copper-deficiency regulon off); PAL cluster |
+| `SOLTU_LEAF_OPRH4W30_LUNAR_HIGHLAND_REGOLITH_DN` | OPRH4W30 (highland) | DN | 79 | Cinnamic acid biosynthesis (nine PALs) and peptidase inhibition with threonine deaminase and LAP, the Solanaceae JA anti-nutritive defence (mostly a GO gap) |
+
+**Direction.** Data S5 does not say which way its log2FoldChange runs. It is read here as regolith
+relative to soil, which is DESeq2's default because `ADK` is the alphabetically first level. The copper
+switch confirms this: FSD1 falls and CSD1/CSD2 rise most in JSC-1A, the only simulant with significantly
+higher tuber Cu (Table 1 of the paper), and not at all in LHS-1E, whose tuber Cu was unchanged. Read this
+way, the jasmonate wound-defence module is *lower* in regolith than in soil in three of the four simulants
+(JAZ1 down 5.5-8.6 log2). Leaves therefore show no sign of the abrasion-driven wounding the authors propose.
+
+**Annotation.** UniProt's potato proteomes are built on older assemblies, and an exact or near-exact sequence
+match covers only ~16,100 of 32,917 DM v6.1 genes. Enrichment therefore uses SpudDB's own DM v6.1 GO
+file, the annotation the authors used: Arabidopsis best-hit projection, all IEA, 31,069 genes. Only the
+`all` variant is meaningful. Because only DEGs were released, the background is the annotated genome,
+not the expressed genes. Statistics are `genesets-rs` Fisher with Bonferroni, `min_overlap 2`.
+
+**What makes these sets useful for the benchmark.** Best-hit projection of Arabidopsis PAL annotations
+fires `lignin catabolic process`, `drought recovery`, `salicylic acid catabolic process` and `response to
+UV-B` on any potato PAL cluster. In OPRH4W30 they are the top-ranked hits (p_adj ~ 1e-15), so they are
+recorded as `false_association` traps. The copper mechanism carries only 2-3 genes per set, so it is a
+curator-added core term that whole-term enrichment misses.
+
+**Mechanism terms, not stimulus terms.** Following the house rule ("Name the mechanism, not the stimulus" in
+[`curation/README.md`](../README.md)), no set uses a "response to X" term as its core biology. Response to
+wounding, metal ion and chitin are kept only as labelled `marker_driven_plausible` hits. The mechanism terms
+that replace them are harder to recover, largely because the carrier genes lack the annotation: potato type II
+proteinase inhibitors have no GO annotation, and threonine deaminase and LAP lack their defence role. Core
+recall is therefore 0.0 on LMS-1E UP and JSC-1A UP, 0.5 on JSC-1A DN and OPRH4W30 DN, and 0.67 on LMS-1E DN.
+
+**Not curated.** The LHS-1E list (360 DEGs) largely repeats the LMS-1E down-regulated JA module and the
+PAL cluster, so it adds no new pole. The authors' Data S6 GSEA table for OPRH4W30 is a near-verbatim copy of
+the LHS-1E table (identical set sizes and enrichment scores), so it was not used as evidence.
 
 ---
 
