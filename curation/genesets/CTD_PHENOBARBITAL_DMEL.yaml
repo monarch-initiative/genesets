@@ -1,0 +1,90 @@
+gene_set_id: MYGENESET:D010634_7227
+gene_set_name: CTD_PHENOBARBITAL_DMEL
+collection: CTD:chem_gene_ixns
+taxon:
+  id: NCBITaxon:7227
+  label: Drosophila melanogaster
+direction: NA
+description: >-
+  The 25 Drosophila melanogaster genes with CTD-curated interactions with
+  phenobarbital (MeSH D010634; mygeneset.info D010634_7227; membership snapshot in
+  curation/genesets/model_organism_members.gmt). Phenobarbital is the classic inducer
+  of xenobiotic-metabolising enzymes. In flies it induces cytochrome P450s, glutathione
+  S-transferases and UDP-glycosyltransferases, and this literature also mapped how
+  that induction is controlled. The set contains both outputs and regulators.
+  Outputs: Cyp6a2, Cyp6a8, Cyp6d5, Cyp6w1, Cyp12d1-d, Cyp4d14, eleven Gst genes
+  (GstD1/2/4/6/7/9, GstE3/6/7/9, GstS1), Ugt35C1, Jheh1/2. Regulators: cnc (CncC, the
+  Nrf2 orthologue), its repressor Keap1, and Hr96, the nuclear receptor orthologous to
+  PXR/CAR. GO enrichment recovers the GST arm strongly. The P450 arm and the
+  CncC/Keap1/Hr96 regulators are largely missing from xenobiotic-response
+  annotation.
+contexts:
+  - term:
+      id: CHEBI:8069
+      label: phenobarbital
+    context_type: chemical_perturbagen
+associations:
+  - term:
+      id: GO:0004364
+      label: glutathione transferase activity
+    aspect: molecular_function
+    category: core_component
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      11/38, p ~7e-23: GstD1, GstD2, GstD4, GstD6, GstD7, GstD9, GstE3, GstE6, GstE7,
+      GstE9, GstS1, all directly annotated. GST induction is a textbook phenobarbital
+      response, hence confirmatory. Filed as core_component for want of a
+      core-function category; the glutathione metabolic process term below is the
+      process view.
+  - term:
+      id: GO:0006749
+      label: glutathione metabolic process
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      The same eleven GSTs (11/50, p ~2e-21). Phase II conjugation of xenobiotics and
+      their oxidised metabolites.
+  - term:
+      id: GO:0009410
+      label: response to xenobiotic stimulus
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: confirmatory
+    curator_note: >-
+      The set's defining process. Only Cyp6a8 and Cyp6w1 reach it, via closure (2/21).
+      Cyp6a2, Cyp6d5, Cyp12d1-d and Cyp4d14, the phenobarbital-inducible P450s, are
+      in the set but not annotated to xenobiotic response or metabolism in FlyBase
+      GOA, and neither are Ugt35C1, Jheh1 or Jheh2. An annotation gap: the
+      phase I arm of the induction is invisible to GO enrichment.
+  - term:
+      id: GO:0004879
+      label: nuclear receptor activity
+    aspect: molecular_function
+    category: supporting_process
+    confidence: medium
+    specificity: broadly_expressed
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: mechanistic
+    curator_note: >-
+      The regulatory mechanism behind the induction. Hr96 (PXR/CAR orthologue,
+      directly annotated here, 1/23) mediates phenobarbital-responsive transcription,
+      and the CncC (cnc)/Keap1 module, the fly Nrf2/Keap1 system, controls
+      inducible detoxification genes. cnc and Keap1 are not annotated to any
+      xenobiotic-response process, so the regulatory layer cannot be recovered. A
+      gap for the regulators rather than this term, which is correctly annotated
+      for Hr96. Medium confidence because CTD does not say which regulators were
+      tested with phenobarbital directly.
