@@ -1,0 +1,103 @@
+gene_set_id: MSIGDB:ZHENG_IL22_SIGNALING_UP
+gene_set_name: ZHENG_IL22_SIGNALING_UP
+collection: M2:CGP
+msigdb_release: v2025.1.Mm
+taxon:
+  id: NCBITaxon:10090
+  label: Mus musculus
+direction: UP
+description: >-
+  MSigDB mouse M2:CGP set (M1800) of 65 genes induced by IL-22 signalling in the mouse
+  colon during Citrobacter rodentium infection (Zheng et al. 2008, PMID:18264109,
+  Table 1S). IL-22, made by innate and T cells, acts on epithelial cells through STAT3.
+  GO enrichment recovers an epithelial host-defence programme. Antimicrobial
+  effectors: Reg3a, S100a8, S100a9, Slpi, Trf. Neutrophil-recruiting chemokines:
+  Cxcl5, Ccl5, Ccl8, Pf4. Acute-phase/iron-sequestering proteins: Hp, Trf, Lrg1,
+  Heph. Barrier genes: Tgm1, Cldn1, Dsc2. The paper's central mechanism is induction
+  of RegIIIbeta and RegIIIgamma (Reg3b, Reg3g), but those two are not in this MSigDB
+  set; only Reg3a is.
+contexts:
+  - term:
+      id: PR:000001383
+      label: interleukin-22
+    context_type: genetic_perturbation
+  - term:
+      id: UBERON:0001155
+      label: colon
+    context_type: anatomical_structure
+  - term:
+      id: CL:0000066
+      label: epithelial cell
+    context_type: cell_type
+associations:
+  - term:
+      id: GO:0019730
+      label: antimicrobial humoral response
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: mechanistic
+    evidence:
+      - reference: PMID:18264109
+        reference_title: "Interleukin-22 mediates early host defense against attaching and effacing bacterial pathogens."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "IL-22 is required for the direct induction of the Reg family of antimicrobial proteins, including RegIIIbeta and RegIIIgamma, in colonic epithelial cells."
+        explanation: >-
+          The defining paper's mechanism: IL-22 protects by inducing epithelial
+          antimicrobial proteins.
+    curator_note: >-
+      9/196, p ~6e-10 (Ccl5, Ccl8, Cxcl5, Pf4, Reg3a, S100a9, Slpi, Tac1, Trf, all via
+      closure). Mechanistic: a cytokine perturbation resolves to epithelial
+      antimicrobial secretion, the effector arm of IL-22 protection. The paper's
+      key Reg3b and Reg3g are absent from this set, so the recovered signal comes
+      from other antimicrobials.
+  - term:
+      id: GO:0071621
+      label: granulocyte chemotaxis
+    aspect: biological_process
+    category: supporting_process
+    confidence: high
+    specificity: lineage_shared
+    seed_source: enrichment_recovered
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      6/80, p ~3e-8 (Ccl5, Ccl8, Cxcl5, Pf4, S100a8, S100a9). Epithelial chemokines
+      recruit neutrophils during infection. Expected for an inflamed colon,
+      hence confirmatory.
+  - term:
+      id: GO:0006953
+      label: acute-phase response
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: annotation_gap
+    insight: mechanistic
+    curator_note: >-
+      Hp, Trf and Lrg1 are acute-phase proteins induced by IL-22/STAT3, and Hp and Trf
+      also sequester haem and iron from bacteria. None of them is annotated to
+      acute-phase response in MGI GOA (0/65 of a term with 18 annotated mouse genes).
+      This is the same mouse annotation gap recorded for CADWELL_ATG16L1_TARGETS_UP
+      (Saa1, Saa2, Hp), so it looks systematic rather than incidental.
+  - term:
+      id: GO:0050829
+      label: defense response to Gram-negative bacterium
+    aspect: biological_process
+    category: core_process
+    confidence: medium
+    specificity: lineage_shared
+    seed_source: curator_added
+    recovery_status: membership_gap
+    insight: confirmatory
+    curator_note: >-
+      Citrobacter rodentium is Gram-negative, and Reg3b, one of the two Reg proteins
+      the paper shows IL-22 induces, is the classic effector against Gram-negative
+      bacteria. Reg3b and Reg3g are absent from this set, and only Tac1 is annotated
+      here (1/65). The defining biology is present in the paper but missing from
+      the captured membership: a membership gap.

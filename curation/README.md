@@ -199,8 +199,9 @@ native-mouse MSigDB M2 perturbation sets (`MSIGDB:` ids, `collection: M2:CGP`,
 fly and zebrafish as served by mygeneset.info (`MYGENESET:<MeSH>_<taxid>`,
 `collection: CTD:chem_gene_ixns`; context is the chemical's `CHEBI:` or `MESH:`
 term); and yeast genome-wide deletion screens as `LIT:GENETIC` sets, whose
-membership is SGD's curated null-mutant phenotypes from the one defining paper
-(`taxon: NCBITaxon:559292`). CTD sets pool mixed-direction literature (sensitivity phenotypes,
+membership is SGD's curated null-mutant phenotypes (budding yeast,
+`taxon: NCBITaxon:559292`) or PomBase's curated deletion FYPO phenotypes (fission
+yeast, `NCBITaxon:4896`) from the one defining paper. CTD sets pool mixed-direction literature (sensitivity phenotypes,
 expression, proteomics), so they are `direction: NA` and have no single defining
 paper to quote. Membership for every non-human set is snapshotted in
 `genesets/model_organism_members.gmt`. Ground and adjudicate `recovery_status`

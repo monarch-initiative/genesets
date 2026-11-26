@@ -1,0 +1,78 @@
+gene_set_id: LIT:POMBE_CLS_EXTENDED_ROMILA
+gene_set_name: POMBE_CLS_EXTENDED_ROMILA
+collection: LIT:GENETIC
+taxon:
+  id: NCBITaxon:4896
+  label: Schizosaccharomyces pombe
+direction: UP
+description: >-
+  The 343 Schizosaccharomyces pombe deletion mutants with increased viability in
+  stationary phase (extended chronological lifespan) in the barcode-sequencing screen
+  of Romila et al. (2021, PMID:34250083; the paper reports 341 long-lived mutants).
+  Membership is the set of deletion alleles PomBase curated from this paper with
+  "increased viability in stationary phase" (FYPO:0001309); snapshot in
+  curation/genesets/model_organism_members.gmt. The set carries the textbook
+  longevity pathways of fission yeast: glucose/PKA signalling (the git3 GPCR, git5 and
+  git11 G-protein subunits, pka1) and TORC1 (tco89, the S6K-like sck2), plus scattered
+  ribosomal-protein genes. Yet under genome-wide Bonferroni not a single GO term is
+  significant. Each pathway sits in a small term, and the remaining ~300 members
+  spread thinly across many processes. That makes the set a deliberate hard case: a
+  lifespan screen whose mechanism is known but diffuse, alongside
+  YEAST_RLS_EXTENDED_MCCORMICK (budding yeast), where a concentrated 60S signal is
+  recovered.
+associations:
+  - term:
+      id: GO:0010255
+      label: glucose mediated signaling pathway
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: mechanistic
+    curator_note: >-
+      git3 (glucose-sensing GPCR), git5 (G-beta), git11 (G-gamma) and pka1 reach
+      this term via closure (4/9). Loss of glucose/cAMP/PKA signalling is the
+      best-established route to longer chronological lifespan in fission yeast,
+      the specific mechanism this set carries. Not significant: four genes cannot
+      survive correction over the whole GO.
+  - term:
+      id: GO:0038202
+      label: TORC1 signaling
+    aspect: biological_process
+    category: core_process
+    confidence: high
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    evidence:
+      - reference: PMID:34250083
+        reference_title: "Barcode sequencing and a high-throughput assay for chronological lifespan uncover ageing-associated genes in fission yeast."
+        supports: SUPPORT
+        evidence_source: MODEL_ORGANISM
+        snippet: "This screen identified 341 long-lived mutants and 1246 short-lived mutants"
+        explanation: >-
+          The defining screen, whose long-lived class is this set.
+    curator_note: >-
+      tco89 (TORC1 subunit) and sck2 (S6K-like kinase) are directly annotated (2/12;
+      bit2 reaches TOR signaling via closure). Reduced TORC1 signalling extends
+      lifespan across eukaryotes, so this is expected: confirmatory. Too small
+      to be enriched.
+  - term:
+      id: GO:0002181
+      label: cytoplasmic translation
+    aspect: biological_process
+    category: supporting_process
+    confidence: medium
+    specificity: ubiquitous
+    seed_source: curator_added
+    recovery_status: annotation_supported
+    insight: confirmatory
+    curator_note: >-
+      19/343 against a 240-gene term (rpl1102, rpl2001, rpl26, rpl4102, rps1401,
+      rps1801, rps1902, rps2202, rps2401, ubi5 and others), not significant.
+      Reduced translation as a downstream TORC1 output is expected. Unlike the
+      budding-yeast RLS set, the ribosomal genes here are split between subunits
+      (5 large-subunit annotations), so no 60S-specific signal emerges.
